@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=telly-scout
+Comment=Convergent EPG
+Version=1.0
+Exec=telly-scout
+MimeType=application/x-telly-scout;
+Icon=applications-development
+Type=Application
+Terminal=false
+Categories=Qt;KDE;

@@ -1,0 +1,6 @@
+File=TellyScoutSettings.kcfg
+ClassName=TellyScoutSettings
+Mutators=true
+DefaultValueGetters=true
+GenerateProperties=true
+ParentInConstructor=true

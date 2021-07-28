@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop-application">
+  <id>org.kde.telly-scout</id>
+  <name>Telly Scout</name>
+  <summary>A convergent Kirigami EPG</summary>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>MIT</project_license>
+  <developer_name>plata</developer_name>
+  <description>
+    <p>A convergent Kirigami EPG</p>
+</component>
