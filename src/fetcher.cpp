@@ -30,7 +30,8 @@ Fetcher::Fetcher()
 
 void Fetcher::fetch(const QString &url)
 {
-    const QString urlToday = url + "_2021-07-27.xml"; // TODO: get date
+    QDateTime current = QDateTime::currentDateTime();
+    const QString urlToday = url + "_" + current.toString("yyyy-MM-dd") + ".xml";
     qDebug() << "Starting to fetch" << urlToday;
 
     Q_EMIT startedFetchingFeed(urlToday);
