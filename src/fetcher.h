@@ -11,7 +11,7 @@
 #include <QUrl>
 #include <QString>
 #include <QVector>
-#include <Syndication/Syndication>
+#include <QtXml>
 
 class Fetcher : public QObject
 {
@@ -33,8 +33,8 @@ private:
     Fetcher();
 
     QString filePath(const QString &url);
-    void processChannel(const QVector<QString>& programs, const QString &url);
-    void processProgram(const QString& program, unsigned int id, const QString &url);
+    void processChannel(const QDomElement& channel, const QString &url);
+    void processProgram(const QDomNode& program, const QString &url);
     void processAuthor(const QString &url, unsigned int id);
     void processEnclosure(const QString &feedUrl, unsigned int id);
 

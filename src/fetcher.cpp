@@ -13,9 +13,6 @@
 #include <QNetworkReply>
 #include <QStandardPaths>
 #include <QTextDocumentFragment>
-#include <QtXml>
-
-#include <Syndication/Syndication>
 
 #include "database.h"
 #include "fetcher.h"
@@ -31,7 +28,7 @@ Fetcher::Fetcher()
 void Fetcher::fetch(const QString &url)
 {
     QDateTime current = QDateTime::currentDateTime();
-    const QString urlToday = url + "_" + current.toString("yyyy-MM-dd") + ".xml";
+    const QString urlToday = url + "_" + current.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
     qDebug() << "Starting to fetch" << urlToday;
 
     Q_EMIT startedFetchingFeed(urlToday);
@@ -72,20 +69,8 @@ void Fetcher::fetch(const QString &url)
 
       QDomElement docElem = versionXML.documentElement();
 
-      QDomNodeList nodes = versionXML.elementsByTagName("title");
-      qDebug() << "programs";
-      QVector<QString> programs;
-      for (int i = 0; i < nodes.count(); i++) {
-        QDomNode elm = nodes.at(i);
-        if (elm.isElement()) {
-          qDebug() << elm.toElement().tagName() << " = "
-                   << elm.toElement().text();
-          programs.push_back(elm.toElement().text());
-        }
-      }
-
      // feed = channel, entry = Sendung
-            processChannel(programs, url);
+            processChannel(docElem, url);
 
             // https://gitlab.com/tabos/tvguide/-/blob/master/src/tvguide-assistant.c
         }
@@ -103,11 +88,8 @@ void Fetcher::fetchAll()
     }
 }
 
-void Fetcher::processChannel(const QVector<QString>& programs, const QString &url)
+void Fetcher::processChannel(const QDomElement& channel, const QString &url)
 {
-    if (programs.isEmpty()) {
-        return;
-    }
 
     QSqlQuery query;
     query.prepare(QStringLiteral("UPDATE Feeds SET name=:name, image=:image, link=:link, description=:description, lastUpdated=:lastUpdated WHERE url=:url;"));
@@ -136,18 +118,30 @@ void Fetcher::processChannel(const QVector<QString>& programs, const QString &ur
 
     Q_EMIT feedDetailsUpdated(url, "3Sat", "", url, "", current); // TODO
 
-    unsigned int id = 0;
-    for (const auto &program : programs) {
-        processProgram(program, id, url);
-        ++id;
+      QDomNodeList programs = channel.elementsByTagName("programme");
+    for (int i = 0; i < programs.count(); i++) {
+        processProgram(programs.at(i), url);
     }
 
     Q_EMIT feedUpdated(url);
 }
 
-void Fetcher::processProgram(const QString& program, unsigned int id, const QString &url)
+void Fetcher::processProgram(const QDomNode& program, const QString &url)
 {
-    qDebug() << "Processing" << program;
+    const QDomNamedNodeMap& attributes = program.attributes();
+    const QString& channel = attributes.namedItem("channel").toAttr().value();
+    const QString& startTimeString = attributes.namedItem("start").toAttr().value();
+    QDateTime startTime = QDateTime::fromString(startTimeString, "yyyyMMddHHmmss +0000");
+    // channel + start time can be used as ID
+    const QString id = channel + startTime.toSecsSinceEpoch();
+    const QString& stopTimeString = attributes.namedItem("stop").toAttr().value();
+    QDateTime stopTime = QDateTime::fromString(stopTimeString, "yyyyMMddHHmmss +0000");
+    const QString& title = program.namedItem("title").toElement().text();
+    const QString& subtitle = program.namedItem("sub-title").toElement().text();
+    const QString& description = program.namedItem("description").toElement().text();
+    const QString& category = program.namedItem("category").toElement().text();
+
+    qDebug() << "Processing" << title;
     QSqlQuery query;
     query.prepare(QStringLiteral("SELECT COUNT (id) FROM Entries WHERE id=:id;"));
     query.bindValue(QStringLiteral(":id"), id);
@@ -161,22 +155,21 @@ void Fetcher::processProgram(const QString& program, unsigned int id, const QStr
     query.prepare(QStringLiteral("INSERT INTO Entries VALUES (:feed, :id, :title, :content, :created, :updated, :link, 0);"));
     query.bindValue(QStringLiteral(":feed"), url);
     query.bindValue(QStringLiteral(":id"), id);
-    query.bindValue(QStringLiteral(":title"), program);
-    QDateTime current = QDateTime::currentDateTime();
-    query.bindValue(QStringLiteral(":created"), current.toSecsSinceEpoch()); // TODO
-    query.bindValue(QStringLiteral(":updated"), current.toSecsSinceEpoch()); // TODO
+    query.bindValue(QStringLiteral(":title"), title);
+    query.bindValue(QStringLiteral(":created"), startTime.toSecsSinceEpoch());
+    query.bindValue(QStringLiteral(":updated"), stopTime.toSecsSinceEpoch());
     query.bindValue(QStringLiteral(":link"), url);
 
-        query.bindValue(QStringLiteral(":content"), "Test 123"); // TODO
+    query.bindValue(QStringLiteral(":content"), description);
 
     Database::instance().execute(query);
 
     //for (const auto &author : entry->authors()) {
-        processAuthor(url, id);
+    //    processAuthor(url, id);
     //}
 
     //for (const auto &enclosure : entry->enclosures()) {
-        processEnclosure(url, id);
+    //    processEnclosure(url, id);
     //}*/
 }
 
@@ -247,6 +240,6 @@ QString Fetcher::filePath(const QString &url)
 
 QNetworkReply *Fetcher::get(QNetworkRequest &request)
 {
-    request.setRawHeader("User-Agent", "telly-scout/0.1; Syndication");
+    request.setRawHeader("User-Agent", "telly-scout/0.1");
     return manager->get(request);
 }
