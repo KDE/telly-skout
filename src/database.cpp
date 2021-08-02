@@ -191,7 +191,7 @@ void Database::addFeed(const QString &url, const QString &groupName)
 
     Q_EMIT feedAdded(urlFromInput.toString());
 
-    Fetcher::instance().fetch(urlFromInput.toString());
+    Fetcher::instance().fetchChannel(urlFromInput.toString()); // TODO: url -> ID
 }
 
 void Database::importFeeds(const QString &path)

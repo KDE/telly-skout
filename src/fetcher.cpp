@@ -25,8 +25,55 @@ Fetcher::Fetcher()
     manager->enableStrictTransportSecurityStore(true);
 }
 
-void Fetcher::fetch(const QString &url)
+void Fetcher::fetchCountry(const QString &country)
 {
+    // http://xmltv.xmltv.se/channels-Germany.xml
+    const QString url = "http://xmltv.xmltv.se/channels-" + country + ".xml";
+    qDebug() << "Starting to fetch" << url;
+
+    // Q_EMIT startedFetchingFeed(urlToday);
+
+    QNetworkRequest request((QUrl(url)));
+    QNetworkReply *reply = get(request);
+    connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
+        if (reply->error()) {
+            qWarning() << "Error fetching country";
+            qWarning() << reply->errorString();
+            Q_EMIT error(url, reply->error(), reply->errorString());
+        } else {
+            QByteArray data = reply->readAll();
+
+            qDebug() << "XML download size:" << data.size() << "bytes";
+
+            QDomDocument versionXML;
+
+            if (!versionXML.setContent(data)) {
+                qWarning() << "Failed to parse XML";
+            }
+
+            // print out the element names of all elements that are direct children
+            // of the outermost element.
+            QDomElement docElem = versionXML.documentElement();
+
+            QDomNodeList nodes = versionXML.elementsByTagName("channel");
+
+            QVector<QString> mCountries;
+            for (int i = 0; i < nodes.count(); i++) {
+                QDomNode elm = nodes.at(i);
+                if (elm.isElement()) {
+                    const QDomNamedNodeMap &attributes = elm.attributes();
+                    const QString &id = attributes.namedItem("id").toAttr().value();
+                    fetchChannel(id);
+                }
+            }
+        }
+        delete reply;
+    });
+}
+
+void Fetcher::fetchChannel(const QString &channel)
+{
+    const QString url = "http://xmltv.xmltv.se/" + channel;
     QDateTime current = QDateTime::currentDateTime();
     const QString urlToday = url + "_" + current.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
     qDebug() << "Starting to fetch" << urlToday;
@@ -80,49 +127,121 @@ void Fetcher::fetch(const QString &url)
 
 void Fetcher::fetchAll()
 {
-    QSqlQuery query;
+    /*QSqlQuery query;
     query.prepare(QStringLiteral("SELECT url FROM Feeds;")); // url for channel e.g. http://xmltv.xmltv.se/3sat.de
     Database::instance().execute(query);
     while (query.next()) {
         fetch(query.value(0).toString());
-    }
+    }*/
+
+    // http://xmltv.se/countries.xml
+    const QString url = "http://xmltv.se/countries.xml";
+    qDebug() << "Starting to fetch" << url;
+
+    // Q_EMIT startedFetchingFeed(url);
+
+    QNetworkRequest request((QUrl(url)));
+    QNetworkReply *reply = get(request);
+    connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
+        if (reply->error()) {
+            qWarning() << "Error fetching countries";
+            qWarning() << reply->errorString();
+            Q_EMIT error(url, reply->error(), reply->errorString());
+        } else {
+            QByteArray data = reply->readAll();
+
+            qDebug() << "XML download size:" << data.size() << "bytes";
+
+            QDomDocument versionXML;
+
+            if (!versionXML.setContent(data)) {
+                qWarning() << "Failed to parse XML";
+            }
+
+            // print out the element names of all elements that are direct children
+            // of the outermost element.
+            QDomElement docElem = versionXML.documentElement();
+
+            QDomNodeList nodes = versionXML.elementsByTagName("country");
+            for (int i = 0; i < nodes.count(); i++) {
+                QDomNode elm = nodes.at(i);
+                if (elm.isElement()) {
+                    qDebug() << elm.toElement().tagName() << " = " << elm.toElement().text();
+                    fetchCountry(elm.toElement().text());
+                }
+            }
+        }
+        delete reply;
+    });
 }
 
 void Fetcher::processChannel(const QDomElement &channel, const QString &url)
 {
-    QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Feeds SET name=:name, image=:image, link=:link, description=:description, lastUpdated=:lastUpdated WHERE url=:url;"));
-    query.bindValue(QStringLiteral(":name"), "3Sat"); // TODO
-    query.bindValue(QStringLiteral(":url"), url);
-    query.bindValue(QStringLiteral(":link"), url);
-    query.bindValue(QStringLiteral(":description"), ""); // TODO
-
-    QDateTime current = QDateTime::currentDateTime();
-    query.bindValue(QStringLiteral(":lastUpdated"), current.toSecsSinceEpoch());
-
-    /* for (auto &author : feed->authors()) {
-         processAuthor(author, QLatin1String(""), url);
-     }*/
-
-    /*QString image;
-    if (feed->image()->url().startsWith(QStringLiteral("/"))) {
-        image = QUrl(url).adjusted(QUrl::RemovePath).toString() + feed->image()->url();
-    } else {
-        image = feed->image()->url();
-    }
-    query.bindValue(QStringLiteral(":image"), image);
-    Database::instance().execute(query);
-
-    qDebug() << "Updated feed title:" << feed->title();*/
-
-    Q_EMIT feedDetailsUpdated(url, "3Sat", "", url, "", current); // TODO
-
     QDomNodeList programs = channel.elementsByTagName("programme");
-    for (int i = 0; i < programs.count(); i++) {
-        processProgram(programs.at(i), url);
-    }
+    if (programs.count() > 0) {
+        const QDomNamedNodeMap &attributes = programs.at(0).attributes();
+        const QString &channelId = attributes.namedItem("channel").toAttr().value();
 
-    Q_EMIT feedUpdated(url);
+        QSqlQuery queryChannelExists;
+        queryChannelExists.prepare(QStringLiteral("SELECT COUNT (url) FROM Feeds WHERE url=:url;"));
+        queryChannelExists.bindValue(QStringLiteral(":url"), url);
+        Database::instance().execute(queryChannelExists);
+        queryChannelExists.next();
+
+        if (queryChannelExists.value(0).toInt() == 0) {
+            QSqlQuery queryInsertChannel;
+            queryInsertChannel.prepare(QStringLiteral(
+                "INSERT INTO Feeds VALUES (:name, :url, :image, :link, :description, :deleteAfterCount, :deleteAfterType, :subscribed, :lastUpdated, "
+                ":notify, :groupName, :displayName);"));
+            queryInsertChannel.bindValue(QStringLiteral(":name"), url);
+            queryInsertChannel.bindValue(QStringLiteral(":url"), url);
+            queryInsertChannel.bindValue(QStringLiteral(":image"), QLatin1String(""));
+            queryInsertChannel.bindValue(QStringLiteral(":link"), QLatin1String(""));
+            queryInsertChannel.bindValue(QStringLiteral(":description"), QLatin1String(""));
+            queryInsertChannel.bindValue(QStringLiteral(":deleteAfterCount"), 0);
+            queryInsertChannel.bindValue(QStringLiteral(":deleteAfterType"), 0);
+            queryInsertChannel.bindValue(QStringLiteral(":subscribed"), QDateTime::currentDateTime().toSecsSinceEpoch());
+            queryInsertChannel.bindValue(QStringLiteral(":lastUpdated"), 0);
+            queryInsertChannel.bindValue(QStringLiteral(":notify"), false);
+            queryInsertChannel.bindValue(QStringLiteral(":groupName"), "");
+            queryInsertChannel.bindValue(QStringLiteral(":displayName"), QLatin1String(""));
+            Database::instance().execute(queryInsertChannel);
+        }
+
+        QSqlQuery query;
+        query.prepare(
+            QStringLiteral("UPDATE Feeds SET name=:name, image=:image, link=:link, description=:description, lastUpdated=:lastUpdated WHERE url=:url;"));
+        query.bindValue(QStringLiteral(":name"), channelId);
+        query.bindValue(QStringLiteral(":url"), url);
+        query.bindValue(QStringLiteral(":link"), url);
+        query.bindValue(QStringLiteral(":description"), ""); // TODO
+
+        QDateTime current = QDateTime::currentDateTime();
+        query.bindValue(QStringLiteral(":lastUpdated"), current.toSecsSinceEpoch());
+
+        /* for (auto &author : feed->authors()) {
+             processAuthor(author, QLatin1String(""), url);
+         }*/
+
+        /*QString image;
+        if (feed->image()->url().startsWith(QStringLiteral("/"))) {
+            image = QUrl(url).adjusted(QUrl::RemovePath).toString() + feed->image()->url();
+        } else {
+            image = feed->image()->url();
+        }
+        query.bindValue(QStringLiteral(":image"), image);
+        Database::instance().execute(query);
+
+        qDebug() << "Updated feed title:" << feed->title();*/
+
+        Q_EMIT feedDetailsUpdated(url, channelId, "", url, "", current); // TODO
+
+        for (int i = 0; i < programs.count(); i++) {
+            processProgram(programs.at(i), url);
+        }
+
+        Q_EMIT feedUpdated(url);
+    }
 }
 
 void Fetcher::processProgram(const QDomNode &program, const QString &url)
