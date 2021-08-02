@@ -43,33 +43,33 @@ void Fetcher::fetch(const QString &url)
         } else {
             QByteArray data = reply->readAll();
 
-      qDebug() << "XML download size:" << data.size() << "bytes";
+            qDebug() << "XML download size:" << data.size() << "bytes";
 
-      QDomDocument versionXML;
+            QDomDocument versionXML;
 
-      if (!versionXML.setContent(data)) {
-        qWarning() << "Failed to parse XML";
-      }
+            if (!versionXML.setContent(data)) {
+                qWarning() << "Failed to parse XML";
+            }
 
-      // print out the element names of all elements that are direct children
-      // of the outermost element.
-      /*QDomElement docElem = versionXML.documentElement();
+            // print out the element names of all elements that are direct children
+            // of the outermost element.
+            /*QDomElement docElem = versionXML.documentElement();
 
-      QDomNodeList nodes = versionXML.elementsByTagName("country");
-      qDebug() << "Countries";
-      QVector<QString> mCountries;
-      for (int i = 0; i < nodes.count(); i++) {
-        QDomNode elm = nodes.at(i);
-        if (elm.isElement()) {
-          qDebug() << elm.toElement().tagName() << " = "
-                   << elm.toElement().text();
-          mCountries.push_back(elm.toElement().text());
-        }
-      }*/
+            QDomNodeList nodes = versionXML.elementsByTagName("country");
+            qDebug() << "Countries";
+            QVector<QString> mCountries;
+            for (int i = 0; i < nodes.count(); i++) {
+              QDomNode elm = nodes.at(i);
+              if (elm.isElement()) {
+                qDebug() << elm.toElement().tagName() << " = "
+                         << elm.toElement().text();
+                mCountries.push_back(elm.toElement().text());
+              }
+            }*/
 
-      QDomElement docElem = versionXML.documentElement();
+            QDomElement docElem = versionXML.documentElement();
 
-     // feed = channel, entry = Sendung
+            // feed = channel, entry = Sendung
             processChannel(docElem, url);
 
             // https://gitlab.com/tabos/tvguide/-/blob/master/src/tvguide-assistant.c
@@ -88,9 +88,8 @@ void Fetcher::fetchAll()
     }
 }
 
-void Fetcher::processChannel(const QDomElement& channel, const QString &url)
+void Fetcher::processChannel(const QDomElement &channel, const QString &url)
 {
-
     QSqlQuery query;
     query.prepare(QStringLiteral("UPDATE Feeds SET name=:name, image=:image, link=:link, description=:description, lastUpdated=:lastUpdated WHERE url=:url;"));
     query.bindValue(QStringLiteral(":name"), "3Sat"); // TODO
@@ -101,9 +100,9 @@ void Fetcher::processChannel(const QDomElement& channel, const QString &url)
     QDateTime current = QDateTime::currentDateTime();
     query.bindValue(QStringLiteral(":lastUpdated"), current.toSecsSinceEpoch());
 
-   /* for (auto &author : feed->authors()) {
-        processAuthor(author, QLatin1String(""), url);
-    }*/
+    /* for (auto &author : feed->authors()) {
+         processAuthor(author, QLatin1String(""), url);
+     }*/
 
     /*QString image;
     if (feed->image()->url().startsWith(QStringLiteral("/"))) {
@@ -118,7 +117,7 @@ void Fetcher::processChannel(const QDomElement& channel, const QString &url)
 
     Q_EMIT feedDetailsUpdated(url, "3Sat", "", url, "", current); // TODO
 
-      QDomNodeList programs = channel.elementsByTagName("programme");
+    QDomNodeList programs = channel.elementsByTagName("programme");
     for (int i = 0; i < programs.count(); i++) {
         processProgram(programs.at(i), url);
     }
@@ -126,20 +125,20 @@ void Fetcher::processChannel(const QDomElement& channel, const QString &url)
     Q_EMIT feedUpdated(url);
 }
 
-void Fetcher::processProgram(const QDomNode& program, const QString &url)
+void Fetcher::processProgram(const QDomNode &program, const QString &url)
 {
-    const QDomNamedNodeMap& attributes = program.attributes();
-    const QString& channel = attributes.namedItem("channel").toAttr().value();
-    const QString& startTimeString = attributes.namedItem("start").toAttr().value();
+    const QDomNamedNodeMap &attributes = program.attributes();
+    const QString &channel = attributes.namedItem("channel").toAttr().value();
+    const QString &startTimeString = attributes.namedItem("start").toAttr().value();
     QDateTime startTime = QDateTime::fromString(startTimeString, "yyyyMMddHHmmss +0000");
     // channel + start time can be used as ID
     const QString id = channel + startTime.toSecsSinceEpoch();
-    const QString& stopTimeString = attributes.namedItem("stop").toAttr().value();
+    const QString &stopTimeString = attributes.namedItem("stop").toAttr().value();
     QDateTime stopTime = QDateTime::fromString(stopTimeString, "yyyyMMddHHmmss +0000");
-    const QString& title = program.namedItem("title").toElement().text();
-    const QString& subtitle = program.namedItem("sub-title").toElement().text();
-    const QString& description = program.namedItem("description").toElement().text();
-    const QString& category = program.namedItem("category").toElement().text();
+    const QString &title = program.namedItem("title").toElement().text();
+    const QString &subtitle = program.namedItem("sub-title").toElement().text();
+    const QString &description = program.namedItem("description").toElement().text();
+    const QString &category = program.namedItem("category").toElement().text();
 
     qDebug() << "Processing" << title;
     QSqlQuery query;
@@ -164,11 +163,11 @@ void Fetcher::processProgram(const QDomNode& program, const QString &url)
 
     Database::instance().execute(query);
 
-    //for (const auto &author : entry->authors()) {
+    // for (const auto &author : entry->authors()) {
     //    processAuthor(url, id);
     //}
 
-    //for (const auto &enclosure : entry->enclosures()) {
+    // for (const auto &enclosure : entry->enclosures()) {
     //    processEnclosure(url, id);
     //}*/
 }
@@ -180,8 +179,8 @@ void Fetcher::processAuthor(const QString &url, unsigned int id)
     query.bindValue(QStringLiteral(":feed"), url);
     query.bindValue(QStringLiteral(":id"), id);
     query.bindValue(QStringLiteral(":name"), "Author"); // TODO
-    query.bindValue(QStringLiteral(":uri"), "URI");// TODO
-    query.bindValue(QStringLiteral(":email"), "author@example.com");// TODO
+    query.bindValue(QStringLiteral(":uri"), "URI"); // TODO
+    query.bindValue(QStringLiteral(":email"), "author@example.com"); // TODO
     Database::instance().execute(query);
 }
 
@@ -191,11 +190,11 @@ void Fetcher::processEnclosure(const QString &feedUrl, unsigned int id)
     query.prepare(QStringLiteral("INSERT INTO Enclosures VALUES (:feed, :id, :duration, :size, :title, :type, :url);"));
     query.bindValue(QStringLiteral(":feed"), feedUrl);
     query.bindValue(QStringLiteral(":id"), id);
-    query.bindValue(QStringLiteral(":duration"), 3);// TODO
-    query.bindValue(QStringLiteral(":size"), 500);// TODO
-    query.bindValue(QStringLiteral(":title"), "Title");// TODO
-    query.bindValue(QStringLiteral(":type"), "Type");// TODO
-    query.bindValue(QStringLiteral(":url"), feedUrl);// TODO
+    query.bindValue(QStringLiteral(":duration"), 3); // TODO
+    query.bindValue(QStringLiteral(":size"), 500); // TODO
+    query.bindValue(QStringLiteral(":title"), "Title"); // TODO
+    query.bindValue(QStringLiteral(":type"), "Type"); // TODO
+    query.bindValue(QStringLiteral(":url"), feedUrl); // TODO
     Database::instance().execute(query);
 }
 
@@ -235,7 +234,8 @@ void Fetcher::removeImage(const QString &url)
 
 QString Fetcher::filePath(const QString &url)
 {
-    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/") + QString::fromStdString(QCryptographicHash::hash(url.toUtf8(), QCryptographicHash::Md5).toHex().toStdString());
+    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/")
+        + QString::fromStdString(QCryptographicHash::hash(url.toUtf8(), QCryptographicHash::Md5).toHex().toStdString());
 }
 
 QNetworkReply *Fetcher::get(QNetworkRequest &request)

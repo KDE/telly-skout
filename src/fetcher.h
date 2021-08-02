@@ -8,8 +8,8 @@
 
 #include <QNetworkAccessManager>
 #include <QObject>
-#include <QUrl>
 #include <QString>
+#include <QUrl>
 #include <QVector>
 #include <QtXml>
 
@@ -33,8 +33,8 @@ private:
     Fetcher();
 
     QString filePath(const QString &url);
-    void processChannel(const QDomElement& channel, const QString &url);
-    void processProgram(const QDomNode& program, const QString &url);
+    void processChannel(const QDomElement &channel, const QString &url);
+    void processProgram(const QDomNode &program, const QString &url);
     void processAuthor(const QString &url, unsigned int id);
     void processEnclosure(const QString &feedUrl, unsigned int id);
 
@@ -43,7 +43,12 @@ private:
 Q_SIGNALS:
     void startedFetchingFeed(const QString &url);
     void feedUpdated(const QString &url);
-    void feedDetailsUpdated(const QString &url, const QString &name, const QString &image, const QString &link, const QString &description, const QDateTime &lastUpdated);
+    void feedDetailsUpdated(const QString &url,
+                            const QString &name,
+                            const QString &image,
+                            const QString &link,
+                            const QString &description,
+                            const QDateTime &lastUpdated);
     void error(const QString &url, int errorId, const QString &errorString);
     void imageDownloadFinished(const QString &url);
 };

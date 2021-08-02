@@ -33,6 +33,7 @@ Q_SIGNALS:
     void feedDetailsUpdated(const QString &url, const QString &displayName, const QString &description);
     void feedGroupsUpdated();
     void feedGroupRemoved(const QString &groupName);
+
 private:
     bool feedGroupExists(const QString &name);
     void clearFeedGroup(const QString &name);
