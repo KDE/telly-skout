@@ -20,6 +20,7 @@ public:
     }
     bool execute(QSqlQuery &query);
     bool execute(const QString &query);
+    QString defaultGroup();
     Q_INVOKABLE void addFeed(const QString &url, const QString &groupName = QString());
     Q_INVOKABLE void importFeeds(const QString &path);
     Q_INVOKABLE void exportFeeds(const QString &path);
@@ -37,7 +38,6 @@ Q_SIGNALS:
 private:
     bool feedGroupExists(const QString &name);
     void clearFeedGroup(const QString &name);
-    QString defaultGroup();
 
     Database();
     int version();

@@ -203,7 +203,7 @@ void Fetcher::processChannel(const QDomElement &channel, const QString &url)
             queryInsertChannel.bindValue(QStringLiteral(":subscribed"), QDateTime::currentDateTime().toSecsSinceEpoch());
             queryInsertChannel.bindValue(QStringLiteral(":lastUpdated"), 0);
             queryInsertChannel.bindValue(QStringLiteral(":notify"), false);
-            queryInsertChannel.bindValue(QStringLiteral(":groupName"), "");
+            queryInsertChannel.bindValue(QStringLiteral(":groupName"), Database::instance().defaultGroup());
             queryInsertChannel.bindValue(QStringLiteral(":displayName"), QLatin1String(""));
             Database::instance().execute(queryInsertChannel);
         }
