@@ -22,6 +22,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex &parent) const override;
+    Q_INVOKABLE void setFeedAsFavorite(const QString &url);
     Q_INVOKABLE void removeFeed(const QString &url);
     Q_INVOKABLE void refreshAll();
 

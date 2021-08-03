@@ -284,6 +284,14 @@ void Feed::refresh()
     Fetcher::instance().fetchChannel(m_url, m_url); // TODO: url -> ID
 }
 
+void Feed::setAsFavorite()
+{
+    QSqlQuery query;
+    query.prepare(QStringLiteral("UPDATE Feeds SET groupName='Favorites' WHERE url=:url;")); // TODO: group -> true/false
+    query.bindValue(QStringLiteral(":url"), m_url);
+    Database::instance().execute(query);
+}
+
 void Feed::remove()
 {
     // Delete Authors

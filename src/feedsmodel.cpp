@@ -97,6 +97,15 @@ void FeedsModel::loadFeed(int index) const
     m_feeds += new Feed(index);
 }
 
+void FeedsModel::setFeedAsFavorite(const QString &url)
+{
+    for (int i = 0; i < m_feeds.length(); i++) {
+        if (m_feeds[i]->url() == url) {
+            m_feeds[i]->setAsFavorite();
+        }
+    }
+}
+
 void FeedsModel::removeFeed(const QString &url)
 {
     for (int i = 0; i < m_feeds.length(); i++) {

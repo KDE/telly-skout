@@ -48,6 +48,12 @@ Kirigami.SwipeListItem {
             text: i18n("Edit")
 
             onTriggered: editFeed(model.feed)
+        },
+        Kirigami.Action {
+            icon.name: "favorite"
+            text: i18n("Favorite")
+
+            onTriggered: feedsModel.setFeedAsFavorite(model.feed.url)
         }
     ]
 }

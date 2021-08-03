@@ -80,6 +80,7 @@ public:
     void setErrorString(const QString &errorString);
 
     Q_INVOKABLE void refresh();
+    void setAsFavorite();
     void remove();
 
 Q_SIGNALS:
