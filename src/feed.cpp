@@ -281,7 +281,7 @@ void Feed::setErrorString(const QString &errorString)
 
 void Feed::refresh()
 {
-    Fetcher::instance().fetchChannel(m_url); // TODO: url -> ID
+    Fetcher::instance().fetchChannel(m_url, m_url); // TODO: url -> ID
 }
 
 void Feed::remove()

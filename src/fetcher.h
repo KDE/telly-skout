@@ -23,7 +23,7 @@ public:
         return _instance;
     }
     Q_INVOKABLE void fetchCountry(const QString &country);
-    Q_INVOKABLE void fetchChannel(const QString &channel);
+    Q_INVOKABLE void fetchChannel(const QString &channelId, const QString &name);
     Q_INVOKABLE void fetchAll();
     Q_INVOKABLE QString image(const QString &url);
     void removeImage(const QString &url);

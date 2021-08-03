@@ -61,7 +61,10 @@ void Fetcher::fetchCountry(const QString &country)
                 if (elm.isElement()) {
                     const QDomNamedNodeMap &attributes = elm.attributes();
                     const QString &id = attributes.namedItem("id").toAttr().value();
-                    fetchChannel(id);
+
+                    const QString &name = elm.firstChildElement("display-name").text();
+
+                    fetchChannel(id, name);
                 }
             }
         }
@@ -69,9 +72,9 @@ void Fetcher::fetchCountry(const QString &country)
     });
 }
 
-void Fetcher::fetchChannel(const QString &channel)
+void Fetcher::fetchChannel(const QString &channelId, const QString &name)
 {
-    const QString url = "http://xmltv.xmltv.se/" + channel;
+    const QString url = "http://xmltv.xmltv.se/" + channelId;
 
     // if channel is unknown, store it
     QSqlQuery queryChannelExists;
@@ -85,7 +88,7 @@ void Fetcher::fetchChannel(const QString &channel)
         queryInsertChannel.prepare(QStringLiteral(
             "INSERT INTO Feeds VALUES (:name, :url, :image, :link, :description, :deleteAfterCount, :deleteAfterType, :subscribed, :lastUpdated, "
             ":notify, :groupName, :displayName);"));
-        queryInsertChannel.bindValue(QStringLiteral(":name"), url);
+        queryInsertChannel.bindValue(QStringLiteral(":name"), name);
         queryInsertChannel.bindValue(QStringLiteral(":url"), url);
         queryInsertChannel.bindValue(QStringLiteral(":image"), QLatin1String(""));
         queryInsertChannel.bindValue(QStringLiteral(":link"), QLatin1String(""));
@@ -215,9 +218,7 @@ void Fetcher::processChannel(const QDomElement &channel, const QString &url)
     const QString &channelId = attributes.namedItem("channel").toAttr().value();
     if (programs.count() > 0) {
         QSqlQuery query;
-        query.prepare(
-            QStringLiteral("UPDATE Feeds SET name=:name, image=:image, link=:link, description=:description, lastUpdated=:lastUpdated WHERE url=:url;"));
-        query.bindValue(QStringLiteral(":name"), channelId);
+        query.prepare(QStringLiteral("UPDATE Feeds SET image=:image, link=:link, description=:description, lastUpdated=:lastUpdated WHERE url=:url;"));
         query.bindValue(QStringLiteral(":url"), url);
         query.bindValue(QStringLiteral(":link"), url);
         query.bindValue(QStringLiteral(":description"), ""); // TODO
