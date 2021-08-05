@@ -49,24 +49,24 @@ Kirigami.ScrollablePage {
         iconName: "view-refresh"
         text: i18n("Refresh Channel")
         onTriggered: page.refreshing = true
-        visible: !Kirigami.Settings.isMobile || entryList.count === 0
+        visible: !Kirigami.Settings.isMobile || programList.count === 0
     }
 
     Kirigami.PlaceholderMessage {
-        visible: entryList.count === 0
+        visible: programList.count === 0
 
         width: Kirigami.Units.gridUnit * 20
         anchors.centerIn: parent
 
-        text: channel.errorId === 0 ? i18n("No Entries available") : i18n("Error (%1): %2", channel.errorId, channel.errorString)
+        text: channel.errorId === 0 ? i18n("No Programs available") : i18n("Error (%1): %2", channel.errorId, channel.errorString)
         icon.name: channel.errorId === 0 ? "" : "data-error"
     }
 
     ListView {
-        id: entryList
+        id: programList
         visible: count !== 0
-        model: page.channel.entries
+        model: page.channel.programs
 
-        delegate: EntryListDelegate { channelTitle : channel.displayName || channel.name }
+        delegate: ProgramListDelegate { channelTitle : channel.displayName || channel.name }
     }
 }

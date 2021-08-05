@@ -28,8 +28,8 @@
 #include "channelsmodel.h"
 #include "channelsproxymodel.h"
 #include "database.h"
-#include "entriesmodel.h"
 #include "fetcher.h"
+#include "programsmodel.h"
 #include "telly-scout-version.h"
 
 #ifdef Q_OS_ANDROID
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<ChannelGroupsModel>("org.kde.TellyScout", 1, 0, "ChannelGroupsModel");
     qmlRegisterType<ChannelsProxyModel>("org.kde.TellyScout", 1, 0, "ChannelsProxyModel");
 
-    qmlRegisterUncreatableType<EntriesModel>("org.kde.TellyScout", 1, 0, "EntriesModel", QStringLiteral("Get from Channel"));
+    qmlRegisterUncreatableType<ProgramsModel>("org.kde.TellyScout", 1, 0, "ProgramsModel", QStringLiteral("Get from Channel"));
 
     qmlRegisterSingletonInstance("org.kde.TellyScout", 1, 0, "Fetcher", &Fetcher::instance());
     qmlRegisterSingletonInstance("org.kde.TellyScout", 1, 0, "Database", &Database::instance());

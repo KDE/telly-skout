@@ -9,53 +9,53 @@
 #include <QVector>
 
 #include "database.h"
-#include "entriesmodel.h"
 #include "fetcher.h"
+#include "programsmodel.h"
 
-EntriesModel::EntriesModel(Channel *channel)
+ProgramsModel::ProgramsModel(Channel *channel)
     : QAbstractListModel(channel)
     , m_channel(channel)
 {
     connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &url) {
         if (m_channel->url() == url) {
             beginResetModel();
-            for (auto &entry : m_entries) {
-                delete entry;
+            for (auto &program : m_programs) {
+                delete program;
             }
-            m_entries.clear();
+            m_programs.clear();
             endResetModel();
         }
     });
 }
 
-EntriesModel::~EntriesModel()
+ProgramsModel::~ProgramsModel()
 {
-    qDeleteAll(m_entries);
+    qDeleteAll(m_programs);
 }
 
-QVariant EntriesModel::data(const QModelIndex &index, int role) const
+QVariant ProgramsModel::data(const QModelIndex &index, int role) const
 {
     if (role != 0) {
         return QVariant();
     }
-    if (m_entries[index.row()] == nullptr) {
-        loadEntry(index.row());
+    if (m_programs[index.row()] == nullptr) {
+        loadProgram(index.row());
     }
-    return QVariant::fromValue(m_entries[index.row()]);
+    return QVariant::fromValue(m_programs[index.row()]);
 }
 
-QHash<int, QByteArray> EntriesModel::roleNames() const
+QHash<int, QByteArray> ProgramsModel::roleNames() const
 {
     QHash<int, QByteArray> roleNames;
-    roleNames[0] = "entry";
+    roleNames[0] = "program";
     return roleNames;
 }
 
-int EntriesModel::rowCount(const QModelIndex &parent) const
+int ProgramsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT() FROM Entries WHERE channel=:channel;"));
+    query.prepare(QStringLiteral("SELECT COUNT() FROM Programs WHERE channel=:channel;"));
     query.bindValue(QStringLiteral(":channel"), m_channel->url());
     Database::instance().execute(query);
     if (!query.next()) {
@@ -64,12 +64,12 @@ int EntriesModel::rowCount(const QModelIndex &parent) const
     return query.value(0).toInt();
 }
 
-void EntriesModel::loadEntry(int index) const
+void ProgramsModel::loadProgram(int index) const
 {
-    m_entries[index] = new Entry(m_channel, index);
+    m_programs[index] = new Program(m_channel, index);
 }
 
-Channel *EntriesModel::channel() const
+Channel *ProgramsModel::channel() const
 {
     return m_channel;
 }

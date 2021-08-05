@@ -4,10 +4,10 @@
 add_executable(telly-scout
     main.cpp
     channelsmodel.cpp
-    entriesmodel.cpp
+    programsmodel.cpp
     fetcher.cpp
     database.cpp
-    entry.cpp
+    program.cpp
     channel.cpp
     author.cpp
     channelgroupsmodel.cpp

@@ -8,8 +8,8 @@
 
 #include "channel.h"
 #include "database.h"
-#include "entriesmodel.h"
 #include "fetcher.h"
+#include "programsmodel.h"
 
 Channel::Channel(int index)
     : QObject(nullptr)
@@ -59,8 +59,8 @@ Channel::Channel(int index)
     connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &url) {
         if (url == m_url) {
             setRefreshing(false);
-            Q_EMIT entryCountChanged();
-            Q_EMIT unreadEntryCountChanged();
+            Q_EMIT programCountChanged();
+            Q_EMIT unreadProgramCountChanged();
             setErrorId(0);
             setErrorString(QLatin1String(""));
         }
@@ -78,7 +78,7 @@ Channel::Channel(int index)
         }
     });
 
-    m_entries = new EntriesModel(this);
+    m_programs = new ProgramsModel(this);
 }
 
 Channel::~Channel()
@@ -150,10 +150,10 @@ bool Channel::notify() const
     return m_notify;
 }
 
-int Channel::entryCount() const
+int Channel::programCount() const
 {
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Entries where channel=:channel;"));
+    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs where channel=:channel;"));
     query.bindValue(QStringLiteral(":channel"), m_url);
     Database::instance().execute(query);
     if (!query.next()) {
@@ -162,10 +162,10 @@ int Channel::entryCount() const
     return query.value(0).toInt();
 }
 
-int Channel::unreadEntryCount() const
+int Channel::unreadProgramCount() const
 {
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Entries where channel=:channel AND read=0;"));
+    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs where channel=:channel AND read=0;"));
     query.bindValue(QStringLiteral(":channel"), m_url);
     Database::instance().execute(query);
     if (!query.next()) {
@@ -300,8 +300,8 @@ void Channel::remove()
     query.bindValue(QStringLiteral(":channel"), m_url);
     Database::instance().execute(query);
 
-    // Delete Entries
-    query.prepare(QStringLiteral("DELETE FROM Entries WHERE channel=:channel;"));
+    // Delete Programs
+    query.prepare(QStringLiteral("DELETE FROM Programs WHERE channel=:channel;"));
     query.bindValue(QStringLiteral(":channel"), m_url);
     Database::instance().execute(query);
 

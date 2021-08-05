@@ -77,7 +77,7 @@ bool Database::migrateTo1()
         execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (name TEXT, url TEXT, image TEXT, link TEXT, description TEXT, deleteAfterCount INTEGER, "
                                "deleteAfterType INTEGER, subscribed INTEGER, lastUpdated INTEGER, notify BOOL);")));
     TRUE_OR_RETURN(
-        execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Entries (channel TEXT, id TEXT UNIQUE, title TEXT, content TEXT, created INTEGER, updated INTEGER, "
+        execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Programs (channel TEXT, id TEXT UNIQUE, title TEXT, content TEXT, created INTEGER, updated INTEGER, "
                                "link TEXT, read bool);")));
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Authors (channel TEXT, id TEXT, name TEXT, uri TEXT, email TEXT);")));
     TRUE_OR_RETURN(execute(
@@ -128,7 +128,7 @@ void Database::cleanup()
     int count = settings.deleteAfterCount();
     int type = settings.deleteAfterType();
 
-    if (type == 0) { // Never delete Entries
+    if (type == 0) { // Never delete Programs
         return;
     }
 
@@ -146,7 +146,7 @@ void Database::cleanup()
         qint64 sinceEpoch = dateTime.toSecsSinceEpoch();
 
         QSqlQuery query;
-        query.prepare(QStringLiteral("DELETE FROM Entries WHERE updated < :sinceEpoch;"));
+        query.prepare(QStringLiteral("DELETE FROM Programs WHERE updated < :sinceEpoch;"));
         query.bindValue(QStringLiteral(":sinceEpoch"), sinceEpoch);
         execute(query);
     }

@@ -152,7 +152,7 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
 
                     QDomElement docElem = versionXML.documentElement();
 
-                    // channel = channel, entry = Sendung
+                    // channel = channel, program = Sendung
                     processChannel(docElem, url);
 
                     // https://gitlab.com/tabos/tvguide/-/blob/master/src/tvguide-assistant.c
@@ -269,7 +269,7 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
 
     qDebug() << "Processing" << title;
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Entries WHERE id=:id;"));
+    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE id=:id;"));
     query.bindValue(QStringLiteral(":id"), id);
     Database::instance().execute(query);
     query.next();
@@ -278,7 +278,7 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
         return;
     }
 
-    query.prepare(QStringLiteral("INSERT INTO Entries VALUES (:channel, :id, :title, :content, :created, :updated, :link, 0);"));
+    query.prepare(QStringLiteral("INSERT INTO Programs VALUES (:channel, :id, :title, :content, :created, :updated, :link, 0);"));
     query.bindValue(QStringLiteral(":channel"), url);
     query.bindValue(QStringLiteral(":id"), id);
     query.bindValue(QStringLiteral(":title"), title);
@@ -290,11 +290,11 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
 
     Database::instance().execute(query);
 
-    // for (const auto &author : entry->authors()) {
+    // for (const auto &author : program->authors()) {
     //    processAuthor(url, id);
     //}
 
-    // for (const auto &enclosure : entry->enclosures()) {
+    // for (const auto &enclosure : program->enclosures()) {
     //    processEnclosure(url, id);
     //}*/
 }

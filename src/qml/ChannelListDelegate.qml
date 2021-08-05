@@ -24,13 +24,13 @@ Kirigami.SwipeListItem {
         anchors.bottom: parent.bottom
         text: model.channel.displayName || model.channel.name
         icon: model.channel.refreshing ? "view-refresh" : model.channel.image === "" ? "rss" : Fetcher.image(model.channel.image)
-        subtitle: i18np("%1 unread entry", "%1 unread entries", model.channel.unreadEntryCount)
+        subtitle: i18np("%1 unread program", "%1 unread programs", model.channel.unreadProgramCount)
 
         onClicked: {
             lastChannel = model.channel.url
             while(pageStack.depth > 1)
                 pageStack.pop()
-            pageStack.push("qrc:/EntryListPage.qml", {"channel": model.channel})
+            pageStack.push("qrc:/ProgramListPage.qml", {"channel": model.channel})
         }
     }
 

@@ -12,17 +12,17 @@
 #include <QString>
 
 #include "channel.h"
-#include "entry.h"
+#include "program.h"
 
-class EntriesModel : public QAbstractListModel
+class ProgramsModel : public QAbstractListModel
 {
     Q_OBJECT
 
     Q_PROPERTY(Channel *channel READ channel CONSTANT)
 
 public:
-    explicit EntriesModel(Channel *channel);
-    ~EntriesModel() override;
+    explicit ProgramsModel(Channel *channel);
+    ~ProgramsModel() override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex &parent) const override;
@@ -30,8 +30,8 @@ public:
     Channel *channel() const;
 
 private:
-    void loadEntry(int index) const;
+    void loadProgram(int index) const;
 
     Channel *m_channel;
-    mutable QHash<int, Entry *> m_entries;
+    mutable QHash<int, Program *> m_programs;
 };

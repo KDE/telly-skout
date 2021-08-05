@@ -12,7 +12,7 @@
 
 #include "author.h"
 
-class EntriesModel;
+class ProgramsModel;
 
 class Channel : public QObject
 {
@@ -32,11 +32,11 @@ class Channel : public QObject
     Q_PROPERTY(QDateTime subscribed READ subscribed CONSTANT)
     Q_PROPERTY(QDateTime lastUpdated READ lastUpdated WRITE setLastUpdated NOTIFY lastUpdatedChanged)
     Q_PROPERTY(bool notify READ notify WRITE setNotify NOTIFY notifyChanged)
-    Q_PROPERTY(int entryCount READ entryCount NOTIFY entryCountChanged)
-    Q_PROPERTY(int unreadEntryCount READ unreadEntryCount NOTIFY unreadEntryCountChanged)
+    Q_PROPERTY(int programCount READ programCount NOTIFY programCountChanged)
+    Q_PROPERTY(int unreadProgramCount READ unreadProgramCount NOTIFY unreadProgramCountChanged)
     Q_PROPERTY(int errorId READ errorId WRITE setErrorId NOTIFY errorIdChanged)
     Q_PROPERTY(QString errorString READ errorString WRITE setErrorString NOTIFY errorStringChanged)
-    Q_PROPERTY(EntriesModel *entries MEMBER m_entries CONSTANT)
+    Q_PROPERTY(ProgramsModel *programs MEMBER m_programs CONSTANT)
 
 public:
     Channel(int index);
@@ -56,8 +56,8 @@ public:
     QDateTime subscribed() const;
     QDateTime lastUpdated() const;
     bool notify() const;
-    int entryCount() const;
-    int unreadEntryCount() const;
+    int programCount() const;
+    int unreadProgramCount() const;
     bool read() const;
     int errorId() const;
     QString errorString() const;
@@ -95,8 +95,8 @@ Q_SIGNALS:
     void deleteAfterTypeChanged(int type);
     void lastUpdatedChanged(const QDateTime &lastUpdated);
     void notifyChanged(bool notify);
-    void entryCountChanged();
-    void unreadEntryCountChanged();
+    void programCountChanged();
+    void unreadProgramCountChanged();
     void errorIdChanged(int &errorId);
     void errorStringChanged(const QString &errorString);
 
@@ -118,7 +118,7 @@ private:
     bool m_notify;
     int m_errorId;
     QString m_errorString;
-    EntriesModel *m_entries;
+    ProgramsModel *m_programs;
 
     bool m_refreshing = false;
 };

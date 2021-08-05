@@ -22,16 +22,16 @@ Kirigami.SwipeListItem {
     contentItem: Kirigami.BasicListItem {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        text: model.entry.title
-        subtitle: model.entry.updated.toLocaleString(Qt.locale(), Locale.ShortFormat) + (model.entry.authors.length === 0 ? "" : " " + i18nc("by <author(s)>", "by") + " " + model.entry.authors[0].name)
+        text: model.program.title
+        subtitle: model.program.updated.toLocaleString(Qt.locale(), Locale.ShortFormat) + (model.program.authors.length === 0 ? "" : " " + i18nc("by <author(s)>", "by") + " " + model.program.authors[0].name)
         reserveSpaceForIcon: false
-        bold: !model.entry.read
+        bold: !model.program.read
 
         onClicked: {
             while(pageStack.depth > 2)
                 pageStack.pop()
-            model.entry.read = true
-            pageStack.push("qrc:/EntryPage.qml", {"entry": model.entry, "channelTitle" : channelTitle})
+            model.program.read = true
+            pageStack.push("qrc:/ProgramPage.qml", {"program": model.program, "channelTitle" : channelTitle})
         }
     }
 }

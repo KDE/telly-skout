@@ -10,7 +10,7 @@
 #include <QAbstractListModel>
 
 /**
- * @brief Data structure to store a single channel group entry
+ * @brief Data structure to store a single channel group program
  *
  */
 struct ChannelGroup {

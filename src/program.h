@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ENTRY_H
-#define ENTRY_H
+#ifndef PROGRAM_H
+#define PROGRAM_H
 
 #include <QDateTime>
 #include <QDebug>
@@ -16,7 +16,7 @@
 #include "author.h"
 #include "channel.h"
 
-class Entry : public QObject
+class Program : public QObject
 {
     Q_OBJECT
 
@@ -31,8 +31,8 @@ class Entry : public QObject
     Q_PROPERTY(bool read READ read WRITE setRead NOTIFY readChanged);
 
 public:
-    Entry(Channel *channel, int index);
-    ~Entry();
+    Program(Channel *channel, int index);
+    ~Program();
 
     QString id() const;
     QString title() const;
@@ -64,4 +64,4 @@ private:
     bool m_read;
 };
 
-#endif // ENTRY_H
+#endif // PROGRAM_H
