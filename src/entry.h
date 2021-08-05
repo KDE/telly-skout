@@ -14,7 +14,7 @@
 #include <QStringList>
 
 #include "author.h"
-#include "feed.h"
+#include "channel.h"
 
 class Entry : public QObject
 {
@@ -31,7 +31,7 @@ class Entry : public QObject
     Q_PROPERTY(bool read READ read WRITE setRead NOTIFY readChanged);
 
 public:
-    Entry(Feed *feed, int index);
+    Entry(Channel *channel, int index);
     ~Entry();
 
     QString id() const;
@@ -53,7 +53,7 @@ Q_SIGNALS:
     void readChanged(bool read);
 
 private:
-    Feed *m_feed;
+    Channel *m_channel;
     QString m_id;
     QString m_title;
     QString m_content;

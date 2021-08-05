@@ -17,20 +17,20 @@ Kirigami.SwipeListItem {
     leftPadding: 0
     rightPadding: 0
 
-    signal editFeed(var feedObj)
+    signal editChannel(var channelObj)
 
     contentItem: Kirigami.BasicListItem {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        text: model.feed.displayName || model.feed.name
-        icon: model.feed.refreshing ? "view-refresh" : model.feed.image === "" ? "rss" : Fetcher.image(model.feed.image)
-        subtitle: i18np("%1 unread entry", "%1 unread entries", model.feed.unreadEntryCount)
+        text: model.channel.displayName || model.channel.name
+        icon: model.channel.refreshing ? "view-refresh" : model.channel.image === "" ? "rss" : Fetcher.image(model.channel.image)
+        subtitle: i18np("%1 unread entry", "%1 unread entries", model.channel.unreadEntryCount)
 
         onClicked: {
-            lastFeed = model.feed.url
+            lastChannel = model.channel.url
             while(pageStack.depth > 1)
                 pageStack.pop()
-            pageStack.push("qrc:/EntryListPage.qml", {"feed": model.feed})
+            pageStack.push("qrc:/EntryListPage.qml", {"channel": model.channel})
         }
     }
 
@@ -38,22 +38,22 @@ Kirigami.SwipeListItem {
         Kirigami.Action {
             icon.name: "delete"
             onTriggered: {
-                if(pageStack.depth > 1 && model.feed.url === lastFeed)
+                if(pageStack.depth > 1 && model.channel.url === lastChannel)
                     pageStack.pop()
-                feedsModel.removeFeed(model.feed.url)
+                channelsModel.removeChannel(model.channel.url)
             }
         },
         Kirigami.Action {
             icon.name: "editor"
             text: i18n("Edit")
 
-            onTriggered: editFeed(model.feed)
+            onTriggered: editChannel(model.channel)
         },
         Kirigami.Action {
             icon.name: "favorite"
             text: i18n("Favorite")
 
-            onTriggered: feedsModel.setFeedAsFavorite(model.feed.url)
+            onTriggered: channelsModel.setChannelAsFavorite(model.channel.url)
         }
     ]
 }

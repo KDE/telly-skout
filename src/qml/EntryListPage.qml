@@ -15,18 +15,18 @@ import org.kde.TellyScout 1.0
 Kirigami.ScrollablePage {
     id: page
 
-    property var feed
+    property var channel
 
-    title: feed.displayName || feed.name
+    title: channel.displayName || channel.name
     supportsRefreshing: true
 
     onRefreshingChanged:
         if(refreshing) {
-            feed.refresh()
+            channel.refresh()
         }
 
     Connections {
-        target: feed
+        target: channel
         function onRefreshingChanged(refreshing) {
             if(!refreshing)
                 page.refreshing = refreshing
@@ -40,14 +40,14 @@ Kirigami.ScrollablePage {
             onTriggered: {
                 while(pageStack.depth > 2)
                     pageStack.pop()
-                pageStack.push("qrc:/FeedDetailsPage.qml", {"feed": feed})
+                pageStack.push("qrc:/ChannelDetailsPage.qml", {"channel": channel})
             }
         }
     ]
 
     actions.main: Kirigami.Action {
         iconName: "view-refresh"
-        text: i18n("Refresh Feed")
+        text: i18n("Refresh Channel")
         onTriggered: page.refreshing = true
         visible: !Kirigami.Settings.isMobile || entryList.count === 0
     }
@@ -58,15 +58,15 @@ Kirigami.ScrollablePage {
         width: Kirigami.Units.gridUnit * 20
         anchors.centerIn: parent
 
-        text: feed.errorId === 0 ? i18n("No Entries available") : i18n("Error (%1): %2", feed.errorId, feed.errorString)
-        icon.name: feed.errorId === 0 ? "" : "data-error"
+        text: channel.errorId === 0 ? i18n("No Entries available") : i18n("Error (%1): %2", channel.errorId, channel.errorString)
+        icon.name: channel.errorId === 0 ? "" : "data-error"
     }
 
     ListView {
         id: entryList
         visible: count !== 0
-        model: page.feed.entries
+        model: page.channel.entries
 
-        delegate: EntryListDelegate { feedTitle : feed.displayName || feed.name }
+        delegate: EntryListDelegate { channelTitle : channel.displayName || channel.name }
     }
 }

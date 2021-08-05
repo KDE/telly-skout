@@ -3,15 +3,15 @@
 
 add_executable(telly-scout
     main.cpp
-    feedsmodel.cpp
+    channelsmodel.cpp
     entriesmodel.cpp
     fetcher.cpp
     database.cpp
     entry.cpp
-    feed.cpp
+    channel.cpp
     author.cpp
-    feedgroupsmodel.cpp
-    feedsproxymodel.cpp
+    channelgroupsmodel.cpp
+    channelsproxymodel.cpp
     resources.qrc
 )
 

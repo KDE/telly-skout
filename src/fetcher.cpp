@@ -31,7 +31,7 @@ void Fetcher::fetchCountry(const QString &country)
     const QString url = "http://xmltv.xmltv.se/channels-" + country + ".xml";
     qDebug() << "Starting to fetch" << url;
 
-    // Q_EMIT startedFetchingFeed(urlToday);
+    // Q_EMIT startedFetchingChannel(urlToday);
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
@@ -78,7 +78,7 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
 
     // if channel is unknown, store it
     QSqlQuery queryChannelExists;
-    queryChannelExists.prepare(QStringLiteral("SELECT COUNT (url) FROM Feeds WHERE url=:url;"));
+    queryChannelExists.prepare(QStringLiteral("SELECT COUNT (url) FROM Channels WHERE url=:url;"));
     queryChannelExists.bindValue(QStringLiteral(":url"), url);
     Database::instance().execute(queryChannelExists);
     queryChannelExists.next();
@@ -86,7 +86,7 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
     if (queryChannelExists.value(0).toInt() == 0) {
         QSqlQuery queryInsertChannel;
         queryInsertChannel.prepare(QStringLiteral(
-            "INSERT INTO Feeds VALUES (:name, :url, :image, :link, :description, :deleteAfterCount, :deleteAfterType, :subscribed, :lastUpdated, "
+            "INSERT INTO Channels VALUES (:name, :url, :image, :link, :description, :deleteAfterCount, :deleteAfterType, :subscribed, :lastUpdated, "
             ":notify, :groupName, :displayName);"));
         queryInsertChannel.bindValue(QStringLiteral(":name"), name);
         queryInsertChannel.bindValue(QStringLiteral(":url"), url);
@@ -105,8 +105,8 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
         // fetch complete program only for favorites
         QSqlQuery queryIsFavorite;
         queryIsFavorite.prepare(
-            QStringLiteral("SELECT COUNT (url) FROM Feeds WHERE url=:url AND groupName='Favorites';")); // TODO: do not hard code favorites group -> replace
-                                                                                                        // group by favorites flag (true/false)
+            QStringLiteral("SELECT COUNT (url) FROM Channels WHERE url=:url AND groupName='Favorites';")); // TODO: do not hard code favorites group -> replace
+                                                                                                           // group by favorites flag (true/false)
         queryIsFavorite.bindValue(QStringLiteral(":url"), url);
         Database::instance().execute(queryIsFavorite);
         queryIsFavorite.next();
@@ -116,13 +116,13 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
             const QString urlToday = url + "_" + current.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
             qDebug() << "Starting to fetch" << urlToday;
 
-            Q_EMIT startedFetchingFeed(urlToday);
+            Q_EMIT startedFetchingChannel(urlToday);
 
             QNetworkRequest request((QUrl(urlToday)));
             QNetworkReply *reply = get(request);
             connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
                 if (reply->error()) {
-                    qWarning() << "Error fetching feed";
+                    qWarning() << "Error fetching channel";
                     qWarning() << reply->errorString();
                     Q_EMIT error(url, reply->error(), reply->errorString());
                 } else {
@@ -152,7 +152,7 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
 
                     QDomElement docElem = versionXML.documentElement();
 
-                    // feed = channel, entry = Sendung
+                    // channel = channel, entry = Sendung
                     processChannel(docElem, url);
 
                     // https://gitlab.com/tabos/tvguide/-/blob/master/src/tvguide-assistant.c
@@ -166,7 +166,7 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
 void Fetcher::fetchAll()
 {
     /*QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT url FROM Feeds;")); // url for channel e.g. http://xmltv.xmltv.se/3sat.de
+    query.prepare(QStringLiteral("SELECT url FROM Channels;")); // url for channel e.g. http://xmltv.xmltv.se/3sat.de
     Database::instance().execute(query);
     while (query.next()) {
         fetch(query.value(0).toString());
@@ -176,7 +176,7 @@ void Fetcher::fetchAll()
     const QString url = "http://xmltv.se/countries.xml";
     qDebug() << "Starting to fetch" << url;
 
-    // Q_EMIT startedFetchingFeed(url);
+    // Q_EMIT startedFetchingChannel(url);
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
@@ -218,7 +218,7 @@ void Fetcher::processChannel(const QDomElement &channel, const QString &url)
     const QString &channelId = attributes.namedItem("channel").toAttr().value();
     if (programs.count() > 0) {
         QSqlQuery query;
-        query.prepare(QStringLiteral("UPDATE Feeds SET image=:image, link=:link, description=:description, lastUpdated=:lastUpdated WHERE url=:url;"));
+        query.prepare(QStringLiteral("UPDATE Channels SET image=:image, link=:link, description=:description, lastUpdated=:lastUpdated WHERE url=:url;"));
         query.bindValue(QStringLiteral(":url"), url);
         query.bindValue(QStringLiteral(":link"), url);
         query.bindValue(QStringLiteral(":description"), ""); // TODO
@@ -227,28 +227,28 @@ void Fetcher::processChannel(const QDomElement &channel, const QString &url)
         query.bindValue(QStringLiteral(":lastUpdated"), current.toSecsSinceEpoch());
         Database::instance().execute(query);
 
-        /* for (auto &author : feed->authors()) {
+        /* for (auto &author : channel->authors()) {
              processAuthor(author, QLatin1String(""), url);
          }*/
 
         /*QString image;
-        if (feed->image()->url().startsWith(QStringLiteral("/"))) {
-            image = QUrl(url).adjusted(QUrl::RemovePath).toString() + feed->image()->url();
+        if (channel->image()->url().startsWith(QStringLiteral("/"))) {
+            image = QUrl(url).adjusted(QUrl::RemovePath).toString() + channel->image()->url();
         } else {
-            image = feed->image()->url();
+            image = channel->image()->url();
         }
         query.bindValue(QStringLiteral(":image"), image);
         Database::instance().execute(query);
 
-        qDebug() << "Updated feed title:" << feed->title();*/
+        qDebug() << "Updated channel title:" << channel->title();*/
 
-        Q_EMIT feedDetailsUpdated(url, channelId, "", url, "", current); // TODO
+        Q_EMIT channelDetailsUpdated(url, channelId, "", url, "", current); // TODO
 
         for (int i = 0; i < programs.count(); i++) {
             processProgram(programs.at(i), url);
         }
 
-        Q_EMIT feedUpdated(url);
+        Q_EMIT channelUpdated(url);
     }
 }
 
@@ -278,8 +278,8 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
         return;
     }
 
-    query.prepare(QStringLiteral("INSERT INTO Entries VALUES (:feed, :id, :title, :content, :created, :updated, :link, 0);"));
-    query.bindValue(QStringLiteral(":feed"), url);
+    query.prepare(QStringLiteral("INSERT INTO Entries VALUES (:channel, :id, :title, :content, :created, :updated, :link, 0);"));
+    query.bindValue(QStringLiteral(":channel"), url);
     query.bindValue(QStringLiteral(":id"), id);
     query.bindValue(QStringLiteral(":title"), title);
     query.bindValue(QStringLiteral(":created"), startTime.toSecsSinceEpoch());
@@ -302,8 +302,8 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
 void Fetcher::processAuthor(const QString &url, unsigned int id)
 {
     QSqlQuery query;
-    query.prepare(QStringLiteral("INSERT INTO Authors VALUES(:feed, :id, :name, :uri, :email);"));
-    query.bindValue(QStringLiteral(":feed"), url);
+    query.prepare(QStringLiteral("INSERT INTO Authors VALUES(:channel, :id, :name, :uri, :email);"));
+    query.bindValue(QStringLiteral(":channel"), url);
     query.bindValue(QStringLiteral(":id"), id);
     query.bindValue(QStringLiteral(":name"), "Author"); // TODO
     query.bindValue(QStringLiteral(":uri"), "URI"); // TODO
@@ -311,17 +311,17 @@ void Fetcher::processAuthor(const QString &url, unsigned int id)
     Database::instance().execute(query);
 }
 
-void Fetcher::processEnclosure(const QString &feedUrl, unsigned int id)
+void Fetcher::processEnclosure(const QString &channelUrl, unsigned int id)
 {
     QSqlQuery query;
-    query.prepare(QStringLiteral("INSERT INTO Enclosures VALUES (:feed, :id, :duration, :size, :title, :type, :url);"));
-    query.bindValue(QStringLiteral(":feed"), feedUrl);
+    query.prepare(QStringLiteral("INSERT INTO Enclosures VALUES (:channel, :id, :duration, :size, :title, :type, :url);"));
+    query.bindValue(QStringLiteral(":channel"), channelUrl);
     query.bindValue(QStringLiteral(":id"), id);
     query.bindValue(QStringLiteral(":duration"), 3); // TODO
     query.bindValue(QStringLiteral(":size"), 500); // TODO
     query.bindValue(QStringLiteral(":title"), "Title"); // TODO
     query.bindValue(QStringLiteral(":type"), "Type"); // TODO
-    query.bindValue(QStringLiteral(":url"), feedUrl); // TODO
+    query.bindValue(QStringLiteral(":url"), channelUrl); // TODO
     Database::instance().execute(query);
 }
 

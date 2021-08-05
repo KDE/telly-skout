@@ -18,7 +18,7 @@ Kirigami.ScrollablePage {
 
     title: groupFilter ? groupFilter : "Telly Scout"
 
-    property var lastFeed: ""
+    property var lastChannel: ""
     property alias groupFilter: proxyModel.groupName
 
 
@@ -31,36 +31,36 @@ Kirigami.ScrollablePage {
 
     contextualActions: [
         Kirigami.Action {
-            text: i18n("Refresh all feeds")
+            text: i18n("Refresh all channels")
             iconName: "view-refresh"
             onTriggered: refreshing = true
             visible: !Kirigami.Settings.isMobile
         },
         Kirigami.Action {
-            text: i18n("Import Feeds...")
+            text: i18n("Import Channels...")
             iconName: "document-import"
             visible: root.groupFilter === ""
             onTriggered: importDialog.open()
         },
         Kirigami.Action {
-            text: i18n("Export Feeds...")
+            text: i18n("Export Channels...")
             iconName: "document-export"
             visible: root.groupFilter === ""
             onTriggered: exportDialog.open()
         }
     ]
 
-    AddFeedSheet {
+    AddChannelSheet {
         id: addSheet
         groupName: root.groupFilter
     }
 
-    EditFeedSheet {
+    EditChannelSheet {
         id: editSheet
     }
 
     actions.main: Kirigami.Action {
-        text: i18n("Add feed")
+        text: i18n("Add channel")
         iconName: "list-add"
         onTriggered: {
             addSheet.open()
@@ -68,52 +68,52 @@ Kirigami.ScrollablePage {
     }
 
     Kirigami.PlaceholderMessage {
-        visible: feedList.count === 0
+        visible: channelList.count === 0
 
         width: Kirigami.Units.gridUnit * 20
         icon.name: "rss"
         anchors.centerIn: parent
 
-        text: i18n("No Feeds added yet")
+        text: i18n("No Channels added yet")
     }
 
     ListView {
-        id: feedList
+        id: channelList
 
         anchors.fill: parent
 
-        model: FeedsProxyModel {
+        model: ChannelsProxyModel {
             id: proxyModel
             groupName: ""
-            sourceModel: feedsModel
+            sourceModel: channelsModel
         }
 
-        delegate: FeedListDelegate {
-            onEditFeed: {
-                editSheet.feed = feedObj
+        delegate: ChannelListDelegate {
+            onEditChannel: {
+                editSheet.channel = channelObj
                 editSheet.open()
             }
         }
 
-        FeedsModel {
-            id: feedsModel
+        ChannelsModel {
+            id: channelsModel
         }
     }
 
     FileDialog {
         id: importDialog
-        title: i18n("Import Feeds")
+        title: i18n("Import Channels")
         folder: StandardPaths.writableLocation(StandardPaths.HomeLocation)
         nameFilters: [i18n("All Files (*)"), i18n("XML Files (*.xml)"), i18n("OPML Files (*.opml)")]
-        onAccepted: Database.importFeeds(file)
+        onAccepted: Database.importChannels(file)
     }
 
     FileDialog {
         id: exportDialog
-        title: i18n("Export Feeds")
+        title: i18n("Export Channels")
         folder: StandardPaths.writableLocation(StandardPaths.HomeLocation)
         nameFilters: [i18n("All Files")]
-        onAccepted: Database.exportFeeds(file)
+        onAccepted: Database.exportChannels(file)
         fileMode: FileDialog.SaveFile
     }
 }

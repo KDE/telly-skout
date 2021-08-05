@@ -17,7 +17,7 @@ Kirigami.OverlaySheet {
     property string groupName: ""
     parent: applicationWindow().overlay
     header: Kirigami.Heading {
-        text: i18n("Add Feed")
+        text: i18n("Add Channel")
     }
 
     /*countryItem: ColumnLayout {
@@ -55,7 +55,7 @@ Kirigami.OverlaySheet {
             enabled: urlField.text
 
             onClicked: {
-                Database.addFeed(urlField.text, addSheet.groupName)
+                Database.addChannel(urlField.text, addSheet.groupName)
                 addSheet.close()
             }
         }

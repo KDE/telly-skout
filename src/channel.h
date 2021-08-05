@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FEED_H
-#define FEED_H
+#ifndef CHANNEL_H
+#define CHANNEL_H
 
 #include <QDateTime>
 #include <QObject>
@@ -14,7 +14,7 @@
 
 class EntriesModel;
 
-class Feed : public QObject
+class Channel : public QObject
 {
     Q_OBJECT
 
@@ -39,9 +39,9 @@ class Feed : public QObject
     Q_PROPERTY(EntriesModel *entries MEMBER m_entries CONSTANT)
 
 public:
-    Feed(int index);
+    Channel(int index);
 
-    ~Feed();
+    ~Channel();
 
     QString url() const;
     QString name() const;
@@ -123,4 +123,4 @@ private:
     bool m_refreshing = false;
 };
 
-#endif // FEED_H
+#endif // CHANNEL_H

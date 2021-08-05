@@ -15,39 +15,39 @@ import org.kde.TellyScout 1.0
 Kirigami.ScrollablePage {
     id: detailsPage
 
-    property QtObject feed;
+    property QtObject channel;
 
-    title: i18nc("<Feed Name> - Details", "%1 - Details", feed.displayName || feed.name)
+    title: i18nc("<Channel Name> - Details", "%1 - Details", channel.displayName || channel.name)
 
     ColumnLayout {
         Kirigami.Icon {
-            source: Fetcher.image(feed.image)
+            source: Fetcher.image(channel.image)
             height: 200
             width: height
         }
         Kirigami.Heading {
-            text: feed.displayName || feed.name
+            text: channel.displayName || channel.name
         }
         Kirigami.Heading {
-            text: feed.description;
+            text: channel.description;
             level: 3
         }
         Controls.Label {
-            text: i18nc("by <author(s)>", "by %1", feed.authors[0].name)
-            visible: feed.authors.length !== 0
+            text: i18nc("by <author(s)>", "by %1", channel.authors[0].name)
+            visible: channel.authors.length !== 0
         }
         Controls.Label {
-            text: "<a href='%1'>%1</a>".arg(feed.link)
+            text: "<a href='%1'>%1</a>".arg(channel.link)
             onLinkActivated: Qt.openUrlExternally(link)
         }
         Controls.Label {
-            text: i18n("Subscribed since: %1", feed.subscribed.toLocaleString(Qt.locale(), Locale.ShortFormat))
+            text: i18n("Subscribed since: %1", channel.subscribed.toLocaleString(Qt.locale(), Locale.ShortFormat))
         }
         Controls.Label {
-            text: i18n("last updated: %1", feed.lastUpdated.toLocaleString(Qt.locale(), Locale.ShortFormat))
+            text: i18n("last updated: %1", channel.lastUpdated.toLocaleString(Qt.locale(), Locale.ShortFormat))
         }
         Controls.Label {
-            text: i18n("%1 posts, %2 unread", feed.entryCount, feed.unreadEntryCount)
+            text: i18n("%1 posts, %2 unread", channel.entryCount, channel.unreadEntryCount)
         }
     }
 }

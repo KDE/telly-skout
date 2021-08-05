@@ -21,23 +21,23 @@ public:
     bool execute(QSqlQuery &query);
     bool execute(const QString &query);
     QString defaultGroup();
-    Q_INVOKABLE void addFeed(const QString &url, const QString &groupName = QString());
-    Q_INVOKABLE void importFeeds(const QString &path);
-    Q_INVOKABLE void exportFeeds(const QString &path);
-    Q_INVOKABLE void addFeedGroup(const QString &name, const QString &description, const int isDefault = 0);
-    Q_INVOKABLE void removeFeedGroup(const QString &name);
+    Q_INVOKABLE void addChannel(const QString &url, const QString &groupName = QString());
+    Q_INVOKABLE void importChannels(const QString &path);
+    Q_INVOKABLE void exportChannels(const QString &path);
+    Q_INVOKABLE void addChannelGroup(const QString &name, const QString &description, const int isDefault = 0);
+    Q_INVOKABLE void removeChannelGroup(const QString &name);
     Q_INVOKABLE void setDefaultGroup(const QString &name);
-    Q_INVOKABLE void editFeed(const QString &url, const QString &displayName, const QString &groupName);
+    Q_INVOKABLE void editChannel(const QString &url, const QString &displayName, const QString &groupName);
 
 Q_SIGNALS:
-    void feedAdded(const QString &url);
-    void feedDetailsUpdated(const QString &url, const QString &displayName, const QString &description);
-    void feedGroupsUpdated();
-    void feedGroupRemoved(const QString &groupName);
+    void channelAdded(const QString &url);
+    void channelDetailsUpdated(const QString &url, const QString &displayName, const QString &description);
+    void channelGroupsUpdated();
+    void channelGroupRemoved(const QString &groupName);
 
 private:
-    bool feedGroupExists(const QString &name);
-    void clearFeedGroup(const QString &name);
+    bool channelGroupExists(const QString &name);
+    void clearChannelGroup(const QString &name);
 
     Database();
     int version();
@@ -45,5 +45,5 @@ private:
     bool migrateTo1();
     bool migrateTo2();
     void cleanup();
-    bool feedExists(const QString &url);
+    bool channelExists(const QString &url);
 };

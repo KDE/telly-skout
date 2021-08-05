@@ -13,24 +13,24 @@ import org.kde.TellyScout 1.0 as TellyScout
 Kirigami.GlobalDrawer {
     id: root
 
-    property var feedsPage
+    property var channelsPage
 
     isMenu: true
     actions: [
         Kirigami.Action {
-            text: i18n("All Feeds")
+            text: i18n("All Channels")
             iconName: "rss"
             onTriggered: {
                 pageStack.layers.clear()
                 pageStack.clear()
-                pageStack.push(root.feedsPage, {groupFilter: ""})
+                pageStack.push(root.channelsPage, {groupFilter: ""})
             }
         },
 
         Kirigami.Action {
-            id: feedGroups
+            id: channelGroups
             iconName: "edit-group"
-            text: i18n("Feed Groups")
+            text: i18n("Channel Groups")
             children: [configureGroupsAction]
         },
         Kirigami.Action {
@@ -54,7 +54,7 @@ Kirigami.GlobalDrawer {
         iconName: "settings-configure"
         onTriggered: {
             pageStack.clear()
-            pageStack.insertPage(0, root.feedsPage, {groupFilter: ""})
+            pageStack.insertPage(0, root.channelsPage, {groupFilter: ""})
             pageStack.layers.clear()
             pageStack.layers.push(groupsList)
         }
@@ -69,28 +69,28 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear()
                 pageStack.clear()
-                pageStack.push(root.feedsPage, {groupFilter: text})
+                pageStack.push(root.channelsPage, {groupFilter: text})
             }
         }
 
         onObjectAdded: {
-            feedGroups.children.push(object)
+            channelGroups.children.push(object)
         }
 
         onObjectRemoved: {
-            feedGroups.children = [];
-            feedGroups.children.push(configureGroupsAction);
+            channelGroups.children = [];
+            channelGroups.children.push(configureGroupsAction);
         }
     }
 
     Component {
         id: groupsList
         GroupsListPage {
-            feedGroupsModel: groupsModel
+            channelGroupsModel: groupsModel
         }
     }
 
-    TellyScout.FeedGroupsModel {
+    TellyScout.ChannelGroupsModel {
         id: groupsModel
     }
 }

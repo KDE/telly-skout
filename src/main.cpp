@@ -24,11 +24,11 @@
 #include <KLocalizedString>
 
 #include "TellyScoutSettings.h"
+#include "channelgroupsmodel.h"
+#include "channelsmodel.h"
+#include "channelsproxymodel.h"
 #include "database.h"
 #include "entriesmodel.h"
-#include "feedgroupsmodel.h"
-#include "feedsmodel.h"
-#include "feedsproxymodel.h"
 #include "fetcher.h"
 #include "telly-scout-version.h"
 
@@ -50,17 +50,17 @@ int main(int argc, char *argv[])
     KAboutData about(QStringLiteral("telly-scout"),
                      i18n("Telly Scout"),
                      QStringLiteral(TELLY_SCOUT_VERSION_STRING),
-                     i18n("Feed Reader"),
+                     i18n("Channel Reader"),
                      KAboutLicense::GPL,
                      i18n("© 2020 KDE Community"));
     about.addAuthor(i18n("Plata"), QString(), QStringLiteral("plata@example.com"));
     KAboutData::setApplicationData(about);
 
-    qmlRegisterType<FeedsModel>("org.kde.TellyScout", 1, 0, "FeedsModel");
-    qmlRegisterType<FeedGroupsModel>("org.kde.TellyScout", 1, 0, "FeedGroupsModel");
-    qmlRegisterType<FeedsProxyModel>("org.kde.TellyScout", 1, 0, "FeedsProxyModel");
+    qmlRegisterType<ChannelsModel>("org.kde.TellyScout", 1, 0, "ChannelsModel");
+    qmlRegisterType<ChannelGroupsModel>("org.kde.TellyScout", 1, 0, "ChannelGroupsModel");
+    qmlRegisterType<ChannelsProxyModel>("org.kde.TellyScout", 1, 0, "ChannelsProxyModel");
 
-    qmlRegisterUncreatableType<EntriesModel>("org.kde.TellyScout", 1, 0, "EntriesModel", QStringLiteral("Get from Feed"));
+    qmlRegisterUncreatableType<EntriesModel>("org.kde.TellyScout", 1, 0, "EntriesModel", QStringLiteral("Get from Channel"));
 
     qmlRegisterSingletonInstance("org.kde.TellyScout", 1, 0, "Fetcher", &Fetcher::instance());
     qmlRegisterSingletonInstance("org.kde.TellyScout", 1, 0, "Database", &Database::instance());
@@ -70,18 +70,18 @@ int main(int argc, char *argv[])
     KLocalizedString::setApplicationDomain("telly-scout");
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(i18n("RSS/Atom Feed Reader"));
-    QCommandLineOption addFeedOption(QStringList() << QStringLiteral("a") << QStringLiteral("addfeed"),
-                                     i18n("Adds a new feed to database."),
-                                     i18n("feed URL"),
-                                     QStringLiteral("none"));
-    parser.addOption(addFeedOption);
+    parser.setApplicationDescription(i18n("RSS/Atom Channel Reader"));
+    QCommandLineOption addChannelOption(QStringList() << QStringLiteral("a") << QStringLiteral("addchannel"),
+                                        i18n("Adds a new channel to database."),
+                                        i18n("channel URL"),
+                                        QStringLiteral("none"));
+    parser.addOption(addChannelOption);
 
     about.setupCommandLine(&parser);
     parser.process(app);
-    QString feedURL = parser.value(addFeedOption);
-    if (feedURL != QStringLiteral("none"))
-        Database::instance().addFeed(feedURL);
+    QString channelURL = parser.value(addChannelOption);
+    if (channelURL != QStringLiteral("none"))
+        Database::instance().addChannel(channelURL);
     about.processCommandLine(&parser);
 
     engine.rootContext()->setContextProperty(QStringLiteral("_aboutData"), QVariant::fromValue(about));

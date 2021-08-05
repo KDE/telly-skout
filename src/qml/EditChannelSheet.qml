@@ -13,19 +13,19 @@ import org.kde.TellyScout 1.0 as TellyScout
 Kirigami.OverlaySheet {
     id: root
 
-    property var feed
+    property var channel
 
     header: Kirigami.Heading {
-        text: i18n("Edit Feed")
+        text: i18n("Edit Channel")
     }
 
-    onFeedChanged: groupCombo.currentIndex = (root.feed !== undefined) ? groupCombo.indexOfValue(root.feed.groupName) : groupCombo.indexOfValue("")
+    onChannelChanged: groupCombo.currentIndex = (root.channel !== undefined) ? groupCombo.indexOfValue(root.channel.groupName) : groupCombo.indexOfValue("")
 
     contentItem: Kirigami.FormLayout {
         Controls.TextField {
             id: displayName
 
-            text: (root.feed !== undefined) ? (feed.displayName || feed.name) : ""
+            text: (root.channel !== undefined) ? (channel.displayName || channel.name) : ""
             Layout.fillWidth: true
             Kirigami.FormData.label: i18n("Display Name:")
         }
@@ -33,7 +33,7 @@ Kirigami.OverlaySheet {
         Controls.ComboBox {
             id: groupCombo
 
-            model: TellyScout.FeedGroupsModel {}
+            model: TellyScout.ChannelGroupsModel {}
             textRole: "name"
             valueRole: "name"
             Layout.fillWidth: true
@@ -50,7 +50,7 @@ Kirigami.OverlaySheet {
             text: i18n("OK")
 
             onClicked: {
-                TellyScout.Database.editFeed(feed.url, displayName.text, groupCombo.currentValue);
+                TellyScout.Database.editChannel(channel.url, displayName.text, groupCombo.currentValue);
                 root.close();
             }
         }

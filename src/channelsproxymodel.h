@@ -4,24 +4,24 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#ifndef FEEDS_PROXY_MODEL_H
-#define FEEDS_PROXY_MODEL_H
+#ifndef CHANNELS_PROXY_MODEL_H
+#define CHANNELS_PROXY_MODEL_H
 
 #include <QSortFilterProxyModel>
 
 /**
- * @brief Filters and sorts FeedsModel
+ * @brief Filters and sorts ChannelsModel
  *
  */
-class FeedsProxyModel : public QSortFilterProxyModel
+class ChannelsProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 
     Q_PROPERTY(QString groupName READ groupName WRITE setGroupName NOTIFY groupNameChanged)
 
 public:
-    explicit FeedsProxyModel(QObject *parent = nullptr);
-    ~FeedsProxyModel() override;
+    explicit ChannelsProxyModel(QObject *parent = nullptr);
+    ~ChannelsProxyModel() override;
 
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
 

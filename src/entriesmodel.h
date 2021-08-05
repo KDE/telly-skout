@@ -11,27 +11,27 @@
 #include <QObject>
 #include <QString>
 
+#include "channel.h"
 #include "entry.h"
-#include "feed.h"
 
 class EntriesModel : public QAbstractListModel
 {
     Q_OBJECT
 
-    Q_PROPERTY(Feed *feed READ feed CONSTANT)
+    Q_PROPERTY(Channel *channel READ channel CONSTANT)
 
 public:
-    explicit EntriesModel(Feed *feed);
+    explicit EntriesModel(Channel *channel);
     ~EntriesModel() override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex &parent) const override;
 
-    Feed *feed() const;
+    Channel *channel() const;
 
 private:
     void loadEntry(int index) const;
 
-    Feed *m_feed;
+    Channel *m_channel;
     mutable QHash<int, Entry *> m_entries;
 };

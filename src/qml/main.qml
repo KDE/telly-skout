@@ -15,10 +15,10 @@ Kirigami.ApplicationWindow {
 
     title: "Telly Scout"
 
-    pageStack.initialPage: feedList
+    pageStack.initialPage: channelList
 
     globalDrawer: GlobalDrawer {
-        feedsPage: feedList
+        channelsPage: channelList
     }
 
     Component {
@@ -32,8 +32,8 @@ Kirigami.ApplicationWindow {
         id: contextDrawer
     }
 
-    FeedListPage  {
-        id: feedList
+    ChannelListPage  {
+        id: channelList
     }
 
 }

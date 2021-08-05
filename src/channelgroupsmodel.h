@@ -4,31 +4,31 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#ifndef FEED_GROUPS_MODEL_H
-#define FEED_GROUPS_MODEL_H
+#ifndef CHANNEL_GROUPS_MODEL_H
+#define CHANNEL_GROUPS_MODEL_H
 
 #include <QAbstractListModel>
 
 /**
- * @brief Data structure to store a single feed group entry
+ * @brief Data structure to store a single channel group entry
  *
  */
-struct FeedGroup {
+struct ChannelGroup {
     QString name;
     QString description;
     bool isDefault;
 };
 
 /**
- * @brief Model that provides the feed groups
+ * @brief Model that provides the channel groups
  *
  */
-class FeedGroupsModel : public QAbstractListModel
+class ChannelGroupsModel : public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    explicit FeedGroupsModel(QObject *parent = nullptr);
+    explicit ChannelGroupsModel(QObject *parent = nullptr);
 
     enum RoleNames { GroupName = Qt::UserRole + 1, GroupDescription, IsDefault };
 
@@ -38,6 +38,6 @@ public:
 
 private:
     void loadFromDatabase();
-    QVector<FeedGroup> m_feed_groups;
+    QVector<ChannelGroup> m_channel_groups;
 };
 #endif

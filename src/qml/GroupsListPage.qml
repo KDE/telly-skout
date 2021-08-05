@@ -13,7 +13,7 @@ import org.kde.TellyScout 1.0 as TellyScout
 Kirigami.ScrollablePage {
     id: root
 
-    property var feedGroupsModel
+    property var channelGroupsModel
 
     title: i18n("Groups")
 
@@ -21,12 +21,12 @@ Kirigami.ScrollablePage {
         iconName: "list-add"
         text: i18n("Add Group")
 
-        onTriggered: feedGroupSheet.open()
+        onTriggered: channelGroupSheet.open()
     }
 
     ListView {
         id: groupsListView
-        model: feedGroupsModel
+        model: channelGroupsModel
 
         delegate: Kirigami.SwipeListItem {
             font.bold: model.isDefault
@@ -49,7 +49,7 @@ Kirigami.ScrollablePage {
                     iconName: "delete"
                     enabled: !model.isDefault
 
-                    onTriggered: TellyScout.Database.removeFeedGroup(model.name)
+                    onTriggered: TellyScout.Database.removeChannelGroup(model.name)
                 },
                 Kirigami.Action {
                     icon.name: "emblem-default-symbolic"
@@ -68,14 +68,14 @@ Kirigami.ScrollablePage {
             helpfulAction: Kirigami.Action {
                 icon.name: "list-add"
                 text: i18n("Add Group")
-                onTriggered: feedGroupSheet.open()
+                onTriggered: channelGroupSheet.open()
             }
         }
     }
 
-    FeedGroupSheet {
-        id: feedGroupSheet
+    ChannelGroupSheet {
+        id: channelGroupSheet
 
-        groupsModel: feedGroupsModel
+        groupsModel: channelGroupsModel
     }
 }

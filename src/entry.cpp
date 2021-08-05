@@ -12,17 +12,17 @@
 
 #include "database.h"
 
-Entry::Entry(Feed *feed, int index)
+Entry::Entry(Channel *channel, int index)
     : QObject(nullptr)
-    , m_feed(feed)
+    , m_channel(channel)
 {
     QSqlQuery entryQuery;
-    entryQuery.prepare(QStringLiteral("SELECT * FROM Entries WHERE feed=:feed ORDER BY updated DESC LIMIT 1 OFFSET :index;"));
-    entryQuery.bindValue(QStringLiteral(":feed"), m_feed->url());
+    entryQuery.prepare(QStringLiteral("SELECT * FROM Entries WHERE channel=:channel ORDER BY updated DESC LIMIT 1 OFFSET :index;"));
+    entryQuery.bindValue(QStringLiteral(":channel"), m_channel->url());
     entryQuery.bindValue(QStringLiteral(":index"), index);
     Database::instance().execute(entryQuery);
     if (!entryQuery.next()) {
-        qWarning() << "No element with index" << index << "found in feed" << m_feed->url();
+        qWarning() << "No element with index" << index << "found in channel" << m_channel->url();
     }
 
     QSqlQuery authorQuery;
@@ -102,12 +102,12 @@ void Entry::setRead(bool read)
     m_read = read;
     Q_EMIT readChanged(m_read);
     QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Entries SET read=:read WHERE id=:id AND feed=:feed"));
+    query.prepare(QStringLiteral("UPDATE Entries SET read=:read WHERE id=:id AND channel=:channel"));
     query.bindValue(QStringLiteral(":id"), m_id);
-    query.bindValue(QStringLiteral(":feed"), m_feed->url());
+    query.bindValue(QStringLiteral(":channel"), m_channel->url());
     query.bindValue(QStringLiteral(":read"), m_read);
     Database::instance().execute(query);
-    Q_EMIT m_feed->unreadEntryCountChanged();
+    Q_EMIT m_channel->unreadEntryCountChanged();
 }
 
 QString Entry::adjustedContent(int width, int fontSize)

@@ -21,7 +21,7 @@ Kirigami.OverlaySheet {
     }
 
     header: Kirigami.Heading {
-        text: i18n("Feed group")
+        text: i18n("Channel group")
     }
 
     contentItem: Kirigami.FormLayout {
@@ -50,7 +50,7 @@ Kirigami.OverlaySheet {
             enabled: name.text !== ""
 
             onClicked: {
-                TellyScout.Database.addFeedGroup(name.text, desc.text);
+                TellyScout.Database.addChannelGroup(name.text, desc.text);
                 clearFields();
                 root.close();
             }

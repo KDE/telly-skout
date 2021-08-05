@@ -4,25 +4,25 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "feedsproxymodel.h"
+#include "channelsproxymodel.h"
+#include "channel.h"
+#include "channelsmodel.h"
 #include "database.h"
-#include "feed.h"
-#include "feedsmodel.h"
 
-FeedsProxyModel::FeedsProxyModel(QObject *parent)
+ChannelsProxyModel::ChannelsProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_group_name{}
 {
-    connect(&Database::instance(), &Database::feedDetailsUpdated, [this]() {
+    connect(&Database::instance(), &Database::channelDetailsUpdated, [this]() {
         invalidateFilter();
     });
 }
 
-FeedsProxyModel::~FeedsProxyModel()
+ChannelsProxyModel::~ChannelsProxyModel()
 {
 }
 
-void FeedsProxyModel::setGroupName(const QString &name)
+void ChannelsProxyModel::setGroupName(const QString &name)
 {
     if (m_group_name != name) {
         m_group_name = name;
@@ -31,12 +31,12 @@ void FeedsProxyModel::setGroupName(const QString &name)
     }
 }
 
-QString FeedsProxyModel::groupName() const
+QString ChannelsProxyModel::groupName() const
 {
     return m_group_name;
 }
 
-bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
+bool ChannelsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     const auto idx = sourceModel()->index(source_row, 0, source_parent);
 
@@ -48,9 +48,9 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
         return true;
     }
 
-    auto feed = idx.data(0).value<Feed *>();
+    auto channel = idx.data(0).value<Channel *>();
 
-    if (feed->groupName() == m_group_name) {
+    if (channel->groupName() == m_group_name) {
         return true;
     }
 

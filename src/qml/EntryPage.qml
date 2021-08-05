@@ -16,9 +16,9 @@ Kirigami.ScrollablePage {
     id: page
 
     property QtObject entry
-    property string feedTitle
+    property string channelTitle
 
-    title: feedTitle
+    title: channelTitle
 
     ColumnLayout {
         Kirigami.Heading {

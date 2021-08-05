@@ -12,12 +12,12 @@
 #include "entriesmodel.h"
 #include "fetcher.h"
 
-EntriesModel::EntriesModel(Feed *feed)
-    : QAbstractListModel(feed)
-    , m_feed(feed)
+EntriesModel::EntriesModel(Channel *channel)
+    : QAbstractListModel(channel)
+    , m_channel(channel)
 {
-    connect(&Fetcher::instance(), &Fetcher::feedUpdated, this, [this](const QString &url) {
-        if (m_feed->url() == url) {
+    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &url) {
+        if (m_channel->url() == url) {
             beginResetModel();
             for (auto &entry : m_entries) {
                 delete entry;
@@ -55,21 +55,21 @@ int EntriesModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT() FROM Entries WHERE feed=:feed;"));
-    query.bindValue(QStringLiteral(":feed"), m_feed->url());
+    query.prepare(QStringLiteral("SELECT COUNT() FROM Entries WHERE channel=:channel;"));
+    query.bindValue(QStringLiteral(":channel"), m_channel->url());
     Database::instance().execute(query);
     if (!query.next()) {
-        qWarning() << "Failed to query feed count";
+        qWarning() << "Failed to query channel count";
     }
     return query.value(0).toInt();
 }
 
 void EntriesModel::loadEntry(int index) const
 {
-    m_entries[index] = new Entry(m_feed, index);
+    m_entries[index] = new Entry(m_channel, index);
 }
 
-Feed *EntriesModel::feed() const
+Channel *EntriesModel::channel() const
 {
-    return m_feed;
+    return m_channel;
 }
