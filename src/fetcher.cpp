@@ -29,8 +29,6 @@ void Fetcher::fetchCountry(const QString &url)
 {
     qDebug() << "Starting to fetch" << url;
 
-    // Q_EMIT startedFetchingChannel(urlToday);
-
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
     connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
@@ -73,6 +71,8 @@ void Fetcher::fetchCountry(const QString &url)
 void Fetcher::fetchChannel(const QString &channelId, const QString &name)
 {
     const QString url = "http://xmltv.xmltv.se/" + channelId;
+
+    Q_EMIT startedFetchingChannel(url);
 
     // if channel is unknown, store it
     QSqlQuery queryChannelExists;
