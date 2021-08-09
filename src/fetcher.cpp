@@ -202,12 +202,28 @@ void Fetcher::fetchAll()
             for (int i = 0; i < nodes.count(); i++) {
                 QDomNode elm = nodes.at(i);
                 if (elm.isElement()) {
-                    fetchCountry(elm.toElement().text());
+                    const QDomElement &countryElement = elm.toElement();
+                    processCountry(countryElement);
+                    fetchCountry(countryElement.text());
                 }
             }
         }
         delete reply;
     });
+}
+
+void Fetcher::processCountry(const QDomElement &country)
+{
+    const QString &id = country.attributes().namedItem("id").toAttr().value();
+
+    QSqlQuery query;
+    query.prepare(QStringLiteral("INSERT INTO Countries VALUES(:channel, :id, :name, :uri, :email);"));
+    query.bindValue(QStringLiteral(":channel"), "channel");
+    query.bindValue(QStringLiteral(":id"), id);
+    query.bindValue(QStringLiteral(":name"), country.text());
+    query.bindValue(QStringLiteral(":uri"), "URI"); // TODO
+    query.bindValue(QStringLiteral(":email"), "country@example.com"); // TODO
+    Database::instance().execute(query);
 }
 
 void Fetcher::processChannel(const QDomElement &channel, const QString &url)
@@ -227,8 +243,8 @@ void Fetcher::processChannel(const QDomElement &channel, const QString &url)
         query.bindValue(QStringLiteral(":lastUpdated"), current.toSecsSinceEpoch());
         Database::instance().execute(query);
 
-        /* for (auto &author : channel->authors()) {
-             processAuthor(author, QLatin1String(""), url);
+        /* for (auto &country : channel->countries()) {
+             processCountry(country, QLatin1String(""), url);
          }*/
 
         /*QString image;
@@ -290,25 +306,13 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
 
     Database::instance().execute(query);
 
-    // for (const auto &author : program->authors()) {
-    //    processAuthor(url, id);
+    // for (const auto &country : program->countries()) {
+    //    processCountry(url, id);
     //}
 
     // for (const auto &enclosure : program->enclosures()) {
     //    processEnclosure(url, id);
     //}*/
-}
-
-void Fetcher::processAuthor(const QString &url, unsigned int id)
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("INSERT INTO Authors VALUES(:channel, :id, :name, :uri, :email);"));
-    query.bindValue(QStringLiteral(":channel"), url);
-    query.bindValue(QStringLiteral(":id"), id);
-    query.bindValue(QStringLiteral(":name"), "Author"); // TODO
-    query.bindValue(QStringLiteral(":uri"), "URI"); // TODO
-    query.bindValue(QStringLiteral(":email"), "author@example.com"); // TODO
-    Database::instance().execute(query);
 }
 
 void Fetcher::processEnclosure(const QString &channelUrl, unsigned int id)

@@ -22,15 +22,15 @@ Channel::Channel(int index)
         qWarning() << "Failed to load channel" << index;
     }
 
-    QSqlQuery authorQuery;
-    authorQuery.prepare(QStringLiteral("SELECT * FROM Authors WHERE id='' AND channel=:channel"));
-    authorQuery.bindValue(QStringLiteral(":channel"), query.value(QStringLiteral("url")).toString());
-    Database::instance().execute(authorQuery);
-    while (authorQuery.next()) {
-        m_authors += new Author(authorQuery.value(QStringLiteral("name")).toString(),
-                                authorQuery.value(QStringLiteral("email")).toString(),
-                                authorQuery.value(QStringLiteral("uri")).toString(),
-                                nullptr);
+    QSqlQuery countryQuery;
+    countryQuery.prepare(QStringLiteral("SELECT * FROM Countries WHERE id='' AND channel=:channel"));
+    countryQuery.bindValue(QStringLiteral(":channel"), query.value(QStringLiteral("url")).toString());
+    Database::instance().execute(countryQuery);
+    while (countryQuery.next()) {
+        m_countries += new Country(countryQuery.value(QStringLiteral("name")).toString(),
+                                   countryQuery.value(QStringLiteral("email")).toString(),
+                                   countryQuery.value(QStringLiteral("uri")).toString(),
+                                   nullptr);
     }
 
     m_subscribed.setSecsSinceEpoch(query.value(QStringLiteral("subscribed")).toInt());
@@ -120,9 +120,9 @@ QString Channel::groupName() const
     return m_group_name;
 }
 
-QVector<Author *> Channel::authors() const
+QVector<Country *> Channel::countries() const
 {
-    return m_authors;
+    return m_countries;
 }
 
 int Channel::deleteAfterCount() const
@@ -231,10 +231,10 @@ void Channel::setGroupName(const QString &groupName)
     }
 }
 
-void Channel::setAuthors(const QVector<Author *> &authors)
+void Channel::setCountries(const QVector<Country *> &countries)
 {
-    m_authors = authors;
-    Q_EMIT authorsChanged(m_authors);
+    m_countries = countries;
+    Q_EMIT countriesChanged(m_countries);
 }
 
 void Channel::setDeleteAfterCount(int count)
@@ -294,9 +294,9 @@ void Channel::setAsFavorite()
 
 void Channel::remove()
 {
-    // Delete Authors
+    // Delete Countries
     QSqlQuery query;
-    query.prepare(QStringLiteral("DELETE FROM Authors WHERE channel=:channel;"));
+    query.prepare(QStringLiteral("DELETE FROM Countries WHERE channel=:channel;"));
     query.bindValue(QStringLiteral(":channel"), m_url);
     Database::instance().execute(query);
 

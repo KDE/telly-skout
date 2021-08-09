@@ -34,9 +34,9 @@ private:
     Fetcher();
 
     QString filePath(const QString &url);
+    void processCountry(const QDomElement &country);
     void processChannel(const QDomElement &channel, const QString &url);
     void processProgram(const QDomNode &program, const QString &url);
-    void processAuthor(const QString &url, unsigned int id);
     void processEnclosure(const QString &channelUrl, unsigned int id);
 
     QNetworkAccessManager *manager;

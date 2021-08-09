@@ -25,16 +25,16 @@ Program::Program(Channel *channel, int index)
         qWarning() << "No element with index" << index << "found in channel" << m_channel->url();
     }
 
-    QSqlQuery authorQuery;
-    authorQuery.prepare(QStringLiteral("SELECT * FROM Authors WHERE id=:id"));
-    authorQuery.bindValue(QStringLiteral(":id"), programQuery.value(QStringLiteral("id")).toString());
-    Database::instance().execute(authorQuery);
+    QSqlQuery countryQuery;
+    countryQuery.prepare(QStringLiteral("SELECT * FROM Countries WHERE id=:id"));
+    countryQuery.bindValue(QStringLiteral(":id"), programQuery.value(QStringLiteral("id")).toString());
+    Database::instance().execute(countryQuery);
 
-    while (authorQuery.next()) {
-        m_authors += new Author(authorQuery.value(QStringLiteral("name")).toString(),
-                                authorQuery.value(QStringLiteral("email")).toString(),
-                                authorQuery.value(QStringLiteral("uri")).toString(),
-                                nullptr);
+    while (countryQuery.next()) {
+        m_countries += new Country(countryQuery.value(QStringLiteral("name")).toString(),
+                                   countryQuery.value(QStringLiteral("email")).toString(),
+                                   countryQuery.value(QStringLiteral("uri")).toString(),
+                                   nullptr);
     }
 
     m_created.setSecsSinceEpoch(programQuery.value(QStringLiteral("created")).toInt());
@@ -49,7 +49,7 @@ Program::Program(Channel *channel, int index)
 
 Program::~Program()
 {
-    qDeleteAll(m_authors);
+    qDeleteAll(m_countries);
 }
 
 QString Program::id() const
@@ -67,9 +67,9 @@ QString Program::content() const
     return m_content;
 }
 
-QVector<Author *> Program::authors() const
+QVector<Country *> Program::countries() const
 {
-    return m_authors;
+    return m_countries;
 }
 
 QDateTime Program::created() const

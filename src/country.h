@@ -4,12 +4,12 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef AUTHOR_H
-#define AUTHOR_H
+#ifndef COUNTRY_H
+#define COUNTRY_H
 
 #include <QObject>
 
-class Author : public QObject
+class Country : public QObject
 {
     Q_OBJECT
 
@@ -18,8 +18,8 @@ class Author : public QObject
     Q_PROPERTY(QString url READ url CONSTANT)
 
 public:
-    Author(const QString &name, const QString &email, const QString &url, QObject *parent = nullptr);
-    ~Author();
+    Country(const QString &name, const QString &email, const QString &url, QObject *parent = nullptr);
+    ~Country();
 
     QString name() const;
     QString email() const;
@@ -31,4 +31,4 @@ private:
     QString m_url;
 };
 
-#endif // AUTHOR_H
+#endif // COUNTRY_H

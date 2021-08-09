@@ -33,8 +33,8 @@ Kirigami.ScrollablePage {
             level: 3
         }
         Controls.Label {
-            text: i18nc("by <author(s)>", "by %1", channel.authors[0].name)
-            visible: channel.authors.length !== 0
+            text: i18nc("by <country(s)>", "by %1", channel.countries[0].name)
+            visible: channel.countries.length !== 0
         }
         Controls.Label {
             text: "<a href='%1'>%1</a>".arg(channel.link)

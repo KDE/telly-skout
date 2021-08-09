@@ -10,7 +10,7 @@
 #include <QDateTime>
 #include <QObject>
 
-#include "author.h"
+#include "country.h"
 
 class ProgramsModel;
 
@@ -25,7 +25,7 @@ class Channel : public QObject
     Q_PROPERTY(QString link READ link WRITE setLink NOTIFY linkChanged)
     Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged)
     Q_PROPERTY(QString groupName READ groupName WRITE setGroupName NOTIFY groupNameChanged)
-    Q_PROPERTY(QVector<Author *> authors READ authors WRITE setAuthors NOTIFY authorsChanged)
+    Q_PROPERTY(QVector<Country *> countries READ countries WRITE setCountries NOTIFY countriesChanged)
     Q_PROPERTY(bool refreshing READ refreshing WRITE setRefreshing NOTIFY refreshingChanged)
     Q_PROPERTY(int deleteAfterCount READ deleteAfterCount WRITE setDeleteAfterCount NOTIFY deleteAfterCountChanged)
     Q_PROPERTY(int deleteAfterType READ deleteAfterType WRITE setDeleteAfterType NOTIFY deleteAfterTypeChanged)
@@ -50,7 +50,7 @@ public:
     QString link() const;
     QString description() const;
     QString groupName() const;
-    QVector<Author *> authors() const;
+    QVector<Country *> countries() const;
     int deleteAfterCount() const;
     int deleteAfterType() const;
     QDateTime subscribed() const;
@@ -70,7 +70,7 @@ public:
     void setLink(const QString &link);
     void setDescription(const QString &description);
     void setGroupName(const QString &groupName);
-    void setAuthors(const QVector<Author *> &authors);
+    void setCountries(const QVector<Country *> &countries);
     void setDeleteAfterCount(int count);
     void setDeleteAfterType(int type);
     void setLastUpdated(const QDateTime &lastUpdated);
@@ -90,7 +90,7 @@ Q_SIGNALS:
     void linkChanged(const QString &link);
     void descriptionChanged(const QString &description);
     void groupNameChanged(const QString &groupName);
-    void authorsChanged(const QVector<Author *> &authors);
+    void countriesChanged(const QVector<Country *> &countries);
     void deleteAfterCountChanged(int count);
     void deleteAfterTypeChanged(int type);
     void lastUpdatedChanged(const QDateTime &lastUpdated);
@@ -110,7 +110,7 @@ private:
     QString m_link;
     QString m_description;
     QString m_group_name;
-    QVector<Author *> m_authors;
+    QVector<Country *> m_countries;
     int m_deleteAfterCount;
     int m_deleteAfterType;
     QDateTime m_subscribed;
