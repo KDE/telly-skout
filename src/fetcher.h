@@ -22,7 +22,7 @@ public:
         static Fetcher _instance;
         return _instance;
     }
-    Q_INVOKABLE void fetchCountry(const QString &country);
+    Q_INVOKABLE void fetchCountry(const QString &url);
     Q_INVOKABLE void fetchChannel(const QString &channelId, const QString &name);
     Q_INVOKABLE void fetchAll();
     Q_INVOKABLE QString image(const QString &url);

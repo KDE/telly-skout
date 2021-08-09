@@ -25,10 +25,8 @@ Fetcher::Fetcher()
     manager->enableStrictTransportSecurityStore(true);
 }
 
-void Fetcher::fetchCountry(const QString &country)
+void Fetcher::fetchCountry(const QString &url)
 {
-    // http://xmltv.xmltv.se/channels-Germany.xml
-    const QString url = "http://xmltv.xmltv.se/channels-" + country + ".xml";
     qDebug() << "Starting to fetch" << url;
 
     // Q_EMIT startedFetchingChannel(urlToday);
@@ -204,7 +202,6 @@ void Fetcher::fetchAll()
                 if (elm.isElement()) {
                     const QDomElement &countryElement = elm.toElement();
                     processCountry(countryElement);
-                    fetchCountry(countryElement.text());
                 }
             }
         }
@@ -216,14 +213,19 @@ void Fetcher::processCountry(const QDomElement &country)
 {
     const QString &id = country.attributes().namedItem("id").toAttr().value();
 
+    // http://xmltv.xmltv.se/channels-Germany.xml
+    const QString url = "http://xmltv.xmltv.se/channels-" + id + ".xml";
+
     QSqlQuery query;
-    query.prepare(QStringLiteral("INSERT INTO Countries VALUES(:channel, :id, :name, :uri, :email);"));
-    query.bindValue(QStringLiteral(":channel"), "channel");
+    query.prepare(QStringLiteral("INSERT INTO Countries VALUES(:channel, :id, :name, :url, :email);"));
+    query.bindValue(QStringLiteral(":channel"), "channel"); // TODO
     query.bindValue(QStringLiteral(":id"), id);
     query.bindValue(QStringLiteral(":name"), country.text());
-    query.bindValue(QStringLiteral(":uri"), "URI"); // TODO
+    query.bindValue(QStringLiteral(":url"), url);
     query.bindValue(QStringLiteral(":email"), "country@example.com"); // TODO
     Database::instance().execute(query);
+
+    fetchCountry(url);
 }
 
 void Fetcher::processChannel(const QDomElement &channel, const QString &url)
