@@ -24,7 +24,6 @@
 #include <KLocalizedString>
 
 #include "TellyScoutSettings.h"
-#include "channelgroupsmodel.h"
 #include "channelsmodel.h"
 #include "channelsproxymodel.h"
 #include "database.h"
@@ -57,7 +56,6 @@ int main(int argc, char *argv[])
     KAboutData::setApplicationData(about);
 
     qmlRegisterType<ChannelsModel>("org.kde.TellyScout", 1, 0, "ChannelsModel");
-    qmlRegisterType<ChannelGroupsModel>("org.kde.TellyScout", 1, 0, "ChannelGroupsModel");
     qmlRegisterType<ChannelsProxyModel>("org.kde.TellyScout", 1, 0, "ChannelsProxyModel");
 
     qmlRegisterUncreatableType<ProgramsModel>("org.kde.TellyScout", 1, 0, "ProgramsModel", QStringLiteral("Get from Channel"));

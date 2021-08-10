@@ -50,7 +50,7 @@ bool ChannelsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sou
 
     auto channel = idx.data(0).value<Channel *>();
 
-    if (channel->groupName() == m_group_name) {
+    if (channel->favorite()) {
         return true;
     }
 

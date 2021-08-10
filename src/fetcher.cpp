@@ -85,7 +85,7 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
         QSqlQuery queryInsertChannel;
         queryInsertChannel.prepare(QStringLiteral(
             "INSERT INTO Channels VALUES (:name, :url, :image, :link, :description, :deleteAfterCount, :deleteAfterType, :subscribed, :lastUpdated, "
-            ":notify, :groupName, :displayName);"));
+            ":notify, :favorite, :displayName);"));
         queryInsertChannel.bindValue(QStringLiteral(":name"), name);
         queryInsertChannel.bindValue(QStringLiteral(":url"), url);
         queryInsertChannel.bindValue(QStringLiteral(":image"), QLatin1String(""));
@@ -96,15 +96,13 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
         queryInsertChannel.bindValue(QStringLiteral(":subscribed"), QDateTime::currentDateTime().toSecsSinceEpoch());
         queryInsertChannel.bindValue(QStringLiteral(":lastUpdated"), 0);
         queryInsertChannel.bindValue(QStringLiteral(":notify"), false);
-        queryInsertChannel.bindValue(QStringLiteral(":groupName"), Database::instance().defaultGroup());
+        queryInsertChannel.bindValue(QStringLiteral(":favorite"), false);
         queryInsertChannel.bindValue(QStringLiteral(":displayName"), QLatin1String(""));
         Database::instance().execute(queryInsertChannel);
     } else {
         // fetch complete program only for favorites
         QSqlQuery queryIsFavorite;
-        queryIsFavorite.prepare(
-            QStringLiteral("SELECT COUNT (url) FROM Channels WHERE url=:url AND groupName='Favorites';")); // TODO: do not hard code favorites group -> replace
-                                                                                                           // group by favorites flag (true/false)
+        queryIsFavorite.prepare(QStringLiteral("SELECT COUNT (url) FROM Channels WHERE url=:url AND favorite=TRUE;"));
         queryIsFavorite.bindValue(QStringLiteral(":url"), url);
         Database::instance().execute(queryIsFavorite);
         queryIsFavorite.next();

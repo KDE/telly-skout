@@ -40,21 +40,11 @@ ChannelsModel::ChannelsModel(QObject *parent)
             }
         });
 
-    connect(&Database::instance(), &Database::channelDetailsUpdated, [this](const QString &url, const QString &displayName, const QString &groupName) {
+    connect(&Database::instance(), &Database::channelDetailsUpdated, [this](const QString &url, const QString &displayName, bool favorite) {
         for (int i = 0; i < m_channels.length(); i++) {
             if (m_channels[i]->url() == url) {
                 m_channels[i]->setDisplayName(displayName);
-                m_channels[i]->setGroupName(groupName);
-                Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
-                break;
-            }
-        }
-    });
-
-    connect(&Database::instance(), &Database::channelGroupRemoved, [this](const QString &groupName) {
-        for (int i = 0; i < m_channels.length(); i++) {
-            if (m_channels[i]->groupName() == groupName) {
-                m_channels[i]->setGroupName(QString());
+                m_channels[i]->setFavorite(favorite);
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
                 break;
             }

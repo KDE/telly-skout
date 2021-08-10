@@ -43,7 +43,7 @@ Channel::Channel(int index)
     m_image = query.value(QStringLiteral("image")).toString();
     m_link = query.value(QStringLiteral("link")).toString();
     m_description = query.value(QStringLiteral("description")).toString();
-    m_group_name = query.value(QStringLiteral("groupName")).toString();
+    m_favorite = query.value(QStringLiteral("favorite")).toBool();
     m_deleteAfterCount = query.value(QStringLiteral("deleteAfterCount")).toInt();
     m_deleteAfterType = query.value(QStringLiteral("deleteAfterType")).toInt();
     m_notify = query.value(QStringLiteral("notify")).toBool();
@@ -115,9 +115,9 @@ QString Channel::description() const
     return m_description;
 }
 
-QString Channel::groupName() const
+bool Channel::favorite() const
 {
-    return m_group_name;
+    return m_favorite;
 }
 
 QVector<Country *> Channel::countries() const
@@ -222,12 +222,12 @@ void Channel::setDescription(const QString &description)
     Q_EMIT descriptionChanged(m_description);
 }
 
-void Channel::setGroupName(const QString &groupName)
+void Channel::setFavorite(bool favorite)
 {
-    if (m_group_name != groupName) {
-        m_group_name = groupName;
+    if (m_favorite != favorite) {
+        m_favorite = favorite;
 
-        Q_EMIT groupNameChanged(groupName);
+        Q_EMIT favoriteChanged(favorite);
     }
 }
 
@@ -287,7 +287,7 @@ void Channel::refresh()
 void Channel::setAsFavorite()
 {
     QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Channels SET groupName='Favorites' WHERE url=:url;")); // TODO: group -> true/false
+    query.prepare(QStringLiteral("UPDATE Channels SET favorite=TRUE WHERE url=:url;"));
     query.bindValue(QStringLiteral(":url"), m_url);
     Database::instance().execute(query);
 }

@@ -29,16 +29,6 @@ Kirigami.OverlaySheet {
             Layout.fillWidth: true
             Kirigami.FormData.label: i18n("Display Name:")
         }
-
-        Controls.ComboBox {
-            id: groupCombo
-
-            model: TellyScout.ChannelGroupsModel {}
-            textRole: "name"
-            valueRole: "name"
-            Layout.fillWidth: true
-            Kirigami.FormData.label: i18n("Group:")
-        }
     }
 
     footer: RowLayout {
@@ -50,7 +40,7 @@ Kirigami.OverlaySheet {
             text: i18n("OK")
 
             onClicked: {
-                TellyScout.Database.editChannel(channel.url, displayName.text, groupCombo.currentValue);
+                TellyScout.Database.editChannel(channel.url, displayName.text, false);
                 root.close();
             }
         }

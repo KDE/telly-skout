@@ -42,7 +42,7 @@ bool Database::createTables()
     qDebug() << "Create DB tables";
     TRUE_OR_RETURN(
         execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (name TEXT, url TEXT, image TEXT, link TEXT, description TEXT, deleteAfterCount INTEGER, "
-                               "deleteAfterType INTEGER, subscribed INTEGER, lastUpdated INTEGER, notify BOOL);")));
+                               "deleteAfterType INTEGER, subscribed INTEGER, lastUpdated INTEGER, notify BOOL, favorite BOOL, displayName TEXT);")));
     TRUE_OR_RETURN(
         execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Programs (channel TEXT, id TEXT UNIQUE, title TEXT, content TEXT, created INTEGER, updated INTEGER, "
                                "link TEXT, read bool);")));
@@ -50,14 +50,6 @@ bool Database::createTables()
     TRUE_OR_RETURN(execute(
         QStringLiteral("CREATE TABLE IF NOT EXISTS Enclosures (channel TEXT, id TEXT, duration INTEGER, size INTEGER, title TEXT, type STRING, url STRING);")));
     TRUE_OR_RETURN(execute(QStringLiteral("PRAGMA user_version = 1;")));
-
-    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS ChannelGroups (name TEXT NOT NULL, description TEXT, defaultGroup INTEGER);")));
-    TRUE_OR_RETURN(execute(QStringLiteral("ALTER TABLE Channels ADD COLUMN groupName TEXT;")));
-    TRUE_OR_RETURN(execute(QStringLiteral("ALTER TABLE Channels ADD COLUMN displayName TEXT;")));
-    auto dg = i18n("Default");
-    TRUE_OR_RETURN(execute(QStringLiteral("INSERT INTO ChannelGroups VALUES ('%1', '%2', 1);").arg(dg, i18n("Default Channel Group"))));
-    TRUE_OR_RETURN(execute(QStringLiteral("UPDATE Channels SET groupName = '%1';").arg(dg)));
-    TRUE_OR_RETURN(execute(QStringLiteral("PRAGMA user_version = 2;")));
     return true;
 }
 
@@ -137,7 +129,7 @@ bool Database::channelExists(const QString &url)
     return query.value(0).toInt() != 0;
 }
 
-void Database::addChannel(const QString &url, const QString &groupName)
+void Database::addChannel(const QString &url, bool favorite)
 {
     qDebug() << "Adding channel";
     if (channelExists(url)) {
@@ -150,7 +142,7 @@ void Database::addChannel(const QString &url, const QString &groupName)
     QSqlQuery query;
     query.prepare(
         QStringLiteral("INSERT INTO Channels VALUES (:name, :url, :image, :link, :description, :deleteAfterCount, :deleteAfterType, :subscribed, :lastUpdated, "
-                       ":notify, :groupName, :displayName);"));
+                       ":notify, :favorite, :displayName);"));
     query.bindValue(QStringLiteral(":name"), urlFromInput.toString());
     query.bindValue(QStringLiteral(":url"), urlFromInput.toString());
     query.bindValue(QStringLiteral(":image"), QLatin1String(""));
@@ -161,7 +153,7 @@ void Database::addChannel(const QString &url, const QString &groupName)
     query.bindValue(QStringLiteral(":subscribed"), QDateTime::currentDateTime().toSecsSinceEpoch());
     query.bindValue(QStringLiteral(":lastUpdated"), 0);
     query.bindValue(QStringLiteral(":notify"), false);
-    query.bindValue(QStringLiteral(":groupName"), groupName.isEmpty() ? defaultGroup() : groupName);
+    query.bindValue(QStringLiteral(":favorite"), favorite);
     query.bindValue(QStringLiteral(":displayName"), QLatin1String(""));
     execute(query);
 
@@ -212,88 +204,14 @@ void Database::exportChannels(const QString &path)
     xmlWriter.writeEndDocument();
 }
 
-void Database::addChannelGroup(const QString &name, const QString &description, const int isDefault)
-{
-    if (channelGroupExists(name)) {
-        qDebug() << "Channel group already exists, nothing to add";
-        return;
-    }
-
-    QSqlQuery query;
-    query.prepare(QStringLiteral("INSERT INTO ChannelGroups VALUES (:name, :desc, :isDefault);"));
-    query.bindValue(QStringLiteral(":name"), name);
-    query.bindValue(QStringLiteral(":desc"), description);
-    query.bindValue(QStringLiteral(":isDefault"), isDefault);
-    execute(query);
-
-    Q_EMIT channelGroupsUpdated();
-}
-
-void Database::editChannel(const QString &url, const QString &displayName, const QString &groupName)
+void Database::editChannel(const QString &url, const QString &displayName, bool favorite)
 {
     QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Channels SET displayName = :displayName, groupName = :groupName WHERE url = :url;"));
+    query.prepare(QStringLiteral("UPDATE Channels SET displayName = :displayName, favorite = :favorite WHERE url = :url;"));
     query.bindValue(QStringLiteral(":displayName"), displayName);
-    query.bindValue(QStringLiteral(":groupName"), groupName);
+    query.bindValue(QStringLiteral(":favorite"), favorite);
     query.bindValue(QStringLiteral(":url"), url);
     execute(query);
 
-    Q_EMIT channelDetailsUpdated(url, displayName, groupName);
-}
-
-void Database::removeChannelGroup(const QString &name)
-{
-    clearChannelGroup(name);
-
-    QSqlQuery query;
-    query.prepare(QStringLiteral("DELETE FROM ChannelGroups WHERE name = :name;"));
-    query.bindValue(QStringLiteral(":name"), name);
-    execute(query);
-
-    Q_EMIT channelGroupRemoved(name);
-}
-
-bool Database::channelGroupExists(const QString &name)
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (1) FROM ChannelGroups WHERE name = :name;"));
-    query.bindValue(QStringLiteral(":name"), name);
-    Database::instance().execute(query);
-    query.next();
-    return (query.value(0).toInt() != 0);
-}
-
-void Database::clearChannelGroup(const QString &name)
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Channels SET groupName = NULL WHERE groupName = :name;"));
-    query.bindValue(QStringLiteral(":name"), name);
-    execute(query);
-}
-
-QString Database::defaultGroup()
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT Name FROM ChannelGroups WHERE defaultGroup = 1"));
-    execute(query);
-
-    if (query.next()) {
-        return query.value(0).toString();
-    } else {
-        auto dg = i18n("Default");
-        addChannelGroup(dg, i18n("Default Channel Group"), 1);
-        return dg;
-    }
-}
-
-void Database::setDefaultGroup(const QString &name)
-{
-    if (execute(QStringLiteral("UPDATE ChannelGroups SET defaultGroup = 0;"))) {
-        QSqlQuery query;
-        query.prepare(QStringLiteral("UPDATE ChannelGroups SET defaultGroup = 1 WHERE name = :name ;"));
-        query.bindValue(QStringLiteral(":name"), name);
-        execute(query);
-
-        Q_EMIT channelGroupsUpdated();
-    }
+    Q_EMIT channelDetailsUpdated(url, displayName, favorite);
 }

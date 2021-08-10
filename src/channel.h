@@ -24,7 +24,7 @@ class Channel : public QObject
     Q_PROPERTY(QString image READ image WRITE setImage NOTIFY imageChanged)
     Q_PROPERTY(QString link READ link WRITE setLink NOTIFY linkChanged)
     Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged)
-    Q_PROPERTY(QString groupName READ groupName WRITE setGroupName NOTIFY groupNameChanged)
+    Q_PROPERTY(bool favorite READ favorite WRITE setFavorite NOTIFY favoriteChanged)
     Q_PROPERTY(QVector<Country *> countries READ countries WRITE setCountries NOTIFY countriesChanged)
     Q_PROPERTY(bool refreshing READ refreshing WRITE setRefreshing NOTIFY refreshingChanged)
     Q_PROPERTY(int deleteAfterCount READ deleteAfterCount WRITE setDeleteAfterCount NOTIFY deleteAfterCountChanged)
@@ -49,7 +49,7 @@ public:
     QString image() const;
     QString link() const;
     QString description() const;
-    QString groupName() const;
+    bool favorite() const;
     QVector<Country *> countries() const;
     int deleteAfterCount() const;
     int deleteAfterType() const;
@@ -69,7 +69,7 @@ public:
     void setImage(const QString &image);
     void setLink(const QString &link);
     void setDescription(const QString &description);
-    void setGroupName(const QString &groupName);
+    void setFavorite(bool favorite);
     void setCountries(const QVector<Country *> &countries);
     void setDeleteAfterCount(int count);
     void setDeleteAfterType(int type);
@@ -89,7 +89,7 @@ Q_SIGNALS:
     void imageChanged(const QString &image);
     void linkChanged(const QString &link);
     void descriptionChanged(const QString &description);
-    void groupNameChanged(const QString &groupName);
+    void favoriteChanged(bool favorite);
     void countriesChanged(const QVector<Country *> &countries);
     void deleteAfterCountChanged(int count);
     void deleteAfterTypeChanged(int type);
@@ -109,7 +109,7 @@ private:
     QString m_image;
     QString m_link;
     QString m_description;
-    QString m_group_name;
+    bool m_favorite;
     QVector<Country *> m_countries;
     int m_deleteAfterCount;
     int m_deleteAfterType;
