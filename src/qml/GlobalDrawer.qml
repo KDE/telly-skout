@@ -18,6 +18,15 @@ Kirigami.GlobalDrawer {
     isMenu: true
     actions: [
         Kirigami.Action {
+            text: i18n("Favorites")
+            iconName: "rss"
+            onTriggered: {
+                pageStack.layers.clear()
+                pageStack.clear()
+                pageStack.push(root.channelsPage, {groupFilter: "Favorites"})
+            }
+        },
+        Kirigami.Action {
             text: i18n("All Channels")
             iconName: "rss"
             onTriggered: {
@@ -26,7 +35,6 @@ Kirigami.GlobalDrawer {
                 pageStack.push(root.channelsPage, {groupFilter: ""})
             }
         },
-
         Kirigami.Action {
             id: channelGroups
             iconName: "edit-group"
