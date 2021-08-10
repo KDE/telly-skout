@@ -41,9 +41,7 @@ private:
 
     Database();
     int version();
-    bool migrateTo(const int targetVersion);
-    bool migrateTo1();
-    bool migrateTo2();
+    bool createTables();
     void cleanup();
     bool channelExists(const QString &url);
 };

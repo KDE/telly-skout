@@ -30,49 +30,16 @@ Database::Database()
     db.setDatabaseName(databasePath + QStringLiteral("/database.db3"));
     db.open();
 
-    if (!migrateTo(2)) {
-        qCritical() << "Failed to migrate the database";
+    if (!createTables()) {
+        qCritical() << "Failed to create database";
     }
 
     cleanup();
 }
 
-bool Database::migrateTo(const int targetVersion)
+bool Database::createTables()
 {
-    if (version() >= targetVersion) {
-        qDebug() << "Database already in version" << targetVersion;
-        return true;
-    }
-
-    switch (targetVersion) {
-    case 1:
-        return migrateTo1();
-    case 2:
-        return migrateTo2();
-    default:
-        return true;
-    }
-}
-
-bool Database::migrateTo2()
-{
-    migrateTo(1);
-
-    qDebug() << "Migrating database to version 2";
-    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS ChannelGroups (name TEXT NOT NULL, description TEXT, defaultGroup INTEGER);")));
-    TRUE_OR_RETURN(execute(QStringLiteral("ALTER TABLE Channels ADD COLUMN groupName TEXT;")));
-    TRUE_OR_RETURN(execute(QStringLiteral("ALTER TABLE Channels ADD COLUMN displayName TEXT;")));
-    auto dg = i18n("Default");
-    TRUE_OR_RETURN(execute(QStringLiteral("INSERT INTO ChannelGroups VALUES ('%1', '%2', 1);").arg(dg, i18n("Default Channel Group"))));
-    TRUE_OR_RETURN(execute(QStringLiteral("UPDATE Channels SET groupName = '%1';").arg(dg)));
-    TRUE_OR_RETURN(execute(QStringLiteral("PRAGMA user_version = 2;")));
-
-    return true;
-}
-
-bool Database::migrateTo1()
-{
-    qDebug() << "Migrating database to version 1";
+    qDebug() << "Create DB tables";
     TRUE_OR_RETURN(
         execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (name TEXT, url TEXT, image TEXT, link TEXT, description TEXT, deleteAfterCount INTEGER, "
                                "deleteAfterType INTEGER, subscribed INTEGER, lastUpdated INTEGER, notify BOOL);")));
@@ -83,6 +50,14 @@ bool Database::migrateTo1()
     TRUE_OR_RETURN(execute(
         QStringLiteral("CREATE TABLE IF NOT EXISTS Enclosures (channel TEXT, id TEXT, duration INTEGER, size INTEGER, title TEXT, type STRING, url STRING);")));
     TRUE_OR_RETURN(execute(QStringLiteral("PRAGMA user_version = 1;")));
+
+    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS ChannelGroups (name TEXT NOT NULL, description TEXT, defaultGroup INTEGER);")));
+    TRUE_OR_RETURN(execute(QStringLiteral("ALTER TABLE Channels ADD COLUMN groupName TEXT;")));
+    TRUE_OR_RETURN(execute(QStringLiteral("ALTER TABLE Channels ADD COLUMN displayName TEXT;")));
+    auto dg = i18n("Default");
+    TRUE_OR_RETURN(execute(QStringLiteral("INSERT INTO ChannelGroups VALUES ('%1', '%2', 1);").arg(dg, i18n("Default Channel Group"))));
+    TRUE_OR_RETURN(execute(QStringLiteral("UPDATE Channels SET groupName = '%1';").arg(dg)));
+    TRUE_OR_RETURN(execute(QStringLiteral("PRAGMA user_version = 2;")));
     return true;
 }
 
