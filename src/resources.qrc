@@ -12,7 +12,6 @@
         <file alias="AddChannelSheet.qml">qml/AddChannelSheet.qml</file>
         <file alias="ChannelListDelegate.qml">qml/ChannelListDelegate.qml</file>
         <file alias="EditChannelSheet.qml">qml/EditChannelSheet.qml</file>
-        <file alias="GroupsListPage.qml">qml/GroupsListPage.qml</file>
         <file alias="GlobalDrawer.qml">qml/GlobalDrawer.qml</file>
         <file alias="ChannelGroupSheet.qml">qml/ChannelGroupSheet.qml</file>
         <file>qtquickcontrols2.conf</file>

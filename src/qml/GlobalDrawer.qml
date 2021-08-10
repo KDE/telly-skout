@@ -36,12 +36,6 @@ Kirigami.GlobalDrawer {
             }
         },
         Kirigami.Action {
-            id: channelGroups
-            iconName: "edit-group"
-            text: i18n("Channel Groups")
-            children: [configureGroupsAction]
-        },
-        Kirigami.Action {
             text: i18n("Settings")
             iconName: "settings-configure"
             onTriggered: pageStack.layers.push("qrc:/SettingsPage.qml")
@@ -54,51 +48,4 @@ Kirigami.GlobalDrawer {
             enabled: pageStack.layers.currentItem.title !== i18n("About")
         }
     ]
-
-    Kirigami.Action {
-        id: configureGroupsAction
-
-        text: i18n("Configure Groups")
-        iconName: "settings-configure"
-        onTriggered: {
-            pageStack.clear()
-            pageStack.insertPage(0, root.channelsPage, {groupFilter: ""})
-            pageStack.layers.clear()
-            pageStack.layers.push(groupsList)
-        }
-    }
-
-    Instantiator {
-        model: groupsModel
-
-        delegate: Kirigami.Action {
-            text: model.name
-
-            onTriggered: {
-                pageStack.layers.clear()
-                pageStack.clear()
-                pageStack.push(root.channelsPage, {groupFilter: text})
-            }
-        }
-
-        onObjectAdded: {
-            channelGroups.children.push(object)
-        }
-
-        onObjectRemoved: {
-            channelGroups.children = [];
-            channelGroups.children.push(configureGroupsAction);
-        }
-    }
-
-    Component {
-        id: groupsList
-        GroupsListPage {
-            channelGroupsModel: groupsModel
-        }
-    }
-
-    TellyScout.ChannelGroupsModel {
-        id: groupsModel
-    }
 }
