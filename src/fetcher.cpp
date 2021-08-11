@@ -280,7 +280,7 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
     QDateTime stopTime = QDateTime::fromString(stopTimeString, "yyyyMMddHHmmss +0000");
     const QString &title = program.namedItem("title").toElement().text();
     const QString &subtitle = program.namedItem("sub-title").toElement().text();
-    const QString &description = program.namedItem("description").toElement().text();
+    const QString &description = program.namedItem("desc").toElement().text();
     const QString &category = program.namedItem("category").toElement().text();
 
     qDebug() << "Processing" << title;
