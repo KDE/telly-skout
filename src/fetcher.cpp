@@ -298,11 +298,10 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
     query.bindValue(QStringLiteral(":channel"), url);
     query.bindValue(QStringLiteral(":id"), id);
     query.bindValue(QStringLiteral(":title"), title);
+    query.bindValue(QStringLiteral(":content"), description);
     query.bindValue(QStringLiteral(":created"), startTime.toSecsSinceEpoch());
     query.bindValue(QStringLiteral(":updated"), stopTime.toSecsSinceEpoch());
     query.bindValue(QStringLiteral(":link"), url);
-
-    query.bindValue(QStringLiteral(":content"), description);
 
     Database::instance().execute(query);
 
