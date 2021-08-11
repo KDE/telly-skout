@@ -40,13 +40,12 @@ Database::Database()
 bool Database::createTables()
 {
     qDebug() << "Create DB tables";
+    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Countries (id TEXT UNIQUE, name TEXT, url TEXT);")));
     TRUE_OR_RETURN(
-        execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (name TEXT, url TEXT, image TEXT, link TEXT, description TEXT, deleteAfterCount INTEGER, "
-                               "deleteAfterType INTEGER, subscribed INTEGER, lastUpdated INTEGER, notify BOOL, favorite BOOL, displayName TEXT);")));
+        execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (id TEXT UNIQUE, name TEXT, url TEXT, image TEXT, notify BOOL, favorite BOOL);")));
     TRUE_OR_RETURN(
-        execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Programs (channel TEXT, id TEXT UNIQUE, title TEXT, content TEXT, created INTEGER, updated INTEGER, "
-                               "link TEXT, read bool);")));
-    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Countries (channel TEXT, id TEXT, name TEXT, url TEXT, email TEXT);")));
+        execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Programs (id TEXT UNIQUE, channel TEXT, start INTEGER, stop INTEGER, title TEXT, subtitle TEXT, "
+                               "description TEXT, category TEXT);")));
     TRUE_OR_RETURN(execute(
         QStringLiteral("CREATE TABLE IF NOT EXISTS Enclosures (channel TEXT, id TEXT, duration INTEGER, size INTEGER, title TEXT, type STRING, url STRING);")));
     TRUE_OR_RETURN(execute(QStringLiteral("PRAGMA user_version = 1;")));
