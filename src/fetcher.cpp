@@ -261,7 +261,7 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
     const QString &startTimeString = attributes.namedItem("start").toAttr().value();
     QDateTime startTime = QDateTime::fromString(startTimeString, "yyyyMMddHHmmss +0000");
     // channel + start time can be used as ID
-    const QString id = channel + startTime.toSecsSinceEpoch();
+    const QString id = channel + "_" + QString::number(startTime.toSecsSinceEpoch());
     const QString &stopTimeString = attributes.namedItem("stop").toAttr().value();
     QDateTime stopTime = QDateTime::fromString(stopTimeString, "yyyyMMddHHmmss +0000");
     const QString &title = program.namedItem("title").toElement().text();
