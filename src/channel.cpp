@@ -22,31 +22,19 @@ Channel::Channel(int index)
         qWarning() << "Failed to load channel" << index;
     }
 
-    QSqlQuery countryQuery;
+    /*QSqlQuery countryQuery;
     countryQuery.prepare(QStringLiteral("SELECT * FROM Countries WHERE id='' AND channel=:channel"));
     countryQuery.bindValue(QStringLiteral(":channel"), query.value(QStringLiteral("url")).toString());
     Database::instance().execute(countryQuery);
     while (countryQuery.next()) {
-        m_countries += new Country(countryQuery.value(QStringLiteral("name")).toString(),
-                                   countryQuery.value(QStringLiteral("email")).toString(),
-                                   countryQuery.value(QStringLiteral("uri")).toString(),
-                                   nullptr);
-    }
+        m_countries += new Country(countryQuery.value(QStringLiteral("name")).toString(), countryQuery.value(QStringLiteral("url")).toString(), nullptr);
+    }*/
 
-    m_subscribed.setSecsSinceEpoch(query.value(QStringLiteral("subscribed")).toInt());
-
-    m_lastUpdated.setSecsSinceEpoch(query.value(QStringLiteral("lastUpdated")).toInt());
-
-    m_url = query.value(QStringLiteral("url")).toString();
     m_name = query.value(QStringLiteral("name")).toString();
-    m_display_name = query.value(QStringLiteral("displayName")).toString();
+    m_url = query.value(QStringLiteral("url")).toString();
     m_image = query.value(QStringLiteral("image")).toString();
-    m_link = query.value(QStringLiteral("link")).toString();
-    m_description = query.value(QStringLiteral("description")).toString();
-    m_favorite = query.value(QStringLiteral("favorite")).toBool();
-    m_deleteAfterCount = query.value(QStringLiteral("deleteAfterCount")).toInt();
-    m_deleteAfterType = query.value(QStringLiteral("deleteAfterType")).toInt();
     m_notify = query.value(QStringLiteral("notify")).toBool();
+    m_favorite = query.value(QStringLiteral("favorite")).toBool();
 
     m_errorId = 0;
     m_errorString = QLatin1String("");
@@ -94,24 +82,9 @@ QString Channel::name() const
     return m_name;
 }
 
-QString Channel::displayName() const
-{
-    return m_display_name;
-}
-
 QString Channel::image() const
 {
     return m_image;
-}
-
-QString Channel::link() const
-{
-    return m_link;
-}
-
-QString Channel::description() const
-{
-    return m_description;
 }
 
 bool Channel::favorite() const
@@ -122,26 +95,6 @@ bool Channel::favorite() const
 QVector<Country *> Channel::countries() const
 {
     return m_countries;
-}
-
-int Channel::deleteAfterCount() const
-{
-    return m_deleteAfterCount;
-}
-
-int Channel::deleteAfterType() const
-{
-    return m_deleteAfterType;
-}
-
-QDateTime Channel::subscribed() const
-{
-    return m_subscribed;
-}
-
-QDateTime Channel::lastUpdated() const
-{
-    return m_lastUpdated;
 }
 
 bool Channel::notify() const
@@ -182,31 +135,10 @@ void Channel::setName(const QString &name)
     Q_EMIT nameChanged(m_name);
 }
 
-void Channel::setDisplayName(const QString &displayName)
-{
-    if (m_display_name != displayName) {
-        m_display_name = displayName;
-
-        Q_EMIT displayNameChanged(m_display_name);
-    }
-}
-
 void Channel::setImage(const QString &image)
 {
     m_image = image;
     Q_EMIT imageChanged(m_image);
-}
-
-void Channel::setLink(const QString &link)
-{
-    m_link = link;
-    Q_EMIT linkChanged(m_link);
-}
-
-void Channel::setDescription(const QString &description)
-{
-    m_description = description;
-    Q_EMIT descriptionChanged(m_description);
 }
 
 void Channel::setFavorite(bool favorite)
@@ -222,24 +154,6 @@ void Channel::setCountries(const QVector<Country *> &countries)
 {
     m_countries = countries;
     Q_EMIT countriesChanged(m_countries);
-}
-
-void Channel::setDeleteAfterCount(int count)
-{
-    m_deleteAfterCount = count;
-    Q_EMIT deleteAfterCountChanged(m_deleteAfterCount);
-}
-
-void Channel::setDeleteAfterType(int type)
-{
-    m_deleteAfterType = type;
-    Q_EMIT deleteAfterTypeChanged(m_deleteAfterType);
-}
-
-void Channel::setLastUpdated(const QDateTime &lastUpdated)
-{
-    m_lastUpdated = lastUpdated;
-    Q_EMIT lastUpdatedChanged(m_lastUpdated);
 }
 
 void Channel::setNotify(bool notify)

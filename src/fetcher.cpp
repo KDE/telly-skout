@@ -243,8 +243,7 @@ void Fetcher::processChannel(const QDomElement &channel, const QString &url)
 
         qDebug() << "Updated channel title:" << channel->title();*/
 
-        QDateTime current = QDateTime::currentDateTime();
-        Q_EMIT channelDetailsUpdated(url, channelId, "", url, "", current); // TODO
+        Q_EMIT channelDetailsUpdated(url, channelId, url); // TODO name
 
         for (int i = 0; i < programs.count(); i++) {
             processProgram(programs.at(i), url);

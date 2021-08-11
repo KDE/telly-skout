@@ -14,20 +14,17 @@ class Country : public QObject
     Q_OBJECT
 
     Q_PROPERTY(QString name READ name CONSTANT)
-    Q_PROPERTY(QString email READ email CONSTANT)
     Q_PROPERTY(QString url READ url CONSTANT)
 
 public:
-    Country(const QString &name, const QString &email, const QString &url, QObject *parent = nullptr);
+    Country(const QString &name, const QString &url, QObject *parent = nullptr);
     ~Country();
 
     QString name() const;
-    QString email() const;
     QString url() const;
 
 private:
     QString m_name;
-    QString m_email;
     QString m_url;
 };
 

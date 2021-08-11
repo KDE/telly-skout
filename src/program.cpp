@@ -17,7 +17,7 @@ Program::Program(Channel *channel, int index)
     , m_channel(channel)
 {
     QSqlQuery programQuery;
-    programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY updated DESC LIMIT 1 OFFSET :index;"));
+    programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start DESC LIMIT 1 OFFSET :index;"));
     programQuery.bindValue(QStringLiteral(":channel"), m_channel->url());
     programQuery.bindValue(QStringLiteral(":index"), index);
     Database::instance().execute(programQuery);
@@ -31,19 +31,16 @@ Program::Program(Channel *channel, int index)
     Database::instance().execute(countryQuery);
 
     while (countryQuery.next()) {
-        m_countries += new Country(countryQuery.value(QStringLiteral("name")).toString(),
-                                   countryQuery.value(QStringLiteral("email")).toString(),
-                                   countryQuery.value(QStringLiteral("uri")).toString(),
-                                   nullptr);
+        m_countries += new Country(countryQuery.value(QStringLiteral("name")).toString(), countryQuery.value(QStringLiteral("url")).toString(), nullptr);
     }
 
-    m_created.setSecsSinceEpoch(programQuery.value(QStringLiteral("created")).toInt());
-    m_updated.setSecsSinceEpoch(programQuery.value(QStringLiteral("updated")).toInt());
+    m_created.setSecsSinceEpoch(programQuery.value(QStringLiteral("start")).toInt());
+    m_updated.setSecsSinceEpoch(programQuery.value(QStringLiteral("stop")).toInt());
 
     m_id = programQuery.value(QStringLiteral("id")).toString();
     m_title = programQuery.value(QStringLiteral("title")).toString();
-    m_content = programQuery.value(QStringLiteral("content")).toString();
-    m_link = programQuery.value(QStringLiteral("link")).toString();
+    m_content = programQuery.value(QStringLiteral("description")).toString();
+    m_link = programQuery.value(QStringLiteral("subtitle")).toString();
 }
 
 Program::~Program()

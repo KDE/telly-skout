@@ -44,12 +44,7 @@ private:
 Q_SIGNALS:
     void startedFetchingChannel(const QString &url);
     void channelUpdated(const QString &url);
-    void channelDetailsUpdated(const QString &url,
-                               const QString &name,
-                               const QString &image,
-                               const QString &link,
-                               const QString &description,
-                               const QDateTime &lastUpdated);
+    void channelDetailsUpdated(const QString &url, const QString &name, const QString &image);
     void error(const QString &url, int errorId, const QString &errorString);
     void imageDownloadFinished(const QString &url);
 };

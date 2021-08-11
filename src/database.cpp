@@ -203,14 +203,14 @@ void Database::exportChannels(const QString &path)
     xmlWriter.writeEndDocument();
 }
 
-void Database::editChannel(const QString &url, const QString &displayName, bool favorite)
+void Database::editChannel(const QString &url, const QString &name, bool favorite)
 {
     QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Channels SET displayName = :displayName, favorite = :favorite WHERE url = :url;"));
-    query.bindValue(QStringLiteral(":displayName"), displayName);
+    query.prepare(QStringLiteral("UPDATE Channels SET name = :name, favorite = :favorite WHERE url = :url;"));
+    query.bindValue(QStringLiteral(":name"), name);
     query.bindValue(QStringLiteral(":favorite"), favorite);
     query.bindValue(QStringLiteral(":url"), url);
     execute(query);
 
-    Q_EMIT channelDetailsUpdated(url, displayName, favorite);
+    Q_EMIT channelDetailsUpdated(url, name, favorite);
 }

@@ -6,10 +6,9 @@
 
 #include "country.h"
 
-Country::Country(const QString &name, const QString &email, const QString &url, QObject *parent)
+Country::Country(const QString &name, const QString &url, QObject *parent)
     : QObject(parent)
     , m_name(name)
-    , m_email(email)
     , m_url(url)
 {
 }
@@ -21,11 +20,6 @@ Country::~Country()
 QString Country::name() const
 {
     return m_name;
-}
-
-QString Country::email() const
-{
-    return m_email;
 }
 
 QString Country::url() const

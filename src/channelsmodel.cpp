@@ -22,28 +22,21 @@ ChannelsModel::ChannelsModel(QObject *parent)
         endInsertRows();
     });
 
-    connect(
-        &Fetcher::instance(),
-        &Fetcher::channelDetailsUpdated,
-        this,
-        [this](const QString &url, const QString &name, const QString &image, const QString &link, const QString &description, const QDateTime &lastUpdated) {
-            for (int i = 0; i < m_channels.length(); i++) {
-                if (m_channels[i]->url() == url) {
-                    m_channels[i]->setName(name);
-                    m_channels[i]->setImage(image);
-                    m_channels[i]->setLink(link);
-                    m_channels[i]->setDescription(description);
-                    m_channels[i]->setLastUpdated(lastUpdated);
-                    Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
-                    break;
-                }
-            }
-        });
-
-    connect(&Database::instance(), &Database::channelDetailsUpdated, [this](const QString &url, const QString &displayName, bool favorite) {
+    connect(&Fetcher::instance(), &Fetcher::channelDetailsUpdated, this, [this](const QString &url, const QString &name, const QString &image) {
         for (int i = 0; i < m_channels.length(); i++) {
             if (m_channels[i]->url() == url) {
-                m_channels[i]->setDisplayName(displayName);
+                m_channels[i]->setName(name);
+                m_channels[i]->setImage(image);
+                Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
+                break;
+            }
+        }
+    });
+
+    connect(&Database::instance(), &Database::channelDetailsUpdated, [this](const QString &url, const QString &name, bool favorite) {
+        for (int i = 0; i < m_channels.length(); i++) {
+            if (m_channels[i]->url() == url) {
+                m_channels[i]->setName(name);
                 m_channels[i]->setFavorite(favorite);
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
                 break;

@@ -23,11 +23,11 @@ public:
     Q_INVOKABLE void addChannel(const QString &url, bool favorite = false);
     Q_INVOKABLE void importChannels(const QString &path);
     Q_INVOKABLE void exportChannels(const QString &path);
-    Q_INVOKABLE void editChannel(const QString &url, const QString &displayName, bool favorite);
+    Q_INVOKABLE void editChannel(const QString &url, const QString &name, bool favorite);
 
 Q_SIGNALS:
     void channelAdded(const QString &url);
-    void channelDetailsUpdated(const QString &url, const QString &displayName, bool favorite);
+    void channelDetailsUpdated(const QString &url, const QString &name, bool favorite);
 
 private:
     Database();
