@@ -47,7 +47,7 @@ Kirigami.ScrollablePage {
             text: i18n("last updated: %1", channel.lastUpdated.toLocaleString(Qt.locale(), Locale.ShortFormat))
         }
         Controls.Label {
-            text: i18n("%1 posts, %2 unread", channel.programCount, channel.unreadProgramCount)
+            text: i18n("%1 posts", channel.programCount)
         }
     }
 }

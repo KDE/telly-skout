@@ -33,7 +33,6 @@ class Channel : public QObject
     Q_PROPERTY(QDateTime lastUpdated READ lastUpdated WRITE setLastUpdated NOTIFY lastUpdatedChanged)
     Q_PROPERTY(bool notify READ notify WRITE setNotify NOTIFY notifyChanged)
     Q_PROPERTY(int programCount READ programCount NOTIFY programCountChanged)
-    Q_PROPERTY(int unreadProgramCount READ unreadProgramCount NOTIFY unreadProgramCountChanged)
     Q_PROPERTY(int errorId READ errorId WRITE setErrorId NOTIFY errorIdChanged)
     Q_PROPERTY(QString errorString READ errorString WRITE setErrorString NOTIFY errorStringChanged)
     Q_PROPERTY(ProgramsModel *programs MEMBER m_programs CONSTANT)
@@ -57,8 +56,6 @@ public:
     QDateTime lastUpdated() const;
     bool notify() const;
     int programCount() const;
-    int unreadProgramCount() const;
-    bool read() const;
     int errorId() const;
     QString errorString() const;
 
@@ -96,7 +93,6 @@ Q_SIGNALS:
     void lastUpdatedChanged(const QDateTime &lastUpdated);
     void notifyChanged(bool notify);
     void programCountChanged();
-    void unreadProgramCountChanged();
     void errorIdChanged(int &errorId);
     void errorStringChanged(const QString &errorString);
 

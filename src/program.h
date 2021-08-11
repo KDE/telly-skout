@@ -27,8 +27,7 @@ class Program : public QObject
     Q_PROPERTY(QDateTime created READ created CONSTANT)
     Q_PROPERTY(QDateTime updated READ updated CONSTANT)
     Q_PROPERTY(QString link READ link CONSTANT)
-    Q_PROPERTY(QString baseUrl READ baseUrl CONSTANT)
-    Q_PROPERTY(bool read READ read WRITE setRead NOTIFY readChanged);
+    Q_PROPERTY(QString baseUrl READ baseUrl CONSTANT);
 
 public:
     Program(Channel *channel, int index);
@@ -41,16 +40,10 @@ public:
     QDateTime created() const;
     QDateTime updated() const;
     QString link() const;
-    bool read() const;
 
     QString baseUrl() const;
 
-    void setRead(bool read);
-
     Q_INVOKABLE QString adjustedContent(int width, int fontSize);
-
-Q_SIGNALS:
-    void readChanged(bool read);
 
 private:
     Channel *m_channel;
@@ -61,7 +54,6 @@ private:
     QDateTime m_created;
     QDateTime m_updated;
     QString m_link;
-    bool m_read;
 };
 
 #endif // PROGRAM_H

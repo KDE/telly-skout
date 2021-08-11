@@ -25,12 +25,11 @@ Kirigami.SwipeListItem {
         text: model.program.title
         subtitle: model.program.updated.toLocaleString(Qt.locale(), Locale.ShortFormat) + (model.program.countries.length === 0 ? "" : " " + i18nc("by <country(s)>", "by") + " " + model.program.countries[0].name)
         reserveSpaceForIcon: false
-        bold: !model.program.read
+        bold: false
 
         onClicked: {
             while(pageStack.depth > 2)
                 pageStack.pop()
-            model.program.read = true
             pageStack.push("qrc:/ProgramPage.qml", {"program": model.program, "channelTitle" : channelTitle})
         }
     }

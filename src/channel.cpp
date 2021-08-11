@@ -60,7 +60,6 @@ Channel::Channel(int index)
         if (url == m_url) {
             setRefreshing(false);
             Q_EMIT programCountChanged();
-            Q_EMIT unreadProgramCountChanged();
             setErrorId(0);
             setErrorString(QLatin1String(""));
         }
@@ -154,18 +153,6 @@ int Channel::programCount() const
 {
     QSqlQuery query;
     query.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs where channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_url);
-    Database::instance().execute(query);
-    if (!query.next()) {
-        return -1;
-    }
-    return query.value(0).toInt();
-}
-
-int Channel::unreadProgramCount() const
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs where channel=:channel AND read=0;"));
     query.bindValue(QStringLiteral(":channel"), m_url);
     Database::instance().execute(query);
     if (!query.next()) {

@@ -44,7 +44,6 @@ Program::Program(Channel *channel, int index)
     m_title = programQuery.value(QStringLiteral("title")).toString();
     m_content = programQuery.value(QStringLiteral("content")).toString();
     m_link = programQuery.value(QStringLiteral("link")).toString();
-    m_read = programQuery.value(QStringLiteral("read")).toBool();
 }
 
 Program::~Program()
@@ -87,27 +86,9 @@ QString Program::link() const
     return m_link;
 }
 
-bool Program::read() const
-{
-    return m_read;
-}
-
 QString Program::baseUrl() const
 {
     return QUrl(m_link).adjusted(QUrl::RemovePath).toString();
-}
-
-void Program::setRead(bool read)
-{
-    m_read = read;
-    Q_EMIT readChanged(m_read);
-    QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Programs SET read=:read WHERE id=:id AND channel=:channel"));
-    query.bindValue(QStringLiteral(":id"), m_id);
-    query.bindValue(QStringLiteral(":channel"), m_channel->url());
-    query.bindValue(QStringLiteral(":read"), m_read);
-    Database::instance().execute(query);
-    Q_EMIT m_channel->unreadProgramCountChanged();
 }
 
 QString Program::adjustedContent(int width, int fontSize)
