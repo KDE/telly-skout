@@ -128,7 +128,7 @@ bool Database::channelExists(const QString &url)
     return query.value(0).toInt() != 0;
 }
 
-void Database::addChannel(const QString &url, bool favorite)
+void Database::addChannel(const QString &id, const QString &name, const QString &url, bool favorite)
 {
     qDebug() << "Adding channel";
     if (channelExists(url)) {
@@ -139,26 +139,18 @@ void Database::addChannel(const QString &url, bool favorite)
 
     QUrl urlFromInput = QUrl::fromUserInput(url);
     QSqlQuery query;
-    query.prepare(
-        QStringLiteral("INSERT INTO Channels VALUES (:name, :url, :image, :link, :description, :deleteAfterCount, :deleteAfterType, :subscribed, :lastUpdated, "
-                       ":notify, :favorite, :displayName);"));
-    query.bindValue(QStringLiteral(":name"), urlFromInput.toString());
+    query.prepare(QStringLiteral("INSERT INTO Channels VALUES (:id, :name, :url, :image, :notify, :favorite);"));
+    query.bindValue(QStringLiteral(":id"), id);
+    query.bindValue(QStringLiteral(":name"), name);
     query.bindValue(QStringLiteral(":url"), urlFromInput.toString());
     query.bindValue(QStringLiteral(":image"), QLatin1String(""));
-    query.bindValue(QStringLiteral(":link"), QLatin1String(""));
-    query.bindValue(QStringLiteral(":description"), QLatin1String(""));
-    query.bindValue(QStringLiteral(":deleteAfterCount"), 0);
-    query.bindValue(QStringLiteral(":deleteAfterType"), 0);
-    query.bindValue(QStringLiteral(":subscribed"), QDateTime::currentDateTime().toSecsSinceEpoch());
-    query.bindValue(QStringLiteral(":lastUpdated"), 0);
     query.bindValue(QStringLiteral(":notify"), false);
     query.bindValue(QStringLiteral(":favorite"), favorite);
-    query.bindValue(QStringLiteral(":displayName"), QLatin1String(""));
     execute(query);
 
     Q_EMIT channelAdded(urlFromInput.toString());
 
-    Fetcher::instance().fetchChannel(urlFromInput.toString(), urlFromInput.toString()); // TODO: url -> ID
+    // Fetcher::instance().fetchChannel(urlFromInput.toString(), urlFromInput.toString()); // TODO: url -> ID
 }
 
 void Database::importChannels(const QString &path)
@@ -171,7 +163,7 @@ void Database::importChannels(const QString &path)
     while (!xmlReader.atEnd()) {
         xmlReader.readNext();
         if (xmlReader.tokenType() == 4 && xmlReader.attributes().hasAttribute(QStringLiteral("xmlUrl"))) {
-            addChannel(xmlReader.attributes().value(QStringLiteral("xmlUrl")).toString());
+            addChannel(xmlReader.attributes().value(QStringLiteral("xmlUrl")).toString(), "", "");
         }
     }
     Fetcher::instance().fetchAll();

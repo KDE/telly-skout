@@ -82,15 +82,7 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
     queryChannelExists.next();
 
     if (queryChannelExists.value(0).toInt() == 0) {
-        QSqlQuery queryInsertChannel;
-        queryInsertChannel.prepare(QStringLiteral("INSERT INTO Channels VALUES (:id, :name, :url, :image, :notify, :favorite);"));
-        queryInsertChannel.bindValue(QStringLiteral(":id"), channelId);
-        queryInsertChannel.bindValue(QStringLiteral(":name"), name);
-        queryInsertChannel.bindValue(QStringLiteral(":url"), url);
-        queryInsertChannel.bindValue(QStringLiteral(":image"), QLatin1String(""));
-        queryInsertChannel.bindValue(QStringLiteral(":notify"), false);
-        queryInsertChannel.bindValue(QStringLiteral(":favorite"), false);
-        Database::instance().execute(queryInsertChannel);
+        Database::instance().addChannel(channelId, name, url, false);
     } else {
         // fetch complete program only for favorites
         QSqlQuery queryIsFavorite;

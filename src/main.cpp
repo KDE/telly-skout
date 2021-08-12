@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
     parser.process(app);
     QString channelURL = parser.value(addChannelOption);
     if (channelURL != QStringLiteral("none"))
-        Database::instance().addChannel(channelURL);
+        Database::instance().addChannel(channelURL, "", "");
     about.processCommandLine(&parser);
 
     engine.rootContext()->setContextProperty(QStringLiteral("_aboutData"), QVariant::fromValue(about));
