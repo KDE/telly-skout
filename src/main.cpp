@@ -98,5 +98,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+    Fetcher::instance().fetchAll();
+
     return app.exec();
 }
