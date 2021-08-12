@@ -35,18 +35,6 @@ Kirigami.ScrollablePage {
             iconName: "view-refresh"
             onTriggered: refreshing = true
             visible: !Kirigami.Settings.isMobile
-        },
-        Kirigami.Action {
-            text: i18n("Import Channels...")
-            iconName: "document-import"
-            visible: root.groupFilter === ""
-            onTriggered: importDialog.open()
-        },
-        Kirigami.Action {
-            text: i18n("Export Channels...")
-            iconName: "document-export"
-            visible: root.groupFilter === ""
-            onTriggered: exportDialog.open()
         }
     ]
 
@@ -98,22 +86,5 @@ Kirigami.ScrollablePage {
         ChannelsModel {
             id: channelsModel
         }
-    }
-
-    FileDialog {
-        id: importDialog
-        title: i18n("Import Channels")
-        folder: StandardPaths.writableLocation(StandardPaths.HomeLocation)
-        nameFilters: [i18n("All Files (*)"), i18n("XML Files (*.xml)"), i18n("OPML Files (*.opml)")]
-        onAccepted: Database.importChannels(file)
-    }
-
-    FileDialog {
-        id: exportDialog
-        title: i18n("Export Channels")
-        folder: StandardPaths.writableLocation(StandardPaths.HomeLocation)
-        nameFilters: [i18n("All Files")]
-        onAccepted: Database.exportChannels(file)
-        fileMode: FileDialog.SaveFile
     }
 }

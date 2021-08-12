@@ -153,48 +153,6 @@ void Database::addChannel(const QString &id, const QString &name, const QString 
     // Fetcher::instance().fetchChannel(urlFromInput.toString(), urlFromInput.toString()); // TODO: url -> ID
 }
 
-void Database::importChannels(const QString &path)
-{
-    QUrl url(path);
-    QFile file(url.isLocalFile() ? url.toLocalFile() : url.toString());
-    file.open(QIODevice::ReadOnly);
-
-    QXmlStreamReader xmlReader(&file);
-    while (!xmlReader.atEnd()) {
-        xmlReader.readNext();
-        if (xmlReader.tokenType() == 4 && xmlReader.attributes().hasAttribute(QStringLiteral("xmlUrl"))) {
-            addChannel(xmlReader.attributes().value(QStringLiteral("xmlUrl")).toString(), "", "");
-        }
-    }
-    Fetcher::instance().fetchAll();
-}
-
-void Database::exportChannels(const QString &path)
-{
-    QUrl url(path);
-    QFile file(url.isLocalFile() ? url.toLocalFile() : url.toString());
-    file.open(QIODevice::WriteOnly);
-
-    QXmlStreamWriter xmlWriter(&file);
-    xmlWriter.setAutoFormatting(true);
-    xmlWriter.writeStartDocument(QStringLiteral("1.0"));
-    xmlWriter.writeStartElement(QStringLiteral("opml"));
-    xmlWriter.writeEmptyElement(QStringLiteral("head"));
-    xmlWriter.writeStartElement(QStringLiteral("body"));
-    xmlWriter.writeAttribute(QStringLiteral("version"), QStringLiteral("1.0"));
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT url, name FROM Channels;"));
-    execute(query);
-    while (query.next()) {
-        xmlWriter.writeEmptyElement(QStringLiteral("outline"));
-        xmlWriter.writeAttribute(QStringLiteral("xmlUrl"), query.value(0).toString());
-        xmlWriter.writeAttribute(QStringLiteral("title"), query.value(1).toString());
-    }
-    xmlWriter.writeEndElement();
-    xmlWriter.writeEndElement();
-    xmlWriter.writeEndDocument();
-}
-
 void Database::editChannel(const QString &url, const QString &name, bool favorite)
 {
     QSqlQuery query;
