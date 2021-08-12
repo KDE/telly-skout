@@ -38,21 +38,8 @@ Kirigami.ScrollablePage {
         }
     ]
 
-    AddChannelSheet {
-        id: addSheet
-        groupName: root.groupFilter
-    }
-
     EditChannelSheet {
         id: editSheet
-    }
-
-    actions.main: Kirigami.Action {
-        text: i18n("Add channel")
-        iconName: "list-add"
-        onTriggered: {
-            addSheet.open()
-        }
     }
 
     Kirigami.PlaceholderMessage {
