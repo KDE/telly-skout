@@ -36,10 +36,4 @@ Kirigami.ScrollablePage {
             font.pointSize: _settings && !(_settings.articleFontUseSystem) ? _settings.articleFontSize : Kirigami.Units.fontMetrics.font.pointSize
         }
     }
-
-    actions.main: Kirigami.Action {
-        text: i18n("Open in Browser")
-        icon.name: "globe"
-        onTriggered: Qt.openUrlExternally(program.link)
-    }
 }
