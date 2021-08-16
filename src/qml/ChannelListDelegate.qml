@@ -35,14 +35,6 @@ Kirigami.SwipeListItem {
 
     actions: [
         Kirigami.Action {
-            icon.name: "delete"
-            onTriggered: {
-                if(pageStack.depth > 1 && model.channel.url === lastChannel)
-                    pageStack.pop()
-                channelsModel.removeChannel(model.channel.url)
-            }
-        },
-        Kirigami.Action {
             icon.name: "editor"
             text: i18n("Edit")
 

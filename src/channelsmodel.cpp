@@ -89,19 +89,6 @@ void ChannelsModel::setChannelAsFavorite(const QString &url)
     }
 }
 
-void ChannelsModel::removeChannel(const QString &url)
-{
-    for (int i = 0; i < m_channels.length(); i++) {
-        if (m_channels[i]->url() == url) {
-            m_channels[i]->remove();
-            delete m_channels[i];
-            beginRemoveRows(QModelIndex(), i, i);
-            m_channels.removeAt(i);
-            endRemoveRows();
-        }
-    }
-}
-
 void ChannelsModel::refreshAll()
 {
     for (auto &channel : m_channels) {
