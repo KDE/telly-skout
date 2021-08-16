@@ -26,13 +26,12 @@ Kirigami.ScrollablePage {
         }
 
         Controls.Label {
-            text: page.program.content
+            text: page.program.description
             baseUrl: page.program.baseUrl
             textFormat: Text.RichText
             wrapMode: Text.WordWrap
             Layout.fillWidth: true
             onLinkActivated: Qt.openUrlExternally(link)
-            onWidthChanged: text = program.adjustedContent(width, font.pixelSize)
             font.pointSize: _settings && !(_settings.articleFontUseSystem) ? _settings.articleFontSize : Kirigami.Units.fontMetrics.font.pointSize
         }
     }

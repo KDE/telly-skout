@@ -43,8 +43,6 @@ public:
 
     QString baseUrl() const;
 
-    Q_INVOKABLE QString adjustedContent(int width, int fontSize);
-
 private:
     Channel *m_channel;
     QString m_id;
