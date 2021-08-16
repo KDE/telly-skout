@@ -224,18 +224,18 @@ void Fetcher::processChannel(const QDomElement &channel, const QString &url)
              processCountry(country, QLatin1String(""), url);
          }*/
 
-        /*QString image;
-        if (channel->image()->url().startsWith(QStringLiteral("/"))) {
-            image = QUrl(url).adjusted(QUrl::RemovePath).toString() + channel->image()->url();
-        } else {
-            image = channel->image()->url();
-        }
+        // https://chanlogos.xmltv.se//3sat.de.png
+        // QString image = "https://chanlogos.xmltv.se/" + channelId + ".png";
+
+        // https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/3sat.de_color.svg?inline=false
+        const QString image = "https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/" + channelId + "_color.svg?inline=false";
+
         query.bindValue(QStringLiteral(":image"), image);
         Database::instance().execute(query);
 
-        qDebug() << "Updated channel title:" << channel->title();*/
+        qDebug() << "Updated channel:" << channelId;
 
-        Q_EMIT channelDetailsUpdated(url, channelId, url); // TODO name
+        Q_EMIT channelDetailsUpdated(url, channelId, image); // TODO name
 
         for (int i = 0; i < programs.count(); i++) {
             processProgram(programs.at(i), url);
