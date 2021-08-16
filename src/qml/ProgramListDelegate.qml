@@ -23,7 +23,7 @@ Kirigami.SwipeListItem {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         text: model.program.title
-        subtitle: model.program.updated.toLocaleString(Qt.locale(), Locale.ShortFormat) + (model.program.countries.length === 0 ? "" : " " + i18nc("by <country(s)>", "by") + " " + model.program.countries[0].name)
+        subtitle: model.program.created.toLocaleString(Qt.locale(), Locale.ShortFormat) + (model.program.countries.length === 0 ? "" : " " + i18nc("by <country(s)>", "by") + " " + model.program.countries[0].name)
         reserveSpaceForIcon: false
         bold: false
 
