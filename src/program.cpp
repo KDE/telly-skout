@@ -34,13 +34,13 @@ Program::Program(Channel *channel, int index)
         m_countries += new Country(countryQuery.value(QStringLiteral("name")).toString(), countryQuery.value(QStringLiteral("url")).toString(), nullptr);
     }
 
-    m_created.setSecsSinceEpoch(programQuery.value(QStringLiteral("start")).toInt());
-    m_updated.setSecsSinceEpoch(programQuery.value(QStringLiteral("stop")).toInt());
+    m_start.setSecsSinceEpoch(programQuery.value(QStringLiteral("start")).toInt());
+    m_stop.setSecsSinceEpoch(programQuery.value(QStringLiteral("stop")).toInt());
 
     m_id = programQuery.value(QStringLiteral("id")).toString();
     m_title = programQuery.value(QStringLiteral("title")).toString();
-    m_content = programQuery.value(QStringLiteral("description")).toString();
-    m_link = programQuery.value(QStringLiteral("subtitle")).toString();
+    m_description = programQuery.value(QStringLiteral("description")).toString();
+    m_subtitle = programQuery.value(QStringLiteral("subtitle")).toString();
 }
 
 Program::~Program()
@@ -58,9 +58,9 @@ QString Program::title() const
     return m_title;
 }
 
-QString Program::content() const
+QString Program::description() const
 {
-    return m_content;
+    return m_description;
 }
 
 QVector<Country *> Program::countries() const
@@ -68,29 +68,29 @@ QVector<Country *> Program::countries() const
     return m_countries;
 }
 
-QDateTime Program::created() const
+QDateTime Program::start() const
 {
-    return m_created;
+    return m_start;
 }
 
-QDateTime Program::updated() const
+QDateTime Program::stop() const
 {
-    return m_updated;
+    return m_stop;
 }
 
-QString Program::link() const
+QString Program::subtitle() const
 {
-    return m_link;
+    return m_subtitle;
 }
 
 QString Program::baseUrl() const
 {
-    return QUrl(m_link).adjusted(QUrl::RemovePath).toString();
+    return QUrl(m_subtitle).adjusted(QUrl::RemovePath).toString();
 }
 
 QString Program::adjustedContent(int width, int fontSize)
 {
-    QString ret(m_content);
+    QString ret(m_description);
     QRegularExpression imgRegex(QStringLiteral("<img ((?!width=\"[0-9]+(px)?\").)*(width=\"([0-9]+)(px)?\")?[^>]*>"));
 
     QRegularExpressionMatchIterator i = imgRegex.globalMatch(ret);

@@ -22,11 +22,11 @@ class Program : public QObject
 
     Q_PROPERTY(QString id READ id CONSTANT)
     Q_PROPERTY(QString title READ title CONSTANT)
-    Q_PROPERTY(QString content READ content CONSTANT)
+    Q_PROPERTY(QString description READ description CONSTANT)
     Q_PROPERTY(QVector<Country *> countries READ countries CONSTANT)
-    Q_PROPERTY(QDateTime created READ created CONSTANT)
-    Q_PROPERTY(QDateTime updated READ updated CONSTANT)
-    Q_PROPERTY(QString link READ link CONSTANT)
+    Q_PROPERTY(QDateTime start READ start CONSTANT)
+    Q_PROPERTY(QDateTime stop READ stop CONSTANT)
+    Q_PROPERTY(QString subtitle READ subtitle CONSTANT)
     Q_PROPERTY(QString baseUrl READ baseUrl CONSTANT);
 
 public:
@@ -35,11 +35,11 @@ public:
 
     QString id() const;
     QString title() const;
-    QString content() const;
+    QString description() const;
     QVector<Country *> countries() const;
-    QDateTime created() const;
-    QDateTime updated() const;
-    QString link() const;
+    QDateTime start() const;
+    QDateTime stop() const;
+    QString subtitle() const;
 
     QString baseUrl() const;
 
@@ -49,11 +49,11 @@ private:
     Channel *m_channel;
     QString m_id;
     QString m_title;
-    QString m_content;
+    QString m_description;
     QVector<Country *> m_countries;
-    QDateTime m_created;
-    QDateTime m_updated;
-    QString m_link;
+    QDateTime m_start;
+    QDateTime m_stop;
+    QString m_subtitle;
 };
 
 #endif // PROGRAM_H
