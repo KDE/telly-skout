@@ -38,10 +38,6 @@ Kirigami.ScrollablePage {
         }
     ]
 
-    EditChannelSheet {
-        id: editSheet
-    }
-
     Kirigami.PlaceholderMessage {
         visible: channelList.count === 0
 
@@ -64,10 +60,6 @@ Kirigami.ScrollablePage {
         }
 
         delegate: ChannelListDelegate {
-            onEditChannel: {
-                editSheet.channel = channelObj
-                editSheet.open()
-            }
         }
 
         ChannelsModel {

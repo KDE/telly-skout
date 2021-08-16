@@ -21,7 +21,6 @@ public:
     bool execute(QSqlQuery &query);
     bool execute(const QString &query);
     Q_INVOKABLE void addChannel(const QString &id, const QString &name, const QString &url, bool favorite = false);
-    Q_INVOKABLE void editChannel(const QString &url, const QString &name, bool favorite);
 
 Q_SIGNALS:
     void channelAdded(const QString &url);

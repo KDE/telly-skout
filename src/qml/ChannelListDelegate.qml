@@ -17,8 +17,6 @@ Kirigami.SwipeListItem {
     leftPadding: 0
     rightPadding: 0
 
-    signal editChannel(var channelObj)
-
     contentItem: Kirigami.BasicListItem {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -34,12 +32,6 @@ Kirigami.SwipeListItem {
     }
 
     actions: [
-        Kirigami.Action {
-            icon.name: "editor"
-            text: i18n("Edit")
-
-            onTriggered: editChannel(model.channel)
-        },
         Kirigami.Action {
             icon.name: "favorite"
             text: i18n("Favorite")

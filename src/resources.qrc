@@ -10,7 +10,6 @@
         <file alias="ChannelDetailsPage.qml">qml/ChannelDetailsPage.qml</file>
         <file alias="ProgramListDelegate.qml">qml/ProgramListDelegate.qml</file>
         <file alias="ChannelListDelegate.qml">qml/ChannelListDelegate.qml</file>
-        <file alias="EditChannelSheet.qml">qml/EditChannelSheet.qml</file>
         <file alias="GlobalDrawer.qml">qml/GlobalDrawer.qml</file>
         <file>qtquickcontrols2.conf</file>
     </qresource>

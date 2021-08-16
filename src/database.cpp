@@ -152,15 +152,3 @@ void Database::addChannel(const QString &id, const QString &name, const QString 
 
     // Fetcher::instance().fetchChannel(urlFromInput.toString(), urlFromInput.toString()); // TODO: url -> ID
 }
-
-void Database::editChannel(const QString &url, const QString &name, bool favorite)
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Channels SET name = :name, favorite = :favorite WHERE url = :url;"));
-    query.bindValue(QStringLiteral(":name"), name);
-    query.bindValue(QStringLiteral(":favorite"), favorite);
-    query.bindValue(QStringLiteral(":url"), url);
-    execute(query);
-
-    Q_EMIT channelDetailsUpdated(url, name, favorite);
-}
