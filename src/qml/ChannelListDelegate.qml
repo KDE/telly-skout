@@ -24,7 +24,6 @@ Kirigami.SwipeListItem {
         anchors.bottom: parent.bottom
         text: model.channel.displayName || model.channel.name
         icon: model.channel.refreshing ? "view-refresh" : model.channel.image === "" ? "rss" : Fetcher.image(model.channel.image)
-        subtitle: i18n("some subtitle")
 
         onClicked: {
             lastChannel = model.channel.url
