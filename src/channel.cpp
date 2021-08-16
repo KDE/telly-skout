@@ -15,7 +15,7 @@ Channel::Channel(int index)
     : QObject(nullptr)
 {
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT * FROM Channels LIMIT 1 OFFSET :index;"));
+    query.prepare(QStringLiteral("SELECT * FROM Channels ORDER BY name LIMIT 1 OFFSET :index;"));
     query.bindValue(QStringLiteral(":index"), index);
     Database::instance().execute(query);
     if (!query.next()) {
