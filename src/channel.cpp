@@ -40,21 +40,21 @@ Channel::Channel(int index)
     m_errorId = 0;
     m_errorString = QLatin1String("");
 
-    connect(&Fetcher::instance(), &Fetcher::startedFetchingChannel, this, [this](const QString &url) {
-        if (url == m_url) {
+    connect(&Fetcher::instance(), &Fetcher::startedFetchingChannel, this, [this](const QString &id) {
+        if (id == m_id) {
             setRefreshing(true);
         }
     });
-    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &url) {
-        if (url == m_url) {
+    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
+        if (id == m_id) {
             setRefreshing(false);
             Q_EMIT programCountChanged();
             setErrorId(0);
             setErrorString(QLatin1String(""));
         }
     });
-    connect(&Fetcher::instance(), &Fetcher::error, this, [this](const QString &url, int errorId, const QString &errorString) {
-        if (url == m_url) {
+    connect(&Fetcher::instance(), &Fetcher::error, this, [this](const QString &id, int errorId, const QString &errorString) {
+        if (id == m_id) {
             setErrorId(errorId);
             setErrorString(errorString);
             setRefreshing(false);

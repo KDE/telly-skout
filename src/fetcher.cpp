@@ -35,7 +35,7 @@ void Fetcher::fetchCountry(const QString &url)
         if (reply->error()) {
             qWarning() << "Error fetching country";
             qWarning() << reply->errorString();
-            Q_EMIT error(url, reply->error(), reply->errorString());
+            Q_EMIT error(url, reply->error(), reply->errorString()); // TODO: error handling for country fetching (see channel.cpp)
         } else {
             QByteArray data = reply->readAll();
 
@@ -72,7 +72,7 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
 {
     const QString url = "http://xmltv.xmltv.se/" + channelId;
 
-    Q_EMIT startedFetchingChannel(url);
+    Q_EMIT startedFetchingChannel(channelId);
 
     // if channel is unknown, store it
     QSqlQuery queryChannelExists;
@@ -96,15 +96,15 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
             const QString urlToday = url + "_" + current.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
             qDebug() << "Starting to fetch" << urlToday;
 
-            Q_EMIT startedFetchingChannel(urlToday);
+            Q_EMIT startedFetchingChannel(channelId);
 
             QNetworkRequest request((QUrl(urlToday)));
             QNetworkReply *reply = get(request);
-            connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
+            connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply]() {
                 if (reply->error()) {
                     qWarning() << "Error fetching channel";
                     qWarning() << reply->errorString();
-                    Q_EMIT error(url, reply->error(), reply->errorString());
+                    Q_EMIT error(channelId, reply->error(), reply->errorString());
                 } else {
                     QByteArray data = reply->readAll();
 
@@ -156,7 +156,7 @@ void Fetcher::fetchAll()
     const QString url = "http://xmltv.se/countries.xml";
     qDebug() << "Starting to fetch" << url;
 
-    // Q_EMIT startedFetchingChannel(url);
+    // Q_EMIT startedFetchingChannel(id);
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
@@ -164,7 +164,7 @@ void Fetcher::fetchAll()
         if (reply->error()) {
             qWarning() << "Error fetching countries";
             qWarning() << reply->errorString();
-            Q_EMIT error(url, reply->error(), reply->errorString());
+            Q_EMIT error(url, reply->error(), reply->errorString()); // TODO: error handling for countries fetching (see channel.cpp)
         } else {
             QByteArray data = reply->readAll();
 
@@ -241,7 +241,7 @@ void Fetcher::processChannel(const QDomElement &channel, const QString &url)
             processProgram(programs.at(i), url);
         }
 
-        Q_EMIT channelUpdated(url);
+        Q_EMIT channelUpdated(channelId);
     }
 }
 

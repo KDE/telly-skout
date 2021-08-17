@@ -16,8 +16,8 @@ ProgramsModel::ProgramsModel(Channel *channel)
     : QAbstractListModel(channel)
     , m_channel(channel)
 {
-    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &url) {
-        if (m_channel->url() == url) {
+    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
+        if (m_channel->id() == id) {
             beginResetModel();
             for (auto &program : m_programs) {
                 delete program;

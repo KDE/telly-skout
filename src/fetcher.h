@@ -42,9 +42,9 @@ private:
     QNetworkAccessManager *manager;
 
 Q_SIGNALS:
-    void startedFetchingChannel(const QString &url);
-    void channelUpdated(const QString &url);
+    void startedFetchingChannel(const QString &id);
+    void channelUpdated(const QString &id);
     void channelDetailsUpdated(const QString &id, const QString &image);
-    void error(const QString &url, int errorId, const QString &errorString);
+    void error(const QString &id, int errorId, const QString &errorString);
     void imageDownloadFinished(const QString &url);
 };
