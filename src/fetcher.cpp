@@ -123,6 +123,8 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
     if (queryChannelExists.value(0).toInt() == 0) {
         const QString image = "https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/" + channelId + "_color.svg?inline=false";
         Database::instance().addChannel(channelId, name, url, image, false);
+
+        Q_EMIT channelUpdated(channelId);
     } else {
         // fetch complete program only for favorites
         QSqlQuery queryIsFavorite;
@@ -135,8 +137,6 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
             QDateTime current = QDateTime::currentDateTime();
             const QString urlToday = url + "_" + current.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
             qDebug() << "Starting to fetch" << urlToday;
-
-            Q_EMIT startedFetchingChannel(channelId);
 
             QNetworkRequest request((QUrl(urlToday)));
             QNetworkReply *reply = get(request);
@@ -160,6 +160,9 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
                 }
                 delete reply;
             });
+        } else {
+            // nothing to do
+        Q_EMIT channelUpdated(channelId);
         }
     }
 }
