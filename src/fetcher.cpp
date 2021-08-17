@@ -25,6 +25,54 @@ Fetcher::Fetcher()
     manager->enableStrictTransportSecurityStore(true);
 }
 
+void Fetcher::fetchAll()
+{
+    /*QSqlQuery query;
+    query.prepare(QStringLiteral("SELECT url FROM Channels;")); // url for channel e.g. http://xmltv.xmltv.se/3sat.de
+    Database::instance().execute(query);
+    while (query.next()) {
+        fetch(query.value(0).toString());
+    }*/
+
+    // http://xmltv.se/countries.xml
+    const QString url = "http://xmltv.se/countries.xml";
+    qDebug() << "Starting to fetch" << url;
+
+    // Q_EMIT startedFetchingChannel(id);
+
+    QNetworkRequest request((QUrl(url)));
+    QNetworkReply *reply = get(request);
+    connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
+        if (reply->error()) {
+            qWarning() << "Error fetching countries";
+            qWarning() << reply->errorString();
+            Q_EMIT error(url, reply->error(), reply->errorString()); // TODO: error handling for countries fetching (see channel.cpp)
+        } else {
+            QByteArray data = reply->readAll();
+
+            QDomDocument versionXML;
+
+            if (!versionXML.setContent(data)) {
+                qWarning() << "Failed to parse XML";
+            }
+
+            // print out the element names of all elements that are direct children
+            // of the outermost element.
+            QDomElement docElem = versionXML.documentElement();
+
+            QDomNodeList nodes = versionXML.elementsByTagName("country");
+            for (int i = 0; i < nodes.count(); i++) {
+                QDomNode elm = nodes.at(i);
+                if (elm.isElement()) {
+                    const QDomElement &countryElement = elm.toElement();
+                    processCountry(countryElement);
+                }
+            }
+        }
+        delete reply;
+    });
+}
+
 void Fetcher::fetchCountry(const QString &url)
 {
     qDebug() << "Starting to fetch" << url;
@@ -142,54 +190,6 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
             });
         }
     }
-}
-
-void Fetcher::fetchAll()
-{
-    /*QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT url FROM Channels;")); // url for channel e.g. http://xmltv.xmltv.se/3sat.de
-    Database::instance().execute(query);
-    while (query.next()) {
-        fetch(query.value(0).toString());
-    }*/
-
-    // http://xmltv.se/countries.xml
-    const QString url = "http://xmltv.se/countries.xml";
-    qDebug() << "Starting to fetch" << url;
-
-    // Q_EMIT startedFetchingChannel(id);
-
-    QNetworkRequest request((QUrl(url)));
-    QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
-        if (reply->error()) {
-            qWarning() << "Error fetching countries";
-            qWarning() << reply->errorString();
-            Q_EMIT error(url, reply->error(), reply->errorString()); // TODO: error handling for countries fetching (see channel.cpp)
-        } else {
-            QByteArray data = reply->readAll();
-
-            QDomDocument versionXML;
-
-            if (!versionXML.setContent(data)) {
-                qWarning() << "Failed to parse XML";
-            }
-
-            // print out the element names of all elements that are direct children
-            // of the outermost element.
-            QDomElement docElem = versionXML.documentElement();
-
-            QDomNodeList nodes = versionXML.elementsByTagName("country");
-            for (int i = 0; i < nodes.count(); i++) {
-                QDomNode elm = nodes.at(i);
-                if (elm.isElement()) {
-                    const QDomElement &countryElement = elm.toElement();
-                    processCountry(countryElement);
-                }
-            }
-        }
-        delete reply;
-    });
 }
 
 void Fetcher::processCountry(const QDomElement &country)
