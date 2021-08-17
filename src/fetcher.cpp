@@ -27,18 +27,9 @@ Fetcher::Fetcher()
 
 void Fetcher::fetchAll()
 {
-    /*QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT url FROM Channels;")); // url for channel e.g. http://xmltv.xmltv.se/3sat.de
-    Database::instance().execute(query);
-    while (query.next()) {
-        fetch(query.value(0).toString());
-    }*/
-
     // http://xmltv.se/countries.xml
     const QString url = "http://xmltv.se/countries.xml";
     qDebug() << "Starting to fetch" << url;
-
-    // Q_EMIT startedFetchingChannel(id);
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
@@ -163,28 +154,9 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
                         qWarning() << "Failed to parse XML";
                     }
 
-                    // print out the element names of all elements that are direct children
-                    // of the outermost element.
-                    /*QDomElement docElem = versionXML.documentElement();
-
-                    QDomNodeList nodes = versionXML.elementsByTagName("country");
-                    qDebug() << "Countries";
-                    QVector<QString> mCountries;
-                    for (int i = 0; i < nodes.count(); i++) {
-                      QDomNode elm = nodes.at(i);
-                      if (elm.isElement()) {
-                        qDebug() << elm.toElement().tagName() << " = "
-                                 << elm.toElement().text();
-                        mCountries.push_back(elm.toElement().text());
-                      }
-                    }*/
-
                     QDomElement docElem = versionXML.documentElement();
 
-                    // channel = channel, program = Sendung
                     processChannel(docElem, url);
-
-                    // https://gitlab.com/tabos/tvguide/-/blob/master/src/tvguide-assistant.c
                 }
                 delete reply;
             });
@@ -263,10 +235,6 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
     query.bindValue(QStringLiteral(":category"), category);
 
     Database::instance().execute(query);
-
-    // for (const auto &country : program->countries()) {
-    //    processCountry(url, id);
-    //}
 }
 
 QString Fetcher::image(const QString &url)
