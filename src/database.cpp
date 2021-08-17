@@ -46,8 +46,7 @@ bool Database::createTables()
     TRUE_OR_RETURN(
         execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Programs (id TEXT UNIQUE, channel TEXT, start INTEGER, stop INTEGER, title TEXT, subtitle TEXT, "
                                "description TEXT, category TEXT);")));
-    TRUE_OR_RETURN(execute(
-        QStringLiteral("CREATE TABLE IF NOT EXISTS Enclosures (channel TEXT, id TEXT, duration INTEGER, size INTEGER, title TEXT, type STRING, url STRING);")));
+
     TRUE_OR_RETURN(execute(QStringLiteral("PRAGMA user_version = 1;")));
     return true;
 }

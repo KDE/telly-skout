@@ -37,7 +37,6 @@ private:
     void processCountry(const QDomElement &country);
     void processChannel(const QDomElement &channel, const QString &url);
     void processProgram(const QDomNode &program, const QString &url);
-    void processEnclosure(const QString &channelUrl, unsigned int id);
 
     QNetworkAccessManager *manager;
 

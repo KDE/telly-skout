@@ -212,8 +212,6 @@ void Channel::remove()
     query.bindValue(QStringLiteral(":channel"), m_url);
     Database::instance().execute(query);
 
-    // TODO Delete Enclosures
-
     // Delete Channel
     query.prepare(QStringLiteral("DELETE FROM Channels WHERE url=:url;"));
     query.bindValue(QStringLiteral(":url"), m_url);

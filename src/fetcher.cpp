@@ -288,24 +288,6 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
     // for (const auto &country : program->countries()) {
     //    processCountry(url, id);
     //}
-
-    // for (const auto &enclosure : program->enclosures()) {
-    //    processEnclosure(url, id);
-    //}*/
-}
-
-void Fetcher::processEnclosure(const QString &channelUrl, unsigned int id)
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("INSERT INTO Enclosures VALUES (:channel, :id, :duration, :size, :title, :type, :url);"));
-    query.bindValue(QStringLiteral(":channel"), channelUrl);
-    query.bindValue(QStringLiteral(":id"), id);
-    query.bindValue(QStringLiteral(":duration"), 3); // TODO
-    query.bindValue(QStringLiteral(":size"), 500); // TODO
-    query.bindValue(QStringLiteral(":title"), "Title"); // TODO
-    query.bindValue(QStringLiteral(":type"), "Type"); // TODO
-    query.bindValue(QStringLiteral(":url"), channelUrl); // TODO
-    Database::instance().execute(query);
 }
 
 QString Fetcher::image(const QString &url)
