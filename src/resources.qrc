@@ -7,7 +7,6 @@
         <file alias="ChannelListPage.qml">qml/ChannelListPage.qml</file>
         <file alias="ProgramPage.qml">qml/ProgramPage.qml</file>
         <file alias="SettingsPage.qml">qml/SettingsPage.qml</file>
-        <file alias="ChannelDetailsPage.qml">qml/ChannelDetailsPage.qml</file>
         <file alias="ProgramListDelegate.qml">qml/ProgramListDelegate.qml</file>
         <file alias="ChannelListDelegate.qml">qml/ChannelListDelegate.qml</file>
         <file alias="GlobalDrawer.qml">qml/GlobalDrawer.qml</file>

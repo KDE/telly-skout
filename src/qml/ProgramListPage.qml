@@ -33,18 +33,6 @@ Kirigami.ScrollablePage {
         }
     }
 
-    contextualActions: [
-        Kirigami.Action {
-            iconName: "help-about-symbolic"
-            text: i18n("Details")
-            onTriggered: {
-                while(pageStack.depth > 2)
-                    pageStack.pop()
-                pageStack.push("qrc:/ChannelDetailsPage.qml", {"channel": channel})
-            }
-        }
-    ]
-
     actions.main: Kirigami.Action {
         iconName: "view-refresh"
         text: i18n("Refresh Channel")
