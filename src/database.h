@@ -24,7 +24,7 @@ public:
 
 Q_SIGNALS:
     void channelAdded(const QString &url);
-    void channelDetailsUpdated(const QString &url, const QString &name, bool favorite);
+    void channelDetailsUpdated(const QString &id, bool favorite);
 
 private:
     Database();

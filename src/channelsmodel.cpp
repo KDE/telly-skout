@@ -22,10 +22,9 @@ ChannelsModel::ChannelsModel(QObject *parent)
         endInsertRows();
     });
 
-    connect(&Fetcher::instance(), &Fetcher::channelDetailsUpdated, this, [this](const QString &url, const QString &name, const QString &image) {
+    connect(&Fetcher::instance(), &Fetcher::channelDetailsUpdated, this, [this](const QString &id, const QString &image) {
         for (int i = 0; i < m_channels.length(); i++) {
-            if (m_channels[i]->url() == url) {
-                m_channels[i]->setName(name);
+            if (m_channels[i]->id() == id) {
                 m_channels[i]->setImage(image);
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
                 break;
@@ -33,10 +32,9 @@ ChannelsModel::ChannelsModel(QObject *parent)
         }
     });
 
-    connect(&Database::instance(), &Database::channelDetailsUpdated, [this](const QString &url, const QString &name, bool favorite) {
+    connect(&Database::instance(), &Database::channelDetailsUpdated, [this](const QString &id, bool favorite) {
         for (int i = 0; i < m_channels.length(); i++) {
-            if (m_channels[i]->url() == url) {
-                m_channels[i]->setName(name);
+            if (m_channels[i]->id() == id) {
                 m_channels[i]->setFavorite(favorite);
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
                 break;

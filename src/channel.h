@@ -18,6 +18,7 @@ class Channel : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QString id READ id CONSTANT)
     Q_PROPERTY(QString url READ url CONSTANT)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString image READ image WRITE setImage NOTIFY imageChanged)
@@ -35,6 +36,7 @@ public:
 
     ~Channel();
 
+    QString id() const;
     QString url() const;
     QString name() const;
     QString image() const;
@@ -75,6 +77,7 @@ Q_SIGNALS:
     void refreshingChanged(bool refreshing);
 
 private:
+    QString m_id;
     QString m_url;
     QString m_name;
     QString m_image;

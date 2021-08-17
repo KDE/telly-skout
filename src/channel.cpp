@@ -30,8 +30,9 @@ Channel::Channel(int index)
         m_countries += new Country(countryQuery.value(QStringLiteral("name")).toString(), countryQuery.value(QStringLiteral("url")).toString(), nullptr);
     }*/
 
-    m_name = query.value(QStringLiteral("name")).toString();
+    m_id = query.value(QStringLiteral("id")).toString();
     m_url = query.value(QStringLiteral("url")).toString();
+    m_name = query.value(QStringLiteral("name")).toString();
     m_image = query.value(QStringLiteral("image")).toString();
     m_notify = query.value(QStringLiteral("notify")).toBool();
     m_favorite = query.value(QStringLiteral("favorite")).toBool();
@@ -70,6 +71,11 @@ Channel::Channel(int index)
 
 Channel::~Channel()
 {
+}
+
+QString Channel::id() const
+{
+    return m_id;
 }
 
 QString Channel::url() const

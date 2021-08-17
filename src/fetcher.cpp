@@ -235,7 +235,7 @@ void Fetcher::processChannel(const QDomElement &channel, const QString &url)
 
         qDebug() << "Updated channel:" << channelId;
 
-        Q_EMIT channelDetailsUpdated(url, channelId, image); // TODO name
+        Q_EMIT channelDetailsUpdated(channelId, image);
 
         for (int i = 0; i < programs.count(); i++) {
             processProgram(programs.at(i), url);
