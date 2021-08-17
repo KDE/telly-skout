@@ -82,7 +82,8 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name)
     queryChannelExists.next();
 
     if (queryChannelExists.value(0).toInt() == 0) {
-        Database::instance().addChannel(channelId, name, url, false);
+        const QString image = "https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/" + channelId + "_color.svg?inline=false";
+        Database::instance().addChannel(channelId, name, url, image, false);
     } else {
         // fetch complete program only for favorites
         QSqlQuery queryIsFavorite;
@@ -215,28 +216,6 @@ void Fetcher::processChannel(const QDomElement &channel, const QString &url)
 
     const QString &channelId = attributes.namedItem("channel").toAttr().value();
     if (programs.count() > 0) {
-        QSqlQuery query;
-        query.prepare(QStringLiteral("UPDATE Channels SET image=:image WHERE url=:url;"));
-        query.bindValue(QStringLiteral(":url"), url);
-        Database::instance().execute(query);
-
-        /* for (auto &country : channel->countries()) {
-             processCountry(country, QLatin1String(""), url);
-         }*/
-
-        // https://chanlogos.xmltv.se//3sat.de.png
-        // QString image = "https://chanlogos.xmltv.se/" + channelId + ".png";
-
-        // https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/3sat.de_color.svg?inline=false
-        const QString image = "https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/" + channelId + "_color.svg?inline=false";
-
-        query.bindValue(QStringLiteral(":image"), image);
-        Database::instance().execute(query);
-
-        qDebug() << "Updated channel:" << channelId;
-
-        Q_EMIT channelDetailsUpdated(channelId, image);
-
         for (int i = 0; i < programs.count(); i++) {
             processProgram(programs.at(i), url);
         }

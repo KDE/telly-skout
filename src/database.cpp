@@ -127,7 +127,7 @@ bool Database::channelExists(const QString &url)
     return query.value(0).toInt() != 0;
 }
 
-void Database::addChannel(const QString &id, const QString &name, const QString &url, bool favorite)
+void Database::addChannel(const QString &id, const QString &name, const QString &url, const QString &image, bool favorite)
 {
     qDebug() << "Adding channel";
     if (channelExists(url)) {
@@ -142,7 +142,7 @@ void Database::addChannel(const QString &id, const QString &name, const QString 
     query.bindValue(QStringLiteral(":id"), id);
     query.bindValue(QStringLiteral(":name"), name);
     query.bindValue(QStringLiteral(":url"), urlFromInput.toString());
-    query.bindValue(QStringLiteral(":image"), QLatin1String(""));
+    query.bindValue(QStringLiteral(":image"), image);
     query.bindValue(QStringLiteral(":notify"), false);
     query.bindValue(QStringLiteral(":favorite"), favorite);
     execute(query);
