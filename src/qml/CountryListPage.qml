@@ -6,7 +6,6 @@
 
 import QtQuick 2.14
 import QtQuick.Controls 2.14 as Controls
-import Qt.labs.platform 1.1
 import QtQuick.Layouts 1.14
 
 import org.kde.kirigami 2.12 as Kirigami
@@ -16,11 +15,9 @@ import org.kde.TellyScout 1.0
 Kirigami.ScrollablePage {
     id: root
 
-    title: groupFilter ? groupFilter : "Telly Scout"
+    title: "Countries"
 
-    property var lastChannel: ""
-    property alias groupFilter: proxyModel.groupName
-    property alias countryFilter: proxyModel.country
+    property var lastCountry: ""
 
 
     supportsRefreshing: true
@@ -32,7 +29,7 @@ Kirigami.ScrollablePage {
 
     contextualActions: [
         Kirigami.Action {
-            text: i18n("Refresh all channels")
+            text: i18n("Refresh all countries")
             iconName: "view-refresh"
             onTriggered: refreshing = true
             visible: !Kirigami.Settings.isMobile
@@ -40,32 +37,23 @@ Kirigami.ScrollablePage {
     ]
 
     Kirigami.PlaceholderMessage {
-        visible: channelList.count === 0
+        visible: countryList.count === 0
 
         width: Kirigami.Units.gridUnit * 20
         icon.name: "rss"
         anchors.centerIn: parent
 
-        text: i18n("No Channels added yet")
+        text: i18n("No countries added yet")
     }
 
     ListView {
-        id: channelList
+        id: countryList
 
         anchors.fill: parent
 
-        model: ChannelsProxyModel {
-            id: proxyModel
-            groupName: ""
-            country: ""
-            sourceModel: channelsModel
-        }
+        model: CountriesModel { }
 
-        delegate: ChannelListDelegate {
-        }
-
-        ChannelsModel {
-            id: channelsModel
+        delegate: CountryListDelegate {
         }
     }
 }

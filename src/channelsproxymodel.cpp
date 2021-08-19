@@ -22,6 +22,11 @@ ChannelsProxyModel::~ChannelsProxyModel()
 {
 }
 
+QString ChannelsProxyModel::groupName() const
+{
+    return m_group_name;
+}
+
 void ChannelsProxyModel::setGroupName(const QString &name)
 {
     if (m_group_name != name) {
@@ -31,9 +36,18 @@ void ChannelsProxyModel::setGroupName(const QString &name)
     }
 }
 
-QString ChannelsProxyModel::groupName() const
+QString ChannelsProxyModel::country() const
 {
-    return m_group_name;
+    return m_country;
+}
+
+void ChannelsProxyModel::setCountry(const QString &country)
+{
+    if (m_country != country) {
+        m_country = country;
+        invalidateFilter();
+        Q_EMIT countryChanged();
+    }
 }
 
 bool ChannelsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
@@ -44,15 +58,16 @@ bool ChannelsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sou
         return false;
     }
 
-    if (m_group_name.isEmpty()) {
+    // no filter
+    if (m_group_name.isEmpty() && m_country.isEmpty()) {
         return true;
     }
 
+    // at least one filter
     auto channel = idx.data(0).value<Channel *>();
 
-    if (channel->favorite()) {
-        return true;
-    }
+    const bool groupNameMatches = m_group_name.isEmpty() || channel->favorite();
+    const bool countryMatches = m_country.isEmpty() || channel->country() == m_country;
 
-    return false;
+    return groupNameMatches && countryMatches;
 }

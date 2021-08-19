@@ -10,6 +10,7 @@ add_executable(telly-scout
     program.cpp
     channel.cpp
     country.cpp
+    countriesmodel.cpp
     channelsproxymodel.cpp
     resources.qrc
 )

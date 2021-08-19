@@ -13,6 +13,7 @@ import org.kde.TellyScout 1.0 as TellyScout
 Kirigami.GlobalDrawer {
     id: root
 
+    property var countriesPage
     property var channelsPage
 
     isMenu: true
@@ -23,7 +24,7 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear()
                 pageStack.clear()
-                pageStack.push(root.channelsPage, {groupFilter: "Favorites"})
+                pageStack.push(root.channelsPage, {groupFilter: "Favorites", countryFilter: ""})
             }
         },
         Kirigami.Action {
@@ -32,7 +33,16 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear()
                 pageStack.clear()
-                pageStack.push(root.channelsPage, {groupFilter: ""})
+                pageStack.push(root.channelsPage, {groupFilter: "", countryFilter: ""})
+            }
+        },
+        Kirigami.Action {
+            text: i18n("Countries")
+            iconName: "rss"
+            onTriggered: {
+                pageStack.layers.clear()
+                pageStack.clear()
+                pageStack.push(root.countriesPage, {})
             }
         },
         Kirigami.Action {

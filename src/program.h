@@ -48,7 +48,7 @@ private:
     QString m_id;
     QString m_title;
     QString m_description;
-    QVector<Country *> m_countries;
+    QVector<Country *> m_countries; // TODO: remove
     QDateTime m_start;
     QDateTime m_stop;
     QString m_subtitle;

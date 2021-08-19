@@ -21,6 +21,7 @@ class Channel : public QObject
     Q_PROPERTY(QString id READ id CONSTANT)
     Q_PROPERTY(QString url READ url CONSTANT)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString country READ country WRITE setCountry NOTIFY countryChanged)
     Q_PROPERTY(QString image READ image WRITE setImage NOTIFY imageChanged)
     Q_PROPERTY(bool favorite READ favorite WRITE setFavorite NOTIFY favoriteChanged)
     Q_PROPERTY(QVector<Country *> countries READ countries WRITE setCountries NOTIFY countriesChanged)
@@ -39,6 +40,7 @@ public:
     QString id() const;
     QString url() const;
     QString name() const;
+    QString country() const;
     QString image() const;
     bool favorite() const;
     QVector<Country *> countries() const;
@@ -50,6 +52,7 @@ public:
     bool refreshing() const;
 
     void setName(const QString &name);
+    void setCountry(const QString &country);
     void setImage(const QString &image);
     void setFavorite(bool favorite);
     void setCountries(const QVector<Country *> &countries);
@@ -64,6 +67,7 @@ public:
 
 Q_SIGNALS:
     void nameChanged(const QString &name);
+    void countryChanged(const QString &country);
     void imageChanged(const QString &image);
     void favoriteChanged(bool favorite);
     void countriesChanged(const QVector<Country *> &countries);
@@ -80,9 +84,10 @@ private:
     QString m_id;
     QString m_url;
     QString m_name;
+    QString m_country;
     QString m_image;
     bool m_favorite;
-    QVector<Country *> m_countries;
+    QVector<Country *> m_countries; // TODO: remove
     bool m_notify;
     int m_errorId;
     QString m_errorString;

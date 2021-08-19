@@ -33,6 +33,7 @@ Channel::Channel(int index)
     m_id = query.value(QStringLiteral("id")).toString();
     m_url = query.value(QStringLiteral("url")).toString();
     m_name = query.value(QStringLiteral("name")).toString();
+    m_country = query.value(QStringLiteral("country")).toString();
     m_image = query.value(QStringLiteral("image")).toString();
     m_notify = query.value(QStringLiteral("notify")).toBool();
     m_favorite = query.value(QStringLiteral("favorite")).toBool();
@@ -88,6 +89,11 @@ QString Channel::name() const
     return m_name;
 }
 
+QString Channel::country() const
+{
+    return m_country;
+}
+
 QString Channel::image() const
 {
     return m_image;
@@ -141,6 +147,12 @@ void Channel::setName(const QString &name)
     Q_EMIT nameChanged(m_name);
 }
 
+void Channel::setCountry(const QString &country)
+{
+    m_country = country;
+    Q_EMIT countryChanged(m_country);
+}
+
 void Channel::setImage(const QString &image)
 {
     m_image = image;
@@ -188,7 +200,7 @@ void Channel::setErrorString(const QString &errorString)
 
 void Channel::refresh()
 {
-    Fetcher::instance().fetchChannel(m_url, m_url); // TODO: url -> ID
+    Fetcher::instance().fetchChannel(m_url, m_url, ""); // TODO: url -> ID
 }
 
 void Channel::setAsFavorite()

@@ -18,6 +18,7 @@ class ChannelsProxyModel : public QSortFilterProxyModel
     Q_OBJECT
 
     Q_PROPERTY(QString groupName READ groupName WRITE setGroupName NOTIFY groupNameChanged)
+    Q_PROPERTY(QString country READ country WRITE setCountry NOTIFY countryChanged)
 
 public:
     explicit ChannelsProxyModel(QObject *parent = nullptr);
@@ -28,10 +29,15 @@ public:
     QString groupName() const;
     void setGroupName(const QString &name);
 
+    QString country() const;
+    void setCountry(const QString &country);
+
 Q_SIGNALS:
     void groupNameChanged();
+    void countryChanged();
 
 private:
-    QString m_group_name;
+    QString m_group_name; // TODO: favorite bool
+    QString m_country;
 };
 #endif

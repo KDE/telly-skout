@@ -15,9 +15,10 @@ Kirigami.ApplicationWindow {
 
     title: "Telly Scout"
 
-    pageStack.initialPage: channelList
+    pageStack.initialPage: countryList
 
     globalDrawer: GlobalDrawer {
+        countriesPage: countryList
         channelsPage: channelList
     }
 
@@ -30,6 +31,10 @@ Kirigami.ApplicationWindow {
 
     contextDrawer: Kirigami.ContextDrawer {
         id: contextDrawer
+    }
+
+    CountryListPage  {
+        id: countryList
     }
 
     ChannelListPage  {

@@ -26,6 +26,7 @@
 #include "TellyScoutSettings.h"
 #include "channelsmodel.h"
 #include "channelsproxymodel.h"
+#include "countriesmodel.h"
 #include "database.h"
 #include "fetcher.h"
 #include "programsmodel.h"
@@ -55,6 +56,7 @@ int main(int argc, char *argv[])
     about.addAuthor(i18n("Plata"), QString(), QStringLiteral("plata@example.com"));
     KAboutData::setApplicationData(about);
 
+    qmlRegisterType<CountriesModel>("org.kde.TellyScout", 1, 0, "CountriesModel");
     qmlRegisterType<ChannelsModel>("org.kde.TellyScout", 1, 0, "ChannelsModel");
     qmlRegisterType<ChannelsProxyModel>("org.kde.TellyScout", 1, 0, "ChannelsProxyModel");
 
@@ -79,7 +81,7 @@ int main(int argc, char *argv[])
     parser.process(app);
     QString channelURL = parser.value(addChannelOption);
     if (channelURL != QStringLiteral("none"))
-        Database::instance().addChannel(channelURL, "", "", "");
+        Database::instance().addChannel(channelURL, "", "", "", ""); // TODO: remove
     about.processCommandLine(&parser);
 
     engine.rootContext()->setContextProperty(QStringLiteral("_aboutData"), QVariant::fromValue(about));

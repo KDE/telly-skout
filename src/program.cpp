@@ -31,7 +31,7 @@ Program::Program(Channel *channel, int index)
     Database::instance().execute(countryQuery);
 
     while (countryQuery.next()) {
-        m_countries += new Country(countryQuery.value(QStringLiteral("name")).toString(), countryQuery.value(QStringLiteral("url")).toString(), nullptr);
+        m_countries += new Country(0);
     }
 
     m_start.setSecsSinceEpoch(programQuery.value(QStringLiteral("start")).toInt());
