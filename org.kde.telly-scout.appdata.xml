@@ -3,8 +3,8 @@
   <id>org.kde.telly-scout</id>
   <name>Telly Scout</name>
   <summary>A convergent Kirigami EPG</summary>
-  <metadata_license>FSFAP</metadata_license>
-  <project_license>MIT</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
   <developer_name>plata</developer_name>
   <description>
     <p>A convergent Kirigami EPG</p>
