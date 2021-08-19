@@ -22,21 +22,20 @@ Channel::Channel(int index)
         qWarning() << "Failed to load channel" << index;
     }
 
-    /*QSqlQuery countryQuery;
-    countryQuery.prepare(QStringLiteral("SELECT * FROM Countries WHERE id='' AND channel=:channel"));
-    countryQuery.bindValue(QStringLiteral(":channel"), query.value(QStringLiteral("url")).toString());
-    Database::instance().execute(countryQuery);
-    while (countryQuery.next()) {
-        m_countries += new Country(countryQuery.value(QStringLiteral("name")).toString(), countryQuery.value(QStringLiteral("url")).toString(), nullptr);
-    }*/
-
     m_id = query.value(QStringLiteral("id")).toString();
     m_url = query.value(QStringLiteral("url")).toString();
     m_name = query.value(QStringLiteral("name")).toString();
-    m_country = query.value(QStringLiteral("country")).toString();
     m_image = query.value(QStringLiteral("image")).toString();
     m_notify = query.value(QStringLiteral("notify")).toBool();
     m_favorite = query.value(QStringLiteral("favorite")).toBool();
+
+    QSqlQuery countryQuery;
+    countryQuery.prepare(QStringLiteral("SELECT * FROM CountryChannels WHERE channel=:channel"));
+    countryQuery.bindValue(QStringLiteral(":channel"), m_id);
+    Database::instance().execute(countryQuery);
+    while (countryQuery.next()) {
+        m_countries.push_back(countryQuery.value(QStringLiteral("country")).toString());
+    }
 
     m_errorId = 0;
     m_errorString = QLatin1String("");
@@ -89,11 +88,6 @@ QString Channel::name() const
     return m_name;
 }
 
-QString Channel::country() const
-{
-    return m_country;
-}
-
 QString Channel::image() const
 {
     return m_image;
@@ -104,7 +98,7 @@ bool Channel::favorite() const
     return m_favorite;
 }
 
-QVector<Country *> Channel::countries() const
+QVector<QString> Channel::countries() const
 {
     return m_countries;
 }
@@ -147,12 +141,6 @@ void Channel::setName(const QString &name)
     Q_EMIT nameChanged(m_name);
 }
 
-void Channel::setCountry(const QString &country)
-{
-    m_country = country;
-    Q_EMIT countryChanged(m_country);
-}
-
 void Channel::setImage(const QString &image)
 {
     m_image = image;
@@ -168,7 +156,7 @@ void Channel::setFavorite(bool favorite)
     }
 }
 
-void Channel::setCountries(const QVector<Country *> &countries)
+void Channel::setCountries(const QVector<QString> &countries)
 {
     m_countries = countries;
     Q_EMIT countriesChanged(m_countries);

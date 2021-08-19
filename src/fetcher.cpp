@@ -125,6 +125,14 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
 
         Q_EMIT channelUpdated(channelId);
     } else {
+        // story channel per country
+        QSqlQuery countryQuery;
+        countryQuery.prepare(QStringLiteral("INSERT INTO CountryChannels VALUES (:id, :country, :channel);"));
+        countryQuery.bindValue(QStringLiteral(":id"), country + "_" + channelId);
+        countryQuery.bindValue(QStringLiteral(":country"), country);
+        countryQuery.bindValue(QStringLiteral(":channel"), channelId);
+        Database::instance().execute(countryQuery);
+
         // fetch complete program only for favorites
         QSqlQuery queryIsFavorite;
         queryIsFavorite.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id AND favorite=TRUE;"));

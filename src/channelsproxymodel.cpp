@@ -67,7 +67,7 @@ bool ChannelsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sou
     auto channel = idx.data(0).value<Channel *>();
 
     const bool groupNameMatches = m_group_name.isEmpty() || channel->favorite();
-    const bool countryMatches = m_country.isEmpty() || channel->country() == m_country;
+    const bool countryMatches = m_country.isEmpty() || channel->countries().contains(m_country);
 
     return groupNameMatches && countryMatches;
 }

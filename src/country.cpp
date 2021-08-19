@@ -75,7 +75,7 @@ QString Country::name() const
 int Country::channelCount() const
 {
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels where country=:country;"));
+    query.prepare(QStringLiteral("SELECT COUNT (id) FROM CountryChannels where country=:country;"));
     query.bindValue(QStringLiteral(":country"), m_id);
     Database::instance().execute(query);
     if (!query.next()) {

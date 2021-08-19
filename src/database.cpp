@@ -41,8 +41,9 @@ bool Database::createTables()
 {
     qDebug() << "Create DB tables";
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Countries (id TEXT UNIQUE, name TEXT, url TEXT);")));
-    TRUE_OR_RETURN(execute(
-        QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (id TEXT UNIQUE, name TEXT, url TEXT, country TEXT, image TEXT, notify BOOL, favorite BOOL);")));
+    TRUE_OR_RETURN(
+        execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (id TEXT UNIQUE, name TEXT, url TEXT, image TEXT, notify BOOL, favorite BOOL);")));
+    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS CountryChannels (id TEXT UNIQUE, country TEXT, channel TEXT);")));
     TRUE_OR_RETURN(
         execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Programs (id TEXT UNIQUE, channel TEXT, start INTEGER, stop INTEGER, title TEXT, subtitle TEXT, "
                                "description TEXT, category TEXT);")));
@@ -170,7 +171,7 @@ void Database::addChannel(const QString &id, const QString &name, const QString 
 
     QUrl urlFromInput = QUrl::fromUserInput(url);
     QSqlQuery query;
-    query.prepare(QStringLiteral("INSERT INTO Channels VALUES (:id, :name, :url, :country, :image, :notify, :favorite);"));
+    query.prepare(QStringLiteral("INSERT INTO Channels VALUES (:id, :name, :url, :image, :notify, :favorite);"));
     query.bindValue(QStringLiteral(":id"), id);
     query.bindValue(QStringLiteral(":name"), name);
     query.bindValue(QStringLiteral(":url"), urlFromInput.toString());
@@ -179,6 +180,13 @@ void Database::addChannel(const QString &id, const QString &name, const QString 
     query.bindValue(QStringLiteral(":notify"), false);
     query.bindValue(QStringLiteral(":favorite"), favorite);
     execute(query);
+
+    QSqlQuery countryQuery;
+    countryQuery.prepare(QStringLiteral("INSERT INTO CountryChannels VALUES (:id, :country, :channel);"));
+    countryQuery.bindValue(QStringLiteral(":id"), country + "_" + id);
+    countryQuery.bindValue(QStringLiteral(":country"), country);
+    countryQuery.bindValue(QStringLiteral(":channel"), id);
+    execute(countryQuery);
 
     Q_EMIT channelAdded(urlFromInput.toString());
 
