@@ -181,13 +181,6 @@ void Database::addChannel(const QString &id, const QString &name, const QString 
     query.bindValue(QStringLiteral(":favorite"), favorite);
     execute(query);
 
-    QSqlQuery countryQuery;
-    countryQuery.prepare(QStringLiteral("INSERT INTO CountryChannels VALUES (:id, :country, :channel);"));
-    countryQuery.bindValue(QStringLiteral(":id"), country + "_" + id);
-    countryQuery.bindValue(QStringLiteral(":country"), country);
-    countryQuery.bindValue(QStringLiteral(":channel"), id);
-    execute(countryQuery);
-
     Q_EMIT channelAdded(urlFromInput.toString());
 
     // Fetcher::instance().fetchChannel(urlFromInput.toString(), urlFromInput.toString()); // TODO: url -> ID

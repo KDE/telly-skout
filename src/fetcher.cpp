@@ -112,6 +112,14 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
 
     Q_EMIT startedFetchingChannel(channelId);
 
+    // story channel per country (ignore if it exists already)
+    QSqlQuery countryQuery;
+    countryQuery.prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
+    countryQuery.bindValue(QStringLiteral(":id"), country + "_" + channelId);
+    countryQuery.bindValue(QStringLiteral(":country"), country);
+    countryQuery.bindValue(QStringLiteral(":channel"), channelId);
+    Database::instance().execute(countryQuery);
+
     // if channel is unknown, store it
     QSqlQuery queryChannelExists;
     queryChannelExists.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id;"));
@@ -125,14 +133,6 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
 
         Q_EMIT channelUpdated(channelId);
     } else {
-        // story channel per country
-        QSqlQuery countryQuery;
-        countryQuery.prepare(QStringLiteral("INSERT INTO CountryChannels VALUES (:id, :country, :channel);"));
-        countryQuery.bindValue(QStringLiteral(":id"), country + "_" + channelId);
-        countryQuery.bindValue(QStringLiteral(":country"), country);
-        countryQuery.bindValue(QStringLiteral(":channel"), channelId);
-        Database::instance().execute(countryQuery);
-
         // fetch complete program only for favorites
         QSqlQuery queryIsFavorite;
         queryIsFavorite.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id AND favorite=TRUE;"));
