@@ -29,7 +29,7 @@ void Fetcher::fetchAll()
 {
     // http://xmltv.se/countries.xml
     const QString url = "http://xmltv.se/countries.xml";
-    qDebug() << "Starting to fetch" << url;
+    qDebug() << "Starting to fetch countries (" << url << ")";
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
@@ -66,7 +66,7 @@ void Fetcher::fetchAll()
 
 void Fetcher::fetchCountry(const QString &url, const QString &countryId)
 {
-    qDebug() << "Starting to fetch" << url;
+    qDebug() << "Starting to fetch country (" << countryId << ", " << url << ")";
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
@@ -143,7 +143,7 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
         if (queryIsFavorite.value(0).toInt() == 1) {
             QDateTime current = QDateTime::currentDateTime();
             const QString urlToday = url + "_" + current.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
-            qDebug() << "Starting to fetch" << urlToday;
+            qDebug() << "Starting to fetch program for " << channelId << "(" << urlToday << ")";
 
             QNetworkRequest request((QUrl(urlToday)));
             QNetworkReply *reply = get(request);
@@ -232,7 +232,6 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
     const QString &description = program.namedItem("desc").toElement().text();
     const QString &category = program.namedItem("category").toElement().text();
 
-    qDebug() << "Processing" << title;
     QSqlQuery query;
     query.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE id=:id;"));
     query.bindValue(QStringLiteral(":id"), id);
@@ -286,7 +285,7 @@ void Fetcher::download(const QString &url)
 
 void Fetcher::removeImage(const QString &url)
 {
-    qDebug() << filePath(url);
+    qDebug() << "Remove image: " << filePath(url);
     QFile(filePath(url)).remove();
 }
 
