@@ -298,6 +298,6 @@ QString Fetcher::filePath(const QString &url)
 
 QNetworkReply *Fetcher::get(QNetworkRequest &request)
 {
-    request.setRawHeader("User-Agent", "telly-scout/0.1");
+    request.setRawHeader("User-Agent", "telly-skout/0.1");
     return manager->get(request);
 }

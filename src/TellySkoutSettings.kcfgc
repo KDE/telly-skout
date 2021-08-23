@@ -1,5 +1,5 @@
-File=TellyScoutSettings.kcfg
-ClassName=TellyScoutSettings
+File=TellySkoutSettings.kcfg
+ClassName=TellySkoutSettings
 Mutators=true
 DefaultValueGetters=true
 GenerateProperties=true

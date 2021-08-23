@@ -8,12 +8,12 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14 as Controls
 
 import org.kde.kirigami 2.12 as Kirigami
-import org.kde.TellyScout 1.0 as TellyScout
+import org.kde.TellySkout 1.0 as TellySkout
 
 Kirigami.ApplicationWindow {
     id: root
 
-    title: "Telly Scout"
+    title: "Telly Skout"
 
     pageStack.initialPage: countryList
 

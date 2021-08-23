@@ -23,14 +23,14 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
-#include "TellyScoutSettings.h"
+#include "TellySkoutSettings.h"
 #include "channelsmodel.h"
 #include "channelsproxymodel.h"
 #include "countriesmodel.h"
 #include "database.h"
 #include "fetcher.h"
 #include "programsmodel.h"
-#include "telly-scout-version.h"
+#include "telly-skout-version.h"
 
 #ifdef Q_OS_ANDROID
 Q_DECL_EXPORT
@@ -45,29 +45,29 @@ int main(int argc, char *argv[])
 
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
     QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
-    QCoreApplication::setApplicationName(QStringLiteral("Telly Scout"));
+    QCoreApplication::setApplicationName(QStringLiteral("Telly Skout"));
 
-    KAboutData about(QStringLiteral("telly-scout"),
-                     i18n("Telly Scout"),
-                     QStringLiteral(TELLY_SCOUT_VERSION_STRING),
+    KAboutData about(QStringLiteral("telly-skout"),
+                     i18n("Telly Skout"),
+                     QStringLiteral(TELLY_SKOUT_VERSION_STRING),
                      i18n("Channel Reader"),
                      KAboutLicense::GPL,
                      i18n("© 2020 KDE Community"));
     about.addAuthor(i18n("Plata"), QString(), QStringLiteral("plata@example.com"));
     KAboutData::setApplicationData(about);
 
-    qmlRegisterType<CountriesModel>("org.kde.TellyScout", 1, 0, "CountriesModel");
-    qmlRegisterType<ChannelsModel>("org.kde.TellyScout", 1, 0, "ChannelsModel");
-    qmlRegisterType<ChannelsProxyModel>("org.kde.TellyScout", 1, 0, "ChannelsProxyModel");
+    qmlRegisterType<CountriesModel>("org.kde.TellySkout", 1, 0, "CountriesModel");
+    qmlRegisterType<ChannelsModel>("org.kde.TellySkout", 1, 0, "ChannelsModel");
+    qmlRegisterType<ChannelsProxyModel>("org.kde.TellySkout", 1, 0, "ChannelsProxyModel");
 
-    qmlRegisterUncreatableType<ProgramsModel>("org.kde.TellyScout", 1, 0, "ProgramsModel", QStringLiteral("Get from Channel"));
+    qmlRegisterUncreatableType<ProgramsModel>("org.kde.TellySkout", 1, 0, "ProgramsModel", QStringLiteral("Get from Channel"));
 
-    qmlRegisterSingletonInstance("org.kde.TellyScout", 1, 0, "Fetcher", &Fetcher::instance());
-    qmlRegisterSingletonInstance("org.kde.TellyScout", 1, 0, "Database", &Database::instance());
+    qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "Fetcher", &Fetcher::instance());
+    qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "Database", &Database::instance());
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-    KLocalizedString::setApplicationDomain("telly-scout");
+    KLocalizedString::setApplicationDomain("telly-skout");
 
     QCommandLineParser parser;
     parser.setApplicationDescription(i18n("RSS/Atom Channel Reader"));
@@ -86,11 +86,11 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty(QStringLiteral("_aboutData"), QVariant::fromValue(about));
 
-    TellyScoutSettings settings;
+    TellySkoutSettings settings;
 
     engine.rootContext()->setContextProperty(QStringLiteral("_settings"), &settings);
 
-    QObject::connect(&app, &QCoreApplication::aboutToQuit, &settings, &TellyScoutSettings::save);
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, &settings, &TellySkoutSettings::save);
 
     Database::instance();
 

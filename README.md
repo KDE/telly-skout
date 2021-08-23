@@ -1,4 +1,4 @@
-# telly-scout
+# telly-skout
 A convergent EPG based on Kirigami.
 
 ## Build
@@ -10,8 +10,8 @@ sudo pacman -Syu git cmake gcc extra-cmake-modules
 
 ### Clone and Build
 ```
-git clone https://github.com/plata/telly-scout.git
-cd telly-scout
+git clone https://github.com/plata/telly-skout.git
+cd telly-skout
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Debug ..
@@ -25,5 +25,5 @@ sudo make install
 
 ## Run
 ```
-telly-scout
+telly-skout
 ```

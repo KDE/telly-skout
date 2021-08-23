@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=telly-scout
+Name=telly-skout
 Comment=Convergent EPG
 Version=1.0
-Exec=telly-scout
-MimeType=application/x-telly-scout;
+Exec=telly-skout
+MimeType=application/x-telly-skout;
 Icon=applications-development
 Type=Application
 Terminal=false

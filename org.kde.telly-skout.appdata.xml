@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop-application">
-  <id>org.kde.telly-scout</id>
-  <name>Telly Scout</name>
+  <id>org.kde.telly-skout</id>
+  <name>Telly Skout</name>
   <summary>A convergent Kirigami EPG</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>

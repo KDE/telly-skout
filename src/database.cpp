@@ -14,7 +14,7 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 
-#include "TellyScoutSettings.h"
+#include "TellySkoutSettings.h"
 #include "database.h"
 #include "fetcher.h"
 
@@ -90,7 +90,7 @@ int Database::version()
 
 void Database::cleanup()
 {
-    TellyScoutSettings settings;
+    TellySkoutSettings settings;
     int count = settings.deleteAfterCount();
     int type = settings.deleteAfterType();
 

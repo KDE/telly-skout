@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(telly-scout)
+project(telly-skout)
 set(PROJECT_VERSION "1.0")
 
 set(KF5_MIN_VERSION "5.75.0")
@@ -24,8 +24,8 @@ include(ECMPoQmTools)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 
 ecm_setup_version(${PROJECT_VERSION}
-    VARIABLE_PREFIX TELLY_SCOUT
-    VERSION_HEADER ${CMAKE_CURRENT_BINARY_DIR}/telly-scout-version.h
+    VARIABLE_PREFIX TELLY_SKOUT
+    VERSION_HEADER ${CMAKE_CURRENT_BINARY_DIR}/telly-skout-version.h
 )
 
 ################# Find dependencies #################
@@ -42,9 +42,9 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(src)
 
-install(PROGRAMS org.kde.telly-scout.desktop DESTINATION ${KDE_INSTALL_APPDIR})
-install(FILES org.kde.telly-scout.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
-install(FILES telly-scout.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
+install(PROGRAMS org.kde.telly-skout.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.telly-skout.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+install(FILES telly-skout.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
