@@ -15,7 +15,7 @@ Kirigami.ApplicationWindow {
 
     title: "Telly Skout"
 
-    pageStack.initialPage: countryList
+    pageStack.initialPage: channelList
 
     globalDrawer: GlobalDrawer {
         countriesPage: countryList
