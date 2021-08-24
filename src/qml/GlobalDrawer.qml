@@ -24,7 +24,7 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear()
                 pageStack.clear()
-                pageStack.push(root.channelsPage, {groupFilter: "Favorites", countryFilter: ""})
+                pageStack.push("qrc:/ChannelListPage.qml", {groupFilter: "Favorites", countryFilter: ""})
             }
         },
         Kirigami.Action {
@@ -33,7 +33,7 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear()
                 pageStack.clear()
-                pageStack.push(root.channelsPage, {groupFilter: "", countryFilter: ""})
+                pageStack.push("qrc:/ChannelListPage.qml", {groupFilter: "", countryFilter: ""})
             }
         },
         Kirigami.Action {
