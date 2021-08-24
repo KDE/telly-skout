@@ -17,7 +17,7 @@ Kirigami.ScrollablePage {
 
     title: "Countries"
 
-    property var lastCountry: ""
+    property string lastCountry: ""
 
 
     supportsRefreshing: true

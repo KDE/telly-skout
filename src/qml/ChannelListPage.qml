@@ -18,7 +18,7 @@ Kirigami.ScrollablePage {
 
     title: groupFilter ? groupFilter : "Telly Skout"
 
-    property var lastChannel: ""
+    property string lastChannel: ""
     property alias groupFilter: proxyModel.groupName
     property alias countryFilter: proxyModel.country
 
