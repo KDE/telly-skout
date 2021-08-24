@@ -11,7 +11,7 @@
         <file alias="SettingsPage.qml">qml/SettingsPage.qml</file>
         <file alias="ProgramListDelegate.qml">qml/ProgramListDelegate.qml</file>
         <file alias="ChannelListDelegate.qml">qml/ChannelListDelegate.qml</file>
-        <file alias="GlobalDrawer.qml">qml/GlobalDrawer.qml</file>
+        <file alias="TellySkoutGlobalDrawer.qml">qml/TellySkoutGlobalDrawer.qml</file>
         <file>qtquickcontrols2.conf</file>
     </qresource>
 </RCC>

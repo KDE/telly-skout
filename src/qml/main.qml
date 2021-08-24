@@ -17,7 +17,7 @@ Kirigami.ApplicationWindow {
 
     pageStack.initialPage: countryList
 
-    globalDrawer: GlobalDrawer {
+    globalDrawer: TellySkoutGlobalDrawer {
         countriesPage: countryList
     }
 
