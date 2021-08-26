@@ -26,6 +26,7 @@
 #include "TellySkoutSettings.h"
 #include "channelsmodel.h"
 #include "channelsproxymodel.h"
+#include "channelstablemodel.h"
 #include "countriesmodel.h"
 #include "database.h"
 #include "fetcher.h"
@@ -59,6 +60,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<CountriesModel>("org.kde.TellySkout", 1, 0, "CountriesModel");
     qmlRegisterType<ChannelsModel>("org.kde.TellySkout", 1, 0, "ChannelsModel");
     qmlRegisterType<ChannelsProxyModel>("org.kde.TellySkout", 1, 0, "ChannelsProxyModel");
+    qmlRegisterType<ChannelsTableModel>("org.kde.TellySkout", 1, 0, "ChannelsTableModel");
 
     qmlRegisterUncreatableType<ProgramsModel>("org.kde.TellySkout", 1, 0, "ProgramsModel", QStringLiteral("Get from Channel"));
 

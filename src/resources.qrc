@@ -6,11 +6,13 @@
         <file alias="ProgramListPage.qml">qml/ProgramListPage.qml</file>
         <file alias="ChannelListPage.qml">qml/ChannelListPage.qml</file>
         <file alias="CountryListDelegate.qml">qml/CountryListDelegate.qml</file>
+        <file alias="ChannelTablePage.qml">qml/ChannelTablePage.qml</file>
         <file alias="CountryListPage.qml">qml/CountryListPage.qml</file>
         <file alias="ProgramPage.qml">qml/ProgramPage.qml</file>
         <file alias="SettingsPage.qml">qml/SettingsPage.qml</file>
         <file alias="ProgramListDelegate.qml">qml/ProgramListDelegate.qml</file>
         <file alias="ChannelListDelegate.qml">qml/ChannelListDelegate.qml</file>
+        <file alias="ChannelTableDelegate.qml">qml/ChannelTableDelegate.qml</file>
         <file alias="TellySkoutGlobalDrawer.qml">qml/TellySkoutGlobalDrawer.qml</file>
         <file>qtquickcontrols2.conf</file>
     </qresource>

@@ -11,11 +11,15 @@
 #include "fetcher.h"
 #include "programsmodel.h"
 
-Channel::Channel(int index)
+Channel::Channel(int index, bool onlyFavorite)
     : QObject(nullptr)
 {
+    QString filterFavorite = "";
+    if (onlyFavorite) {
+        filterFavorite = "WHERE favorite IS TRUE";
+    }
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT * FROM Channels ORDER BY name COLLATE NOCASE LIMIT 1 OFFSET :index;"));
+    query.prepare(QStringLiteral("SELECT * FROM Channels %1 ORDER BY name COLLATE NOCASE LIMIT 1 OFFSET :index;").arg(filterFavorite));
     query.bindValue(QStringLiteral(":index"), index);
     Database::instance().execute(query);
     if (!query.next()) {

@@ -15,6 +15,7 @@ Kirigami.GlobalDrawer {
 
     property var countriesPage
     property var channelsPage
+    property var channelsTablePage
 
     isMenu: true
     actions: [
@@ -25,6 +26,15 @@ Kirigami.GlobalDrawer {
                 pageStack.layers.clear()
                 pageStack.clear()
                 pageStack.push("qrc:/ChannelListPage.qml", {groupFilter: "Favorites", countryFilter: ""})
+            }
+        },
+        Kirigami.Action {
+            text: i18n("Favorites (table)")
+            iconName: "rss"
+            onTriggered: {
+                pageStack.layers.clear()
+                pageStack.clear()
+                pageStack.push(root.channelsTablePage)
             }
         },
         Kirigami.Action {

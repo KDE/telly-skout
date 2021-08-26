@@ -141,32 +141,37 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
         queryIsFavorite.next();
 
         if (queryIsFavorite.value(0).toInt() == 1) {
-            QDateTime current = QDateTime::currentDateTime();
-            const QString urlToday = url + "_" + current.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
-            qDebug() << "Starting to fetch program for " << channelId << "(" << urlToday << ")";
+            QDate today = QDate::currentDate();
+            QDate yesterday = QDate::currentDate().addDays(-1);
+            QDate tomorrow = QDate::currentDate().addDays(1);
+            QSet<QDate> days{yesterday, today, tomorrow};
+            for (auto day : days) {
+                const QString urlDay = url + "_" + day.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
+                qDebug() << "Starting to fetch program for " << channelId << "(" << urlDay << ")";
 
-            QNetworkRequest request((QUrl(urlToday)));
-            QNetworkReply *reply = get(request);
-            connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply]() {
-                if (reply->error()) {
-                    qWarning() << "Error fetching channel";
-                    qWarning() << reply->errorString();
-                    Q_EMIT error(channelId, reply->error(), reply->errorString());
-                } else {
-                    QByteArray data = reply->readAll();
+                QNetworkRequest request((QUrl(urlDay)));
+                QNetworkReply *reply = get(request);
+                connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply]() {
+                    if (reply->error()) {
+                        qWarning() << "Error fetching channel";
+                        qWarning() << reply->errorString();
+                        Q_EMIT error(channelId, reply->error(), reply->errorString());
+                    } else {
+                        QByteArray data = reply->readAll();
 
-                    QDomDocument versionXML;
+                        QDomDocument versionXML;
 
-                    if (!versionXML.setContent(data)) {
-                        qWarning() << "Failed to parse XML";
+                        if (!versionXML.setContent(data)) {
+                            qWarning() << "Failed to parse XML";
+                        }
+
+                        QDomElement docElem = versionXML.documentElement();
+
+                        processChannel(docElem, url);
                     }
-
-                    QDomElement docElem = versionXML.documentElement();
-
-                    processChannel(docElem, url);
-                }
-                delete reply;
-            });
+                    delete reply;
+                });
+            }
         } else {
             // nothing to do
             Q_EMIT channelUpdated(channelId);

@@ -15,10 +15,11 @@ Kirigami.ApplicationWindow {
 
     title: "Telly Skout"
 
-    pageStack.initialPage: countryList
+    pageStack.initialPage: channelTable
 
     globalDrawer: TellySkoutGlobalDrawer {
         countriesPage: countryList
+        channelsTablePage: channelTable
     }
 
     Component {
@@ -34,6 +35,10 @@ Kirigami.ApplicationWindow {
 
     CountryListPage  {
         id: countryList
+    }
+
+    ChannelTablePage  {
+        id: channelTable
     }
 
 }
