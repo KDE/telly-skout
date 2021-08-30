@@ -13,7 +13,7 @@ import org.kde.kirigami 2.12 as Kirigami
 
 import org.kde.TellySkout 1.0
 
-Kirigami.ScrollablePage {
+Kirigami.Page {
     id: root
 
     title: i18n("Favorites (table)")
@@ -21,12 +21,12 @@ Kirigami.ScrollablePage {
     property string lastChannel: ""
 
 
-    supportsRefreshing: true
+    /*supportsRefreshing: true
     onRefreshingChanged:
         if(refreshing)  {
             Fetcher.fetchAll()
             refreshing = false
-        }
+        }*/
 
     contextualActions: [
         Kirigami.Action {
@@ -61,7 +61,11 @@ Kirigami.ScrollablePage {
 
     TableView {
         id: channelTable
-        anchors.fill: parent
+        anchors.fill: root
+        width: root.width - verticalHeader.width
+        height: root.height - horizontalHeader.height
+        anchors.left: verticalHeader.right
+        anchors.top: horizontalHeader.bottom
         columnSpacing: 1
         rowSpacing: 1
         clip: true
