@@ -15,8 +15,10 @@ import org.kde.TellySkout 1.0
 Component {
     Rectangle {
         implicitWidth: 200
-        implicitHeight: 20
+        implicitHeight: 40
         Text {
+            anchors.fill: parent
+            wrapMode: Text.Wrap
             text: programTitle
         }
     }
