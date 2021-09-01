@@ -12,14 +12,35 @@ import org.kde.kirigami 2.12 as Kirigami
 
 import org.kde.TellySkout 1.0
 
-Component {
+Rectangle {
+    width: 200
+    implicitWidth: 200
+    implicitHeight: 20
+    color: "transparent"
     Rectangle {
-        implicitWidth: 200
-        implicitHeight: 40
-        Text {
-            anchors.fill: parent
-            wrapMode: Text.Wrap
-            text: programTitle
-        }
+            id: borderTop
+            visible: program.title !== ""
+            width: parent.width
+            height: 1
+            anchors.top: parent.top
+            color: Kirigami.Theme.textColor
+    }
+    Rectangle {
+            id: borderRight
+            width: 1
+            height: parent.height
+            anchors.right: parent.right
+            color: Kirigami.Theme.textColor
+    }
+    Controls.Label {
+        id: label
+        width: parent.implicitWidth
+        leftPadding: 10
+        topPadding: 10
+        rightPadding: 10
+        bottomPadding: 10
+        height: parent.implicitHeight * (program.stop - program.start) / 60
+        text: program.title !== "" ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br>" + program.title : ""
+        wrapMode: Text.Wrap
     }
 }

@@ -10,9 +10,11 @@
 #include <QUrl>
 #include <QVariant>
 
+#include "channel.h"
 #include "channelstablemodel.h"
 #include "database.h"
 #include "fetcher.h"
+#include "program.h"
 
 ChannelsTableModel::ChannelsTableModel(QObject *parent)
     : QAbstractTableModel(parent)
@@ -45,7 +47,7 @@ ChannelsTableModel::ChannelsTableModel(QObject *parent)
 
 QHash<int, QByteArray> ChannelsTableModel::roleNames() const
 {
-    return {{Qt::DisplayRole, "programTitle"}};
+    return {{Qt::DisplayRole, "program"}};
 }
 
 int ChannelsTableModel::rowCount(const QModelIndex &parent) const
@@ -86,7 +88,7 @@ QVariant ChannelsTableModel::data(const QModelIndex &index, int role) const
         if (m_channels.length() <= index.column()) {
             loadChannel(index.column());
         }
-        const Channel *channel = m_channels[index.column()];
+        Channel *channel = m_channels[index.column()];
 
         // get correct program for row
         // offset for today (00:00) [UTC] + row [min] * 60 => second [since 1970] when program is running
@@ -94,17 +96,15 @@ QVariant ChannelsTableModel::data(const QModelIndex &index, int role) const
         QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
         const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
         const qint64 second = offsetTimeToday + (index.row() * 60);
-        QSqlQuery programQuery;
-        programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel AND start <= :second AND stop > :second;"));
-        programQuery.bindValue(QStringLiteral(":channel"), channel->url());
-        programQuery.bindValue(QStringLiteral(":second"), second);
-        Database::instance().execute(programQuery);
-        if (!programQuery.next()) {
-            qWarning() << "Failed to query program for channel " << channel->id() << " and row " << index.row();
-        }
-        const QString title = programQuery.value(QStringLiteral("title")).toString();
 
-        return title;
+        if (m_programs.size() <= index.column()) {
+            m_programs.insert(index.column(), QVector<Program *>());
+        }
+        if (m_programs[index.column()].length() <= index.row()) {
+            m_programs[index.column()].push_back(new Program(channel, second));
+        }
+        Program *program = m_programs[index.column()].at(index.row());
+        return QVariant::fromValue(program);
     }
 
     return QVariant();

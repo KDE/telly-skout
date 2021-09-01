@@ -66,8 +66,8 @@ Kirigami.Page {
         height: root.height - horizontalHeader.height
         anchors.left: verticalHeader.right
         anchors.top: horizontalHeader.bottom
-        columnSpacing: 1
-        rowSpacing: 1
+        columnSpacing: 0
+        rowSpacing: 0
         clip: true
 
         model: ChannelsTableModel {}

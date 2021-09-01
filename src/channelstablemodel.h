@@ -8,10 +8,12 @@
 
 #include <QAbstractTableModel>
 #include <QHash>
+#include <QMap>
 #include <QSqlTableModel>
 #include <QUrl>
 
-#include "channel.h"
+class Channel;
+class Program;
 
 class ChannelsTableModel : public QAbstractTableModel
 {
@@ -31,6 +33,7 @@ private:
     void loadChannel(int index) const;
 
     mutable QVector<Channel *> m_channels;
+    mutable QMap<int, QVector<Program *>> m_programs;
 
     // https://www.qtcentre.org/threads/60564-Has-anyone-done-dynamic-column-spanning-with-a-QTableWidget
 };
