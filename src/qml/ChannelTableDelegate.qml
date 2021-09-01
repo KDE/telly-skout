@@ -42,5 +42,20 @@ Rectangle {
         height: parent.implicitHeight * (program.stop - program.start) / 60
         text: program.title !== "" ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br>" + program.title : ""
         wrapMode: Text.Wrap
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                overlay.open()
+            }
+        }
+    }
+
+    Kirigami.OverlaySheet {
+        id: overlay
+        Controls.Label {
+            Layout.fillWidth: true
+            wrapMode: Text.WordWrap
+            text: "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br><br>" + program.description
+        }
     }
 }
