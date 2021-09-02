@@ -34,6 +34,4 @@ private:
 
     mutable QVector<Channel *> m_channels;
     mutable QMap<int, QVector<Program *>> m_programs;
-
-    // https://www.qtcentre.org/threads/60564-Has-anyone-done-dynamic-column-spanning-with-a-QTableWidget
 };
