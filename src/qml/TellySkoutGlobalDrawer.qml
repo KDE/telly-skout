@@ -38,15 +38,6 @@ Kirigami.GlobalDrawer {
             }
         },
         Kirigami.Action {
-            text: i18n("All Channels")
-            iconName: "rss"
-            onTriggered: {
-                pageStack.layers.clear()
-                pageStack.clear()
-                pageStack.push("qrc:/ChannelListPage.qml", {groupFilter: "", countryFilter: ""})
-            }
-        },
-        Kirigami.Action {
             text: i18n("Countries")
             iconName: "rss"
             onTriggered: {
