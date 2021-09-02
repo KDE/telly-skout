@@ -35,6 +35,7 @@ Kirigami.SwipeListItem {
         Kirigami.Action {
             icon.name: "favorite"
             text: i18n("Favorite")
+            enabled: model.channel.favorite
 
             onTriggered: channelsModel.setChannelAsFavorite(model.channel.url)
         }
