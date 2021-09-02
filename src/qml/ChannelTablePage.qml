@@ -61,7 +61,6 @@ Kirigami.Page {
 
     TableView {
         id: channelTable
-        anchors.fill: root
         width: root.width - verticalHeader.width
         height: root.height - horizontalHeader.height
         anchors.left: verticalHeader.right
