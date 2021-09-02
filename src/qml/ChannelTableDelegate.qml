@@ -19,7 +19,7 @@ Rectangle {
     color: "transparent"
     Rectangle {
             id: borderTop
-            visible: program.title !== ""
+            visible: isFirst
             width: parent.width
             height: 1
             anchors.top: parent.top
@@ -40,7 +40,7 @@ Rectangle {
         rightPadding: 10
         bottomPadding: 10
         height: parent.implicitHeight * (program.stop - program.start) / 60
-        text: program.title !== "" ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br>" + program.title : ""
+        text: isFirst ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br>" + program.title : ""
         wrapMode: Text.Wrap
         MouseArea {
             anchors.fill: parent

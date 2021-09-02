@@ -48,7 +48,7 @@ ChannelsTableModel::ChannelsTableModel(QObject *parent)
 
 QHash<int, QByteArray> ChannelsTableModel::roleNames() const
 {
-    return {{Qt::DisplayRole, "program"}};
+    return {{Qt::DisplayRole, "program"}, {Qt::UserRole, "isFirst"}};
 }
 
 int ChannelsTableModel::rowCount(const QModelIndex &parent) const
@@ -101,27 +101,33 @@ QVariant ChannelsTableModel::headerData(int section, Qt::Orientation orientation
 
 QVariant ChannelsTableModel::data(const QModelIndex &index, int role) const
 {
-    if (role == Qt::DisplayRole) {
-        if (m_channels.length() <= index.column()) {
-            loadChannel(index.column());
-        }
-        Channel *channel = m_channels[index.column()];
+    if (m_channels.length() <= index.column()) {
+        loadChannel(index.column());
+    }
+    Channel *channel = m_channels[index.column()];
 
-        // get correct program for row
-        // offset for today (00:00) [UTC] + row [min] * 60 => second [since 1970] when program is running
-        // start <= second < end
-        QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
-        const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
-        const qint64 second = offsetTimeToday + (index.row() * 60);
+    // get correct program for row
+    // offset for today (00:00) [UTC] + row [min] * 60 => second [since 1970] when program is running
+    // start <= second < end
+    QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
+    const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
+    const qint64 second = offsetTimeToday + (index.row() * 60);
 
-        if (m_programs.size() <= index.column()) {
-            m_programs.insert(index.column(), QVector<Program *>());
-        }
-        if (m_programs[index.column()].length() <= index.row()) {
-            m_programs[index.column()].push_back(new Program(channel, second));
-        }
-        Program *program = m_programs[index.column()].at(index.row());
+    if (m_programs.size() <= index.column()) {
+        m_programs.insert(index.column(), QVector<Program *>());
+    }
+    if (m_programs[index.column()].length() <= index.row()) {
+        m_programs[index.column()].push_back(new Program(channel, second));
+    }
+    Program *program = m_programs[index.column()].at(index.row());
+
+    switch (role) {
+    case Qt::DisplayRole: {
         return QVariant::fromValue(program);
+    }
+    case Qt::UserRole: {
+        return second == program->start().toSecsSinceEpoch();
+    }
     }
 
     return QVariant();
