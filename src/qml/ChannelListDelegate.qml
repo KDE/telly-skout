@@ -33,11 +33,13 @@ Kirigami.SwipeListItem {
 
     actions: [
         Kirigami.Action {
-            icon.name: "favorite"
+            icon.name: model.channel.favorite ? "favorite" : "list-add"
             text: i18n("Favorite")
-            enabled: model.channel.favorite
 
-            onTriggered: channelsModel.setChannelAsFavorite(model.channel.url)
+            onTriggered: {
+                channelsModel.setChannelAsFavorite(model.channel.url)
+                icon.name = "favorite"
+            }
         }
     ]
 }
