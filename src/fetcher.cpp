@@ -291,13 +291,15 @@ void Fetcher::download(const QString &url)
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
     connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
-        QByteArray data = reply->readAll();
-        QFile file(filePath(url));
-        file.open(QIODevice::WriteOnly);
-        file.write(data);
-        file.close();
-
+        if (reply->error() == QNetworkReply::NoError) {
+            QByteArray data = reply->readAll();
+            QFile file(filePath(url));
+            file.open(QIODevice::WriteOnly);
+            file.write(data);
+            file.close();
+        }
         Q_EMIT imageDownloadFinished(url);
+
         delete reply;
     });
 }
