@@ -77,7 +77,12 @@ QVariant ChannelsTableModel::headerData(int section, Qt::Orientation orientation
         case Qt::Orientation::Vertical:
             const int hours = section / 60;
             const int minutes = section % 60;
-            return QString("%1:%2").arg(hours, 2, 10, QLatin1Char('0')).arg(minutes, 2, 10, QLatin1Char('0'));
+            // only for full hour
+            if (minutes == 0) {
+                return QString("%1:%2").arg(hours, 2, 10, QLatin1Char('0')).arg(minutes, 2, 10, QLatin1Char('0'));
+            } else {
+                return QString("");
+            }
         }
     return QVariant();
 }
