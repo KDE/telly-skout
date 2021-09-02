@@ -21,22 +21,6 @@ Kirigami.Page {
     property string lastChannel: ""
 
 
-    /*supportsRefreshing: true
-    onRefreshingChanged:
-        if(refreshing)  {
-            Fetcher.fetchAll()
-            refreshing = false
-        }*/
-
-    contextualActions: [
-        Kirigami.Action {
-            text: i18n("Refresh all channels")
-            iconName: "view-refresh"
-            onTriggered: refreshing = true
-            visible: !Kirigami.Settings.isMobile
-        }
-    ]
-
     Kirigami.PlaceholderMessage {
         visible: channelTable.count === 0
 

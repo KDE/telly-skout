@@ -19,23 +19,6 @@ Kirigami.ScrollablePage {
 
     property string lastCountry: ""
 
-
-    supportsRefreshing: true
-    onRefreshingChanged:
-        if(refreshing)  {
-            Fetcher.fetchAll()
-            refreshing = false
-        }
-
-    contextualActions: [
-        Kirigami.Action {
-            text: i18n("Refresh all countries")
-            iconName: "view-refresh"
-            onTriggered: refreshing = true
-            visible: !Kirigami.Settings.isMobile
-        }
-    ]
-
     Kirigami.PlaceholderMessage {
         visible: countryList.count === 0
 

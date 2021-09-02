@@ -18,12 +18,6 @@ Kirigami.ScrollablePage {
     property var channel
 
     title: channel.displayName || channel.name
-    supportsRefreshing: true
-
-    onRefreshingChanged:
-        if(refreshing) {
-            channel.refresh()
-        }
 
     Connections {
         target: channel
@@ -31,13 +25,6 @@ Kirigami.ScrollablePage {
             if(!refreshing)
                 page.refreshing = refreshing
         }
-    }
-
-    actions.main: Kirigami.Action {
-        iconName: "view-refresh"
-        text: i18n("Refresh Channel")
-        onTriggered: page.refreshing = true
-        visible: !Kirigami.Settings.isMobile || programList.count === 0
     }
 
     Kirigami.PlaceholderMessage {
