@@ -15,7 +15,7 @@ import org.kde.TellySkout 1.0
 Rectangle {
     width: 200
     implicitWidth: 200
-    implicitHeight: 20
+    implicitHeight: 7
     color: "transparent"
     Rectangle {
             id: borderTop
