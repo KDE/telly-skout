@@ -146,6 +146,20 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
             QDate tomorrow = QDate::currentDate().addDays(1);
             QSet<QDate> days{yesterday, today, tomorrow};
             for (auto day : days) {
+                // check if program is available already
+                const QDateTime utcTime(day, QTime(), Qt::UTC);
+                const qint64 lastTime = utcTime.addDays(1).toSecsSinceEpoch() - 1;
+                QSqlQuery queryProgramAvailable;
+                queryProgramAvailable.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
+                queryProgramAvailable.bindValue(QStringLiteral(":channel"), "http://xmltv.xmltv.se/" + channelId); // TODO use channel ID in Programs
+                queryProgramAvailable.bindValue(QStringLiteral(":lastTime"), lastTime);
+                Database::instance().execute(queryProgramAvailable);
+                queryProgramAvailable.next();
+
+                if (queryProgramAvailable.value(0).toInt() > 0) {
+                    continue;
+                }
+
                 const QString urlDay = url + "_" + day.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
                 qDebug() << "Starting to fetch program for " << channelId << "(" << urlDay << ")";
 
