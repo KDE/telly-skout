@@ -30,7 +30,7 @@ class Program : public QObject
     Q_PROPERTY(QString baseUrl READ baseUrl CONSTANT);
 
 public:
-    Program(Channel *channel, qint64 time);
+    Program(Channel *channel, const QDateTime &time);
     Program(Channel *channel, int index);
     ~Program();
 

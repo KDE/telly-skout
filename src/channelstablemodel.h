@@ -12,6 +12,8 @@
 #include <QSqlTableModel>
 #include <QUrl>
 
+#include <array>
+
 class Channel;
 class Program;
 
@@ -32,6 +34,7 @@ public:
 private:
     void loadChannel(int index) const;
 
+    const static int numRows = 24 * 60; // 1 row per minute for complete day
     mutable QVector<Channel *> m_channels;
-    mutable QMap<int, QVector<Program *>> m_programs;
+    mutable QMap<int, std::array<Program *, numRows>> m_programs;
 };

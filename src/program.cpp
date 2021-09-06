@@ -12,17 +12,17 @@
 
 #include "database.h"
 
-Program::Program(Channel *channel, qint64 time)
+Program::Program(Channel *channel, const QDateTime &time)
     : QObject(nullptr)
     , m_channel(channel)
 {
     QSqlQuery programQuery;
     programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel AND start <= :time AND stop > :time LIMIT 1;"));
     programQuery.bindValue(QStringLiteral(":channel"), m_channel->url());
-    programQuery.bindValue(QStringLiteral(":time"), time);
+    programQuery.bindValue(QStringLiteral(":time"), time.toSecsSinceEpoch());
     Database::instance().execute(programQuery);
     if (!programQuery.next()) {
-        qWarning() << "No element for time " << time << " found in channel" << m_channel->url();
+        qWarning() << "No element for time " << time.toSecsSinceEpoch() << " found in channel" << m_channel->url();
     }
 
     QSqlQuery countryQuery;
@@ -38,7 +38,8 @@ Program::Program(Channel *channel, qint64 time)
     m_stop.setSecsSinceEpoch(programQuery.value(QStringLiteral("stop")).toInt());
 
     m_id = programQuery.value(QStringLiteral("id")).toString();
-    m_title = (m_start.toSecsSinceEpoch() == time) ? programQuery.value(QStringLiteral("title")).toString() : ""; // TODO: better solution in qml
+    m_title =
+        (m_start.toSecsSinceEpoch() == time.toSecsSinceEpoch()) ? programQuery.value(QStringLiteral("title")).toString() : ""; // TODO: better solution in qml
     m_description = programQuery.value(QStringLiteral("description")).toString();
     m_subtitle = programQuery.value(QStringLiteral("subtitle")).toString();
 }

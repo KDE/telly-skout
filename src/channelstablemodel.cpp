@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+#include <algorithm>
+
 #include <QBrush>
 #include <QDebug>
 #include <QModelIndex>
@@ -54,7 +56,7 @@ QHash<int, QByteArray> ChannelsTableModel::roleNames() const
 int ChannelsTableModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return 24 * 60; // one per minute per day
+    return numRows;
 }
 
 int ChannelsTableModel::columnCount(const QModelIndex &parent) const
@@ -94,21 +96,6 @@ QVariant ChannelsTableModel::data(const QModelIndex &index, int role) const
     if (m_channels.length() <= index.column()) {
         loadChannel(index.column());
     }
-    Channel *channel = m_channels[index.column()];
-
-    // get correct program for row
-    // offset for today (00:00) [UTC] + row [min] * 60 => second [since 1970] when program is running
-    // start <= second < end
-    QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
-    const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
-    const qint64 second = offsetTimeToday + (index.row() * 60);
-
-    if (m_programs.size() <= index.column()) {
-        m_programs.insert(index.column(), QVector<Program *>());
-    }
-    if (m_programs[index.column()].length() <= index.row()) {
-        m_programs[index.column()].push_back(new Program(channel, second));
-    }
     Program *program = m_programs[index.column()].at(index.row());
 
     switch (role) {
@@ -116,6 +103,11 @@ QVariant ChannelsTableModel::data(const QModelIndex &index, int role) const
         return QVariant::fromValue(program);
     }
     case Qt::UserRole: {
+        // check if progam starts now
+        // offset for today (00:00) [UTC] + row [min] * 60 => second [since 1970] when program is running
+        QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
+        const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
+        const qint64 second = offsetTimeToday + (index.row() * 60);
         return second == program->start().toSecsSinceEpoch();
     }
     }
@@ -125,7 +117,36 @@ QVariant ChannelsTableModel::data(const QModelIndex &index, int role) const
 
 void ChannelsTableModel::loadChannel(int index) const
 {
-    m_channels += new Channel(index, true);
+    Channel *channel = new Channel(index, true);
+    m_channels += channel;
+
+    // load program
+    if (m_programs.size() <= index) { // should always be true but just in case...
+        m_programs.insert(index, std::array<Program *, numRows>());
+    }
+    // offset for today (00:00) [UTC] + row [min] * 60 => second [since 1970] when program is running
+    QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
+    const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
+
+    QSqlQuery programQuery;
+    // only programs which run today
+    programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel AND start <= :end AND stop >= :begin;"));
+    programQuery.bindValue(QStringLiteral(":channel"), channel->url());
+    programQuery.bindValue(QStringLiteral(":end"), offsetTimeToday + (24 * 60 * 60));
+    programQuery.bindValue(QStringLiteral(":begin"), offsetTimeToday);
+    Database::instance().execute(programQuery);
+    while (programQuery.next()) {
+        const int start = programQuery.value(QStringLiteral("start")).toInt();
+        const int stop = programQuery.value(QStringLiteral("stop")).toInt();
+        Program *program = new Program(channel, QDateTime().fromSecsSinceEpoch(start)); // TODO fix memleak
+
+        // remember for all rows (1 per minute) when this program is running
+        const int firstRow = std::max((start - offsetTimeToday) / 60, static_cast<qint64>(0));
+        const int lastRow = std::min((stop - offsetTimeToday) / 60, static_cast<qint64>(numRows));
+        for (int row = firstRow; row < lastRow; ++row) {
+            m_programs[index].at(row) = program;
+        }
+    }
 }
 
 void ChannelsTableModel::setChannelAsFavorite(const QString &url)
