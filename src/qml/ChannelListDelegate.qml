@@ -23,12 +23,12 @@ Kirigami.SwipeListItem {
         text: model.channel.displayName || model.channel.name
         icon: model.channel.refreshing ? "view-refresh" : model.channel.image === "" ? "rss" : Fetcher.image(model.channel.image)
 
-        onClicked: {
+        /*onClicked: {
             lastChannel = model.channel.url
             while(pageStack.depth > 1)
                 pageStack.pop()
             pageStack.push("qrc:/ProgramListPage.qml", {"channel": model.channel})
-        }
+        }*/
     }
 
     actions: [
