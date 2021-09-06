@@ -5,7 +5,7 @@ A convergent EPG based on Kirigami.
 ### Dependencies
 #### Manjaro
 ```
-sudo pacman -Syu git cmake gcc extra-cmake-modules
+sudo pacman -Syu cmake extra-cmake-modules gcc git make
 ```
 
 ### Clone and Build
