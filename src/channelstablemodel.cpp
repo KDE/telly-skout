@@ -71,8 +71,7 @@ int ChannelsTableModel::columnCount(const QModelIndex &parent) const
 
 QVariant ChannelsTableModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    switch (role) {
-    case Qt::DisplayRole: {
+    if (Qt::DisplayRole == role) {
         switch (orientation) {
         case Qt::Orientation::Horizontal:
             return m_channels[section]->name();
@@ -86,15 +85,6 @@ QVariant ChannelsTableModel::headerData(int section, Qt::Orientation orientation
                 return QString("");
             }
         }
-        break;
-    }
-    case Qt::BackgroundRole: {
-        // do not show empty header cells
-        // TODO: doesn't work
-        if ((Qt::Orientation::Vertical == orientation) && (section % 60) != 0) {
-            return QVariant(QColor(Qt::transparent));
-        }
-    }
     }
     return QVariant();
 }

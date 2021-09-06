@@ -31,12 +31,6 @@ Kirigami.Page {
         text: i18n("No Channels added yet")
     }
 
-    Controls.VerticalHeaderView {
-        id: verticalHeader
-        syncView: channelTable
-        anchors.top: channelTable.top
-    }
-
     Controls.HorizontalHeaderView {
         id: horizontalHeader
         syncView: channelTable
