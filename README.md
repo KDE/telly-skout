@@ -14,7 +14,7 @@ git clone https://github.com/plata/telly-skout.git
 cd telly-skout
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake -DCMAKE_BUILD_TYPE=Release ..
 make
 ```
 
