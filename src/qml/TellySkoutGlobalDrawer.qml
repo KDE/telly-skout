@@ -19,7 +19,7 @@ Kirigami.GlobalDrawer {
 
     isMenu: true
     actions: [
-        Kirigami.Action {
+        /*Kirigami.Action {
             text: i18n("Favorites")
             iconName: "rss"
             onTriggered: {
@@ -27,9 +27,9 @@ Kirigami.GlobalDrawer {
                 pageStack.clear()
                 pageStack.push("qrc:/ChannelListPage.qml", {groupFilter: "Favorites", countryFilter: ""})
             }
-        },
+        },*/
         Kirigami.Action {
-            text: i18n("Favorites (table)")
+            text: i18n("Favorites")
             iconName: "rss"
             onTriggered: {
                 pageStack.layers.clear()
@@ -38,7 +38,7 @@ Kirigami.GlobalDrawer {
             }
         },
         Kirigami.Action {
-            text: i18n("Countries")
+            text: i18n("Select Favorites")
             iconName: "rss"
             onTriggered: {
                 pageStack.layers.clear()

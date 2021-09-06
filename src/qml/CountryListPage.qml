@@ -15,7 +15,7 @@ import org.kde.TellySkout 1.0
 Kirigami.ScrollablePage {
     id: root
 
-    title: "Countries"
+    title: "Select Favorites"
 
     property string lastCountry: ""
 

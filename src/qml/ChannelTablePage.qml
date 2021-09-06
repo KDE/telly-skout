@@ -16,7 +16,7 @@ import org.kde.TellySkout 1.0
 Kirigami.Page {
     id: root
 
-    title: i18n("Favorites (table)")
+    title: i18n("Favorites")
 
     property string lastChannel: ""
 
