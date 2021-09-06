@@ -22,13 +22,13 @@ Kirigami.Page {
 
 
     Kirigami.PlaceholderMessage {
-        visible: channelTable.count === 0
+        visible: channelTable.model().columnCount === 0
 
         width: Kirigami.Units.gridUnit * 20
-        icon.name: "rss"
+        icon.name: "favorite"
         anchors.centerIn: parent
 
-        text: i18n("No Channels added yet")
+        text: i18n("Please select favorites.")
     }
 
     Controls.HorizontalHeaderView {
