@@ -22,7 +22,7 @@ Kirigami.Page {
 
 
     Kirigami.PlaceholderMessage {
-        visible: channelTable.model().columnCount === 0
+        visible: false //channelTable.model().columnCount === 0
 
         width: Kirigami.Units.gridUnit * 20
         icon.name: "favorite"
@@ -39,9 +39,9 @@ Kirigami.Page {
 
     TableView {
         id: channelTable
-        width: root.width - verticalHeader.width
+        width: root.width
         height: root.height - horizontalHeader.height
-        anchors.left: verticalHeader.right
+        anchors.left: root.left
         anchors.top: horizontalHeader.bottom
         columnSpacing: 0
         rowSpacing: 0
