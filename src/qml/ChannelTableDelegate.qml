@@ -35,12 +35,12 @@ Rectangle {
     Text {
         id: text
         width: parent.implicitWidth
-        leftPadding: 10
-        topPadding: 10
-        rightPadding: 10
-        bottomPadding: 10
+        leftPadding: 3
+        topPadding: 3
+        rightPadding: 3
+        bottomPadding: 3
         height: parent.implicitHeight * (program.stop - program.start) / 60
-        text: isFirst ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br>" + program.title : ""
+        text: isFirst ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title : ""
         wrapMode: Text.Wrap
         MouseArea {
             anchors.fill: parent
