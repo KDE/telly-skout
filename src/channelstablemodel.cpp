@@ -100,6 +100,9 @@ QVariant ChannelsTableModel::data(const QModelIndex &index, int role) const
         loadChannel(index.column());
     }
     Program *program = m_programs[index.column()].at(index.row());
+    if (!program) {
+        return QVariant();
+    }
 
     switch (role) {
     case Qt::DisplayRole: {
