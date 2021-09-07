@@ -32,8 +32,8 @@ Rectangle {
             anchors.right: parent.right
             color: Kirigami.Theme.textColor
     }
-    Controls.Label {
-        id: label
+    Text {
+        id: text
         width: parent.implicitWidth
         leftPadding: 10
         topPadding: 10
