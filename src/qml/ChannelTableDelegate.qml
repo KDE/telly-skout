@@ -42,6 +42,7 @@ Rectangle {
         height: parent.implicitHeight * (program.stop - program.start) / 60
         text: isFirst ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title : ""
         wrapMode: Text.Wrap
+        color: Kirigami.Theme.textColor
         MouseArea {
             anchors.fill: parent
             onClicked: {
