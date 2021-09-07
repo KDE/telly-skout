@@ -76,6 +76,9 @@ QVariant ChannelsTableModel::headerData(int section, Qt::Orientation orientation
     if (Qt::DisplayRole == role) {
         switch (orientation) {
         case Qt::Orientation::Horizontal:
+            if (m_channels.length() <= section) {
+                loadChannel(section);
+            }
             return m_channels[section]->name();
         case Qt::Orientation::Vertical:
             const int hours = section / 60;
