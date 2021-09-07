@@ -41,7 +41,7 @@ Kirigami.Page {
         id: channelTable
         width: root.width
         height: root.height - horizontalHeader.height
-        anchors.left: root.left
+        anchors.left: horizontalHeader.left
         anchors.top: horizontalHeader.bottom
         columnSpacing: 0
         rowSpacing: 0
