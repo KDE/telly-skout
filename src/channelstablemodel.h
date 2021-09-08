@@ -27,7 +27,9 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex &parent) const override;
+    int rowCount() const;
     int columnCount(const QModelIndex &parent) const override;
+    int columnCount() const;
     Q_INVOKABLE void setChannelAsFavorite(const QString &url);
     Q_INVOKABLE void refreshAll();
 

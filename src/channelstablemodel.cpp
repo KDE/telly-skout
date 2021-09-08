@@ -46,6 +46,11 @@ ChannelsTableModel::ChannelsTableModel(QObject *parent)
             }
         }
     });
+
+    // preload
+    for (int column = 0; column < columnCount(); ++column) {
+        loadChannel(column);
+    }
 }
 
 QHash<int, QByteArray> ChannelsTableModel::roleNames() const
@@ -56,12 +61,22 @@ QHash<int, QByteArray> ChannelsTableModel::roleNames() const
 int ChannelsTableModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
+    return rowCount();
+}
+
+int ChannelsTableModel::rowCount() const
+{
     return numRows;
 }
 
 int ChannelsTableModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
+    return columnCount();
+}
+
+int ChannelsTableModel::columnCount() const
+{
     QSqlQuery query;
     query.prepare(QStringLiteral("SELECT COUNT() FROM Channels WHERE favorite=1;"));
     Database::instance().execute(query);
