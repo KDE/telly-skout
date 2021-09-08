@@ -19,7 +19,7 @@ Rectangle {
     color: "transparent"
     Rectangle {
             id: borderTop
-            visible: isFirst
+            visible: isFirst !== undefined ? isFirst : false
             width: parent.width
             height: 1
             anchors.top: parent.top
@@ -39,24 +39,27 @@ Rectangle {
         topPadding: 3
         rightPadding: 3
         bottomPadding: 3
-        height: parent.implicitHeight * (program.stop - program.start) / 60
+        height: program !== undefined ? parent.implicitHeight * (program.stop - program.start) / 60 : parent.implicitHeight
         text: isFirst ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title : ""
         wrapMode: Text.Wrap
         color: Kirigami.Theme.textColor
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                overlay.open()
+                if (program !== undefined) {
+                    overlay.open()
+                }
             }
         }
     }
 
     Kirigami.OverlaySheet {
         id: overlay
-        Controls.Label {
+        Text {
             Layout.fillWidth: true
+            color: Kirigami.Theme.textColor
             wrapMode: Text.WordWrap
-            text: "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br><br>" + program.description
+            text: program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br><br>" + program.description : ""
         }
     }
 }
