@@ -13,6 +13,10 @@ import org.kde.kirigami 2.12 as Kirigami
 import org.kde.TellySkout 1.0
 
 Rectangle {
+    id: root
+
+    property var overlay
+
     width: 200
     implicitWidth: 200
     implicitHeight: 7
@@ -47,19 +51,10 @@ Rectangle {
             anchors.fill: parent
             onClicked: {
                 if (program !== undefined) {
-                    overlay.open()
+                    root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br><br>" + program.description : ""
+                    root.overlay.open()
                 }
             }
-        }
-    }
-
-    Kirigami.OverlaySheet {
-        id: overlay
-        Text {
-            Layout.fillWidth: true
-            color: Kirigami.Theme.textColor
-            wrapMode: Text.WordWrap
-            text: program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br><br>" + program.description : ""
         }
     }
 }

@@ -50,6 +50,18 @@ Kirigami.Page {
         model: ChannelsTableModel {}
 
         delegate: ChannelTableDelegate {
+            overlay: overlaySheet
+        }
+    }
+
+    Kirigami.OverlaySheet {
+        id: overlaySheet
+        property alias text: overlaySheetText.text
+        Text {
+            id: overlaySheetText
+            Layout.fillWidth: true
+            color: Kirigami.Theme.textColor
+            wrapMode: Text.WordWrap
         }
     }
 }
