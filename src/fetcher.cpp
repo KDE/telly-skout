@@ -25,6 +25,32 @@ Fetcher::Fetcher()
     manager->enableStrictTransportSecurityStore(true);
 }
 
+void Fetcher::fetchFavorites()
+{
+    qDebug() << "Starting to fetch favorites";
+
+    Q_EMIT startedFetchingFavorites();
+
+    QSqlQuery query;
+    query.prepare(QStringLiteral("SELECT * FROM Channels WHERE favorite IS TRUE;"));
+    Database::instance().execute(query);
+    while (query.next()) {
+        const QString &channelId = query.value(QStringLiteral("id")).toString();
+        const QString &name = query.value(QStringLiteral("name")).toString();
+
+        QSqlQuery countryQuery;
+        countryQuery.prepare(QStringLiteral("SELECT * FROM CountryChannels WHERE channel=:channel LIMIT 1;"));
+        countryQuery.bindValue(QStringLiteral(":channel"), channelId);
+        Database::instance().execute(countryQuery);
+        if (countryQuery.next()) {
+            const QString &countryId = countryQuery.value(QStringLiteral("country")).toString();
+            fetchChannel(channelId, name, countryId);
+        }
+    }
+
+    Q_EMIT finishedFetchingFavorites();
+}
+
 void Fetcher::fetchAll()
 {
     // http://xmltv.se/countries.xml

@@ -22,6 +22,7 @@ public:
         static Fetcher _instance;
         return _instance;
     }
+    Q_INVOKABLE void fetchFavorites();
     Q_INVOKABLE void fetchAll();
     Q_INVOKABLE void fetchCountry(const QString &url, const QString &countryId);
     Q_INVOKABLE void fetchChannel(const QString &channelId, const QString &name, const QString &country);
@@ -41,6 +42,8 @@ private:
     QNetworkAccessManager *manager;
 
 Q_SIGNALS:
+    void startedFetchingFavorites();
+    void finishedFetchingFavorites();
     void startedFetchingCountry(const QString &id); // TODO: emit
     void startedFetchingChannel(const QString &id);
     void countryUpdated(const QString &id);

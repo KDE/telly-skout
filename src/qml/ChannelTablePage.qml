@@ -64,4 +64,8 @@ Kirigami.Page {
             wrapMode: Text.WordWrap
         }
     }
+
+    Component.onCompleted: {
+        Fetcher.fetchFavorites()
+    }
 }
