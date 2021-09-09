@@ -39,4 +39,8 @@ Kirigami.ScrollablePage {
         delegate: CountryListDelegate {
         }
     }
+
+    Component.onCompleted: {
+        Fetcher.fetchAll()
+    }
 }
