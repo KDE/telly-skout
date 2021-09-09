@@ -18,7 +18,6 @@ Kirigami.ApplicationWindow {
     pageStack.initialPage: channelTable
 
     globalDrawer: TellySkoutGlobalDrawer {
-        countriesPage: countryList
         channelsTablePage: channelTable
     }
 
@@ -31,10 +30,6 @@ Kirigami.ApplicationWindow {
 
     contextDrawer: Kirigami.ContextDrawer {
         id: contextDrawer
-    }
-
-    CountryListPage  {
-        id: countryList
     }
 
     ChannelTablePage  {

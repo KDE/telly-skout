@@ -13,8 +13,6 @@ import org.kde.TellySkout 1.0 as TellySkout
 Kirigami.GlobalDrawer {
     id: root
 
-    property var countriesPage
-    property var channelsPage
     property var channelsTablePage
 
     isMenu: true
@@ -43,7 +41,7 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear()
                 pageStack.clear()
-                pageStack.push(root.countriesPage, {})
+                pageStack.push("qrc:/CountryListPage.qml")
             }
         },
         Kirigami.Action {
