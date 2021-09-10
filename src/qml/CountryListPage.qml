@@ -23,10 +23,12 @@ Kirigami.ScrollablePage {
         visible: countryList.count === 0
 
         width: Kirigami.Units.gridUnit * 20
-        icon.name: "rss"
         anchors.centerIn: parent
 
-        text: i18n("No countries added yet")
+        Controls.BusyIndicator {
+            anchors.centerIn: parent
+        }
+        text: i18n("Loading channels...")
     }
 
     ListView {
