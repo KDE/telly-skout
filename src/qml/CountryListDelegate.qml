@@ -21,7 +21,7 @@ Kirigami.SwipeListItem {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         text: model.country.name
-        icon: model.country.refreshing ? "view-refresh" : "rss"
+        icon: model.country.refreshing ? "view-refresh" : ""
 
         onClicked: {
             lastCountry = model.country.id
