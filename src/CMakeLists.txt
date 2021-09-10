@@ -1,17 +1,14 @@
-# SPDX-FileCopyrightText: 2020 Tobias Fella <fella@posteo.de>
-# SPDX-License-Identifier: BSD-2-Clause
-
 add_executable(telly-skout
     main.cpp
-    channelsmodel.cpp
-    channelstablemodel.cpp
-    fetcher.cpp
-    database.cpp
-    program.cpp
     channel.cpp
+    channelsmodel.cpp
+    channelsproxymodel.cpp
+    channelstablemodel.cpp
     country.cpp
     countriesmodel.cpp
-    channelsproxymodel.cpp
+    database.cpp
+    fetcher.cpp
+    program.cpp
     resources.qrc
 )
 

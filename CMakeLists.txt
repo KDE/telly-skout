@@ -8,9 +8,7 @@ set(QT_MIN_VERSION "5.15.0")
 
 include(FeatureSummary)
 
-add_compile_options(-Wall -Wextra -pedantic -Werror)
-
-################# set KDE specific information #################
+################# KDE settings #################
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 
@@ -24,21 +22,22 @@ include(KDEClangFormat)
 include(KDECMakeSettings)
 include(ECMPoQmTools)
 include(KDECompilerSettings NO_POLICY_SCOPE)
+include(KDEInstallDirs)
 
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX TELLY_SKOUT
     VERSION_HEADER ${CMAKE_CURRENT_BINARY_DIR}/telly-skout-version.h
 )
 
-################# Find dependencies #################
+################# dependencies #################
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Test Gui QuickControls2 Sql Widgets)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS CoreAddons Config I18n)
 
-
-################# Enable C++11 features for clang and gcc #################
+################# compiler #################
 
 set(CMAKE_CXX_STANDARD 11)
+add_compile_options(-Wall -Wextra -pedantic -Werror)
 
 ################# build and install #################
 
@@ -49,6 +48,8 @@ install(FILES org.kde.telly-skout.appdata.xml DESTINATION ${KDE_INSTALL_METAINFO
 install(FILES telly-skout.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+################# format sources #################
 
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES src/*.cpp src/*.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
