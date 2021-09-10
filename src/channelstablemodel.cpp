@@ -22,35 +22,23 @@
 ChannelsTableModel::ChannelsTableModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
-    connect(&Database::instance(), &Database::channelAdded, this, [this]() {
-        beginInsertRows(QModelIndex(), rowCount(QModelIndex()) - 1, rowCount(QModelIndex()) - 1);
-        endInsertRows();
-    });
-
-    connect(&Fetcher::instance(), &Fetcher::channelDetailsUpdated, this, [this](const QString &id, const QString &image) {
-        for (int i = 0; i < m_channels.length(); i++) {
-            if (m_channels[i]->id() == id) {
-                m_channels[i]->setImage(image);
-                Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
-                break;
-            }
+    connect(&Fetcher::instance(), &Fetcher::finishedFetchingFavorites, this, [this]() {
+        // cleanup
+        foreach (Channel *channel, m_channels) {
+            // TODO: store programs in channel and delete them as well (Channel as parent?)
+            delete channel;
         }
-    });
+        m_channels.clear();
+        m_programs.clear();
 
-    connect(&Database::instance(), &Database::channelDetailsUpdated, [this](const QString &id, bool favorite) {
-        for (int i = 0; i < m_channels.length(); i++) {
-            if (m_channels[i]->id() == id) {
-                m_channels[i]->setFavorite(favorite);
-                Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
-                break;
-            }
-        }
+        // reload
+        load();
+        // TODO: why does dataChanged() not work?
+        Q_EMIT dataChanged(createIndex(0, 0), createIndex(rowCount() - 1, columnCount() - 1));
     });
 
     // preload
-    for (int column = 0; column < columnCount(); ++column) {
-        loadChannel(column);
-    }
+    load();
 }
 
 QHash<int, QByteArray> ChannelsTableModel::roleNames() const
@@ -61,22 +49,12 @@ QHash<int, QByteArray> ChannelsTableModel::roleNames() const
 int ChannelsTableModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return rowCount();
-}
-
-int ChannelsTableModel::rowCount() const
-{
     return numRows;
 }
 
 int ChannelsTableModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return columnCount();
-}
-
-int ChannelsTableModel::columnCount() const
-{
     QSqlQuery query;
     query.prepare(QStringLiteral("SELECT COUNT() FROM Channels WHERE favorite=1;"));
     Database::instance().execute(query);
@@ -134,6 +112,13 @@ QVariant ChannelsTableModel::data(const QModelIndex &index, int role) const
     }
 
     return QVariant();
+}
+
+void ChannelsTableModel::load() const
+{
+    for (int column = 0; column < columnCount(); ++column) {
+        loadChannel(column);
+    }
 }
 
 void ChannelsTableModel::loadChannel(int index) const

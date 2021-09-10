@@ -26,14 +26,13 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
-    int rowCount(const QModelIndex &parent) const override;
-    int rowCount() const;
-    int columnCount(const QModelIndex &parent) const override;
-    int columnCount() const;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     Q_INVOKABLE void setChannelAsFavorite(const QString &url);
     Q_INVOKABLE void refreshAll();
 
 private:
+    void load() const;
     void loadChannel(int index) const;
 
     const static int numRows = 24 * 60; // 1 row per minute for complete day
