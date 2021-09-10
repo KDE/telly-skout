@@ -5,8 +5,8 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="tellyskoutrc" />
   <group name="General">
-    <entry name="deleteAfterCount" type="UInt">
-      <label>Delete after count</label>
+    <entry name="deleteProgramAfter" type="UInt">
+      <label>Delete program after</label>
       <default>1</default>
     </entry>
   </group>

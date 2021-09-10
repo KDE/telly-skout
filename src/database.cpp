@@ -91,10 +91,10 @@ int Database::version()
 void Database::cleanup()
 {
     const TellySkoutSettings settings;
-    const unsigned int count = settings.deleteAfterCount();
+    const unsigned int days = settings.deleteProgramAfter();
 
     QDateTime dateTime = QDateTime::currentDateTime();
-    dateTime = dateTime.addDays(-static_cast<qint64>(count));
+    dateTime = dateTime.addDays(-static_cast<qint64>(days));
     const qint64 sinceEpoch = dateTime.toSecsSinceEpoch();
 
     QSqlQuery query;

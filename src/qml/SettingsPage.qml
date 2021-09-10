@@ -24,11 +24,10 @@ Kirigami.ScrollablePage {
             Kirigami.FormData.label: i18n("Delete old after")
 
             Controls.SpinBox {
-                id: deleteAfterCount
-                value: _settings.deleteAfterCount
-                enabled: deleteAfterType.currentIndex !== 0
+                id: deleteProgramAfter
+                value: _settings.deleteProgramAfter
 
-                onValueModified: _settings.deleteAfterCount = value
+                onValueModified: _settings.deleteProgramAfter = value
             }
 
             Controls.Label {
