@@ -48,23 +48,23 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
     QCoreApplication::setApplicationName(QStringLiteral("Telly Skout"));
 
+    const QString applicationDescription = i18n("Convergent EPG based on Kirigami");
+
     KAboutData about(QStringLiteral("telly-skout"),
                      i18n("Telly Skout"),
                      QStringLiteral(TELLY_SKOUT_VERSION_STRING),
-                     i18n("Channel Reader"),
+                     applicationDescription,
                      KAboutLicense::GPL,
                      i18n("© 2020 KDE Community"));
-    about.addAuthor(i18n("Plata"), QString(), QStringLiteral("plata@example.com"));
+    about.addAuthor("Plata", QString(), QStringLiteral("plata@example.com"));
     KAboutData::setApplicationData(about);
 
     // command line parser
     QCommandLineParser parser;
-    parser.setApplicationDescription(i18n("Convergent EPG based on Kirigami"));
+    parser.setApplicationDescription(applicationDescription);
     parser.addHelpOption();
     parser.addVersionOption();
     parser.process(app);
-
-    about.processCommandLine(&parser);
 
     // register qml types
     qmlRegisterType<CountriesModel>("org.kde.TellySkout", 1, 0, "CountriesModel");
