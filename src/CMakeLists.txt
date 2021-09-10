@@ -5,7 +5,6 @@ add_executable(telly-skout
     main.cpp
     channelsmodel.cpp
     channelstablemodel.cpp
-    programsmodel.cpp
     fetcher.cpp
     database.cpp
     program.cpp

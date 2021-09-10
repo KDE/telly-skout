@@ -30,7 +30,6 @@
 #include "countriesmodel.h"
 #include "database.h"
 #include "fetcher.h"
-#include "programsmodel.h"
 #include "telly-skout-version.h"
 
 #ifdef Q_OS_ANDROID
@@ -72,8 +71,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<ChannelsModel>("org.kde.TellySkout", 1, 0, "ChannelsModel");
     qmlRegisterType<ChannelsProxyModel>("org.kde.TellySkout", 1, 0, "ChannelsProxyModel");
     qmlRegisterType<ChannelsTableModel>("org.kde.TellySkout", 1, 0, "ChannelsTableModel");
-
-    qmlRegisterUncreatableType<ProgramsModel>("org.kde.TellySkout", 1, 0, "ProgramsModel", QStringLiteral("Get from Channel"));
 
     qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "Fetcher", &Fetcher::instance());
     qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "Database", &Database::instance());
