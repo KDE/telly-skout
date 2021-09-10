@@ -140,12 +140,10 @@ bool Database::channelExists(const QString &url)
 
 void Database::addCountry(const QString &id, const QString &name, const QString &url)
 {
-    qDebug() << "Adding channel";
     if (countryExists(url)) {
-        qDebug() << "Country already exists";
         return;
     }
-    qDebug() << "Country does not yet exist";
+    qDebug() << "Add country" << name;
 
     QUrl urlFromInput = QUrl::fromUserInput(url);
     QSqlQuery query;
@@ -162,12 +160,10 @@ void Database::addCountry(const QString &id, const QString &name, const QString 
 
 void Database::addChannel(const QString &id, const QString &name, const QString &url, const QString &country, const QString &image, bool favorite)
 {
-    qDebug() << "Adding channel";
     if (channelExists(url)) {
-        qDebug() << "Channel already exists";
         return;
     }
-    qDebug() << "Channel does not yet exist";
+    qDebug() << "Add channel" << name;
 
     QUrl urlFromInput = QUrl::fromUserInput(url);
     QSqlQuery query;
