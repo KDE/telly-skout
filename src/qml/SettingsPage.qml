@@ -36,31 +36,5 @@ Kirigami.ScrollablePage {
             }
         }
 
-        Kirigami.Heading {
-            Kirigami.FormData.isSection: true
-            text: i18n("Article")
-        }
-
-        Controls.SpinBox {
-            id: articleFontSizeSpinBox
-
-            enabled: !useSystemFontCheckBox.checked
-            value: _settings.articleFontSize
-            Kirigami.FormData.label: i18n("Font size:")
-            from: 6
-            to: 20
-
-            onValueModified: _settings.articleFontSize = value
-
-        }
-
-        Controls.CheckBox {
-            id: useSystemFontCheckBox
-            checked: _settings.articleFontUseSystem
-            text: i18n("Use system default")
-
-            onToggled: _settings.articleFontUseSystem = checked
-        }
-
     }
 }

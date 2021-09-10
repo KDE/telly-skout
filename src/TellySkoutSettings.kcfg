@@ -9,13 +9,5 @@
       <label>Delete after count</label>
       <default>1</default>
     </entry>
-    <entry name="articleFontSize" type="Int">
-      <label>Article font size</label>
-      <default>10</default>
-    </entry>
-    <entry name="articleFontUseSystem" type="Bool">
-      <label>Use default system font</label>
-      <default>true</default>
-    </entry>
   </group>
 </kcfg>
