@@ -27,7 +27,7 @@ class Program : public QObject
     Q_PROPERTY(QDateTime start READ start CONSTANT)
     Q_PROPERTY(QDateTime stop READ stop CONSTANT)
     Q_PROPERTY(QString subtitle READ subtitle CONSTANT)
-    Q_PROPERTY(QString baseUrl READ baseUrl CONSTANT);
+    Q_PROPERTY(QString baseUrl READ baseUrl CONSTANT)
 
 public:
     Program(Channel *channel, const QDateTime &time);

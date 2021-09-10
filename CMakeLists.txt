@@ -8,6 +8,8 @@ set(QT_MIN_VERSION "5.15.0")
 
 include(FeatureSummary)
 
+add_compile_options(-Wall -Wextra -pedantic -Werror)
+
 ################# set KDE specific information #################
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
