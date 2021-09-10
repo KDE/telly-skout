@@ -9,7 +9,7 @@
 #include "channel.h"
 #include "database.h"
 #include "fetcher.h"
-#include "programsmodel.h"
+#include "program.h"
 
 Channel::Channel(int index, bool onlyFavorite)
     : QObject(nullptr)
@@ -70,7 +70,25 @@ Channel::Channel(int index, bool onlyFavorite)
         }
     });
 
-    m_programs = new ProgramsModel(this);
+    // programs
+    QSqlQuery programQuery;
+    programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start"));
+    programQuery.bindValue(QStringLiteral(":channel"), m_id);
+    Database::instance().execute(programQuery);
+    int programIndex = 0;
+    while (programQuery.next()) {
+        loadProgram(programIndex);
+        index++;
+    }
+
+    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
+        if (this->id() == id) {
+            for (auto &program : m_programs) {
+                delete program;
+            }
+            m_programs.clear();
+        }
+    });
 }
 
 Channel::~Channel()
@@ -220,4 +238,9 @@ void Channel::remove()
     query.prepare(QStringLiteral("DELETE FROM Channels WHERE url=:url;"));
     query.bindValue(QStringLiteral(":url"), m_url);
     Database::instance().execute(query);
+}
+
+void Channel::loadProgram(int index) const
+{
+    m_programs[index] = new Program(this, index);
 }

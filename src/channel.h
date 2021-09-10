@@ -8,11 +8,12 @@
 #define CHANNEL_H
 
 #include <QDateTime>
+#include <QHash>
 #include <QObject>
 
 #include "country.h"
 
-class ProgramsModel;
+class Program;
 
 class Channel : public QObject
 {
@@ -29,7 +30,7 @@ class Channel : public QObject
     Q_PROPERTY(int programCount READ programCount NOTIFY programCountChanged)
     Q_PROPERTY(int errorId READ errorId WRITE setErrorId NOTIFY errorIdChanged)
     Q_PROPERTY(QString errorString READ errorString WRITE setErrorString NOTIFY errorStringChanged)
-    Q_PROPERTY(ProgramsModel *programs MEMBER m_programs CONSTANT)
+    Q_PROPERTY(QHash<int, Program *> programs MEMBER m_programs CONSTANT)
 
 public:
     Channel(int index, bool onlyFavorite = false);
@@ -77,6 +78,8 @@ Q_SIGNALS:
     void refreshingChanged(bool refreshing);
 
 private:
+    void loadProgram(int index) const;
+
     QString m_id;
     QString m_url;
     QString m_name;
@@ -86,7 +89,7 @@ private:
     bool m_notify;
     int m_errorId;
     QString m_errorString;
-    ProgramsModel *m_programs;
+    mutable QHash<int, Program *> m_programs;
 
     bool m_refreshing = false;
 };

@@ -30,8 +30,8 @@ class Program : public QObject
     Q_PROPERTY(QString baseUrl READ baseUrl CONSTANT)
 
 public:
-    Program(Channel *channel, const QDateTime &time);
-    Program(Channel *channel, int index);
+    Program(const Channel *channel, const QDateTime &time);
+    Program(const Channel *channel, int index);
     ~Program();
 
     QString id() const;
@@ -45,7 +45,7 @@ public:
     QString baseUrl() const;
 
 private:
-    Channel *m_channel;
+    const Channel *m_channel;
     QString m_id;
     QString m_title;
     QString m_description;

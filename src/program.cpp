@@ -12,7 +12,7 @@
 
 #include "database.h"
 
-Program::Program(Channel *channel, const QDateTime &time)
+Program::Program(const Channel *channel, const QDateTime &time)
     : QObject(nullptr)
     , m_channel(channel)
 {
@@ -44,7 +44,7 @@ Program::Program(Channel *channel, const QDateTime &time)
     m_subtitle = programQuery.value(QStringLiteral("subtitle")).toString();
 }
 
-Program::Program(Channel *channel, int index)
+Program::Program(const Channel *channel, int index)
     : QObject(nullptr)
     , m_channel(channel)
 {
