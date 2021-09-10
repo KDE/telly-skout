@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
         QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
     }
 
+    // about
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
     QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
     QCoreApplication::setApplicationName(QStringLiteral("Telly Skout"));
@@ -57,6 +58,16 @@ int main(int argc, char *argv[])
     about.addAuthor(i18n("Plata"), QString(), QStringLiteral("plata@example.com"));
     KAboutData::setApplicationData(about);
 
+    // command line parser
+    QCommandLineParser parser;
+    parser.setApplicationDescription(i18n("Convergent EPG based on Kirigami"));
+    parser.addHelpOption();
+    parser.addVersionOption();
+    parser.process(app);
+
+    about.processCommandLine(&parser);
+
+    // register qml types
     qmlRegisterType<CountriesModel>("org.kde.TellySkout", 1, 0, "CountriesModel");
     qmlRegisterType<ChannelsModel>("org.kde.TellySkout", 1, 0, "ChannelsModel");
     qmlRegisterType<ChannelsProxyModel>("org.kde.TellySkout", 1, 0, "ChannelsProxyModel");
@@ -67,24 +78,10 @@ int main(int argc, char *argv[])
     qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "Fetcher", &Fetcher::instance());
     qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "Database", &Database::instance());
 
+    // setup engine
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     KLocalizedString::setApplicationDomain("telly-skout");
-
-    QCommandLineParser parser;
-    parser.setApplicationDescription(i18n("RSS/Atom Channel Reader"));
-    QCommandLineOption addChannelOption(QStringList() << QStringLiteral("a") << QStringLiteral("addchannel"),
-                                        i18n("Adds a new channel to database."),
-                                        i18n("channel URL"),
-                                        QStringLiteral("none"));
-    parser.addOption(addChannelOption);
-
-    about.setupCommandLine(&parser);
-    parser.process(app);
-    QString channelURL = parser.value(addChannelOption);
-    if (channelURL != QStringLiteral("none"))
-        Database::instance().addChannel(channelURL, "", "", "", ""); // TODO: remove
-    about.processCommandLine(&parser);
 
     engine.rootContext()->setContextProperty(QStringLiteral("_aboutData"), QVariant::fromValue(about));
 
