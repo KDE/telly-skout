@@ -17,11 +17,11 @@ Kirigami.ScrollablePage {
 
         Kirigami.Heading {
             Kirigami.FormData.isSection: true
-            text: i18n("Article List")
+            text: i18n("Program")
         }
 
         RowLayout {
-            Kirigami.FormData.label: i18n("Delete after:")
+            Kirigami.FormData.label: i18n("Delete old after")
 
             Controls.SpinBox {
                 id: deleteAfterCount
@@ -31,12 +31,8 @@ Kirigami.ScrollablePage {
                 onValueModified: _settings.deleteAfterCount = value
             }
 
-            Controls.ComboBox {
-                id: deleteAfterType
-                currentIndex: _settings.deleteAfterType
-                model: [i18n("Never"), i18n("Articles"), i18n("Days"), i18n("Weeks"), i18n("Months")]
-
-                onActivated: _settings.deleteAfterType = index
+            Controls.Label {
+                text: i18n("days")
             }
         }
 

@@ -90,32 +90,17 @@ int Database::version()
 
 void Database::cleanup()
 {
-    TellySkoutSettings settings;
-    int count = settings.deleteAfterCount();
-    int type = settings.deleteAfterType();
+    const TellySkoutSettings settings;
+    const unsigned int count = settings.deleteAfterCount();
 
-    if (type == 0) { // Never delete Programs
-        return;
-    }
+    QDateTime dateTime = QDateTime::currentDateTime();
+    dateTime = dateTime.addDays(-static_cast<qint64>(count));
+    const qint64 sinceEpoch = dateTime.toSecsSinceEpoch();
 
-    if (type == 1) { // Delete after <count> posts per channel
-        // TODO
-    } else {
-        QDateTime dateTime = QDateTime::currentDateTime();
-        if (type == 2) {
-            dateTime = dateTime.addDays(-count);
-        } else if (type == 3) {
-            dateTime = dateTime.addDays(-7 * count);
-        } else if (type == 4) {
-            dateTime = dateTime.addMonths(-count);
-        }
-        qint64 sinceEpoch = dateTime.toSecsSinceEpoch();
-
-        QSqlQuery query;
-        query.prepare(QStringLiteral("DELETE FROM Programs WHERE updated < :sinceEpoch;"));
-        query.bindValue(QStringLiteral(":sinceEpoch"), sinceEpoch);
-        execute(query);
-    }
+    QSqlQuery query;
+    query.prepare(QStringLiteral("DELETE FROM Programs WHERE stop < :sinceEpoch;"));
+    query.bindValue(QStringLiteral(":sinceEpoch"), sinceEpoch);
+    execute(query);
 }
 
 bool Database::countryExists(const QString &url)
