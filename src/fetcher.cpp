@@ -36,22 +36,13 @@ void Fetcher::fetchFavorites()
     Database::instance().execute(query);
     while (query.next()) {
         const QString &channelId = query.value(QStringLiteral("id")).toString();
-        const QString &name = query.value(QStringLiteral("name")).toString();
-
-        QSqlQuery countryQuery;
-        countryQuery.prepare(QStringLiteral("SELECT * FROM CountryChannels WHERE channel=:channel LIMIT 1;"));
-        countryQuery.bindValue(QStringLiteral(":channel"), channelId);
-        Database::instance().execute(countryQuery);
-        if (countryQuery.next()) {
-            const QString &countryId = countryQuery.value(QStringLiteral("country")).toString();
-            fetchChannel(channelId, name, countryId);
-        }
+        fetchProgram(channelId);
     }
 
     Q_EMIT finishedFetchingFavorites();
 }
 
-void Fetcher::fetchAll()
+void Fetcher::fetchChannels()
 {
     // http://xmltv.se/countries.xml
     const QString url = "http://xmltv.se/countries.xml";
@@ -158,64 +149,57 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
         Database::instance().addChannel(channelId, name, url, country, image, false);
 
         Q_EMIT channelUpdated(channelId);
-    } else {
-        // fetch complete program only for favorites
-        QSqlQuery queryIsFavorite;
-        queryIsFavorite.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id AND favorite=TRUE;"));
-        queryIsFavorite.bindValue(QStringLiteral(":id"), channelId);
-        Database::instance().execute(queryIsFavorite);
-        queryIsFavorite.next();
+    }
+}
 
-        if (queryIsFavorite.value(0).toInt() == 1) {
-            QDate today = QDate::currentDate();
-            QDate yesterday = QDate::currentDate().addDays(-1);
-            QDate tomorrow = QDate::currentDate().addDays(1);
-            QSet<QDate> days{yesterday, today, tomorrow};
-            for (auto day : days) {
-                // check if program is available already
-                const QDateTime utcTime(day, QTime(), Qt::UTC);
-                const qint64 lastTime = utcTime.addDays(1).toSecsSinceEpoch() - 1;
-                QSqlQuery queryProgramAvailable;
-                queryProgramAvailable.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
-                queryProgramAvailable.bindValue(QStringLiteral(":channel"), "http://xmltv.xmltv.se/" + channelId); // TODO use channel ID in Programs
-                queryProgramAvailable.bindValue(QStringLiteral(":lastTime"), lastTime);
-                Database::instance().execute(queryProgramAvailable);
-                queryProgramAvailable.next();
+void Fetcher::fetchProgram(const QString &channelId)
+{
+    const QString url = "http://xmltv.xmltv.se/" + channelId;
 
-                if (queryProgramAvailable.value(0).toInt() > 0) {
-                    continue;
+    QDate today = QDate::currentDate();
+    QDate yesterday = QDate::currentDate().addDays(-1);
+    QDate tomorrow = QDate::currentDate().addDays(1);
+    QSet<QDate> days{yesterday, today, tomorrow};
+    for (auto day : days) {
+        // check if program is available already
+        const QDateTime utcTime(day, QTime(), Qt::UTC);
+        const qint64 lastTime = utcTime.addDays(1).toSecsSinceEpoch() - 1;
+        QSqlQuery queryProgramAvailable;
+        queryProgramAvailable.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
+        queryProgramAvailable.bindValue(QStringLiteral(":channel"), "http://xmltv.xmltv.se/" + channelId); // TODO use channel ID in Programs
+        queryProgramAvailable.bindValue(QStringLiteral(":lastTime"), lastTime);
+        Database::instance().execute(queryProgramAvailable);
+        queryProgramAvailable.next();
+
+        if (queryProgramAvailable.value(0).toInt() > 0) {
+            continue;
+        }
+
+        const QString urlDay = url + "_" + day.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
+        qDebug() << "Starting to fetch program for " << channelId << "(" << urlDay << ")";
+
+        QNetworkRequest request((QUrl(urlDay)));
+        QNetworkReply *reply = get(request);
+        connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply]() {
+            if (reply->error()) {
+                qWarning() << "Error fetching channel";
+                qWarning() << reply->errorString();
+                Q_EMIT error(channelId, reply->error(), reply->errorString());
+            } else {
+                QByteArray data = reply->readAll();
+
+                QDomDocument versionXML;
+
+                if (!versionXML.setContent(data)) {
+                    qWarning() << "Failed to parse XML";
                 }
 
-                const QString urlDay = url + "_" + day.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
-                qDebug() << "Starting to fetch program for " << channelId << "(" << urlDay << ")";
+                QDomElement docElem = versionXML.documentElement();
 
-                QNetworkRequest request((QUrl(urlDay)));
-                QNetworkReply *reply = get(request);
-                connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply]() {
-                    if (reply->error()) {
-                        qWarning() << "Error fetching channel";
-                        qWarning() << reply->errorString();
-                        Q_EMIT error(channelId, reply->error(), reply->errorString());
-                    } else {
-                        QByteArray data = reply->readAll();
-
-                        QDomDocument versionXML;
-
-                        if (!versionXML.setContent(data)) {
-                            qWarning() << "Failed to parse XML";
-                        }
-
-                        QDomElement docElem = versionXML.documentElement();
-
-                        processChannel(docElem, url);
-                    }
-                    delete reply;
-                });
+                processChannel(docElem, url);
             }
-        } else {
-            // nothing to do
-            Q_EMIT channelUpdated(channelId);
-        }
+            delete reply;
+        });
     }
 }
 

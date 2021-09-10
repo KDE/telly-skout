@@ -23,9 +23,10 @@ public:
         return _instance;
     }
     Q_INVOKABLE void fetchFavorites();
-    Q_INVOKABLE void fetchAll();
+    Q_INVOKABLE void fetchChannels();
     Q_INVOKABLE void fetchCountry(const QString &url, const QString &countryId);
     Q_INVOKABLE void fetchChannel(const QString &channelId, const QString &name, const QString &country);
+    Q_INVOKABLE void fetchProgram(const QString &channelId);
     Q_INVOKABLE QString image(const QString &url);
     void removeImage(const QString &url);
     Q_INVOKABLE void download(const QString &url);

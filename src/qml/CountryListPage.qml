@@ -41,6 +41,6 @@ Kirigami.ScrollablePage {
     }
 
     Component.onCompleted: {
-        Fetcher.fetchAll()
+        Fetcher.fetchChannels()
     }
 }
