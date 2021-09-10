@@ -28,7 +28,6 @@ public:
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-    Q_INVOKABLE void setChannelAsFavorite(const QString &url);
     Q_INVOKABLE void refreshAll();
 
 private:

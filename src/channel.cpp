@@ -213,10 +213,11 @@ void Channel::refresh()
     Fetcher::instance().fetchChannel(m_url, m_url, ""); // TODO: url -> ID
 }
 
-void Channel::setAsFavorite()
+void Channel::setAsFavorite(bool favorite)
 {
     QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Channels SET favorite=TRUE WHERE url=:url;"));
+    query.prepare(QStringLiteral("UPDATE Channels SET favorite=:favorite WHERE url=:url;"));
+    query.bindValue(QStringLiteral(":favorite"), favorite);
     query.bindValue(QStringLiteral(":url"), m_url);
     Database::instance().execute(query);
 }

@@ -78,11 +78,11 @@ void ChannelsModel::loadChannel(int index) const
     m_channels += new Channel(index);
 }
 
-void ChannelsModel::setChannelAsFavorite(const QString &url)
+void ChannelsModel::setFavorite(const QString &channel, bool favorite)
 {
     for (int i = 0; i < m_channels.length(); i++) {
-        if (m_channels[i]->url() == url) {
-            m_channels[i]->setAsFavorite();
+        if (m_channels[i]->url() == channel) {
+            m_channels[i]->setAsFavorite(favorite);
         }
     }
 }

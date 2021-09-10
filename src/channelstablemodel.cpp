@@ -155,15 +155,6 @@ void ChannelsTableModel::loadChannel(int index) const
     }
 }
 
-void ChannelsTableModel::setChannelAsFavorite(const QString &url)
-{
-    for (int i = 0; i < m_channels.length(); i++) {
-        if (m_channels[i]->url() == url) {
-            m_channels[i]->setAsFavorite();
-        }
-    }
-}
-
 void ChannelsTableModel::refreshAll()
 {
     for (auto &channel : m_channels) {
