@@ -48,13 +48,13 @@ Rectangle {
         text: metaData.isFirst ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title : ""
         wrapMode: Text.Wrap
         color: Kirigami.Theme.textColor
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                if (program !== undefined) {
-                    root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br><br>" + program.description : ""
-                    root.overlay.open()
-                }
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            if (program !== undefined) {
+                root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br><br>" + program.description : ""
+                root.overlay.open()
             }
         }
     }
