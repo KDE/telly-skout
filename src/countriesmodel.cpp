@@ -30,7 +30,7 @@ CountriesModel::CountriesModel(QObject *parent)
         }
     });
 
-    connect(&Database::instance(), &Database::countryDetailsUpdated, [this](const QString &id) {
+    connect(&Database::instance(), &Database::countryDetailsUpdated, this, [this](const QString &id) {
         for (int i = 0; i < m_countries.length(); i++) {
             if (m_countries[i]->id() == id) {
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
