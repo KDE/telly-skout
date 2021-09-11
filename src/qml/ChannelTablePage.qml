@@ -18,8 +18,7 @@ Kirigami.Page {
 
     title: i18n("Favorites")
 
-    property string lastChannel: ""
-
+    property int windowHeight: 0
 
     Kirigami.PlaceholderMessage {
         visible: channelTable.columns === 0
@@ -39,6 +38,10 @@ Kirigami.Page {
 
     TableView {
         id: channelTable
+
+        readonly property int columnWidth: 200
+        readonly property int rowHeight: 7
+
         width: root.width
         height: root.height - horizontalHeader.height
         anchors.left: horizontalHeader.left
@@ -50,7 +53,24 @@ Kirigami.Page {
         model: ChannelsTableModel {}
 
         delegate: ChannelTableDelegate {
+            implicitWidth: channelTable.columnWidth
+            implicitHeight: channelTable.rowHeight
             overlay: overlaySheet
+        }
+
+        Component.onCompleted: {
+            // scroll to current time
+            var today = new Date()
+            today.setHours(0)
+            today.setMinutes(0)
+            today.setSeconds(0)
+            const now = new Date()
+            // offset [s] to 00:00h
+            const offsetS = (now.getTime() - today.getTime()) / 60000
+            // offset [px]
+            const offsetPx = offsetS * channelTable.rowHeight
+            // center in window (vertically)
+            channelTable.contentY = offsetPx - (windowHeight / 2)
         }
     }
 

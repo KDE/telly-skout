@@ -18,9 +18,6 @@ Rectangle {
     property var overlay
 
     z : -row // ensure that later rows do not hide content
-    width: 200
-    implicitWidth: 200
-    implicitHeight: 7
     color: metaData.isRunning ? Kirigami.Theme.focusColor : "transparent"
     Rectangle {
             id: borderTop

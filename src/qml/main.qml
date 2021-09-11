@@ -34,6 +34,7 @@ Kirigami.ApplicationWindow {
 
     ChannelTablePage  {
         id: channelTable
+        windowHeight: root.height
     }
 
 }
