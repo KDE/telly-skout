@@ -4,8 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#ifndef CHANNELS_PROXY_MODEL_H
-#define CHANNELS_PROXY_MODEL_H
+#pragma once
 
 #include <QSortFilterProxyModel>
 
@@ -40,4 +39,3 @@ private:
     QString m_group_name; // TODO: favorite bool
     QString m_country;
 };
-#endif

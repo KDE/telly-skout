@@ -4,8 +4,7 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef CHANNEL_H
-#define CHANNEL_H
+#pragma once
 
 #include <QDateTime>
 #include <QObject>
@@ -95,5 +94,3 @@ private:
 
     bool m_refreshing = false;
 };
-
-#endif // CHANNEL_H

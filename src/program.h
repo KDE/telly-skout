@@ -4,8 +4,7 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef PROGRAM_H
-#define PROGRAM_H
+#pragma once
 
 #include <QDateTime>
 #include <QDebug>
@@ -54,5 +53,3 @@ private:
     QDateTime m_stop;
     QString m_subtitle;
 };
-
-#endif // PROGRAM_H
