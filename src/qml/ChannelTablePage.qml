@@ -42,7 +42,7 @@ Kirigami.Page {
         id: channelTable
 
         readonly property int columnWidth: 200
-        readonly property int rowHeight: 7
+        readonly property int rowHeight: 5
 
         width: root.width
         height: root.height - horizontalHeader.height
