@@ -45,7 +45,8 @@ Rectangle {
         topPadding: 3
         rightPadding: 3
         bottomPadding: 3
-        text: metaData.isFirst ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title : ""
+        visible: metaData.isFirst
+        text: "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title
         wrapMode: Text.Wrap
         color: Kirigami.Theme.textColor
     }
