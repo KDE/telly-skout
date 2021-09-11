@@ -40,11 +40,11 @@ Rectangle {
     Text {
         id: text
         width: parent.implicitWidth
+        height: parent.implicitHeight
         leftPadding: 3
         topPadding: 3
         rightPadding: 3
         bottomPadding: 3
-        height: program !== undefined ? parent.implicitHeight * (program.stop - program.start) / 60 : parent.implicitHeight
         text: metaData.isFirst ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title : ""
         wrapMode: Text.Wrap
         color: Kirigami.Theme.textColor
