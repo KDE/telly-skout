@@ -53,7 +53,7 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             if (program !== undefined) {
-                root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b><br><br>" + program.description : ""
+                root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b><br><br>" + program.description : ""
                 root.overlay.open()
             }
         }
