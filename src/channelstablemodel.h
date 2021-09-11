@@ -37,4 +37,5 @@ private:
     const static int numRows = 24 * 60; // 1 row per minute for complete day
     mutable QVector<Channel *> m_channels;
     mutable QMap<int, std::array<Program *, numRows>> m_programs;
+    mutable QMap<int, std::array<bool, numRows>> m_isFirst;
 };

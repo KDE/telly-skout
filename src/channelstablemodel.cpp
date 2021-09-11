@@ -101,12 +101,9 @@ QVariant ChannelsTableModel::data(const QModelIndex &index, int role) const
         return QVariant::fromValue(program);
     }
     case Qt::UserRole: {
-        // check if progam starts now
-        // offset for today (00:00) [UTC] + row [min] * 60 => second [since 1970] when program is running
-        QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
-        const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
-        const qint64 second = offsetTimeToday + (index.row() * 60);
-        return second == program->start().toSecsSinceEpoch();
+        if (index.column() < m_isFirst.size() && static_cast<size_t>(index.row()) < m_isFirst[index.column()].size()) {
+            return m_isFirst[index.column()].at(index.row());
+        }
     }
     }
 
@@ -125,13 +122,14 @@ void ChannelsTableModel::loadChannel(int index) const
     Channel *channel = new Channel(index, true);
     m_channels += channel;
 
-    // load program
+    // offset for today (00:00) [UTC] + row [min] * 60 => second [since 1970] when program is running
+    const QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
+    const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
+
+    // programs
     if (m_programs.size() <= index) { // should always be true but just in case...
         m_programs.insert(index, std::array<Program *, numRows>());
     }
-    // offset for today (00:00) [UTC] + row [min] * 60 => second [since 1970] when program is running
-    QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
-    const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
 
     const auto programs = channel->programs();
     for (const auto program : programs) {
@@ -144,6 +142,9 @@ void ChannelsTableModel::loadChannel(int index) const
             const int lastRow = std::min((stop - offsetTimeToday) / 60, static_cast<qint64>(numRows));
             for (int row = firstRow; row < lastRow; ++row) {
                 m_programs[index].at(row) = program;
+
+                // check if progam starts now (is first)
+                m_isFirst[index].at(row) = (offsetTimeToday + (row * 60)) == start;
             }
         }
     }
