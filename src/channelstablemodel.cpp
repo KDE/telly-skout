@@ -9,6 +9,7 @@
 #include <QBrush>
 #include <QDebug>
 #include <QModelIndex>
+#include <QQmlPropertyMap>
 #include <QSqlQuery>
 #include <QUrl>
 #include <QVariant>
@@ -29,6 +30,7 @@ ChannelsTableModel::ChannelsTableModel(QObject *parent)
         }
         m_channels.clear();
         m_programs.clear();
+        m_isFirst.clear();
 
         // reload
         load();
@@ -42,7 +44,7 @@ ChannelsTableModel::ChannelsTableModel(QObject *parent)
 
 QHash<int, QByteArray> ChannelsTableModel::roleNames() const
 {
-    return {{Qt::DisplayRole, "program"}, {Qt::UserRole, "isFirst"}};
+    return {{Qt::DisplayRole, "program"}, {Qt::UserRole, "metaData"}};
 }
 
 int ChannelsTableModel::rowCount(const QModelIndex &parent) const
@@ -101,9 +103,16 @@ QVariant ChannelsTableModel::data(const QModelIndex &index, int role) const
         return QVariant::fromValue(program);
     }
     case Qt::UserRole: {
+        QVariantMap metaData;
+        metaData.insert("isFirst", false);
+        metaData.insert("isRunning", false);
         if (index.column() < m_isFirst.size() && static_cast<size_t>(index.row()) < m_isFirst[index.column()].size()) {
-            return m_isFirst[index.column()].at(index.row());
+            metaData["isFirst"] = m_isFirst[index.column()].at(index.row());
         }
+        const int rowNow = row(QDateTime::currentDateTime().toSecsSinceEpoch());
+        const Program *programNow = m_programs[index.column()].at(rowNow);
+        metaData["isRunning"] = (program->id() == programNow->id()) && (index.row() <= rowNow);
+        return QVariant::fromValue(metaData);
     }
     }
 
@@ -122,13 +131,12 @@ void ChannelsTableModel::loadChannel(int index) const
     Channel *channel = new Channel(index, true);
     m_channels += channel;
 
-    // offset for today (00:00) [UTC] + row [min] * 60 => second [since 1970] when program is running
-    const QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
-    const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
-
     // programs
     if (m_programs.size() <= index) { // should always be true but just in case...
         m_programs.insert(index, std::array<Program *, numRows>());
+    }
+    if (m_isFirst.size() <= index) { // should always be true but just in case...
+        m_isFirst.insert(index, std::array<bool, numRows>());
     }
 
     const auto programs = channel->programs();
@@ -136,18 +144,33 @@ void ChannelsTableModel::loadChannel(int index) const
         // only programs which run today
         const int start = program->start().toSecsSinceEpoch();
         const int stop = program->stop().toSecsSinceEpoch();
-        if ((start <= offsetTimeToday + (24 * 60 * 60)) && (stop >= offsetTimeToday)) {
+        if ((start <= timestampToday() + (24 * 60 * 60)) && (stop >= timestampToday())) {
             // remember for all rows (1 per minute) when this program is running
-            const int firstRow = std::max((start - offsetTimeToday) / 60, static_cast<qint64>(0));
-            const int lastRow = std::min((stop - offsetTimeToday) / 60, static_cast<qint64>(numRows));
+            const int firstRow = std::max(row(start), 0);
+            const int lastRow = std::min(row(stop), rowCount());
             for (int row = firstRow; row < lastRow; ++row) {
                 m_programs[index].at(row) = program;
 
                 // check if progam starts now (is first)
-                m_isFirst[index].at(row) = (offsetTimeToday + (row * 60)) == start;
+                m_isFirst[index].at(row) = timestamp(row) == start;
             }
         }
     }
+}
+
+qint64 ChannelsTableModel::timestampToday() const
+{
+    return QDateTime(QDate::currentDate(), QTime(), Qt::LocalTime).toSecsSinceEpoch();
+}
+
+qint64 ChannelsTableModel::timestamp(int row) const
+{
+    return timestampToday() + (row * 60);
+}
+
+int ChannelsTableModel::row(qint64 timestamp) const
+{
+    return (timestamp - timestampToday()) / 60;
 }
 
 void ChannelsTableModel::refreshAll()

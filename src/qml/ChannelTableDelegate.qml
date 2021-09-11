@@ -17,13 +17,14 @@ Rectangle {
 
     property var overlay
 
+    z : -row // ensure that later rows do not hide content
     width: 200
     implicitWidth: 200
     implicitHeight: 7
-    color: "transparent"
+    color: metaData.isRunning ? Kirigami.Theme.focusColor : "transparent"
     Rectangle {
             id: borderTop
-            visible: isFirst !== undefined ? isFirst : false
+            visible: metaData.isFirst !== undefined ? metaData.isFirst : false
             width: parent.width
             height: 1
             anchors.top: parent.top
@@ -44,7 +45,7 @@ Rectangle {
         rightPadding: 3
         bottomPadding: 3
         height: program !== undefined ? parent.implicitHeight * (program.stop - program.start) / 60 : parent.implicitHeight
-        text: isFirst ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title : ""
+        text: metaData.isFirst ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title : ""
         wrapMode: Text.Wrap
         color: Kirigami.Theme.textColor
         MouseArea {

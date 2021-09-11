@@ -33,6 +33,9 @@ public:
 private:
     void load() const;
     void loadChannel(int index) const;
+    qint64 timestampToday() const;
+    qint64 timestamp(int row) const;
+    int row(qint64 timestamp) const;
 
     const static int numRows = 24 * 60; // 1 row per minute for complete day
     mutable QVector<Channel *> m_channels;
