@@ -5,8 +5,8 @@
  */
 
 #include "channelsproxymodel.h"
+
 #include "channel.h"
-#include "channelsmodel.h"
 #include "database.h"
 
 ChannelsProxyModel::ChannelsProxyModel(QObject *parent)

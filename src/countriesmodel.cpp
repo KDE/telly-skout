@@ -4,15 +4,14 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include <QDebug>
-#include <QModelIndex>
-#include <QSqlQuery>
-#include <QUrl>
-#include <QVariant>
-
 #include "countriesmodel.h"
+
+#include "country.h"
 #include "database.h"
 #include "fetcher.h"
+
+#include <QDebug>
+#include <QSqlQuery>
 
 CountriesModel::CountriesModel(QObject *parent)
     : QAbstractListModel(parent)

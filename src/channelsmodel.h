@@ -7,11 +7,10 @@
 #pragma once
 
 #include <QAbstractListModel>
-#include <QHash>
-#include <QSqlTableModel>
+
 #include <QUrl>
 
-#include "channel.h"
+class Channel;
 
 class ChannelsModel : public QAbstractListModel
 {

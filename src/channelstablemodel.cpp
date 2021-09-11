@@ -4,21 +4,15 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include <algorithm>
-
-#include <QBrush>
-#include <QDebug>
-#include <QModelIndex>
-#include <QQmlPropertyMap>
-#include <QSqlQuery>
-#include <QUrl>
-#include <QVariant>
+#include "channelstablemodel.h"
 
 #include "channel.h"
-#include "channelstablemodel.h"
 #include "database.h"
 #include "fetcher.h"
 #include "program.h"
+
+#include <QDebug>
+#include <QSqlQuery>
 
 ChannelsTableModel::ChannelsTableModel(QObject *parent)
     : QAbstractTableModel(parent)

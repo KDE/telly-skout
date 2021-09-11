@@ -7,10 +7,8 @@
 #pragma once
 
 #include <QAbstractTableModel>
-#include <QHash>
+
 #include <QMap>
-#include <QSqlTableModel>
-#include <QUrl>
 
 #include <array>
 

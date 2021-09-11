@@ -4,15 +4,14 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include <QDebug>
-#include <QModelIndex>
-#include <QSqlQuery>
-#include <QUrl>
-#include <QVariant>
-
 #include "channelsmodel.h"
+
+#include "channel.h"
 #include "database.h"
 #include "fetcher.h"
+
+#include <QDebug>
+#include <QSqlQuery>
 
 ChannelsModel::ChannelsModel(QObject *parent)
     : QAbstractListModel(parent)

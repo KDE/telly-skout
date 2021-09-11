@@ -6,10 +6,7 @@
 
 #pragma once
 
-#include <QDateTime>
 #include <QObject>
-
-#include "country.h"
 
 class ChannelsModel;
 

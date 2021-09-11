@@ -4,18 +4,19 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+#include "fetcher.h"
+
+#include "database.h"
+
 #include <QCryptographicHash>
 #include <QDateTime>
-#include <QDebug>
 #include <QFile>
 #include <QFileInfo>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QSqlQuery>
 #include <QStandardPaths>
-#include <QTextDocumentFragment>
-
-#include "database.h"
-#include "fetcher.h"
+#include <QtXml>
 
 Fetcher::Fetcher()
 {

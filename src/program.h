@@ -6,14 +6,13 @@
 
 #pragma once
 
-#include <QDateTime>
-#include <QDebug>
 #include <QObject>
-#include <QString>
-#include <QStringList>
 
-#include "channel.h"
-#include "country.h"
+#include <QDateTime>
+#include <QString>
+
+class Channel;
+class Country;
 
 class Program : public QObject
 {

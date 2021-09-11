@@ -4,19 +4,18 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include <KLocalizedString>
+#include "database.h"
+
+#include "TellySkoutSettings.h"
+#include "fetcher.h"
+
 #include <QDateTime>
 #include <QDir>
 #include <QSqlDatabase>
 #include <QSqlError>
+#include <QSqlQuery>
 #include <QStandardPaths>
 #include <QUrl>
-#include <QXmlStreamReader>
-#include <QXmlStreamWriter>
-
-#include "TellySkoutSettings.h"
-#include "database.h"
-#include "fetcher.h"
 
 #define TRUE_OR_RETURN(x)                                                                                                                                      \
     if (!x)                                                                                                                                                    \

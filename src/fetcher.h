@@ -6,12 +6,14 @@
 
 #pragma once
 
-#include <QNetworkAccessManager>
 #include <QObject>
-#include <QString>
-#include <QUrl>
-#include <QVector>
-#include <QtXml>
+
+class QDomElement;
+class QDomNode;
+class QNetworkAccessManager;
+class QNetworkReply;
+class QNetworkRequest;
+class QString;
 
 class Fetcher : public QObject
 {

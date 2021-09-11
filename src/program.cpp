@@ -6,11 +6,13 @@
 
 #include "program.h"
 
-#include <QRegularExpression>
+#include "channel.h"
+#include "country.h"
+#include "database.h"
+
+#include <QDebug>
 #include <QSqlQuery>
 #include <QUrl>
-
-#include "database.h"
 
 Program::Program(const Channel *channel, const QDateTime &time)
     : QObject(nullptr)

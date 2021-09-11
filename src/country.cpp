@@ -4,12 +4,14 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include <QVariant>
+#include "country.h"
 
 #include "channelsmodel.h"
-#include "country.h"
 #include "database.h"
 #include "fetcher.h"
+
+#include <QDebug>
+#include <QSqlQuery>
 
 Country::Country(int index)
     : QObject(nullptr)

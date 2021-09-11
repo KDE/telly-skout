@@ -4,12 +4,14 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include <QVariant>
-
 #include "channel.h"
+
 #include "database.h"
 #include "fetcher.h"
 #include "program.h"
+
+#include <QDebug>
+#include <QSqlQuery>
 
 Channel::Channel(int index, bool onlyFavorite)
     : QObject(nullptr)

@@ -4,25 +4,6 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include <QCommandLineOption>
-#include <QCommandLineParser>
-#include <QQmlApplicationEngine>
-#include <QQmlContext>
-#include <QQuickStyle>
-#include <QQuickView>
-#include <QString>
-#include <QStringList>
-
-#ifdef Q_OS_ANDROID
-#include <QGuiApplication>
-#else
-#include <QApplication>
-#endif
-
-#include <KAboutData>
-#include <KLocalizedContext>
-#include <KLocalizedString>
-
 #include "TellySkoutSettings.h"
 #include "channelsmodel.h"
 #include "channelsproxymodel.h"
@@ -31,6 +12,22 @@
 #include "database.h"
 #include "fetcher.h"
 #include "telly-skout-version.h"
+
+#include <KAboutData>
+#include <KLocalizedContext>
+#include <KLocalizedString>
+
+#include <QCommandLineParser>
+#include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include <QQuickStyle>
+#include <QString>
+
+#ifdef Q_OS_ANDROID
+#include <QGuiApplication>
+#else
+#include <QApplication>
+#endif
 
 #ifdef Q_OS_ANDROID
 Q_DECL_EXPORT

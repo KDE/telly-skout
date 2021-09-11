@@ -6,11 +6,9 @@
 
 #pragma once
 
-#include <QDateTime>
 #include <QObject>
-#include <QVector>
 
-#include "country.h"
+#include <QVector>
 
 class Program;
 
