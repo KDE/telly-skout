@@ -71,28 +71,18 @@ Channel::Channel(int index, bool onlyFavorite)
     });
 
     // programs
-    QSqlQuery programQuery;
-    programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start"));
-    programQuery.bindValue(QStringLiteral(":channel"), m_id);
-    Database::instance().execute(programQuery);
-    int programIndex = 0;
-    while (programQuery.next()) {
-        loadProgram(programIndex);
-        index++;
-    }
+    loadPrograms();
 
     connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
         if (this->id() == id) {
-            for (auto &program : m_programs) {
-                delete program;
-            }
-            m_programs.clear();
+            loadPrograms();
         }
     });
 }
 
 Channel::~Channel()
 {
+    clearPrograms();
 }
 
 QString Channel::id() const
@@ -130,16 +120,14 @@ bool Channel::notify() const
     return m_notify;
 }
 
+QVector<Program *> Channel::programs() const
+{
+    return m_programs;
+}
+
 int Channel::programCount() const
 {
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs where channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_url);
-    Database::instance().execute(query);
-    if (!query.next()) {
-        return -1;
-    }
-    return query.value(0).toInt();
+    return m_programs.size();
 }
 
 bool Channel::refreshing() const
@@ -241,7 +229,25 @@ void Channel::remove()
     Database::instance().execute(query);
 }
 
-void Channel::loadProgram(int index) const
+void Channel::clearPrograms()
 {
-    m_programs[index] = new Program(this, index);
+    for (auto &program : m_programs) {
+        delete program;
+    }
+    m_programs.clear();
+}
+
+void Channel::loadPrograms()
+{
+    clearPrograms();
+
+    QSqlQuery programQuery;
+    programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start"));
+    programQuery.bindValue(QStringLiteral(":channel"), m_url); // TODO: use ID
+    Database::instance().execute(programQuery);
+    int programIndex = 0;
+    while (programQuery.next()) {
+        m_programs.push_front(new Program(this, programIndex));
+        programIndex++;
+    }
 }

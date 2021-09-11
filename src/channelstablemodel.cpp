@@ -25,7 +25,6 @@ ChannelsTableModel::ChannelsTableModel(QObject *parent)
     connect(&Fetcher::instance(), &Fetcher::finishedFetchingFavorites, this, [this]() {
         // cleanup
         foreach (Channel *channel, m_channels) {
-            // TODO: store programs in channel and delete them as well (Channel as parent?)
             delete channel;
         }
         m_channels.clear();
@@ -134,23 +133,18 @@ void ChannelsTableModel::loadChannel(int index) const
     QDateTime utcTimeToday(QDate::currentDate(), QTime(), Qt::LocalTime);
     const qint64 offsetTimeToday = utcTimeToday.toSecsSinceEpoch();
 
-    QSqlQuery programQuery;
-    // only programs which run today
-    programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel AND start <= :end AND stop >= :begin;"));
-    programQuery.bindValue(QStringLiteral(":channel"), channel->url());
-    programQuery.bindValue(QStringLiteral(":end"), offsetTimeToday + (24 * 60 * 60));
-    programQuery.bindValue(QStringLiteral(":begin"), offsetTimeToday);
-    Database::instance().execute(programQuery);
-    while (programQuery.next()) {
-        const int start = programQuery.value(QStringLiteral("start")).toInt();
-        const int stop = programQuery.value(QStringLiteral("stop")).toInt();
-        Program *program = new Program(channel, QDateTime().fromSecsSinceEpoch(start)); // TODO fix memleak
-
-        // remember for all rows (1 per minute) when this program is running
-        const int firstRow = std::max((start - offsetTimeToday) / 60, static_cast<qint64>(0));
-        const int lastRow = std::min((stop - offsetTimeToday) / 60, static_cast<qint64>(numRows));
-        for (int row = firstRow; row < lastRow; ++row) {
-            m_programs[index].at(row) = program;
+    const auto programs = channel->programs();
+    for (const auto program : programs) {
+        // only programs which run today
+        const int start = program->start().toSecsSinceEpoch();
+        const int stop = program->stop().toSecsSinceEpoch();
+        if ((start <= offsetTimeToday + (24 * 60 * 60)) && (stop >= offsetTimeToday)) {
+            // remember for all rows (1 per minute) when this program is running
+            const int firstRow = std::max((start - offsetTimeToday) / 60, static_cast<qint64>(0));
+            const int lastRow = std::min((stop - offsetTimeToday) / 60, static_cast<qint64>(numRows));
+            for (int row = firstRow; row < lastRow; ++row) {
+                m_programs[index].at(row) = program;
+            }
         }
     }
 }
