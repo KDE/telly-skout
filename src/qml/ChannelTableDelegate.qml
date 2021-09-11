@@ -37,7 +37,8 @@ Rectangle {
     Text {
         id: text
         width: parent.implicitWidth
-        height: parent.implicitHeight
+        // restrict height such that elide works if program is short (i.e. text does not fit)
+        height: program !== undefined ? parent.implicitHeight * ((program.stop - program.start) / 60000) : parent.implicitHeight
         leftPadding: 3
         topPadding: 3
         rightPadding: 3
@@ -45,6 +46,7 @@ Rectangle {
         visible: metaData !== undefined ? metaData.isFirst : false
         text: program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title : ""
         wrapMode: Text.Wrap
+        elide: Text.ElideRight // avoid that text overlaps into next program
         color: Kirigami.Theme.textColor
     }
     MouseArea {
