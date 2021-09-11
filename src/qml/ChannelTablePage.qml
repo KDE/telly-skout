@@ -20,6 +20,8 @@ Kirigami.Page {
 
     property int windowHeight: 0
 
+    padding: 0
+
     Kirigami.PlaceholderMessage {
         visible: channelTable.columns === 0
 
