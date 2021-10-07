@@ -12,6 +12,7 @@
 ChannelsProxyModel::ChannelsProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_group_name{}
+    , m_country{}
 {
     connect(&Database::instance(), &Database::channelDetailsUpdated, [this]() {
         invalidateFilter();

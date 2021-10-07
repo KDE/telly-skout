@@ -1,9 +1,3 @@
-/**
- * SPDX-FileCopyrightText: 2020 Tobias Fella <fella@posteo.de>
- *
- * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
- */
-
 import QtQuick 2.14
 import QtQuick.Controls 2.15 as Controls
 import Qt.labs.platform 1.1
@@ -22,42 +16,68 @@ Kirigami.Page {
 
     padding: 0
 
-    Kirigami.PlaceholderMessage {
-        visible: channelTable.columns === 0
+    Row
+    {
+        id: header
+        x: -channelTable.Controls.ScrollBar.horizontal.position * channelTable.contentWidth
+        Repeater
+        {
+            model: proxyModel
+            delegate: Column
+            {
+                width: 200
+                Rectangle {
+                    color: Kirigami.Theme.backgroundColor
+                    width: parent.width
+                    height: 30
+                    border.color: Kirigami.Theme.textColor
 
-        width: Kirigami.Units.gridUnit * 20
-        icon.name: "favorite"
-        anchors.centerIn: parent
-
-        text: i18n("Please select favorites.")
+                    Text
+                    {
+                        text: modelData.name
+                        color: Kirigami.Theme.textColor
+                    }
+                }
+            }
+        }
     }
 
-    Controls.HorizontalHeaderView {
-        id: horizontalHeader
-        syncView: channelTable
-        anchors.left: channelTable.left
-    }
-
-    TableView {
+    Controls.ScrollView {
         id: channelTable
 
-        readonly property int columnWidth: 200
-        readonly property int rowHeight: 5
+        readonly property int pxPerMin: 5
+        readonly property var date: new Date()
 
-        width: root.width
-        height: root.height - horizontalHeader.height
-        anchors.left: horizontalHeader.left
-        anchors.top: horizontalHeader.bottom
-        columnSpacing: 0
-        rowSpacing: 0
-        clip: true
-
-        model: ChannelsTableModel {}
-
-        delegate: ChannelTableDelegate {
-            implicitWidth: channelTable.columnWidth
-            implicitHeight: channelTable.rowHeight
-            overlay: overlaySheet
+        width: parent.width
+        height: parent.height - header.height
+        anchors.top: header.bottom
+        contentHeight: 24 * 60 * pxPerMin
+        Row
+        {
+            id: content
+            Repeater
+            {
+                model: proxyModel
+                delegate: Column
+                {
+                    width: 200
+                    Repeater
+                    {
+                        model: ProgramsProxyModel {
+                            id: proxyProgramModel
+                            start: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate()) // today 00:00h
+                            stop: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate(), 23, 59, 0) // today 23:59h
+                            sourceModel: modelData.programsModel
+                        }
+                        delegate: ChannelTableDelegate {
+                            overlay: overlaySheet
+                            pxPerMin: channelTable.pxPerMin
+                            startTime: proxyProgramModel.start
+                            stopTime: proxyProgramModel.stop
+                        }
+                    }
+                }
+            }
         }
 
         Component.onCompleted: {
@@ -68,12 +88,21 @@ Kirigami.Page {
             today.setSeconds(0)
             const now = new Date()
             // offset [s] to 00:00h
-            const offsetS = (now.getTime() - today.getTime()) / 60000
-            // offset [px]
-            const offsetPx = offsetS * channelTable.rowHeight
+            const offsetS = (now.getTime() - today.getTime()) / 1000
             // center in window (vertically)
-            channelTable.contentY = offsetPx - (windowHeight / 2)
+            Controls.ScrollBar.vertical.position = offsetS / (24 * 60 * 60) - (windowHeight / 2) / channelTable.contentHeight
         }
+    }
+
+    ChannelsProxyModel {
+        id: proxyModel
+        groupName: "favorite"
+        country: ""
+        sourceModel: channelsModel
+    }
+
+    ChannelsModel {
+        id: channelsModel
     }
 
     Kirigami.OverlaySheet {

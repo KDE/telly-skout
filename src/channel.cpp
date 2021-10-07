@@ -9,6 +9,7 @@
 #include "database.h"
 #include "fetcher.h"
 #include "program.h"
+#include "programsmodel.h"
 
 #include <QDebug>
 #include <QSqlQuery>
@@ -54,7 +55,7 @@ Channel::Channel(int index, bool onlyFavorite)
     connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
         if (id == m_id) {
             setRefreshing(false);
-            Q_EMIT programCountChanged();
+            Q_EMIT programChanged();
             setErrorId(0);
             setErrorString(QLatin1String(""));
         }
@@ -73,18 +74,11 @@ Channel::Channel(int index, bool onlyFavorite)
     });
 
     // programs
-    loadPrograms();
-
-    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
-        if (this->id() == id) {
-            loadPrograms();
-        }
-    });
+    m_programsModel = new ProgramsModel(this);
 }
 
 Channel::~Channel()
 {
-    clearPrograms();
 }
 
 QString Channel::id() const
@@ -120,16 +114,6 @@ QVector<QString> Channel::countries() const
 bool Channel::notify() const
 {
     return m_notify;
-}
-
-QVector<Program *> Channel::programs() const
-{
-    return m_programs;
-}
-
-int Channel::programCount() const
-{
-    return m_programs.size();
 }
 
 bool Channel::refreshing() const
@@ -229,27 +213,4 @@ void Channel::remove()
     query.prepare(QStringLiteral("DELETE FROM Channels WHERE url=:url;"));
     query.bindValue(QStringLiteral(":url"), m_url);
     Database::instance().execute(query);
-}
-
-void Channel::clearPrograms()
-{
-    for (auto &program : m_programs) {
-        delete program;
-    }
-    m_programs.clear();
-}
-
-void Channel::loadPrograms()
-{
-    clearPrograms();
-
-    QSqlQuery programQuery;
-    programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start"));
-    programQuery.bindValue(QStringLiteral(":channel"), m_url); // TODO: use ID
-    Database::instance().execute(programQuery);
-    int programIndex = 0;
-    while (programQuery.next()) {
-        m_programs.push_front(new Program(this, programIndex));
-        programIndex++;
-    }
 }

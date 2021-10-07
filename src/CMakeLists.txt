@@ -3,12 +3,13 @@ add_executable(telly-skout
     channel.cpp
     channelsmodel.cpp
     channelsproxymodel.cpp
-    channelstablemodel.cpp
     country.cpp
     countriesmodel.cpp
     database.cpp
     fetcher.cpp
     program.cpp
+    programsmodel.cpp
+    programsproxymodel.cpp
     resources.qrc
 )
 
