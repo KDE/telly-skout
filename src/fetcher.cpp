@@ -33,10 +33,10 @@ void Fetcher::fetchFavorites()
     Q_EMIT startedFetchingFavorites();
 
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT * FROM Channels WHERE favorite IS TRUE;"));
+    query.prepare(QStringLiteral("SELECT channel FROM Favorites;"));
     Database::instance().execute(query);
     while (query.next()) {
-        const QString &channelId = query.value(QStringLiteral("id")).toString();
+        const QString &channelId = query.value(QStringLiteral("channel")).toString();
         fetchProgram(channelId);
     }
 
@@ -147,7 +147,7 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
 
     if (queryChannelExists.value(0).toInt() == 0) {
         const QString image = "https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/" + channelId + "_color.svg?inline=false";
-        Database::instance().addChannel(channelId, name, url, country, image, false);
+        Database::instance().addChannel(channelId, name, url, country, image);
 
         Q_EMIT channelUpdated(channelId);
     }

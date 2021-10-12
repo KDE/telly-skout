@@ -14,15 +14,11 @@
 #include <QDebug>
 #include <QSqlQuery>
 
-Channel::Channel(int index, bool onlyFavorite)
+Channel::Channel(int index)
     : QObject(nullptr)
 {
-    QString filterFavorite = "";
-    if (onlyFavorite) {
-        filterFavorite = "WHERE favorite IS TRUE";
-    }
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT * FROM Channels %1 ORDER BY name COLLATE NOCASE LIMIT 1 OFFSET :index;").arg(filterFavorite));
+    query.prepare(QStringLiteral("SELECT * FROM Channels ORDER BY name COLLATE NOCASE LIMIT 1 OFFSET :index;"));
     query.bindValue(QStringLiteral(":index"), index);
     Database::instance().execute(query);
     if (!query.next()) {
@@ -34,7 +30,12 @@ Channel::Channel(int index, bool onlyFavorite)
     m_name = query.value(QStringLiteral("name")).toString();
     m_image = query.value(QStringLiteral("image")).toString();
     m_notify = query.value(QStringLiteral("notify")).toBool();
-    m_favorite = query.value(QStringLiteral("favorite")).toBool();
+
+    QSqlQuery favoriteQuery;
+    favoriteQuery.prepare(QStringLiteral("SELECT * FROM Favorites WHERE channel=:channel"));
+    favoriteQuery.bindValue(QStringLiteral(":channel"), m_id);
+    Database::instance().execute(favoriteQuery);
+    m_favorite = favoriteQuery.next();
 
     QSqlQuery countryQuery;
     countryQuery.prepare(QStringLiteral("SELECT * FROM CountryChannels WHERE channel=:channel"));
@@ -189,11 +190,25 @@ void Channel::refresh()
 
 void Channel::setAsFavorite(bool favorite)
 {
-    QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Channels SET favorite=:favorite WHERE url=:url;"));
-    query.bindValue(QStringLiteral(":favorite"), favorite);
-    query.bindValue(QStringLiteral(":url"), m_url);
-    Database::instance().execute(query);
+    if (favorite) {
+        unsigned int id = 1;
+        QSqlQuery idQuery;
+        idQuery.prepare(QStringLiteral("SELECT id FROM Favorites ORDER BY id DESC LIMIT 1;"));
+        Database::instance().execute(idQuery);
+        if (idQuery.next()) {
+            id = idQuery.value(QStringLiteral("id")).toUInt() + 1;
+        }
+        QSqlQuery query;
+        query.prepare(QStringLiteral("INSERT INTO Favorites VALUES (:id, :channel);"));
+        query.bindValue(QStringLiteral(":id"), id);
+        query.bindValue(QStringLiteral(":channel"), m_id);
+        Database::instance().execute(query);
+    } else {
+        QSqlQuery query;
+        query.prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
+        query.bindValue(QStringLiteral(":channel"), m_id);
+        Database::instance().execute(query);
+    }
 }
 
 void Channel::remove()
@@ -207,6 +222,11 @@ void Channel::remove()
     // Delete Programs
     query.prepare(QStringLiteral("DELETE FROM Programs WHERE channel=:channel;"));
     query.bindValue(QStringLiteral(":channel"), m_url);
+    Database::instance().execute(query);
+
+    // Delete Favorite
+    query.prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
+    query.bindValue(QStringLiteral(":channel"), m_id);
     Database::instance().execute(query);
 
     // Delete Channel

@@ -23,8 +23,7 @@ public:
     bool execute(QSqlQuery &query);
     bool execute(const QString &query);
     Q_INVOKABLE void addCountry(const QString &id, const QString &name, const QString &url);
-    Q_INVOKABLE void
-    addChannel(const QString &id, const QString &name, const QString &url, const QString &country, const QString &image, bool favorite = false);
+    Q_INVOKABLE void addChannel(const QString &id, const QString &name, const QString &url, const QString &country, const QString &image);
 
 Q_SIGNALS:
     void countryAdded(const QString &url);
