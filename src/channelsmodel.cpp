@@ -42,6 +42,16 @@ ChannelsModel::ChannelsModel(QObject *parent)
     });
 }
 
+bool ChannelsModel::onlyFavorites() const
+{
+    return m_onlyFavorites;
+}
+
+void ChannelsModel::setOnlyFavorites(bool onlyFavorites)
+{
+    m_onlyFavorites = onlyFavorites;
+}
+
 QHash<int, QByteArray> ChannelsModel::roleNames() const
 {
     QHash<int, QByteArray> roleNames;
@@ -53,7 +63,11 @@ int ChannelsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT() FROM Channels;"));
+    if (m_onlyFavorites) {
+        query.prepare(QStringLiteral("SELECT COUNT() FROM Favorites;"));
+    } else {
+        query.prepare(QStringLiteral("SELECT COUNT() FROM Channels;"));
+    }
     Database::instance().execute(query);
     if (!query.next()) {
         qWarning() << "Failed to query channel count";
@@ -74,7 +88,7 @@ QVariant ChannelsModel::data(const QModelIndex &index, int role) const
 
 void ChannelsModel::loadChannel(int index) const
 {
-    m_channels += new Channel(index);
+    m_channels += new Channel(index, m_onlyFavorites);
 }
 
 void ChannelsModel::setFavorite(const QString &channel, bool favorite)
@@ -91,4 +105,21 @@ void ChannelsModel::refreshAll()
     for (auto &channel : m_channels) {
         channel->refresh();
     }
+}
+
+void ChannelsModel::move(int from, int to)
+{
+    const int destination = to > from ? to + 1 : to;
+
+    beginMoveRows(QModelIndex(), from, from, QModelIndex(), destination);
+    m_channels.move(from, to);
+    // rebuild favorites
+    // TODO: smarter solution?
+    for (auto &&channel : qAsConst(m_channels)) {
+        channel->setAsFavorite(false);
+    }
+    for (auto &&channel : qAsConst(m_channels)) {
+        channel->setAsFavorite(true);
+    }
+    endMoveRows();
 }

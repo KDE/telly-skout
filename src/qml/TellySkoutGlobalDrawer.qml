@@ -17,15 +17,6 @@ Kirigami.GlobalDrawer {
 
     isMenu: true
     actions: [
-        /*Kirigami.Action {
-            text: i18n("Favorites")
-            iconName: "rss"
-            onTriggered: {
-                pageStack.layers.clear()
-                pageStack.clear()
-                pageStack.push("qrc:/ChannelListPage.qml", {groupFilter: "Favorites", countryFilter: ""})
-            }
-        },*/
         Kirigami.Action {
             text: i18n("Favorites")
             iconName: "rss"
@@ -42,6 +33,15 @@ Kirigami.GlobalDrawer {
                 pageStack.layers.clear()
                 pageStack.clear()
                 pageStack.push("qrc:/CountryListPage.qml")
+            }
+        },
+        Kirigami.Action {
+            text: i18n("Sort Favorites")
+            iconName: "rss"
+            onTriggered: {
+                pageStack.layers.clear()
+                pageStack.clear()
+                pageStack.push("qrc:/ChannelListPage.qml", {groupFilter: "Favorites", countryFilter: "", sortable: true, onlyFavorites: true})
             }
         },
         Kirigami.Action {

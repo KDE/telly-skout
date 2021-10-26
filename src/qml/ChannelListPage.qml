@@ -21,6 +21,8 @@ Kirigami.ScrollablePage {
     property string lastChannel: ""
     property alias groupFilter: proxyModel.groupName
     property alias countryFilter: proxyModel.country
+    property bool sortable: false
+    property bool onlyFavorites: false
 
     Kirigami.PlaceholderMessage {
         visible: channelList.count === 0
@@ -37,18 +39,31 @@ Kirigami.ScrollablePage {
 
         anchors.fill: parent
 
-        model: ChannelsProxyModel {
+        model: root.onlyFavorites ? channelsModel : proxyModel
+        delegate: Kirigami.DelegateRecycler {
+            width: parent ? parent.width : implicitWidth
+            sourceComponent: delegateComponent
+        }
+
+        ChannelsProxyModel {
             id: proxyModel
             groupName: ""
             country: ""
             sourceModel: channelsModel
         }
 
-        delegate: ChannelListDelegate {
-        }
-
         ChannelsModel {
             id: channelsModel
+            onlyFavorites: root.onlyFavorites
         }
     }
+
+    Component {
+        id: delegateComponent
+        ChannelListDelegate {
+            listView: channelList
+            sortable: root.sortable
+        }
+    }
+
 }

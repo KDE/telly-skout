@@ -13,15 +13,29 @@ import org.kde.kirigami 2.12 as Kirigami
 import org.kde.TellySkout 1.0
 
 Kirigami.SwipeListItem {
+    id: listItem
 
-    leftPadding: 0
-    rightPadding: 0
+    property var listView
+    property bool sortable: false
 
-    contentItem: Kirigami.BasicListItem {
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        text: model.channel.displayName || model.channel.name
-        icon: model.channel.refreshing ? "view-refresh" : model.channel.image === "" ? "rss" : Fetcher.image(model.channel.image)
+    contentItem: RowLayout {
+        Kirigami.ListItemDragHandle {
+            listItem: listItem
+            listView: listItem.listView
+            onMoveRequested: sortable ? listView.model.move(oldIndex, newIndex) : {}
+            visible: listItem.sortable
+        }
+
+        Kirigami.Icon {
+            source: model.channel.refreshing ? "view-refresh" : model.channel.image === "" ? "rss" : Fetcher.image(model.channel.image)
+        }
+
+        Controls.Label {
+            Layout.fillWidth: true
+            height: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
+            text: model.channel.displayName || model.channel.name
+            color: listItem.checked || (listItem.pressed && !listItem.checked && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
+        }
     }
 
     actions: [
