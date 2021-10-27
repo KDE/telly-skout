@@ -16,9 +16,17 @@
 ChannelsModel::ChannelsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    connect(&Database::instance(), &Database::channelAdded, this, [this]() {
-        beginInsertRows(QModelIndex(), rowCount(QModelIndex()) - 1, rowCount(QModelIndex()) - 1);
-        endInsertRows();
+    // TODO: does not work (channels are sorted by name)
+    // connect(&Database::instance(), &Database::channelAdded, this, [this]() {
+    //    beginInsertRows(QModelIndex(), rowCount(QModelIndex()) - 1, rowCount(QModelIndex()) - 1);
+    //    endInsertRows();
+    //});
+    connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const QString &id) {
+        Q_UNUSED(id)
+        beginResetModel();
+        qDeleteAll(m_channels);
+        m_channels.clear();
+        endResetModel();
     });
 
     connect(&Fetcher::instance(), &Fetcher::channelDetailsUpdated, this, [this](const QString &id, const QString &image) {

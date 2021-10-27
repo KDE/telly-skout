@@ -25,6 +25,7 @@ Kirigami.SwipeListItem {
 
         onClicked: {
             lastCountry = model.country.id
+            Fetcher.fetchCountry(model.country.url, model.country.id)
             while(pageStack.depth > 1)
                 pageStack.pop()
             pageStack.push("qrc:/ChannelListPage.qml", {groupFilter: "", countryFilter: lastCountry})

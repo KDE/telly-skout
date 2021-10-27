@@ -28,7 +28,7 @@ Kirigami.ScrollablePage {
         Controls.BusyIndicator {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
         }
-        text: i18n("Loading channels...")
+        text: i18n("Loading countries...")
     }
 
     ListView {
@@ -43,6 +43,6 @@ Kirigami.ScrollablePage {
     }
 
     Component.onCompleted: {
-        Fetcher.fetchChannels()
+        Fetcher.fetchCountries()
     }
 }

@@ -43,7 +43,7 @@ void Fetcher::fetchFavorites()
     Q_EMIT finishedFetchingFavorites();
 }
 
-void Fetcher::fetchChannels()
+void Fetcher::fetchCountries()
 {
     // http://xmltv.se/countries.xml
     const QString url = "http://xmltv.se/countries.xml";
@@ -64,10 +64,6 @@ void Fetcher::fetchChannels()
             if (!versionXML.setContent(data)) {
                 qWarning() << "Failed to parse XML";
             }
-
-            // print out the element names of all elements that are direct children
-            // of the outermost element.
-            QDomElement docElem = versionXML.documentElement();
 
             QDomNodeList nodes = versionXML.elementsByTagName("country");
             for (int i = 0; i < nodes.count(); i++) {
@@ -102,10 +98,6 @@ void Fetcher::fetchCountry(const QString &url, const QString &countryId)
                 qWarning() << "Failed to parse XML";
             }
 
-            // print out the element names of all elements that are direct children
-            // of the outermost element.
-            QDomElement docElem = versionXML.documentElement();
-
             QDomNodeList nodes = versionXML.elementsByTagName("channel");
 
             for (int i = 0; i < nodes.count(); i++) {
@@ -121,6 +113,7 @@ void Fetcher::fetchCountry(const QString &url, const QString &countryId)
             }
         }
         delete reply;
+        Q_EMIT countryUpdated(countryId);
     });
 }
 
@@ -148,9 +141,9 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
     if (queryChannelExists.value(0).toInt() == 0) {
         const QString image = "https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/" + channelId + "_color.svg?inline=false";
         Database::instance().addChannel(channelId, name, url, country, image);
-
-        Q_EMIT channelUpdated(channelId);
     }
+
+    Q_EMIT channelUpdated(channelId);
 }
 
 void Fetcher::fetchProgram(const QString &channelId)
@@ -224,8 +217,6 @@ void Fetcher::processCountry(const QDomElement &country)
     if (queryCountryExists.value(0).toInt() == 0) {
         Database::instance().addCountry(id, name, url);
     }
-
-    fetchCountry(url, id);
 
     Q_EMIT countryUpdated(id);
 }

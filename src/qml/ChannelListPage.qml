@@ -28,10 +28,12 @@ Kirigami.ScrollablePage {
         visible: channelList.count === 0
 
         width: Kirigami.Units.gridUnit * 20
-        icon.name: "rss"
         anchors.centerIn: parent
 
-        text: i18n("No Channels added yet")
+        Controls.BusyIndicator {
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+        }
+        text: i18n("Loading channels...")
     }
 
     ListView {

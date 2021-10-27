@@ -138,8 +138,6 @@ void Database::addCountry(const QString &id, const QString &name, const QString 
     execute(query);
 
     Q_EMIT countryAdded(urlFromInput.toString());
-
-    // Fetcher::instance().fetchCountry(urlFromInput.toString()); // TODO: url -> ID
 }
 
 void Database::addChannel(const QString &id, const QString &name, const QString &url, const QString &country, const QString &image)
@@ -161,6 +159,4 @@ void Database::addChannel(const QString &id, const QString &name, const QString 
     execute(query);
 
     Q_EMIT channelAdded(urlFromInput.toString());
-
-    // Fetcher::instance().fetchChannel(urlFromInput.toString(), urlFromInput.toString()); // TODO: url -> ID
 }
