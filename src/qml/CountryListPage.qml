@@ -26,7 +26,7 @@ Kirigami.ScrollablePage {
         anchors.centerIn: parent
 
         Controls.BusyIndicator {
-            anchors.centerIn: parent
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
         }
         text: i18n("Loading channels...")
     }
