@@ -16,12 +16,24 @@ Kirigami.Page {
 
     padding: 0
 
+    Kirigami.PlaceholderMessage {
+        visible: contentRepeater.count === 0
+
+        width: Kirigami.Units.gridUnit * 20
+        icon.name: "rss"
+        anchors.centerIn: parent
+
+        text: i18n("Please select favorites")
+    }
+
     Row
     {
         id: header
         x: -channelTable.Controls.ScrollBar.horizontal.position * channelTable.contentWidth
+        visible: contentRepeater.count !== 0
         Repeater
         {
+            id: headerRepeater
             model: proxyModel
             delegate: Column
             {
@@ -48,6 +60,7 @@ Kirigami.Page {
         readonly property int pxPerMin: 5
         readonly property var date: new Date()
 
+        visible: contentRepeater.count !== 0
         width: parent.width
         height: parent.height - header.height
         anchors.top: header.bottom
@@ -57,6 +70,7 @@ Kirigami.Page {
             id: content
             Repeater
             {
+                id: contentRepeater
                 model: proxyModel
                 delegate: Column
                 {
