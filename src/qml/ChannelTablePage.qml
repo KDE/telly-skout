@@ -75,8 +75,26 @@ Kirigami.Page {
                 delegate: Column
                 {
                     width: 200
+
+                    // show info if program is not available
+                    Rectangle {
+                        width: parent.width
+                        height: channelTable.contentHeight
+                        visible: programRepeater.count === 0
+                        color: Kirigami.Theme.negativeBackgroundColor
+                        border.color: Kirigami.Theme.textColor
+                        Text
+                        {
+                            anchors.centerIn: parent
+                            text: i18n("not available")
+                            wrapMode: Text.Wrap
+                            color: Kirigami.Theme.textColor
+                        }
+                    }
+
                     Repeater
                     {
+                        id: programRepeater
                         model: ProgramsProxyModel {
                             id: proxyProgramModel
                             start: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate()) // today 00:00h
