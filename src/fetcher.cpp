@@ -8,6 +8,8 @@
 
 #include "database.h"
 
+#include <KLocalizedString>
+
 #include <QCryptographicHash>
 #include <QDateTime>
 #include <QFile>
@@ -45,37 +47,25 @@ void Fetcher::fetchFavorites()
 
 void Fetcher::fetchCountries()
 {
-    // http://xmltv.se/countries.xml
-    const QString url = "http://xmltv.se/countries.xml";
-    qDebug() << "Starting to fetch countries (" << url << ")";
+    const QString id = "tvspielfilm.germany";
+    const QString name = i18n("Germany (TV Spielfilm)");
 
-    QNetworkRequest request((QUrl(url)));
-    QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
-        if (reply->error()) {
-            qWarning() << "Error fetching countries";
-            qWarning() << reply->errorString();
-            Q_EMIT error(url, reply->error(), reply->errorString()); // TODO: error handling for countries fetching (see channel.cpp)
-        } else {
-            QByteArray data = reply->readAll();
+    Q_EMIT startedFetchingCountry(id);
 
-            QDomDocument versionXML;
+    const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen";
 
-            if (!versionXML.setContent(data)) {
-                qWarning() << "Failed to parse XML";
-            }
+    // if country is unknown, store it
+    QSqlQuery queryCountryExists;
+    queryCountryExists.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id;"));
+    queryCountryExists.bindValue(QStringLiteral(":id"), id);
+    Database::instance().execute(queryCountryExists);
+    queryCountryExists.next();
 
-            QDomNodeList nodes = versionXML.elementsByTagName("country");
-            for (int i = 0; i < nodes.count(); i++) {
-                QDomNode elm = nodes.at(i);
-                if (elm.isElement()) {
-                    const QDomElement &countryElement = elm.toElement();
-                    processCountry(countryElement);
-                }
-            }
-        }
-        delete reply;
-    });
+    if (queryCountryExists.value(0).toInt() == 0) {
+        Database::instance().addCountry(id, name, url);
+    }
+
+    Q_EMIT countryUpdated(id);
 }
 
 void Fetcher::fetchCountry(const QString &url, const QString &countryId)
@@ -92,23 +82,32 @@ void Fetcher::fetchCountry(const QString &url, const QString &countryId)
         } else {
             QByteArray data = reply->readAll();
 
-            QDomDocument versionXML;
+            QRegularExpression re("<select name=\\\"channel\\\">.*</select>");
+            re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+            QRegularExpressionMatch match = re.match(data);
+            if (match.hasMatch()) {
+                const QString matched = match.captured(0);
 
-            if (!versionXML.setContent(data)) {
-                qWarning() << "Failed to parse XML";
-            }
+                QDomDocument channelsXml;
 
-            QDomNodeList nodes = versionXML.elementsByTagName("channel");
+                if (!channelsXml.setContent(matched)) {
+                    qWarning() << "Failed to parse XML";
+                }
 
-            for (int i = 0; i < nodes.count(); i++) {
-                QDomNode elm = nodes.at(i);
-                if (elm.isElement()) {
-                    const QDomNamedNodeMap &attributes = elm.attributes();
-                    const QString &id = attributes.namedItem("id").toAttr().value();
+                QDomNodeList channelNodes = channelsXml.elementsByTagName("option");
 
-                    const QString &name = elm.firstChildElement("display-name").text();
+                for (int i = 0; i < channelNodes.count(); i++) {
+                    QDomNode channelNode = channelNodes.at(i);
+                    if (channelNode.isElement()) {
+                        const QDomNamedNodeMap &attributes = channelNode.attributes();
+                        const QString &id = attributes.namedItem("value").toAttr().value();
 
-                    fetchChannel(id, name, countryId);
+                        // exclude groups (e.g. "alle Sender" or "g:1")
+                        if (id.length() > 0 && !id.contains("g:")) {
+                            const QString &name = channelNode.toElement().text();
+                            fetchChannel(id, name, countryId);
+                        }
+                    }
                 }
             }
         }
@@ -119,7 +118,8 @@ void Fetcher::fetchCountry(const QString &url, const QString &countryId)
 
 void Fetcher::fetchChannel(const QString &channelId, const QString &name, const QString &country)
 {
-    const QString url = "http://xmltv.xmltv.se/" + channelId;
+    // https://www.tvspielfilm.de/tv-programm/sendungen/das-erste,ARD.html
+    const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/" + name.toLower().replace(' ', '-') + "," + channelId + ".html";
 
     Q_EMIT startedFetchingChannel(channelId);
 
@@ -139,7 +139,8 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
     queryChannelExists.next();
 
     if (queryChannelExists.value(0).toInt() == 0) {
-        const QString image = "https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/" + channelId + "_color.svg?inline=false";
+        // TODO: https://a2.tvspielfilm.de/images/tv/sender/mini/sprite_web_optimized_1616508904.webp
+        const QString image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.toLower() + ".webp";
         Database::instance().addChannel(channelId, name, url, country, image);
     }
 
@@ -148,7 +149,8 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
 
 void Fetcher::fetchProgram(const QString &channelId)
 {
-    const QString url = "http://xmltv.xmltv.se/" + channelId;
+    // https://www.tvspielfilm.de/tv-programm/sendungen/?date=2021-11-09&time=day&channel=ARD
+    const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=" + channelId;
 
     QDate today = QDate::currentDate();
     QDate yesterday = QDate::currentDate().addDays(-1);
@@ -160,7 +162,7 @@ void Fetcher::fetchProgram(const QString &channelId)
         const qint64 lastTime = utcTime.addDays(1).toSecsSinceEpoch() - 1;
         QSqlQuery queryProgramAvailable;
         queryProgramAvailable.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
-        queryProgramAvailable.bindValue(QStringLiteral(":channel"), "http://xmltv.xmltv.se/" + channelId); // TODO use channel ID in Programs
+        queryProgramAvailable.bindValue(QStringLiteral(":channel"), channelId);
         queryProgramAvailable.bindValue(QStringLiteral(":lastTime"), lastTime);
         Database::instance().execute(queryProgramAvailable);
         queryProgramAvailable.next();
@@ -169,111 +171,210 @@ void Fetcher::fetchProgram(const QString &channelId)
             continue;
         }
 
-        const QString urlDay = url + "_" + day.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
-        qDebug() << "Starting to fetch program for " << channelId << "(" << urlDay << ")";
+        // TODO: better way to determine max page (see <ul class="pagination__items">)
+        // we only need last page of yesterday + first of tomorrow
+        for (int page = 1; page < 3; ++page) {
+            const QString urlDay = url + "&date=" + day.toString("yyyy-MM-dd") + "&page=" + QString::number(page);
+            qDebug() << "Starting to fetch program for " << channelId << "(" << urlDay << ")";
 
-        QNetworkRequest request((QUrl(urlDay)));
-        QNetworkReply *reply = get(request);
-        connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply]() {
-            if (reply->error()) {
-                qWarning() << "Error fetching channel";
-                qWarning() << reply->errorString();
-                Q_EMIT error(channelId, reply->error(), reply->errorString());
-            } else {
-                QByteArray data = reply->readAll();
+            QNetworkRequest request((QUrl(urlDay)));
+            QNetworkReply *reply = get(request);
+            connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply, page]() {
+                if (reply->error()) {
+                    qWarning() << "Error fetching channel";
+                    qWarning() << reply->errorString();
+                    // error only if there's no data at all (page 1)
+                    if (page == 1) {
+                        Q_EMIT error(channelId, reply->error(), reply->errorString());
+                    }
+                } else {
+                    QByteArray data = reply->readAll();
 
-                QDomDocument versionXML;
-
-                if (!versionXML.setContent(data)) {
-                    qWarning() << "Failed to parse XML";
+                    // table with program info
+                    QRegularExpression reInfoTable("<table class=\\\"info-table\\\">(.*?)</table>");
+                    reInfoTable.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+                    QRegularExpressionMatch match = reInfoTable.match(data);
+                    if (match.hasMatch()) {
+                        const QString infoTable = match.captured(0);
+                        processChannel(infoTable, url, channelId);
+                    } else {
+                        qWarning() << "Failed to parse " << url;
+                    }
                 }
-
-                QDomElement docElem = versionXML.documentElement();
-
-                processChannel(docElem, url);
-            }
-            delete reply;
-        });
-    }
-}
-
-void Fetcher::processCountry(const QDomElement &country)
-{
-    const QString &id = country.attributes().namedItem("id").toAttr().value();
-    const QString &name = country.text();
-
-    Q_EMIT startedFetchingCountry(id);
-
-    // http://xmltv.xmltv.se/channels-Germany.xml
-    const QString url = "http://xmltv.xmltv.se/channels-" + id + ".xml";
-
-    // if country is unknown, store it
-    QSqlQuery queryCountryExists;
-    queryCountryExists.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id;"));
-    queryCountryExists.bindValue(QStringLiteral(":id"), id);
-    Database::instance().execute(queryCountryExists);
-    queryCountryExists.next();
-
-    if (queryCountryExists.value(0).toInt() == 0) {
-        Database::instance().addCountry(id, name, url);
-    }
-
-    Q_EMIT countryUpdated(id);
-}
-
-void Fetcher::processChannel(const QDomElement &channel, const QString &url)
-{
-    QDomNodeList programs = channel.elementsByTagName("programme");
-    const QDomNamedNodeMap &attributes = programs.at(0).attributes();
-
-    const QString &channelId = attributes.namedItem("channel").toAttr().value();
-    if (programs.count() > 0) {
-        for (int i = 0; i < programs.count(); i++) {
-            processProgram(programs.at(i), url);
+                delete reply;
+            });
         }
+    }
+}
+
+void Fetcher::fetchDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl)
+{
+    QNetworkRequest request((QUrl(descriptionUrl)));
+    QNetworkReply *reply = get(request);
+    connect(reply, &QNetworkReply::finished, this, [this, channelId, programId, descriptionUrl, reply]() {
+        if (reply->error()) {
+            qWarning() << "Error fetching program description";
+            qWarning() << reply->errorString();
+        } else {
+            QByteArray data = reply->readAll();
+            processDescription(data, descriptionUrl, programId);
+            Q_EMIT channelUpdated(channelId);
+        }
+        delete reply;
+    });
+}
+
+void Fetcher::processChannel(const QString &infoTable, const QString &url, const QString &channelId)
+{
+    QRegularExpression reProgram("<tr class=\\\"hover\\\">(.*?)</tr>");
+    reProgram.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpressionMatchIterator it = reProgram.globalMatch(infoTable);
+    while (it.hasNext()) {
+        QRegularExpressionMatch match = it.next();
+        const QString row = match.captured(0);
+        processProgram(row, url, channelId);
 
         Q_EMIT channelUpdated(channelId);
     }
 }
 
-void Fetcher::processProgram(const QDomNode &program, const QString &url)
+void Fetcher::processProgram(const QString &programRow, const QString &url, const QString &channelId)
 {
-    const QDomNamedNodeMap &attributes = program.attributes();
-    const QString &channel = attributes.namedItem("channel").toAttr().value();
-    const QString &startTimeString = attributes.namedItem("start").toAttr().value();
-    QDateTime startTime = QDateTime::fromString(startTimeString, "yyyyMMddHHmmss +0000");
-    startTime.setTimeSpec(Qt::UTC);
-    // channel + start time can be used as ID
-    const QString id = channel + "_" + QString::number(startTime.toSecsSinceEpoch());
-    const QString &stopTimeString = attributes.namedItem("stop").toAttr().value();
-    QDateTime stopTime = QDateTime::fromString(stopTimeString, "yyyyMMddHHmmss +0000");
-    stopTime.setTimeSpec(Qt::UTC);
-    const QString &title = program.namedItem("title").toElement().text();
-    const QString &subtitle = program.namedItem("sub-title").toElement().text();
-    const QString &description = program.namedItem("desc").toElement().text();
-    const QString &category = program.namedItem("category").toElement().text();
+    // column with title + description URL
+    QString title = "";
+    QString descriptionUrl = "";
+    QRegularExpression reTitleCol("<td class=\\\"col-3\\\">(.*?)</td>");
+    reTitleCol.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpressionMatch titleColMatch = reTitleCol.match(programRow);
+    if (titleColMatch.hasMatch()) {
+        const QString titleCol = titleColMatch.captured(0);
 
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE id=:id;"));
-    query.bindValue(QStringLiteral(":id"), id);
-    Database::instance().execute(query);
-    query.next();
+        // title
+        QRegularExpression reTitle("<strong>(.*?)</strong>");
+        reTitle.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        QRegularExpressionMatch titleMatch = reTitle.match(titleCol);
+        if (titleMatch.hasMatch()) {
+            title = titleMatch.captured(1);
+        } else {
+            qWarning() << "Failed to parse title " << url;
+            return;
+        }
 
-    if (query.value(0).toInt() != 0) {
+        // description URL
+        QRegularExpression reDescriptionUrl("<a href=\\\"(https://www.tvspielfilm.de/tv-programm/sendung/.*?\\.html)\\\"");
+        reDescriptionUrl.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        QRegularExpressionMatch descriptionUrlMatch = reDescriptionUrl.match(titleCol);
+        if (descriptionUrlMatch.hasMatch()) {
+            descriptionUrl = descriptionUrlMatch.captured(1);
+        } else {
+            qWarning() << "Failed to parse description URL " << url;
+            // not critical -> no return
+        }
+    } else {
+        qWarning() << "Failed to parse title column " << url;
         return;
     }
 
-    query.prepare(QStringLiteral("INSERT INTO Programs VALUES (:id, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
-    query.bindValue(QStringLiteral(":id"), id);
-    query.bindValue(QStringLiteral(":channel"), url);
+    // column with date and time
+    QDateTime startTime;
+    QDateTime stopTime;
+    QRegularExpression reDateTimeCol("<td class=\\\"col-2\\\">(.*?)</td>");
+    reDateTimeCol.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpressionMatch dateTimeColMatch = reDateTimeCol.match(programRow);
+    if (dateTimeColMatch.hasMatch()) {
+        const QString dateTimeCol = dateTimeColMatch.captured(0);
+
+        // date
+        QString date = "";
+        QRegularExpression reDate("<span>(.*?) (\\d\\d\\.\\d\\d\\.)</span>");
+        reDate.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        QRegularExpressionMatch dateMatch = reDate.match(dateTimeCol);
+        if (dateMatch.hasMatch()) {
+            date = dateMatch.captured(2);
+        } else {
+            qWarning() << "Failed to parse date " << url;
+            return;
+        }
+
+        // time
+        QRegularExpression reTime("<strong>(\\d\\d:\\d\\d) - (\\d\\d:\\d\\d)</strong>");
+        reTime.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        QRegularExpressionMatch timeMatch = reTime.match(dateTimeCol);
+        if (timeMatch.hasMatch()) {
+            startTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + timeMatch.captured(1), "yyyydd.MM.HH:mm");
+            stopTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + timeMatch.captured(2), "yyyydd.MM.HH:mm");
+            // ends after midnight
+            if (stopTime < startTime) {
+                stopTime = stopTime.addDays(1);
+            }
+        } else {
+            qWarning() << "Failed to parse time " << url;
+            return;
+        }
+    } else {
+        qWarning() << "Failed to parse date and time " << url;
+        return;
+    }
+
+    // column with category
+    QString category = "";
+    QRegularExpression reCategoryCol("<td class=\\\"col-4\\\">(.*?)</td>");
+    reCategoryCol.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpressionMatch categoryColMatch = reCategoryCol.match(programRow);
+    if (categoryColMatch.hasMatch()) {
+        const QString categoryCol = categoryColMatch.captured(0);
+
+        // category
+        QRegularExpression reCategory("<span>(.*?)</span>");
+        reCategory.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        QRegularExpressionMatch categoryMatch = reCategory.match(categoryCol);
+        if (categoryMatch.hasMatch()) {
+            category = categoryMatch.captured(1);
+        } else {
+            qWarning() << "Failed to parse category " << url;
+            // not critical -> no return
+        }
+    } else {
+        qWarning() << "Failed to parse category column " << url;
+        return;
+    }
+
+    // channel + start time can be used as ID
+    const QString programId = channelId + "_" + QString::number(startTime.toSecsSinceEpoch());
+
+    QSqlQuery query;
+    query.prepare(QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
+    query.bindValue(QStringLiteral(":id"), programId);
+    query.bindValue(QStringLiteral(":channel"), channelId);
     query.bindValue(QStringLiteral(":start"), startTime.toSecsSinceEpoch());
     query.bindValue(QStringLiteral(":stop"), stopTime.toSecsSinceEpoch());
     query.bindValue(QStringLiteral(":title"), title);
-    query.bindValue(QStringLiteral(":subtitle"), subtitle);
-    query.bindValue(QStringLiteral(":description"), description);
+    query.bindValue(QStringLiteral(":subtitle"), ""); // TODO
+    query.bindValue(QStringLiteral(":description"), ""); // set in fetchDescription()
     query.bindValue(QStringLiteral(":category"), category);
 
     Database::instance().execute(query);
+
+    // fetchDescription(channelId, programId, descriptionUrl); // TODO on demand? (way too slow)
+}
+
+void Fetcher::processDescription(const QString &descriptionPage, const QString &url, const QString &programId)
+{
+    QRegularExpression reDescription("<section class=\\\"broadcast-detail__description\\\">.*?<p>(.*?)</p>");
+    reDescription.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpressionMatch match = reDescription.match(descriptionPage);
+    if (match.hasMatch()) {
+        const QString description = match.captured(1);
+
+        QSqlQuery query;
+        query.prepare(QStringLiteral("UPDATE Programs SET description=:description WHERE id=:id;"));
+        query.bindValue(QStringLiteral(":id"), programId);
+        query.bindValue(QStringLiteral(":description"), description);
+
+        Database::instance().execute(query);
+    } else {
+        qWarning() << "Failed to parse program description from" << url;
+    }
 }
 
 QString Fetcher::image(const QString &url)

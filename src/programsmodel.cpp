@@ -58,7 +58,7 @@ int ProgramsModel::rowCount(const QModelIndex &parent) const
     Q_UNUSED(parent)
     QSqlQuery query;
     query.prepare(QStringLiteral("SELECT COUNT() FROM Programs WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_channel->url());
+    query.bindValue(QStringLiteral(":channel"), m_channel->id());
     Database::instance().execute(query);
     if (!query.next()) {
         qWarning() << "Failed to query program count";

@@ -20,7 +20,7 @@ Program::Program(const Channel *channel, int index)
 {
     QSqlQuery programQuery;
     programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start LIMIT 1 OFFSET :index;"));
-    programQuery.bindValue(QStringLiteral(":channel"), m_channel->url());
+    programQuery.bindValue(QStringLiteral(":channel"), m_channel->id());
     programQuery.bindValue(QStringLiteral(":index"), index);
     Database::instance().execute(programQuery);
     if (!programQuery.next()) {
