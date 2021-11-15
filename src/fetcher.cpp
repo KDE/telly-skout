@@ -240,122 +240,56 @@ void Fetcher::processChannel(const QString &infoTable, const QString &url, const
 
 void Fetcher::processProgram(const QString &programRow, const QString &url, const QString &channelId)
 {
-    // column with title + description URL
-    QString title = "";
-    QString descriptionUrl = "";
-    QRegularExpression reTitleCol("<td class=\\\"col-3\\\">(.*?)</td>");
-    reTitleCol.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-    QRegularExpressionMatch titleColMatch = reTitleCol.match(programRow);
-    if (titleColMatch.hasMatch()) {
-        const QString titleCol = titleColMatch.captured(0);
-
-        // title
-        QRegularExpression reTitle("<strong>(.*?)</strong>");
-        reTitle.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-        QRegularExpressionMatch titleMatch = reTitle.match(titleCol);
-        if (titleMatch.hasMatch()) {
-            title = titleMatch.captured(1);
-        } else {
-            qWarning() << "Failed to parse title " << url;
-            return;
-        }
-
-        // description URL
-        QRegularExpression reDescriptionUrl("<a href=\\\"(https://www.tvspielfilm.de/tv-programm/sendung/.*?\\.html)\\\"");
-        reDescriptionUrl.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-        QRegularExpressionMatch descriptionUrlMatch = reDescriptionUrl.match(titleCol);
-        if (descriptionUrlMatch.hasMatch()) {
-            descriptionUrl = descriptionUrlMatch.captured(1);
-        } else {
-            qWarning() << "Failed to parse description URL " << url;
-            // not critical -> no return
-        }
-    } else {
-        qWarning() << "Failed to parse title column " << url;
-        return;
-    }
-
     // column with date and time
-    QDateTime startTime;
-    QDateTime stopTime;
-    QRegularExpression reDateTimeCol("<td class=\\\"col-2\\\">(.*?)</td>");
-    reDateTimeCol.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-    QRegularExpressionMatch dateTimeColMatch = reDateTimeCol.match(programRow);
-    if (dateTimeColMatch.hasMatch()) {
-        const QString dateTimeCol = dateTimeColMatch.captured(0);
+    const QString reTime("<strong>(\\d\\d:\\d\\d) - (\\d\\d:\\d\\d)</strong>");
+    const QString reDate("<span>.*? (\\d\\d\\.\\d\\d\\.)</span>");
+    const QString reDateTimeCol("<td class=\\\"col-2\\\">.*?" + reTime + ".*?" + reDate + ".*?</td>");
 
-        // date
-        QString date = "";
-        QRegularExpression reDate("<span>(.*?) (\\d\\d\\.\\d\\d\\.)</span>");
-        reDate.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-        QRegularExpressionMatch dateMatch = reDate.match(dateTimeCol);
-        if (dateMatch.hasMatch()) {
-            date = dateMatch.captured(2);
-        } else {
-            qWarning() << "Failed to parse date " << url;
-            return;
-        }
-
-        // time
-        QRegularExpression reTime("<strong>(\\d\\d:\\d\\d) - (\\d\\d:\\d\\d)</strong>");
-        reTime.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-        QRegularExpressionMatch timeMatch = reTime.match(dateTimeCol);
-        if (timeMatch.hasMatch()) {
-            startTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + timeMatch.captured(1), "yyyydd.MM.HH:mm");
-            stopTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + timeMatch.captured(2), "yyyydd.MM.HH:mm");
-            // ends after midnight
-            if (stopTime < startTime) {
-                stopTime = stopTime.addDays(1);
-            }
-        } else {
-            qWarning() << "Failed to parse time " << url;
-            return;
-        }
-    } else {
-        qWarning() << "Failed to parse date and time " << url;
-        return;
-    }
+    // column with title + description URL
+    const QString reDescriptionUrl("<a href=\\\"(https://www.tvspielfilm.de/tv-programm/sendung/.*?\\.html)\\\"");
+    const QString reTitle("<strong>(.*?)</strong>");
+    const QString reTitleCol("<td class=\\\"col-3\\\">.*?" + reDescriptionUrl + ".*?" + reTitle + ".*?</td>");
 
     // column with category
-    QString category = "";
-    QRegularExpression reCategoryCol("<td class=\\\"col-4\\\">(.*?)</td>");
-    reCategoryCol.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-    QRegularExpressionMatch categoryColMatch = reCategoryCol.match(programRow);
-    if (categoryColMatch.hasMatch()) {
-        const QString categoryCol = categoryColMatch.captured(0);
+    const QString reCategory("<span>(.*?)</span>");
+    const QString reCategoryCol("<td class=\\\"col-4\\\">.*?" + reCategory + ".*?</td>");
 
-        // category
-        QRegularExpression reCategory("<span>(.*?)</span>");
-        reCategory.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-        QRegularExpressionMatch categoryMatch = reCategory.match(categoryCol);
-        if (categoryMatch.hasMatch()) {
-            category = categoryMatch.captured(1);
-        } else {
-            qWarning() << "Failed to parse category " << url;
-            // not critical -> no return
+    QRegularExpression re(reDateTimeCol + ".*?" + reTitleCol + ".*?" + reCategoryCol);
+    re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+
+    const QRegularExpressionMatch match = re.match(programRow);
+    if (match.hasMatch()) {
+        const QString date = match.captured(3);
+        const QDateTime startTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + match.captured(1), "yyyydd.MM.HH:mm");
+        QDateTime stopTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + match.captured(2), "yyyydd.MM.HH:mm");
+        // ends after midnight
+        if (stopTime < startTime) {
+            stopTime = stopTime.addDays(1);
         }
+        const QString descriptionUrl = match.captured(4);
+        const QString title = match.captured(5);
+        const QString category = match.captured(6);
+
+        // channel + start time can be used as ID
+        const QString programId = channelId + "_" + QString::number(startTime.toSecsSinceEpoch());
+
+        QSqlQuery query;
+        query.prepare(QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
+        query.bindValue(QStringLiteral(":id"), programId);
+        query.bindValue(QStringLiteral(":channel"), channelId);
+        query.bindValue(QStringLiteral(":start"), startTime.toSecsSinceEpoch());
+        query.bindValue(QStringLiteral(":stop"), stopTime.toSecsSinceEpoch());
+        query.bindValue(QStringLiteral(":title"), title);
+        query.bindValue(QStringLiteral(":subtitle"), ""); // TODO
+        query.bindValue(QStringLiteral(":description"), ""); // set in fetchDescription()
+        query.bindValue(QStringLiteral(":category"), category);
+
+        Database::instance().execute(query);
+
+        // fetchDescription(channelId, programId, descriptionUrl); // TODO on demand? (way too slow)
     } else {
-        qWarning() << "Failed to parse category column " << url;
-        return;
+        qWarning() << "Failed to parse program " << url;
     }
-
-    // channel + start time can be used as ID
-    const QString programId = channelId + "_" + QString::number(startTime.toSecsSinceEpoch());
-
-    QSqlQuery query;
-    query.prepare(QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
-    query.bindValue(QStringLiteral(":id"), programId);
-    query.bindValue(QStringLiteral(":channel"), channelId);
-    query.bindValue(QStringLiteral(":start"), startTime.toSecsSinceEpoch());
-    query.bindValue(QStringLiteral(":stop"), stopTime.toSecsSinceEpoch());
-    query.bindValue(QStringLiteral(":title"), title);
-    query.bindValue(QStringLiteral(":subtitle"), ""); // TODO
-    query.bindValue(QStringLiteral(":description"), ""); // set in fetchDescription()
-    query.bindValue(QStringLiteral(":category"), category);
-
-    Database::instance().execute(query);
-
-    // fetchDescription(channelId, programId, descriptionUrl); // TODO on demand? (way too slow)
 }
 
 void Fetcher::processDescription(const QString &descriptionPage, const QString &url, const QString &programId)
