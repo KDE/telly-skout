@@ -208,6 +208,9 @@ void Fetcher::fetchProgram(const QString &channelId, const QString &url)
             if (matchNextPage.hasMatch()) {
                 qDebug() << matchNextPage.captured(1);
                 fetchProgram(channelId, matchNextPage.captured(1));
+            } else {
+                // all pages processed, update GUI
+                Q_EMIT channelUpdated(channelId);
             }
         }
         delete reply;
@@ -241,8 +244,6 @@ void Fetcher::processChannel(const QString &infoTable, const QString &url, const
         const QString row = match.captured(0);
         processProgram(row, url, channelId);
     }
-
-    Q_EMIT channelUpdated(channelId);
 }
 
 void Fetcher::processProgram(const QString &programRow, const QString &url, const QString &channelId)
