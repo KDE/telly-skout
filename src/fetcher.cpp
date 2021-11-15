@@ -48,7 +48,7 @@ void Fetcher::fetchFavorites()
 void Fetcher::fetchCountries()
 {
     const QString id = "tvspielfilm.germany";
-    const QString name = i18n("Germany (TV Spielfilm)");
+    const QString name = i18n("Germany");
 
     Q_EMIT startedFetchingCountry(id);
 

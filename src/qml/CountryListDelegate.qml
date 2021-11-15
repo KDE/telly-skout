@@ -28,7 +28,7 @@ Kirigami.SwipeListItem {
             Fetcher.fetchCountry(model.country.url, model.country.id)
             while(pageStack.depth > 1)
                 pageStack.pop()
-            pageStack.push("qrc:/ChannelListPage.qml", {groupFilter: "", countryFilter: lastCountry})
+            pageStack.push("qrc:/ChannelListPage.qml", {title: i18n("Channels") + " (" + i18n(model.country.name) + ")", groupFilter: "", countryFilter: lastCountry})
         }
     }
 }

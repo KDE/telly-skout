@@ -16,7 +16,7 @@ import org.kde.TellySkout 1.0
 Kirigami.ScrollablePage {
     id: root
 
-    title: countryFilter ? i18n("Channels") + " (" + i18n(countryFilter) + ")" : i18n("Channels")
+    title: i18n("Channels")
 
     property string lastChannel: ""
     property alias groupFilter: proxyModel.groupName
