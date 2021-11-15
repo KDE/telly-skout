@@ -233,9 +233,9 @@ void Fetcher::processChannel(const QString &infoTable, const QString &url, const
         QRegularExpressionMatch match = it.next();
         const QString row = match.captured(0);
         processProgram(row, url, channelId);
-
-        Q_EMIT channelUpdated(channelId);
     }
+
+    Q_EMIT channelUpdated(channelId);
 }
 
 void Fetcher::processProgram(const QString &programRow, const QString &url, const QString &channelId)
