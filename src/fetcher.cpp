@@ -149,9 +149,6 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
 
 void Fetcher::fetchProgram(const QString &channelId)
 {
-    // https://www.tvspielfilm.de/tv-programm/sendungen/?date=2021-11-09&time=day&channel=ARD
-    const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=" + channelId;
-
     QDate today = QDate::currentDate();
     QDate yesterday = QDate::currentDate().addDays(-1);
     QDate tomorrow = QDate::currentDate().addDays(1);
@@ -171,40 +168,50 @@ void Fetcher::fetchProgram(const QString &channelId)
             continue;
         }
 
-        // TODO: better way to determine max page (see <ul class="pagination__items">)
-        // we only need last page of yesterday + first of tomorrow
-        for (int page = 1; page < 3; ++page) {
-            const QString urlDay = url + "&date=" + day.toString("yyyy-MM-dd") + "&page=" + QString::number(page);
-            qDebug() << "Starting to fetch program for " << channelId << "(" << urlDay << ")";
-
-            QNetworkRequest request((QUrl(urlDay)));
-            QNetworkReply *reply = get(request);
-            connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply, page]() {
-                if (reply->error()) {
-                    qWarning() << "Error fetching channel";
-                    qWarning() << reply->errorString();
-                    // error only if there's no data at all (page 1)
-                    if (page == 1) {
-                        Q_EMIT error(channelId, reply->error(), reply->errorString());
-                    }
-                } else {
-                    QByteArray data = reply->readAll();
-
-                    // table with program info
-                    QRegularExpression reInfoTable("<table class=\\\"info-table\\\">(.*?)</table>");
-                    reInfoTable.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-                    QRegularExpressionMatch match = reInfoTable.match(data);
-                    if (match.hasMatch()) {
-                        const QString infoTable = match.captured(0);
-                        processChannel(infoTable, url, channelId);
-                    } else {
-                        qWarning() << "Failed to parse " << url;
-                    }
-                }
-                delete reply;
-            });
-        }
+        // https://www.tvspielfilm.de/tv-programm/sendungen/?date=2021-11-09&time=day&channel=ARD
+        const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=" + channelId;
+        const QString urlDay = url + "&date=" + day.toString("yyyy-MM-dd") + "&page=1";
+        fetchProgram(channelId, urlDay);
     }
+}
+
+void Fetcher::fetchProgram(const QString &channelId, const QString &url)
+{
+    qDebug() << "Starting to fetch program for " << channelId << "(" << url << ")";
+
+    QNetworkRequest request((QUrl(url)));
+    QNetworkReply *reply = get(request);
+    connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply]() {
+        if (reply->error()) {
+            qWarning() << "Error fetching channel";
+            qWarning() << reply->errorString();
+            Q_EMIT error(channelId, reply->error(), reply->errorString());
+        } else {
+            QByteArray data = reply->readAll();
+
+            // table with program info
+            QRegularExpression reInfoTable("<table class=\\\"info-table\\\">(.*?)</table>");
+            reInfoTable.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+            QRegularExpressionMatch matchInfo = reInfoTable.match(data);
+            if (matchInfo.hasMatch()) {
+                const QString infoTable = matchInfo.captured(0);
+                processChannel(infoTable, url, channelId);
+            } else {
+                qWarning() << "Failed to parse " << url;
+            }
+
+            // fetch next page
+            QRegularExpression reNextPage(
+                "<ul class=\\\"pagination__items\\\">.*<a href=\\\"(.*?)\\\"\\s*class=\\\"js-track-link pagination__link pagination__link--next\\\"");
+            reNextPage.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+            QRegularExpressionMatch matchNextPage = reNextPage.match(data);
+            if (matchNextPage.hasMatch()) {
+                qDebug() << matchNextPage.captured(1);
+                fetchProgram(channelId, matchNextPage.captured(1));
+            }
+        }
+        delete reply;
+    });
 }
 
 void Fetcher::fetchDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl)

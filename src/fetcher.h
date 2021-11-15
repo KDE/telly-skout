@@ -39,6 +39,7 @@ private:
     Fetcher();
 
     QString filePath(const QString &url);
+    void fetchProgram(const QString &channelId, const QString &url);
     void processChannel(const QString &infoTable, const QString &url, const QString &channelId);
     void processProgram(const QString &programRow, const QString &url, const QString &channelId);
     void processDescription(const QString &descriptionPage, const QString &url, const QString &programId);
