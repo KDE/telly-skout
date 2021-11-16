@@ -69,7 +69,13 @@ int ProgramsModel::rowCount(const QModelIndex &parent) const
 
 void ProgramsModel::loadProgram(int index) const
 {
-    m_programs[index] = new Program(m_channel, index);
+    Program *program = new Program(m_channel, index);
+    // TODO: better show dummy?
+    // avoid holes in the program (causes not aligned times in table)
+    if (m_programs.contains(index - 1) && m_programs[index - 1]->stop() < program->start()) {
+        program->setStart(m_programs[index - 1]->stop());
+    }
+    m_programs[index] = program;
 }
 
 Channel *ProgramsModel::channel() const

@@ -75,6 +75,11 @@ QDateTime Program::start() const
     return m_start;
 }
 
+void Program::setStart(const QDateTime &start)
+{
+    m_start = start;
+}
+
 QDateTime Program::stop() const
 {
     return m_stop;

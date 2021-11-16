@@ -36,6 +36,7 @@ public:
     QString description() const;
     QVector<Country *> countries() const;
     QDateTime start() const;
+    void setStart(const QDateTime &start);
     QDateTime stop() const;
     QString subtitle() const;
 
