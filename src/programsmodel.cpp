@@ -71,8 +71,8 @@ void ProgramsModel::loadProgram(int index) const
 {
     Program *program = new Program(m_channel, index);
     // TODO: better show dummy?
-    // avoid holes in the program (causes not aligned times in table)
-    if (m_programs.contains(index - 1) && m_programs[index - 1]->stop() < program->start()) {
+    // avoid gaps/overlapping in the program (causes not aligned times in table)
+    if (m_programs.contains(index - 1) && m_programs[index - 1]->stop() != program->start()) {
         program->setStart(m_programs[index - 1]->stop());
     }
     m_programs[index] = program;
