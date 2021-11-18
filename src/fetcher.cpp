@@ -196,7 +196,6 @@ void Fetcher::fetchProgram(const QString &channelId, const QString &url)
             reNextPage.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
             QRegularExpressionMatch matchNextPage = reNextPage.match(data);
             if (matchNextPage.hasMatch()) {
-                qDebug() << matchNextPage.captured(1);
                 fetchProgram(channelId, matchNextPage.captured(1));
             } else {
                 // all pages processed, update GUI
