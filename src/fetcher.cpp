@@ -217,18 +217,24 @@ void Fetcher::fetchProgram(const QString &channelId, const QString &url)
     });
 }
 
-void Fetcher::fetchDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl)
+void Fetcher::fetchDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl, bool isLast)
 {
+    qDebug() << "Starting to fetch description for" << programId << "(" << descriptionUrl << ")";
     QNetworkRequest request((QUrl(descriptionUrl)));
     QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, channelId, programId, descriptionUrl, reply]() {
+    connect(reply, &QNetworkReply::finished, this, [this, channelId, programId, descriptionUrl, reply, isLast]() {
         if (reply->error()) {
             qWarning() << "Error fetching program description";
             qWarning() << reply->errorString();
         } else {
             QByteArray data = reply->readAll();
             processDescription(data, descriptionUrl, programId);
-            Q_EMIT channelUpdated(channelId);
+
+            // update GUI only for last description
+            // updating for every description is too expensive
+            if (isLast) {
+                Q_EMIT channelUpdated(channelId);
+            }
         }
         delete reply;
     });
@@ -242,12 +248,13 @@ void Fetcher::processChannel(const QString &infoTable, const QString &url, const
     while (it.hasNext()) {
         QRegularExpressionMatch match = it.next();
         const QString row = match.captured(0);
-        processProgram(row, url, channelId);
+        processProgram(row, url, channelId, !it.hasNext());
     }
 }
 
-void Fetcher::processProgram(const QString &programRow, const QString &url, const QString &channelId)
+void Fetcher::processProgram(const QString &programRow, const QString &url, const QString &channelId, bool isLast)
 {
+    Q_UNUSED(isLast)
     // column with date and time
     const QString reTime("<strong>(\\d\\d:\\d\\d) - (\\d\\d:\\d\\d)</strong>");
     const QString reDate("<span>.*? (\\d\\d\\.\\d\\d\\.)</span>");
@@ -282,8 +289,10 @@ void Fetcher::processProgram(const QString &programRow, const QString &url, cons
         const QString programId = channelId + "_" + QString::number(startTime.toSecsSinceEpoch());
 
         QSqlQuery query;
-        query.prepare(QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
+        query.prepare(
+            QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :url, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
         query.bindValue(QStringLiteral(":id"), programId);
+        query.bindValue(QStringLiteral(":url"), descriptionUrl);
         query.bindValue(QStringLiteral(":channel"), channelId);
         query.bindValue(QStringLiteral(":start"), startTime.toSecsSinceEpoch());
         query.bindValue(QStringLiteral(":stop"), stopTime.toSecsSinceEpoch());
@@ -294,7 +303,8 @@ void Fetcher::processProgram(const QString &programRow, const QString &url, cons
 
         Database::instance().execute(query);
 
-        // fetchDescription(channelId, programId, descriptionUrl); // TODO on demand? (way too slow)
+        // TODO on demand? (way too slow)
+        // fetchDescription(channelId, programId, descriptionUrl, isLast);
     } else {
         qWarning() << "Failed to parse program " << url;
     }
