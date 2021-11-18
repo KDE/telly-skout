@@ -27,14 +27,15 @@ Program::Program(const Channel *channel, int index)
         qWarning() << "No element with index" << index << "found in channel" << m_channel->url();
     }
 
-    QSqlQuery countryQuery;
-    countryQuery.prepare(QStringLiteral("SELECT * FROM Countries WHERE id=:id"));
-    countryQuery.bindValue(QStringLiteral(":id"), programQuery.value(QStringLiteral("id")).toString());
-    Database::instance().execute(countryQuery);
+    // TODO: required?
+    // QSqlQuery countryQuery;
+    // countryQuery.prepare(QStringLiteral("SELECT * FROM Countries WHERE id=:id"));
+    // countryQuery.bindValue(QStringLiteral(":id"), programQuery.value(QStringLiteral("id")).toString());
+    // Database::instance().execute(countryQuery);
 
-    while (countryQuery.next()) {
-        m_countries += new Country(0);
-    }
+    // while (countryQuery.next()) {
+    //     m_countries += new Country(0);
+    // }
 
     m_start.setSecsSinceEpoch(programQuery.value(QStringLiteral("start")).toInt());
     m_stop.setSecsSinceEpoch(programQuery.value(QStringLiteral("stop")).toInt());

@@ -20,7 +20,7 @@ Channel::Channel(int index, bool onlyFavorites)
     QSqlQuery query;
     if (onlyFavorites) {
         QSqlQuery favoriteQuery;
-        favoriteQuery.prepare(QStringLiteral("SELECT * FROM Favorites ORDER BY id LIMIT 1 OFFSET :index;"));
+        favoriteQuery.prepare(QStringLiteral("SELECT channel FROM Favorites ORDER BY id LIMIT 1 OFFSET :index;"));
         favoriteQuery.bindValue(QStringLiteral(":index"), index);
         Database::instance().execute(favoriteQuery);
         if (!favoriteQuery.next()) {
@@ -48,14 +48,14 @@ Channel::Channel(int index, bool onlyFavorites)
 
     if (!onlyFavorites) {
         QSqlQuery favoriteQuery;
-        favoriteQuery.prepare(QStringLiteral("SELECT * FROM Favorites WHERE channel=:channel"));
+        favoriteQuery.prepare(QStringLiteral("SELECT id FROM Favorites WHERE channel=:channel"));
         favoriteQuery.bindValue(QStringLiteral(":channel"), m_id);
         Database::instance().execute(favoriteQuery);
         m_favorite = favoriteQuery.next();
     }
 
     QSqlQuery countryQuery;
-    countryQuery.prepare(QStringLiteral("SELECT * FROM CountryChannels WHERE channel=:channel"));
+    countryQuery.prepare(QStringLiteral("SELECT country FROM CountryChannels WHERE channel=:channel"));
     countryQuery.bindValue(QStringLiteral(":channel"), m_id);
     Database::instance().execute(countryQuery);
     while (countryQuery.next()) {
