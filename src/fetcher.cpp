@@ -188,17 +188,7 @@ void Fetcher::fetchProgram(const QString &channelId, const QString &url)
             Q_EMIT error(channelId, reply->error(), reply->errorString());
         } else {
             QByteArray data = reply->readAll();
-
-            // table with program info
-            QRegularExpression reInfoTable("<table class=\\\"info-table\\\">(.*?)</table>");
-            reInfoTable.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-            QRegularExpressionMatch matchInfo = reInfoTable.match(data);
-            if (matchInfo.hasMatch()) {
-                const QString infoTable = matchInfo.captured(0);
-                processChannel(infoTable, url, channelId);
-            } else {
-                qWarning() << "Failed to parse " << url;
-            }
+            processChannel(data, url, channelId);
 
             // fetch next page
             QRegularExpression reNextPage(
