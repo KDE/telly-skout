@@ -48,6 +48,7 @@ Kirigami.Page {
                     {
                         text: modelData.name
                         color: Kirigami.Theme.textColor
+                        anchors.centerIn: parent
                     }
                 }
             }
