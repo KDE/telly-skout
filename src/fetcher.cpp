@@ -232,19 +232,6 @@ void Fetcher::fetchDescription(const QString &channelId, const QString &programI
 
 void Fetcher::processChannel(const QString &infoTable, const QString &url, const QString &channelId)
 {
-    QRegularExpression reProgram("<tr class=\\\"hover\\\">(.*?)</tr>");
-    reProgram.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-    QRegularExpressionMatchIterator it = reProgram.globalMatch(infoTable);
-    while (it.hasNext()) {
-        QRegularExpressionMatch match = it.next();
-        const QString row = match.captured(0);
-        processProgram(row, url, channelId, !it.hasNext());
-    }
-}
-
-void Fetcher::processProgram(const QString &programRow, const QString &url, const QString &channelId, bool isLast)
-{
-    Q_UNUSED(isLast)
     // column with date and time
     const QString reTime("<strong>(\\d\\d:\\d\\d) - (\\d\\d:\\d\\d)</strong>");
     const QString reDate("<span>.*? (\\d\\d\\.\\d\\d\\.)</span>");
@@ -259,21 +246,30 @@ void Fetcher::processProgram(const QString &programRow, const QString &url, cons
     const QString reCategory("<span>(.*?)</span>");
     const QString reCategoryCol("<td class=\\\"col-4\\\">.*?" + reCategory + ".*?</td>");
 
-    QRegularExpression re(reDateTimeCol + ".*?" + reTitleCol + ".*?" + reCategoryCol);
-    re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpression reProgram("<tr class=\\\"hover\\\">.*?" + reDateTimeCol + ".*?" + reTitleCol + ".*?" + reCategoryCol + ".*?</tr>");
+    reProgram.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpressionMatchIterator it = reProgram.globalMatch(infoTable);
+    while (it.hasNext()) {
+        QRegularExpressionMatch match = it.next();
+        processProgram(match, url, channelId, !it.hasNext());
+    }
+}
 
-    const QRegularExpressionMatch match = re.match(programRow);
-    if (match.hasMatch()) {
-        const QString date = match.captured(3);
-        const QDateTime startTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + match.captured(1), "yyyydd.MM.HH:mm");
-        QDateTime stopTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + match.captured(2), "yyyydd.MM.HH:mm");
+void Fetcher::processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const QString &channelId, bool isLast)
+{
+    Q_UNUSED(isLast)
+
+    if (programMatch.hasMatch()) {
+        const QString date = programMatch.captured(3);
+        const QDateTime startTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + programMatch.captured(1), "yyyydd.MM.HH:mm");
+        QDateTime stopTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + programMatch.captured(2), "yyyydd.MM.HH:mm");
         // ends after midnight
         if (stopTime < startTime) {
             stopTime = stopTime.addDays(1);
         }
-        const QString descriptionUrl = match.captured(4);
-        const QString title = match.captured(5);
-        const QString category = match.captured(6);
+        const QString descriptionUrl = programMatch.captured(4);
+        const QString title = programMatch.captured(5);
+        const QString category = programMatch.captured(6);
 
         // channel + start time can be used as ID
         const QString programId = channelId + "_" + QString::number(startTime.toSecsSinceEpoch());
