@@ -8,6 +8,7 @@
 
 #include <QObject>
 
+#include <QSqlQuery>
 #include <QString>
 #include <QVector>
 
@@ -48,9 +49,17 @@ Q_SIGNALS:
 
 private:
     Database();
+    ~Database();
     int version();
     bool createTables();
     void cleanup();
     bool countryExists(const QString &url);
     bool channelExists(const QString &url);
+
+    QSqlQuery *m_addCountryQuery;
+    QSqlQuery *m_addCountryChannelQuery;
+    QSqlQuery *m_addChannelQuery;
+    QSqlQuery *m_addProgramQuery;
+    QSqlQuery *m_updateProgramDescriptionQuery;
+    QSqlQuery *m_programExistsQuery;
 };
