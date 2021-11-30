@@ -53,8 +53,6 @@ private:
     int version();
     bool createTables();
     void cleanup();
-    bool countryExists(const QString &url);
-    bool channelExists(const QString &url);
 
     QSqlQuery *m_addCountryQuery;
     QSqlQuery *m_addCountryChannelQuery;

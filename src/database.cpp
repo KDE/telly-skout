@@ -126,31 +126,8 @@ void Database::cleanup()
     execute(query);
 }
 
-bool Database::countryExists(const QString &url)
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (url) FROM Countries WHERE url=:url;"));
-    query.bindValue(QStringLiteral(":url"), url);
-    Database::instance().execute(query);
-    query.next();
-    return query.value(0).toInt() != 0;
-}
-
-bool Database::channelExists(const QString &url)
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (url) FROM Channels WHERE url=:url;"));
-    query.bindValue(QStringLiteral(":url"), url);
-    Database::instance().execute(query);
-    query.next();
-    return query.value(0).toInt() != 0;
-}
-
 void Database::addCountry(const QString &id, const QString &name, const QString &url)
 {
-    if (countryExists(url)) {
-        return;
-    }
     qDebug() << "Add country" << name;
 
     QUrl urlFromInput = QUrl::fromUserInput(url);
@@ -164,9 +141,6 @@ void Database::addCountry(const QString &id, const QString &name, const QString 
 
 void Database::addChannel(const QString &id, const QString &name, const QString &url, const QString &country, const QString &image)
 {
-    if (channelExists(url)) {
-        return;
-    }
     qDebug() << "Add channel" << name;
 
     // store channel per country (ignore if it exists already)
