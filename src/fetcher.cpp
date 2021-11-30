@@ -16,7 +16,6 @@
 #include <QFileInfo>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QSqlQuery>
 #include <QStandardPaths>
 #include <QtXml>
 
@@ -34,12 +33,9 @@ void Fetcher::fetchFavorites()
 
     Q_EMIT startedFetchingFavorites();
 
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT channel FROM Favorites;"));
-    Database::instance().execute(query);
-    while (query.next()) {
-        const QString &channelId = query.value(QStringLiteral("channel")).toString();
-        fetchProgram(channelId);
+    const QVector<QString> favoriteChannels = Database::instance().favoriteChannels();
+    for (int i = 0; i < favoriteChannels.length(); i++) {
+        fetchProgram(favoriteChannels.at(i));
     }
 
     Q_EMIT finishedFetchingFavorites();
@@ -54,16 +50,7 @@ void Fetcher::fetchCountries()
 
     const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen";
 
-    // if country is unknown, store it
-    QSqlQuery queryCountryExists;
-    queryCountryExists.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id;"));
-    queryCountryExists.bindValue(QStringLiteral(":id"), id);
-    Database::instance().execute(queryCountryExists);
-    queryCountryExists.next();
-
-    if (queryCountryExists.value(0).toInt() == 0) {
-        Database::instance().addCountry(id, name, url);
-    }
+    Database::instance().addCountry(id, name, url);
 
     Q_EMIT countryUpdated(id);
 }
@@ -123,26 +110,9 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
 
     Q_EMIT startedFetchingChannel(channelId);
 
-    // story channel per country (ignore if it exists already)
-    QSqlQuery countryQuery;
-    countryQuery.prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
-    countryQuery.bindValue(QStringLiteral(":id"), country + "_" + channelId);
-    countryQuery.bindValue(QStringLiteral(":country"), country);
-    countryQuery.bindValue(QStringLiteral(":channel"), channelId);
-    Database::instance().execute(countryQuery);
-
-    // if channel is unknown, store it
-    QSqlQuery queryChannelExists;
-    queryChannelExists.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id;"));
-    queryChannelExists.bindValue(QStringLiteral(":id"), channelId);
-    Database::instance().execute(queryChannelExists);
-    queryChannelExists.next();
-
-    if (queryChannelExists.value(0).toInt() == 0) {
-        // TODO: https://a2.tvspielfilm.de/images/tv/sender/mini/sprite_web_optimized_1616508904.webp
-        const QString image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.toLower() + ".webp";
-        Database::instance().addChannel(channelId, name, url, country, image);
-    }
+    // TODO: https://a2.tvspielfilm.de/images/tv/sender/mini/sprite_web_optimized_1616508904.webp
+    const QString image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.toLower() + ".webp";
+    Database::instance().addChannel(channelId, name, url, country, image);
 
     Q_EMIT channelUpdated(channelId);
 }
@@ -157,14 +127,8 @@ void Fetcher::fetchProgram(const QString &channelId)
         // check if program is available already
         const QDateTime utcTime(day, QTime(), Qt::UTC);
         const qint64 lastTime = utcTime.addDays(1).toSecsSinceEpoch() - 1;
-        QSqlQuery queryProgramAvailable;
-        queryProgramAvailable.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
-        queryProgramAvailable.bindValue(QStringLiteral(":channel"), channelId);
-        queryProgramAvailable.bindValue(QStringLiteral(":lastTime"), lastTime);
-        Database::instance().execute(queryProgramAvailable);
-        queryProgramAvailable.next();
 
-        if (queryProgramAvailable.value(0).toInt() > 0) {
+        if (Database::instance().programExists(channelId, lastTime)) {
             continue;
         }
 
@@ -273,20 +237,7 @@ void Fetcher::processProgram(const QRegularExpressionMatch &programMatch, const 
         // channel + start time can be used as ID
         const QString programId = channelId + "_" + QString::number(startTime.toSecsSinceEpoch());
 
-        QSqlQuery query;
-        query.prepare(
-            QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :url, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
-        query.bindValue(QStringLiteral(":id"), programId);
-        query.bindValue(QStringLiteral(":url"), descriptionUrl);
-        query.bindValue(QStringLiteral(":channel"), channelId);
-        query.bindValue(QStringLiteral(":start"), startTime.toSecsSinceEpoch());
-        query.bindValue(QStringLiteral(":stop"), stopTime.toSecsSinceEpoch());
-        query.bindValue(QStringLiteral(":title"), title);
-        query.bindValue(QStringLiteral(":subtitle"), ""); // TODO
-        query.bindValue(QStringLiteral(":description"), ""); // set in fetchDescription()
-        query.bindValue(QStringLiteral(":category"), category);
-
-        Database::instance().execute(query);
+        Database::instance().addProgram(programId, descriptionUrl, channelId, startTime, stopTime, title, "", "", category);
 
         // TODO on demand? (way too slow)
         // fetchDescription(channelId, programId, descriptionUrl, isLast);
@@ -303,12 +254,7 @@ void Fetcher::processDescription(const QString &descriptionPage, const QString &
     if (match.hasMatch()) {
         const QString description = match.captured(1);
 
-        QSqlQuery query;
-        query.prepare(QStringLiteral("UPDATE Programs SET description=:description WHERE id=:id;"));
-        query.bindValue(QStringLiteral(":id"), programId);
-        query.bindValue(QStringLiteral(":description"), description);
-
-        Database::instance().execute(query);
+        Database::instance().updateProgramDescription(programId, description);
     } else {
         qWarning() << "Failed to parse program description from" << url;
     }
