@@ -196,6 +196,26 @@ void Database::updateProgramDescription(const QString &id, const QString &descri
     execute(*m_updateProgramDescriptionQuery);
 }
 
+void Database::addPrograms(const QVector<ProgramData> &programs)
+{
+    QSqlDatabase::database().transaction();
+
+    for (int i = 0; i < programs.length(); i++) {
+        const ProgramData &programData = programs.at(i);
+        addProgram(programData.m_id,
+                   programData.m_url,
+                   programData.m_channelId,
+                   programData.m_startTime,
+                   programData.m_stopTime,
+                   programData.m_title,
+                   programData.m_subtitle,
+                   programData.m_description,
+                   programData.m_category);
+    }
+
+    QSqlDatabase::database().commit();
+}
+
 QVector<QString> Database::favoriteChannels()
 {
     QVector<QString> favorites;

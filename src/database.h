@@ -8,6 +8,8 @@
 
 #include <QObject>
 
+#include "programdata.h"
+
 #include <QSqlQuery>
 #include <QString>
 #include <QVector>
@@ -38,6 +40,7 @@ public:
                                 const QString &description,
                                 const QString &category);
     Q_INVOKABLE void updateProgramDescription(const QString &id, const QString &description);
+    Q_INVOKABLE void addPrograms(const QVector<ProgramData> &programs);
     Q_INVOKABLE QVector<QString> favoriteChannels();
     Q_INVOKABLE bool programExists(const QString &channelId, qint64 lastTime);
 

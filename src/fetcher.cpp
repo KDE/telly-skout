@@ -17,6 +17,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QStandardPaths>
+#include <QVector>
 #include <QtXml>
 
 Fetcher::Fetcher()
@@ -195,6 +196,8 @@ void Fetcher::fetchDescription(const QString &channelId, const QString &programI
 
 void Fetcher::processChannel(const QString &infoTable, const QString &url, const QString &channelId)
 {
+    QVector<ProgramData> programs;
+
     // column with date and time
     const QString reTime("<strong>(\\d\\d:\\d\\d) - (\\d\\d:\\d\\d)</strong>");
     const QString reDate("<span>.*? (\\d\\d\\.\\d\\d\\.)</span>");
@@ -214,13 +217,17 @@ void Fetcher::processChannel(const QString &infoTable, const QString &url, const
     QRegularExpressionMatchIterator it = reProgram.globalMatch(infoTable);
     while (it.hasNext()) {
         QRegularExpressionMatch match = it.next();
-        processProgram(match, url, channelId, !it.hasNext());
+        programs.push_back(processProgram(match, url, channelId, !it.hasNext()));
     }
+
+    Database::instance().addPrograms(programs);
 }
 
-void Fetcher::processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const QString &channelId, bool isLast)
+ProgramData Fetcher::processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const QString &channelId, bool isLast)
 {
     Q_UNUSED(isLast)
+
+    ProgramData programData;
 
     if (programMatch.hasMatch()) {
         const QString date = programMatch.captured(3);
@@ -237,13 +244,23 @@ void Fetcher::processProgram(const QRegularExpressionMatch &programMatch, const 
         // channel + start time can be used as ID
         const QString programId = channelId + "_" + QString::number(startTime.toSecsSinceEpoch());
 
-        Database::instance().addProgram(programId, descriptionUrl, channelId, startTime, stopTime, title, "", "", category);
+        programData.m_id = programId;
+        programData.m_url = descriptionUrl;
+        programData.m_channelId = channelId;
+        programData.m_startTime = startTime;
+        programData.m_stopTime = stopTime;
+        programData.m_title = title;
+        programData.m_subtitle = "";
+        programData.m_description = "";
+        programData.m_category = category;
 
         // TODO on demand? (way too slow)
         // fetchDescription(channelId, programId, descriptionUrl, isLast);
     } else {
         qWarning() << "Failed to parse program " << url;
     }
+
+    return programData;
 }
 
 void Fetcher::processDescription(const QString &descriptionPage, const QString &url, const QString &programId)
