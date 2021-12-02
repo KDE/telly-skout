@@ -34,6 +34,12 @@ Database::Database()
 
     cleanup();
 
+    // speed up database (especially for slow persistent memory like on the PinePhone)
+    execute(QStringLiteral("PRAGMA synchronous = OFF;"));
+    execute(QStringLiteral("PRAGMA journal_mode = WAL;")); // TODO: or MEMORY?
+    execute(QStringLiteral("PRAGMA temp_store = MEMORY;"));
+    execute(QStringLiteral("PRAGMA locking_mode = EXCLUSIVE;"));
+
     // prepare queries once (faster)
     m_addCountryQuery = new QSqlQuery(db);
     m_addCountryQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Countries VALUES (:id, :name, :url);"));
