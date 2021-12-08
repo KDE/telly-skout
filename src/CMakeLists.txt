@@ -8,6 +8,7 @@ add_executable(telly-skout
     database.cpp
     fetcher.cpp
     program.cpp
+    programfactory.cpp
     programsmodel.cpp
     programsproxymodel.cpp
     resources.qrc

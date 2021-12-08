@@ -21,6 +21,7 @@ ProgramsModel::ProgramsModel(Channel *channel)
     connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
         if (m_channel->id() == id) {
             beginResetModel();
+            m_programFactory.load(m_channel->id());
             for (auto &program : m_programs) {
                 delete program;
             }
@@ -69,13 +70,16 @@ int ProgramsModel::rowCount(const QModelIndex &parent) const
 
 void ProgramsModel::loadProgram(int index) const
 {
-    Program *program = new Program(m_channel, index);
-    // TODO: better show dummy?
-    // avoid gaps/overlapping in the program (causes not aligned times in table)
-    if (m_programs.contains(index - 1) && m_programs[index - 1]->stop() != program->start()) {
-        program->setStart(m_programs[index - 1]->stop());
+    Program *program = m_programFactory.create(m_channel->id(), index);
+
+    if (program) {
+        // TODO: better show dummy?
+        // avoid gaps/overlapping in the program (causes not aligned times in table)
+        if (m_programs.contains(index - 1) && m_programs[index - 1]->stop() != program->start()) {
+            program->setStart(m_programs[index - 1]->stop());
+        }
+        m_programs[index] = program;
     }
-    m_programs[index] = program;
 }
 
 Channel *ProgramsModel::channel() const

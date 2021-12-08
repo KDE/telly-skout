@@ -14,84 +14,48 @@
 #include <QSqlQuery>
 #include <QUrl>
 
-Program::Program(const Channel *channel, int index)
+Program::Program(const ProgramData &data)
     : QObject(nullptr)
-    , m_channel(channel)
+    , m_data(data)
 {
-    QSqlQuery programQuery;
-    programQuery.prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start LIMIT 1 OFFSET :index;"));
-    programQuery.bindValue(QStringLiteral(":channel"), m_channel->id());
-    programQuery.bindValue(QStringLiteral(":index"), index);
-    Database::instance().execute(programQuery);
-    if (!programQuery.next()) {
-        qWarning() << "No element with index" << index << "found in channel" << m_channel->url();
-    }
-
-    // TODO: required?
-    // QSqlQuery countryQuery;
-    // countryQuery.prepare(QStringLiteral("SELECT * FROM Countries WHERE id=:id"));
-    // countryQuery.bindValue(QStringLiteral(":id"), programQuery.value(QStringLiteral("id")).toString());
-    // Database::instance().execute(countryQuery);
-
-    // while (countryQuery.next()) {
-    //     m_countries += new Country(0);
-    // }
-
-    m_start.setSecsSinceEpoch(programQuery.value(QStringLiteral("start")).toInt());
-    m_stop.setSecsSinceEpoch(programQuery.value(QStringLiteral("stop")).toInt());
-
-    m_id = programQuery.value(QStringLiteral("id")).toString();
-    m_title = programQuery.value(QStringLiteral("title")).toString();
-    m_description = programQuery.value(QStringLiteral("description")).toString();
-    m_subtitle = programQuery.value(QStringLiteral("subtitle")).toString();
-}
-
-Program::~Program()
-{
-    qDeleteAll(m_countries);
 }
 
 QString Program::id() const
 {
-    return m_id;
+    return m_data.m_id;
 }
 
 QString Program::title() const
 {
-    return m_title;
+    return m_data.m_title;
 }
 
 QString Program::description() const
 {
-    return m_description;
-}
-
-QVector<Country *> Program::countries() const
-{
-    return m_countries;
+    return m_data.m_description;
 }
 
 QDateTime Program::start() const
 {
-    return m_start;
+    return m_data.m_startTime;
 }
 
 void Program::setStart(const QDateTime &start)
 {
-    m_start = start;
+    m_data.m_startTime = start;
 }
 
 QDateTime Program::stop() const
 {
-    return m_stop;
+    return m_data.m_stopTime;
 }
 
 QString Program::subtitle() const
 {
-    return m_subtitle;
+    return m_data.m_subtitle;
 }
 
 QString Program::baseUrl() const
 {
-    return QUrl(m_subtitle).adjusted(QUrl::RemovePath).toString();
+    return QUrl(m_data.m_subtitle).adjusted(QUrl::RemovePath).toString();
 }

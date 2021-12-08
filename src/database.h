@@ -43,6 +43,7 @@ public:
     Q_INVOKABLE void addPrograms(const QVector<ProgramData> &programs);
     Q_INVOKABLE QVector<QString> favoriteChannels();
     Q_INVOKABLE bool programExists(const QString &channelId, qint64 lastTime);
+    Q_INVOKABLE QVector<ProgramData> programs(const QString &channelId);
 
 Q_SIGNALS:
     void countryAdded(const QString &url);
@@ -63,4 +64,5 @@ private:
     QSqlQuery *m_addProgramQuery;
     QSqlQuery *m_updateProgramDescriptionQuery;
     QSqlQuery *m_programExistsQuery;
+    QSqlQuery *m_programsQuery;
 };

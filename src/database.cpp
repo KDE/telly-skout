@@ -54,6 +54,8 @@ Database::Database()
     m_updateProgramDescriptionQuery->prepare(QStringLiteral("UPDATE Programs SET description=:description WHERE id=:id;"));
     m_programExistsQuery = new QSqlQuery(db);
     m_programExistsQuery->prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
+    m_programsQuery = new QSqlQuery(db);
+    m_programsQuery->prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start;"));
 }
 
 Database::~Database()
@@ -244,4 +246,28 @@ bool Database::programExists(const QString &channelId, qint64 lastTime)
     m_programExistsQuery->next();
 
     return m_programExistsQuery->value(0).toInt() > 0;
+}
+
+QVector<ProgramData> Database::programs(const QString &channelId)
+{
+    QVector<ProgramData> programs;
+
+    m_programsQuery->bindValue(QStringLiteral(":channel"), channelId);
+    execute(*m_programsQuery);
+
+    while (m_programsQuery->next()) {
+        ProgramData data;
+        data.m_id = m_programsQuery->value(QStringLiteral("id")).toString();
+        data.m_url = m_programsQuery->value(QStringLiteral("url")).toString();
+        data.m_channelId = m_programsQuery->value(QStringLiteral("channel")).toString();
+        data.m_startTime.setSecsSinceEpoch(m_programsQuery->value(QStringLiteral("start")).toInt());
+        data.m_stopTime.setSecsSinceEpoch(m_programsQuery->value(QStringLiteral("stop")).toInt());
+        data.m_title = m_programsQuery->value(QStringLiteral("title")).toString();
+        data.m_subtitle = m_programsQuery->value(QStringLiteral("subtitle")).toString();
+        data.m_description = m_programsQuery->value(QStringLiteral("description")).toString();
+        data.m_category = m_programsQuery->value(QStringLiteral("category")).toString();
+
+        programs.push_back(data);
+    }
+    return programs;
 }

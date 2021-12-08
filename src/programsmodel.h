@@ -8,6 +8,8 @@
 
 #include <QAbstractListModel>
 
+#include "programfactory.h"
+
 #include <QHash>
 #include <QObject>
 
@@ -34,4 +36,5 @@ private:
 
     Channel *m_channel;
     mutable QHash<int, Program *> m_programs;
+    ProgramFactory m_programFactory;
 };
