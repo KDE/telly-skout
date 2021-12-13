@@ -19,6 +19,19 @@ ProgramFactory::ProgramFactory()
     // });
 }
 
+size_t ProgramFactory::count(const QString &channelId) const
+{
+    // try to load if not avaible
+    if (!m_programs.contains(channelId)) {
+        load(channelId);
+    }
+    // check if requested data exists
+    if (!m_programs.contains(channelId)) {
+        return 0;
+    }
+    return m_programs[channelId].size();
+}
+
 Program *ProgramFactory::create(const QString &channelId, int index) const
 {
     // try to load if not avaible

@@ -17,6 +17,7 @@ public:
     ProgramFactory();
     ~ProgramFactory() = default;
 
+    size_t count(const QString &channelId) const;
     Program *create(const QString &channelId, int index) const;
     void load(const QString &channelId) const;
 

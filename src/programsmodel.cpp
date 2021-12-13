@@ -57,7 +57,7 @@ QHash<int, QByteArray> ProgramsModel::roleNames() const
 int ProgramsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return Database::instance().programCount(m_channel->id());
+    return m_programFactory.count(m_channel->id());
 }
 
 void ProgramsModel::loadProgram(int index) const
