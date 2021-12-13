@@ -10,6 +10,8 @@
 ProgramFactory::ProgramFactory()
     : QObject(nullptr)
 {
+    m_programs = Database::instance().programs();
+
     // TODO: possible to do this here and not in ProgramsModel?
     // issues: race condition -> data must be loaded when ProgramsModel::data() is called
     // connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {

@@ -10,6 +10,7 @@
 
 #include "programdata.h"
 
+#include <QMap>
 #include <QSqlQuery>
 #include <QString>
 #include <QVector>
@@ -43,6 +44,7 @@ public:
     Q_INVOKABLE void addPrograms(const QVector<ProgramData> &programs);
     Q_INVOKABLE QVector<QString> favoriteChannels();
     Q_INVOKABLE bool programExists(const QString &channelId, qint64 lastTime);
+    Q_INVOKABLE QMap<QString, QVector<ProgramData>> programs();
     Q_INVOKABLE QVector<ProgramData> programs(const QString &channelId);
 
 Q_SIGNALS:
@@ -65,4 +67,5 @@ private:
     QSqlQuery *m_updateProgramDescriptionQuery;
     QSqlQuery *m_programExistsQuery;
     QSqlQuery *m_programsQuery;
+    QSqlQuery *m_programsPerChannelQuery;
 };
