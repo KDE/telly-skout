@@ -54,6 +54,8 @@ Database::Database()
     m_updateProgramDescriptionQuery->prepare(QStringLiteral("UPDATE Programs SET description=:description WHERE id=:id;"));
     m_programExistsQuery = new QSqlQuery(db);
     m_programExistsQuery->prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
+    m_programCountQuery = new QSqlQuery(db);
+    m_programCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Programs WHERE channel=:channel;"));
     m_programsQuery = new QSqlQuery(db);
     m_programsQuery->prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY channel, start;"));
     m_programsPerChannelQuery = new QSqlQuery(db);
@@ -248,6 +250,17 @@ bool Database::programExists(const QString &channelId, qint64 lastTime)
     m_programExistsQuery->next();
 
     return m_programExistsQuery->value(0).toInt() > 0;
+}
+
+size_t Database::programCount(const QString &channelId)
+{
+    m_programCountQuery->bindValue(QStringLiteral(":channel"), channelId);
+    execute(*m_programCountQuery);
+    if (!m_programCountQuery->next()) {
+        qWarning() << "Failed to query program count";
+        return 0;
+    }
+    return m_programCountQuery->value(0).toInt();
 }
 
 QMap<QString, QVector<ProgramData>> Database::programs()
