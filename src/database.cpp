@@ -46,7 +46,7 @@ Database::Database()
     m_addCountryChannelQuery = new QSqlQuery(db);
     m_addCountryChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
     m_addChannelQuery = new QSqlQuery(db);
-    m_addChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Channels VALUES (:id, :name, :url, :image, :notify);"));
+    m_addChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Channels VALUES (:id, :name, :url, :image);"));
     m_addProgramQuery = new QSqlQuery(db);
     m_addProgramQuery->prepare(
         QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :url, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
@@ -76,7 +76,7 @@ bool Database::createTables()
 {
     qDebug() << "Create DB tables";
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Countries (id TEXT UNIQUE, name TEXT, url TEXT);")));
-    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (id TEXT UNIQUE, name TEXT, url TEXT, image TEXT, notify BOOL);")));
+    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (id TEXT UNIQUE, name TEXT, url TEXT, image TEXT);")));
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS CountryChannels (id TEXT UNIQUE, country TEXT, channel TEXT);")));
     TRUE_OR_RETURN(execute(
         QStringLiteral("CREATE TABLE IF NOT EXISTS Programs (id TEXT UNIQUE, url TEXT, channel TEXT, start INTEGER, stop INTEGER, title TEXT, subtitle TEXT, "
@@ -151,27 +151,26 @@ void Database::addCountry(const QString &id, const QString &name, const QString 
     Q_EMIT countryAdded(urlFromInput.toString());
 }
 
-void Database::addChannel(const QString &id, const QString &name, const QString &url, const QString &country, const QString &image)
+void Database::addChannel(const ChannelData &data, const QString &country)
 {
-    qDebug() << "Add channel" << name;
+    qDebug() << "Add channel" << data.m_name;
 
     // store channel per country (ignore if it exists already)
     {
-        m_addCountryChannelQuery->bindValue(QStringLiteral(":id"), country + "_" + id);
+        m_addCountryChannelQuery->bindValue(QStringLiteral(":id"), country + "_" + data.m_id);
         m_addCountryChannelQuery->bindValue(QStringLiteral(":country"), country);
-        m_addCountryChannelQuery->bindValue(QStringLiteral(":channel"), id);
+        m_addCountryChannelQuery->bindValue(QStringLiteral(":channel"), data.m_id);
         execute(*m_addCountryChannelQuery);
     }
 
     // store channel (ignore if it exists already)
     {
-        QUrl urlFromInput = QUrl::fromUserInput(url);
-        m_addChannelQuery->bindValue(QStringLiteral(":id"), id);
-        m_addChannelQuery->bindValue(QStringLiteral(":name"), name);
+        QUrl urlFromInput = QUrl::fromUserInput(data.m_url);
+        m_addChannelQuery->bindValue(QStringLiteral(":id"), data.m_id);
+        m_addChannelQuery->bindValue(QStringLiteral(":name"), data.m_name);
         m_addChannelQuery->bindValue(QStringLiteral(":url"), urlFromInput.toString());
         m_addChannelQuery->bindValue(QStringLiteral(":country"), country);
-        m_addChannelQuery->bindValue(QStringLiteral(":image"), image);
-        m_addChannelQuery->bindValue(QStringLiteral(":notify"), false);
+        m_addChannelQuery->bindValue(QStringLiteral(":image"), data.m_image);
         execute(*m_addChannelQuery);
         Q_EMIT channelAdded(urlFromInput.toString()); // TODO use id
     }

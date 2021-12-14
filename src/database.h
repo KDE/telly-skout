@@ -8,6 +8,7 @@
 
 #include <QObject>
 
+#include "channeldata.h"
 #include "programdata.h"
 
 #include <QMap>
@@ -30,7 +31,7 @@ public:
     bool execute(QSqlQuery &query);
     bool execute(const QString &query);
     Q_INVOKABLE void addCountry(const QString &id, const QString &name, const QString &url);
-    Q_INVOKABLE void addChannel(const QString &id, const QString &name, const QString &url, const QString &country, const QString &image);
+    Q_INVOKABLE void addChannel(const ChannelData &data, const QString &country);
     Q_INVOKABLE void addProgram(const QString &id,
                                 const QString &url,
                                 const QString &channelId,

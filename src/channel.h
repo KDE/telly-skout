@@ -8,6 +8,8 @@
 
 #include <QObject>
 
+#include "channeldata.h"
+
 #include <QVector>
 
 class Program;
@@ -24,7 +26,6 @@ class Channel : public QObject
     Q_PROPERTY(bool favorite READ favorite WRITE setFavorite NOTIFY favoriteChanged)
     Q_PROPERTY(QVector<QString> countries READ countries WRITE setCountries NOTIFY countriesChanged)
     Q_PROPERTY(bool refreshing READ refreshing WRITE setRefreshing NOTIFY refreshingChanged)
-    Q_PROPERTY(bool notify READ notify WRITE setNotify NOTIFY notifyChanged)
     Q_PROPERTY(int errorId READ errorId WRITE setErrorId NOTIFY errorIdChanged)
     Q_PROPERTY(QString errorString READ errorString WRITE setErrorString NOTIFY errorStringChanged)
     Q_PROPERTY(ProgramsModel *programsModel MEMBER m_programsModel CONSTANT)
@@ -40,7 +41,6 @@ public:
     QString image() const;
     bool favorite() const;
     QVector<QString> countries() const;
-    bool notify() const;
     int programCount() const;
     int errorId() const;
     QString errorString() const;
@@ -51,7 +51,6 @@ public:
     void setImage(const QString &image);
     void setFavorite(bool favorite);
     void setCountries(const QVector<QString> &countries);
-    void setNotify(bool notify);
     void setRefreshing(bool refreshing);
     void setErrorId(int errorId);
     void setErrorString(const QString &errorString);
@@ -67,7 +66,6 @@ Q_SIGNALS:
     void countriesChanged(const QVector<QString> &countries);
     void deleteAfterCountChanged(int count);
     void deleteAfterTypeChanged(int type);
-    void notifyChanged(bool notify);
     void programChanged();
     void errorIdChanged(int &errorId);
     void errorStringChanged(const QString &errorString);
@@ -75,13 +73,9 @@ Q_SIGNALS:
     void refreshingChanged(bool refreshing);
 
 private:
-    QString m_id;
-    QString m_url;
-    QString m_name;
-    QString m_image;
+    ChannelData m_data;
     bool m_favorite;
     QVector<QString> m_countries;
-    bool m_notify;
     int m_errorId;
     QString m_errorString;
     ProgramsModel *m_programsModel;

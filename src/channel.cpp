@@ -40,23 +40,22 @@ Channel::Channel(int index, bool onlyFavorites)
         qWarning() << "Failed to load channel" << index;
     }
 
-    m_id = query.value(QStringLiteral("id")).toString();
-    m_url = query.value(QStringLiteral("url")).toString();
-    m_name = query.value(QStringLiteral("name")).toString();
-    m_image = query.value(QStringLiteral("image")).toString();
-    m_notify = query.value(QStringLiteral("notify")).toBool();
+    m_data.m_id = query.value(QStringLiteral("id")).toString();
+    m_data.m_url = query.value(QStringLiteral("url")).toString();
+    m_data.m_name = query.value(QStringLiteral("name")).toString();
+    m_data.m_image = query.value(QStringLiteral("image")).toString();
 
     if (!onlyFavorites) {
         QSqlQuery favoriteQuery;
         favoriteQuery.prepare(QStringLiteral("SELECT id FROM Favorites WHERE channel=:channel"));
-        favoriteQuery.bindValue(QStringLiteral(":channel"), m_id);
+        favoriteQuery.bindValue(QStringLiteral(":channel"), m_data.m_id);
         Database::instance().execute(favoriteQuery);
         m_favorite = favoriteQuery.next();
     }
 
     QSqlQuery countryQuery;
     countryQuery.prepare(QStringLiteral("SELECT country FROM CountryChannels WHERE channel=:channel"));
-    countryQuery.bindValue(QStringLiteral(":channel"), m_id);
+    countryQuery.bindValue(QStringLiteral(":channel"), m_data.m_id);
     Database::instance().execute(countryQuery);
     while (countryQuery.next()) {
         m_countries.push_back(countryQuery.value(QStringLiteral("country")).toString());
@@ -66,12 +65,12 @@ Channel::Channel(int index, bool onlyFavorites)
     m_errorString = QLatin1String("");
 
     connect(&Fetcher::instance(), &Fetcher::startedFetchingChannel, this, [this](const QString &id) {
-        if (id == m_id) {
+        if (id == m_data.m_id) {
             setRefreshing(true);
         }
     });
     connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
-        if (id == m_id) {
+        if (id == m_data.m_id) {
             setRefreshing(false);
             Q_EMIT programChanged();
             setErrorId(0);
@@ -79,14 +78,14 @@ Channel::Channel(int index, bool onlyFavorites)
         }
     });
     connect(&Fetcher::instance(), &Fetcher::error, this, [this](const QString &id, int errorId, const QString &errorString) {
-        if (id == m_id) {
+        if (id == m_data.m_id) {
             setErrorId(errorId);
             setErrorString(errorString);
             setRefreshing(false);
         }
     });
     connect(&Fetcher::instance(), &Fetcher::imageDownloadFinished, this, [this](const QString &url) {
-        if (url == m_image) {
+        if (url == m_data.m_image) {
             Q_EMIT imageChanged(url);
         }
     });
@@ -101,22 +100,22 @@ Channel::~Channel()
 
 QString Channel::id() const
 {
-    return m_id;
+    return m_data.m_id;
 }
 
 QString Channel::url() const
 {
-    return m_url;
+    return m_data.m_url;
 }
 
 QString Channel::name() const
 {
-    return m_name;
+    return m_data.m_name;
 }
 
 QString Channel::image() const
 {
-    return m_image;
+    return m_data.m_image;
 }
 
 bool Channel::favorite() const
@@ -127,11 +126,6 @@ bool Channel::favorite() const
 QVector<QString> Channel::countries() const
 {
     return m_countries;
-}
-
-bool Channel::notify() const
-{
-    return m_notify;
 }
 
 bool Channel::refreshing() const
@@ -151,14 +145,14 @@ QString Channel::errorString() const
 
 void Channel::setName(const QString &name)
 {
-    m_name = name;
-    Q_EMIT nameChanged(m_name);
+    m_data.m_name = name;
+    Q_EMIT nameChanged(m_data.m_name);
 }
 
 void Channel::setImage(const QString &image)
 {
-    m_image = image;
-    Q_EMIT imageChanged(m_image);
+    m_data.m_image = image;
+    Q_EMIT imageChanged(m_data.m_image);
 }
 
 void Channel::setFavorite(bool favorite)
@@ -174,12 +168,6 @@ void Channel::setCountries(const QVector<QString> &countries)
 {
     m_countries = countries;
     Q_EMIT countriesChanged(m_countries);
-}
-
-void Channel::setNotify(bool notify)
-{
-    m_notify = notify;
-    Q_EMIT notifyChanged(m_notify);
 }
 
 void Channel::setRefreshing(bool refreshing)
@@ -202,7 +190,7 @@ void Channel::setErrorString(const QString &errorString)
 
 void Channel::refresh()
 {
-    Fetcher::instance().fetchChannel(m_url, m_url, ""); // TODO: url -> ID
+    Fetcher::instance().fetchChannel(m_data.m_url, m_data.m_url, ""); // TODO: url -> ID
 }
 
 void Channel::setAsFavorite(bool favorite)
@@ -218,12 +206,12 @@ void Channel::setAsFavorite(bool favorite)
         QSqlQuery query;
         query.prepare(QStringLiteral("INSERT INTO Favorites VALUES (:id, :channel);"));
         query.bindValue(QStringLiteral(":id"), id);
-        query.bindValue(QStringLiteral(":channel"), m_id);
+        query.bindValue(QStringLiteral(":channel"), m_data.m_id);
         Database::instance().execute(query);
     } else {
         QSqlQuery query;
         query.prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
-        query.bindValue(QStringLiteral(":channel"), m_id);
+        query.bindValue(QStringLiteral(":channel"), m_data.m_id);
         Database::instance().execute(query);
     }
 }
@@ -233,21 +221,21 @@ void Channel::remove()
     // Delete Countries
     QSqlQuery query;
     query.prepare(QStringLiteral("DELETE FROM Countries WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_url);
+    query.bindValue(QStringLiteral(":channel"), m_data.m_url);
     Database::instance().execute(query);
 
     // Delete Programs
     query.prepare(QStringLiteral("DELETE FROM Programs WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_url);
+    query.bindValue(QStringLiteral(":channel"), m_data.m_url);
     Database::instance().execute(query);
 
     // Delete Favorite
     query.prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_id);
+    query.bindValue(QStringLiteral(":channel"), m_data.m_id);
     Database::instance().execute(query);
 
     // Delete Channel
     query.prepare(QStringLiteral("DELETE FROM Channels WHERE url=:url;"));
-    query.bindValue(QStringLiteral(":url"), m_url);
+    query.bindValue(QStringLiteral(":url"), m_data.m_url);
     Database::instance().execute(query);
 }

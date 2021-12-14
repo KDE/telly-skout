@@ -106,14 +106,17 @@ void Fetcher::fetchCountry(const QString &url, const QString &countryId)
 
 void Fetcher::fetchChannel(const QString &channelId, const QString &name, const QString &country)
 {
-    // https://www.tvspielfilm.de/tv-programm/sendungen/das-erste,ARD.html
-    const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/" + name.toLower().replace(' ', '-') + "," + channelId + ".html";
+    ChannelData data;
+    data.m_id = channelId;
 
-    Q_EMIT startedFetchingChannel(channelId);
+    // https://www.tvspielfilm.de/tv-programm/sendungen/das-erste,ARD.html
+    data.m_url = "https://www.tvspielfilm.de/tv-programm/sendungen/" + name.toLower().replace(' ', '-') + "," + channelId + ".html";
+
+    Q_EMIT startedFetchingChannel(data.m_id);
 
     // TODO: https://a2.tvspielfilm.de/images/tv/sender/mini/sprite_web_optimized_1616508904.webp
-    const QString image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.toLower() + ".webp";
-    Database::instance().addChannel(channelId, name, url, country, image);
+    data.m_image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.toLower() + ".webp";
+    Database::instance().addChannel(data, country);
 
     Q_EMIT channelUpdated(channelId);
 }
