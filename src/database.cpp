@@ -176,25 +176,17 @@ void Database::addChannel(const ChannelData &data, const QString &country)
     }
 }
 
-void Database::addProgram(const QString &id,
-                          const QString &url,
-                          const QString &channelId,
-                          const QDateTime &startTime,
-                          const QDateTime &stopTime,
-                          const QString &title,
-                          const QString &subtitle,
-                          const QString &description,
-                          const QString &category)
+void Database::addProgram(const ProgramData &data)
 {
-    m_addProgramQuery->bindValue(QStringLiteral(":id"), id);
-    m_addProgramQuery->bindValue(QStringLiteral(":url"), url);
-    m_addProgramQuery->bindValue(QStringLiteral(":channel"), channelId);
-    m_addProgramQuery->bindValue(QStringLiteral(":start"), startTime.toSecsSinceEpoch());
-    m_addProgramQuery->bindValue(QStringLiteral(":stop"), stopTime.toSecsSinceEpoch());
-    m_addProgramQuery->bindValue(QStringLiteral(":title"), title);
-    m_addProgramQuery->bindValue(QStringLiteral(":subtitle"), subtitle); // TODO
-    m_addProgramQuery->bindValue(QStringLiteral(":description"), description); // set in fetchDescription()
-    m_addProgramQuery->bindValue(QStringLiteral(":category"), category);
+    m_addProgramQuery->bindValue(QStringLiteral(":id"), data.m_id);
+    m_addProgramQuery->bindValue(QStringLiteral(":url"), data.m_url);
+    m_addProgramQuery->bindValue(QStringLiteral(":channel"), data.m_channelId);
+    m_addProgramQuery->bindValue(QStringLiteral(":start"), data.m_startTime.toSecsSinceEpoch());
+    m_addProgramQuery->bindValue(QStringLiteral(":stop"), data.m_stopTime.toSecsSinceEpoch());
+    m_addProgramQuery->bindValue(QStringLiteral(":title"), data.m_title);
+    m_addProgramQuery->bindValue(QStringLiteral(":subtitle"), data.m_subtitle); // TODO
+    m_addProgramQuery->bindValue(QStringLiteral(":description"), data.m_description); // set in fetchDescription()
+    m_addProgramQuery->bindValue(QStringLiteral(":category"), data.m_category);
 
     execute(*m_addProgramQuery);
 }
@@ -212,16 +204,8 @@ void Database::addPrograms(const QVector<ProgramData> &programs)
     QSqlDatabase::database().transaction();
 
     for (int i = 0; i < programs.length(); i++) {
-        const ProgramData &programData = programs.at(i);
-        addProgram(programData.m_id,
-                   programData.m_url,
-                   programData.m_channelId,
-                   programData.m_startTime,
-                   programData.m_stopTime,
-                   programData.m_title,
-                   programData.m_subtitle,
-                   programData.m_description,
-                   programData.m_category);
+        const ProgramData &data = programs.at(i);
+        addProgram(data);
     }
 
     QSqlDatabase::database().commit();

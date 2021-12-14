@@ -32,15 +32,7 @@ public:
     bool execute(const QString &query);
     Q_INVOKABLE void addCountry(const QString &id, const QString &name, const QString &url);
     Q_INVOKABLE void addChannel(const ChannelData &data, const QString &country);
-    Q_INVOKABLE void addProgram(const QString &id,
-                                const QString &url,
-                                const QString &channelId,
-                                const QDateTime &startTime,
-                                const QDateTime &stopTime,
-                                const QString &title,
-                                const QString &subtitle,
-                                const QString &description,
-                                const QString &category);
+    Q_INVOKABLE void addProgram(const ProgramData &data);
     Q_INVOKABLE void updateProgramDescription(const QString &id, const QString &description);
     Q_INVOKABLE void addPrograms(const QVector<ProgramData> &programs);
     Q_INVOKABLE QVector<QString> favoriteChannels();
