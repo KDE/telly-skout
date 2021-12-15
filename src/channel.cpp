@@ -14,44 +14,17 @@
 #include <QDebug>
 #include <QSqlQuery>
 
-Channel::Channel(int index, bool onlyFavorites)
+Channel::Channel(const ChannelData &data)
     : QObject(nullptr)
 {
-    QSqlQuery query;
-    if (onlyFavorites) {
-        QSqlQuery favoriteQuery;
-        favoriteQuery.prepare(QStringLiteral("SELECT channel FROM Favorites ORDER BY id LIMIT 1 OFFSET :index;"));
-        favoriteQuery.bindValue(QStringLiteral(":index"), index);
-        Database::instance().execute(favoriteQuery);
-        if (!favoriteQuery.next()) {
-            qWarning() << "Failed to load favorite channel" << index;
-        }
-        const QString channelId = favoriteQuery.value(QStringLiteral("channel")).toString();
-        m_favorite = true;
+    m_data = data;
 
-        query.prepare(QStringLiteral("SELECT * FROM Channels WHERE id=:channelId"));
-        query.bindValue(QStringLiteral(":channelId"), channelId);
-    } else {
-        query.prepare(QStringLiteral("SELECT * FROM Channels ORDER BY name COLLATE NOCASE LIMIT 1 OFFSET :index;"));
-        query.bindValue(QStringLiteral(":index"), index);
-    }
-    Database::instance().execute(query);
-    if (!query.next()) {
-        qWarning() << "Failed to load channel" << index;
-    }
-
-    m_data.m_id = query.value(QStringLiteral("id")).toString();
-    m_data.m_url = query.value(QStringLiteral("url")).toString();
-    m_data.m_name = query.value(QStringLiteral("name")).toString();
-    m_data.m_image = query.value(QStringLiteral("image")).toString();
-
-    if (!onlyFavorites) {
-        QSqlQuery favoriteQuery;
-        favoriteQuery.prepare(QStringLiteral("SELECT id FROM Favorites WHERE channel=:channel"));
-        favoriteQuery.bindValue(QStringLiteral(":channel"), m_data.m_id);
-        Database::instance().execute(favoriteQuery);
-        m_favorite = favoriteQuery.next();
-    }
+    // TODO: use ChannelFactory
+    QSqlQuery favoriteQuery;
+    favoriteQuery.prepare(QStringLiteral("SELECT id FROM Favorites WHERE channel=:channel"));
+    favoriteQuery.bindValue(QStringLiteral(":channel"), m_data.m_id);
+    Database::instance().execute(favoriteQuery);
+    m_favorite = favoriteQuery.next();
 
     QSqlQuery countryQuery;
     countryQuery.prepare(QStringLiteral("SELECT country FROM CountryChannels WHERE channel=:channel"));

@@ -47,6 +47,16 @@ Database::Database()
     m_addCountryChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
     m_addChannelQuery = new QSqlQuery(db);
     m_addChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Channels VALUES (:id, :name, :url, :image);"));
+    m_channelCountQuery = new QSqlQuery(db);
+    m_channelCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Channels;"));
+    m_channelsQuery = new QSqlQuery(db);
+    m_channelsQuery->prepare(QStringLiteral("SELECT * FROM Channels ORDER BY name COLLATE NOCASE;"));
+    m_channelQuery = new QSqlQuery(db);
+    m_channelQuery->prepare(QStringLiteral("SELECT * FROM Channels WHERE id=:channelId;"));
+    m_favoriteCountQuery = new QSqlQuery(db);
+    m_favoriteCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Favorites;"));
+    m_favoritesQuery = new QSqlQuery(db);
+    m_favoritesQuery->prepare(QStringLiteral("SELECT channel FROM Favorites ORDER BY id;"));
     m_addProgramQuery = new QSqlQuery(db);
     m_addProgramQuery->prepare(
         QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :url, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
@@ -176,6 +186,82 @@ void Database::addChannel(const ChannelData &data, const QString &country)
     }
 }
 
+size_t Database::channelCount()
+{
+    execute(*m_channelCountQuery);
+    if (!m_channelCountQuery->next()) {
+        qWarning() << "Failed to query channel count";
+        return 0;
+    }
+    return m_channelCountQuery->value(0).toInt();
+}
+
+QVector<ChannelData> Database::channels(bool onlyFavorites)
+{
+    QVector<ChannelData> channels;
+
+    if (onlyFavorites) {
+        const QVector<QString> &favoriteIds = favorites();
+
+        QSqlDatabase::database().transaction();
+        for (int i = 0; i < favoriteIds.size(); ++i) {
+            channels.append(channel(favoriteIds.at(i)));
+        }
+        QSqlDatabase::database().commit();
+    } else {
+        execute(*m_channelsQuery);
+        while (m_channelsQuery->next()) {
+            ChannelData data;
+            data.m_id = m_channelsQuery->value(QStringLiteral("id")).toString();
+            data.m_name = m_channelsQuery->value(QStringLiteral("name")).toString();
+            data.m_url = m_channelsQuery->value(QStringLiteral("url")).toString();
+            data.m_image = m_channelsQuery->value(QStringLiteral("image")).toString();
+            channels.append(data);
+        }
+    }
+    return channels;
+}
+
+ChannelData Database::channel(const QString &channelId)
+{
+    ChannelData data;
+    data.m_id = channelId;
+
+    m_channelQuery->bindValue(QStringLiteral(":channelId"), data.m_id);
+    execute(*m_channelQuery);
+    if (!m_channelQuery->next()) {
+        qWarning() << "Failed to query channel" << channelId;
+    } else {
+        data.m_id = m_channelQuery->value(QStringLiteral("id")).toString();
+        data.m_name = m_channelQuery->value(QStringLiteral("name")).toString();
+        data.m_url = m_channelQuery->value(QStringLiteral("url")).toString();
+        data.m_image = m_channelQuery->value(QStringLiteral("image")).toString();
+    }
+    return data;
+}
+
+size_t Database::favoriteCount()
+{
+    execute(*m_favoriteCountQuery);
+    if (!m_favoriteCountQuery->next()) {
+        qWarning() << "Failed to query favorite count";
+        return 0;
+    }
+    return m_favoriteCountQuery->value(0).toInt();
+}
+
+QVector<QString> Database::favorites()
+{
+    QVector<QString> favorites;
+
+    execute(*m_favoritesQuery);
+    while (m_favoritesQuery->next()) {
+        const QString &channelId = m_favoritesQuery->value(QStringLiteral("channel")).toString();
+        favorites.append(channelId);
+    }
+    return favorites;
+}
+
 void Database::addProgram(const ProgramData &data)
 {
     m_addProgramQuery->bindValue(QStringLiteral(":id"), data.m_id);
@@ -209,20 +295,6 @@ void Database::addPrograms(const QVector<ProgramData> &programs)
     }
 
     QSqlDatabase::database().commit();
-}
-
-QVector<QString> Database::favoriteChannels()
-{
-    QVector<QString> favorites;
-
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT channel FROM Favorites;"));
-    execute(query);
-    while (query.next()) {
-        const QString &channelId = query.value(QStringLiteral("channel")).toString();
-        favorites.append(channelId);
-    }
-    return favorites;
 }
 
 bool Database::programExists(const QString &channelId, qint64 lastTime)

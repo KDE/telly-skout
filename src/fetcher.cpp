@@ -34,7 +34,7 @@ void Fetcher::fetchFavorites()
 
     Q_EMIT startedFetchingFavorites();
 
-    const QVector<QString> favoriteChannels = Database::instance().favoriteChannels();
+    const QVector<QString> favoriteChannels = Database::instance().favorites();
     for (int i = 0; i < favoriteChannels.length(); i++) {
         fetchProgram(favoriteChannels.at(i));
     }

@@ -26,6 +26,8 @@ ChannelsModel::ChannelsModel(QObject *parent)
         beginResetModel();
         qDeleteAll(m_channels);
         m_channels.clear();
+        m_channelFactory.load(false);
+        m_channelFactory.load(true);
         endResetModel();
     });
 
@@ -33,6 +35,7 @@ ChannelsModel::ChannelsModel(QObject *parent)
         for (int i = 0; i < m_channels.length(); i++) {
             if (m_channels[i]->id() == id) {
                 m_channels[i]->setImage(image);
+                // TODO: update channelFactory?
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
                 break;
             }
@@ -43,6 +46,7 @@ ChannelsModel::ChannelsModel(QObject *parent)
         for (int i = 0; i < m_channels.length(); i++) {
             if (m_channels[i]->id() == id) {
                 m_channels[i]->setFavorite(favorite);
+                // TODO: update channelFactory?
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
                 break;
             }
@@ -70,17 +74,7 @@ QHash<int, QByteArray> ChannelsModel::roleNames() const
 int ChannelsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    QSqlQuery query;
-    if (m_onlyFavorites) {
-        query.prepare(QStringLiteral("SELECT COUNT() FROM Favorites;"));
-    } else {
-        query.prepare(QStringLiteral("SELECT COUNT() FROM Channels;"));
-    }
-    Database::instance().execute(query);
-    if (!query.next()) {
-        qWarning() << "Failed to query channel count";
-    }
-    return query.value(0).toInt();
+    return m_channelFactory.count(m_onlyFavorites);
 }
 
 QVariant ChannelsModel::data(const QModelIndex &index, int role) const
@@ -96,7 +90,7 @@ QVariant ChannelsModel::data(const QModelIndex &index, int role) const
 
 void ChannelsModel::loadChannel(int index) const
 {
-    m_channels += new Channel(index, m_onlyFavorites);
+    m_channels += m_channelFactory.create(m_onlyFavorites, index);
 }
 
 void ChannelsModel::setFavorite(const QString &channel, bool favorite)

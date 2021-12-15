@@ -31,7 +31,7 @@ class Channel : public QObject
     Q_PROPERTY(ProgramsModel *programsModel MEMBER m_programsModel CONSTANT)
 
 public:
-    Channel(int index, bool onlyFavorites = false);
+    Channel(const ChannelData &data);
 
     ~Channel();
 

@@ -1,6 +1,7 @@
 add_executable(telly-skout
     main.cpp
     channel.cpp
+    channelfactory.cpp
     channelsmodel.cpp
     channelsproxymodel.cpp
     country.cpp

@@ -8,6 +8,8 @@
 
 #include <QAbstractListModel>
 
+#include "channelfactory.h"
+
 #include <QUrl>
 
 class Channel;
@@ -34,4 +36,5 @@ private:
 
     mutable QVector<Channel *> m_channels;
     bool m_onlyFavorites;
+    ChannelFactory m_channelFactory;
 };
