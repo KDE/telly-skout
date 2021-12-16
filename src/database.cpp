@@ -240,6 +240,40 @@ ChannelData Database::channel(const QString &channelId)
     return data;
 }
 
+void Database::addFavorite(const QString &channelId, bool emitSignal)
+{
+    unsigned int id = 1;
+    QSqlQuery idQuery;
+    idQuery.prepare(QStringLiteral("SELECT id FROM Favorites ORDER BY id DESC LIMIT 1;"));
+    Database::instance().execute(idQuery);
+    if (idQuery.next()) {
+        id = idQuery.value(QStringLiteral("id")).toUInt() + 1;
+    }
+    QSqlQuery query;
+    query.prepare(QStringLiteral("INSERT INTO Favorites VALUES (:id, :channel);"));
+    query.bindValue(QStringLiteral(":id"), id);
+    query.bindValue(QStringLiteral(":channel"), channelId);
+    Database::instance().execute(query);
+
+    // TODO: remove hack
+    if (emitSignal) {
+        Q_EMIT channelDetailsUpdated(channelId, true);
+    }
+}
+
+void Database::removeFavorite(const QString &channelId, bool emitSignal)
+{
+    QSqlQuery query;
+    query.prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
+    query.bindValue(QStringLiteral(":channel"), channelId);
+    Database::instance().execute(query);
+
+    // TODO: remove hack
+    if (emitSignal) {
+        Q_EMIT channelDetailsUpdated(channelId, false);
+    }
+}
+
 size_t Database::favoriteCount()
 {
     execute(*m_favoriteCountQuery);

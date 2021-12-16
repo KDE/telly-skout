@@ -48,11 +48,9 @@ Kirigami.SwipeListItem {
 
             onTriggered: {
                 if (model.channel.favorite) {
-                    channelsModel.setFavorite(model.channel.url, false)
-                    icon.name = noFavoriteIcon
+                    channelsModel.setFavorite(model.channel.id, false)
                 } else {
-                    channelsModel.setFavorite(model.channel.url, true)
-                    icon.name = favoriteIcon
+                    channelsModel.setFavorite(model.channel.id, true)
                 }
             }
         }

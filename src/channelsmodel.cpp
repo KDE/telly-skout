@@ -93,12 +93,12 @@ void ChannelsModel::loadChannel(int index) const
     m_channels += m_channelFactory.create(m_onlyFavorites, index);
 }
 
-void ChannelsModel::setFavorite(const QString &channel, bool favorite)
+void ChannelsModel::setFavorite(const QString &channelId, bool favorite)
 {
-    for (int i = 0; i < m_channels.length(); i++) {
-        if (m_channels[i]->url() == channel) {
-            m_channels[i]->setAsFavorite(favorite);
-        }
+    if (favorite) {
+        Database::instance().addFavorite(channelId);
+    } else {
+        Database::instance().removeFavorite(channelId);
     }
 }
 
@@ -118,10 +118,10 @@ void ChannelsModel::move(int from, int to)
     // rebuild favorites
     // TODO: smarter solution?
     for (auto &&channel : qAsConst(m_channels)) {
-        channel->setAsFavorite(false);
+        Database::instance().removeFavorite(channel->id(), false);
     }
     for (auto &&channel : qAsConst(m_channels)) {
-        channel->setAsFavorite(true);
+        Database::instance().addFavorite(channel->id(), false);
     }
     endMoveRows();
 }

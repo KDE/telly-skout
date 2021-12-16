@@ -166,29 +166,6 @@ void Channel::refresh()
     Fetcher::instance().fetchChannel(m_data.m_url, m_data.m_url, ""); // TODO: url -> ID
 }
 
-void Channel::setAsFavorite(bool favorite)
-{
-    if (favorite) {
-        unsigned int id = 1;
-        QSqlQuery idQuery;
-        idQuery.prepare(QStringLiteral("SELECT id FROM Favorites ORDER BY id DESC LIMIT 1;"));
-        Database::instance().execute(idQuery);
-        if (idQuery.next()) {
-            id = idQuery.value(QStringLiteral("id")).toUInt() + 1;
-        }
-        QSqlQuery query;
-        query.prepare(QStringLiteral("INSERT INTO Favorites VALUES (:id, :channel);"));
-        query.bindValue(QStringLiteral(":id"), id);
-        query.bindValue(QStringLiteral(":channel"), m_data.m_id);
-        Database::instance().execute(query);
-    } else {
-        QSqlQuery query;
-        query.prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
-        query.bindValue(QStringLiteral(":channel"), m_data.m_id);
-        Database::instance().execute(query);
-    }
-}
-
 void Channel::remove()
 {
     // Delete Countries

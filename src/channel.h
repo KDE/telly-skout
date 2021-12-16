@@ -56,7 +56,6 @@ public:
     void setErrorString(const QString &errorString);
 
     Q_INVOKABLE void refresh();
-    void setAsFavorite(bool favorite); // TODO: unify with setFavorite()
     void remove();
 
 Q_SIGNALS:

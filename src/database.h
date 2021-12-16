@@ -35,6 +35,8 @@ public:
     Q_INVOKABLE size_t channelCount();
     Q_INVOKABLE QVector<ChannelData> channels(bool onlyFavorites);
     Q_INVOKABLE ChannelData channel(const QString &channelId);
+    Q_INVOKABLE void addFavorite(const QString &channelId, bool emitSignal = true);
+    Q_INVOKABLE void removeFavorite(const QString &channelId, bool emitSignal = true);
     Q_INVOKABLE size_t favoriteCount();
     Q_INVOKABLE QVector<QString> favorites();
     Q_INVOKABLE void addProgram(const ProgramData &data);
