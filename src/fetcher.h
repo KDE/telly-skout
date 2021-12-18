@@ -7,6 +7,7 @@
 #pragma once
 
 #include "programdata.h"
+#include "tvspielfilmfetcher.h"
 
 #include <QObject>
 
@@ -30,23 +31,31 @@ public:
     Q_INVOKABLE void fetchCountries();
     Q_INVOKABLE void fetchCountry(const QString &url, const QString &countryId);
     Q_INVOKABLE void fetchChannel(const QString &channelId, const QString &name, const QString &country);
-    Q_INVOKABLE void fetchProgram(const QString &channelId);
-    Q_INVOKABLE void fetchDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl, bool isLast);
     Q_INVOKABLE QString image(const QString &url);
-    void removeImage(const QString &url);
     Q_INVOKABLE void download(const QString &url);
-    QNetworkReply *get(QNetworkRequest &request);
 
 private:
     Fetcher();
 
     QString filePath(const QString &url);
-    void fetchProgram(const QString &channelId, const QString &url);
-    void processChannel(const QString &infoTable, const QString &url, const QString &channelId);
-    ProgramData processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const QString &channelId, bool isLast);
-    void processDescription(const QString &descriptionPage, const QString &url, const QString &programId);
+    void removeImage(const QString &url);
+    QNetworkReply *get(QNetworkRequest &request);
 
-    QNetworkAccessManager *manager;
+    QNetworkAccessManager *m_manager;
+    TvSpielfilmFetcher m_tvSpielfilmFetcher;
+
+    // TODO: rework
+    friend class TvSpielfilmFetcher;
+    void emitStartedFetchingFavorites();
+    void emitFinishedFetchingFavorites();
+    void emitStartedFetchingCountry(const QString &id); // TODO: emit
+    void emitStartedFetchingChannel(const QString &id);
+    void emitCountryUpdated(const QString &id);
+    void emitChannelUpdated(const QString &id);
+    void emitCountryDetailsUpdated(const QString &id); // TODO: emit
+    void emitChannelDetailsUpdated(const QString &id, const QString &image);
+    void emitError(const QString &id, int errorId, const QString &errorString);
+    void emitImageDownloadFinished(const QString &url);
 
 Q_SIGNALS:
     void startedFetchingFavorites();
