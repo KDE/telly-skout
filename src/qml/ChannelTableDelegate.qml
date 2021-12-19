@@ -81,7 +81,13 @@ Rectangle
                 categoryText = "<br><i>" + program.category + "</i>"
             }
 
-            root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b>" +  categoryText + "<br><br>" + program.description : ""
+            var descriptionText = ""
+            if (program.description !== "")
+            {
+                descriptionText = "<br><br>" + program.description
+            }
+
+            root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b>" +  categoryText + descriptionText : ""
             root.overlay.programId = program.id
         }
     }
