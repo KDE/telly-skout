@@ -49,7 +49,8 @@ Rectangle
         text: "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title
         wrapMode: Text.Wrap
         elide: Text.ElideRight // avoid that text overlaps into next program
-        color: Kirigami.Theme.textColor
+        // indicate if program is over
+        color: program.stop >= new Date().getTime()? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
         leftPadding: 3
         topPadding: 3
         rightPadding: 3
