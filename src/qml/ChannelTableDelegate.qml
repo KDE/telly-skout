@@ -75,7 +75,13 @@ Rectangle
                 Fetcher.fetchProgramDescription(program.channelId, program.id, program.url)
             }
 
-            root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b><br><br>" + program.description : ""
+            var categoryText = ""
+            if (program.category !== "")
+            {
+                categoryText = "<br><i>" + program.category + "</i>"
+            }
+
+            root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b>" +  categoryText + "<br><br>" + program.description : ""
             root.overlay.programId = program.id
         }
     }

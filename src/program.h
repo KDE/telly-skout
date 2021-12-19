@@ -28,6 +28,7 @@ class Program : public QObject
     Q_PROPERTY(QDateTime start READ start CONSTANT)
     Q_PROPERTY(QDateTime stop READ stop CONSTANT)
     Q_PROPERTY(QString subtitle READ subtitle CONSTANT)
+    Q_PROPERTY(QString category READ category CONSTANT)
 
 public:
     Program(const ProgramData &data);
@@ -42,6 +43,7 @@ public:
     void setStart(const QDateTime &start);
     QDateTime stop() const;
     QString subtitle() const;
+    QString category() const;
 
 private:
     ProgramData m_data;

@@ -64,3 +64,8 @@ QString Program::subtitle() const
 {
     return m_data.m_subtitle;
 }
+
+QString Program::category() const
+{
+    return m_data.m_category;
+}
