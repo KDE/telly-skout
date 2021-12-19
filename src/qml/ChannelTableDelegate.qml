@@ -23,6 +23,7 @@ Rectangle
     border.color: Kirigami.Theme.textColor
 
     // hightlight running program
+    // TODO: update as time elapses
     Rectangle
     {
         z: -1
