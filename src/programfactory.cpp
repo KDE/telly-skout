@@ -42,7 +42,7 @@ Program *ProgramFactory::create(const QString &channelId, int index) const
     if (!m_programs.contains(channelId) || m_programs[channelId].size() <= index) {
         return nullptr;
     }
-    return new Program(channelId, m_programs[channelId].at(index));
+    return new Program(m_programs[channelId].at(index));
 }
 
 void ProgramFactory::load(const QString &channelId) const

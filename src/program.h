@@ -30,7 +30,7 @@ class Program : public QObject
     Q_PROPERTY(QString subtitle READ subtitle CONSTANT)
 
 public:
-    Program(const QString &channelId, const ProgramData &data);
+    Program(const ProgramData &data);
     ~Program() = default;
 
     QString channelId() const;
@@ -44,6 +44,5 @@ public:
     QString subtitle() const;
 
 private:
-    const QString m_channelId;
     ProgramData m_data;
 };

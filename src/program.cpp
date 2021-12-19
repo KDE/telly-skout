@@ -14,16 +14,15 @@
 #include <QSqlQuery>
 #include <QUrl>
 
-Program::Program(const QString &channelId, const ProgramData &data)
+Program::Program(const ProgramData &data)
     : QObject(nullptr)
-    , m_channelId(channelId)
     , m_data(data)
 {
 }
 
 QString Program::channelId() const
 {
-    return m_channelId;
+    return m_data.m_channelId;
 }
 
 QString Program::id() const
