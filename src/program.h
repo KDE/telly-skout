@@ -20,19 +20,22 @@ class Program : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QString channelId READ channelId CONSTANT)
     Q_PROPERTY(QString id READ id CONSTANT)
+    Q_PROPERTY(QString url READ url CONSTANT)
     Q_PROPERTY(QString title READ title CONSTANT)
     Q_PROPERTY(QString description READ description CONSTANT)
     Q_PROPERTY(QDateTime start READ start CONSTANT)
     Q_PROPERTY(QDateTime stop READ stop CONSTANT)
     Q_PROPERTY(QString subtitle READ subtitle CONSTANT)
-    Q_PROPERTY(QString baseUrl READ baseUrl CONSTANT)
 
 public:
-    Program(const ProgramData &data);
+    Program(const QString &channelId, const ProgramData &data);
     ~Program() = default;
 
+    QString channelId() const;
     QString id() const;
+    QString url() const;
     QString title() const;
     QString description() const;
     QDateTime start() const;
@@ -40,8 +43,7 @@ public:
     QDateTime stop() const;
     QString subtitle() const;
 
-    QString baseUrl() const;
-
 private:
+    const QString m_channelId;
     ProgramData m_data;
 };

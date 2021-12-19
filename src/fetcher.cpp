@@ -48,6 +48,11 @@ void Fetcher::fetchChannel(const QString &channelId, const QString &name, const 
     m_tvSpielfilmFetcher.fetchChannel(channelId, name, country);
 }
 
+void Fetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
+{
+    m_tvSpielfilmFetcher.fetchProgramDescription(channelId, programId, url);
+}
+
 QString Fetcher::image(const QString &url)
 {
     QString path = filePath(url);

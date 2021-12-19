@@ -14,15 +14,26 @@
 #include <QSqlQuery>
 #include <QUrl>
 
-Program::Program(const ProgramData &data)
+Program::Program(const QString &channelId, const ProgramData &data)
     : QObject(nullptr)
+    , m_channelId(channelId)
     , m_data(data)
 {
+}
+
+QString Program::channelId() const
+{
+    return m_channelId;
 }
 
 QString Program::id() const
 {
     return m_data.m_id;
+}
+
+QString Program::url() const
+{
+    return m_data.m_url;
 }
 
 QString Program::title() const
@@ -53,9 +64,4 @@ QDateTime Program::stop() const
 QString Program::subtitle() const
 {
     return m_data.m_subtitle;
-}
-
-QString Program::baseUrl() const
-{
-    return QUrl(m_data.m_subtitle).adjusted(QUrl::RemovePath).toString();
 }

@@ -27,11 +27,12 @@ public:
     void fetchCountries();
     void fetchCountry(const QString &url, const QString &countryId);
     void fetchChannel(const QString &channelId, const QString &name, const QString &country);
-    void fetchProgram(const QString &channelId);
-    void fetchDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl, bool isLast);
+    void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url);
 
 private:
+    void fetchProgram(const QString &channelId);
     void fetchProgram(const QString &channelId, const QString &url);
+    void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl, bool isLast);
     void processChannel(const QString &infoTable, const QString &url, const QString &channelId);
     ProgramData processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const QString &channelId, bool isLast);
     void processDescription(const QString &descriptionPage, const QString &url, const QString &programId);

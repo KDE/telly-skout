@@ -33,6 +33,12 @@ Rectangle
             const now = new Date().getTime()
             visible = (program.start <= now) && (program.stop >= now)
             height = (now - program.start) / 60000 * root.pxPerMin
+
+            // update overlay if it is open (for this program)
+            if (root.overlay.sheetOpen && root.overlay.programId === program.id)
+            {
+                updateOverlay()
+            }
         }
     }
 
@@ -49,13 +55,29 @@ Rectangle
         bottomPadding: 3
     }
 
-    MouseArea {
+    MouseArea
+    {
         anchors.fill: parent
-        onClicked: {
+        onClicked:
+        {
             if (program !== undefined) {
-                root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b><br><br>" + program.description : ""
+                updateOverlay()
                 root.overlay.open()
             }
         }
     }
+
+    function updateOverlay()
+    {
+        if (program !== undefined) {
+            if (program.description === "")
+            {
+                Fetcher.fetchProgramDescription(program.channelId, program.id, program.url)
+            }
+
+            root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b><br><br>" + program.description : ""
+            root.overlay.programId = program.id
+        }
+    }
+
 }

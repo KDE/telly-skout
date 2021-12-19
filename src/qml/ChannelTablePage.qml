@@ -140,6 +140,7 @@ Kirigami.Page {
 
     Kirigami.OverlaySheet {
         id: overlaySheet
+        property string programId: ""
         property alias text: overlaySheetText.text
         Text {
             id: overlaySheetText

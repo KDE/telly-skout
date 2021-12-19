@@ -123,6 +123,11 @@ void TvSpielfilmFetcher::fetchChannel(const QString &channelId, const QString &n
     Fetcher::instance().emitChannelUpdated(channelId);
 }
 
+void TvSpielfilmFetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
+{
+    fetchProgramDescription(channelId, programId, url, true);
+}
+
 void TvSpielfilmFetcher::fetchProgram(const QString &channelId)
 {
     QDate today = QDate::currentDate();
@@ -176,7 +181,7 @@ void TvSpielfilmFetcher::fetchProgram(const QString &channelId, const QString &u
     });
 }
 
-void TvSpielfilmFetcher::fetchDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl, bool isLast)
+void TvSpielfilmFetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl, bool isLast)
 {
     qDebug() << "Starting to fetch description for" << programId << "(" << descriptionUrl << ")";
     QNetworkRequest request((QUrl(descriptionUrl)));
