@@ -261,7 +261,7 @@ ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &pr
         programData.m_stopTime = stopTime;
         programData.m_title = title;
         programData.m_subtitle = "";
-        programData.m_description = "";
+        programData.m_description = "__NOT_LOADED__"; // TODO: remove hack to avoid infinite fetching of description
         programData.m_category = category;
 
         // TODO on demand? (way too slow)

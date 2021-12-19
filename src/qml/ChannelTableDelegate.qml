@@ -70,7 +70,7 @@ Rectangle
     function updateOverlay()
     {
         if (program !== undefined) {
-            if (program.description === "")
+            if (program.description === "__NOT_LOADED__")
             {
                 Fetcher.fetchProgramDescription(program.channelId, program.id, program.url)
             }
@@ -82,7 +82,7 @@ Rectangle
             }
 
             var descriptionText = ""
-            if (program.description !== "")
+            if (program.description !== "" && program.description !== "__NOT_LOADED__")
             {
                 descriptionText = "<br><br>" + program.description
             }
