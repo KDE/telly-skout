@@ -54,6 +54,7 @@ Rectangle
         topPadding: 3
         rightPadding: 3
         bottomPadding: 3
+        visible: height >= root.pxPerMin * 4 // do not show for short programs to avoid that text overlaps into next program
     }
 
     MouseArea
