@@ -75,6 +75,8 @@ Kirigami.Page {
                 model: proxyModel
                 delegate: Column
                 {
+                    id: column
+                    property int idx: index
                     width: 200
 
                     // show info if program is not available
@@ -103,6 +105,7 @@ Kirigami.Page {
                             sourceModel: modelData.programsModel
                         }
                         delegate: ChannelTableDelegate {
+                            channelIdx: column.idx
                             overlay: overlaySheet
                             pxPerMin: channelTable.pxPerMin
                             startTime: proxyProgramModel.start

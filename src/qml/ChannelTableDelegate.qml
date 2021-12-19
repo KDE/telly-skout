@@ -10,6 +10,7 @@ Rectangle
 {
     id: root
 
+    property int channelIdx
     property var overlay
     property int pxPerMin
     property date startTime
@@ -19,14 +20,13 @@ Rectangle
     // start always at startTime, even if program starts earlier
     // stop always at stopTime, even if the program runs longer
     height: (Math.min(program.stop, stopTime) - Math.max(program.start, startTime)) / 60000 * pxPerMin
-    color: "transparent"
-    border.color: Kirigami.Theme.textColor
+    color: channelIdx % 2 == 0? "transparent" : Kirigami.Theme.alternateBackgroundColor
+    border.color: "transparent"
 
     // hightlight running program
     // TODO: update as time elapses
     Rectangle
     {
-        z: -1
         width: parent.width
         color: Kirigami.Theme.focusColor
 
@@ -41,6 +41,14 @@ Rectangle
                 updateOverlay()
             }
         }
+    }
+
+    // border
+    Rectangle
+    {
+        anchors.fill: parent
+        color: "transparent"
+        border.color: Kirigami.Theme.textColor
     }
 
     Text
