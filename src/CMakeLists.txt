@@ -14,6 +14,7 @@ add_executable(telly-skout
     programsmodel.cpp
     programsproxymodel.cpp
     tvspielfilmfetcher.cpp
+    xmltvsefetcher.cpp
     resources.qrc
 )
 

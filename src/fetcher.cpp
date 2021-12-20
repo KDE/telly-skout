@@ -30,12 +30,20 @@ Fetcher::Fetcher()
 
 void Fetcher::fetchFavorites()
 {
+#ifdef USE_TVSPIELFILM
     m_tvSpielfilmFetcher.fetchFavorites();
+#else
+    m_xmlTvSeFetcher.fetchFavorites();
+#endif
 }
 
 void Fetcher::fetchCountries()
 {
+#ifdef USE_TVSPIELFILM
     m_tvSpielfilmFetcher.fetchCountries();
+#else
+    m_xmlTvSeFetcher.fetchCountries();
+#endif
 }
 
 void Fetcher::fetchCountry(const QString &url, const QString &countryId)
@@ -45,12 +53,20 @@ void Fetcher::fetchCountry(const QString &url, const QString &countryId)
 
 void Fetcher::fetchCountry(const QString &url, const CountryId &countryId)
 {
+#ifdef USE_TVSPIELFILM
     m_tvSpielfilmFetcher.fetchCountry(url, countryId);
+#else
+    m_xmlTvSeFetcher.fetchCountry(url, countryId);
+#endif
 }
 
 void Fetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
 {
+#ifdef USE_TVSPIELFILM
     m_tvSpielfilmFetcher.fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url);
+#else
+    m_xmlTvSeFetcher.fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url);
+#endif
 }
 
 QString Fetcher::image(const QString &url)

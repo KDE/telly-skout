@@ -4,9 +4,10 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include "fetcher.h"
+#include "xmltvsefetcher.h"
 
 #include "database.h"
+#include "fetcher.h"
 
 #include <QCryptographicHash>
 #include <QDateTime>
@@ -18,7 +19,7 @@
 #include <QStandardPaths>
 #include <QtXml>
 
-Fetcher::Fetcher()
+XmlTvSeFetcher::XmlTvSeFetcher()
 {
     manager = new QNetworkAccessManager(this);
     manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
@@ -26,24 +27,24 @@ Fetcher::Fetcher()
     manager->enableStrictTransportSecurityStore(true);
 }
 
-void Fetcher::fetchFavorites()
+void XmlTvSeFetcher::fetchFavorites()
 {
     qDebug() << "Starting to fetch favorites";
 
-    Q_EMIT startedFetchingFavorites();
+    Fetcher::instance().emitStartedFetchingFavorites();
 
     QSqlQuery query;
     query.prepare(QStringLiteral("SELECT channel FROM Favorites;"));
     Database::instance().execute(query);
     while (query.next()) {
-        const QString &channelId = query.value(QStringLiteral("channel")).toString();
+        const ChannelId channelId = ChannelId(query.value(QStringLiteral("channel")).toString());
         fetchProgram(channelId);
     }
 
-    Q_EMIT finishedFetchingFavorites();
+    Fetcher::instance().emitFinishedFetchingFavorites();
 }
 
-void Fetcher::fetchCountries()
+void XmlTvSeFetcher::fetchCountries()
 {
     // http://xmltv.se/countries.xml
     const QString url = "http://xmltv.se/countries.xml";
@@ -55,7 +56,7 @@ void Fetcher::fetchCountries()
         if (reply->error()) {
             qWarning() << "Error fetching countries";
             qWarning() << reply->errorString();
-            Q_EMIT error(url, reply->error(), reply->errorString()); // TODO: error handling for countries fetching (see channel.cpp)
+            Fetcher::instance().emitError(url, reply->error(), reply->errorString()); // TODO: error handling for countries fetching (see channel.cpp)
         } else {
             QByteArray data = reply->readAll();
 
@@ -78,9 +79,9 @@ void Fetcher::fetchCountries()
     });
 }
 
-void Fetcher::fetchCountry(const QString &url, const QString &countryId)
+void XmlTvSeFetcher::fetchCountry(const QString &url, const CountryId &countryId)
 {
-    qDebug() << "Starting to fetch country (" << countryId << ", " << url << ")";
+    qDebug() << "Starting to fetch country (" << countryId.value() << ", " << url << ")";
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
@@ -88,7 +89,7 @@ void Fetcher::fetchCountry(const QString &url, const QString &countryId)
         if (reply->error()) {
             qWarning() << "Error fetching country";
             qWarning() << reply->errorString();
-            Q_EMIT error(url, reply->error(), reply->errorString()); // TODO: error handling for country fetching (see channel.cpp)
+            Fetcher::instance().emitError(url, reply->error(), reply->errorString()); // TODO: error handling for country fetching (see channel.cpp)
         } else {
             QByteArray data = reply->readAll();
 
@@ -104,7 +105,7 @@ void Fetcher::fetchCountry(const QString &url, const QString &countryId)
                 QDomNode elm = nodes.at(i);
                 if (elm.isElement()) {
                     const QDomNamedNodeMap &attributes = elm.attributes();
-                    const QString &id = attributes.namedItem("id").toAttr().value();
+                    const ChannelId id = ChannelId(attributes.namedItem("id").toAttr().value());
 
                     const QString &name = elm.firstChildElement("display-name").text();
 
@@ -113,42 +114,55 @@ void Fetcher::fetchCountry(const QString &url, const QString &countryId)
             }
         }
         delete reply;
-        Q_EMIT countryUpdated(countryId);
+        Fetcher::instance().emitCountryUpdated(countryId);
     });
 }
 
-void Fetcher::fetchChannel(const QString &channelId, const QString &name, const QString &country)
+void XmlTvSeFetcher::fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url)
 {
-    const QString url = "http://xmltv.xmltv.se/" + channelId;
+    Q_UNUSED(channelId)
+    Q_UNUSED(programId)
+    Q_UNUSED(url)
 
-    Q_EMIT startedFetchingChannel(channelId);
+    // nothing to be done (already fetched as part of the program)
+}
+
+void XmlTvSeFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &countryId)
+{
+    const QString url = "http://xmltv.xmltv.se/" + channelId.value();
+
+    Fetcher::instance().emitStartedFetchingChannel(channelId);
 
     // story channel per country (ignore if it exists already)
     QSqlQuery countryQuery;
     countryQuery.prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
-    countryQuery.bindValue(QStringLiteral(":id"), country + "_" + channelId);
-    countryQuery.bindValue(QStringLiteral(":country"), country);
-    countryQuery.bindValue(QStringLiteral(":channel"), channelId);
+    countryQuery.bindValue(QStringLiteral(":id"), countryId.value() + "_" + channelId.value());
+    countryQuery.bindValue(QStringLiteral(":country"), countryId.value());
+    countryQuery.bindValue(QStringLiteral(":channel"), channelId.value());
     Database::instance().execute(countryQuery);
 
     // if channel is unknown, store it
     QSqlQuery queryChannelExists;
     queryChannelExists.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id;"));
-    queryChannelExists.bindValue(QStringLiteral(":id"), channelId);
+    queryChannelExists.bindValue(QStringLiteral(":id"), channelId.value());
     Database::instance().execute(queryChannelExists);
     queryChannelExists.next();
 
     if (queryChannelExists.value(0).toInt() == 0) {
-        const QString image = "https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/" + channelId + "_color.svg?inline=false";
-        Database::instance().addChannel(channelId, name, url, country, image);
+        ChannelData data;
+        data.m_id = channelId;
+        data.m_name = name;
+        data.m_url = url;
+        data.m_image = "https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/" + channelId.value() + "_color.svg?inline=false";
+        Database::instance().addChannel(data, countryId);
     }
 
-    Q_EMIT channelUpdated(channelId);
+    Fetcher::instance().emitChannelUpdated(channelId);
 }
 
-void Fetcher::fetchProgram(const QString &channelId)
+void XmlTvSeFetcher::fetchProgram(const ChannelId &channelId)
 {
-    const QString url = "http://xmltv.xmltv.se/" + channelId;
+    const QString url = "http://xmltv.xmltv.se/" + channelId.value();
 
     QDate today = QDate::currentDate();
     QDate yesterday = QDate::currentDate().addDays(-1);
@@ -160,7 +174,7 @@ void Fetcher::fetchProgram(const QString &channelId)
         const qint64 lastTime = utcTime.addDays(1).toSecsSinceEpoch() - 1;
         QSqlQuery queryProgramAvailable;
         queryProgramAvailable.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
-        queryProgramAvailable.bindValue(QStringLiteral(":channel"), "http://xmltv.xmltv.se/" + channelId); // TODO use channel ID in Programs
+        queryProgramAvailable.bindValue(QStringLiteral(":channel"), "http://xmltv.xmltv.se/" + channelId.value()); // TODO use channel ID in Programs
         queryProgramAvailable.bindValue(QStringLiteral(":lastTime"), lastTime);
         Database::instance().execute(queryProgramAvailable);
         queryProgramAvailable.next();
@@ -170,7 +184,7 @@ void Fetcher::fetchProgram(const QString &channelId)
         }
 
         const QString urlDay = url + "_" + day.toString("yyyy-MM-dd") + ".xml"; // e.g. http://xmltv.xmltv.se/3sat.de_2021-07-29.xml
-        qDebug() << "Starting to fetch program for " << channelId << "(" << urlDay << ")";
+        qDebug() << "Starting to fetch program for " << channelId.value() << "(" << urlDay << ")";
 
         QNetworkRequest request((QUrl(urlDay)));
         QNetworkReply *reply = get(request);
@@ -178,7 +192,7 @@ void Fetcher::fetchProgram(const QString &channelId)
             if (reply->error()) {
                 qWarning() << "Error fetching channel";
                 qWarning() << reply->errorString();
-                Q_EMIT error(channelId, reply->error(), reply->errorString());
+                Fetcher::instance().emitError(channelId.value(), reply->error(), reply->errorString());
             } else {
                 QByteArray data = reply->readAll();
 
@@ -197,20 +211,20 @@ void Fetcher::fetchProgram(const QString &channelId)
     }
 }
 
-void Fetcher::processCountry(const QDomElement &country)
+void XmlTvSeFetcher::processCountry(const QDomElement &country)
 {
-    const QString &id = country.attributes().namedItem("id").toAttr().value();
+    const CountryId id = CountryId(country.attributes().namedItem("id").toAttr().value());
     const QString &name = country.text();
 
-    Q_EMIT startedFetchingCountry(id);
+    Fetcher::instance().emitStartedFetchingCountry(id);
 
     // http://xmltv.xmltv.se/channels-Germany.xml
-    const QString url = "http://xmltv.xmltv.se/channels-" + id + ".xml";
+    const QString url = "http://xmltv.xmltv.se/channels-" + id.value() + ".xml";
 
     // if country is unknown, store it
     QSqlQuery queryCountryExists;
-    queryCountryExists.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id;"));
-    queryCountryExists.bindValue(QStringLiteral(":id"), id);
+    queryCountryExists.prepare(QStringLiteral("SELECT COUNT () FROM Channels WHERE id=:id;"));
+    queryCountryExists.bindValue(QStringLiteral(":id"), id.value());
     Database::instance().execute(queryCountryExists);
     queryCountryExists.next();
 
@@ -218,25 +232,25 @@ void Fetcher::processCountry(const QDomElement &country)
         Database::instance().addCountry(id, name, url);
     }
 
-    Q_EMIT countryUpdated(id);
+    Fetcher::instance().emitCountryUpdated(id);
 }
 
-void Fetcher::processChannel(const QDomElement &channel, const QString &url)
+void XmlTvSeFetcher::processChannel(const QDomElement &channel, const QString &url)
 {
     QDomNodeList programs = channel.elementsByTagName("programme");
     const QDomNamedNodeMap &attributes = programs.at(0).attributes();
 
-    const QString &channelId = attributes.namedItem("channel").toAttr().value();
+    const ChannelId channelId = ChannelId(attributes.namedItem("channel").toAttr().value());
     if (programs.count() > 0) {
         for (int i = 0; i < programs.count(); i++) {
             processProgram(programs.at(i), url);
         }
 
-        Q_EMIT channelUpdated(channelId);
+        Fetcher::instance().emitChannelUpdated(channelId);
     }
 }
 
-void Fetcher::processProgram(const QDomNode &program, const QString &url)
+void XmlTvSeFetcher::processProgram(const QDomNode &program, const QString &url)
 {
     const QDomNamedNodeMap &attributes = program.attributes();
     const QString &channel = attributes.namedItem("channel").toAttr().value();
@@ -276,49 +290,7 @@ void Fetcher::processProgram(const QDomNode &program, const QString &url)
     Database::instance().execute(query);
 }
 
-QString Fetcher::image(const QString &url)
-{
-    QString path = filePath(url);
-    if (QFileInfo::exists(path)) {
-        return path;
-    }
-
-    download(url);
-
-    return QLatin1String("");
-}
-
-void Fetcher::download(const QString &url)
-{
-    QNetworkRequest request((QUrl(url)));
-    QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
-        if (reply->error() == QNetworkReply::NoError) {
-            QByteArray data = reply->readAll();
-            QFile file(filePath(url));
-            file.open(QIODevice::WriteOnly);
-            file.write(data);
-            file.close();
-        }
-        Q_EMIT imageDownloadFinished(url);
-
-        delete reply;
-    });
-}
-
-void Fetcher::removeImage(const QString &url)
-{
-    qDebug() << "Remove image: " << filePath(url);
-    QFile(filePath(url)).remove();
-}
-
-QString Fetcher::filePath(const QString &url)
-{
-    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/")
-        + QString::fromStdString(QCryptographicHash::hash(url.toUtf8(), QCryptographicHash::Md5).toHex().toStdString());
-}
-
-QNetworkReply *Fetcher::get(QNetworkRequest &request)
+QNetworkReply *XmlTvSeFetcher::get(QNetworkRequest &request)
 {
     request.setRawHeader("User-Agent", "telly-skout/0.1");
     return manager->get(request);

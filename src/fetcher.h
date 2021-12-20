@@ -9,6 +9,7 @@
 #include "programdata.h"
 #include "tvspielfilmfetcher.h"
 #include "types.h"
+#include "xmltvsefetcher.h"
 
 #include <QObject>
 
@@ -18,6 +19,8 @@ class QNetworkAccessManager;
 class QNetworkReply;
 class QNetworkRequest;
 class QString;
+
+#define USE_TVSPIELFILM
 
 class Fetcher : public QObject
 {
@@ -44,10 +47,15 @@ private:
     QNetworkReply *get(QNetworkRequest &request);
 
     QNetworkAccessManager *m_manager;
+#ifdef USE_TVSPIELFILM
     TvSpielfilmFetcher m_tvSpielfilmFetcher;
+#else
+    XmlTvSeFetcher m_xmlTvSeFetcher;
+#endif
 
     // TODO: rework
     friend class TvSpielfilmFetcher;
+    friend class XmlTvSeFetcher;
     void emitStartedFetchingFavorites();
     void emitFinishedFetchingFavorites();
     void emitStartedFetchingCountry(const CountryId &id); // TODO: emit
