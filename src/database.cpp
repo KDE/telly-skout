@@ -43,10 +43,16 @@ Database::Database()
     // prepare queries once (faster)
     m_addCountryQuery = new QSqlQuery(db);
     m_addCountryQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Countries VALUES (:id, :name, :url);"));
+    m_countryCountQuery = new QSqlQuery(db);
+    m_countryCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Countries;"));
+    m_countryExistsQuery = new QSqlQuery(db);
+    m_countryExistsQuery->prepare(QStringLiteral("SELECT COUNT () FROM Countries WHERE id=:id;"));
     m_countriesQuery = new QSqlQuery(db);
     m_countriesQuery->prepare(QStringLiteral("SELECT * FROM Countries ORDER BY name COLLATE NOCASE;"));
+
     m_addCountryChannelQuery = new QSqlQuery(db);
     m_addCountryChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
+
     m_addChannelQuery = new QSqlQuery(db);
     m_addChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Channels VALUES (:id, :name, :url, :image);"));
     m_channelCountQuery = new QSqlQuery(db);
@@ -55,17 +61,19 @@ Database::Database()
     m_channelsQuery->prepare(QStringLiteral("SELECT * FROM Channels ORDER BY name COLLATE NOCASE;"));
     m_channelQuery = new QSqlQuery(db);
     m_channelQuery->prepare(QStringLiteral("SELECT * FROM Channels WHERE id=:channelId;"));
+
     m_favoriteCountQuery = new QSqlQuery(db);
     m_favoriteCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Favorites;"));
     m_favoritesQuery = new QSqlQuery(db);
     m_favoritesQuery->prepare(QStringLiteral("SELECT channel FROM Favorites ORDER BY id;"));
+
     m_addProgramQuery = new QSqlQuery(db);
     m_addProgramQuery->prepare(
         QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :url, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
     m_updateProgramDescriptionQuery = new QSqlQuery(db);
     m_updateProgramDescriptionQuery->prepare(QStringLiteral("UPDATE Programs SET description=:description WHERE id=:id;"));
     m_programExistsQuery = new QSqlQuery(db);
-    m_programExistsQuery->prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
+    m_programExistsQuery->prepare(QStringLiteral("SELECT COUNT () FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
     m_programCountQuery = new QSqlQuery(db);
     m_programCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Programs WHERE channel=:channel;"));
     m_programsQuery = new QSqlQuery(db);
@@ -152,15 +160,34 @@ void Database::cleanup()
 
 void Database::addCountry(const CountryId &id, const QString &name, const QString &url)
 {
-    qDebug() << "Add country" << name;
+    if (!countryExists(id)) {
+        qDebug() << "Add country" << name;
+        m_addCountryQuery->bindValue(QStringLiteral(":id"), id.value());
+        m_addCountryQuery->bindValue(QStringLiteral(":name"), name);
+        m_addCountryQuery->bindValue(QStringLiteral(":url"), url);
+        execute(*m_addCountryQuery);
 
-    const QUrl urlFromInput = QUrl::fromUserInput(url);
-    m_addCountryQuery->bindValue(QStringLiteral(":id"), id.value());
-    m_addCountryQuery->bindValue(QStringLiteral(":name"), name);
-    m_addCountryQuery->bindValue(QStringLiteral(":url"), urlFromInput.toString());
-    execute(*m_addCountryQuery);
+        Q_EMIT countryAdded(id);
+    }
+}
 
-    Q_EMIT countryAdded(id);
+size_t Database::countryCount()
+{
+    execute(*m_countryCountQuery);
+    if (!m_countryCountQuery->next()) {
+        qWarning() << "Failed to query country count";
+        return 0;
+    }
+    return m_countryCountQuery->value(0).toInt();
+}
+
+bool Database::countryExists(const CountryId &id)
+{
+    m_countryExistsQuery->bindValue(QStringLiteral(":id"), id.value());
+    execute(*m_countryExistsQuery);
+    m_countryExistsQuery->next();
+
+    return m_countryExistsQuery->value(0).toInt() > 0;
 }
 
 QVector<CountryData> Database::countries()

@@ -32,16 +32,22 @@ public:
     }
     bool execute(QSqlQuery &query);
     bool execute(const QString &query);
+
     void addCountry(const CountryId &id, const QString &name, const QString &url);
+    size_t countryCount();
+    bool countryExists(const CountryId &id);
     QVector<CountryData> countries();
+
     void addChannel(const ChannelData &data, const CountryId &country);
     size_t channelCount();
     QVector<ChannelData> channels(bool onlyFavorites);
     ChannelData channel(const ChannelId &channelId);
+
     void addFavorite(const ChannelId &channelId, bool emitSignal = true);
     void removeFavorite(const ChannelId &channelId, bool emitSignal = true);
     size_t favoriteCount();
     QVector<ChannelId> favorites();
+
     void addProgram(const ProgramData &data);
     void updateProgramDescription(const ProgramId &id, const QString &description);
     void addPrograms(const QVector<ProgramData> &programs);
@@ -64,14 +70,20 @@ private:
     void cleanup();
 
     QSqlQuery *m_addCountryQuery;
+    QSqlQuery *m_countryCountQuery;
+    QSqlQuery *m_countryExistsQuery;
     QSqlQuery *m_countriesQuery;
+
     QSqlQuery *m_addCountryChannelQuery;
+
     QSqlQuery *m_addChannelQuery;
     QSqlQuery *m_channelCountQuery;
     QSqlQuery *m_channelsQuery;
     QSqlQuery *m_channelQuery;
+
     QSqlQuery *m_favoriteCountQuery;
     QSqlQuery *m_favoritesQuery;
+
     QSqlQuery *m_addProgramQuery;
     QSqlQuery *m_updateProgramDescriptionQuery;
     QSqlQuery *m_programExistsQuery;
