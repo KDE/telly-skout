@@ -4,19 +4,15 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+import Qt.labs.platform 1.1
 import QtQuick 2.14
 import QtQuick.Controls 2.14 as Controls
-import Qt.labs.platform 1.1
 import QtQuick.Layouts 1.14
-
-import org.kde.kirigami 2.12 as Kirigami
-
 import org.kde.TellySkout 1.0
+import org.kde.kirigami 2.12 as Kirigami
 
 Kirigami.ScrollablePage {
     id: root
-
-    title: i18n("Channels")
 
     property string lastChannel: ""
     property alias groupFilter: proxyModel.groupName
@@ -24,31 +20,29 @@ Kirigami.ScrollablePage {
     property bool sortable: false
     property bool onlyFavorites: false
 
+    title: i18n("Channels")
+
     Kirigami.PlaceholderMessage {
         visible: channelList.count === 0
-
         width: Kirigami.Units.gridUnit * 20
         anchors.centerIn: parent
+        text: i18n("Loading channels...")
 
         Controls.BusyIndicator {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
         }
-        text: i18n("Loading channels...")
+
     }
 
     ListView {
         id: channelList
 
         anchors.fill: parent
-
         model: root.onlyFavorites ? channelsModel : proxyModel
-        delegate: Kirigami.DelegateRecycler {
-            width: parent ? parent.width : implicitWidth
-            sourceComponent: delegateComponent
-        }
 
         ChannelsProxyModel {
             id: proxyModel
+
             groupName: ""
             country: ""
             sourceModel: channelsModel
@@ -56,16 +50,25 @@ Kirigami.ScrollablePage {
 
         ChannelsModel {
             id: channelsModel
+
             onlyFavorites: root.onlyFavorites
         }
+
+        delegate: Kirigami.DelegateRecycler {
+            width: parent ? parent.width : implicitWidth
+            sourceComponent: delegateComponent
+        }
+
     }
 
     Component {
         id: delegateComponent
+
         ChannelListDelegate {
             listView: channelList
             sortable: root.sortable
         }
+
     }
 
 }
