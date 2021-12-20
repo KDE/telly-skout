@@ -9,6 +9,7 @@
 #include "country.h"
 #include "database.h"
 #include "fetcher.h"
+#include "types.h"
 
 #include <QDebug>
 #include <QSqlQuery>
@@ -21,18 +22,18 @@ CountriesModel::CountriesModel(QObject *parent)
         endInsertRows();
     });
 
-    connect(&Fetcher::instance(), &Fetcher::countryDetailsUpdated, this, [this](const QString &id) {
+    connect(&Fetcher::instance(), &Fetcher::countryDetailsUpdated, this, [this](const CountryId &id) {
         for (int i = 0; i < m_countries.length(); i++) {
-            if (m_countries[i]->id() == id) {
+            if (m_countries[i]->id() == id.value()) {
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
                 break;
             }
         }
     });
 
-    connect(&Database::instance(), &Database::countryDetailsUpdated, this, [this](const QString &id) {
+    connect(&Database::instance(), &Database::countryDetailsUpdated, this, [this](const CountryId &id) {
         for (int i = 0; i < m_countries.length(); i++) {
-            if (m_countries[i]->id() == id) {
+            if (m_countries[i]->id() == id.value()) {
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
                 break;
             }

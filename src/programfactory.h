@@ -3,6 +3,7 @@
 #include <QObject>
 
 #include "programdata.h"
+#include "types.h"
 
 #include <QMap>
 #include <QVector>
@@ -17,10 +18,10 @@ public:
     ProgramFactory();
     ~ProgramFactory() = default;
 
-    size_t count(const QString &channelId) const;
-    Program *create(const QString &channelId, int index) const;
-    void load(const QString &channelId) const;
+    size_t count(const ChannelId &channelId) const;
+    Program *create(const ChannelId &channelId, int index) const;
+    void load(const ChannelId &channelId) const;
 
 private:
-    mutable QMap<QString, QVector<ProgramData>> m_programs; // list of programs per channel
+    mutable QMap<ChannelId, QVector<ProgramData>> m_programs;
 };

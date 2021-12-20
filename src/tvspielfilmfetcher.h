@@ -7,6 +7,7 @@
 #pragma once
 
 #include "programdata.h"
+#include "types.h"
 
 #include <QObject>
 
@@ -25,16 +26,16 @@ public:
 
     void fetchFavorites();
     void fetchCountries();
-    void fetchCountry(const QString &url, const QString &countryId);
-    void fetchChannel(const QString &channelId, const QString &name, const QString &country);
-    void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url);
+    void fetchCountry(const QString &url, const CountryId &countryId);
+    void fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &country);
+    void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url);
 
 private:
-    void fetchProgram(const QString &channelId);
-    void fetchProgram(const QString &channelId, const QString &url);
-    void processChannel(const QString &infoTable, const QString &url, const QString &channelId);
-    ProgramData processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const QString &channelId, bool isLast);
-    void processDescription(const QString &descriptionPage, const QString &url, const QString &programId);
+    void fetchProgram(const ChannelId &channelId);
+    void fetchProgram(const ChannelId &channelId, const QString &url);
+    void processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId);
+    ProgramData processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const ChannelId &channelId, bool isLast);
+    void processDescription(const QString &descriptionPage, const QString &url, const ProgramId &programId);
     QNetworkReply *get(QNetworkRequest &request); // TODO: not in every class
 
     QNetworkAccessManager *m_manager;

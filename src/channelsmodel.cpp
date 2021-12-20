@@ -21,7 +21,7 @@ ChannelsModel::ChannelsModel(QObject *parent)
     //    beginInsertRows(QModelIndex(), rowCount(QModelIndex()) - 1, rowCount(QModelIndex()) - 1);
     //    endInsertRows();
     //});
-    connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const QString &id) {
+    connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const CountryId &id) {
         Q_UNUSED(id)
         beginResetModel();
         qDeleteAll(m_channels);
@@ -31,9 +31,9 @@ ChannelsModel::ChannelsModel(QObject *parent)
         endResetModel();
     });
 
-    connect(&Fetcher::instance(), &Fetcher::channelDetailsUpdated, this, [this](const QString &id, const QString &image) {
+    connect(&Fetcher::instance(), &Fetcher::channelDetailsUpdated, this, [this](const ChannelId &id, const QString &image) {
         for (int i = 0; i < m_channels.length(); i++) {
-            if (m_channels[i]->id() == id) {
+            if (m_channels[i]->id() == id.value()) {
                 m_channels[i]->setImage(image);
                 // TODO: update channelFactory?
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
@@ -42,9 +42,9 @@ ChannelsModel::ChannelsModel(QObject *parent)
         }
     });
 
-    connect(&Database::instance(), &Database::channelDetailsUpdated, [this](const QString &id, bool favorite) {
+    connect(&Database::instance(), &Database::channelDetailsUpdated, [this](const ChannelId &id, bool favorite) {
         for (int i = 0; i < m_channels.length(); i++) {
-            if (m_channels[i]->id() == id) {
+            if (m_channels[i]->id() == id.value()) {
                 m_channels[i]->setFavorite(favorite);
                 // TODO: update channelFactory?
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
@@ -96,9 +96,9 @@ void ChannelsModel::loadChannel(int index) const
 void ChannelsModel::setFavorite(const QString &channelId, bool favorite)
 {
     if (favorite) {
-        Database::instance().addFavorite(channelId);
+        Database::instance().addFavorite(ChannelId(channelId));
     } else {
-        Database::instance().removeFavorite(channelId);
+        Database::instance().removeFavorite(ChannelId(channelId));
     }
 }
 
@@ -118,10 +118,10 @@ void ChannelsModel::move(int from, int to)
     // rebuild favorites
     // TODO: smarter solution?
     for (auto &&channel : qAsConst(m_channels)) {
-        Database::instance().removeFavorite(channel->id(), false);
+        Database::instance().removeFavorite(ChannelId(channel->id()), false);
     }
     for (auto &&channel : qAsConst(m_channels)) {
-        Database::instance().addFavorite(channel->id(), false);
+        Database::instance().addFavorite(ChannelId(channel->id()), false);
     }
     endMoveRows();
 }

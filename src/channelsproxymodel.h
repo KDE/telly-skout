@@ -8,6 +8,8 @@
 
 #include <QSortFilterProxyModel>
 
+#include "types.h"
+
 /**
  * @brief Filters and sorts ChannelsModel
  *
@@ -28,7 +30,7 @@ public:
     QString groupName() const;
     void setGroupName(const QString &name);
 
-    QString country() const;
+    const QString &country() const;
     void setCountry(const QString &country);
 
 Q_SIGNALS:
@@ -37,5 +39,5 @@ Q_SIGNALS:
 
 private:
     QString m_group_name; // TODO: favorite bool
-    QString m_country;
+    CountryId m_country;
 };

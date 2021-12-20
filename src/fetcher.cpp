@@ -40,17 +40,22 @@ void Fetcher::fetchCountries()
 
 void Fetcher::fetchCountry(const QString &url, const QString &countryId)
 {
+    fetchCountry(url, CountryId(countryId));
+}
+
+void Fetcher::fetchCountry(const QString &url, const CountryId &countryId)
+{
     m_tvSpielfilmFetcher.fetchCountry(url, countryId);
 }
 
-void Fetcher::fetchChannel(const QString &channelId, const QString &name, const QString &country)
+void Fetcher::fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &country)
 {
     m_tvSpielfilmFetcher.fetchChannel(channelId, name, country);
 }
 
 void Fetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
 {
-    m_tvSpielfilmFetcher.fetchProgramDescription(channelId, programId, url);
+    m_tvSpielfilmFetcher.fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url);
 }
 
 QString Fetcher::image(const QString &url)
@@ -114,32 +119,32 @@ void Fetcher::emitFinishedFetchingFavorites()
     Q_EMIT finishedFetchingFavorites();
 }
 
-void Fetcher::emitStartedFetchingCountry(const QString &id)
+void Fetcher::emitStartedFetchingCountry(const CountryId &id)
 {
     Q_EMIT startedFetchingCountry(id);
 }
 
-void Fetcher::emitStartedFetchingChannel(const QString &id)
+void Fetcher::emitStartedFetchingChannel(const ChannelId &id)
 {
     Q_EMIT startedFetchingChannel(id);
 }
 
-void Fetcher::emitCountryUpdated(const QString &id)
+void Fetcher::emitCountryUpdated(const CountryId &id)
 {
     Q_EMIT countryUpdated(id);
 }
 
-void Fetcher::emitChannelUpdated(const QString &id)
+void Fetcher::emitChannelUpdated(const ChannelId &id)
 {
     Q_EMIT channelUpdated(id);
 }
 
-void Fetcher::emitCountryDetailsUpdated(const QString &id)
+void Fetcher::emitCountryDetailsUpdated(const CountryId &id)
 {
     Q_EMIT countryDetailsUpdated(id);
 }
 
-void Fetcher::emitChannelDetailsUpdated(const QString &id, const QString &image)
+void Fetcher::emitChannelDetailsUpdated(const ChannelId &id, const QString &image)
 {
     Q_EMIT channelDetailsUpdated(id, image);
 }

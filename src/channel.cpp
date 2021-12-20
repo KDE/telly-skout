@@ -10,6 +10,7 @@
 #include "fetcher.h"
 #include "program.h"
 #include "programsmodel.h"
+#include "types.h"
 
 #include <QDebug>
 #include <QSqlQuery>
@@ -22,13 +23,13 @@ Channel::Channel(const ChannelData &data)
     // TODO: use ChannelFactory
     QSqlQuery favoriteQuery;
     favoriteQuery.prepare(QStringLiteral("SELECT id FROM Favorites WHERE channel=:channel"));
-    favoriteQuery.bindValue(QStringLiteral(":channel"), m_data.m_id);
+    favoriteQuery.bindValue(QStringLiteral(":channel"), m_data.m_id.value());
     Database::instance().execute(favoriteQuery);
     m_favorite = favoriteQuery.next();
 
     QSqlQuery countryQuery;
     countryQuery.prepare(QStringLiteral("SELECT country FROM CountryChannels WHERE channel=:channel"));
-    countryQuery.bindValue(QStringLiteral(":channel"), m_data.m_id);
+    countryQuery.bindValue(QStringLiteral(":channel"), m_data.m_id.value());
     Database::instance().execute(countryQuery);
     while (countryQuery.next()) {
         m_countries.push_back(countryQuery.value(QStringLiteral("country")).toString());
@@ -37,12 +38,12 @@ Channel::Channel(const ChannelData &data)
     m_errorId = 0;
     m_errorString = QLatin1String("");
 
-    connect(&Fetcher::instance(), &Fetcher::startedFetchingChannel, this, [this](const QString &id) {
+    connect(&Fetcher::instance(), &Fetcher::startedFetchingChannel, this, [this](const ChannelId &id) {
         if (id == m_data.m_id) {
             setRefreshing(true);
         }
     });
-    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
+    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const ChannelId &id) {
         if (id == m_data.m_id) {
             setRefreshing(false);
             Q_EMIT programChanged();
@@ -51,7 +52,7 @@ Channel::Channel(const ChannelData &data)
         }
     });
     connect(&Fetcher::instance(), &Fetcher::error, this, [this](const QString &id, int errorId, const QString &errorString) {
-        if (id == m_data.m_id) {
+        if (id == m_data.m_id.value()) {
             setErrorId(errorId);
             setErrorString(errorString);
             setRefreshing(false);
@@ -73,7 +74,7 @@ Channel::~Channel()
 
 QString Channel::id() const
 {
-    return m_data.m_id;
+    return m_data.m_id.value();
 }
 
 QString Channel::url() const
@@ -163,7 +164,7 @@ void Channel::setErrorString(const QString &errorString)
 
 void Channel::refresh()
 {
-    Fetcher::instance().fetchChannel(m_data.m_url, m_data.m_url, ""); // TODO: url -> ID
+    Fetcher::instance().fetchChannel(m_data.m_id, m_data.m_url, CountryId("")); // TODO: url -> ID
 }
 
 void Channel::remove()
@@ -171,21 +172,21 @@ void Channel::remove()
     // Delete Countries
     QSqlQuery query;
     query.prepare(QStringLiteral("DELETE FROM Countries WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_data.m_url);
+    query.bindValue(QStringLiteral(":channel"), m_data.m_url); // TODO: url -> ID
     Database::instance().execute(query);
 
     // Delete Programs
     query.prepare(QStringLiteral("DELETE FROM Programs WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_data.m_url);
+    query.bindValue(QStringLiteral(":channel"), m_data.m_url); // TODO: url -> ID
     Database::instance().execute(query);
 
     // Delete Favorite
     query.prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_data.m_id);
+    query.bindValue(QStringLiteral(":channel"), m_data.m_id.value());
     Database::instance().execute(query);
 
     // Delete Channel
     query.prepare(QStringLiteral("DELETE FROM Channels WHERE url=:url;"));
-    query.bindValue(QStringLiteral(":url"), m_data.m_url);
+    query.bindValue(QStringLiteral(":url"), m_data.m_url); // TODO: url -> ID
     Database::instance().execute(query);
 }

@@ -23,7 +23,7 @@
 Database::Database()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"));
-    QString databasePath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+    const QString databasePath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
     QDir(databasePath).mkpath(databasePath);
     db.setDatabaseName(databasePath + QStringLiteral("/database.db3"));
     db.open();
@@ -148,41 +148,41 @@ void Database::cleanup()
     execute(query);
 }
 
-void Database::addCountry(const QString &id, const QString &name, const QString &url)
+void Database::addCountry(const CountryId &id, const QString &name, const QString &url)
 {
     qDebug() << "Add country" << name;
 
-    QUrl urlFromInput = QUrl::fromUserInput(url);
-    m_addCountryQuery->bindValue(QStringLiteral(":id"), id);
+    const QUrl urlFromInput = QUrl::fromUserInput(url);
+    m_addCountryQuery->bindValue(QStringLiteral(":id"), id.value());
     m_addCountryQuery->bindValue(QStringLiteral(":name"), name);
     m_addCountryQuery->bindValue(QStringLiteral(":url"), urlFromInput.toString());
     execute(*m_addCountryQuery);
 
-    Q_EMIT countryAdded(urlFromInput.toString());
+    Q_EMIT countryAdded(id);
 }
 
-void Database::addChannel(const ChannelData &data, const QString &country)
+void Database::addChannel(const ChannelData &data, const CountryId &country)
 {
     qDebug() << "Add channel" << data.m_name;
 
     // store channel per country (ignore if it exists already)
     {
-        m_addCountryChannelQuery->bindValue(QStringLiteral(":id"), country + "_" + data.m_id);
-        m_addCountryChannelQuery->bindValue(QStringLiteral(":country"), country);
-        m_addCountryChannelQuery->bindValue(QStringLiteral(":channel"), data.m_id);
+        m_addCountryChannelQuery->bindValue(QStringLiteral(":id"), country.value() + "_" + data.m_id.value());
+        m_addCountryChannelQuery->bindValue(QStringLiteral(":country"), country.value());
+        m_addCountryChannelQuery->bindValue(QStringLiteral(":channel"), data.m_id.value());
         execute(*m_addCountryChannelQuery);
     }
 
     // store channel (ignore if it exists already)
     {
         QUrl urlFromInput = QUrl::fromUserInput(data.m_url);
-        m_addChannelQuery->bindValue(QStringLiteral(":id"), data.m_id);
+        m_addChannelQuery->bindValue(QStringLiteral(":id"), data.m_id.value());
         m_addChannelQuery->bindValue(QStringLiteral(":name"), data.m_name);
         m_addChannelQuery->bindValue(QStringLiteral(":url"), urlFromInput.toString());
-        m_addChannelQuery->bindValue(QStringLiteral(":country"), country);
+        m_addChannelQuery->bindValue(QStringLiteral(":country"), country.value());
         m_addChannelQuery->bindValue(QStringLiteral(":image"), data.m_image);
         execute(*m_addChannelQuery);
-        Q_EMIT channelAdded(urlFromInput.toString()); // TODO use id
+        Q_EMIT channelAdded(data.m_id);
     }
 }
 
@@ -201,7 +201,7 @@ QVector<ChannelData> Database::channels(bool onlyFavorites)
     QVector<ChannelData> channels;
 
     if (onlyFavorites) {
-        const QVector<QString> &favoriteIds = favorites();
+        const QVector<ChannelId> &favoriteIds = favorites();
 
         QSqlDatabase::database().transaction();
         for (int i = 0; i < favoriteIds.size(); ++i) {
@@ -212,7 +212,7 @@ QVector<ChannelData> Database::channels(bool onlyFavorites)
         execute(*m_channelsQuery);
         while (m_channelsQuery->next()) {
             ChannelData data;
-            data.m_id = m_channelsQuery->value(QStringLiteral("id")).toString();
+            data.m_id = ChannelId(m_channelsQuery->value(QStringLiteral("id")).toString());
             data.m_name = m_channelsQuery->value(QStringLiteral("name")).toString();
             data.m_url = m_channelsQuery->value(QStringLiteral("url")).toString();
             data.m_image = m_channelsQuery->value(QStringLiteral("image")).toString();
@@ -222,17 +222,17 @@ QVector<ChannelData> Database::channels(bool onlyFavorites)
     return channels;
 }
 
-ChannelData Database::channel(const QString &channelId)
+ChannelData Database::channel(const ChannelId &channelId)
 {
     ChannelData data;
     data.m_id = channelId;
 
-    m_channelQuery->bindValue(QStringLiteral(":channelId"), data.m_id);
+    m_channelQuery->bindValue(QStringLiteral(":channelId"), data.m_id.value());
     execute(*m_channelQuery);
     if (!m_channelQuery->next()) {
-        qWarning() << "Failed to query channel" << channelId;
+        qWarning() << "Failed to query channel" << channelId.value();
     } else {
-        data.m_id = m_channelQuery->value(QStringLiteral("id")).toString();
+        data.m_id = ChannelId(m_channelQuery->value(QStringLiteral("id")).toString());
         data.m_name = m_channelQuery->value(QStringLiteral("name")).toString();
         data.m_url = m_channelQuery->value(QStringLiteral("url")).toString();
         data.m_image = m_channelQuery->value(QStringLiteral("image")).toString();
@@ -240,7 +240,7 @@ ChannelData Database::channel(const QString &channelId)
     return data;
 }
 
-void Database::addFavorite(const QString &channelId, bool emitSignal)
+void Database::addFavorite(const ChannelId &channelId, bool emitSignal)
 {
     unsigned int id = 1;
     QSqlQuery idQuery;
@@ -252,7 +252,7 @@ void Database::addFavorite(const QString &channelId, bool emitSignal)
     QSqlQuery query;
     query.prepare(QStringLiteral("INSERT INTO Favorites VALUES (:id, :channel);"));
     query.bindValue(QStringLiteral(":id"), id);
-    query.bindValue(QStringLiteral(":channel"), channelId);
+    query.bindValue(QStringLiteral(":channel"), channelId.value());
     Database::instance().execute(query);
 
     // TODO: remove hack
@@ -261,11 +261,11 @@ void Database::addFavorite(const QString &channelId, bool emitSignal)
     }
 }
 
-void Database::removeFavorite(const QString &channelId, bool emitSignal)
+void Database::removeFavorite(const ChannelId &channelId, bool emitSignal)
 {
     QSqlQuery query;
     query.prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), channelId);
+    query.bindValue(QStringLiteral(":channel"), channelId.value());
     Database::instance().execute(query);
 
     // TODO: remove hack
@@ -284,13 +284,13 @@ size_t Database::favoriteCount()
     return m_favoriteCountQuery->value(0).toInt();
 }
 
-QVector<QString> Database::favorites()
+QVector<ChannelId> Database::favorites()
 {
-    QVector<QString> favorites;
+    QVector<ChannelId> favorites;
 
     execute(*m_favoritesQuery);
     while (m_favoritesQuery->next()) {
-        const QString &channelId = m_favoritesQuery->value(QStringLiteral("channel")).toString();
+        const ChannelId channelId = ChannelId(m_favoritesQuery->value(QStringLiteral("channel")).toString());
         favorites.append(channelId);
     }
     return favorites;
@@ -298,9 +298,9 @@ QVector<QString> Database::favorites()
 
 void Database::addProgram(const ProgramData &data)
 {
-    m_addProgramQuery->bindValue(QStringLiteral(":id"), data.m_id);
+    m_addProgramQuery->bindValue(QStringLiteral(":id"), data.m_id.value());
     m_addProgramQuery->bindValue(QStringLiteral(":url"), data.m_url);
-    m_addProgramQuery->bindValue(QStringLiteral(":channel"), data.m_channelId);
+    m_addProgramQuery->bindValue(QStringLiteral(":channel"), data.m_channelId.value());
     m_addProgramQuery->bindValue(QStringLiteral(":start"), data.m_startTime.toSecsSinceEpoch());
     m_addProgramQuery->bindValue(QStringLiteral(":stop"), data.m_stopTime.toSecsSinceEpoch());
     m_addProgramQuery->bindValue(QStringLiteral(":title"), data.m_title);
@@ -311,9 +311,9 @@ void Database::addProgram(const ProgramData &data)
     execute(*m_addProgramQuery);
 }
 
-void Database::updateProgramDescription(const QString &id, const QString &description)
+void Database::updateProgramDescription(const ProgramId &id, const QString &description)
 {
-    m_updateProgramDescriptionQuery->bindValue(QStringLiteral(":id"), id);
+    m_updateProgramDescriptionQuery->bindValue(QStringLiteral(":id"), id.value());
     m_updateProgramDescriptionQuery->bindValue(QStringLiteral(":description"), description);
 
     execute(*m_updateProgramDescriptionQuery);
@@ -331,9 +331,9 @@ void Database::addPrograms(const QVector<ProgramData> &programs)
     QSqlDatabase::database().commit();
 }
 
-bool Database::programExists(const QString &channelId, qint64 lastTime)
+bool Database::programExists(const ChannelId &channelId, qint64 lastTime)
 {
-    m_programExistsQuery->bindValue(QStringLiteral(":channel"), channelId);
+    m_programExistsQuery->bindValue(QStringLiteral(":channel"), channelId.value());
     m_programExistsQuery->bindValue(QStringLiteral(":lastTime"), lastTime);
     execute(*m_programExistsQuery);
     m_programExistsQuery->next();
@@ -341,9 +341,9 @@ bool Database::programExists(const QString &channelId, qint64 lastTime)
     return m_programExistsQuery->value(0).toInt() > 0;
 }
 
-size_t Database::programCount(const QString &channelId)
+size_t Database::programCount(const ChannelId &channelId)
 {
-    m_programCountQuery->bindValue(QStringLiteral(":channel"), channelId);
+    m_programCountQuery->bindValue(QStringLiteral(":channel"), channelId.value());
     execute(*m_programCountQuery);
     if (!m_programCountQuery->next()) {
         qWarning() << "Failed to query program count";
@@ -352,20 +352,20 @@ size_t Database::programCount(const QString &channelId)
     return m_programCountQuery->value(0).toInt();
 }
 
-QMap<QString, QVector<ProgramData>> Database::programs()
+QMap<ChannelId, QVector<ProgramData>> Database::programs()
 {
-    QMap<QString, QVector<ProgramData>> programs;
+    QMap<ChannelId, QVector<ProgramData>> programs;
 
     execute(*m_programsQuery);
 
     while (m_programsQuery->next()) {
-        const QString &channelId = m_programsQuery->value(QStringLiteral("channel")).toString();
+        const ChannelId channelId = ChannelId(m_programsQuery->value(QStringLiteral("channel")).toString());
         if (!programs.contains(channelId)) {
             programs.insert(channelId, QVector<ProgramData>());
         }
 
         ProgramData data;
-        data.m_id = m_programsQuery->value(QStringLiteral("id")).toString();
+        data.m_id = ProgramId(m_programsQuery->value(QStringLiteral("id")).toString());
         data.m_url = m_programsQuery->value(QStringLiteral("url")).toString();
         data.m_channelId = channelId;
         data.m_startTime.setSecsSinceEpoch(m_programsQuery->value(QStringLiteral("start")).toInt());
@@ -381,18 +381,18 @@ QMap<QString, QVector<ProgramData>> Database::programs()
     return programs;
 }
 
-QVector<ProgramData> Database::programs(const QString &channelId)
+QVector<ProgramData> Database::programs(const ChannelId &channelId)
 {
     QVector<ProgramData> programs;
 
-    m_programsPerChannelQuery->bindValue(QStringLiteral(":channel"), channelId);
+    m_programsPerChannelQuery->bindValue(QStringLiteral(":channel"), channelId.value());
     execute(*m_programsPerChannelQuery);
 
     while (m_programsPerChannelQuery->next()) {
         ProgramData data;
-        data.m_id = m_programsPerChannelQuery->value(QStringLiteral("id")).toString();
+        data.m_id = ProgramId(m_programsPerChannelQuery->value(QStringLiteral("id")).toString());
         data.m_url = m_programsPerChannelQuery->value(QStringLiteral("url")).toString();
-        data.m_channelId = m_programsPerChannelQuery->value(QStringLiteral("channel")).toString();
+        data.m_channelId = ChannelId(m_programsPerChannelQuery->value(QStringLiteral("channel")).toString());
         data.m_startTime.setSecsSinceEpoch(m_programsPerChannelQuery->value(QStringLiteral("start")).toInt());
         data.m_stopTime.setSecsSinceEpoch(m_programsPerChannelQuery->value(QStringLiteral("stop")).toInt());
         data.m_title = m_programsPerChannelQuery->value(QStringLiteral("title")).toString();

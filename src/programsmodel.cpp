@@ -10,6 +10,7 @@
 #include "database.h"
 #include "fetcher.h"
 #include "program.h"
+#include "types.h"
 
 #include <QDebug>
 #include <QSqlQuery>
@@ -18,10 +19,10 @@ ProgramsModel::ProgramsModel(Channel *channel)
     : QAbstractListModel(channel)
     , m_channel(channel)
 {
-    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
-        if (m_channel->id() == id) {
+    connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const ChannelId &id) {
+        if (m_channel->id() == id.value()) {
             beginResetModel();
-            m_programFactory.load(m_channel->id());
+            m_programFactory.load(ChannelId(m_channel->id()));
             for (auto &program : m_programs) {
                 delete program;
             }
@@ -57,12 +58,12 @@ QHash<int, QByteArray> ProgramsModel::roleNames() const
 int ProgramsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return m_programFactory.count(m_channel->id());
+    return m_programFactory.count(ChannelId(m_channel->id()));
 }
 
 void ProgramsModel::loadProgram(int index) const
 {
-    Program *program = m_programFactory.create(m_channel->id(), index);
+    Program *program = m_programFactory.create(ChannelId(m_channel->id()), index);
 
     if (program) {
         // TODO: better show dummy?

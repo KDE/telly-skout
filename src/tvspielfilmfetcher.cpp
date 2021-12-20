@@ -35,7 +35,7 @@ void TvSpielfilmFetcher::fetchFavorites()
 
     Fetcher::instance().emitStartedFetchingFavorites();
 
-    const QVector<QString> favoriteChannels = Database::instance().favorites();
+    const QVector<ChannelId> favoriteChannels = Database::instance().favorites();
     for (int i = 0; i < favoriteChannels.length(); i++) {
         fetchProgram(favoriteChannels.at(i));
     }
@@ -45,7 +45,7 @@ void TvSpielfilmFetcher::fetchFavorites()
 
 void TvSpielfilmFetcher::fetchCountries()
 {
-    const QString id = "tvspielfilm.germany";
+    const CountryId id = CountryId("tvspielfilm.germany");
     const QString name = i18n("Germany");
 
     Fetcher::instance().emitStartedFetchingCountry(id);
@@ -57,9 +57,9 @@ void TvSpielfilmFetcher::fetchCountries()
     Fetcher::instance().emitCountryUpdated(id);
 }
 
-void TvSpielfilmFetcher::fetchCountry(const QString &url, const QString &countryId)
+void TvSpielfilmFetcher::fetchCountry(const QString &url, const CountryId &countryId)
 {
-    qDebug() << "Starting to fetch country (" << countryId << ", " << url << ")";
+    qDebug() << "Starting to fetch country (" << countryId.value() << ", " << url << ")";
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
@@ -89,10 +89,10 @@ void TvSpielfilmFetcher::fetchCountry(const QString &url, const QString &country
                     QDomNode channelNode = channelNodes.at(i);
                     if (channelNode.isElement()) {
                         const QDomNamedNodeMap &attributes = channelNode.attributes();
-                        const QString &id = attributes.namedItem("value").toAttr().value();
+                        const ChannelId id = ChannelId(attributes.namedItem("value").toAttr().value());
 
                         // exclude groups (e.g. "alle Sender" or "g:1")
-                        if (id.length() > 0 && !id.contains("g:")) {
+                        if (id.value().length() > 0 && !id.value().contains("g:")) {
                             const QString &name = channelNode.toElement().text();
                             fetchChannel(id, name, countryId);
                         }
@@ -105,27 +105,27 @@ void TvSpielfilmFetcher::fetchCountry(const QString &url, const QString &country
     });
 }
 
-void TvSpielfilmFetcher::fetchChannel(const QString &channelId, const QString &name, const QString &country)
+void TvSpielfilmFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &country)
 {
     ChannelData data;
     data.m_id = channelId;
     data.m_name = name;
 
     // https://www.tvspielfilm.de/tv-programm/sendungen/das-erste,ARD.html
-    data.m_url = "https://www.tvspielfilm.de/tv-programm/sendungen/" + name.toLower().replace(' ', '-') + "," + channelId + ".html";
+    data.m_url = "https://www.tvspielfilm.de/tv-programm/sendungen/" + name.toLower().replace(' ', '-') + "," + channelId.value() + ".html";
 
     Fetcher::instance().emitStartedFetchingChannel(data.m_id);
 
     // TODO: https://a2.tvspielfilm.de/images/tv/sender/mini/sprite_web_optimized_1616508904.webp
-    data.m_image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.toLower() + ".webp";
+    data.m_image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.value().toLower() + ".webp";
     Database::instance().addChannel(data, country);
 
     Fetcher::instance().emitChannelUpdated(channelId);
 }
 
-void TvSpielfilmFetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
+void TvSpielfilmFetcher::fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url)
 {
-    qDebug() << "Starting to fetch description for" << programId << "(" << url << ")";
+    qDebug() << "Starting to fetch description for" << programId.value() << "(" << url << ")";
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
     connect(reply, &QNetworkReply::finished, this, [this, channelId, programId, url, reply]() {
@@ -142,7 +142,7 @@ void TvSpielfilmFetcher::fetchProgramDescription(const QString &channelId, const
     });
 }
 
-void TvSpielfilmFetcher::fetchProgram(const QString &channelId)
+void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId)
 {
     QDate today = QDate::currentDate();
     QDate yesterday = QDate::currentDate().addDays(-1);
@@ -158,15 +158,15 @@ void TvSpielfilmFetcher::fetchProgram(const QString &channelId)
         }
 
         // https://www.tvspielfilm.de/tv-programm/sendungen/?date=2021-11-09&time=day&channel=ARD
-        const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=" + channelId;
+        const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=" + channelId.value();
         const QString urlDay = url + "&date=" + day.toString("yyyy-MM-dd") + "&page=1";
         fetchProgram(channelId, urlDay);
     }
 }
 
-void TvSpielfilmFetcher::fetchProgram(const QString &channelId, const QString &url)
+void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString &url)
 {
-    qDebug() << "Starting to fetch program for " << channelId << "(" << url << ")";
+    qDebug() << "Starting to fetch program for " << channelId.value() << "(" << url << ")";
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
@@ -174,7 +174,7 @@ void TvSpielfilmFetcher::fetchProgram(const QString &channelId, const QString &u
         if (reply->error()) {
             qWarning() << "Error fetching channel";
             qWarning() << reply->errorString();
-            Fetcher::instance().emitError(channelId, reply->error(), reply->errorString());
+            Fetcher::instance().emitError(channelId.value(), reply->error(), reply->errorString());
         } else {
             QByteArray data = reply->readAll();
             processChannel(data, url, channelId);
@@ -195,7 +195,7 @@ void TvSpielfilmFetcher::fetchProgram(const QString &channelId, const QString &u
     });
 }
 
-void TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString &url, const QString &channelId)
+void TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId)
 {
     QVector<ProgramData> programs;
 
@@ -224,7 +224,7 @@ void TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString 
     Database::instance().addPrograms(programs);
 }
 
-ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const QString &channelId, bool isLast)
+ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const ChannelId &channelId, bool isLast)
 {
     Q_UNUSED(isLast)
 
@@ -243,7 +243,7 @@ ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &pr
         const QString category = programMatch.captured(6);
 
         // channel + start time can be used as ID
-        const QString programId = channelId + "_" + QString::number(startTime.toSecsSinceEpoch());
+        const ProgramId programId = ProgramId(channelId.value() + "_" + QString::number(startTime.toSecsSinceEpoch()));
 
         programData.m_id = programId;
         programData.m_url = descriptionUrl;
@@ -261,7 +261,7 @@ ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &pr
     return programData;
 }
 
-void TvSpielfilmFetcher::processDescription(const QString &descriptionPage, const QString &url, const QString &programId)
+void TvSpielfilmFetcher::processDescription(const QString &descriptionPage, const QString &url, const ProgramId &programId)
 {
     QRegularExpression reDescription("<section class=\\\"broadcast-detail__description\\\">.*?<p>(.*?)</p>");
     reDescription.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);

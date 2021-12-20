@@ -8,6 +8,8 @@
 
 #include <QObject>
 
+#include "types.h"
+
 class ChannelsModel;
 
 class Country : public QObject
@@ -58,7 +60,7 @@ Q_SIGNALS:
     void refreshingChanged(bool refreshing);
 
 private:
-    QString m_id;
+    CountryId m_id;
     QString m_url;
     QString m_name;
     int m_errorId;

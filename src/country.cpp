@@ -24,19 +24,19 @@ Country::Country(int index)
         qWarning() << "Failed to load channel" << index;
     }
 
-    m_id = query.value(QStringLiteral("id")).toString();
+    m_id = CountryId(query.value(QStringLiteral("id")).toString());
     m_url = query.value(QStringLiteral("url")).toString();
     m_name = query.value(QStringLiteral("name")).toString();
 
     m_errorId = 0;
     m_errorString = QLatin1String("");
 
-    connect(&Fetcher::instance(), &Fetcher::startedFetchingCountry, this, [this](const QString &id) {
+    connect(&Fetcher::instance(), &Fetcher::startedFetchingCountry, this, [this](const CountryId &id) {
         if (id == m_id) {
             setRefreshing(true);
         }
     });
-    connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const QString &id) {
+    connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const CountryId &id) {
         if (id == m_id) {
             setRefreshing(false);
             Q_EMIT channelCountChanged();
@@ -45,7 +45,7 @@ Country::Country(int index)
         }
     });
     connect(&Fetcher::instance(), &Fetcher::error, this, [this](const QString &id, int errorId, const QString &errorString) {
-        if (id == m_id) {
+        if (id == m_id.value()) {
             setErrorId(errorId);
             setErrorString(errorString);
             setRefreshing(false);
@@ -61,7 +61,7 @@ Country::~Country()
 
 QString Country::id() const
 {
-    return m_id;
+    return m_id.value();
 }
 
 QString Country::url() const
@@ -78,7 +78,7 @@ int Country::channelCount() const
 {
     QSqlQuery query;
     query.prepare(QStringLiteral("SELECT COUNT (id) FROM CountryChannels where country=:country;"));
-    query.bindValue(QStringLiteral(":country"), m_id);
+    query.bindValue(QStringLiteral(":country"), m_id.value());
     Database::instance().execute(query);
     if (!query.next()) {
         return -1;
@@ -127,14 +127,14 @@ void Country::setErrorString(const QString &errorString)
 
 void Country::refresh()
 {
-    Fetcher::instance().fetchCountry(m_url, ""); // TODO: url -> ID
+    Fetcher::instance().fetchCountry(m_url, m_id); // TODO: url -> ID
 }
 
 void Country::setAsFavorite()
 {
     QSqlQuery query;
     query.prepare(QStringLiteral("UPDATE Countries SET favorite=TRUE WHERE url=:url;"));
-    query.bindValue(QStringLiteral(":url"), m_url);
+    query.bindValue(QStringLiteral(":url"), m_url); // TODO: url -> ID
     Database::instance().execute(query);
 }
 

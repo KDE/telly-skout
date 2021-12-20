@@ -20,14 +20,14 @@ Program::Program(const ProgramData &data)
 {
 }
 
-QString Program::channelId() const
+const QString &Program::channelId() const
 {
-    return m_data.m_channelId;
+    return m_data.m_channelId.value();
 }
 
-QString Program::id() const
+const QString &Program::id() const
 {
-    return m_data.m_id;
+    return m_data.m_id.value();
 }
 
 QString Program::url() const

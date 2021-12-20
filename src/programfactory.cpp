@@ -14,12 +14,12 @@ ProgramFactory::ProgramFactory()
 
     // TODO: possible to do this here and not in ProgramsModel?
     // issues: race condition -> data must be loaded when ProgramsModel::data() is called
-    // connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const QString &id) {
+    // connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const ChannelId &id) {
     //    load(id);
     // });
 }
 
-size_t ProgramFactory::count(const QString &channelId) const
+size_t ProgramFactory::count(const ChannelId &channelId) const
 {
     // try to load if not avaible
     if (!m_programs.contains(channelId)) {
@@ -32,7 +32,7 @@ size_t ProgramFactory::count(const QString &channelId) const
     return m_programs[channelId].size();
 }
 
-Program *ProgramFactory::create(const QString &channelId, int index) const
+Program *ProgramFactory::create(const ChannelId &channelId, int index) const
 {
     // try to load if not avaible
     if (!m_programs.contains(channelId)) {
@@ -45,7 +45,7 @@ Program *ProgramFactory::create(const QString &channelId, int index) const
     return new Program(m_programs[channelId].at(index));
 }
 
-void ProgramFactory::load(const QString &channelId) const
+void ProgramFactory::load(const ChannelId &channelId) const
 {
     if (m_programs.contains(channelId)) {
         m_programs.remove(channelId);

@@ -10,6 +10,7 @@
 
 #include "channeldata.h"
 #include "programdata.h"
+#include "types.h"
 
 #include <QMap>
 #include <QSqlQuery>
@@ -30,28 +31,28 @@ public:
     }
     bool execute(QSqlQuery &query);
     bool execute(const QString &query);
-    Q_INVOKABLE void addCountry(const QString &id, const QString &name, const QString &url);
-    Q_INVOKABLE void addChannel(const ChannelData &data, const QString &country);
+    Q_INVOKABLE void addCountry(const CountryId &id, const QString &name, const QString &url);
+    Q_INVOKABLE void addChannel(const ChannelData &data, const CountryId &country);
     Q_INVOKABLE size_t channelCount();
     Q_INVOKABLE QVector<ChannelData> channels(bool onlyFavorites);
-    Q_INVOKABLE ChannelData channel(const QString &channelId);
-    Q_INVOKABLE void addFavorite(const QString &channelId, bool emitSignal = true);
-    Q_INVOKABLE void removeFavorite(const QString &channelId, bool emitSignal = true);
+    Q_INVOKABLE ChannelData channel(const ChannelId &channelId);
+    Q_INVOKABLE void addFavorite(const ChannelId &channelId, bool emitSignal = true);
+    Q_INVOKABLE void removeFavorite(const ChannelId &channelId, bool emitSignal = true);
     Q_INVOKABLE size_t favoriteCount();
-    Q_INVOKABLE QVector<QString> favorites();
+    Q_INVOKABLE QVector<ChannelId> favorites();
     Q_INVOKABLE void addProgram(const ProgramData &data);
-    Q_INVOKABLE void updateProgramDescription(const QString &id, const QString &description);
+    Q_INVOKABLE void updateProgramDescription(const ProgramId &id, const QString &description);
     Q_INVOKABLE void addPrograms(const QVector<ProgramData> &programs);
-    Q_INVOKABLE bool programExists(const QString &channelId, qint64 lastTime);
-    Q_INVOKABLE size_t programCount(const QString &channelId);
-    Q_INVOKABLE QMap<QString, QVector<ProgramData>> programs();
-    Q_INVOKABLE QVector<ProgramData> programs(const QString &channelId);
+    Q_INVOKABLE bool programExists(const ChannelId &channelId, qint64 lastTime);
+    Q_INVOKABLE size_t programCount(const ChannelId &channelId);
+    Q_INVOKABLE QMap<ChannelId, QVector<ProgramData>> programs();
+    Q_INVOKABLE QVector<ProgramData> programs(const ChannelId &channelId);
 
 Q_SIGNALS:
-    void countryAdded(const QString &url);
-    void channelAdded(const QString &url);
-    void countryDetailsUpdated(const QString &id);
-    void channelDetailsUpdated(const QString &id, bool favorite);
+    void countryAdded(const CountryId &id);
+    void channelAdded(const ChannelId &id);
+    void countryDetailsUpdated(const CountryId &id);
+    void channelDetailsUpdated(const ChannelId &id, bool favorite);
 
 private:
     Database();

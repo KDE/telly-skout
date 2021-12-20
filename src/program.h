@@ -34,8 +34,8 @@ public:
     Program(const ProgramData &data);
     ~Program() = default;
 
-    QString channelId() const;
-    QString id() const;
+    const QString &channelId() const;
+    const QString &id() const;
     QString url() const;
     QString title() const;
     QString description() const;
