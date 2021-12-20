@@ -102,13 +102,6 @@ void ChannelsModel::setFavorite(const QString &channelId, bool favorite)
     }
 }
 
-void ChannelsModel::refreshAll()
-{
-    for (auto &channel : m_channels) {
-        channel->refresh();
-    }
-}
-
 void ChannelsModel::move(int from, int to)
 {
     const int destination = to > from ? to + 1 : to;

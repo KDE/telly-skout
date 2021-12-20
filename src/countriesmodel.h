@@ -19,7 +19,6 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex &parent) const override;
-    Q_INVOKABLE void refreshAll();
 
 private:
     void loadCountry(int index) const;

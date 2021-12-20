@@ -27,10 +27,10 @@ public:
     void fetchFavorites();
     void fetchCountries();
     void fetchCountry(const QString &url, const CountryId &countryId);
-    void fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &country);
     void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url);
 
 private:
+    void fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &country);
     void fetchProgram(const ChannelId &channelId);
     void fetchProgram(const ChannelId &channelId, const QString &url);
     void processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId);

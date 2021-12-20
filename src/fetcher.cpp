@@ -48,11 +48,6 @@ void Fetcher::fetchCountry(const QString &url, const CountryId &countryId)
     m_tvSpielfilmFetcher.fetchCountry(url, countryId);
 }
 
-void Fetcher::fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &country)
-{
-    m_tvSpielfilmFetcher.fetchChannel(channelId, name, country);
-}
-
 void Fetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
 {
     m_tvSpielfilmFetcher.fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url);

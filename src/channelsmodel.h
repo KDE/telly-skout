@@ -26,7 +26,6 @@ public:
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex &parent) const override;
     Q_INVOKABLE void setFavorite(const QString &channelId, bool favorite); // TODO type safe IDs in qml
-    Q_INVOKABLE void refreshAll();
     Q_INVOKABLE void move(int from, int to);
 
     bool onlyFavorites() const;

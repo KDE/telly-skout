@@ -162,11 +162,6 @@ void Channel::setErrorString(const QString &errorString)
     Q_EMIT errorStringChanged(m_errorString);
 }
 
-void Channel::refresh()
-{
-    Fetcher::instance().fetchChannel(m_data.m_id, m_data.m_url, CountryId("")); // TODO: url -> ID
-}
-
 void Channel::remove()
 {
     // Delete Countries

@@ -125,11 +125,6 @@ void Country::setErrorString(const QString &errorString)
     Q_EMIT errorStringChanged(m_errorString);
 }
 
-void Country::refresh()
-{
-    Fetcher::instance().fetchCountry(m_url, m_id); // TODO: url -> ID
-}
-
 void Country::setAsFavorite()
 {
     QSqlQuery query;

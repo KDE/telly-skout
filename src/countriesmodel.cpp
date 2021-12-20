@@ -75,10 +75,3 @@ void CountriesModel::loadCountry(int index) const
 {
     m_countries += new Country(index);
 }
-
-void CountriesModel::refreshAll()
-{
-    for (auto &country : m_countries) {
-        country->refresh();
-    }
-}
