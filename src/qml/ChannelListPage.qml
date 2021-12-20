@@ -39,6 +39,7 @@ Kirigami.ScrollablePage {
 
         anchors.fill: parent
         model: root.onlyFavorites ? channelsModel : proxyModel
+        currentIndex: -1 // do not select first list item
 
         ChannelsProxyModel {
             id: proxyModel
