@@ -73,7 +73,6 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<ProgramsModel>("org.kde.TellySkout", 1, 0, "ProgramsModel", QStringLiteral("Get from Channel"));
 
     qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "Fetcher", &Fetcher::instance());
-    qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "Database", &Database::instance());
 
     // setup engine
     QQmlApplicationEngine engine;
