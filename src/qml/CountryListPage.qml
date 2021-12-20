@@ -15,7 +15,7 @@ Kirigami.ScrollablePage {
 
     property string lastCountry: ""
 
-    title: "Select Favorites"
+    title: i18n("Select Favorites")
     Component.onCompleted: {
         Fetcher.fetchCountries();
     }
