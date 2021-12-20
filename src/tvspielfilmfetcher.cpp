@@ -67,7 +67,7 @@ void TvSpielfilmFetcher::fetchCountry(const QString &url, const CountryId &count
         if (reply->error()) {
             qWarning() << "Error fetching country";
             qWarning() << reply->errorString();
-            Fetcher::instance().emitError(url, reply->error(), reply->errorString()); // TODO: error handling for country fetching (see channel.cpp)
+            Fetcher::instance().emitErrorFetchingCountry(countryId, Error(reply->error(), reply->errorString()));
         } else {
             QByteArray data = reply->readAll();
 
@@ -176,7 +176,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
         if (reply->error()) {
             qWarning() << "Error fetching channel";
             qWarning() << reply->errorString();
-            Fetcher::instance().emitError(channelId.value(), reply->error(), reply->errorString());
+            Fetcher::instance().emitErrorFetchingChannel(channelId, Error(reply->error(), reply->errorString()));
         } else {
             QByteArray data = reply->readAll();
             processChannel(data, url, channelId);

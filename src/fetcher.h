@@ -64,7 +64,10 @@ private:
     void emitChannelUpdated(const ChannelId &id);
     void emitCountryDetailsUpdated(const CountryId &id); // TODO: emit
     void emitChannelDetailsUpdated(const ChannelId &id, const QString &image);
-    void emitError(const QString &id, int errorId, const QString &errorString);
+    void emitErrorFetching(const Error &error);
+    void emitErrorFetchingCountry(const CountryId &id, const Error &error);
+    void emitErrorFetchingChannel(const ChannelId &id, const Error &error);
+    void emitErrorFetchingProgram(const ProgramId &id, const Error &error);
     void emitImageDownloadFinished(const QString &url);
 
 Q_SIGNALS:
@@ -76,6 +79,9 @@ Q_SIGNALS:
     void channelUpdated(const ChannelId &id);
     void countryDetailsUpdated(const CountryId &id); // TODO: emit
     void channelDetailsUpdated(const ChannelId &id, const QString &image);
-    void error(const QString &id, int errorId, const QString &errorString);
+    void errorFetching(const Error &error);
+    void errorFetchingCountry(const CountryId &id, const Error &error);
+    void errorFetchingChannel(const ChannelId &id, const Error &error);
+    void errorFetchingProgram(const ProgramId &id, const Error &error);
     void imageDownloadFinished(const QString &url);
 };

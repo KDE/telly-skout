@@ -17,9 +17,6 @@ Country::Country(CountryData data)
     : QObject(nullptr)
     , m_data(data)
 {
-    m_errorId = 0;
-    m_errorString = QLatin1String("");
-
     connect(&Fetcher::instance(), &Fetcher::startedFetchingCountry, this, [this](const CountryId &id) {
         if (id == m_data.m_id) {
             setRefreshing(true);
@@ -29,14 +26,12 @@ Country::Country(CountryData data)
         if (id == m_data.m_id) {
             setRefreshing(false);
             Q_EMIT channelCountChanged();
-            setErrorId(0);
-            setErrorString(QLatin1String(""));
+            m_error.reset();
         }
     });
-    connect(&Fetcher::instance(), &Fetcher::error, this, [this](const QString &id, int errorId, const QString &errorString) {
-        if (id == m_data.m_id.value()) {
-            setErrorId(errorId);
-            setErrorString(errorString);
+    connect(&Fetcher::instance(), &Fetcher::errorFetchingCountry, this, [this](const CountryId &id, const Error &error) {
+        if (id == m_data.m_id) {
+            setError(error);
             setRefreshing(false);
         }
     });
@@ -82,12 +77,12 @@ bool Country::refreshing() const
 
 int Country::errorId() const
 {
-    return m_errorId;
+    return m_error.m_id;
 }
 
 QString Country::errorString() const
 {
-    return m_errorString;
+    return m_error.m_message;
 }
 
 void Country::setName(const QString &name)
@@ -102,14 +97,9 @@ void Country::setRefreshing(bool refreshing)
     Q_EMIT refreshingChanged(m_refreshing);
 }
 
-void Country::setErrorId(int errorId)
+void Country::setError(const Error &error)
 {
-    m_errorId = errorId;
-    Q_EMIT errorIdChanged(m_errorId);
-}
-
-void Country::setErrorString(const QString &errorString)
-{
-    m_errorString = errorString;
-    Q_EMIT errorStringChanged(m_errorString);
+    m_error = error;
+    Q_EMIT errorIdChanged(m_error.m_id);
+    Q_EMIT errorStringChanged(m_error.m_message);
 }

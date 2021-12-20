@@ -35,9 +35,6 @@ Channel::Channel(const ChannelData &data)
         m_countries.push_back(countryQuery.value(QStringLiteral("country")).toString());
     }
 
-    m_errorId = 0;
-    m_errorString = QLatin1String("");
-
     connect(&Fetcher::instance(), &Fetcher::startedFetchingChannel, this, [this](const ChannelId &id) {
         if (id == m_data.m_id) {
             setRefreshing(true);
@@ -47,14 +44,12 @@ Channel::Channel(const ChannelData &data)
         if (id == m_data.m_id) {
             setRefreshing(false);
             Q_EMIT programChanged();
-            setErrorId(0);
-            setErrorString(QLatin1String(""));
+            m_error.reset();
         }
     });
-    connect(&Fetcher::instance(), &Fetcher::error, this, [this](const QString &id, int errorId, const QString &errorString) {
-        if (id == m_data.m_id.value()) {
-            setErrorId(errorId);
-            setErrorString(errorString);
+    connect(&Fetcher::instance(), &Fetcher::errorFetchingChannel, this, [this](const ChannelId &id, const Error &error) {
+        if (id == m_data.m_id) {
+            setError(error);
             setRefreshing(false);
         }
     });
@@ -109,12 +104,12 @@ bool Channel::refreshing() const
 
 int Channel::errorId() const
 {
-    return m_errorId;
+    return m_error.m_id;
 }
 
 QString Channel::errorString() const
 {
-    return m_errorString;
+    return m_error.m_message;
 }
 
 void Channel::setName(const QString &name)
@@ -150,14 +145,9 @@ void Channel::setRefreshing(bool refreshing)
     Q_EMIT refreshingChanged(m_refreshing);
 }
 
-void Channel::setErrorId(int errorId)
+void Channel::setError(const Error &error)
 {
-    m_errorId = errorId;
-    Q_EMIT errorIdChanged(m_errorId);
-}
-
-void Channel::setErrorString(const QString &errorString)
-{
-    m_errorString = errorString;
-    Q_EMIT errorStringChanged(m_errorString);
+    m_error = error;
+    Q_EMIT errorIdChanged(m_error.m_id);
+    Q_EMIT errorStringChanged(m_error.m_message);
 }

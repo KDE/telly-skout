@@ -47,3 +47,28 @@ private:
 using ChannelId = QStringId<ChannelTag>;
 using CountryId = QStringId<CountryTag>;
 using ProgramId = QStringId<ProgramTag>;
+
+class Error
+{
+public:
+    Error()
+        : m_id(0)
+        , m_message("")
+    {
+    }
+
+    Error(int id, const QString &message)
+        : m_id(id)
+        , m_message(message)
+    {
+    }
+
+    void reset()
+    {
+        m_id = 0;
+        m_message = "";
+    }
+
+    int m_id;
+    QString m_message;
+};

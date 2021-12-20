@@ -56,7 +56,7 @@ void XmlTvSeFetcher::fetchCountries()
         if (reply->error()) {
             qWarning() << "Error fetching countries";
             qWarning() << reply->errorString();
-            Fetcher::instance().emitError(url, reply->error(), reply->errorString()); // TODO: error handling for countries fetching (see channel.cpp)
+            Fetcher::instance().emitErrorFetching(Error(reply->error(), reply->errorString()));
         } else {
             QByteArray data = reply->readAll();
 
@@ -89,7 +89,7 @@ void XmlTvSeFetcher::fetchCountry(const QString &url, const CountryId &countryId
         if (reply->error()) {
             qWarning() << "Error fetching country";
             qWarning() << reply->errorString();
-            Fetcher::instance().emitError(url, reply->error(), reply->errorString()); // TODO: error handling for country fetching (see channel.cpp)
+            Fetcher::instance().emitErrorFetchingCountry(countryId, Error(reply->error(), reply->errorString()));
         } else {
             QByteArray data = reply->readAll();
 
@@ -186,7 +186,7 @@ void XmlTvSeFetcher::fetchProgram(const ChannelId &channelId)
             if (reply->error()) {
                 qWarning() << "Error fetching channel";
                 qWarning() << reply->errorString();
-                Fetcher::instance().emitError(channelId.value(), reply->error(), reply->errorString());
+                Fetcher::instance().emitErrorFetchingChannel(channelId, Error(reply->error(), reply->errorString()));
             } else {
                 QByteArray data = reply->readAll();
 

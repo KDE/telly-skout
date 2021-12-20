@@ -26,8 +26,8 @@ class Channel : public QObject
     Q_PROPERTY(bool favorite READ favorite WRITE setFavorite NOTIFY favoriteChanged)
     Q_PROPERTY(QVector<QString> countries READ countries WRITE setCountries NOTIFY countriesChanged)
     Q_PROPERTY(bool refreshing READ refreshing WRITE setRefreshing NOTIFY refreshingChanged)
-    Q_PROPERTY(int errorId READ errorId WRITE setErrorId NOTIFY errorIdChanged)
-    Q_PROPERTY(QString errorString READ errorString WRITE setErrorString NOTIFY errorStringChanged)
+    Q_PROPERTY(int errorId READ errorId NOTIFY errorIdChanged)
+    Q_PROPERTY(QString errorString READ errorString NOTIFY errorStringChanged)
     Q_PROPERTY(ProgramsModel *programsModel MEMBER m_programsModel CONSTANT)
 
 public:
@@ -52,8 +52,6 @@ public:
     void setFavorite(bool favorite);
     void setCountries(const QVector<QString> &countries);
     void setRefreshing(bool refreshing);
-    void setErrorId(int errorId);
-    void setErrorString(const QString &errorString);
 
 Q_SIGNALS:
     void nameChanged(const QString &name);
@@ -63,18 +61,19 @@ Q_SIGNALS:
     void deleteAfterCountChanged(int count);
     void deleteAfterTypeChanged(int type);
     void programChanged();
-    void errorIdChanged(int &errorId);
+    void errorIdChanged(int errorId);
     void errorStringChanged(const QString &errorString);
 
     void refreshingChanged(bool refreshing);
 
 private:
+    void setError(const Error &error);
+
     ChannelData m_data;
     bool m_favorite;
     QVector<QString> m_countries;
-    int m_errorId;
-    QString m_errorString;
     ProgramsModel *m_programsModel;
+    Error m_error;
 
     bool m_refreshing = false;
 };

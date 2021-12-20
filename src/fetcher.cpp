@@ -160,9 +160,24 @@ void Fetcher::emitChannelDetailsUpdated(const ChannelId &id, const QString &imag
     Q_EMIT channelDetailsUpdated(id, image);
 }
 
-void Fetcher::emitError(const QString &id, int errorId, const QString &errorString)
+void Fetcher::emitErrorFetching(const Error &error)
 {
-    Q_EMIT error(id, errorId, errorString);
+    Q_EMIT errorFetching(error);
+}
+
+void Fetcher::emitErrorFetchingCountry(const CountryId &id, const Error &error)
+{
+    Q_EMIT errorFetchingCountry(id, error);
+}
+
+void Fetcher::emitErrorFetchingChannel(const ChannelId &id, const Error &error)
+{
+    Q_EMIT errorFetchingChannel(id, error);
+}
+
+void Fetcher::emitErrorFetchingProgram(const ProgramId &id, const Error &error)
+{
+    Q_EMIT errorFetchingProgram(id, error);
 }
 
 void Fetcher::emitImageDownloadFinished(const QString &url)

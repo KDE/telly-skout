@@ -22,8 +22,8 @@ class Country : public QObject
     Q_PROPERTY(QString url READ url CONSTANT)
     Q_PROPERTY(bool refreshing READ refreshing WRITE setRefreshing NOTIFY refreshingChanged)
     Q_PROPERTY(int channelCount READ channelCount NOTIFY channelCountChanged)
-    Q_PROPERTY(int errorId READ errorId WRITE setErrorId NOTIFY errorIdChanged)
-    Q_PROPERTY(QString errorString READ errorString WRITE setErrorString NOTIFY errorStringChanged)
+    Q_PROPERTY(int errorId READ errorId NOTIFY errorIdChanged)
+    Q_PROPERTY(QString errorString READ errorString NOTIFY errorStringChanged)
     Q_PROPERTY(ChannelsModel *channels MEMBER m_channels CONSTANT)
 
 public:
@@ -42,8 +42,6 @@ public:
 
     void setName(const QString &name);
     void setRefreshing(bool refreshing);
-    void setErrorId(int errorId);
-    void setErrorString(const QString &errorString);
 
 Q_SIGNALS:
     void nameChanged(const QString &name);
@@ -51,16 +49,17 @@ Q_SIGNALS:
     void deleteAfterCountChanged(int count);
     void deleteAfterTypeChanged(int type);
     void channelCountChanged();
-    void errorIdChanged(int &errorId);
+    void errorIdChanged(int errorId);
     void errorStringChanged(const QString &errorString);
 
     void refreshingChanged(bool refreshing);
 
 private:
+    void setError(const Error &error);
+
     CountryData m_data;
-    int m_errorId;
-    QString m_errorString;
     ChannelsModel *m_channels;
+    Error m_error;
 
     bool m_refreshing = false;
 };
