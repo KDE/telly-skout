@@ -113,11 +113,3 @@ void Country::setErrorString(const QString &errorString)
     m_errorString = errorString;
     Q_EMIT errorStringChanged(m_errorString);
 }
-
-void Country::setAsFavorite()
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("UPDATE Countries SET favorite=TRUE WHERE url=:url;"));
-    query.bindValue(QStringLiteral(":url"), m_data.m_url); // TODO: url -> ID
-    Database::instance().execute(query);
-}

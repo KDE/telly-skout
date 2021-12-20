@@ -45,8 +45,6 @@ public:
     void setErrorId(int errorId);
     void setErrorString(const QString &errorString);
 
-    void setAsFavorite();
-
 Q_SIGNALS:
     void nameChanged(const QString &name);
     void countriesChanged(const QVector<Country *> &countries);
