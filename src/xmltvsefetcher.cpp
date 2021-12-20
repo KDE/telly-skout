@@ -172,14 +172,8 @@ void XmlTvSeFetcher::fetchProgram(const ChannelId &channelId)
         // check if program is available already
         const QDateTime utcTime(day, QTime(), Qt::UTC);
         const qint64 lastTime = utcTime.addDays(1).toSecsSinceEpoch() - 1;
-        QSqlQuery queryProgramAvailable;
-        queryProgramAvailable.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
-        queryProgramAvailable.bindValue(QStringLiteral(":channel"), "http://xmltv.xmltv.se/" + channelId.value()); // TODO use channel ID in Programs
-        queryProgramAvailable.bindValue(QStringLiteral(":lastTime"), lastTime);
-        Database::instance().execute(queryProgramAvailable);
-        queryProgramAvailable.next();
 
-        if (queryProgramAvailable.value(0).toInt() > 0) {
+        if (Database::instance().programExists(channelId, lastTime)) {
             continue;
         }
 
