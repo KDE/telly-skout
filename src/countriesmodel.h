@@ -8,6 +8,8 @@
 
 #include <QAbstractListModel>
 
+#include "countryfactory.h"
+
 class Country;
 
 class CountriesModel : public QAbstractListModel
@@ -24,4 +26,5 @@ private:
     void loadCountry(int index) const;
 
     mutable QVector<Country *> m_countries;
+    CountryFactory m_countryFactory;
 };

@@ -5,7 +5,6 @@
 #include "fetcher.h"
 
 #include <QDebug>
-#include <QSqlQuery>
 
 ChannelFactory::ChannelFactory()
     : QObject(nullptr)

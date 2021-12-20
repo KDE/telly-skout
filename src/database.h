@@ -9,6 +9,7 @@
 #include <QObject>
 
 #include "channeldata.h"
+#include "countrydata.h"
 #include "programdata.h"
 #include "types.h"
 
@@ -32,6 +33,7 @@ public:
     bool execute(QSqlQuery &query);
     bool execute(const QString &query);
     Q_INVOKABLE void addCountry(const CountryId &id, const QString &name, const QString &url);
+    Q_INVOKABLE QVector<CountryData> countries();
     Q_INVOKABLE void addChannel(const ChannelData &data, const CountryId &country);
     Q_INVOKABLE size_t channelCount();
     Q_INVOKABLE QVector<ChannelData> channels(bool onlyFavorites);
@@ -62,6 +64,7 @@ private:
     void cleanup();
 
     QSqlQuery *m_addCountryQuery;
+    QSqlQuery *m_countriesQuery;
     QSqlQuery *m_addCountryChannelQuery;
     QSqlQuery *m_addChannelQuery;
     QSqlQuery *m_channelCountQuery;

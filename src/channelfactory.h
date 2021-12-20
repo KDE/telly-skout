@@ -4,7 +4,6 @@
 
 #include "channeldata.h"
 
-#include <QMap>
 #include <QVector>
 
 class Channel;

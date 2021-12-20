@@ -43,6 +43,8 @@ Database::Database()
     // prepare queries once (faster)
     m_addCountryQuery = new QSqlQuery(db);
     m_addCountryQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Countries VALUES (:id, :name, :url);"));
+    m_countriesQuery = new QSqlQuery(db);
+    m_countriesQuery->prepare(QStringLiteral("SELECT * FROM Countries ORDER BY name COLLATE NOCASE;"));
     m_addCountryChannelQuery = new QSqlQuery(db);
     m_addCountryChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
     m_addChannelQuery = new QSqlQuery(db);
@@ -159,6 +161,21 @@ void Database::addCountry(const CountryId &id, const QString &name, const QStrin
     execute(*m_addCountryQuery);
 
     Q_EMIT countryAdded(id);
+}
+
+QVector<CountryData> Database::countries()
+{
+    QVector<CountryData> countries;
+
+    execute(*m_countriesQuery);
+    while (m_countriesQuery->next()) {
+        CountryData data;
+        data.m_id = CountryId(m_countriesQuery->value(QStringLiteral("id")).toString());
+        data.m_name = m_countriesQuery->value(QStringLiteral("name")).toString();
+        data.m_url = m_countriesQuery->value(QStringLiteral("url")).toString();
+        countries.append(data);
+    }
+    return countries;
 }
 
 void Database::addChannel(const ChannelData &data, const CountryId &country)

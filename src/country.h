@@ -27,7 +27,7 @@ class Country : public QObject
     Q_PROPERTY(ChannelsModel *channels MEMBER m_channels CONSTANT)
 
 public:
-    Country(int index);
+    Country(CountryData data);
 
     ~Country();
 

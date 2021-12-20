@@ -13,21 +13,10 @@
 #include <QDebug>
 #include <QSqlQuery>
 
-Country::Country(int index)
+Country::Country(CountryData data)
     : QObject(nullptr)
+    , m_data(data)
 {
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT * FROM Countries ORDER BY name LIMIT 1 OFFSET :index;"));
-    query.bindValue(QStringLiteral(":index"), index);
-    Database::instance().execute(query);
-    if (!query.next()) {
-        qWarning() << "Failed to load channel" << index;
-    }
-
-    m_data.m_id = CountryId(query.value(QStringLiteral("id")).toString());
-    m_data.m_url = query.value(QStringLiteral("url")).toString();
-    m_data.m_name = query.value(QStringLiteral("name")).toString();
-
     m_errorId = 0;
     m_errorString = QLatin1String("");
 
