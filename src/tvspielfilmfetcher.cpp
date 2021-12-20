@@ -107,20 +107,22 @@ void TvSpielfilmFetcher::fetchCountry(const QString &url, const CountryId &count
 
 void TvSpielfilmFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &country)
 {
-    ChannelData data;
-    data.m_id = channelId;
-    data.m_name = name;
+    if (!Database::instance().channelExists(channelId)) {
+        ChannelData data;
+        data.m_id = channelId;
+        data.m_name = name;
 
-    // https://www.tvspielfilm.de/tv-programm/sendungen/das-erste,ARD.html
-    data.m_url = "https://www.tvspielfilm.de/tv-programm/sendungen/" + name.toLower().replace(' ', '-') + "," + channelId.value() + ".html";
+        // https://www.tvspielfilm.de/tv-programm/sendungen/das-erste,ARD.html
+        data.m_url = "https://www.tvspielfilm.de/tv-programm/sendungen/" + name.toLower().replace(' ', '-') + "," + channelId.value() + ".html";
 
-    Fetcher::instance().emitStartedFetchingChannel(data.m_id);
+        Fetcher::instance().emitStartedFetchingChannel(data.m_id);
 
-    // TODO: https://a2.tvspielfilm.de/images/tv/sender/mini/sprite_web_optimized_1616508904.webp
-    data.m_image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.value().toLower() + ".webp";
-    Database::instance().addChannel(data, country);
+        // TODO: https://a2.tvspielfilm.de/images/tv/sender/mini/sprite_web_optimized_1616508904.webp
+        data.m_image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.value().toLower() + ".webp";
+        Database::instance().addChannel(data, country);
 
-    Fetcher::instance().emitChannelUpdated(channelId);
+        Fetcher::instance().emitChannelUpdated(channelId);
+    }
 }
 
 void TvSpielfilmFetcher::fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url)

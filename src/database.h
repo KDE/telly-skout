@@ -40,6 +40,7 @@ public:
 
     void addChannel(const ChannelData &data, const CountryId &country);
     size_t channelCount();
+    bool channelExists(const ChannelId &id);
     QVector<ChannelData> channels(bool onlyFavorites);
     ChannelData channel(const ChannelId &channelId);
 
@@ -78,6 +79,7 @@ private:
 
     QSqlQuery *m_addChannelQuery;
     QSqlQuery *m_channelCountQuery;
+    QSqlQuery *m_channelExistsQuery;
     QSqlQuery *m_channelsQuery;
     QSqlQuery *m_channelQuery;
 

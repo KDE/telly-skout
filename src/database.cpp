@@ -57,6 +57,8 @@ Database::Database()
     m_addChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Channels VALUES (:id, :name, :url, :image);"));
     m_channelCountQuery = new QSqlQuery(db);
     m_channelCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Channels;"));
+    m_channelExistsQuery = new QSqlQuery(db);
+    m_channelExistsQuery->prepare(QStringLiteral("SELECT COUNT () FROM Channels WHERE id=:id;"));
     m_channelsQuery = new QSqlQuery(db);
     m_channelsQuery->prepare(QStringLiteral("SELECT * FROM Channels ORDER BY name COLLATE NOCASE;"));
     m_channelQuery = new QSqlQuery(db);
@@ -207,26 +209,28 @@ QVector<CountryData> Database::countries()
 
 void Database::addChannel(const ChannelData &data, const CountryId &country)
 {
-    qDebug() << "Add channel" << data.m_name;
+    if (!channelExists(data.m_id)) {
+        qDebug() << "Add channel" << data.m_name;
 
-    // store channel per country (ignore if it exists already)
-    {
-        m_addCountryChannelQuery->bindValue(QStringLiteral(":id"), country.value() + "_" + data.m_id.value());
-        m_addCountryChannelQuery->bindValue(QStringLiteral(":country"), country.value());
-        m_addCountryChannelQuery->bindValue(QStringLiteral(":channel"), data.m_id.value());
-        execute(*m_addCountryChannelQuery);
-    }
+        // store channel per country
+        {
+            m_addCountryChannelQuery->bindValue(QStringLiteral(":id"), country.value() + "_" + data.m_id.value());
+            m_addCountryChannelQuery->bindValue(QStringLiteral(":country"), country.value());
+            m_addCountryChannelQuery->bindValue(QStringLiteral(":channel"), data.m_id.value());
+            execute(*m_addCountryChannelQuery);
+        }
 
-    // store channel (ignore if it exists already)
-    {
-        QUrl urlFromInput = QUrl::fromUserInput(data.m_url);
-        m_addChannelQuery->bindValue(QStringLiteral(":id"), data.m_id.value());
-        m_addChannelQuery->bindValue(QStringLiteral(":name"), data.m_name);
-        m_addChannelQuery->bindValue(QStringLiteral(":url"), urlFromInput.toString());
-        m_addChannelQuery->bindValue(QStringLiteral(":country"), country.value());
-        m_addChannelQuery->bindValue(QStringLiteral(":image"), data.m_image);
-        execute(*m_addChannelQuery);
-        Q_EMIT channelAdded(data.m_id);
+        // store channel
+        {
+            QUrl urlFromInput = QUrl::fromUserInput(data.m_url);
+            m_addChannelQuery->bindValue(QStringLiteral(":id"), data.m_id.value());
+            m_addChannelQuery->bindValue(QStringLiteral(":name"), data.m_name);
+            m_addChannelQuery->bindValue(QStringLiteral(":url"), urlFromInput.toString());
+            m_addChannelQuery->bindValue(QStringLiteral(":country"), country.value());
+            m_addChannelQuery->bindValue(QStringLiteral(":image"), data.m_image);
+            execute(*m_addChannelQuery);
+            Q_EMIT channelAdded(data.m_id);
+        }
     }
 }
 
@@ -238,6 +242,15 @@ size_t Database::channelCount()
         return 0;
     }
     return m_channelCountQuery->value(0).toInt();
+}
+
+bool Database::channelExists(const ChannelId &id)
+{
+    m_channelExistsQuery->bindValue(QStringLiteral(":id"), id.value());
+    execute(*m_channelExistsQuery);
+    m_channelExistsQuery->next();
+
+    return m_channelExistsQuery->value(0).toInt() > 0;
 }
 
 QVector<ChannelData> Database::channels(bool onlyFavorites)
