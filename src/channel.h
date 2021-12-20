@@ -55,8 +55,6 @@ public:
     void setErrorId(int errorId);
     void setErrorString(const QString &errorString);
 
-    void remove();
-
 Q_SIGNALS:
     void nameChanged(const QString &name);
     void imageChanged(const QString &image);

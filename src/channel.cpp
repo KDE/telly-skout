@@ -161,27 +161,3 @@ void Channel::setErrorString(const QString &errorString)
     m_errorString = errorString;
     Q_EMIT errorStringChanged(m_errorString);
 }
-
-void Channel::remove()
-{
-    // Delete Countries
-    QSqlQuery query;
-    query.prepare(QStringLiteral("DELETE FROM Countries WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_data.m_url); // TODO: url -> ID
-    Database::instance().execute(query);
-
-    // Delete Programs
-    query.prepare(QStringLiteral("DELETE FROM Programs WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_data.m_url); // TODO: url -> ID
-    Database::instance().execute(query);
-
-    // Delete Favorite
-    query.prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_data.m_id.value());
-    Database::instance().execute(query);
-
-    // Delete Channel
-    query.prepare(QStringLiteral("DELETE FROM Channels WHERE url=:url;"));
-    query.bindValue(QStringLiteral(":url"), m_data.m_url); // TODO: url -> ID
-    Database::instance().execute(query);
-}
