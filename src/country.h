@@ -8,6 +8,7 @@
 
 #include <QObject>
 
+#include "countrydata.h"
 #include "types.h"
 
 class ChannelsModel;
@@ -17,8 +18,8 @@ class Country : public QObject
     Q_OBJECT
 
     Q_PROPERTY(QString id READ id CONSTANT)
-    Q_PROPERTY(QString url READ url CONSTANT)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString url READ url CONSTANT)
     Q_PROPERTY(bool refreshing READ refreshing WRITE setRefreshing NOTIFY refreshingChanged)
     Q_PROPERTY(int channelCount READ channelCount NOTIFY channelCountChanged)
     Q_PROPERTY(int errorId READ errorId WRITE setErrorId NOTIFY errorIdChanged)
@@ -31,8 +32,8 @@ public:
     ~Country();
 
     QString id() const;
-    QString url() const;
     QString name() const;
+    QString url() const;
     int channelCount() const;
     int errorId() const;
     QString errorString() const;
@@ -59,9 +60,7 @@ Q_SIGNALS:
     void refreshingChanged(bool refreshing);
 
 private:
-    CountryId m_id;
-    QString m_url;
-    QString m_name;
+    CountryData m_data;
     int m_errorId;
     QString m_errorString;
     ChannelsModel *m_channels;
