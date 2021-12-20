@@ -46,7 +46,6 @@ public:
     void setErrorString(const QString &errorString);
 
     void setAsFavorite();
-    void remove();
 
 Q_SIGNALS:
     void nameChanged(const QString &name);

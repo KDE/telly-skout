@@ -121,22 +121,3 @@ void Country::setAsFavorite()
     query.bindValue(QStringLiteral(":url"), m_data.m_url); // TODO: url -> ID
     Database::instance().execute(query);
 }
-
-void Country::remove()
-{
-    // Delete Countries
-    QSqlQuery query;
-    query.prepare(QStringLiteral("DELETE FROM Countries WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_data.m_url); // TODO: url -> ID
-    Database::instance().execute(query);
-
-    // Delete Programs
-    query.prepare(QStringLiteral("DELETE FROM Programs WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), m_data.m_url); // TODO: url -> ID
-    Database::instance().execute(query);
-
-    // Delete Country
-    query.prepare(QStringLiteral("DELETE FROM Countries WHERE url=:url;"));
-    query.bindValue(QStringLiteral(":url"), m_data.m_url); // TODO: url -> ID
-    Database::instance().execute(query);
-}
