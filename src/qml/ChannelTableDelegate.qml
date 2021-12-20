@@ -15,6 +15,7 @@ Rectangle
     property int pxPerMin
     property date startTime
     property date stopTime
+    property real currentTimestamp
 
     width: 200
     // start always at startTime, even if program starts earlier
@@ -29,12 +30,11 @@ Rectangle
     {
         width: parent.width
         color: Kirigami.Theme.focusColor
+        visible: (program.start <= currentTimestamp) && (program.stop >= currentTimestamp)
+        height: (currentTimestamp - program.start) / 60000 * root.pxPerMin
 
-        Component.onCompleted: {
-            const now = new Date().getTime()
-            visible = (program.start <= now) && (program.stop >= now)
-            height = (now - program.start) / 60000 * root.pxPerMin
-
+        Component.onCompleted:
+        {
             // update overlay if it is open (for this program)
             if (root.overlay.sheetOpen && root.overlay.programId === program.id)
             {

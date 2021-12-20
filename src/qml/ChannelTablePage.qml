@@ -7,14 +7,30 @@ import org.kde.kirigami 2.12 as Kirigami
 
 import org.kde.TellySkout 1.0
 
-Kirigami.Page {
+Kirigami.Page
+{
     id: root
 
     title: i18n("Favorites")
 
     property int windowHeight: 0
+    property real currentTimestamp: 0
 
     padding: 0
+
+    function updateTime()
+    {
+        var now = new Date()
+        currentTimestamp = now.getTime()
+    }
+
+    Timer
+    {
+        interval: 60000
+        repeat: true
+        running: true
+        onTriggered: updateTime()
+    }
 
     Kirigami.PlaceholderMessage {
         visible: contentRepeater.count === 0
@@ -110,6 +126,7 @@ Kirigami.Page {
                             pxPerMin: channelTable.pxPerMin
                             startTime: proxyProgramModel.start
                             stopTime: proxyProgramModel.stop
+                            currentTimestamp: root.currentTimestamp
                         }
                     }
                 }
@@ -155,5 +172,6 @@ Kirigami.Page {
 
     Component.onCompleted: {
         Fetcher.fetchFavorites()
+        updateTime()
     }
 }
