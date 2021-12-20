@@ -32,7 +32,6 @@ public:
 private:
     void fetchProgram(const QString &channelId);
     void fetchProgram(const QString &channelId, const QString &url);
-    void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl, bool isLast);
     void processChannel(const QString &infoTable, const QString &url, const QString &channelId);
     ProgramData processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const QString &channelId, bool isLast);
     void processDescription(const QString &descriptionPage, const QString &url, const QString &programId);

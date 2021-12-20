@@ -125,7 +125,21 @@ void TvSpielfilmFetcher::fetchChannel(const QString &channelId, const QString &n
 
 void TvSpielfilmFetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
 {
-    fetchProgramDescription(channelId, programId, url, true);
+    qDebug() << "Starting to fetch description for" << programId << "(" << url << ")";
+    QNetworkRequest request((QUrl(url)));
+    QNetworkReply *reply = get(request);
+    connect(reply, &QNetworkReply::finished, this, [this, channelId, programId, url, reply]() {
+        if (reply->error()) {
+            qWarning() << "Error fetching program description";
+            qWarning() << reply->errorString();
+        } else {
+            QByteArray data = reply->readAll();
+            processDescription(data, url, programId);
+
+            Fetcher::instance().emitChannelUpdated(channelId);
+        }
+        delete reply;
+    });
 }
 
 void TvSpielfilmFetcher::fetchProgram(const QString &channelId)
@@ -174,29 +188,6 @@ void TvSpielfilmFetcher::fetchProgram(const QString &channelId, const QString &u
                 fetchProgram(channelId, matchNextPage.captured(1));
             } else {
                 // all pages processed, update GUI
-                Fetcher::instance().emitChannelUpdated(channelId);
-            }
-        }
-        delete reply;
-    });
-}
-
-void TvSpielfilmFetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &descriptionUrl, bool isLast)
-{
-    qDebug() << "Starting to fetch description for" << programId << "(" << descriptionUrl << ")";
-    QNetworkRequest request((QUrl(descriptionUrl)));
-    QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, channelId, programId, descriptionUrl, reply, isLast]() {
-        if (reply->error()) {
-            qWarning() << "Error fetching program description";
-            qWarning() << reply->errorString();
-        } else {
-            QByteArray data = reply->readAll();
-            processDescription(data, descriptionUrl, programId);
-
-            // update GUI only for last description
-            // updating for every description is too expensive
-            if (isLast) {
                 Fetcher::instance().emitChannelUpdated(channelId);
             }
         }
@@ -263,9 +254,6 @@ ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &pr
         programData.m_subtitle = "";
         programData.m_description = "__NOT_LOADED__"; // TODO: remove hack to avoid infinite fetching of description
         programData.m_category = category;
-
-        // TODO on demand? (way too slow)
-        // fetchDescription(channelId, programId, descriptionUrl, isLast);
     } else {
         qWarning() << "Failed to parse program " << url;
     }
