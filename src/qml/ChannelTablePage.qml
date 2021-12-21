@@ -161,7 +161,7 @@ Kirigami.Page {
     ChannelsProxyModel {
         id: proxyModel
 
-        groupName: "favorite"
+        onlyFavorites: true
         country: ""
         sourceModel: channelsModel
     }

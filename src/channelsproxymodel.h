@@ -4,15 +4,11 @@
 
 #include "types.h"
 
-/**
- * @brief Filters and sorts ChannelsModel
- *
- */
 class ChannelsProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString groupName READ groupName WRITE setGroupName NOTIFY groupNameChanged)
+    Q_PROPERTY(bool onlyFavorites READ onlyFavorites WRITE setOnlyFavorites NOTIFY onlyFavoritesChanged)
     Q_PROPERTY(QString country READ country WRITE setCountry NOTIFY countryChanged)
 
 public:
@@ -21,17 +17,17 @@ public:
 
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
 
-    QString groupName() const;
-    void setGroupName(const QString &name);
+    bool onlyFavorites() const;
+    void setOnlyFavorites(const bool &onlyFavorites);
 
     const QString &country() const;
     void setCountry(const QString &country);
 
 Q_SIGNALS:
-    void groupNameChanged();
+    void onlyFavoritesChanged();
     void countryChanged();
 
 private:
-    QString m_group_name; // TODO: favorite bool
+    bool m_onlyFavorites;
     CountryId m_country;
 };

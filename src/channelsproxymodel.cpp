@@ -5,8 +5,8 @@
 
 ChannelsProxyModel::ChannelsProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
-    , m_group_name{}
-    , m_country{}
+    , m_onlyFavorites(false)
+    , m_country("")
 {
     connect(&Database::instance(), &Database::channelDetailsUpdated, [this]() {
         invalidateFilter();
@@ -17,17 +17,17 @@ ChannelsProxyModel::~ChannelsProxyModel()
 {
 }
 
-QString ChannelsProxyModel::groupName() const
+bool ChannelsProxyModel::onlyFavorites() const
 {
-    return m_group_name;
+    return m_onlyFavorites;
 }
 
-void ChannelsProxyModel::setGroupName(const QString &name)
+void ChannelsProxyModel::setOnlyFavorites(const bool &onlyFavorites)
 {
-    if (m_group_name != name) {
-        m_group_name = name;
+    if (m_onlyFavorites != onlyFavorites) {
+        m_onlyFavorites = onlyFavorites;
         invalidateFilter();
-        Q_EMIT groupNameChanged();
+        Q_EMIT onlyFavoritesChanged();
     }
 }
 
@@ -54,15 +54,15 @@ bool ChannelsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sou
     }
 
     // no filter
-    if (m_group_name.isEmpty() && m_country.value().isEmpty()) {
+    if (!m_onlyFavorites && m_country.value().isEmpty()) {
         return true;
     }
 
     // at least one filter
     auto channel = idx.data(0).value<Channel *>();
 
-    const bool groupNameMatches = m_group_name.isEmpty() || channel->favorite();
+    const bool onlyFavoritesMatches = !m_onlyFavorites || channel->favorite();
     const bool countryMatches = m_country.value().isEmpty() || channel->countries().contains(m_country.value());
 
-    return groupNameMatches && countryMatches;
+    return onlyFavoritesMatches && countryMatches;
 }

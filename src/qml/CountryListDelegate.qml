@@ -19,7 +19,7 @@ Kirigami.SwipeListItem {
             while (pageStack.depth > 1)pageStack.pop()
             pageStack.push("qrc:/ChannelListPage.qml", {
                 "title": i18n("Channels") + " (" + i18n(model.country.name) + ")",
-                "groupFilter": "",
+                "onlyFavorites": false,
                 "countryFilter": lastCountry
             });
         }

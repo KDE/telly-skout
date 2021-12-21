@@ -35,7 +35,7 @@ Kirigami.GlobalDrawer {
                 pageStack.layers.clear();
                 pageStack.clear();
                 pageStack.push("qrc:/ChannelListPage.qml", {
-                    "groupFilter": "Favorites",
+                    "onlyFavoritesFilter": true,
                     "countryFilter": "",
                     "sortable": true,
                     "onlyFavorites": true
