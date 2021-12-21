@@ -104,7 +104,6 @@ void TvSpielfilmFetcher::fetchChannel(const ChannelId &channelId, const QString 
 
         Q_EMIT startedFetchingChannel(data.m_id);
 
-        // TODO: https://a2.tvspielfilm.de/images/tv/sender/mini/sprite_web_optimized_1616508904.webp
         data.m_image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.value().toLower() + ".webp";
         Database::instance().addChannel(data, country);
 
