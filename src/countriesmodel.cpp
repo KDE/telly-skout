@@ -12,8 +12,8 @@ CountriesModel::CountriesModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     connect(&Database::instance(), &Database::countryAdded, this, [this]() {
-        beginInsertRows(QModelIndex(), rowCount(QModelIndex()) - 1, rowCount(QModelIndex()) - 1);
         m_countryFactory.load();
+        beginInsertRows(QModelIndex(), rowCount(QModelIndex()) - 1, rowCount(QModelIndex()) - 1);
         endInsertRows();
     });
 
