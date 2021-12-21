@@ -8,7 +8,7 @@ ChannelsProxyModel::ChannelsProxyModel(QObject *parent)
     , m_onlyFavorites(false)
     , m_country("")
 {
-    connect(&Database::instance(), &Database::channelDetailsUpdated, [this]() {
+    connect(&Database::instance(), &Database::channelDetailsUpdated, this, [this]() {
         invalidateFilter();
     });
 }
