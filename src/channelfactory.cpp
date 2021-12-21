@@ -85,9 +85,14 @@ void ChannelFactory::update(const ChannelId &id)
     QVector<ChannelData>::iterator it = std::find_if(m_favorites.begin(), m_favorites.end(), [id](const ChannelData &data) {
         return data.m_id == id;
     });
-    if (it != m_favorites.end()) {
-        *it = newData;
+    // remove if no favorite anymore
+    if (it != m_favorites.end() && !Database::instance().isFavorite(id)) {
+        m_favorites.erase(it);
+    } else {
+        // reload favorites if favorite added or maybe favorite order changed
+        load(true);
     }
+
     it = std::find_if(m_channels.begin(), m_channels.end(), [id](const ChannelData &data) {
         return data.m_id == id;
     });

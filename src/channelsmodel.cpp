@@ -34,12 +34,21 @@ ChannelsModel::ChannelsModel(QObject *parent)
     });
 
     connect(&Database::instance(), &Database::channelDetailsUpdated, this, [this](const ChannelId &id, bool favorite) {
-        for (int i = 0; i < m_channels.length(); i++) {
-            if (m_channels[i]->id() == id.value()) {
-                m_channels[i]->setFavorite(favorite);
-                m_channelFactory.update(id);
-                Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
-                break;
+        // with "only favorites", a row must be added/removed -> not sufficient to call only dataChanged()
+        if (m_onlyFavorites) {
+            beginResetModel();
+            qDeleteAll(m_channels);
+            m_channels.clear();
+            m_channelFactory.update(id);
+            endResetModel();
+        } else {
+            for (int i = 0; i < m_channels.length(); i++) {
+                if (m_channels[i]->id() == id.value()) {
+                    m_channels[i]->setFavorite(favorite);
+                    m_channelFactory.update(id);
+                    Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
+                    break;
+                }
             }
         }
     });

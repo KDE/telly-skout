@@ -337,7 +337,7 @@ void Database::removeFavorite(const ChannelId &channelId)
 void Database::setFavorites(const QVector<ChannelId> &channelIds)
 {
     QSqlDatabase::database().transaction();
-    execute(*m_clearFavoritesQuery); // do not call clearFavorites, we do not want to emit a signal here
+    clearFavorites();
     for (const auto &channelId : channelIds) {
         addFavorite(channelId);
     }
