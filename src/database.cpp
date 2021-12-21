@@ -318,49 +318,40 @@ ChannelData Database::channel(const ChannelId &channelId)
     return data;
 }
 
-void Database::addFavorite(const ChannelId &channelId, bool emitSignal)
+void Database::addFavorite(const ChannelId &channelId)
 {
     m_addFavoriteQuery->bindValue(QStringLiteral(":channel"), channelId.value());
     execute(*m_addFavoriteQuery);
 
-    // TODO: remove hack
-    if (emitSignal) {
-        Q_EMIT channelDetailsUpdated(channelId, true);
-    }
+    Q_EMIT channelDetailsUpdated(channelId, true);
 }
 
-void Database::removeFavorite(const ChannelId &channelId, bool emitSignal)
+void Database::removeFavorite(const ChannelId &channelId)
 {
     m_removeFavoriteQuery->bindValue(QStringLiteral(":channel"), channelId.value());
     execute(*m_removeFavoriteQuery);
 
-    // TODO: remove hack
-    if (emitSignal) {
-        Q_EMIT channelDetailsUpdated(channelId, false);
-    }
+    Q_EMIT channelDetailsUpdated(channelId, false);
 }
 
-void Database::setFavorites(const QVector<ChannelId> &channelIds, bool emitSignal)
+void Database::setFavorites(const QVector<ChannelId> &channelIds)
 {
     QSqlDatabase::database().transaction();
-    clearFavorites(false);
+    execute(*m_clearFavoritesQuery); // do not call clearFavorites, we do not want to emit a signal here
     for (const auto &channelId : channelIds) {
-        addFavorite(channelId, emitSignal);
+        addFavorite(channelId);
     }
     QSqlDatabase::database().commit();
 }
 
-void Database::clearFavorites(bool emitSignal)
+void Database::clearFavorites()
 {
     const QVector<ChannelId> favoriteChannelIds = favorites();
 
     execute(*m_clearFavoritesQuery);
 
-    // TODO: remove hack
-    if (emitSignal) {
-        for (const auto &channelId : favoriteChannelIds) {
-            Q_EMIT channelDetailsUpdated(channelId, false);
-        }
+    for (const auto &channelId : favoriteChannelIds) {
+        Q_EMIT channelDetailsUpdated(channelId, false);
     }
 }
 

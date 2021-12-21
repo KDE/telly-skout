@@ -39,10 +39,10 @@ public:
     QVector<ChannelData> channels(bool onlyFavorites);
     ChannelData channel(const ChannelId &channelId);
 
-    void addFavorite(const ChannelId &channelId, bool emitSignal = true);
-    void removeFavorite(const ChannelId &channelId, bool emitSignal = true);
-    void setFavorites(const QVector<ChannelId> &channelIds, bool emitSignal = true);
-    void clearFavorites(bool emitSignal = true);
+    void addFavorite(const ChannelId &channelId);
+    void removeFavorite(const ChannelId &channelId);
+    void setFavorites(const QVector<ChannelId> &channelIds);
+    void clearFavorites();
     size_t favoriteCount();
     QVector<ChannelId> favorites();
     bool isFavorite(const ChannelId &channelId);

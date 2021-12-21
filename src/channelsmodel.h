@@ -21,6 +21,7 @@ public:
     int rowCount(const QModelIndex &parent) const override;
     Q_INVOKABLE void setFavorite(const QString &channelId, bool favorite);
     Q_INVOKABLE void move(int from, int to);
+    Q_INVOKABLE void save();
 
     bool onlyFavorites() const;
     void setOnlyFavorites(bool onlyFavorites);

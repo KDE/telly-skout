@@ -99,11 +99,14 @@ void ChannelsModel::move(int from, int to)
 
     beginMoveRows(QModelIndex(), from, from, QModelIndex(), destination);
     m_channels.move(from, to);
-    // rebuild favorites
+    endMoveRows();
+}
+
+void ChannelsModel::save()
+{
     QVector<ChannelId> channelIds(m_channels.size());
     std::transform(m_channels.begin(), m_channels.end(), channelIds.begin(), [](const Channel *channel) {
         return ChannelId(channel->id());
     });
-    Database::instance().setFavorites(channelIds, false);
-    endMoveRows();
+    Database::instance().setFavorites(channelIds);
 }
