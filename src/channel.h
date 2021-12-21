@@ -25,7 +25,7 @@ class Channel : public QObject
     Q_PROPERTY(ProgramsModel *programsModel MEMBER m_programsModel CONSTANT)
 
 public:
-    Channel(const ChannelData &data);
+    Channel(const ChannelData &data, bool favorite, const QVector<QString> &countryIds);
 
     ~Channel();
 

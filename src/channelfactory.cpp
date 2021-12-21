@@ -1,10 +1,13 @@
 #include "channelfactory.h"
 
 #include "channel.h"
+#include "countrydata.h"
 #include "database.h"
 #include "fetcher.h"
 
 #include <QDebug>
+
+#include <algorithm>
 
 ChannelFactory::ChannelFactory()
     : QObject(nullptr)
@@ -24,6 +27,7 @@ size_t ChannelFactory::count(bool onlyFavorites) const
 
 Channel *ChannelFactory::create(bool onlyFavorites, int index) const
 {
+    const ChannelData *data = nullptr;
     if (onlyFavorites) {
         // try to load if not avaible
         if (m_favorites.size() <= index) {
@@ -33,7 +37,7 @@ Channel *ChannelFactory::create(bool onlyFavorites, int index) const
         if (m_favorites.size() <= index) {
             return nullptr;
         }
-        return new Channel(m_favorites.at(index));
+        data = &(m_favorites.at(index));
     } else {
         // try to load if not avaible
         if (m_channels.size() <= index) {
@@ -43,8 +47,25 @@ Channel *ChannelFactory::create(bool onlyFavorites, int index) const
         if (m_channels.size() <= index) {
             return nullptr;
         }
-        return new Channel(m_channels.at(index));
+        data = &(m_channels.at(index));
     }
+
+    // to be safe, cannot happen by design
+    if (!data) {
+        return nullptr;
+    }
+
+    // check if channel is favorite
+    // (!onlyFavorites does not mean that it cannot be favorite)
+    const bool favorite = Database::instance().isFavorite(data->m_id);
+
+    const QVector<CountryData> countries = Database::instance().countries(data->m_id);
+    QVector<QString> countryIds(countries.size());
+    std::transform(countries.begin(), countries.end(), countryIds.begin(), [](const CountryData &data) {
+        return data.m_id.value();
+    });
+
+    return new Channel(*data, favorite, countryIds);
 }
 
 void ChannelFactory::load(bool onlyFavorites) const

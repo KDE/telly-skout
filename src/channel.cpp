@@ -1,6 +1,5 @@
 #include "channel.h"
 
-#include "countrydata.h"
 #include "database.h"
 #include "fetcher.h"
 #include "program.h"
@@ -9,22 +8,12 @@
 
 #include <QDebug>
 
-#include <algorithm>
-
-Channel::Channel(const ChannelData &data)
+Channel::Channel(const ChannelData &data, bool favorite, const QVector<QString> &countryIds)
     : QObject(nullptr)
+    , m_data(data)
+    , m_favorite(favorite)
+    , m_countries(countryIds)
 {
-    m_data = data;
-
-    // TODO: use ChannelFactory
-    m_favorite = Database::instance().isFavorite(m_data.m_id);
-
-    const QVector<CountryData> countries = Database::instance().countries(m_data.m_id);
-    m_countries.resize(countries.size());
-    std::transform(countries.begin(), countries.end(), m_countries.begin(), [](const CountryData &data) {
-        return data.m_id.value();
-    });
-
     connect(&Fetcher::instance(), &Fetcher::startedFetchingChannel, this, [this](const ChannelId &id) {
         if (id == m_data.m_id) {
             setRefreshing(true);
