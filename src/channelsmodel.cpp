@@ -52,11 +52,6 @@ ChannelsModel::ChannelsModel(QObject *parent)
                 }
             }
         }
-
-        // fetch programs if new favorite has been added
-        if (favorite) {
-            Fetcher::instance().fetchFavorites();
-        }
     });
 }
 
