@@ -40,9 +40,6 @@ private:
     std::unique_ptr<FetcherImpl> m_fetcherImpl;
 
 Q_SIGNALS:
-    void startedFetchingFavorites();
-    void finishedFetchingFavorites();
-
     void startedFetchingCountry(const CountryId &id);
     void countryUpdated(const CountryId &id);
 

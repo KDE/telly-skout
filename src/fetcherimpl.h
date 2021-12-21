@@ -18,9 +18,6 @@ public:
     virtual void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url) = 0;
 
 Q_SIGNALS:
-    void startedFetchingFavorites();
-    void finishedFetchingFavorites();
-
     void startedFetchingCountry(const CountryId &id);
     void countryUpdated(const CountryId &id);
 

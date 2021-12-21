@@ -30,13 +30,6 @@ Fetcher::Fetcher()
     m_manager->setStrictTransportSecurityEnabled(true);
     m_manager->enableStrictTransportSecurityStore(true);
 
-    connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingFavorites, this, [this]() {
-        Q_EMIT startedFetchingFavorites();
-    });
-    connect(m_fetcherImpl.get(), &FetcherImpl::finishedFetchingFavorites, this, [this]() {
-        Q_EMIT finishedFetchingFavorites();
-    });
-
     connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingCountry, this, [this](const CountryId &id) {
         Q_EMIT startedFetchingCountry(id);
     });
@@ -72,14 +65,10 @@ void Fetcher::fetchFavorites()
 {
     qDebug() << "Starting to fetch favorites";
 
-    Q_EMIT startedFetchingFavorites();
-
     const QVector<ChannelId> favoriteChannels = Database::instance().favorites();
     for (int i = 0; i < favoriteChannels.length(); i++) {
         m_fetcherImpl->fetchProgram(favoriteChannels.at(i));
     }
-
-    Q_EMIT finishedFetchingFavorites();
 }
 
 void Fetcher::fetchCountries()
