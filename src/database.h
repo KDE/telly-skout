@@ -54,7 +54,6 @@ public:
 Q_SIGNALS:
     void countryAdded(const CountryId &id);
     void channelAdded(const ChannelId &id);
-    void countryDetailsUpdated(const CountryId &id);
     void channelDetailsUpdated(const ChannelId &id, bool favorite);
 
 private:

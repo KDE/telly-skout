@@ -43,9 +43,6 @@ Fetcher::Fetcher()
     connect(m_fetcherImpl.get(), &FetcherImpl::countryUpdated, this, [this](const CountryId &id) {
         Q_EMIT countryUpdated(id);
     });
-    connect(m_fetcherImpl.get(), &FetcherImpl::countryDetailsUpdated, this, [this](const CountryId &id) {
-        Q_EMIT countryDetailsUpdated(id);
-    });
 
     connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingChannel, this, [this](const ChannelId &id) {
         Q_EMIT startedFetchingChannel(id);

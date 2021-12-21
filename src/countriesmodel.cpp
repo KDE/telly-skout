@@ -16,26 +16,6 @@ CountriesModel::CountriesModel(QObject *parent)
         beginInsertRows(QModelIndex(), rowCount(QModelIndex()) - 1, rowCount(QModelIndex()) - 1);
         endInsertRows();
     });
-
-    connect(&Fetcher::instance(), &Fetcher::countryDetailsUpdated, this, [this](const CountryId &id) {
-        m_countryFactory.load();
-        for (int i = 0; i < m_countries.length(); i++) {
-            if (m_countries[i]->id() == id.value()) {
-                Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
-                break;
-            }
-        }
-    });
-
-    connect(&Database::instance(), &Database::countryDetailsUpdated, this, [this](const CountryId &id) {
-        m_countryFactory.load();
-        for (int i = 0; i < m_countries.length(); i++) {
-            if (m_countries[i]->id() == id.value()) {
-                Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
-                break;
-            }
-        }
-    });
 }
 
 QHash<int, QByteArray> CountriesModel::roleNames() const

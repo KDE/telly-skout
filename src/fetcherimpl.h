@@ -23,7 +23,6 @@ Q_SIGNALS:
 
     void startedFetchingCountry(const CountryId &id);
     void countryUpdated(const CountryId &id);
-    void countryDetailsUpdated(const CountryId &id); // TODO: emit
 
     void startedFetchingChannel(const ChannelId &id);
     void channelUpdated(const ChannelId &id);
