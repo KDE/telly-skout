@@ -16,7 +16,7 @@ Rectangle {
 
     function updateOverlay() {
         if (program !== undefined) {
-            if (program.description === "__NOT_LOADED__")
+            if (!program.descriptionFetched)
                 Fetcher.fetchProgramDescription(program.channelId, program.id, program.url);
 
             var categoryText = "";
@@ -24,7 +24,7 @@ Rectangle {
                 categoryText = "<br><i>" + program.category + "</i>";
 
             var descriptionText = "";
-            if (program.description !== "" && program.description !== "__NOT_LOADED__")
+            if (program.descriptionFetched && program.description)
                 descriptionText = "<br><br>" + program.description;
 
             root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b>" + categoryText + descriptionText : "";

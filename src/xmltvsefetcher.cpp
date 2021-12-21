@@ -259,7 +259,8 @@ void XmlTvSeFetcher::processProgram(const QDomNode &program, const QString &url)
         return;
     }
 
-    query.prepare(QStringLiteral("INSERT INTO Programs VALUES (:id, :channel, :start, :stop, :title, :subtitle, :description, :category);"));
+    query.prepare(
+        QStringLiteral("INSERT INTO Programs VALUES (:id, :channel, :start, :stop, :title, :subtitle, :description, :descriptionFetched, :category);"));
     query.bindValue(QStringLiteral(":id"), id);
     query.bindValue(QStringLiteral(":channel"), url);
     query.bindValue(QStringLiteral(":start"), startTime.toSecsSinceEpoch());
@@ -267,6 +268,7 @@ void XmlTvSeFetcher::processProgram(const QDomNode &program, const QString &url)
     query.bindValue(QStringLiteral(":title"), title);
     query.bindValue(QStringLiteral(":subtitle"), subtitle);
     query.bindValue(QStringLiteral(":description"), description);
+    query.bindValue(QStringLiteral(":descriptionFetched"), true);
     query.bindValue(QStringLiteral(":category"), category);
 
     Database::instance().execute(query);

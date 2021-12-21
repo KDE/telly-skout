@@ -14,5 +14,6 @@ struct ProgramData {
     QString m_title;
     QString m_subtitle;
     QString m_description;
+    bool m_descriptionFetched;
     QString m_category;
 };

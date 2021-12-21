@@ -18,7 +18,8 @@ class Program : public QObject
     Q_PROPERTY(QString id READ id CONSTANT)
     Q_PROPERTY(QString url READ url CONSTANT)
     Q_PROPERTY(QString title READ title CONSTANT)
-    Q_PROPERTY(QString description READ description CONSTANT)
+    Q_PROPERTY(QString description READ description)
+    Q_PROPERTY(bool descriptionFetched READ descriptionFetched)
     Q_PROPERTY(QDateTime start READ start CONSTANT)
     Q_PROPERTY(QDateTime stop READ stop CONSTANT)
     Q_PROPERTY(QString subtitle READ subtitle CONSTANT)
@@ -33,6 +34,7 @@ public:
     QString url() const;
     QString title() const;
     QString description() const;
+    bool descriptionFetched() const;
     QDateTime start() const;
     void setStart(const QDateTime &start);
     QDateTime stop() const;

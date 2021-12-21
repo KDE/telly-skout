@@ -39,6 +39,11 @@ QString Program::description() const
     return m_data.m_description;
 }
 
+bool Program::descriptionFetched() const
+{
+    return m_data.m_descriptionFetched;
+}
+
 QDateTime Program::start() const
 {
     return m_data.m_startTime;
