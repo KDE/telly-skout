@@ -7,6 +7,8 @@
 #include <QDebug>
 #include <QSqlQuery>
 
+#include <algorithm>
+
 ChannelsModel::ChannelsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
@@ -98,10 +100,10 @@ void ChannelsModel::move(int from, int to)
     beginMoveRows(QModelIndex(), from, from, QModelIndex(), destination);
     m_channels.move(from, to);
     // rebuild favorites
-    // TODO: smarter solution?
-    Database::instance().clearFavorites(false);
-    for (auto &&channel : qAsConst(m_channels)) {
-        Database::instance().addFavorite(ChannelId(channel->id()), false);
-    }
+    QVector<ChannelId> channelIds(m_channels.size());
+    std::transform(m_channels.begin(), m_channels.end(), channelIds.begin(), [](const Channel *channel) {
+        return ChannelId(channel->id());
+    });
+    Database::instance().setFavorites(channelIds, false);
     endMoveRows();
 }

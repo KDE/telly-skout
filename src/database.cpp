@@ -50,6 +50,8 @@ Database::Database()
     m_addCountryChannelQuery = new QSqlQuery(db);
     m_addCountryChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
 
+    m_addFavoriteQuery = new QSqlQuery(db);
+    m_addFavoriteQuery->prepare(QStringLiteral("INSERT INTO Favorites VALUES ((SELECT COUNT() FROM Favorites) + 1, :channel);"));
     m_addChannelQuery = new QSqlQuery(db);
     m_addChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Channels VALUES (:id, :name, :url, :image);"));
     m_channelCountQuery = new QSqlQuery(db);
@@ -61,6 +63,8 @@ Database::Database()
     m_channelQuery = new QSqlQuery(db);
     m_channelQuery->prepare(QStringLiteral("SELECT * FROM Channels WHERE id=:channelId;"));
 
+    m_removeFavoriteQuery = new QSqlQuery(db);
+    m_removeFavoriteQuery->prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
     m_clearFavoritesQuery = new QSqlQuery(db);
     m_clearFavoritesQuery->prepare(QStringLiteral("DELETE FROM Favorites;"));
     m_favoriteCountQuery = new QSqlQuery(db);
@@ -316,18 +320,8 @@ ChannelData Database::channel(const ChannelId &channelId)
 
 void Database::addFavorite(const ChannelId &channelId, bool emitSignal)
 {
-    unsigned int id = 1;
-    QSqlQuery idQuery;
-    idQuery.prepare(QStringLiteral("SELECT id FROM Favorites ORDER BY id DESC LIMIT 1;"));
-    Database::instance().execute(idQuery);
-    if (idQuery.next()) {
-        id = idQuery.value(QStringLiteral("id")).toUInt() + 1;
-    }
-    QSqlQuery query;
-    query.prepare(QStringLiteral("INSERT INTO Favorites VALUES (:id, :channel);"));
-    query.bindValue(QStringLiteral(":id"), id);
-    query.bindValue(QStringLiteral(":channel"), channelId.value());
-    Database::instance().execute(query);
+    m_addFavoriteQuery->bindValue(QStringLiteral(":channel"), channelId.value());
+    execute(*m_addFavoriteQuery);
 
     // TODO: remove hack
     if (emitSignal) {
@@ -337,15 +331,23 @@ void Database::addFavorite(const ChannelId &channelId, bool emitSignal)
 
 void Database::removeFavorite(const ChannelId &channelId, bool emitSignal)
 {
-    QSqlQuery query;
-    query.prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
-    query.bindValue(QStringLiteral(":channel"), channelId.value());
-    Database::instance().execute(query);
+    m_removeFavoriteQuery->bindValue(QStringLiteral(":channel"), channelId.value());
+    execute(*m_removeFavoriteQuery);
 
     // TODO: remove hack
     if (emitSignal) {
         Q_EMIT channelDetailsUpdated(channelId, false);
     }
+}
+
+void Database::setFavorites(const QVector<ChannelId> &channelIds, bool emitSignal)
+{
+    QSqlDatabase::database().transaction();
+    clearFavorites(false);
+    for (const auto &channelId : channelIds) {
+        addFavorite(channelId, emitSignal);
+    }
+    QSqlDatabase::database().commit();
 }
 
 void Database::clearFavorites(bool emitSignal)
