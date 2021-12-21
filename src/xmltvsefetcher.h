@@ -20,6 +20,6 @@ public:
 private:
     void fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &countryId);
     void processCountry(const QDomElement &country);
-    void processChannel(const QDomElement &channel, const QString &url);
-    void processProgram(const QDomNode &program, const QString &url);
+    void processChannel(const QDomElement &channel);
+    void processProgram(const QDomNode &program);
 };

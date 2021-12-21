@@ -1,12 +1,12 @@
 #include "xmltvsefetcher.h"
 
 #include "database.h"
+#include "programdata.h"
 
 #include <QDateTime>
 #include <QDebug>
 #include <QNetworkReply>
 #include <QNetworkRequest>
-#include <QSqlQuery>
 #include <QStandardPaths>
 #include <QString>
 #include <QtXml>
@@ -100,35 +100,20 @@ void XmlTvSeFetcher::fetchProgramDescription(const ChannelId &channelId, const P
 
 void XmlTvSeFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &countryId)
 {
-    const QString url = "http://xmltv.xmltv.se/" + channelId.value();
+    if (!Database::instance().channelExists(channelId)) {
+        const QString url = "http://xmltv.xmltv.se/" + channelId.value();
 
-    Q_EMIT startedFetchingChannel(channelId);
+        Q_EMIT startedFetchingChannel(channelId);
 
-    // story channel per country (ignore if it exists already)
-    QSqlQuery countryQuery;
-    countryQuery.prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
-    countryQuery.bindValue(QStringLiteral(":id"), countryId.value() + "_" + channelId.value());
-    countryQuery.bindValue(QStringLiteral(":country"), countryId.value());
-    countryQuery.bindValue(QStringLiteral(":channel"), channelId.value());
-    Database::instance().execute(countryQuery);
-
-    // if channel is unknown, store it
-    QSqlQuery queryChannelExists;
-    queryChannelExists.prepare(QStringLiteral("SELECT COUNT (id) FROM Channels WHERE id=:id;"));
-    queryChannelExists.bindValue(QStringLiteral(":id"), channelId.value());
-    Database::instance().execute(queryChannelExists);
-    queryChannelExists.next();
-
-    if (queryChannelExists.value(0).toInt() == 0) {
         ChannelData data;
         data.m_id = channelId;
         data.m_name = name;
         data.m_url = url;
         data.m_image = "https://gitlab.com/xmltv-se/open-source/channel-logos/-/raw/master/vector/" + channelId.value() + "_color.svg?inline=false";
         Database::instance().addChannel(data, countryId);
-    }
 
-    Q_EMIT channelUpdated(channelId);
+        Q_EMIT channelUpdated(channelId);
+    }
 }
 
 void XmlTvSeFetcher::fetchProgram(const ChannelId &channelId)
@@ -153,7 +138,7 @@ void XmlTvSeFetcher::fetchProgram(const ChannelId &channelId)
 
         QNetworkRequest request((QUrl(urlDay)));
         QNetworkReply *reply = get(request);
-        connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply]() {
+        connect(reply, &QNetworkReply::finished, this, [this, channelId, reply]() {
             if (reply->error()) {
                 qWarning() << "Error fetching channel";
                 qWarning() << reply->errorString();
@@ -169,7 +154,7 @@ void XmlTvSeFetcher::fetchProgram(const ChannelId &channelId)
 
                 QDomElement docElem = versionXML.documentElement();
 
-                processChannel(docElem, url);
+                processChannel(docElem);
             }
             delete reply;
         });
@@ -186,21 +171,12 @@ void XmlTvSeFetcher::processCountry(const QDomElement &country)
     // http://xmltv.xmltv.se/channels-Germany.xml
     const QString url = "http://xmltv.xmltv.se/channels-" + id.value() + ".xml";
 
-    // if country is unknown, store it
-    QSqlQuery queryCountryExists;
-    queryCountryExists.prepare(QStringLiteral("SELECT COUNT () FROM Channels WHERE id=:id;"));
-    queryCountryExists.bindValue(QStringLiteral(":id"), id.value());
-    Database::instance().execute(queryCountryExists);
-    queryCountryExists.next();
-
-    if (queryCountryExists.value(0).toInt() == 0) {
-        Database::instance().addCountry(id, name, url);
-    }
+    Database::instance().addCountry(id, name, url);
 
     Q_EMIT countryUpdated(id);
 }
 
-void XmlTvSeFetcher::processChannel(const QDomElement &channel, const QString &url)
+void XmlTvSeFetcher::processChannel(const QDomElement &channel)
 {
     QDomNodeList programs = channel.elementsByTagName("programme");
     const QDomNamedNodeMap &attributes = programs.at(0).attributes();
@@ -208,51 +184,35 @@ void XmlTvSeFetcher::processChannel(const QDomElement &channel, const QString &u
     const ChannelId channelId = ChannelId(attributes.namedItem("channel").toAttr().value());
     if (programs.count() > 0) {
         for (int i = 0; i < programs.count(); i++) {
-            processProgram(programs.at(i), url);
+            processProgram(programs.at(i));
         }
 
         Q_EMIT channelUpdated(channelId);
     }
 }
 
-void XmlTvSeFetcher::processProgram(const QDomNode &program, const QString &url)
+void XmlTvSeFetcher::processProgram(const QDomNode &program)
 {
+    ProgramData data;
+
     const QDomNamedNodeMap &attributes = program.attributes();
-    const QString &channel = attributes.namedItem("channel").toAttr().value();
+    data.m_channelId = ChannelId(attributes.namedItem("channel").toAttr().value());
     const QString &startTimeString = attributes.namedItem("start").toAttr().value();
     QDateTime startTime = QDateTime::fromString(startTimeString, "yyyyMMddHHmmss +0000");
     startTime.setTimeSpec(Qt::UTC);
+    data.m_startTime = startTime;
     // channel + start time can be used as ID
-    const QString id = channel + "_" + QString::number(startTime.toSecsSinceEpoch());
+    data.m_id = ProgramId(data.m_channelId.value() + "_" + QString::number(startTime.toSecsSinceEpoch()));
     const QString &stopTimeString = attributes.namedItem("stop").toAttr().value();
     QDateTime stopTime = QDateTime::fromString(stopTimeString, "yyyyMMddHHmmss +0000");
     stopTime.setTimeSpec(Qt::UTC);
-    const QString &title = program.namedItem("title").toElement().text();
-    const QString &subtitle = program.namedItem("sub-title").toElement().text();
-    const QString &description = program.namedItem("desc").toElement().text();
-    const QString &category = program.namedItem("category").toElement().text();
+    data.m_stopTime = stopTime;
+    data.m_title = program.namedItem("title").toElement().text();
+    data.m_subtitle = program.namedItem("sub-title").toElement().text();
+    data.m_description = program.namedItem("desc").toElement().text();
+    data.m_category = program.namedItem("category").toElement().text();
 
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (id) FROM Programs WHERE id=:id;"));
-    query.bindValue(QStringLiteral(":id"), id);
-    Database::instance().execute(query);
-    query.next();
+    data.m_descriptionFetched = true;
 
-    if (query.value(0).toInt() != 0) {
-        return;
-    }
-
-    query.prepare(
-        QStringLiteral("INSERT INTO Programs VALUES (:id, :channel, :start, :stop, :title, :subtitle, :description, :descriptionFetched, :category);"));
-    query.bindValue(QStringLiteral(":id"), id);
-    query.bindValue(QStringLiteral(":channel"), url);
-    query.bindValue(QStringLiteral(":start"), startTime.toSecsSinceEpoch());
-    query.bindValue(QStringLiteral(":stop"), stopTime.toSecsSinceEpoch());
-    query.bindValue(QStringLiteral(":title"), title);
-    query.bindValue(QStringLiteral(":subtitle"), subtitle);
-    query.bindValue(QStringLiteral(":description"), description);
-    query.bindValue(QStringLiteral(":descriptionFetched"), true);
-    query.bindValue(QStringLiteral(":category"), category);
-
-    Database::instance().execute(query);
+    Database::instance().addProgram(data);
 }
