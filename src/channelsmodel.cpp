@@ -24,7 +24,7 @@ ChannelsModel::ChannelsModel(QObject *parent)
         for (int i = 0; i < m_channels.length(); i++) {
             if (m_channels[i]->id() == id.value()) {
                 m_channels[i]->setImage(image);
-                // TODO: update channelFactory?
+                m_channelFactory.update(id);
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
                 break;
             }
@@ -35,7 +35,7 @@ ChannelsModel::ChannelsModel(QObject *parent)
         for (int i = 0; i < m_channels.length(); i++) {
             if (m_channels[i]->id() == id.value()) {
                 m_channels[i]->setFavorite(favorite);
-                // TODO: update channelFactory?
+                m_channelFactory.update(id);
                 Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
                 break;
             }

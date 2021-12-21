@@ -78,3 +78,20 @@ void ChannelFactory::load(bool onlyFavorites) const
         m_channels = Database::instance().channels(onlyFavorites);
     }
 }
+
+void ChannelFactory::update(const ChannelId &id)
+{
+    const ChannelData newData = Database::instance().channel(id);
+    QVector<ChannelData>::iterator it = std::find_if(m_favorites.begin(), m_favorites.end(), [id](const ChannelData &data) {
+        return data.m_id == id;
+    });
+    if (it != m_favorites.end()) {
+        *it = newData;
+    }
+    it = std::find_if(m_channels.begin(), m_channels.end(), [id](const ChannelData &data) {
+        return data.m_id == id;
+    });
+    if (it != m_channels.end()) {
+        *it = newData;
+    }
+}
