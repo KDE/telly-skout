@@ -92,11 +92,32 @@ Database::Database()
 Database::~Database()
 {
     delete m_addCountryQuery;
+    delete m_countryCountQuery;
+    delete m_countryExistsQuery;
+    delete m_countriesQuery;
+    delete m_countriesPerChannelQuery;
+
     delete m_addCountryChannelQuery;
+
     delete m_addChannelQuery;
+    delete m_channelCountQuery;
+    delete m_channelExistsQuery;
+    delete m_channelsQuery;
+    delete m_channelQuery;
+
+    delete m_addFavoriteQuery;
+    delete m_removeFavoriteQuery;
+    delete m_clearFavoritesQuery;
+    delete m_favoriteCountQuery;
+    delete m_favoritesQuery;
+    delete m_isFavoriteQuery;
+
     delete m_addProgramQuery;
     delete m_updateProgramDescriptionQuery;
     delete m_programExistsQuery;
+    delete m_programCountQuery;
+    delete m_programsQuery;
+    delete m_programsPerChannelQuery;
 }
 
 bool Database::createTables()
