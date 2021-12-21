@@ -21,7 +21,7 @@ public:
         static Fetcher _instance;
         return _instance;
     }
-    Q_INVOKABLE void fetchFavorites();
+    void fetchFavorites();
     Q_INVOKABLE void fetchCountries();
     Q_INVOKABLE void fetchCountry(const QString &url, const QString &countryId);
     void fetchCountry(const QString &url, const CountryId &countryId);

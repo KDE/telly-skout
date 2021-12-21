@@ -12,6 +12,8 @@
 ChannelsModel::ChannelsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
+    Fetcher::instance().fetchFavorites();
+
     connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const CountryId &id) {
         Q_UNUSED(id)
         beginResetModel();
