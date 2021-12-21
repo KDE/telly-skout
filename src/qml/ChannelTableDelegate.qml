@@ -40,7 +40,6 @@ Rectangle {
     border.color: "transparent"
 
     // hightlight running program
-    // TODO: update as time elapses
     Rectangle {
         width: parent.width
         color: Kirigami.Theme.focusColor
