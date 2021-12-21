@@ -7,7 +7,6 @@
 #include "types.h"
 
 #include <QDebug>
-#include <QSqlQuery>
 
 ProgramsModel::ProgramsModel(Channel *channel)
     : QAbstractListModel(channel)

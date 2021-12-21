@@ -6,7 +6,6 @@
 #include "types.h"
 
 #include <QDebug>
-#include <QSqlQuery>
 
 CountriesModel::CountriesModel(QObject *parent)
     : QAbstractListModel(parent)

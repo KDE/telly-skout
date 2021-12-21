@@ -5,7 +5,6 @@
 #include "program.h"
 
 #include <QDebug>
-#include <QSqlQuery>
 
 ProgramFactory::ProgramFactory()
     : QObject(nullptr)

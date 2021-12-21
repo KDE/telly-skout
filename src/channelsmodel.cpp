@@ -5,7 +5,6 @@
 #include "fetcher.h"
 
 #include <QDebug>
-#include <QSqlQuery>
 
 #include <algorithm>
 

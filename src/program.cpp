@@ -5,8 +5,6 @@
 #include "database.h"
 
 #include <QDebug>
-#include <QSqlQuery>
-#include <QUrl>
 
 Program::Program(const ProgramData &data)
     : QObject(nullptr)
