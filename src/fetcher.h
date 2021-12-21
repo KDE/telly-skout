@@ -23,9 +23,9 @@ public:
     }
     Q_INVOKABLE void fetchFavorites();
     Q_INVOKABLE void fetchCountries();
-    Q_INVOKABLE void fetchCountry(const QString &url, const QString &countryId); // TODO type safe IDs in qml
+    Q_INVOKABLE void fetchCountry(const QString &url, const QString &countryId);
     void fetchCountry(const QString &url, const CountryId &countryId);
-    Q_INVOKABLE void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url); // TODO type safe IDs in qml
+    Q_INVOKABLE void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url);
     Q_INVOKABLE QString image(const QString &url);
     Q_INVOKABLE void download(const QString &url);
 
