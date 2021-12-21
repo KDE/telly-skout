@@ -36,7 +36,7 @@ ChannelsModel::ChannelsModel(QObject *parent)
         }
     });
 
-    connect(&Database::instance(), &Database::channelDetailsUpdated, [this](const ChannelId &id, bool favorite) {
+    connect(&Database::instance(), &Database::channelDetailsUpdated, this, [this](const ChannelId &id, bool favorite) {
         for (int i = 0; i < m_channels.length(); i++) {
             if (m_channels[i]->id() == id.value()) {
                 m_channels[i]->setFavorite(favorite);
