@@ -10,11 +10,6 @@
 ChannelsModel::ChannelsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    // TODO: does not work (channels are sorted by name)
-    // connect(&Database::instance(), &Database::channelAdded, this, [this]() {
-    //    beginInsertRows(QModelIndex(), rowCount(QModelIndex()) - 1, rowCount(QModelIndex()) - 1);
-    //    endInsertRows();
-    //});
     connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const CountryId &id) {
         Q_UNUSED(id)
         beginResetModel();
