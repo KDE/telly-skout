@@ -99,9 +99,7 @@ void ChannelsModel::move(int from, int to)
     m_channels.move(from, to);
     // rebuild favorites
     // TODO: smarter solution?
-    for (auto &&channel : qAsConst(m_channels)) {
-        Database::instance().removeFavorite(ChannelId(channel->id()), false);
-    }
+    Database::instance().clearFavorites(false);
     for (auto &&channel : qAsConst(m_channels)) {
         Database::instance().addFavorite(ChannelId(channel->id()), false);
     }

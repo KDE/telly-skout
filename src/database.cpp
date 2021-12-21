@@ -61,6 +61,8 @@ Database::Database()
     m_channelQuery = new QSqlQuery(db);
     m_channelQuery->prepare(QStringLiteral("SELECT * FROM Channels WHERE id=:channelId;"));
 
+    m_clearFavoritesQuery = new QSqlQuery(db);
+    m_clearFavoritesQuery->prepare(QStringLiteral("DELETE FROM Favorites;"));
     m_favoriteCountQuery = new QSqlQuery(db);
     m_favoriteCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Favorites;"));
     m_favoritesQuery = new QSqlQuery(db);
@@ -343,6 +345,20 @@ void Database::removeFavorite(const ChannelId &channelId, bool emitSignal)
     // TODO: remove hack
     if (emitSignal) {
         Q_EMIT channelDetailsUpdated(channelId, false);
+    }
+}
+
+void Database::clearFavorites(bool emitSignal)
+{
+    const QVector<ChannelId> favoriteChannelIds = favorites();
+
+    execute(*m_clearFavoritesQuery);
+
+    // TODO: remove hack
+    if (emitSignal) {
+        for (const auto &channelId : favoriteChannelIds) {
+            Q_EMIT channelDetailsUpdated(channelId, false);
+        }
     }
 }
 
