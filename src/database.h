@@ -31,6 +31,7 @@ public:
     size_t countryCount();
     bool countryExists(const CountryId &id);
     QVector<CountryData> countries();
+    QVector<CountryData> countries(const ChannelId &channelId);
 
     void addChannel(const ChannelData &data, const CountryId &country);
     size_t channelCount();
@@ -68,6 +69,7 @@ private:
     QSqlQuery *m_countryCountQuery;
     QSqlQuery *m_countryExistsQuery;
     QSqlQuery *m_countriesQuery;
+    QSqlQuery *m_countriesPerChannelQuery;
 
     QSqlQuery *m_addCountryChannelQuery;
 

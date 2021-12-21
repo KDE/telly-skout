@@ -1,5 +1,6 @@
 #include "channel.h"
 
+#include "countrydata.h"
 #include "database.h"
 #include "fetcher.h"
 #include "program.h"
@@ -7,7 +8,8 @@
 #include "types.h"
 
 #include <QDebug>
-#include <QSqlQuery>
+
+#include <algorithm>
 
 Channel::Channel(const ChannelData &data)
     : QObject(nullptr)
@@ -17,13 +19,11 @@ Channel::Channel(const ChannelData &data)
     // TODO: use ChannelFactory
     m_favorite = Database::instance().isFavorite(m_data.m_id);
 
-    QSqlQuery countryQuery;
-    countryQuery.prepare(QStringLiteral("SELECT country FROM CountryChannels WHERE channel=:channel"));
-    countryQuery.bindValue(QStringLiteral(":channel"), m_data.m_id.value());
-    Database::instance().execute(countryQuery);
-    while (countryQuery.next()) {
-        m_countries.push_back(countryQuery.value(QStringLiteral("country")).toString());
-    }
+    const QVector<CountryData> countries = Database::instance().countries(m_data.m_id);
+    m_countries.resize(countries.size());
+    std::transform(countries.begin(), countries.end(), m_countries.begin(), [](const CountryData &data) {
+        return data.m_id.value();
+    });
 
     connect(&Fetcher::instance(), &Fetcher::startedFetchingChannel, this, [this](const ChannelId &id) {
         if (id == m_data.m_id) {

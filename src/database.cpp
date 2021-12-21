@@ -43,6 +43,9 @@ Database::Database()
     m_countryExistsQuery->prepare(QStringLiteral("SELECT COUNT () FROM Countries WHERE id=:id;"));
     m_countriesQuery = new QSqlQuery(db);
     m_countriesQuery->prepare(QStringLiteral("SELECT * FROM Countries ORDER BY name COLLATE NOCASE;"));
+    m_countriesPerChannelQuery = new QSqlQuery(db);
+    m_countriesPerChannelQuery->prepare(
+        QStringLiteral("SELECT * FROM Countries WHERE id=(SELECT country from CountryChannels WHERE channel=:channel) ORDER BY name COLLATE NOCASE;"));
 
     m_addCountryChannelQuery = new QSqlQuery(db);
     m_addCountryChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
@@ -198,6 +201,22 @@ QVector<CountryData> Database::countries()
         data.m_id = CountryId(m_countriesQuery->value(QStringLiteral("id")).toString());
         data.m_name = m_countriesQuery->value(QStringLiteral("name")).toString();
         data.m_url = m_countriesQuery->value(QStringLiteral("url")).toString();
+        countries.append(data);
+    }
+    return countries;
+}
+
+QVector<CountryData> Database::countries(const ChannelId &channelId)
+{
+    QVector<CountryData> countries;
+
+    m_countriesPerChannelQuery->bindValue(QStringLiteral(":channel"), channelId.value());
+    execute(*m_countriesPerChannelQuery);
+    while (m_countriesPerChannelQuery->next()) {
+        CountryData data;
+        data.m_id = CountryId(m_countriesPerChannelQuery->value(QStringLiteral("id")).toString());
+        data.m_name = m_countriesPerChannelQuery->value(QStringLiteral("name")).toString();
+        data.m_url = m_countriesPerChannelQuery->value(QStringLiteral("url")).toString();
         countries.append(data);
     }
     return countries;
