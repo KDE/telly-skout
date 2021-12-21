@@ -15,7 +15,6 @@ class Country : public QObject
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString url READ url CONSTANT)
     Q_PROPERTY(bool refreshing READ refreshing WRITE setRefreshing NOTIFY refreshingChanged)
-    Q_PROPERTY(int channelCount READ channelCount NOTIFY channelCountChanged)
     Q_PROPERTY(int errorId READ errorId NOTIFY errorIdChanged)
     Q_PROPERTY(QString errorString READ errorString NOTIFY errorStringChanged)
     Q_PROPERTY(ChannelsModel *channels MEMBER m_channels CONSTANT)
@@ -28,7 +27,6 @@ public:
     QString id() const;
     QString name() const;
     QString url() const;
-    int channelCount() const;
     int errorId() const;
     QString errorString() const;
 
@@ -42,7 +40,6 @@ Q_SIGNALS:
     void countriesChanged(const QVector<Country *> &countries);
     void deleteAfterCountChanged(int count);
     void deleteAfterTypeChanged(int type);
-    void channelCountChanged();
     void errorIdChanged(int errorId);
     void errorStringChanged(const QString &errorString);
 

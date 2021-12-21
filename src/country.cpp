@@ -5,7 +5,6 @@
 #include "fetcher.h"
 
 #include <QDebug>
-#include <QSqlQuery>
 
 Country::Country(CountryData data)
     : QObject(nullptr)
@@ -14,13 +13,6 @@ Country::Country(CountryData data)
     connect(&Fetcher::instance(), &Fetcher::startedFetchingCountry, this, [this](const CountryId &id) {
         if (id == m_data.m_id) {
             setRefreshing(true);
-        }
-    });
-    connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const CountryId &id) {
-        if (id == m_data.m_id) {
-            setRefreshing(false);
-            Q_EMIT channelCountChanged();
-            m_error.reset();
         }
     });
     connect(&Fetcher::instance(), &Fetcher::errorFetchingCountry, this, [this](const CountryId &id, const Error &error) {
@@ -50,18 +42,6 @@ QString Country::name() const
 QString Country::url() const
 {
     return m_data.m_url;
-}
-
-int Country::channelCount() const
-{
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT COUNT (id) FROM CountryChannels where country=:country;"));
-    query.bindValue(QStringLiteral(":country"), m_data.m_id.value());
-    Database::instance().execute(query);
-    if (!query.next()) {
-        return -1;
-    }
-    return query.value(0).toInt();
 }
 
 bool Country::refreshing() const
