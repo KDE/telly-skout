@@ -9,6 +9,8 @@ add_executable(telly-skout
     countriesmodel.cpp
     database.cpp
     fetcher.cpp
+    fetcherimpl.h
+    networkfetcher.cpp
     program.cpp
     programfactory.cpp
     programsmodel.cpp

@@ -1,40 +1,33 @@
 #include "tvspielfilmfetcher.h"
 
 #include "database.h"
-#include "fetcher.h"
 
 #include <KLocalizedString>
 
-#include <QCryptographicHash>
 #include <QDateTime>
-#include <QFile>
-#include <QFileInfo>
-#include <QNetworkAccessManager>
+#include <QDebug>
 #include <QNetworkReply>
-#include <QStandardPaths>
-#include <QVector>
+#include <QNetworkRequest>
+#include <QRegularExpression>
+#include <QString>
 #include <QtXml>
 
 TvSpielfilmFetcher::TvSpielfilmFetcher()
 {
-    m_manager = new QNetworkAccessManager(this);
-    m_manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
-    m_manager->setStrictTransportSecurityEnabled(true);
-    m_manager->enableStrictTransportSecurityStore(true);
 }
 
 void TvSpielfilmFetcher::fetchFavorites()
 {
     qDebug() << "Starting to fetch favorites";
 
-    Fetcher::instance().emitStartedFetchingFavorites();
+    Q_EMIT startedFetchingFavorites();
 
     const QVector<ChannelId> favoriteChannels = Database::instance().favorites();
     for (int i = 0; i < favoriteChannels.length(); i++) {
         fetchProgram(favoriteChannels.at(i));
     }
 
-    Fetcher::instance().emitFinishedFetchingFavorites();
+    Q_EMIT finishedFetchingFavorites();
 }
 
 void TvSpielfilmFetcher::fetchCountries()
@@ -42,13 +35,13 @@ void TvSpielfilmFetcher::fetchCountries()
     const CountryId id = CountryId("tvspielfilm.germany");
     const QString name = i18n("Germany");
 
-    Fetcher::instance().emitStartedFetchingCountry(id);
+    Q_EMIT startedFetchingCountry(id);
 
     const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen";
 
     Database::instance().addCountry(id, name, url);
 
-    Fetcher::instance().emitCountryUpdated(id);
+    Q_EMIT countryUpdated(id);
 }
 
 void TvSpielfilmFetcher::fetchCountry(const QString &url, const CountryId &countryId)
@@ -61,7 +54,7 @@ void TvSpielfilmFetcher::fetchCountry(const QString &url, const CountryId &count
         if (reply->error()) {
             qWarning() << "Error fetching country";
             qWarning() << reply->errorString();
-            Fetcher::instance().emitErrorFetchingCountry(countryId, Error(reply->error(), reply->errorString()));
+            Q_EMIT errorFetchingCountry(countryId, Error(reply->error(), reply->errorString()));
         } else {
             QByteArray data = reply->readAll();
 
@@ -95,7 +88,7 @@ void TvSpielfilmFetcher::fetchCountry(const QString &url, const CountryId &count
             }
         }
         delete reply;
-        Fetcher::instance().emitCountryUpdated(countryId);
+        Q_EMIT countryUpdated(countryId);
     });
 }
 
@@ -109,13 +102,13 @@ void TvSpielfilmFetcher::fetchChannel(const ChannelId &channelId, const QString 
         // https://www.tvspielfilm.de/tv-programm/sendungen/das-erste,ARD.html
         data.m_url = "https://www.tvspielfilm.de/tv-programm/sendungen/" + name.toLower().replace(' ', '-') + "," + channelId.value() + ".html";
 
-        Fetcher::instance().emitStartedFetchingChannel(data.m_id);
+        Q_EMIT startedFetchingChannel(data.m_id);
 
         // TODO: https://a2.tvspielfilm.de/images/tv/sender/mini/sprite_web_optimized_1616508904.webp
         data.m_image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.value().toLower() + ".webp";
         Database::instance().addChannel(data, country);
 
-        Fetcher::instance().emitChannelUpdated(channelId);
+        Q_EMIT channelUpdated(channelId);
     }
 }
 
@@ -132,7 +125,7 @@ void TvSpielfilmFetcher::fetchProgramDescription(const ChannelId &channelId, con
             QByteArray data = reply->readAll();
             processDescription(data, url, programId);
 
-            Fetcher::instance().emitChannelUpdated(channelId);
+            Q_EMIT channelUpdated(channelId);
         }
         delete reply;
     });
@@ -170,7 +163,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
         if (reply->error()) {
             qWarning() << "Error fetching channel";
             qWarning() << reply->errorString();
-            Fetcher::instance().emitErrorFetchingChannel(channelId, Error(reply->error(), reply->errorString()));
+            Q_EMIT errorFetchingChannel(channelId, Error(reply->error(), reply->errorString()));
         } else {
             QByteArray data = reply->readAll();
             processChannel(data, url, channelId);
@@ -184,7 +177,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
                 fetchProgram(channelId, matchNextPage.captured(1));
             } else {
                 // all pages processed, update GUI
-                Fetcher::instance().emitChannelUpdated(channelId);
+                Q_EMIT channelUpdated(channelId);
             }
         }
         delete reply;
@@ -269,10 +262,4 @@ void TvSpielfilmFetcher::processDescription(const QString &descriptionPage, cons
     } else {
         qWarning() << "Failed to parse program description from" << url;
     }
-}
-
-QNetworkReply *TvSpielfilmFetcher::get(QNetworkRequest &request)
-{
-    request.setRawHeader("User-Agent", "telly-skout/0.1");
-    return m_manager->get(request);
 }

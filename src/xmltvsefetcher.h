@@ -1,25 +1,21 @@
 #pragma once
 
-#include <QObject>
-
-#include "types.h"
+#include "networkfetcher.h"
 
 class QDomElement;
 class QDomNode;
-class QNetworkAccessManager;
-class QNetworkReply;
-class QNetworkRequest;
-class QString;
 
-class XmlTvSeFetcher : public QObject
+class XmlTvSeFetcher : public NetworkFetcher
 {
     Q_OBJECT
 public:
     XmlTvSeFetcher();
-    void fetchFavorites();
-    void fetchCountries();
-    void fetchCountry(const QString &url, const CountryId &countryId);
-    void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url);
+    virtual ~XmlTvSeFetcher() = default;
+
+    void fetchFavorites() override;
+    void fetchCountries() override;
+    void fetchCountry(const QString &url, const CountryId &countryId) override;
+    void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url) override;
 
 private:
     void fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &countryId);
@@ -27,7 +23,4 @@ private:
     void processCountry(const QDomElement &country);
     void processChannel(const QDomElement &channel, const QString &url);
     void processProgram(const QDomNode &program, const QString &url);
-    QNetworkReply *get(QNetworkRequest &request);
-
-    QNetworkAccessManager *manager;
 };

@@ -1,43 +1,84 @@
 #include "fetcher.h"
 
 #include "database.h"
+#include "tvspielfilmfetcher.h"
+#include "xmltvsefetcher.h"
 
 #include <KLocalizedString>
 
 #include <QCryptographicHash>
-#include <QDateTime>
+#include <QDebug>
 #include <QFile>
 #include <QFileInfo>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QNetworkRequest>
 #include <QStandardPaths>
-#include <QVector>
-#include <QtXml>
+
+#define USE_TVSPIELFILM
 
 Fetcher::Fetcher()
+    :
+#ifdef USE_TVSPIELFILM
+    m_fetcherImpl(new TvSpielfilmFetcher)
+#else
+    m_fetcherImpl(new XmlTvSeFetcher)
+#endif
 {
     m_manager = new QNetworkAccessManager(this);
     m_manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
     m_manager->setStrictTransportSecurityEnabled(true);
     m_manager->enableStrictTransportSecurityStore(true);
+
+    connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingFavorites, this, [this]() {
+        Q_EMIT startedFetchingFavorites();
+    });
+    connect(m_fetcherImpl.get(), &FetcherImpl::finishedFetchingFavorites, this, [this]() {
+        Q_EMIT finishedFetchingFavorites();
+    });
+
+    connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingCountry, this, [this](const CountryId &id) {
+        Q_EMIT startedFetchingCountry(id);
+    });
+    connect(m_fetcherImpl.get(), &FetcherImpl::countryUpdated, this, [this](const CountryId &id) {
+        Q_EMIT countryUpdated(id);
+    });
+    connect(m_fetcherImpl.get(), &FetcherImpl::countryDetailsUpdated, this, [this](const CountryId &id) {
+        Q_EMIT countryDetailsUpdated(id);
+    });
+
+    connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingChannel, this, [this](const ChannelId &id) {
+        Q_EMIT startedFetchingChannel(id);
+    });
+    connect(m_fetcherImpl.get(), &FetcherImpl::channelUpdated, this, [this](const ChannelId &id) {
+        Q_EMIT channelUpdated(id);
+    });
+    connect(m_fetcherImpl.get(), &FetcherImpl::channelDetailsUpdated, this, [this](const ChannelId &id, const QString &image) {
+        Q_EMIT channelDetailsUpdated(id, image);
+    });
+
+    connect(m_fetcherImpl.get(), &FetcherImpl::errorFetching, this, [this](const Error &error) {
+        Q_EMIT errorFetching(error);
+    });
+    connect(m_fetcherImpl.get(), &FetcherImpl::errorFetchingCountry, this, [this](const CountryId &id, const Error &error) {
+        Q_EMIT errorFetchingCountry(id, error);
+    });
+    connect(m_fetcherImpl.get(), &FetcherImpl::errorFetchingChannel, this, [this](const ChannelId &id, const Error &error) {
+        Q_EMIT errorFetchingChannel(id, error);
+    });
+    connect(m_fetcherImpl.get(), &FetcherImpl::errorFetchingProgram, this, [this](const ProgramId &id, const Error &error) {
+        Q_EMIT errorFetchingProgram(id, error);
+    });
 }
 
 void Fetcher::fetchFavorites()
 {
-#ifdef USE_TVSPIELFILM
-    m_tvSpielfilmFetcher.fetchFavorites();
-#else
-    m_xmlTvSeFetcher.fetchFavorites();
-#endif
+    m_fetcherImpl->fetchFavorites();
 }
 
 void Fetcher::fetchCountries()
 {
-#ifdef USE_TVSPIELFILM
-    m_tvSpielfilmFetcher.fetchCountries();
-#else
-    m_xmlTvSeFetcher.fetchCountries();
-#endif
+    m_fetcherImpl->fetchCountries();
 }
 
 void Fetcher::fetchCountry(const QString &url, const QString &countryId)
@@ -47,20 +88,12 @@ void Fetcher::fetchCountry(const QString &url, const QString &countryId)
 
 void Fetcher::fetchCountry(const QString &url, const CountryId &countryId)
 {
-#ifdef USE_TVSPIELFILM
-    m_tvSpielfilmFetcher.fetchCountry(url, countryId);
-#else
-    m_xmlTvSeFetcher.fetchCountry(url, countryId);
-#endif
+    m_fetcherImpl->fetchCountry(url, countryId);
 }
 
 void Fetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
 {
-#ifdef USE_TVSPIELFILM
-    m_tvSpielfilmFetcher.fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url);
-#else
-    m_xmlTvSeFetcher.fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url);
-#endif
+    m_fetcherImpl->fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url);
 }
 
 QString Fetcher::image(const QString &url)
@@ -109,72 +142,4 @@ QNetworkReply *Fetcher::get(QNetworkRequest &request)
 {
     request.setRawHeader("User-Agent", "telly-skout/0.1");
     return m_manager->get(request);
-}
-
-//
-// TODO: rework
-//
-void Fetcher::emitStartedFetchingFavorites()
-{
-    Q_EMIT startedFetchingFavorites();
-}
-
-void Fetcher::emitFinishedFetchingFavorites()
-{
-    Q_EMIT finishedFetchingFavorites();
-}
-
-void Fetcher::emitStartedFetchingCountry(const CountryId &id)
-{
-    Q_EMIT startedFetchingCountry(id);
-}
-
-void Fetcher::emitStartedFetchingChannel(const ChannelId &id)
-{
-    Q_EMIT startedFetchingChannel(id);
-}
-
-void Fetcher::emitCountryUpdated(const CountryId &id)
-{
-    Q_EMIT countryUpdated(id);
-}
-
-void Fetcher::emitChannelUpdated(const ChannelId &id)
-{
-    Q_EMIT channelUpdated(id);
-}
-
-void Fetcher::emitCountryDetailsUpdated(const CountryId &id)
-{
-    Q_EMIT countryDetailsUpdated(id);
-}
-
-void Fetcher::emitChannelDetailsUpdated(const ChannelId &id, const QString &image)
-{
-    Q_EMIT channelDetailsUpdated(id, image);
-}
-
-void Fetcher::emitErrorFetching(const Error &error)
-{
-    Q_EMIT errorFetching(error);
-}
-
-void Fetcher::emitErrorFetchingCountry(const CountryId &id, const Error &error)
-{
-    Q_EMIT errorFetchingCountry(id, error);
-}
-
-void Fetcher::emitErrorFetchingChannel(const ChannelId &id, const Error &error)
-{
-    Q_EMIT errorFetchingChannel(id, error);
-}
-
-void Fetcher::emitErrorFetchingProgram(const ProgramId &id, const Error &error)
-{
-    Q_EMIT errorFetchingProgram(id, error);
-}
-
-void Fetcher::emitImageDownloadFinished(const QString &url)
-{
-    Q_EMIT imageDownloadFinished(url);
 }

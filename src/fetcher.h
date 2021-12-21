@@ -1,20 +1,16 @@
 #pragma once
 
-#include "programdata.h"
-#include "tvspielfilmfetcher.h"
+#include "fetcherimpl.h"
 #include "types.h"
-#include "xmltvsefetcher.h"
 
 #include <QObject>
 
-class QDomElement;
-class QDomNode;
+#include <memory>
+
 class QNetworkAccessManager;
 class QNetworkReply;
 class QNetworkRequest;
 class QString;
-
-#define USE_TVSPIELFILM
 
 class Fetcher : public QObject
 {
@@ -41,41 +37,24 @@ private:
     QNetworkReply *get(QNetworkRequest &request);
 
     QNetworkAccessManager *m_manager;
-#ifdef USE_TVSPIELFILM
-    TvSpielfilmFetcher m_tvSpielfilmFetcher;
-#else
-    XmlTvSeFetcher m_xmlTvSeFetcher;
-#endif
-
-    // TODO: rework
-    friend class TvSpielfilmFetcher;
-    friend class XmlTvSeFetcher;
-    void emitStartedFetchingFavorites();
-    void emitFinishedFetchingFavorites();
-    void emitStartedFetchingCountry(const CountryId &id); // TODO: emit
-    void emitStartedFetchingChannel(const ChannelId &id);
-    void emitCountryUpdated(const CountryId &id);
-    void emitChannelUpdated(const ChannelId &id);
-    void emitCountryDetailsUpdated(const CountryId &id); // TODO: emit
-    void emitChannelDetailsUpdated(const ChannelId &id, const QString &image);
-    void emitErrorFetching(const Error &error);
-    void emitErrorFetchingCountry(const CountryId &id, const Error &error);
-    void emitErrorFetchingChannel(const ChannelId &id, const Error &error);
-    void emitErrorFetchingProgram(const ProgramId &id, const Error &error);
-    void emitImageDownloadFinished(const QString &url);
+    std::unique_ptr<FetcherImpl> m_fetcherImpl;
 
 Q_SIGNALS:
     void startedFetchingFavorites();
     void finishedFetchingFavorites();
-    void startedFetchingCountry(const CountryId &id); // TODO: emit
-    void startedFetchingChannel(const ChannelId &id);
+
+    void startedFetchingCountry(const CountryId &id);
     void countryUpdated(const CountryId &id);
+    void countryDetailsUpdated(const CountryId &id);
+
+    void startedFetchingChannel(const ChannelId &id);
     void channelUpdated(const ChannelId &id);
-    void countryDetailsUpdated(const CountryId &id); // TODO: emit
     void channelDetailsUpdated(const ChannelId &id, const QString &image);
+
     void errorFetching(const Error &error);
     void errorFetchingCountry(const CountryId &id, const Error &error);
     void errorFetchingChannel(const ChannelId &id, const Error &error);
     void errorFetchingProgram(const ProgramId &id, const Error &error);
+
     void imageDownloadFinished(const QString &url);
 };
