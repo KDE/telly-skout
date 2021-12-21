@@ -6,8 +6,6 @@ import org.kde.kirigami 2.12 as Kirigami
 Kirigami.GlobalDrawer {
     id: root
 
-    property var channelsTablePage
-
     isMenu: true
     actions: [
         Kirigami.Action {
@@ -16,7 +14,9 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();
-                pageStack.push(root.channelsTablePage);
+                pageStack.push("qrc:/ChannelTablePage.qml", {
+                    "windowHeight": root.parent.height
+                });
             }
         },
         Kirigami.Action {

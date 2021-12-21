@@ -25,7 +25,6 @@ Kirigami.ApplicationWindow {
     }
 
     globalDrawer: TellySkoutGlobalDrawer {
-        channelsTablePage: channelTable
     }
 
     contextDrawer: Kirigami.ContextDrawer {
