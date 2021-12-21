@@ -60,7 +60,6 @@ void ProgramsModel::loadProgram(int index) const
     Program *program = m_programFactory.create(ChannelId(m_channel->id()), index);
 
     if (program) {
-        // TODO: better show dummy?
         // avoid gaps/overlapping in the program (causes not aligned times in table)
         if (m_programs.contains(index - 1) && m_programs[index - 1]->stop() != program->start()) {
             program->setStart(m_programs[index - 1]->stop());
