@@ -393,8 +393,8 @@ void Database::addProgram(const ProgramData &data)
     m_addProgramQuery->bindValue(QStringLiteral(":start"), data.m_startTime.toSecsSinceEpoch());
     m_addProgramQuery->bindValue(QStringLiteral(":stop"), data.m_stopTime.toSecsSinceEpoch());
     m_addProgramQuery->bindValue(QStringLiteral(":title"), data.m_title);
-    m_addProgramQuery->bindValue(QStringLiteral(":subtitle"), data.m_subtitle); // TODO
-    m_addProgramQuery->bindValue(QStringLiteral(":description"), data.m_description); // set in fetchDescription()
+    m_addProgramQuery->bindValue(QStringLiteral(":subtitle"), data.m_subtitle);
+    m_addProgramQuery->bindValue(QStringLiteral(":description"), data.m_description);
     m_addProgramQuery->bindValue(QStringLiteral(":category"), data.m_category);
 
     execute(*m_addProgramQuery);
