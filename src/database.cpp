@@ -62,6 +62,8 @@ Database::Database()
     m_favoriteCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Favorites;"));
     m_favoritesQuery = new QSqlQuery(db);
     m_favoritesQuery->prepare(QStringLiteral("SELECT channel FROM Favorites ORDER BY id;"));
+    m_isFavoriteQuery = new QSqlQuery(db);
+    m_isFavoriteQuery->prepare(QStringLiteral("SELECT COUNT() FROM Favorites WHERE channel=:channel"));
 
     m_addProgramQuery = new QSqlQuery(db);
     m_addProgramQuery->prepare(
@@ -345,6 +347,14 @@ QVector<ChannelId> Database::favorites()
         favorites.append(channelId);
     }
     return favorites;
+}
+
+bool Database::isFavorite(const ChannelId &channelId)
+{
+    m_isFavoriteQuery->bindValue(QStringLiteral(":channel"), channelId.value());
+    execute(*m_isFavoriteQuery);
+    m_isFavoriteQuery->next();
+    return m_isFavoriteQuery->value(0).toInt() > 0;
 }
 
 void Database::addProgram(const ProgramData &data)

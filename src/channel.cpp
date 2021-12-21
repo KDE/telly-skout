@@ -15,11 +15,7 @@ Channel::Channel(const ChannelData &data)
     m_data = data;
 
     // TODO: use ChannelFactory
-    QSqlQuery favoriteQuery;
-    favoriteQuery.prepare(QStringLiteral("SELECT id FROM Favorites WHERE channel=:channel"));
-    favoriteQuery.bindValue(QStringLiteral(":channel"), m_data.m_id.value());
-    Database::instance().execute(favoriteQuery);
-    m_favorite = favoriteQuery.next();
+    m_favorite = Database::instance().isFavorite(m_data.m_id);
 
     QSqlQuery countryQuery;
     countryQuery.prepare(QStringLiteral("SELECT country FROM CountryChannels WHERE channel=:channel"));

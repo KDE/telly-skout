@@ -42,6 +42,7 @@ public:
     void removeFavorite(const ChannelId &channelId, bool emitSignal = true);
     size_t favoriteCount();
     QVector<ChannelId> favorites();
+    bool isFavorite(const ChannelId &channelId);
 
     void addProgram(const ProgramData &data);
     void updateProgramDescription(const ProgramId &id, const QString &description);
@@ -78,6 +79,7 @@ private:
 
     QSqlQuery *m_favoriteCountQuery;
     QSqlQuery *m_favoritesQuery;
+    QSqlQuery *m_isFavoriteQuery;
 
     QSqlQuery *m_addProgramQuery;
     QSqlQuery *m_updateProgramDescriptionQuery;
