@@ -15,23 +15,6 @@ XmlTvSeFetcher::XmlTvSeFetcher()
 {
 }
 
-void XmlTvSeFetcher::fetchFavorites()
-{
-    qDebug() << "Starting to fetch favorites";
-
-    Q_EMIT startedFetchingFavorites();
-
-    QSqlQuery query;
-    query.prepare(QStringLiteral("SELECT channel FROM Favorites;"));
-    Database::instance().execute(query);
-    while (query.next()) {
-        const ChannelId channelId = ChannelId(query.value(QStringLiteral("channel")).toString());
-        fetchProgram(channelId);
-    }
-
-    Q_EMIT finishedFetchingFavorites();
-}
-
 void XmlTvSeFetcher::fetchCountries()
 {
     // http://xmltv.se/countries.xml

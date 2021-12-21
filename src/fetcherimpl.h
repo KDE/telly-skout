@@ -12,9 +12,9 @@ class FetcherImpl : public QObject
 public:
     virtual ~FetcherImpl() = default;
 
-    virtual void fetchFavorites() = 0;
     virtual void fetchCountries() = 0;
     virtual void fetchCountry(const QString &url, const CountryId &countryId) = 0;
+    virtual void fetchProgram(const ChannelId &channelId) = 0;
     virtual void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url) = 0;
 
 Q_SIGNALS:

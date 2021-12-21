@@ -16,20 +16,6 @@ TvSpielfilmFetcher::TvSpielfilmFetcher()
 {
 }
 
-void TvSpielfilmFetcher::fetchFavorites()
-{
-    qDebug() << "Starting to fetch favorites";
-
-    Q_EMIT startedFetchingFavorites();
-
-    const QVector<ChannelId> favoriteChannels = Database::instance().favorites();
-    for (int i = 0; i < favoriteChannels.length(); i++) {
-        fetchProgram(favoriteChannels.at(i));
-    }
-
-    Q_EMIT finishedFetchingFavorites();
-}
-
 void TvSpielfilmFetcher::fetchCountries()
 {
     const CountryId id = CountryId("tvspielfilm.germany");

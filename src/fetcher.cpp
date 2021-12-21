@@ -70,7 +70,16 @@ Fetcher::Fetcher()
 
 void Fetcher::fetchFavorites()
 {
-    m_fetcherImpl->fetchFavorites();
+    qDebug() << "Starting to fetch favorites";
+
+    Q_EMIT startedFetchingFavorites();
+
+    const QVector<ChannelId> favoriteChannels = Database::instance().favorites();
+    for (int i = 0; i < favoriteChannels.length(); i++) {
+        m_fetcherImpl->fetchProgram(favoriteChannels.at(i));
+    }
+
+    Q_EMIT finishedFetchingFavorites();
 }
 
 void Fetcher::fetchCountries()
