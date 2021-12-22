@@ -19,6 +19,7 @@ Kirigami.Page {
     title: i18n("Favorites")
     padding: 0
     Component.onCompleted: {
+        Fetcher.fetchFavorites();
         updateTime();
     }
 
