@@ -15,6 +15,11 @@ Kirigami.ScrollablePage {
     property bool onlyFavorites: false
 
     title: i18n("Channels")
+    Component.onDestruction: {
+        if (root.sortable)
+            channelsModel.save();
+
+    }
 
     Kirigami.PlaceholderMessage {
         visible: channelList.count === 0

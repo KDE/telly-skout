@@ -33,8 +33,6 @@ Kirigami.SwipeListItem {
             listView: listItem.listView
             onMoveRequested: sortable ? listView.model.move(oldIndex, newIndex) : {
             }
-            onDropped: sortable ? listView.model.save() : {
-            }
             visible: listItem.sortable
         }
 
