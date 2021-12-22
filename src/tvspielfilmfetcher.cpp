@@ -134,24 +134,26 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId)
         // https://www.tvspielfilm.de/tv-programm/sendungen/?date=2021-11-09&time=day&channel=ARD
         const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=" + channelId.value();
         const QString urlDay = url + "&date=" + day.toString("yyyy-MM-dd") + "&page=1";
-        fetchProgram(channelId, urlDay);
+        QVector<ProgramData> programs;
+        fetchProgram(channelId, urlDay, programs);
     }
 }
 
-void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString &url)
+void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString &url, QVector<ProgramData> &programs)
 {
     qDebug() << "Starting to fetch program for " << channelId.value() << "(" << url << ")";
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, channelId, url, reply]() {
+    connect(reply, &QNetworkReply::finished, this, [this, channelId, url, programs, reply]() {
         if (reply->error()) {
             qWarning() << "Error fetching channel";
             qWarning() << reply->errorString();
             Q_EMIT errorFetchingChannel(channelId, Error(reply->error(), reply->errorString()));
         } else {
             QByteArray data = reply->readAll();
-            processChannel(data, url, channelId);
+            QVector<ProgramData> allPrograms(programs);
+            allPrograms.append(processChannel(data, url, channelId));
 
             // fetch next page
             QRegularExpression reNextPage(
@@ -159,9 +161,10 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
             reNextPage.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
             QRegularExpressionMatch matchNextPage = reNextPage.match(data);
             if (matchNextPage.hasMatch()) {
-                fetchProgram(channelId, matchNextPage.captured(1));
+                fetchProgram(channelId, matchNextPage.captured(1), allPrograms);
             } else {
-                // all pages processed, update GUI
+                // all pages processed, update DB + GUI
+                Database::instance().addPrograms(allPrograms);
                 Q_EMIT channelUpdated(channelId);
             }
         }
@@ -169,7 +172,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
     });
 }
 
-void TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId)
+QVector<ProgramData> TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId)
 {
     QVector<ProgramData> programs;
 
@@ -195,7 +198,7 @@ void TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString 
         programs.push_back(processProgram(match, url, channelId, !it.hasNext()));
     }
 
-    Database::instance().addPrograms(programs);
+    return programs;
 }
 
 ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const ChannelId &channelId, bool isLast)

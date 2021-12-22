@@ -18,8 +18,8 @@ public:
 
 private:
     void fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &country);
-    void fetchProgram(const ChannelId &channelId, const QString &url);
-    void processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId);
+    void fetchProgram(const ChannelId &channelId, const QString &url, QVector<ProgramData> &programs);
+    QVector<ProgramData> processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId);
     ProgramData processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const ChannelId &channelId, bool isLast);
     void processDescription(const QString &descriptionPage, const QString &url, const ProgramId &programId);
 };
