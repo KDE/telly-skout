@@ -2,7 +2,7 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14 as Controls
 import QtQuick.Layouts 1.14
 import org.kde.TellySkout 1.0
-import org.kde.kirigami 2.12 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 
 Kirigami.SwipeListItem {
     leftPadding: 0
