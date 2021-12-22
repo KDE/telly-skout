@@ -43,6 +43,7 @@ Kirigami.Page {
 
         x: -channelTable.Controls.ScrollBar.horizontal.position * channelTable.contentWidth
         visible: contentRepeater.count !== 0
+        z: 100 // TODO: remove workaround for mobile (channelTable "anchors.top: header.bottom" not respected)
 
         Repeater {
             id: headerRepeater
