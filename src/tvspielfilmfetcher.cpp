@@ -121,14 +121,14 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId)
     QDate today = QDate::currentDate();
     QDate yesterday = QDate::currentDate().addDays(-1);
     QDate tomorrow = QDate::currentDate().addDays(1);
-    QSet<QDate> days{yesterday, today, tomorrow};
+    QSet<QDate> days{tomorrow, today, yesterday}; // backwards such that we can stop early (see below)
     for (auto day : days) {
         // check if program is available already
         const QDateTime utcTime(day, QTime(), Qt::UTC);
         const qint64 lastTime = utcTime.addDays(1).toSecsSinceEpoch() - 1;
 
         if (Database::instance().programExists(channelId, lastTime)) {
-            continue;
+            return; // assume that programs from previous days are available
         }
 
         // https://www.tvspielfilm.de/tv-programm/sendungen/?date=2021-11-09&time=day&channel=ARD
