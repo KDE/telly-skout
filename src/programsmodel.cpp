@@ -4,13 +4,15 @@
 #include "database.h"
 #include "fetcher.h"
 #include "program.h"
+#include "programfactory.h"
 #include "types.h"
 
 #include <QDebug>
 
-ProgramsModel::ProgramsModel(Channel *channel)
+ProgramsModel::ProgramsModel(Channel *channel, ProgramFactory &programFactory)
     : QAbstractListModel(channel)
     , m_channel(channel)
+    , m_programFactory(programFactory)
 {
     connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const ChannelId &id) {
         if (m_channel->id() == id.value()) {

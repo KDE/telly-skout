@@ -55,7 +55,7 @@ Channel *ChannelFactory::create(int index) const
         return data.m_id.value();
     });
 
-    return new Channel(data, favorite, countryIds);
+    return new Channel(data, favorite, countryIds, m_programFactory);
 }
 
 void ChannelFactory::load() const

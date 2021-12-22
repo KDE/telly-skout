@@ -7,6 +7,7 @@
 #include <QVector>
 
 class Program;
+class ProgramFactory;
 class ProgramsModel;
 
 class Channel : public QObject
@@ -25,7 +26,7 @@ class Channel : public QObject
     Q_PROPERTY(ProgramsModel *programsModel MEMBER m_programsModel CONSTANT)
 
 public:
-    Channel(const ChannelData &data, bool favorite, const QVector<QString> &countryIds);
+    Channel(const ChannelData &data, bool favorite, const QVector<QString> &countryIds, ProgramFactory &programFactory);
 
     ~Channel();
 

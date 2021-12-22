@@ -3,12 +3,13 @@
 #include "database.h"
 #include "fetcher.h"
 #include "program.h"
+#include "programfactory.h"
 #include "programsmodel.h"
 #include "types.h"
 
 #include <QDebug>
 
-Channel::Channel(const ChannelData &data, bool favorite, const QVector<QString> &countryIds)
+Channel::Channel(const ChannelData &data, bool favorite, const QVector<QString> &countryIds, ProgramFactory &programFactory)
     : QObject(nullptr)
     , m_data(data)
     , m_favorite(favorite)
@@ -39,7 +40,7 @@ Channel::Channel(const ChannelData &data, bool favorite, const QVector<QString> 
     });
 
     // programs
-    m_programsModel = new ProgramsModel(this);
+    m_programsModel = new ProgramsModel(this, programFactory);
 }
 
 Channel::~Channel()

@@ -3,6 +3,7 @@
 #include <QObject>
 
 #include "channeldata.h"
+#include "programfactory.h"
 #include "types.h"
 
 #include <QVector>
@@ -26,4 +27,5 @@ public:
 private:
     mutable QVector<ChannelData> m_channels;
     bool m_onlyFavorites;
+    mutable ProgramFactory m_programFactory;
 };

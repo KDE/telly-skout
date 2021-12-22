@@ -2,13 +2,12 @@
 
 #include <QAbstractListModel>
 
-#include "programfactory.h"
-
 #include <QHash>
 #include <QObject>
 
 class Channel;
 class Program;
+class ProgramFactory;
 
 class ProgramsModel : public QAbstractListModel
 {
@@ -17,7 +16,7 @@ class ProgramsModel : public QAbstractListModel
     Q_PROPERTY(Channel *channel READ channel CONSTANT)
 
 public:
-    explicit ProgramsModel(Channel *channel);
+    explicit ProgramsModel(Channel *channel, ProgramFactory &programFactory);
     ~ProgramsModel() override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
@@ -30,5 +29,5 @@ private:
 
     Channel *m_channel;
     mutable QHash<int, Program *> m_programs;
-    ProgramFactory m_programFactory;
+    ProgramFactory &m_programFactory;
 };
