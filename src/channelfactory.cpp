@@ -56,8 +56,12 @@ Channel *ChannelFactory::create(bool onlyFavorites, int index) const
     }
 
     // check if channel is favorite
-    // (!onlyFavorites does not mean that it cannot be favorite)
-    const bool favorite = Database::instance().isFavorite(data->m_id);
+    // if onlyFavorites == true, it must be a favorite
+    // but onlyFavorites == false does not mean that it cannot be favorite
+    bool favorite = onlyFavorites;
+    if (!onlyFavorites) {
+        favorite = Database::instance().isFavorite(data->m_id);
+    }
 
     const QVector<CountryData> countries = Database::instance().countries(data->m_id);
     QVector<QString> countryIds(countries.size());
