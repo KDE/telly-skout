@@ -48,7 +48,7 @@ Kirigami.Page {
         Repeater {
             id: headerRepeater
 
-            model: proxyModel
+            model: channelsModel
 
             delegate: Column {
                 width: 200
@@ -103,7 +103,7 @@ Kirigami.Page {
             Repeater {
                 id: contentRepeater
 
-                model: proxyModel
+                model: channelsModel
 
                 delegate: Column {
                     id: column
@@ -157,14 +157,6 @@ Kirigami.Page {
 
         }
 
-    }
-
-    ChannelsProxyModel {
-        id: proxyModel
-
-        onlyFavorites: true
-        country: ""
-        sourceModel: channelsModel
     }
 
     ChannelsModel {
