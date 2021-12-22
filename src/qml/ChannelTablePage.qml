@@ -169,6 +169,8 @@ Kirigami.Page {
 
     ChannelsModel {
         id: channelsModel
+
+        onlyFavorites: true
     }
 
     Kirigami.OverlaySheet {
