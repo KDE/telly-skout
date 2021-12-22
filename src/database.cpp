@@ -84,7 +84,7 @@ Database::Database()
     m_programCountQuery = new QSqlQuery(db);
     m_programCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Programs WHERE channel=:channel;"));
     m_programsQuery = new QSqlQuery(db);
-    m_programsQuery->prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY channel, start;"));
+    m_programsQuery->prepare(QStringLiteral("SELECT * FROM Programs ORDER BY channel, start;"));
     m_programsPerChannelQuery = new QSqlQuery(db);
     m_programsPerChannelQuery->prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start;"));
 }
