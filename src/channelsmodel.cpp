@@ -10,14 +10,15 @@
 
 ChannelsModel::ChannelsModel(QObject *parent)
     : QAbstractListModel(parent)
+    , m_onlyFavorites(true) // deliberately lazy to save time if only favorites required
+    , m_channelFactory(m_onlyFavorites)
 {
     connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const CountryId &id) {
         Q_UNUSED(id)
         beginResetModel();
         qDeleteAll(m_channels);
         m_channels.clear();
-        m_channelFactory.load(false);
-        m_channelFactory.load(true);
+        m_channelFactory.load();
         endResetModel();
     });
 
@@ -61,6 +62,7 @@ bool ChannelsModel::onlyFavorites() const
 void ChannelsModel::setOnlyFavorites(bool onlyFavorites)
 {
     m_onlyFavorites = onlyFavorites;
+    m_channelFactory.setOnlyFavorites(onlyFavorites);
 }
 
 QHash<int, QByteArray> ChannelsModel::roleNames() const
@@ -73,7 +75,7 @@ QHash<int, QByteArray> ChannelsModel::roleNames() const
 int ChannelsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return m_channelFactory.count(m_onlyFavorites);
+    return m_channelFactory.count();
 }
 
 QVariant ChannelsModel::data(const QModelIndex &index, int role) const
@@ -89,7 +91,7 @@ QVariant ChannelsModel::data(const QModelIndex &index, int role) const
 
 void ChannelsModel::loadChannel(int index) const
 {
-    m_channels += m_channelFactory.create(m_onlyFavorites, index);
+    m_channels += m_channelFactory.create(index);
 }
 
 void ChannelsModel::setFavorite(const QString &channelId, bool favorite)

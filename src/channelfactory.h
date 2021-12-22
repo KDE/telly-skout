@@ -14,15 +14,16 @@ class ChannelFactory : public QObject
     Q_OBJECT
 
 public:
-    ChannelFactory();
+    ChannelFactory(bool onlyFavorites);
     ~ChannelFactory() = default;
 
-    size_t count(bool onlyFavorites) const;
-    Channel *create(bool onlyFavorites, int index) const;
-    void load(bool onlyFavorites) const;
+    void setOnlyFavorites(bool onlyFavorites);
+    size_t count() const;
+    Channel *create(int index) const;
+    void load() const;
     void update(const ChannelId &id);
 
 private:
     mutable QVector<ChannelData> m_channels;
-    mutable QVector<ChannelData> m_favorites;
+    bool m_onlyFavorites;
 };
