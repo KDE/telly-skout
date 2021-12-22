@@ -41,7 +41,7 @@ public:
 
     void addFavorite(const ChannelId &channelId);
     void removeFavorite(const ChannelId &channelId);
-    void setFavorites(const QVector<ChannelId> &channelIds);
+    void sortFavorites(const QVector<ChannelId> &newOrder); // newOrder must contain same channel IDs as existing favorites
     void clearFavorites();
     size_t favoriteCount();
     QVector<ChannelId> favorites();
@@ -59,6 +59,7 @@ Q_SIGNALS:
     void countryAdded(const CountryId &id);
     void channelAdded(const ChannelId &id);
     void channelDetailsUpdated(const ChannelId &id, bool favorite);
+    void favoritesUpdated();
 
 private:
     Database();

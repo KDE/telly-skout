@@ -52,6 +52,14 @@ ChannelsModel::ChannelsModel(QObject *parent)
             }
         }
     });
+
+    connect(&Database::instance(), &Database::favoritesUpdated, this, [this]() {
+        beginResetModel();
+        qDeleteAll(m_channels);
+        m_channels.clear();
+        m_channelFactory.load();
+        endResetModel();
+    });
 }
 
 bool ChannelsModel::onlyFavorites() const
@@ -118,5 +126,5 @@ void ChannelsModel::save()
     std::transform(m_channels.begin(), m_channels.end(), channelIds.begin(), [](const Channel *channel) {
         return ChannelId(channel->id());
     });
-    Database::instance().setFavorites(channelIds);
+    Database::instance().sortFavorites(channelIds);
 }

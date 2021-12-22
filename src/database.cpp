@@ -355,14 +355,18 @@ void Database::removeFavorite(const ChannelId &channelId)
     Q_EMIT channelDetailsUpdated(channelId, false);
 }
 
-void Database::setFavorites(const QVector<ChannelId> &channelIds)
+void Database::sortFavorites(const QVector<ChannelId> &newOrder)
 {
     QSqlDatabase::database().transaction();
-    clearFavorites();
-    for (const auto &channelId : channelIds) {
-        addFavorite(channelId);
+    // do not use clearFavorites() and addFavorite() to avoid unneccesary signals (and therefore updates)
+    execute(*m_clearFavoritesQuery);
+    for (const auto &channelId : newOrder) {
+        m_addFavoriteQuery->bindValue(QStringLiteral(":channel"), channelId.value());
+        execute(*m_addFavoriteQuery);
     }
     QSqlDatabase::database().commit();
+
+    Q_EMIT favoritesUpdated();
 }
 
 void Database::clearFavorites()
