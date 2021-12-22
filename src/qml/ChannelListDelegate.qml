@@ -17,6 +17,7 @@ Kirigami.SwipeListItem {
 
             icon.name: model.channel.favorite ? favoriteIcon : noFavoriteIcon
             text: i18n("Favorite")
+            displayHint: Kirigami.DisplayHint.KeepVisible // do not hide action in overflow menu, TODO: not respected (on mobile)
             onTriggered: {
                 if (model.channel.favorite)
                     channelsModel.setFavorite(model.channel.id, false);
