@@ -15,6 +15,11 @@ Country::Country(CountryData data)
             setRefreshing(true);
         }
     });
+    connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const CountryId &id) {
+        if (id == m_data.m_id) {
+            setRefreshing(false);
+        }
+    });
     connect(&Fetcher::instance(), &Fetcher::errorFetchingCountry, this, [this](const CountryId &id, const Error &error) {
         if (id == m_data.m_id) {
             setError(error);
