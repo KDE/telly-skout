@@ -12,6 +12,8 @@
 #include <QString>
 #include <QVector>
 
+#include <memory>
+
 class QSqlQuery;
 
 class Database : public QObject
@@ -68,31 +70,31 @@ private:
     bool createTables();
     void cleanup();
 
-    QSqlQuery *m_addCountryQuery;
-    QSqlQuery *m_countryCountQuery;
-    QSqlQuery *m_countryExistsQuery;
-    QSqlQuery *m_countriesQuery;
-    QSqlQuery *m_countriesPerChannelQuery;
+    std::unique_ptr<QSqlQuery> m_addCountryQuery;
+    std::unique_ptr<QSqlQuery> m_countryCountQuery;
+    std::unique_ptr<QSqlQuery> m_countryExistsQuery;
+    std::unique_ptr<QSqlQuery> m_countriesQuery;
+    std::unique_ptr<QSqlQuery> m_countriesPerChannelQuery;
 
-    QSqlQuery *m_addCountryChannelQuery;
+    std::unique_ptr<QSqlQuery> m_addCountryChannelQuery;
 
-    QSqlQuery *m_addChannelQuery;
-    QSqlQuery *m_channelCountQuery;
-    QSqlQuery *m_channelExistsQuery;
-    QSqlQuery *m_channelsQuery;
-    QSqlQuery *m_channelQuery;
+    std::unique_ptr<QSqlQuery> m_addChannelQuery;
+    std::unique_ptr<QSqlQuery> m_channelCountQuery;
+    std::unique_ptr<QSqlQuery> m_channelExistsQuery;
+    std::unique_ptr<QSqlQuery> m_channelsQuery;
+    std::unique_ptr<QSqlQuery> m_channelQuery;
 
-    QSqlQuery *m_addFavoriteQuery;
-    QSqlQuery *m_removeFavoriteQuery;
-    QSqlQuery *m_clearFavoritesQuery;
-    QSqlQuery *m_favoriteCountQuery;
-    QSqlQuery *m_favoritesQuery;
-    QSqlQuery *m_isFavoriteQuery;
+    std::unique_ptr<QSqlQuery> m_addFavoriteQuery;
+    std::unique_ptr<QSqlQuery> m_removeFavoriteQuery;
+    std::unique_ptr<QSqlQuery> m_clearFavoritesQuery;
+    std::unique_ptr<QSqlQuery> m_favoriteCountQuery;
+    std::unique_ptr<QSqlQuery> m_favoritesQuery;
+    std::unique_ptr<QSqlQuery> m_isFavoriteQuery;
 
-    QSqlQuery *m_addProgramQuery;
-    QSqlQuery *m_updateProgramDescriptionQuery;
-    QSqlQuery *m_programExistsQuery;
-    QSqlQuery *m_programCountQuery;
-    QSqlQuery *m_programsQuery;
-    QSqlQuery *m_programsPerChannelQuery;
+    std::unique_ptr<QSqlQuery> m_addProgramQuery;
+    std::unique_ptr<QSqlQuery> m_updateProgramDescriptionQuery;
+    std::unique_ptr<QSqlQuery> m_programExistsQuery;
+    std::unique_ptr<QSqlQuery> m_programCountQuery;
+    std::unique_ptr<QSqlQuery> m_programsQuery;
+    std::unique_ptr<QSqlQuery> m_programsPerChannelQuery;
 };

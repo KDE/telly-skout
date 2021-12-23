@@ -35,89 +35,62 @@ Database::Database()
     execute(QStringLiteral("PRAGMA locking_mode = EXCLUSIVE;"));
 
     // prepare queries once (faster)
-    m_addCountryQuery = new QSqlQuery(db);
+    m_addCountryQuery.reset(new QSqlQuery(db));
     m_addCountryQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Countries VALUES (:id, :name, :url);"));
-    m_countryCountQuery = new QSqlQuery(db);
+    m_countryCountQuery.reset(new QSqlQuery(db));
     m_countryCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Countries;"));
-    m_countryExistsQuery = new QSqlQuery(db);
+    m_countryExistsQuery.reset(new QSqlQuery(db));
     m_countryExistsQuery->prepare(QStringLiteral("SELECT COUNT () FROM Countries WHERE id=:id;"));
-    m_countriesQuery = new QSqlQuery(db);
+    m_countriesQuery.reset(new QSqlQuery(db));
     m_countriesQuery->prepare(QStringLiteral("SELECT * FROM Countries ORDER BY name COLLATE NOCASE;"));
-    m_countriesPerChannelQuery = new QSqlQuery(db);
+    m_countriesPerChannelQuery.reset(new QSqlQuery(db));
     m_countriesPerChannelQuery->prepare(
         QStringLiteral("SELECT * FROM Countries WHERE id=(SELECT country from CountryChannels WHERE channel=:channel) ORDER BY name COLLATE NOCASE;"));
 
-    m_addCountryChannelQuery = new QSqlQuery(db);
+    m_addCountryChannelQuery.reset(new QSqlQuery(db));
     m_addCountryChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
 
-    m_addFavoriteQuery = new QSqlQuery(db);
+    m_addFavoriteQuery.reset(new QSqlQuery(db));
     m_addFavoriteQuery->prepare(QStringLiteral("INSERT INTO Favorites VALUES ((SELECT COUNT() FROM Favorites) + 1, :channel);"));
-    m_addChannelQuery = new QSqlQuery(db);
+    m_addChannelQuery.reset(new QSqlQuery(db));
     m_addChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Channels VALUES (:id, :name, :url, :image);"));
-    m_channelCountQuery = new QSqlQuery(db);
+    m_channelCountQuery.reset(new QSqlQuery(db));
     m_channelCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Channels;"));
-    m_channelExistsQuery = new QSqlQuery(db);
+    m_channelExistsQuery.reset(new QSqlQuery(db));
     m_channelExistsQuery->prepare(QStringLiteral("SELECT COUNT () FROM Channels WHERE id=:id;"));
-    m_channelsQuery = new QSqlQuery(db);
+    m_channelsQuery.reset(new QSqlQuery(db));
     m_channelsQuery->prepare(QStringLiteral("SELECT * FROM Channels ORDER BY name COLLATE NOCASE;"));
-    m_channelQuery = new QSqlQuery(db);
+    m_channelQuery.reset(new QSqlQuery(db));
     m_channelQuery->prepare(QStringLiteral("SELECT * FROM Channels WHERE id=:channelId;"));
 
-    m_removeFavoriteQuery = new QSqlQuery(db);
+    m_removeFavoriteQuery.reset(new QSqlQuery(db));
     m_removeFavoriteQuery->prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
-    m_clearFavoritesQuery = new QSqlQuery(db);
+    m_clearFavoritesQuery.reset(new QSqlQuery(db));
     m_clearFavoritesQuery->prepare(QStringLiteral("DELETE FROM Favorites;"));
-    m_favoriteCountQuery = new QSqlQuery(db);
+    m_favoriteCountQuery.reset(new QSqlQuery(db));
     m_favoriteCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Favorites;"));
-    m_favoritesQuery = new QSqlQuery(db);
+    m_favoritesQuery.reset(new QSqlQuery(db));
     m_favoritesQuery->prepare(QStringLiteral("SELECT channel FROM Favorites ORDER BY id;"));
-    m_isFavoriteQuery = new QSqlQuery(db);
+    m_isFavoriteQuery.reset(new QSqlQuery(db));
     m_isFavoriteQuery->prepare(QStringLiteral("SELECT COUNT() FROM Favorites WHERE channel=:channel"));
 
-    m_addProgramQuery = new QSqlQuery(db);
+    m_addProgramQuery.reset(new QSqlQuery(db));
     m_addProgramQuery->prepare(QStringLiteral(
         "INSERT OR IGNORE INTO Programs VALUES (:id, :url, :channel, :start, :stop, :title, :subtitle, :description, :descriptionFetched, :category);"));
-    m_updateProgramDescriptionQuery = new QSqlQuery(db);
+    m_updateProgramDescriptionQuery.reset(new QSqlQuery(db));
     m_updateProgramDescriptionQuery->prepare(QStringLiteral("UPDATE Programs SET description=:description, descriptionFetched=TRUE WHERE id=:id;"));
-    m_programExistsQuery = new QSqlQuery(db);
+    m_programExistsQuery.reset(new QSqlQuery(db));
     m_programExistsQuery->prepare(QStringLiteral("SELECT COUNT () FROM Programs WHERE channel=:channel AND stop>=:lastTime;"));
-    m_programCountQuery = new QSqlQuery(db);
+    m_programCountQuery.reset(new QSqlQuery(db));
     m_programCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Programs WHERE channel=:channel;"));
-    m_programsQuery = new QSqlQuery(db);
+    m_programsQuery.reset(new QSqlQuery(db));
     m_programsQuery->prepare(QStringLiteral("SELECT * FROM Programs ORDER BY channel, start;"));
-    m_programsPerChannelQuery = new QSqlQuery(db);
+    m_programsPerChannelQuery.reset(new QSqlQuery(db));
     m_programsPerChannelQuery->prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start;"));
 }
 
 Database::~Database()
 {
-    delete m_addCountryQuery;
-    delete m_countryCountQuery;
-    delete m_countryExistsQuery;
-    delete m_countriesQuery;
-    delete m_countriesPerChannelQuery;
-
-    delete m_addCountryChannelQuery;
-
-    delete m_addChannelQuery;
-    delete m_channelCountQuery;
-    delete m_channelExistsQuery;
-    delete m_channelsQuery;
-    delete m_channelQuery;
-
-    delete m_addFavoriteQuery;
-    delete m_removeFavoriteQuery;
-    delete m_clearFavoritesQuery;
-    delete m_favoriteCountQuery;
-    delete m_favoritesQuery;
-    delete m_isFavoriteQuery;
-
-    delete m_addProgramQuery;
-    delete m_updateProgramDescriptionQuery;
-    delete m_programExistsQuery;
-    delete m_programCountQuery;
-    delete m_programsQuery;
-    delete m_programsPerChannelQuery;
 }
 
 bool Database::createTables()
