@@ -23,6 +23,7 @@ include(KDECMakeSettings)
 include(ECMPoQmTools)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDEInstallDirs)
+include(QmlFormat.cmake)
 
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX TELLY_SKOUT
@@ -55,44 +56,6 @@ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES src/*.cpp src/*.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 add_custom_target(clang-format-always ALL DEPENDS ${ALL_CLANG_FORMAT_SOURCE_FILES})
 add_dependencies(clang-format-always clang-format)
-
-find_program(QML_FORMAT_EXECUTABLE qmlformat)
-function(QML_FORMAT)
-    if (TARGET qml-format)
-        message(WARNING "the qml_format function was already called")
-        return()
-    endif()
-
-    # add target without specific commands first, we add the real calls file-per-file to avoid command line length issues
-    add_custom_target(qml-format COMMENT "Formatting qml files in ${CMAKE_CURRENT_SOURCE_DIR} with ${QML_FORMAT_EXECUTABLE}...")
-
-    # run qml-format only if available, else signal the user what is missing
-    if(QML_FORMAT_EXECUTABLE)
-        get_filename_component(_binary_dir ${CMAKE_BINARY_DIR} REALPATH)
-        foreach(_file ${ARGV})
-            # check if the file is inside the build directory => ignore such files
-            get_filename_component(_full_file_path ${_file} REALPATH)
-            string(FIND ${_full_file_path} ${_binary_dir} _index)
-            if(NOT _index EQUAL 0)
-                add_custom_command(TARGET qml-format
-                    COMMAND
-                        ${QML_FORMAT_EXECUTABLE}
-                        -i
-                        ${_full_file_path}
-                    WORKING_DIRECTORY
-                        ${CMAKE_CURRENT_SOURCE_DIR}
-                    COMMENT
-                        "Formatting ${_full_file_path}..."
-                    )
-            endif()
-        endforeach()
-    else()
-        add_custom_command(TARGET qml-format
-            COMMAND
-                ${CMAKE_COMMAND} -E echo "Could not set up the qml-format target as the qml-format executable is missing."
-            )
-    endif()
-endfunction()
 
 file(GLOB_RECURSE ALL_QML_FORMAT_SOURCE_FILES src/qml/*.qml)
 qml_format(${ALL_QML_FORMAT_SOURCE_FILES})
