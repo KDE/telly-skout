@@ -12,18 +12,11 @@ Kirigami.SwipeListItem {
 
     actions: [
         Kirigami.Action {
-            readonly property string favoriteIcon: "favorite"
-            readonly property string noFavoriteIcon: "list-add"
-
-            icon.name: model.channel.favorite ? favoriteIcon : noFavoriteIcon
+            icon.name: checked ? "favorite" : "list-add"
             text: i18n("Favorite")
-            displayHint: Kirigami.DisplayHint.KeepVisible // do not hide action in overflow menu, TODO: not respected (on mobile)
-            onTriggered: {
-                if (model.channel.favorite)
-                    channelsModel.setFavorite(model.channel.id, false);
-                else
-                    channelsModel.setFavorite(model.channel.id, true);
-            }
+            checkable: true
+            checked: model.channel.favorite
+            onToggled: channelsModel.setFavorite(model.channel.id, checked)
         }
     ]
 
