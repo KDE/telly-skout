@@ -63,8 +63,6 @@ Database::Database()
     m_channelQuery.reset(new QSqlQuery(db));
     m_channelQuery->prepare(QStringLiteral("SELECT * FROM Channels WHERE id=:channelId;"));
 
-    m_removeFavoriteQuery.reset(new QSqlQuery(db));
-    m_removeFavoriteQuery->prepare(QStringLiteral("DELETE FROM Favorites WHERE channel=:channel;"));
     m_clearFavoritesQuery.reset(new QSqlQuery(db));
     m_clearFavoritesQuery->prepare(QStringLiteral("DELETE FROM Favorites;"));
     m_favoriteCountQuery.reset(new QSqlQuery(db));
@@ -322,8 +320,18 @@ void Database::addFavorite(const ChannelId &channelId)
 
 void Database::removeFavorite(const ChannelId &channelId)
 {
-    m_removeFavoriteQuery->bindValue(QStringLiteral(":channel"), channelId.value());
-    execute(*m_removeFavoriteQuery);
+    // just removing channelId from the Favorites table does not work
+    // it would leave gaps in the IDs (making it impossible to add new favorites)
+    QVector<ChannelId> favoriteChannelIds = favorites();
+    favoriteChannelIds.removeAll(channelId);
+
+    QSqlDatabase::database().transaction();
+    execute(*m_clearFavoritesQuery);
+    for (const auto &channelId : qAsConst(favoriteChannelIds)) {
+        m_addFavoriteQuery->bindValue(QStringLiteral(":channel"), channelId.value());
+        execute(*m_addFavoriteQuery);
+    }
+    QSqlDatabase::database().commit();
 
     Q_EMIT channelDetailsUpdated(channelId, false);
 }

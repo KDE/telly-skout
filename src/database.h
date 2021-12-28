@@ -85,7 +85,6 @@ private:
     std::unique_ptr<QSqlQuery> m_channelQuery;
 
     std::unique_ptr<QSqlQuery> m_addFavoriteQuery;
-    std::unique_ptr<QSqlQuery> m_removeFavoriteQuery;
     std::unique_ptr<QSqlQuery> m_clearFavoritesQuery;
     std::unique_ptr<QSqlQuery> m_favoriteCountQuery;
     std::unique_ptr<QSqlQuery> m_favoritesQuery;
