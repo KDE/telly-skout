@@ -30,10 +30,15 @@ Q_DECL_EXPORT
 
 int main(int argc, char *argv[])
 {
+#ifdef Q_OS_ANDROID
+    QGuiApplication app(argc, argv);
+    QQuickStyle::setStyle(QStringLiteral("Material"));
+#else
     QApplication app(argc, argv);
     if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
         QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
     }
+#endif
 
     // about
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
