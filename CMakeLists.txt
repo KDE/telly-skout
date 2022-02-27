@@ -22,7 +22,6 @@ include(KDEClangFormat)
 include(KDECMakeSettings)
 include(ECMPoQmTools)
 include(KDECompilerSettings NO_POLICY_SCOPE)
-include(KDEInstallDirs)
 include(QmlFormat.cmake)
 
 ecm_setup_version(${PROJECT_VERSION}
