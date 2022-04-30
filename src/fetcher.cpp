@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: none
+// SPDX-License-Identifier: GPL-3.0-only
+
 #include "fetcher.h"
 
 #include "database.h"

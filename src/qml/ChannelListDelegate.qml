@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: none
+// SPDX-License-Identifier: GPL-3.0-only
+
 import QtQuick 2.14
 import QtQuick.Controls 2.14 as Controls
 import QtQuick.Layouts 1.14

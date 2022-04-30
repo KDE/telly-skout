@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: none
+# SPDX-License-Identifier: BSD-2-Clause
+
 #[=======================================================================[.rst:
 QmlFormat
 --------------------

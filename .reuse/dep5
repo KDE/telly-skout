@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Telly Skout
+Upstream-Contact: none
+
+Files: src/qtquickcontrols2.conf README.md src/TellySkoutSettings.kcfgc src/TellySkoutSettings.kcfg
+Copyright: none
+License: CC0-1.0
+
+Files: telly-skout.svg logo.png
+Copyright: none
+License: CC-BY-SA-4.0

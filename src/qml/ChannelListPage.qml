@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: none
+// SPDX-License-Identifier: GPL-3.0-only
+
 import Qt.labs.platform 1.1
 import QtQuick 2.14
 import QtQuick.Controls 2.14 as Controls
