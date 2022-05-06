@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
     QCoreApplication::setApplicationName(QStringLiteral("Telly Skout"));
 
-    const QString applicationDescription = i18n("Convergent EPG based on Kirigami");
+    const QString applicationDescription = i18n("Convergent TV guide based on Kirigami");
 
     KAboutData about(QStringLiteral("telly-skout"),
                      i18n("Telly Skout"),

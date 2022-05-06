@@ -1,5 +1,5 @@
 # telly-skout
-A convergent EPG based on Kirigami.
+A convergent TV guide based on Kirigami.
 
 ## Build
 ### Dependencies

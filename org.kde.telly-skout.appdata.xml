@@ -6,11 +6,11 @@
 <component type="desktop-application">
   <id>org.kde.telly-skout</id>
   <name>Telly Skout</name>
-  <summary>A convergent Kirigami EPG</summary>
+  <summary>A convergent Kirigami TV guide</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
   <developer_name>plata</developer_name>
   <description>
-    <p>A convergent Kirigami EPG</p>
+    <p>A convergent Kirigami TV guide</p>
   </description>
 </component>

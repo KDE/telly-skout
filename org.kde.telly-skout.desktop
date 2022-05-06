@@ -3,7 +3,7 @@
 
 [Desktop Entry]
 Name=telly-skout
-Comment=Convergent EPG
+Comment=Convergent TV guide
 Version=1.0
 Exec=telly-skout
 MimeType=application/x-telly-skout;
