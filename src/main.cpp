@@ -12,6 +12,7 @@
 #include "telly-skout-version.h"
 
 #include <KAboutData>
+#include <KCrash>
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
@@ -42,6 +43,8 @@ int main(int argc, char *argv[])
         QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
     }
 #endif
+
+    KCrash::initialize();
 
     // about
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
