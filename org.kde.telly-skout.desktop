@@ -3,7 +3,21 @@
 
 [Desktop Entry]
 Name=telly-skout
+Name[ca]=telly-skout
+Name[es]=telly-skout
+Name[ko]=telly-skout
+Name[nl]=telly-skout
+Name[sv]=telly-skout
+Name[uk]=Теллі скаут
+Name[x-test]=xxtelly-skoutxx
 Comment=Convergent TV guide
+Comment[ca]=Guia de TV convergent
+Comment[es]=Guía de TV convergente
+Comment[ko]=올인원 TV 가이드
+Comment[nl]=Convergente TV gids
+Comment[sv]=Konvergent tv-guide
+Comment[uk]=Універсальна телепрограма
+Comment[x-test]=xxConvergent TV guidexx
 Version=1.0
 Exec=telly-skout
 MimeType=application/x-telly-skout;
