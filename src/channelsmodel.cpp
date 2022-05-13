@@ -67,6 +67,11 @@ ChannelsModel::ChannelsModel(QObject *parent)
     });
 }
 
+ChannelsModel::~ChannelsModel()
+{
+    qDeleteAll(m_channels);
+}
+
 bool ChannelsModel::onlyFavorites() const
 {
     return m_onlyFavorites;
