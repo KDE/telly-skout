@@ -31,6 +31,19 @@ Kirigami.ScrollablePage {
 
         }
 
+        RowLayout {
+            Kirigami.FormData.label: i18n("Fetcher")
+
+            Controls.ComboBox {
+                id: fetcher
+
+                model: ["TV Spielfilm", "xmltv.se"]
+                currentIndex: _settings.fetcher
+                onCurrentIndexChanged: _settings.fetcher = currentIndex
+            }
+
+        }
+
     }
 
 }

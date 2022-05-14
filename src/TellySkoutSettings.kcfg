@@ -9,5 +9,11 @@
       <label>Delete program after</label>
       <default>1</default>
     </entry>
+    <entry name="fetcher" type="Enum">
+      <choices>
+        <choice name="TVSpielfilm" value="TV Spielfilm"/>
+        <choice name="XmlTvSe" value="xmltv.se"/>
+      </choices>
+    </entry>
   </group>
 </kcfg>

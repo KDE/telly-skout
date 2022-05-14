@@ -3,4 +3,5 @@ ClassName=TellySkoutSettings
 Mutators=true
 DefaultValueGetters=true
 GenerateProperties=true
+GlobalEnums=false
 ParentInConstructor=true

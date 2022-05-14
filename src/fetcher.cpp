@@ -3,6 +3,7 @@
 
 #include "fetcher.h"
 
+#include "TellySkoutSettings.h"
 #include "database.h"
 #include "tvspielfilmfetcher.h"
 #include "xmltvsefetcher.h"
@@ -18,16 +19,23 @@
 #include <QNetworkRequest>
 #include <QStandardPaths>
 
-#define USE_TVSPIELFILM
-
 Fetcher::Fetcher()
-    :
-#ifdef USE_TVSPIELFILM
-    m_fetcherImpl(new TvSpielfilmFetcher)
-#else
-    m_fetcherImpl(new XmlTvSeFetcher)
-#endif
 {
+    const TellySkoutSettings settings;
+    const TellySkoutSettings::EnumFetcher::type fetcherType = static_cast<TellySkoutSettings::EnumFetcher::type>(settings.fetcher());
+
+    switch (fetcherType) {
+    case TellySkoutSettings::EnumFetcher::TVSpielfilm:
+        m_fetcherImpl.reset(new TvSpielfilmFetcher);
+        break;
+    case TellySkoutSettings::EnumFetcher::XmlTvSe:
+        m_fetcherImpl.reset(new XmlTvSeFetcher);
+        break;
+    case TellySkoutSettings::EnumFetcher::COUNT:
+        qDebug() << "Invalid Fetcher type!";
+        assert(false);
+    }
+
     m_manager = new QNetworkAccessManager(this);
     m_manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
     m_manager->setStrictTransportSecurityEnabled(true);

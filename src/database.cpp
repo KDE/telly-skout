@@ -3,10 +3,10 @@
 
 #include "database.h"
 
-#include "TellySkoutSettings.h"
 #include "fetcher.h"
 
 #include <QDateTime>
+#include <QDebug>
 #include <QDir>
 #include <QSqlDatabase>
 #include <QSqlError>
@@ -24,6 +24,13 @@ Database::Database()
     QDir(databasePath).mkpath(databasePath);
     db.setDatabaseName(databasePath + QStringLiteral("/database.db3"));
     db.open();
+
+    // drop DB if it doesn't use the correct fetcher
+    if (m_settings.fetcher() != fetcher()) {
+        if (!dropTables()) {
+            qCritical() << "Failed to drop database";
+        }
+    }
 
     if (!createTables()) {
         qCritical() << "Failed to create database";
@@ -88,6 +95,11 @@ Database::Database()
     m_programsQuery->prepare(QStringLiteral("SELECT * FROM Programs ORDER BY channel, start;"));
     m_programsPerChannelQuery.reset(new QSqlQuery(db));
     m_programsPerChannelQuery->prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start;"));
+
+    connect(&m_settings, &TellySkoutSettings::fetcherChanged, this, [this]() {
+        dropTables();
+        createTables();
+    });
 }
 
 Database::~Database()
@@ -97,6 +109,10 @@ Database::~Database()
 bool Database::createTables()
 {
     qDebug() << "Create DB tables";
+
+    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Fetcher (id INTEGER UNIQUE);")));
+    TRUE_OR_RETURN(execute(QStringLiteral("INSERT OR IGNORE INTO Fetcher VALUES (") + QString::number(m_settings.fetcher()) + ");"));
+
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Countries (id TEXT UNIQUE, name TEXT, url TEXT);")));
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (id TEXT UNIQUE, name TEXT, url TEXT, image TEXT);")));
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS CountryChannels (id TEXT UNIQUE, country TEXT, channel TEXT);")));
@@ -106,6 +122,19 @@ bool Database::createTables()
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Favorites (id INTEGER UNIQUE, channel TEXT UNIQUE);")));
 
     TRUE_OR_RETURN(execute(QStringLiteral("PRAGMA user_version = 1;")));
+    return true;
+}
+
+bool Database::dropTables()
+{
+    qDebug() << "Drop DB tables";
+    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Fetcher;")));
+    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Countries;")));
+    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Channels;")));
+    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS CountryChannels;")));
+    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Programs;")));
+    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Favorites;")));
+
     return true;
 }
 
@@ -135,7 +164,7 @@ int Database::version()
     if (query.next()) {
         bool ok;
         int value = query.value(0).toInt(&ok);
-        qDebug() << "Database version " << value;
+        qDebug() << "Database version" << value;
         if (ok) {
             return value;
         }
@@ -145,10 +174,27 @@ int Database::version()
     return -1;
 }
 
+int Database::fetcher()
+{
+    QSqlQuery query;
+    query.prepare(QStringLiteral("SELECT * FROM Fetcher;"));
+    execute(query);
+    if (query.next()) {
+        bool ok;
+        int value = query.value(0).toInt(&ok);
+        qDebug() << "Database for fetcher" << value;
+        if (ok) {
+            return value;
+        }
+    } else {
+        qCritical() << "Failed to check fetcher";
+    }
+    return -1;
+}
+
 void Database::cleanup()
 {
-    const TellySkoutSettings settings;
-    const unsigned int days = settings.deleteProgramAfter();
+    const unsigned int days = m_settings.deleteProgramAfter();
 
     QDateTime dateTime = QDateTime::currentDateTime();
     dateTime = dateTime.addDays(-static_cast<qint64>(days));

@@ -5,6 +5,7 @@
 
 #include <QObject>
 
+#include "TellySkoutSettings.h"
 #include "channeldata.h"
 #include "countrydata.h"
 #include "programdata.h"
@@ -70,8 +71,12 @@ private:
     Database();
     ~Database();
     int version();
+    int fetcher();
     bool createTables();
+    bool dropTables();
     void cleanup();
+
+    const TellySkoutSettings m_settings;
 
     std::unique_ptr<QSqlQuery> m_addCountryQuery;
     std::unique_ptr<QSqlQuery> m_countryCountQuery;
