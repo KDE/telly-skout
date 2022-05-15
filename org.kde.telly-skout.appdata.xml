@@ -7,20 +7,24 @@
   <id>org.kde.telly-skout</id>
   <name>Telly Skout</name>
   <name xml:lang="ca">Telly Skout</name>
+  <name xml:lang="ca-valencia">Telly Skout</name>
   <name xml:lang="es">Telly Skout</name>
   <name xml:lang="fr">Telly Skout</name>
   <name xml:lang="ko">Telly Skout</name>
   <name xml:lang="nl">Telly Skout</name>
+  <name xml:lang="sk">Telly Skout</name>
   <name xml:lang="sl">Telly Skout</name>
   <name xml:lang="sv">Telly Skout</name>
   <name xml:lang="uk">Теллі скаут</name>
   <name xml:lang="x-test">xxTelly Skoutxx</name>
   <summary>A convergent Kirigami TV guide</summary>
   <summary xml:lang="ca">Una guia de TV convergent del Kirigami</summary>
+  <summary xml:lang="ca-valencia">Una guia de TV convergent de Kirigami</summary>
   <summary xml:lang="es">Una guía de TV convergente de Kirigami</summary>
   <summary xml:lang="fr">Un guide convergent de télévision sous Kirigami</summary>
   <summary xml:lang="ko">올인원 Kirigami TV 가이드</summary>
   <summary xml:lang="nl">Een convergente Kirigami TV gids</summary>
+  <summary xml:lang="sk">Konvergentný TV sprievodca Kirigami</summary>
   <summary xml:lang="sl">Konvergentni Kirigami TV vodnik</summary>
   <summary xml:lang="sv">En konvergent Kirigami tv-guide</summary>
   <summary xml:lang="uk">Універсальна телепрограма на Kirigami</summary>
@@ -29,10 +33,12 @@
   <project_license>GPL-2.0-or-later</project_license>
   <developer_name>plata</developer_name>
   <developer_name xml:lang="ca">plata</developer_name>
+  <developer_name xml:lang="ca-valencia">plata</developer_name>
   <developer_name xml:lang="es">plata</developer_name>
   <developer_name xml:lang="fr">plata</developer_name>
   <developer_name xml:lang="ko">plata</developer_name>
   <developer_name xml:lang="nl">plata</developer_name>
+  <developer_name xml:lang="sk">plata</developer_name>
   <developer_name xml:lang="sl">plata</developer_name>
   <developer_name xml:lang="sv">plata</developer_name>
   <developer_name xml:lang="uk">plata</developer_name>
@@ -40,10 +46,12 @@
   <description>
     <p>A convergent Kirigami TV guide</p>
     <p xml:lang="ca">Una guia de TV convergent del Kirigami</p>
+    <p xml:lang="ca-valencia">Una guia de TV convergent de Kirigami</p>
     <p xml:lang="es">Una guía de TV convergente de Kirigami</p>
     <p xml:lang="fr">Un guide convergent de télévision sous Kirigami</p>
     <p xml:lang="ko">올인원 Kirigami TV 가이드</p>
     <p xml:lang="nl">Een convergente Kirigami TV gids</p>
+    <p xml:lang="sk">Konvergentný TV sprievodca Kirigami</p>
     <p xml:lang="sl">Konvergentni Kirigami TV vodnik</p>
     <p xml:lang="sv">En konvergent Kirigami tv-guide</p>
     <p xml:lang="uk">Універсальна телепрограма на Kirigami</p>
