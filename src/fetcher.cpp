@@ -7,7 +7,6 @@
 #include "database.h"
 #include "tvspielfilmfetcher.h"
 #include "xmltvfetcher.h"
-#include "xmltvsefetcher.h"
 
 #include <KLocalizedString>
 
@@ -28,9 +27,6 @@ Fetcher::Fetcher()
     switch (fetcherType) {
     case TellySkoutSettings::EnumFetcher::TVSpielfilm:
         m_fetcherImpl.reset(new TvSpielfilmFetcher);
-        break;
-    case TellySkoutSettings::EnumFetcher::XmlTvSe:
-        m_fetcherImpl.reset(new XmlTvSeFetcher);
         break;
     case TellySkoutSettings::EnumFetcher::XMLTV:
         m_fetcherImpl.reset(new XmltvFetcher);

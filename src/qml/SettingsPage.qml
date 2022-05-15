@@ -38,7 +38,7 @@ Kirigami.ScrollablePage {
             Controls.ComboBox {
                 id: fetcher
 
-                model: ["TV Spielfilm", "xmltv.se", "XMLTV"]
+                model: ["TV Spielfilm", "XMLTV"]
                 currentIndex: _settings.fetcher
                 onCurrentIndexChanged: _settings.fetcher = currentIndex
             }
@@ -46,7 +46,7 @@ Kirigami.ScrollablePage {
         }
 
         RowLayout {
-            visible: fetcher.currentIndex == 2 // only for XMLTV
+            visible: fetcher.currentIndex == 1 // only for XMLTV
 
             Controls.TextField {
                 id: xmltvFile
