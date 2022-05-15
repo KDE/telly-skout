@@ -11,8 +11,8 @@
 
 CountryFactory::CountryFactory()
     : QObject(nullptr)
+    , m_countries(Database::instance().countries())
 {
-    m_countries = Database::instance().countries();
 }
 
 size_t CountryFactory::count() const

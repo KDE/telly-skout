@@ -9,7 +9,7 @@
 
 #include <QDebug>
 
-Country::Country(CountryData data)
+Country::Country(const CountryData &data)
     : QObject(nullptr)
     , m_data(data)
 {

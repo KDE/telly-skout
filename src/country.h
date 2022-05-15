@@ -23,7 +23,7 @@ class Country : public QObject
     Q_PROPERTY(ChannelsModel *channels MEMBER m_channels CONSTANT)
 
 public:
-    Country(CountryData data);
+    explicit Country(const CountryData &data);
 
     ~Country();
 

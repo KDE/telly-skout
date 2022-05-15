@@ -29,7 +29,7 @@ class Program : public QObject
     Q_PROPERTY(QString category READ category CONSTANT)
 
 public:
-    Program(const ProgramData &data);
+    explicit Program(const ProgramData &data);
     ~Program() = default;
 
     const QString &channelId() const;
