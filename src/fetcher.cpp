@@ -6,6 +6,7 @@
 #include "TellySkoutSettings.h"
 #include "database.h"
 #include "tvspielfilmfetcher.h"
+#include "xmltvfetcher.h"
 #include "xmltvsefetcher.h"
 
 #include <KLocalizedString>
@@ -30,6 +31,9 @@ Fetcher::Fetcher()
         break;
     case TellySkoutSettings::EnumFetcher::XmlTvSe:
         m_fetcherImpl.reset(new XmlTvSeFetcher);
+        break;
+    case TellySkoutSettings::EnumFetcher::XMLTV:
+        m_fetcherImpl.reset(new XmltvFetcher);
         break;
     case TellySkoutSettings::EnumFetcher::COUNT:
         qDebug() << "Invalid Fetcher type!";

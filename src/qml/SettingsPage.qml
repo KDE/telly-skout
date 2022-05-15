@@ -3,6 +3,7 @@
 
 import QtQuick 2.14
 import QtQuick.Controls 2.14 as Controls
+import QtQuick.Dialogs 1.0
 import QtQuick.Layouts 1.14
 import org.kde.kirigami 2.19 as Kirigami
 
@@ -37,9 +38,41 @@ Kirigami.ScrollablePage {
             Controls.ComboBox {
                 id: fetcher
 
-                model: ["TV Spielfilm", "xmltv.se"]
+                model: ["TV Spielfilm", "xmltv.se", "XMLTV"]
                 currentIndex: _settings.fetcher
                 onCurrentIndexChanged: _settings.fetcher = currentIndex
+            }
+
+        }
+
+        RowLayout {
+            visible: fetcher.currentIndex == 2 // only for XMLTV
+
+            Controls.TextField {
+                id: xmltvFile
+
+                Kirigami.FormData.label: i18n("File")
+                text: _settings.xmltvFile
+                onAccepted: _settings.xmltvFile = text
+            }
+
+            Controls.Button {
+                icon.name: 'file-search-symbolic'
+                onClicked: fileDialog.open()
+            }
+
+            FileDialog {
+                id: fileDialog
+
+                nameFilters: [i18n("XML files (*.xml)"), i18n("All files (*)")]
+                selectExisting: true
+                selectMultiple: false
+                onAccepted: {
+                    // remove prefixed "file://"
+                    const path = fileUrl.toString().replace(/^(file:\/{2})/, "");
+                    xmltvFile.text = path;
+                    _settings.xmltvFile = path;
+                }
             }
 
         }
