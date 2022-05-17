@@ -31,22 +31,22 @@ XmltvFetcher::XmltvFetcher()
     });
 }
 
-void XmltvFetcher::fetchCountries()
+void XmltvFetcher::fetchGroups()
 {
-    const CountryId id = CountryId("xmltv");
+    const GroupId id = GroupId("xmltv");
     const QString name = i18n("XMLTV");
 
-    Q_EMIT startedFetchingCountry(id);
+    Q_EMIT startedFetchingGroup(id);
 
     TellySkoutSettings settings;
-    Database::instance().addCountry(id, name, settings.xmltvFile());
+    Database::instance().addGroup(id, name, settings.xmltvFile());
 
-    Q_EMIT countryUpdated(id);
+    Q_EMIT groupUpdated(id);
 }
 
-void XmltvFetcher::fetchCountry(const QString &url, const CountryId &countryId)
+void XmltvFetcher::fetchGroup(const QString &url, const GroupId &groupId)
 {
-    qDebug() << "Starting to fetch country (" << countryId.value() << ", " << url << ")";
+    qDebug() << "Starting to fetch group (" << groupId.value() << ", " << url << ")";
 
     QDomNodeList nodes = m_doc.elementsByTagName("channel");
 
@@ -59,11 +59,11 @@ void XmltvFetcher::fetchCountry(const QString &url, const CountryId &countryId)
             const QString &name = elm.firstChildElement("display-name").text();
             const QString &icon = elm.firstChildElement("icon").attributes().namedItem("src").toAttr().value();
 
-            fetchChannel(id, name, countryId, icon);
+            fetchChannel(id, name, groupId, icon);
         }
     }
 
-    Q_EMIT countryUpdated(countryId);
+    Q_EMIT groupUpdated(groupId);
 }
 
 void XmltvFetcher::fetchProgram(const ChannelId &channelId)
@@ -105,7 +105,7 @@ bool XmltvFetcher::open(const QString &fileName)
     return true;
 }
 
-void XmltvFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &countryId, const QString &icon)
+void XmltvFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const GroupId &groupId, const QString &icon)
 {
     if (!Database::instance().channelExists(channelId)) {
         Q_EMIT startedFetchingChannel(channelId);
@@ -115,22 +115,22 @@ void XmltvFetcher::fetchChannel(const ChannelId &channelId, const QString &name,
         data.m_name = name;
         data.m_url = "";
         data.m_image = icon;
-        Database::instance().addChannel(data, countryId);
+        Database::instance().addChannel(data, groupId);
 
         Q_EMIT channelUpdated(channelId);
     }
 }
 
-void XmltvFetcher::processCountry(const QDomElement &country)
+void XmltvFetcher::processGroup(const QDomElement &group)
 {
-    const CountryId id = CountryId(country.attributes().namedItem("id").toAttr().value());
-    const QString &name = country.text();
+    const GroupId id = GroupId(group.attributes().namedItem("id").toAttr().value());
+    const QString &name = group.text();
 
-    Q_EMIT startedFetchingCountry(id);
+    Q_EMIT startedFetchingGroup(id);
 
-    Database::instance().addCountry(id, name, "");
+    Database::instance().addGroup(id, name, "");
 
-    Q_EMIT countryUpdated(id);
+    Q_EMIT groupUpdated(id);
 }
 
 void XmltvFetcher::processProgram(const QDomNode &program)

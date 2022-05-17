@@ -5,23 +5,23 @@
 
 #include <QAbstractListModel>
 
-#include "countryfactory.h"
+#include "groupfactory.h"
 
-class Country;
+class Group;
 
-class CountriesModel : public QAbstractListModel
+class GroupsModel : public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    explicit CountriesModel(QObject *parent = nullptr);
+    explicit GroupsModel(QObject *parent = nullptr);
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex &parent) const override;
 
 private:
-    void loadCountry(int index) const;
+    void loadGroup(int index) const;
 
-    mutable QVector<Country *> m_countries;
-    CountryFactory m_countryFactory;
+    mutable QVector<Group *> m_groups;
+    GroupFactory m_groupFactory;
 };

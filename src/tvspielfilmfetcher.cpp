@@ -19,31 +19,31 @@ TvSpielfilmFetcher::TvSpielfilmFetcher()
 {
 }
 
-void TvSpielfilmFetcher::fetchCountries()
+void TvSpielfilmFetcher::fetchGroups()
 {
-    const CountryId id = CountryId("tvspielfilm.germany");
+    const GroupId id = GroupId("tvspielfilm.germany");
     const QString name = i18n("Germany");
 
-    Q_EMIT startedFetchingCountry(id);
+    Q_EMIT startedFetchingGroup(id);
 
     const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen";
 
-    Database::instance().addCountry(id, name, url);
+    Database::instance().addGroup(id, name, url);
 
-    Q_EMIT countryUpdated(id);
+    Q_EMIT groupUpdated(id);
 }
 
-void TvSpielfilmFetcher::fetchCountry(const QString &url, const CountryId &countryId)
+void TvSpielfilmFetcher::fetchGroup(const QString &url, const GroupId &groupId)
 {
-    qDebug() << "Starting to fetch country (" << countryId.value() << ", " << url << ")";
+    qDebug() << "Starting to fetch group (" << groupId.value() << ", " << url << ")";
 
     QNetworkRequest request((QUrl(url)));
     QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, url, countryId, reply]() {
+    connect(reply, &QNetworkReply::finished, this, [this, url, groupId, reply]() {
         if (reply->error()) {
-            qWarning() << "Error fetching country";
+            qWarning() << "Error fetching group";
             qWarning() << reply->errorString();
-            Q_EMIT errorFetchingCountry(countryId, Error(reply->error(), reply->errorString()));
+            Q_EMIT errorFetchingGroup(groupId, Error(reply->error(), reply->errorString()));
         } else {
             QByteArray data = reply->readAll();
 
@@ -70,18 +70,18 @@ void TvSpielfilmFetcher::fetchCountry(const QString &url, const CountryId &count
                         // exclude groups (e.g. "alle Sender" or "g:1")
                         if (id.value().length() > 0 && !id.value().contains("g:")) {
                             const QString &name = channelNode.toElement().text();
-                            fetchChannel(id, name, countryId);
+                            fetchChannel(id, name, groupId);
                         }
                     }
                 }
             }
         }
         delete reply;
-        Q_EMIT countryUpdated(countryId);
+        Q_EMIT groupUpdated(groupId);
     });
 }
 
-void TvSpielfilmFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &country)
+void TvSpielfilmFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const GroupId &group)
 {
     if (!Database::instance().channelExists(channelId)) {
         ChannelData data;
@@ -94,7 +94,7 @@ void TvSpielfilmFetcher::fetchChannel(const ChannelId &channelId, const QString 
         Q_EMIT startedFetchingChannel(data.m_id);
 
         data.m_image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.value().toLower() + ".webp";
-        Database::instance().addChannel(data, country);
+        Database::instance().addChannel(data, group);
 
         Q_EMIT channelUpdated(channelId);
     }

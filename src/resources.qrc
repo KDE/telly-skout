@@ -5,9 +5,9 @@
     <qresource prefix="/">
         <file alias="main.qml">qml/main.qml</file>
         <file alias="ChannelListPage.qml">qml/ChannelListPage.qml</file>
-        <file alias="CountryListDelegate.qml">qml/CountryListDelegate.qml</file>
+        <file alias="GroupListDelegate.qml">qml/GroupListDelegate.qml</file>
         <file alias="ChannelTablePage.qml">qml/ChannelTablePage.qml</file>
-        <file alias="CountryListPage.qml">qml/CountryListPage.qml</file>
+        <file alias="GroupListPage.qml">qml/GroupListPage.qml</file>
         <file alias="SettingsPage.qml">qml/SettingsPage.qml</file>
         <file alias="ChannelListDelegate.qml">qml/ChannelListDelegate.qml</file>
         <file alias="ChannelTableDelegate.qml">qml/ChannelTableDelegate.qml</file>

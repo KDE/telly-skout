@@ -14,13 +14,13 @@ public:
     TvSpielfilmFetcher();
     virtual ~TvSpielfilmFetcher() = default;
 
-    void fetchCountries() override;
-    void fetchCountry(const QString &url, const CountryId &countryId) override;
+    void fetchGroups() override;
+    void fetchGroup(const QString &url, const GroupId &groupId) override;
     void fetchProgram(const ChannelId &channelId) override;
     void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url) override;
 
 private:
-    void fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &country);
+    void fetchChannel(const ChannelId &channelId, const QString &name, const GroupId &group);
     void fetchProgram(const ChannelId &channelId, const QString &url, QVector<ProgramData> &programs);
     QVector<ProgramData> processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId);
     ProgramData processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const ChannelId &channelId, bool isLast);

@@ -5,24 +5,24 @@
 
 #include <QObject>
 
-#include "countrydata.h"
+#include "groupdata.h"
 
 #include <QVector>
 
-class Country;
+class Group;
 
-class CountryFactory : public QObject
+class GroupFactory : public QObject
 {
     Q_OBJECT
 
 public:
-    CountryFactory();
-    ~CountryFactory() = default;
+    GroupFactory();
+    ~GroupFactory() = default;
 
     size_t count() const;
-    Country *create(int index) const;
+    Group *create(int index) const;
     void load() const;
 
 private:
-    mutable QVector<CountryData> m_countries;
+    mutable QVector<GroupData> m_groups;
 };

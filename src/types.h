@@ -7,7 +7,7 @@
 
 struct ChannelTag {
 };
-struct CountryTag {
+struct GroupTag {
 };
 struct ProgramTag {
 };
@@ -48,7 +48,7 @@ private:
 };
 
 using ChannelId = QStringId<ChannelTag>;
-using CountryId = QStringId<CountryTag>;
+using GroupId = QStringId<GroupTag>;
 using ProgramId = QStringId<ProgramTag>;
 
 class Error

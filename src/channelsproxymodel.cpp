@@ -9,7 +9,7 @@
 ChannelsProxyModel::ChannelsProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_onlyFavorites(false)
-    , m_country("")
+    , m_group("")
 {
     connect(&Database::instance(), &Database::channelDetailsUpdated, this, [this]() {
         invalidateFilter();
@@ -34,17 +34,17 @@ void ChannelsProxyModel::setOnlyFavorites(const bool &onlyFavorites)
     }
 }
 
-const QString &ChannelsProxyModel::country() const
+const QString &ChannelsProxyModel::group() const
 {
-    return m_country.value();
+    return m_group.value();
 }
 
-void ChannelsProxyModel::setCountry(const QString &country)
+void ChannelsProxyModel::setGroup(const QString &group)
 {
-    if (m_country.value() != country) {
-        m_country = CountryId(country);
+    if (m_group.value() != group) {
+        m_group = GroupId(group);
         invalidateFilter();
-        Q_EMIT countryChanged();
+        Q_EMIT groupChanged();
     }
 }
 
@@ -57,7 +57,7 @@ bool ChannelsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sou
     }
 
     // no filter
-    if (!m_onlyFavorites && m_country.value().isEmpty()) {
+    if (!m_onlyFavorites && m_group.value().isEmpty()) {
         return true;
     }
 
@@ -65,7 +65,7 @@ bool ChannelsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sou
     auto channel = idx.data(0).value<Channel *>();
 
     const bool onlyFavoritesMatches = !m_onlyFavorites || channel->favorite();
-    const bool countryMatches = m_country.value().isEmpty() || channel->countries().contains(m_country.value());
+    const bool groupMatches = m_group.value().isEmpty() || channel->groups().contains(m_group.value());
 
-    return onlyFavoritesMatches && countryMatches;
+    return onlyFavoritesMatches && groupMatches;
 }

@@ -12,11 +12,11 @@
 
 #include <QDebug>
 
-Channel::Channel(const ChannelData &data, bool favorite, const QVector<QString> &countryIds, ProgramFactory &programFactory)
+Channel::Channel(const ChannelData &data, bool favorite, const QVector<QString> &groupIds, ProgramFactory &programFactory)
     : QObject(nullptr)
     , m_data(data)
     , m_favorite(favorite)
-    , m_countries(countryIds)
+    , m_groups(groupIds)
 {
     connect(&Fetcher::instance(), &Fetcher::startedFetchingChannel, this, [this](const ChannelId &id) {
         if (id == m_data.m_id) {
@@ -75,9 +75,9 @@ bool Channel::favorite() const
     return m_favorite;
 }
 
-QVector<QString> Channel::countries() const
+QVector<QString> Channel::groups() const
 {
-    return m_countries;
+    return m_groups;
 }
 
 bool Channel::refreshing() const
@@ -116,10 +116,10 @@ void Channel::setFavorite(bool favorite)
     }
 }
 
-void Channel::setCountries(const QVector<QString> &countries)
+void Channel::setGroups(const QVector<QString> &groups)
 {
-    m_countries = countries;
-    Q_EMIT countriesChanged(m_countries);
+    m_groups = groups;
+    Q_EMIT groupsChanged(m_groups);
 }
 
 void Channel::setRefreshing(bool refreshing)

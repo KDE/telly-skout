@@ -16,8 +16,8 @@ public:
     NetworkFetcher();
     virtual ~NetworkFetcher() = default;
 
-    void fetchCountries() override = 0;
-    void fetchCountry(const QString &url, const CountryId &countryId) override = 0;
+    void fetchGroups() override = 0;
+    void fetchGroup(const QString &url, const GroupId &groupId) override = 0;
     void fetchProgram(const ChannelId &channelId) override = 0;
     void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url) override = 0;
 

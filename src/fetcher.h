@@ -25,9 +25,9 @@ public:
         return _instance;
     }
     Q_INVOKABLE void fetchFavorites();
-    Q_INVOKABLE void fetchCountries();
-    Q_INVOKABLE void fetchCountry(const QString &url, const QString &countryId);
-    void fetchCountry(const QString &url, const CountryId &countryId);
+    Q_INVOKABLE void fetchGroups();
+    Q_INVOKABLE void fetchGroup(const QString &url, const QString &groupId);
+    void fetchGroup(const QString &url, const GroupId &groupId);
     Q_INVOKABLE void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url);
     Q_INVOKABLE QString image(const QString &url);
     Q_INVOKABLE void download(const QString &url);
@@ -43,15 +43,15 @@ private:
     std::unique_ptr<FetcherImpl> m_fetcherImpl;
 
 Q_SIGNALS:
-    void startedFetchingCountry(const CountryId &id);
-    void countryUpdated(const CountryId &id);
+    void startedFetchingGroup(const GroupId &id);
+    void groupUpdated(const GroupId &id);
 
     void startedFetchingChannel(const ChannelId &id);
     void channelUpdated(const ChannelId &id);
     void channelDetailsUpdated(const ChannelId &id, const QString &image);
 
     void errorFetching(const Error &error);
-    void errorFetchingCountry(const CountryId &id, const Error &error);
+    void errorFetchingGroup(const GroupId &id, const Error &error);
     void errorFetchingChannel(const ChannelId &id, const Error &error);
     void errorFetchingProgram(const ProgramId &id, const Error &error);
 

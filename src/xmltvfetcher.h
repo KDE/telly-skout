@@ -14,15 +14,15 @@ public:
     XmltvFetcher();
     virtual ~XmltvFetcher() = default;
 
-    void fetchCountries() override;
-    void fetchCountry(const QString &url, const CountryId &countryId) override;
+    void fetchGroups() override;
+    void fetchGroup(const QString &url, const GroupId &groupId) override;
     void fetchProgram(const ChannelId &channelId) override;
     void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url) override;
 
 private:
     bool open(const QString &fileName);
-    void fetchChannel(const ChannelId &channelId, const QString &name, const CountryId &countryId, const QString &icon);
-    void processCountry(const QDomElement &country);
+    void fetchChannel(const ChannelId &channelId, const QString &name, const GroupId &groupId, const QString &icon);
+    void processGroup(const QDomElement &group);
     void processProgram(const QDomNode &program);
 
     QDomDocument m_doc;

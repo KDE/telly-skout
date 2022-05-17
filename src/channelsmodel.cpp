@@ -16,7 +16,7 @@ ChannelsModel::ChannelsModel(QObject *parent)
     , m_onlyFavorites(true) // deliberately lazy to save time if only favorites required
     , m_channelFactory(m_onlyFavorites)
 {
-    connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const CountryId &id) {
+    connect(&Fetcher::instance(), &Fetcher::groupUpdated, this, [this](const GroupId &id) {
         Q_UNUSED(id)
         beginResetModel();
         qDeleteAll(m_channels);

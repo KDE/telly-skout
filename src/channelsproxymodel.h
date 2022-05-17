@@ -12,7 +12,7 @@ class ChannelsProxyModel : public QSortFilterProxyModel
     Q_OBJECT
 
     Q_PROPERTY(bool onlyFavorites READ onlyFavorites WRITE setOnlyFavorites NOTIFY onlyFavoritesChanged)
-    Q_PROPERTY(QString country READ country WRITE setCountry NOTIFY countryChanged)
+    Q_PROPERTY(QString group READ group WRITE setGroup NOTIFY groupChanged)
 
 public:
     explicit ChannelsProxyModel(QObject *parent = nullptr);
@@ -23,14 +23,14 @@ public:
     bool onlyFavorites() const;
     void setOnlyFavorites(const bool &onlyFavorites);
 
-    const QString &country() const;
-    void setCountry(const QString &country);
+    const QString &group() const;
+    void setGroup(const QString &group);
 
 Q_SIGNALS:
     void onlyFavoritesChanged();
-    void countryChanged();
+    void groupChanged();
 
 private:
     bool m_onlyFavorites;
-    CountryId m_country;
+    GroupId m_group;
 };

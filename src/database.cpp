@@ -47,20 +47,20 @@ Database::Database()
     execute(QStringLiteral("PRAGMA locking_mode = EXCLUSIVE;"));
 
     // prepare queries once (faster)
-    m_addCountryQuery.reset(new QSqlQuery(db));
-    bool success = m_addCountryQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO Countries VALUES (:id, :name, :url);"));
-    m_countryCountQuery.reset(new QSqlQuery(db));
-    success &= m_countryCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM Countries;"));
-    m_countryExistsQuery.reset(new QSqlQuery(db));
-    success &= m_countryExistsQuery->prepare(QStringLiteral("SELECT COUNT () FROM Countries WHERE id=:id;"));
-    m_countriesQuery.reset(new QSqlQuery(db));
-    success &= m_countriesQuery->prepare(QStringLiteral("SELECT * FROM Countries ORDER BY name COLLATE NOCASE;"));
-    m_countriesPerChannelQuery.reset(new QSqlQuery(db));
-    success &= m_countriesPerChannelQuery->prepare(
-        QStringLiteral("SELECT * FROM Countries WHERE id=(SELECT country from CountryChannels WHERE channel=:channel) ORDER BY name COLLATE NOCASE;"));
+    m_addGroupQuery.reset(new QSqlQuery(db));
+    bool success = m_addGroupQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO \"Groups\" VALUES (:id, :name, :url);"));
+    m_groupCountQuery.reset(new QSqlQuery(db));
+    success &= m_groupCountQuery->prepare(QStringLiteral("SELECT COUNT() FROM \"Groups\";"));
+    m_groupExistsQuery.reset(new QSqlQuery(db));
+    success &= m_groupExistsQuery->prepare(QStringLiteral("SELECT COUNT () FROM \"Groups\" WHERE id=:id;"));
+    m_groupsQuery.reset(new QSqlQuery(db));
+    success &= m_groupsQuery->prepare(QStringLiteral("SELECT * FROM \"Groups\" ORDER BY name COLLATE NOCASE;"));
+    m_groupsPerChannelQuery.reset(new QSqlQuery(db));
+    success &= m_groupsPerChannelQuery->prepare(
+        QStringLiteral("SELECT * FROM \"Groups\" WHERE id=(SELECT \"group\" from GroupChannels WHERE channel=:channel) ORDER BY name COLLATE NOCASE;"));
 
-    m_addCountryChannelQuery.reset(new QSqlQuery(db));
-    success &= m_addCountryChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO CountryChannels VALUES (:id, :country, :channel);"));
+    m_addGroupChannelQuery.reset(new QSqlQuery(db));
+    success &= m_addGroupChannelQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO GroupChannels VALUES (:id, :group, :channel);"));
 
     m_addFavoriteQuery.reset(new QSqlQuery(db));
     success &= m_addFavoriteQuery->prepare(QStringLiteral("INSERT INTO Favorites VALUES ((SELECT COUNT() FROM Favorites) + 1, :channel);"));
@@ -119,9 +119,9 @@ bool Database::createTables()
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Fetcher (id INTEGER UNIQUE);")));
     TRUE_OR_RETURN(execute(QStringLiteral("INSERT OR IGNORE INTO Fetcher VALUES (") + QString::number(m_settings.fetcher()) + ");"));
 
-    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Countries (id TEXT UNIQUE, name TEXT, url TEXT);")));
+    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS \"Groups\" (id TEXT UNIQUE, name TEXT, url TEXT);")));
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (id TEXT UNIQUE, name TEXT, url TEXT, image TEXT);")));
-    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS CountryChannels (id TEXT UNIQUE, country TEXT, channel TEXT);")));
+    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS GroupChannels (id TEXT UNIQUE, \"Group\" TEXT, channel TEXT);")));
     TRUE_OR_RETURN(execute(
         QStringLiteral("CREATE TABLE IF NOT EXISTS Programs (id TEXT UNIQUE, url TEXT, channel TEXT, start INTEGER, stop INTEGER, title TEXT, subtitle TEXT, "
                        "description TEXT, descriptionFetched INTEGER, category TEXT);")));
@@ -135,9 +135,9 @@ bool Database::dropTables()
 {
     qDebug() << "Drop DB tables";
     TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Fetcher;")));
-    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Countries;")));
+    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS \"Groups\";")));
     TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Channels;")));
-    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS CountryChannels;")));
+    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS GroupChannels;")));
     TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Programs;")));
     TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Favorites;")));
 
@@ -235,80 +235,80 @@ void Database::cleanup()
     execute(query);
 }
 
-void Database::addCountry(const CountryId &id, const QString &name, const QString &url)
+void Database::addGroup(const GroupId &id, const QString &name, const QString &url)
 {
-    if (!countryExists(id)) {
-        qDebug() << "Add country" << name;
-        m_addCountryQuery->bindValue(QStringLiteral(":id"), id.value());
-        m_addCountryQuery->bindValue(QStringLiteral(":name"), name);
-        m_addCountryQuery->bindValue(QStringLiteral(":url"), url);
-        execute(*m_addCountryQuery);
+    if (!groupExists(id)) {
+        qDebug() << "Add group" << name;
+        m_addGroupQuery->bindValue(QStringLiteral(":id"), id.value());
+        m_addGroupQuery->bindValue(QStringLiteral(":name"), name);
+        m_addGroupQuery->bindValue(QStringLiteral(":url"), url);
+        execute(*m_addGroupQuery);
 
-        Q_EMIT countryAdded(id);
+        Q_EMIT groupAdded(id);
     }
 }
 
-size_t Database::countryCount()
+size_t Database::groupCount()
 {
-    execute(*m_countryCountQuery);
-    if (!m_countryCountQuery->next()) {
-        qWarning() << "Failed to query country count";
+    execute(*m_groupCountQuery);
+    if (!m_groupCountQuery->next()) {
+        qWarning() << "Failed to query group count";
         return 0;
     }
-    return m_countryCountQuery->value(0).toInt();
+    return m_groupCountQuery->value(0).toInt();
 }
 
-bool Database::countryExists(const CountryId &id)
+bool Database::groupExists(const GroupId &id)
 {
-    m_countryExistsQuery->bindValue(QStringLiteral(":id"), id.value());
-    execute(*m_countryExistsQuery);
-    m_countryExistsQuery->next();
+    m_groupExistsQuery->bindValue(QStringLiteral(":id"), id.value());
+    execute(*m_groupExistsQuery);
+    m_groupExistsQuery->next();
 
-    return m_countryExistsQuery->value(0).toInt() > 0;
+    return m_groupExistsQuery->value(0).toInt() > 0;
 }
 
-QVector<CountryData> Database::countries()
+QVector<GroupData> Database::groups()
 {
-    QVector<CountryData> countries;
+    QVector<GroupData> groups;
 
-    execute(*m_countriesQuery);
-    while (m_countriesQuery->next()) {
-        CountryData data;
-        data.m_id = CountryId(m_countriesQuery->value(QStringLiteral("id")).toString());
-        data.m_name = m_countriesQuery->value(QStringLiteral("name")).toString();
-        data.m_url = m_countriesQuery->value(QStringLiteral("url")).toString();
-        countries.append(data);
+    execute(*m_groupsQuery);
+    while (m_groupsQuery->next()) {
+        GroupData data;
+        data.m_id = GroupId(m_groupsQuery->value(QStringLiteral("id")).toString());
+        data.m_name = m_groupsQuery->value(QStringLiteral("name")).toString();
+        data.m_url = m_groupsQuery->value(QStringLiteral("url")).toString();
+        groups.append(data);
     }
-    return countries;
+    return groups;
 }
 
-QVector<CountryData> Database::countries(const ChannelId &channelId)
+QVector<GroupData> Database::groups(const ChannelId &channelId)
 {
-    QVector<CountryData> countries;
+    QVector<GroupData> groups;
 
-    m_countriesPerChannelQuery->bindValue(QStringLiteral(":channel"), channelId.value());
-    execute(*m_countriesPerChannelQuery);
-    while (m_countriesPerChannelQuery->next()) {
-        CountryData data;
-        data.m_id = CountryId(m_countriesPerChannelQuery->value(QStringLiteral("id")).toString());
-        data.m_name = m_countriesPerChannelQuery->value(QStringLiteral("name")).toString();
-        data.m_url = m_countriesPerChannelQuery->value(QStringLiteral("url")).toString();
-        countries.append(data);
+    m_groupsPerChannelQuery->bindValue(QStringLiteral(":channel"), channelId.value());
+    execute(*m_groupsPerChannelQuery);
+    while (m_groupsPerChannelQuery->next()) {
+        GroupData data;
+        data.m_id = GroupId(m_groupsPerChannelQuery->value(QStringLiteral("id")).toString());
+        data.m_name = m_groupsPerChannelQuery->value(QStringLiteral("name")).toString();
+        data.m_url = m_groupsPerChannelQuery->value(QStringLiteral("url")).toString();
+        groups.append(data);
     }
-    return countries;
+    return groups;
 }
 
-void Database::addChannel(const ChannelData &data, const CountryId &country)
+void Database::addChannel(const ChannelData &data, const GroupId &group)
 {
     if (!channelExists(data.m_id)) {
         qDebug() << "Add channel" << data.m_name;
 
-        // store channel per country
+        // store channel per group
         {
-            m_addCountryChannelQuery->bindValue(QStringLiteral(":id"), country.value() + "_" + data.m_id.value());
-            m_addCountryChannelQuery->bindValue(QStringLiteral(":country"), country.value());
-            m_addCountryChannelQuery->bindValue(QStringLiteral(":channel"), data.m_id.value());
-            execute(*m_addCountryChannelQuery);
+            m_addGroupChannelQuery->bindValue(QStringLiteral(":id"), group.value() + "_" + data.m_id.value());
+            m_addGroupChannelQuery->bindValue(QStringLiteral(":group"), group.value());
+            m_addGroupChannelQuery->bindValue(QStringLiteral(":channel"), data.m_id.value());
+            execute(*m_addGroupChannelQuery);
         }
 
         // store channel
@@ -317,7 +317,7 @@ void Database::addChannel(const ChannelData &data, const CountryId &country)
             m_addChannelQuery->bindValue(QStringLiteral(":id"), data.m_id.value());
             m_addChannelQuery->bindValue(QStringLiteral(":name"), data.m_name);
             m_addChannelQuery->bindValue(QStringLiteral(":url"), urlFromInput.toString());
-            m_addChannelQuery->bindValue(QStringLiteral(":country"), country.value());
+            m_addChannelQuery->bindValue(QStringLiteral(":group"), group.value());
             m_addChannelQuery->bindValue(QStringLiteral(":image"), data.m_image);
             execute(*m_addChannelQuery);
             Q_EMIT channelAdded(data.m_id);

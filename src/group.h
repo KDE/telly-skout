@@ -5,12 +5,12 @@
 
 #include <QObject>
 
-#include "countrydata.h"
+#include "groupdata.h"
 #include "types.h"
 
 class ChannelsModel;
 
-class Country : public QObject
+class Group : public QObject
 {
     Q_OBJECT
 
@@ -23,9 +23,9 @@ class Country : public QObject
     Q_PROPERTY(ChannelsModel *channels MEMBER m_channels CONSTANT)
 
 public:
-    explicit Country(const CountryData &data);
+    explicit Group(const GroupData &data);
 
-    ~Country();
+    ~Group();
 
     QString id() const;
     QString name() const;
@@ -40,7 +40,7 @@ public:
 
 Q_SIGNALS:
     void nameChanged(const QString &name);
-    void countriesChanged(const QVector<Country *> &countries);
+    void groupsChanged(const QVector<Group *> &groups);
     void deleteAfterCountChanged(int count);
     void deleteAfterTypeChanged(int type);
     void errorIdChanged(int errorId);
@@ -51,7 +51,7 @@ Q_SIGNALS:
 private:
     void setError(const Error &error);
 
-    CountryData m_data;
+    GroupData m_data;
     ChannelsModel *m_channels;
     Error m_error;
 

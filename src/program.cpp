@@ -4,7 +4,6 @@
 #include "program.h"
 
 #include "channel.h"
-#include "country.h"
 #include "database.h"
 
 #include <QDebug>

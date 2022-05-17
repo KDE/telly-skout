@@ -11,7 +11,6 @@
 #include <QString>
 
 class Channel;
-class Country;
 
 class Program : public QObject
 {

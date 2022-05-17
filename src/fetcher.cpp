@@ -41,11 +41,11 @@ Fetcher::Fetcher()
     m_manager->setStrictTransportSecurityEnabled(true);
     m_manager->enableStrictTransportSecurityStore(true);
 
-    connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingCountry, this, [this](const CountryId &id) {
-        Q_EMIT startedFetchingCountry(id);
+    connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingGroup, this, [this](const GroupId &id) {
+        Q_EMIT startedFetchingGroup(id);
     });
-    connect(m_fetcherImpl.get(), &FetcherImpl::countryUpdated, this, [this](const CountryId &id) {
-        Q_EMIT countryUpdated(id);
+    connect(m_fetcherImpl.get(), &FetcherImpl::groupUpdated, this, [this](const GroupId &id) {
+        Q_EMIT groupUpdated(id);
     });
 
     connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingChannel, this, [this](const ChannelId &id) {
@@ -61,8 +61,8 @@ Fetcher::Fetcher()
     connect(m_fetcherImpl.get(), &FetcherImpl::errorFetching, this, [this](const Error &error) {
         Q_EMIT errorFetching(error);
     });
-    connect(m_fetcherImpl.get(), &FetcherImpl::errorFetchingCountry, this, [this](const CountryId &id, const Error &error) {
-        Q_EMIT errorFetchingCountry(id, error);
+    connect(m_fetcherImpl.get(), &FetcherImpl::errorFetchingGroup, this, [this](const GroupId &id, const Error &error) {
+        Q_EMIT errorFetchingGroup(id, error);
     });
     connect(m_fetcherImpl.get(), &FetcherImpl::errorFetchingChannel, this, [this](const ChannelId &id, const Error &error) {
         Q_EMIT errorFetchingChannel(id, error);
@@ -82,19 +82,19 @@ void Fetcher::fetchFavorites()
     }
 }
 
-void Fetcher::fetchCountries()
+void Fetcher::fetchGroups()
 {
-    m_fetcherImpl->fetchCountries();
+    m_fetcherImpl->fetchGroups();
 }
 
-void Fetcher::fetchCountry(const QString &url, const QString &countryId)
+void Fetcher::fetchGroup(const QString &url, const QString &groupId)
 {
-    fetchCountry(url, CountryId(countryId));
+    fetchGroup(url, GroupId(groupId));
 }
 
-void Fetcher::fetchCountry(const QString &url, const CountryId &countryId)
+void Fetcher::fetchGroup(const QString &url, const GroupId &groupId)
 {
-    m_fetcherImpl->fetchCountry(url, countryId);
+    m_fetcherImpl->fetchGroup(url, groupId);
 }
 
 void Fetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
