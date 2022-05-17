@@ -85,8 +85,8 @@ Database::Database()
     success &= m_isFavoriteQuery->prepare(QStringLiteral("SELECT COUNT() FROM Favorites WHERE channel=:channel"));
 
     m_addProgramQuery.reset(new QSqlQuery(db));
-    success &= m_addProgramQuery->prepare(QStringLiteral(
-        "INSERT OR IGNORE INTO Programs VALUES (:id, :url, :channel, :start, :stop, :title, :subtitle, :description, :descriptionFetched, :category);"));
+    success &= m_addProgramQuery->prepare(
+        QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :url, :channel, :start, :stop, :title, :subtitle, :description, :descriptionFetched);"));
     m_updateProgramDescriptionQuery.reset(new QSqlQuery(db));
     success &= m_updateProgramDescriptionQuery->prepare(QStringLiteral("UPDATE Programs SET description=:description, descriptionFetched=TRUE WHERE id=:id;"));
     m_programExistsQuery.reset(new QSqlQuery(db));
@@ -97,6 +97,11 @@ Database::Database()
     success &= m_programsQuery->prepare(QStringLiteral("SELECT * FROM Programs ORDER BY channel, start;"));
     m_programsPerChannelQuery.reset(new QSqlQuery(db));
     success &= m_programsPerChannelQuery->prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start;"));
+
+    m_addProgramCategoryQuery.reset(new QSqlQuery(db));
+    success &= m_addProgramCategoryQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO ProgramCategories VALUES (:program, :category);"));
+    m_programCategoriesQuery.reset(new QSqlQuery(db));
+    success &= m_programCategoriesQuery->prepare(QStringLiteral("SELECT category FROM ProgramCategories WHERE program=:program;"));
 
     if (!success) {
         qCritical() << "Failed to prepare database queries";
@@ -124,7 +129,8 @@ bool Database::createTables()
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS GroupChannels (id TEXT UNIQUE, \"Group\" TEXT, channel TEXT);")));
     TRUE_OR_RETURN(execute(
         QStringLiteral("CREATE TABLE IF NOT EXISTS Programs (id TEXT UNIQUE, url TEXT, channel TEXT, start INTEGER, stop INTEGER, title TEXT, subtitle TEXT, "
-                       "description TEXT, descriptionFetched INTEGER, category TEXT);")));
+                       "description TEXT, descriptionFetched INTEGER);")));
+    TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS ProgramCategories (program TEXT, category TEXT);")));
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Favorites (id INTEGER UNIQUE, channel TEXT UNIQUE);")));
 
     TRUE_OR_RETURN(execute(QStringLiteral("PRAGMA user_version = 1;")));
@@ -139,6 +145,7 @@ bool Database::dropTables()
     TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Channels;")));
     TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS GroupChannels;")));
     TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Programs;")));
+    TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS ProgramCategories;")));
     TRUE_OR_RETURN(execute(QStringLiteral("DROP TABLE IF EXISTS Favorites;")));
 
     return true;
@@ -480,9 +487,16 @@ void Database::addProgram(const ProgramData &data)
     m_addProgramQuery->bindValue(QStringLiteral(":subtitle"), data.m_subtitle);
     m_addProgramQuery->bindValue(QStringLiteral(":description"), data.m_description);
     m_addProgramQuery->bindValue(QStringLiteral(":descriptionFetched"), data.m_descriptionFetched);
-    m_addProgramQuery->bindValue(QStringLiteral(":category"), data.m_category);
 
     execute(*m_addProgramQuery);
+
+    m_addProgramCategoryQuery->bindValue(QStringLiteral(":program"), data.m_id.value());
+
+    const QVector<QString> &categories = data.m_categories;
+    for (int i = 0; i < categories.size(); ++i) {
+        m_addProgramCategoryQuery->bindValue(QStringLiteral(":category"), categories.at(i));
+        execute(*m_addProgramCategoryQuery);
+    }
 }
 
 void Database::updateProgramDescription(const ProgramId &id, const QString &description)
@@ -548,7 +562,13 @@ QMap<ChannelId, QVector<ProgramData>> Database::programs()
         data.m_subtitle = m_programsQuery->value(QStringLiteral("subtitle")).toString();
         data.m_description = m_programsQuery->value(QStringLiteral("description")).toString();
         data.m_descriptionFetched = m_programsQuery->value(QStringLiteral("descriptionFetched")).toBool();
-        data.m_category = m_programsQuery->value(QStringLiteral("category")).toString();
+
+        m_programCategoriesQuery->bindValue(QStringLiteral(":program"), data.m_id.value());
+        execute(*m_programCategoriesQuery);
+
+        while (m_programCategoriesQuery->next()) {
+            data.m_categories.push_back(m_programCategoriesQuery->value(QStringLiteral("category")).toString());
+        }
 
         programs[channelId].push_back(data);
     }
@@ -574,7 +594,13 @@ QVector<ProgramData> Database::programs(const ChannelId &channelId)
         data.m_subtitle = m_programsPerChannelQuery->value(QStringLiteral("subtitle")).toString();
         data.m_description = m_programsPerChannelQuery->value(QStringLiteral("description")).toString();
         data.m_descriptionFetched = m_programsPerChannelQuery->value(QStringLiteral("descriptionFetched")).toBool();
-        data.m_category = m_programsPerChannelQuery->value(QStringLiteral("category")).toString();
+
+        m_programCategoriesQuery->bindValue(QStringLiteral(":program"), data.m_id.value());
+        execute(*m_programCategoriesQuery);
+
+        while (m_programCategoriesQuery->next()) {
+            data.m_categories.push_back(m_programCategoriesQuery->value(QStringLiteral("category")).toString());
+        }
 
         programs.push_back(data);
     }

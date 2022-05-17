@@ -23,8 +23,8 @@ Rectangle {
                 Fetcher.fetchProgramDescription(program.channelId, program.id, program.url);
 
             var categoryText = "";
-            if (program.category !== "")
-                categoryText = "<br><i>" + program.category + "</i>";
+            if (program.categories.length)
+                categoryText = "<br><i>" + program.categories.join(' ') + "</i>";
 
             var descriptionText = "";
             if (program.descriptionFetched && program.description)

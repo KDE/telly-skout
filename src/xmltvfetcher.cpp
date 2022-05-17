@@ -156,7 +156,13 @@ void XmltvFetcher::processProgram(const QDomNode &program)
     data.m_title = program.namedItem("title").toElement().text();
     data.m_subtitle = program.namedItem("sub-title").toElement().text();
     data.m_description = program.namedItem("desc").toElement().text();
-    data.m_category = program.namedItem("category").toElement().text();
+
+    if (program.isElement()) {
+        QDomNodeList categoryNodes = program.toElement().elementsByTagName("category");
+        for (int i = 0; i < categoryNodes.count(); i++) {
+            data.m_categories.push_back(categoryNodes.at(i).toElement().text());
+        }
+    }
 
     data.m_descriptionFetched = true;
 

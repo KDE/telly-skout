@@ -234,7 +234,7 @@ ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &pr
         programData.m_subtitle = "";
         programData.m_description = "";
         programData.m_descriptionFetched = false;
-        programData.m_category = category;
+        programData.m_categories.push_back(category);
     } else {
         qWarning() << "Failed to parse program " << url;
     }

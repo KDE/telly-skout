@@ -98,6 +98,9 @@ private:
     std::unique_ptr<QSqlQuery> m_favoritesQuery;
     std::unique_ptr<QSqlQuery> m_isFavoriteQuery;
 
+    std::unique_ptr<QSqlQuery> m_addProgramCategoryQuery;
+    std::unique_ptr<QSqlQuery> m_programCategoriesQuery;
+
     std::unique_ptr<QSqlQuery> m_addProgramQuery;
     std::unique_ptr<QSqlQuery> m_updateProgramDescriptionQuery;
     std::unique_ptr<QSqlQuery> m_programExistsQuery;
