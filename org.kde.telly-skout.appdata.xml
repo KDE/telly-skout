@@ -12,6 +12,7 @@
   <name xml:lang="fr">Telly Skout</name>
   <name xml:lang="ko">Telly Skout</name>
   <name xml:lang="nl">Telly Skout</name>
+  <name xml:lang="pt">Telly Skout</name>
   <name xml:lang="sk">Telly Skout</name>
   <name xml:lang="sl">Telly Skout</name>
   <name xml:lang="sv">Telly Skout</name>
@@ -24,6 +25,7 @@
   <summary xml:lang="fr">Un guide convergent de télévision sous Kirigami</summary>
   <summary xml:lang="ko">올인원 Kirigami TV 가이드</summary>
   <summary xml:lang="nl">Een convergente Kirigami TV gids</summary>
+  <summary xml:lang="pt">Um guia de TV convergente em Kirigami</summary>
   <summary xml:lang="sk">Konvergentný TV sprievodca Kirigami</summary>
   <summary xml:lang="sl">Konvergentni Kirigami TV vodnik</summary>
   <summary xml:lang="sv">En konvergent Kirigami tv-guide</summary>
@@ -38,6 +40,7 @@
   <developer_name xml:lang="fr">plata</developer_name>
   <developer_name xml:lang="ko">plata</developer_name>
   <developer_name xml:lang="nl">plata</developer_name>
+  <developer_name xml:lang="pt">plata</developer_name>
   <developer_name xml:lang="sk">plata</developer_name>
   <developer_name xml:lang="sl">plata</developer_name>
   <developer_name xml:lang="sv">plata</developer_name>
@@ -51,6 +54,7 @@
     <p xml:lang="fr">Un guide convergent de télévision sous Kirigami</p>
     <p xml:lang="ko">올인원 Kirigami TV 가이드</p>
     <p xml:lang="nl">Een convergente Kirigami TV gids</p>
+    <p xml:lang="pt">Um guia de TV convergente em Kirigami</p>
     <p xml:lang="sk">Konvergentný TV sprievodca Kirigami</p>
     <p xml:lang="sl">Konvergentni Kirigami TV vodnik</p>
     <p xml:lang="sv">En konvergent Kirigami tv-guide</p>
