@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: none
+---
+app-id: org.kde.telly-skout
+runtime: org.kde.Platform
+runtime-version: '5.15-21.08'
+sdk: org.kde.Sdk
+command: telly-skout
+rename-icon: telly-skout
+copy-icon: true
+finish-args:
+  - '--share=network'
+  - '--socket=wayland'
+  - '--socket=fallback-x11'
+  - '--device=dri'
+modules:
+  - name: telly-skout
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: 'https://invent.kde.org/plasma-mobile/telly-skout'

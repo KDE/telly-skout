@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 /.clang-format
+/.flatpak-builder
 /.kdev4/
 /build/
 /telly-skout.kdev4
