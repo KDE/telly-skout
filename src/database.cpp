@@ -113,10 +113,6 @@ Database::Database()
     });
 }
 
-Database::~Database()
-{
-}
-
 bool Database::createTables()
 {
     qDebug() << "Create DB tables";
@@ -151,7 +147,7 @@ bool Database::dropTables()
     return true;
 }
 
-bool Database::execute(const QString &query)
+bool Database::execute(const QString &query) const
 {
     QSqlQuery q;
     if (q.prepare(query)) {
@@ -162,7 +158,7 @@ bool Database::execute(const QString &query)
     }
 }
 
-bool Database::execute(QSqlQuery &query)
+bool Database::execute(QSqlQuery &query) const
 {
     if (!query.exec()) {
         qWarning() << "Failed to execute SQL Query";
@@ -173,7 +169,7 @@ bool Database::execute(QSqlQuery &query)
     return true;
 }
 
-int Database::version()
+int Database::version() const
 {
     const int error = -1;
 
@@ -199,7 +195,7 @@ int Database::version()
     return error;
 }
 
-int Database::fetcher()
+int Database::fetcher() const
 {
     const int error = -1;
 
@@ -255,7 +251,7 @@ void Database::addGroup(const GroupId &id, const QString &name, const QString &u
     }
 }
 
-size_t Database::groupCount()
+size_t Database::groupCount() const
 {
     execute(*m_groupCountQuery);
     if (!m_groupCountQuery->next()) {
@@ -265,7 +261,7 @@ size_t Database::groupCount()
     return m_groupCountQuery->value(0).toInt();
 }
 
-bool Database::groupExists(const GroupId &id)
+bool Database::groupExists(const GroupId &id) const
 {
     m_groupExistsQuery->bindValue(QStringLiteral(":id"), id.value());
     execute(*m_groupExistsQuery);
@@ -274,7 +270,7 @@ bool Database::groupExists(const GroupId &id)
     return m_groupExistsQuery->value(0).toInt() > 0;
 }
 
-QVector<GroupData> Database::groups()
+QVector<GroupData> Database::groups() const
 {
     QVector<GroupData> groups;
 
@@ -289,7 +285,7 @@ QVector<GroupData> Database::groups()
     return groups;
 }
 
-QVector<GroupData> Database::groups(const ChannelId &channelId)
+QVector<GroupData> Database::groups(const ChannelId &channelId) const
 {
     QVector<GroupData> groups;
 
@@ -332,7 +328,7 @@ void Database::addChannel(const ChannelData &data, const GroupId &group)
     }
 }
 
-size_t Database::channelCount()
+size_t Database::channelCount() const
 {
     execute(*m_channelCountQuery);
     if (!m_channelCountQuery->next()) {
@@ -342,7 +338,7 @@ size_t Database::channelCount()
     return m_channelCountQuery->value(0).toInt();
 }
 
-bool Database::channelExists(const ChannelId &id)
+bool Database::channelExists(const ChannelId &id) const
 {
     m_channelExistsQuery->bindValue(QStringLiteral(":id"), id.value());
     execute(*m_channelExistsQuery);
@@ -351,7 +347,7 @@ bool Database::channelExists(const ChannelId &id)
     return m_channelExistsQuery->value(0).toInt() > 0;
 }
 
-QVector<ChannelData> Database::channels(bool onlyFavorites)
+QVector<ChannelData> Database::channels(bool onlyFavorites) const
 {
     QVector<ChannelData> channels;
 
@@ -377,7 +373,7 @@ QVector<ChannelData> Database::channels(bool onlyFavorites)
     return channels;
 }
 
-ChannelData Database::channel(const ChannelId &channelId)
+ChannelData Database::channel(const ChannelId &channelId) const
 {
     ChannelData data;
     data.m_id = channelId;
@@ -446,7 +442,7 @@ void Database::clearFavorites()
     }
 }
 
-size_t Database::favoriteCount()
+size_t Database::favoriteCount() const
 {
     execute(*m_favoriteCountQuery);
     if (!m_favoriteCountQuery->next()) {
@@ -456,7 +452,7 @@ size_t Database::favoriteCount()
     return m_favoriteCountQuery->value(0).toInt();
 }
 
-QVector<ChannelId> Database::favorites()
+QVector<ChannelId> Database::favorites() const
 {
     QVector<ChannelId> favorites;
 
@@ -468,7 +464,7 @@ QVector<ChannelId> Database::favorites()
     return favorites;
 }
 
-bool Database::isFavorite(const ChannelId &channelId)
+bool Database::isFavorite(const ChannelId &channelId) const
 {
     m_isFavoriteQuery->bindValue(QStringLiteral(":channel"), channelId.value());
     execute(*m_isFavoriteQuery);
@@ -519,7 +515,7 @@ void Database::addPrograms(const QVector<ProgramData> &programs)
     QSqlDatabase::database().commit();
 }
 
-bool Database::programExists(const ChannelId &channelId, qint64 lastTime)
+bool Database::programExists(const ChannelId &channelId, qint64 lastTime) const
 {
     m_programExistsQuery->bindValue(QStringLiteral(":channel"), channelId.value());
     m_programExistsQuery->bindValue(QStringLiteral(":lastTime"), lastTime);
@@ -529,7 +525,7 @@ bool Database::programExists(const ChannelId &channelId, qint64 lastTime)
     return m_programExistsQuery->value(0).toInt() > 0;
 }
 
-size_t Database::programCount(const ChannelId &channelId)
+size_t Database::programCount(const ChannelId &channelId) const
 {
     m_programCountQuery->bindValue(QStringLiteral(":channel"), channelId.value());
     execute(*m_programCountQuery);
@@ -540,7 +536,7 @@ size_t Database::programCount(const ChannelId &channelId)
     return m_programCountQuery->value(0).toInt();
 }
 
-QMap<ChannelId, QVector<ProgramData>> Database::programs()
+QMap<ChannelId, QVector<ProgramData>> Database::programs() const
 {
     QMap<ChannelId, QVector<ProgramData>> programs;
 
@@ -576,7 +572,7 @@ QMap<ChannelId, QVector<ProgramData>> Database::programs()
     return programs;
 }
 
-QVector<ProgramData> Database::programs(const ChannelId &channelId)
+QVector<ProgramData> Database::programs(const ChannelId &channelId) const
 {
     QVector<ProgramData> programs;
 

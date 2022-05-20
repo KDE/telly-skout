@@ -30,36 +30,37 @@ public:
         static Database _instance;
         return _instance;
     }
-    bool execute(QSqlQuery &query);
-    bool execute(const QString &query);
+
+    bool execute(QSqlQuery &query) const;
+    bool execute(const QString &query) const;
 
     void addGroup(const GroupId &id, const QString &name, const QString &url);
-    size_t groupCount();
-    bool groupExists(const GroupId &id);
-    QVector<GroupData> groups();
-    QVector<GroupData> groups(const ChannelId &channelId);
+    size_t groupCount() const;
+    bool groupExists(const GroupId &id) const;
+    QVector<GroupData> groups() const;
+    QVector<GroupData> groups(const ChannelId &channelId) const;
 
     void addChannel(const ChannelData &data, const GroupId &group);
-    size_t channelCount();
-    bool channelExists(const ChannelId &id);
-    QVector<ChannelData> channels(bool onlyFavorites);
-    ChannelData channel(const ChannelId &channelId);
+    size_t channelCount() const;
+    bool channelExists(const ChannelId &id) const;
+    QVector<ChannelData> channels(bool onlyFavorites) const;
+    ChannelData channel(const ChannelId &channelId) const;
 
     void addFavorite(const ChannelId &channelId);
     void removeFavorite(const ChannelId &channelId);
     void sortFavorites(const QVector<ChannelId> &newOrder); // newOrder must contain same channel IDs as existing favorites
     void clearFavorites();
-    size_t favoriteCount();
-    QVector<ChannelId> favorites();
-    bool isFavorite(const ChannelId &channelId);
+    size_t favoriteCount() const;
+    QVector<ChannelId> favorites() const;
+    bool isFavorite(const ChannelId &channelId) const;
 
     void addProgram(const ProgramData &data);
     void updateProgramDescription(const ProgramId &id, const QString &description);
     void addPrograms(const QVector<ProgramData> &programs);
-    bool programExists(const ChannelId &channelId, qint64 lastTime);
-    size_t programCount(const ChannelId &channelId);
-    QMap<ChannelId, QVector<ProgramData>> programs();
-    QVector<ProgramData> programs(const ChannelId &channelId);
+    bool programExists(const ChannelId &channelId, qint64 lastTime) const;
+    size_t programCount(const ChannelId &channelId) const;
+    QMap<ChannelId, QVector<ProgramData>> programs() const;
+    QVector<ProgramData> programs(const ChannelId &channelId) const;
 
 Q_SIGNALS:
     void groupAdded(const GroupId &id);
@@ -69,9 +70,10 @@ Q_SIGNALS:
 
 private:
     Database();
-    ~Database();
-    int version();
-    int fetcher();
+    ~Database() = default;
+
+    int version() const;
+    int fetcher() const;
     bool createTables();
     bool dropTables();
     void cleanup();
