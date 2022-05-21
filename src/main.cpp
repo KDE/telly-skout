@@ -7,6 +7,7 @@
 #include "database.h"
 #include "fetcher.h"
 #include "groupsmodel.h"
+#include "modelfactory.h"
 #include "programsmodel.h"
 #include "programsproxymodel.h"
 #include "telly-skout-version.h"
@@ -67,14 +68,16 @@ int main(int argc, char *argv[])
     parser.process(app);
 
     // register qml types
-    qmlRegisterType<GroupsModel>("org.kde.TellySkout", 1, 0, "GroupsModel");
-    qmlRegisterType<ChannelsModel>("org.kde.TellySkout", 1, 0, "ChannelsModel");
-    qmlRegisterType<ChannelsProxyModel>("org.kde.TellySkout", 1, 0, "ChannelsProxyModel");
-    qmlRegisterType<ProgramsProxyModel>("org.kde.TellySkout", 1, 0, "ProgramsProxyModel");
-
+    qmlRegisterUncreatableType<GroupsModel>("org.kde.TellySkout", 1, 0, "GroupsModel", QStringLiteral("Use ModelFactory."));
+    qmlRegisterUncreatableType<ChannelsModel>("org.kde.TellySkout", 1, 0, "ChannelsModel", QStringLiteral("Use ModelFactory."));
+    qmlRegisterUncreatableType<ChannelsProxyModel>("org.kde.TellySkout", 1, 0, "ChannelsProxyModel", QStringLiteral("Use ModelFactory."));
     qmlRegisterUncreatableType<ProgramsModel>("org.kde.TellySkout", 1, 0, "ProgramsModel", QStringLiteral("Get from Channel"));
+    qmlRegisterUncreatableType<ProgramsProxyModel>("org.kde.TellySkout", 1, 0, "ProgramsProxyModel", QStringLiteral("Use ModelFactory."));
 
     qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "Fetcher", &Fetcher::instance());
+
+    ModelFactory modelFactory;
+    qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "ModelFactory", &modelFactory);
 
     // setup engine
     QQmlApplicationEngine engine;

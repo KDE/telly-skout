@@ -33,9 +33,7 @@ Kirigami.ScrollablePage {
         id: groupList
 
         anchors.fill: parent
-
-        model: GroupsModel {
-        }
+        model: ModelFactory.createGroupsModel()
 
         delegate: GroupListDelegate {
         }

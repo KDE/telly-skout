@@ -15,7 +15,7 @@ class ProgramsProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(QDateTime stop READ stop WRITE setStop NOTIFY stopChanged)
 
 public:
-    explicit ProgramsProxyModel(QObject *parent = nullptr);
+    explicit ProgramsProxyModel(QAbstractItemModel *sourceModel, const QDateTime &start, const QDateTime &stop, QObject *parent = nullptr);
     ~ProgramsProxyModel() override;
 
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;

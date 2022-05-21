@@ -13,6 +13,7 @@ Kirigami.Page {
 
     property int windowHeight: 0
     property real currentTimestamp: 0
+    property var channelsModel: ModelFactory.createChannelsModel(true)
 
     function updateTime() {
         var now = new Date();
@@ -81,6 +82,8 @@ Kirigami.Page {
 
         readonly property int pxPerMin: 5
         readonly property var date: new Date()
+        readonly property var start: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate()) // today 00:00h
+        readonly property var stop: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate(), 23, 59, 0) // today 23:59h
 
         visible: contentRepeater.count !== 0
         width: parent.width
@@ -135,20 +138,14 @@ Kirigami.Page {
                     Repeater {
                         id: programRepeater
 
-                        model: ProgramsProxyModel {
-                            id: proxyProgramModel
-
-                            start: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate()) // today 00:00h
-                            stop: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate(), 23, 59, 0) // today 23:59h
-                            sourceModel: modelData.programsModel
-                        }
+                        model: ModelFactory.createProgramsProxyModel(modelData.programsModel, channelTable.start, channelTable.stop)
 
                         delegate: ChannelTableDelegate {
                             channelIdx: column.idx
                             overlay: overlaySheet
                             pxPerMin: channelTable.pxPerMin
-                            startTime: proxyProgramModel.start
-                            stopTime: proxyProgramModel.stop
+                            startTime: channelTable.start
+                            stopTime: channelTable.stop
                             currentTimestamp: root.currentTimestamp
                         }
 
@@ -160,12 +157,6 @@ Kirigami.Page {
 
         }
 
-    }
-
-    ChannelsModel {
-        id: channelsModel
-
-        onlyFavorites: true
     }
 
     Kirigami.OverlaySheet {

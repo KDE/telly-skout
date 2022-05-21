@@ -5,11 +5,12 @@
 
 #include "program.h"
 
-ProgramsProxyModel::ProgramsProxyModel(QObject *parent)
+ProgramsProxyModel::ProgramsProxyModel(QAbstractItemModel *sourceModel, const QDateTime &start, const QDateTime &stop, QObject *parent)
     : QSortFilterProxyModel(parent)
-    , m_start{}
-    , m_stop{}
+    , m_start(start)
+    , m_stop(stop)
 {
+    setSourceModel(sourceModel);
 }
 
 ProgramsProxyModel::~ProgramsProxyModel()

@@ -30,7 +30,7 @@ Group::Group(const GroupData &data)
         }
     });
 
-    m_channels = new ChannelsModel(this);
+    m_channels = new ChannelsModel(false, this);
 }
 
 Group::~Group()

@@ -11,10 +11,10 @@
 
 #include <algorithm>
 
-ChannelsModel::ChannelsModel(QObject *parent)
+ChannelsModel::ChannelsModel(bool onlyFavorites, QObject *parent)
     : QAbstractListModel(parent)
-    , m_onlyFavorites(true) // deliberately lazy to save time if only favorites required
-    , m_channelFactory(m_onlyFavorites)
+    , m_onlyFavorites(onlyFavorites)
+    , m_channelFactory(onlyFavorites)
 {
     connect(&Fetcher::instance(), &Fetcher::groupUpdated, this, [this](const GroupId &id) {
         Q_UNUSED(id)

@@ -11,6 +11,7 @@ Kirigami.SwipeListItem {
     id: listItem
 
     property var listView
+    property var channelsModel
     property bool sortable: false
 
     actions: [

@@ -6,11 +6,13 @@
 #include "channel.h"
 #include "database.h"
 
-ChannelsProxyModel::ChannelsProxyModel(QObject *parent)
+ChannelsProxyModel::ChannelsProxyModel(QAbstractItemModel *sourceModel, bool onlyFavorites, const QString &group, QObject *parent)
     : QSortFilterProxyModel(parent)
-    , m_onlyFavorites(false)
-    , m_group("")
+    , m_onlyFavorites(onlyFavorites)
+    , m_group(group)
 {
+    setSourceModel(sourceModel);
+
     connect(&Database::instance(), &Database::channelDetailsUpdated, this, [this]() {
         invalidateFilter();
     });

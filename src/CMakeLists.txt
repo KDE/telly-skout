@@ -13,6 +13,7 @@ add_executable(telly-skout
     group.cpp
     groupfactory.cpp
     groupsmodel.cpp
+    modelfactory.cpp
     networkfetcher.cpp
     program.cpp
     programfactory.cpp

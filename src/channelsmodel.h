@@ -18,7 +18,7 @@ class ChannelsModel : public QAbstractListModel
     Q_PROPERTY(bool onlyFavorites READ onlyFavorites WRITE setOnlyFavorites)
 
 public:
-    explicit ChannelsModel(QObject *parent = nullptr);
+    explicit ChannelsModel(bool onlyFavorites, QObject *parent = nullptr);
     ~ChannelsModel();
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;

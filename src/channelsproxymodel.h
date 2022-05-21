@@ -15,7 +15,7 @@ class ChannelsProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(QString group READ group WRITE setGroup NOTIFY groupChanged)
 
 public:
-    explicit ChannelsProxyModel(QObject *parent = nullptr);
+    explicit ChannelsProxyModel(QAbstractItemModel *sourceModel, bool onlyFavorites, const QString &group, QObject *parent = nullptr);
     ~ChannelsProxyModel() override;
 
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
