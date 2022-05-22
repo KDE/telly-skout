@@ -12,6 +12,7 @@ Kirigami.ScrollablePage {
     id: root
 
     property string lastChannel: ""
+    property string groupFilter: ""
     property bool sortable: false
     property bool onlyFavorites: false
 

@@ -82,8 +82,8 @@ Kirigami.Page {
 
         readonly property int pxPerMin: 5
         readonly property var date: new Date()
-        readonly property var start: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate()) // today 00:00h
-        readonly property var stop: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate(), 23, 59, 0) // today 23:59h
+        readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
+        readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
 
         visible: contentRepeater.count !== 0
         width: parent.width

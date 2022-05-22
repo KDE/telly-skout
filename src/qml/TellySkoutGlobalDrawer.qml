@@ -38,10 +38,9 @@ Kirigami.GlobalDrawer {
                 pageStack.layers.clear();
                 pageStack.clear();
                 pageStack.push("qrc:/ChannelListPage.qml", {
-                    "onlyFavoritesFilter": true,
-                    "groupFilter": "",
                     "sortable": true,
-                    "onlyFavorites": true
+                    "onlyFavorites": true,
+                    "groupFilter": ""
                 });
             }
         },
