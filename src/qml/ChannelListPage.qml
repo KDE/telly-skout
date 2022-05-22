@@ -12,8 +12,7 @@ Kirigami.ScrollablePage {
     id: root
 
     property string lastChannel: ""
-    property alias onlyFavoritesFilter: proxyModel.onlyFavorites
-    property alias groupFilter: proxyModel.group
+    property string groupFilter: ""
     property bool sortable: false
     property bool onlyFavorites: false
 
@@ -47,7 +46,7 @@ Kirigami.ScrollablePage {
             id: proxyModel
 
             onlyFavorites: false
-            group: ""
+            group: root.groupFilter
             sourceModel: channelsModel
         }
 
