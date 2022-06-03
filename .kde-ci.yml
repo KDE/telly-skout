@@ -7,5 +7,6 @@ Dependencies:
     'frameworks/extra-cmake-modules': '@stable'
     'frameworks/kcoreaddons': '@stable'
     'frameworks/kconfig': '@stable'
+    'frameworks/kcrash': '@stable'
     'frameworks/ki18n': '@stable'
     'frameworks/kirigami': '@stable'
