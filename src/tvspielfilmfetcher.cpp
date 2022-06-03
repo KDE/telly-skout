@@ -47,7 +47,7 @@ void TvSpielfilmFetcher::fetchGroup(const QString &url, const GroupId &groupId)
         } else {
             QByteArray data = reply->readAll();
 
-            QRegularExpression re("<select name=\\\"channel\\\">.*</select>");
+            static QRegularExpression re("<select name=\\\"channel\\\">.*</select>");
             re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
             QRegularExpressionMatch match = re.match(data);
             if (match.hasMatch()) {
@@ -159,7 +159,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
             allPrograms.append(processChannel(data, url, channelId));
 
             // fetch next page
-            QRegularExpression reNextPage(
+            static QRegularExpression reNextPage(
                 "<ul class=\\\"pagination__items\\\">.*<a href=\\\"(.*?)\\\"\\s*class=\\\"js-track-link pagination__link pagination__link--next\\\"");
             reNextPage.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
             QRegularExpressionMatch matchNextPage = reNextPage.match(data);
@@ -244,7 +244,7 @@ ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &pr
 
 void TvSpielfilmFetcher::processDescription(const QString &descriptionPage, const QString &url, const ProgramId &programId)
 {
-    QRegularExpression reDescription("<section class=\\\"broadcast-detail__description\\\">.*?<p>(.*?)</p>");
+    static QRegularExpression reDescription("<section class=\\\"broadcast-detail__description\\\">.*?<p>(.*?)</p>");
     reDescription.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
     QRegularExpressionMatch match = reDescription.match(descriptionPage);
     if (match.hasMatch()) {
