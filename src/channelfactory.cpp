@@ -4,9 +4,9 @@
 #include "channelfactory.h"
 
 #include "channel.h"
-#include "countrydata.h"
 #include "database.h"
 #include "fetcher.h"
+#include "groupdata.h"
 
 #include <QDebug>
 
@@ -52,13 +52,13 @@ Channel *ChannelFactory::create(int index) const
         favorite = Database::instance().isFavorite(data.m_id);
     }
 
-    const QVector<CountryData> countries = Database::instance().countries(data.m_id);
-    QVector<QString> countryIds(countries.size());
-    std::transform(countries.begin(), countries.end(), countryIds.begin(), [](const CountryData &data) {
+    const QVector<GroupData> groups = Database::instance().groups(data.m_id);
+    QVector<QString> groupIds(groups.size());
+    std::transform(groups.begin(), groups.end(), groupIds.begin(), [](const GroupData &data) {
         return data.m_id.value();
     });
 
-    return new Channel(data, favorite, countryIds, m_programFactory);
+    return new Channel(data, favorite, groupIds, m_programFactory);
 }
 
 void ChannelFactory::load() const

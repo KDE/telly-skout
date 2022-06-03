@@ -28,7 +28,7 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();
-                pageStack.push("qrc:/CountryListPage.qml");
+                pageStack.push("qrc:/GroupListPage.qml");
             }
         },
         Kirigami.Action {
@@ -38,10 +38,9 @@ Kirigami.GlobalDrawer {
                 pageStack.layers.clear();
                 pageStack.clear();
                 pageStack.push("qrc:/ChannelListPage.qml", {
-                    "onlyFavoritesFilter": true,
-                    "countryFilter": "",
                     "sortable": true,
-                    "onlyFavorites": true
+                    "onlyFavorites": true,
+                    "groupFilter": ""
                 });
             }
         },

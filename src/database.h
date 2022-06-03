@@ -5,8 +5,9 @@
 
 #include <QObject>
 
+#include "TellySkoutSettings.h"
 #include "channeldata.h"
-#include "countrydata.h"
+#include "groupdata.h"
 #include "programdata.h"
 #include "types.h"
 
@@ -29,57 +30,63 @@ public:
         static Database _instance;
         return _instance;
     }
-    bool execute(QSqlQuery &query);
-    bool execute(const QString &query);
 
-    void addCountry(const CountryId &id, const QString &name, const QString &url);
-    size_t countryCount();
-    bool countryExists(const CountryId &id);
-    QVector<CountryData> countries();
-    QVector<CountryData> countries(const ChannelId &channelId);
+    bool execute(QSqlQuery &query) const;
+    bool execute(const QString &query) const;
 
-    void addChannel(const ChannelData &data, const CountryId &country);
-    size_t channelCount();
-    bool channelExists(const ChannelId &id);
-    QVector<ChannelData> channels(bool onlyFavorites);
-    ChannelData channel(const ChannelId &channelId);
+    void addGroup(const GroupId &id, const QString &name, const QString &url);
+    size_t groupCount() const;
+    bool groupExists(const GroupId &id) const;
+    QVector<GroupData> groups() const;
+    QVector<GroupData> groups(const ChannelId &channelId) const;
+
+    void addChannel(const ChannelData &data, const GroupId &group);
+    size_t channelCount() const;
+    bool channelExists(const ChannelId &id) const;
+    QVector<ChannelData> channels(bool onlyFavorites) const;
+    ChannelData channel(const ChannelId &channelId) const;
 
     void addFavorite(const ChannelId &channelId);
     void removeFavorite(const ChannelId &channelId);
     void sortFavorites(const QVector<ChannelId> &newOrder); // newOrder must contain same channel IDs as existing favorites
     void clearFavorites();
-    size_t favoriteCount();
-    QVector<ChannelId> favorites();
-    bool isFavorite(const ChannelId &channelId);
+    size_t favoriteCount() const;
+    QVector<ChannelId> favorites() const;
+    bool isFavorite(const ChannelId &channelId) const;
 
     void addProgram(const ProgramData &data);
     void updateProgramDescription(const ProgramId &id, const QString &description);
     void addPrograms(const QVector<ProgramData> &programs);
-    bool programExists(const ChannelId &channelId, qint64 lastTime);
-    size_t programCount(const ChannelId &channelId);
-    QMap<ChannelId, QVector<ProgramData>> programs();
-    QVector<ProgramData> programs(const ChannelId &channelId);
+    bool programExists(const ChannelId &channelId, qint64 lastTime) const;
+    size_t programCount(const ChannelId &channelId) const;
+    QMap<ChannelId, QVector<ProgramData>> programs() const;
+    QVector<ProgramData> programs(const ChannelId &channelId) const;
 
 Q_SIGNALS:
-    void countryAdded(const CountryId &id);
+    void groupAdded(const GroupId &id);
     void channelAdded(const ChannelId &id);
     void channelDetailsUpdated(const ChannelId &id, bool favorite);
     void favoritesUpdated();
 
 private:
     Database();
-    ~Database();
-    int version();
+    ~Database() = default;
+
+    int version() const;
+    int fetcher() const;
     bool createTables();
+    bool dropTables();
     void cleanup();
 
-    std::unique_ptr<QSqlQuery> m_addCountryQuery;
-    std::unique_ptr<QSqlQuery> m_countryCountQuery;
-    std::unique_ptr<QSqlQuery> m_countryExistsQuery;
-    std::unique_ptr<QSqlQuery> m_countriesQuery;
-    std::unique_ptr<QSqlQuery> m_countriesPerChannelQuery;
+    const TellySkoutSettings m_settings;
 
-    std::unique_ptr<QSqlQuery> m_addCountryChannelQuery;
+    std::unique_ptr<QSqlQuery> m_addGroupQuery;
+    std::unique_ptr<QSqlQuery> m_groupCountQuery;
+    std::unique_ptr<QSqlQuery> m_groupExistsQuery;
+    std::unique_ptr<QSqlQuery> m_groupsQuery;
+    std::unique_ptr<QSqlQuery> m_groupsPerChannelQuery;
+
+    std::unique_ptr<QSqlQuery> m_addGroupChannelQuery;
 
     std::unique_ptr<QSqlQuery> m_addChannelQuery;
     std::unique_ptr<QSqlQuery> m_channelCountQuery;
@@ -92,6 +99,9 @@ private:
     std::unique_ptr<QSqlQuery> m_favoriteCountQuery;
     std::unique_ptr<QSqlQuery> m_favoritesQuery;
     std::unique_ptr<QSqlQuery> m_isFavoriteQuery;
+
+    std::unique_ptr<QSqlQuery> m_addProgramCategoryQuery;
+    std::unique_ptr<QSqlQuery> m_programCategoriesQuery;
 
     std::unique_ptr<QSqlQuery> m_addProgramQuery;
     std::unique_ptr<QSqlQuery> m_updateProgramDescriptionQuery;

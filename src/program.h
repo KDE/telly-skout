@@ -11,7 +11,6 @@
 #include <QString>
 
 class Channel;
-class Country;
 
 class Program : public QObject
 {
@@ -26,10 +25,10 @@ class Program : public QObject
     Q_PROPERTY(QDateTime start READ start CONSTANT)
     Q_PROPERTY(QDateTime stop READ stop CONSTANT)
     Q_PROPERTY(QString subtitle READ subtitle CONSTANT)
-    Q_PROPERTY(QString category READ category CONSTANT)
+    Q_PROPERTY(QVector<QString> categories READ categories CONSTANT)
 
 public:
-    Program(const ProgramData &data);
+    explicit Program(const ProgramData &data);
     ~Program() = default;
 
     const QString &channelId() const;
@@ -42,7 +41,7 @@ public:
     void setStart(const QDateTime &start);
     QDateTime stop() const;
     QString subtitle() const;
-    QString category() const;
+    QVector<QString> categories() const;
 
 private:
     ProgramData m_data;

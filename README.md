@@ -23,6 +23,14 @@ make
 sudo make install
 ```
 
+### Flatpak
+```
+flatpak install org.kde.Sdk/x86_64/5.15-21.08
+flatpak install org.kde.Platform/x86_64/5.15-21.08
+flatpak-builder --user --install --force-clean build org.kde.telly-skout.yml
+flatpak run org.kde.telly-skout
+```
+
 ## Run
 ```
 telly-skout
@@ -30,6 +38,8 @@ telly-skout
 
 ## Develop
 ### Fetcher
-A `Fetcher` retrieves the TV guide data from some source and stores it in the database. Currently, only the `TvSpielfilmFetcher` is used. If more `Fetchers` are added, functionality to select a `Fetcher` shall be provided.
+A `Fetcher` retrieves the TV guide data from some source and stores it in the database. The used `Fetcher` can be changed in the settings.
 
 All `Fetchers` must derive from `FetcherImpl`, write the retrieved data to the `Database` and emit the signals defined in `FetcherImpl`. `Fetchers`, which retrieve data from the network, may derive from `NetworkFetcher`.
+
+To use the new `Fetcher`, it must be added to `TellySkoutSettings.kcfg`, `SettingsPage.qml` and the `Fetcher` constructor in `fetcher.cpp`.

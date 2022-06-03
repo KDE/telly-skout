@@ -18,7 +18,7 @@ class ChannelFactory : public QObject
     Q_OBJECT
 
 public:
-    ChannelFactory(bool onlyFavorites);
+    explicit ChannelFactory(bool onlyFavorites);
     ~ChannelFactory() = default;
 
     void setOnlyFavorites(bool onlyFavorites);

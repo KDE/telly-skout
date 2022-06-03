@@ -4,7 +4,6 @@
 #include "program.h"
 
 #include "channel.h"
-#include "country.h"
 #include "database.h"
 
 #include <QDebug>
@@ -65,7 +64,7 @@ QString Program::subtitle() const
     return m_data.m_subtitle;
 }
 
-QString Program::category() const
+QVector<QString> Program::categories() const
 {
-    return m_data.m_category;
+    return m_data.m_categories;
 }

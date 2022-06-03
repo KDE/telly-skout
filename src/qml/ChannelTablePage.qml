@@ -81,6 +81,8 @@ Kirigami.Page {
 
         readonly property int pxPerMin: 5
         readonly property var date: new Date()
+        readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
+        readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
 
         visible: contentRepeater.count !== 0
         width: parent.width
@@ -138,8 +140,8 @@ Kirigami.Page {
                         model: ProgramsProxyModel {
                             id: proxyProgramModel
 
-                            start: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate()) // today 00:00h
-                            stop: new Date(channelTable.date.getFullYear(), channelTable.date.getMonth(), channelTable.date.getDate(), 23, 59, 0) // today 23:59h
+                            start: channelTable.start
+                            stop: channelTable.stop
                             sourceModel: modelData.programsModel
                         }
 
@@ -147,8 +149,8 @@ Kirigami.Page {
                             channelIdx: column.idx
                             overlay: overlaySheet
                             pxPerMin: channelTable.pxPerMin
-                            startTime: proxyProgramModel.start
-                            stopTime: proxyProgramModel.stop
+                            startTime: channelTable.start
+                            stopTime: channelTable.stop
                             currentTimestamp: root.currentTimestamp
                         }
 

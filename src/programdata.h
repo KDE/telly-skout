@@ -7,6 +7,7 @@
 
 #include <QDateTime>
 #include <QString>
+#include <QVector>
 
 struct ProgramData {
     ProgramId m_id;
@@ -18,5 +19,5 @@ struct ProgramData {
     QString m_subtitle;
     QString m_description;
     bool m_descriptionFetched;
-    QString m_category;
+    QVector<QString> m_categories;
 };

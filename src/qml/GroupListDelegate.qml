@@ -14,16 +14,16 @@ Kirigami.SwipeListItem {
     contentItem: Kirigami.BasicListItem {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        text: model.country.name
-        icon: model.country.refreshing ? "view-refresh" : ""
+        text: model.group.name
+        icon: model.group.refreshing ? "view-refresh" : ""
         onClicked: {
-            lastCountry = model.country.id;
-            Fetcher.fetchCountry(model.country.url, model.country.id);
+            lastGroup = model.group.id;
+            Fetcher.fetchGroup(model.group.url, model.group.id);
             while (pageStack.depth > 1)pageStack.pop()
             pageStack.push("qrc:/ChannelListPage.qml", {
-                "title": i18n("Channels") + " (" + i18n(model.country.name) + ")",
+                "title": i18n("Channels") + " (" + i18n(model.group.name) + ")",
                 "onlyFavorites": false,
-                "countryFilter": lastCountry
+                "groupFilter": lastGroup
             });
         }
     }

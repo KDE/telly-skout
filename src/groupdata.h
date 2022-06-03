@@ -7,8 +7,8 @@
 
 #include <QString>
 
-struct CountryData {
-    CountryId m_id;
+struct GroupData {
+    GroupId m_id;
     QString m_name;
     QString m_url;
 };

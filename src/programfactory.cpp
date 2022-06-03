@@ -11,8 +11,8 @@
 
 ProgramFactory::ProgramFactory()
     : QObject(nullptr)
+    , m_programs(Database::instance().programs())
 {
-    m_programs = Database::instance().programs();
 }
 
 size_t ProgramFactory::count(const ChannelId &channelId) const

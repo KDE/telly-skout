@@ -4,9 +4,9 @@
 #include "TellySkoutSettings.h"
 #include "channelsmodel.h"
 #include "channelsproxymodel.h"
-#include "countriesmodel.h"
 #include "database.h"
 #include "fetcher.h"
+#include "groupsmodel.h"
 #include "programsmodel.h"
 #include "programsproxymodel.h"
 #include "telly-skout-version.h"
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     parser.process(app);
 
     // register qml types
-    qmlRegisterType<CountriesModel>("org.kde.TellySkout", 1, 0, "CountriesModel");
+    qmlRegisterType<GroupsModel>("org.kde.TellySkout", 1, 0, "GroupsModel");
     qmlRegisterType<ChannelsModel>("org.kde.TellySkout", 1, 0, "ChannelsModel");
     qmlRegisterType<ChannelsProxyModel>("org.kde.TellySkout", 1, 0, "ChannelsProxyModel");
     qmlRegisterType<ProgramsProxyModel>("org.kde.TellySkout", 1, 0, "ProgramsProxyModel");

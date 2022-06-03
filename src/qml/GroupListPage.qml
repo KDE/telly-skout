@@ -10,18 +10,18 @@ import org.kde.kirigami 2.19 as Kirigami
 Kirigami.ScrollablePage {
     id: root
 
-    property string lastCountry: ""
+    property string lastGroup: ""
 
     title: i18n("Select Favorites")
     Component.onCompleted: {
-        Fetcher.fetchCountries();
+        Fetcher.fetchGroups();
     }
 
     Kirigami.PlaceholderMessage {
-        visible: countryList.count === 0
+        visible: groupList.count === 0
         width: Kirigami.Units.gridUnit * 20
         anchors.centerIn: parent
-        text: i18n("Loading countries...")
+        text: i18n("Loading groups...")
 
         Controls.BusyIndicator {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
@@ -30,14 +30,14 @@ Kirigami.ScrollablePage {
     }
 
     ListView {
-        id: countryList
+        id: groupList
 
         anchors.fill: parent
 
-        model: CountriesModel {
+        model: GroupsModel {
         }
 
-        delegate: CountryListDelegate {
+        delegate: GroupListDelegate {
         }
 
     }

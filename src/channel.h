@@ -22,14 +22,14 @@ class Channel : public QObject
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString image READ image WRITE setImage NOTIFY imageChanged)
     Q_PROPERTY(bool favorite READ favorite WRITE setFavorite NOTIFY favoriteChanged)
-    Q_PROPERTY(QVector<QString> countries READ countries WRITE setCountries NOTIFY countriesChanged)
+    Q_PROPERTY(QVector<QString> groups READ groups WRITE setGroups NOTIFY groupsChanged)
     Q_PROPERTY(bool refreshing READ refreshing WRITE setRefreshing NOTIFY refreshingChanged)
     Q_PROPERTY(int errorId READ errorId NOTIFY errorIdChanged)
     Q_PROPERTY(QString errorString READ errorString NOTIFY errorStringChanged)
     Q_PROPERTY(ProgramsModel *programsModel MEMBER m_programsModel CONSTANT)
 
 public:
-    Channel(const ChannelData &data, bool favorite, const QVector<QString> &countryIds, ProgramFactory &programFactory);
+    Channel(const ChannelData &data, bool favorite, const QVector<QString> &groupIds, ProgramFactory &programFactory);
 
     ~Channel();
 
@@ -38,7 +38,7 @@ public:
     QString name() const;
     QString image() const;
     bool favorite() const;
-    QVector<QString> countries() const;
+    QVector<QString> groups() const;
     int programCount() const;
     int errorId() const;
     QString errorString() const;
@@ -48,14 +48,14 @@ public:
     void setName(const QString &name);
     void setImage(const QString &image);
     void setFavorite(bool favorite);
-    void setCountries(const QVector<QString> &countries);
+    void setGroups(const QVector<QString> &groups);
     void setRefreshing(bool refreshing);
 
 Q_SIGNALS:
     void nameChanged(const QString &name);
     void imageChanged(const QString &image);
     void favoriteChanged(bool favorite);
-    void countriesChanged(const QVector<QString> &countries);
+    void groupsChanged(const QVector<QString> &groups);
     void deleteAfterCountChanged(int count);
     void deleteAfterTypeChanged(int type);
     void programChanged();
@@ -69,7 +69,7 @@ private:
 
     ChannelData m_data;
     bool m_favorite;
-    QVector<QString> m_countries;
+    QVector<QString> m_groups;
     ProgramsModel *m_programsModel;
     Error m_error;
 

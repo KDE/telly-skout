@@ -7,19 +7,19 @@ add_executable(telly-skout
     channelfactory.cpp
     channelsmodel.cpp
     channelsproxymodel.cpp
-    country.cpp
-    countryfactory.cpp
-    countriesmodel.cpp
     database.cpp
     fetcher.cpp
     fetcherimpl.h
+    group.cpp
+    groupfactory.cpp
+    groupsmodel.cpp
     networkfetcher.cpp
     program.cpp
     programfactory.cpp
     programsmodel.cpp
     programsproxymodel.cpp
     tvspielfilmfetcher.cpp
-    xmltvsefetcher.cpp
+    xmltvfetcher.cpp
     resources.qrc
 )
 

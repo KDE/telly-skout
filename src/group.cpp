@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: none
 // SPDX-License-Identifier: GPL-3.0-only
 
-#include "country.h"
+#include "group.h"
 
 #include "channelsmodel.h"
 #include "database.h"
@@ -9,21 +9,21 @@
 
 #include <QDebug>
 
-Country::Country(CountryData data)
+Group::Group(const GroupData &data)
     : QObject(nullptr)
     , m_data(data)
 {
-    connect(&Fetcher::instance(), &Fetcher::startedFetchingCountry, this, [this](const CountryId &id) {
+    connect(&Fetcher::instance(), &Fetcher::startedFetchingGroup, this, [this](const GroupId &id) {
         if (id == m_data.m_id) {
             setRefreshing(true);
         }
     });
-    connect(&Fetcher::instance(), &Fetcher::countryUpdated, this, [this](const CountryId &id) {
+    connect(&Fetcher::instance(), &Fetcher::groupUpdated, this, [this](const GroupId &id) {
         if (id == m_data.m_id) {
             setRefreshing(false);
         }
     });
-    connect(&Fetcher::instance(), &Fetcher::errorFetchingCountry, this, [this](const CountryId &id, const Error &error) {
+    connect(&Fetcher::instance(), &Fetcher::errorFetchingGroup, this, [this](const GroupId &id, const Error &error) {
         if (id == m_data.m_id) {
             setError(error);
             setRefreshing(false);
@@ -33,53 +33,53 @@ Country::Country(CountryData data)
     m_channels = new ChannelsModel(this);
 }
 
-Country::~Country()
+Group::~Group()
 {
 }
 
-QString Country::id() const
+QString Group::id() const
 {
     return m_data.m_id.value();
 }
 
-QString Country::name() const
+QString Group::name() const
 {
     return m_data.m_name;
 }
 
-QString Country::url() const
+QString Group::url() const
 {
     return m_data.m_url;
 }
 
-bool Country::refreshing() const
+bool Group::refreshing() const
 {
     return m_refreshing;
 }
 
-int Country::errorId() const
+int Group::errorId() const
 {
     return m_error.m_id;
 }
 
-QString Country::errorString() const
+QString Group::errorString() const
 {
     return m_error.m_message;
 }
 
-void Country::setName(const QString &name)
+void Group::setName(const QString &name)
 {
     m_data.m_name = name;
     Q_EMIT nameChanged(m_data.m_name);
 }
 
-void Country::setRefreshing(bool refreshing)
+void Group::setRefreshing(bool refreshing)
 {
     m_refreshing = refreshing;
     Q_EMIT refreshingChanged(m_refreshing);
 }
 
-void Country::setError(const Error &error)
+void Group::setError(const Error &error)
 {
     m_error = error;
     Q_EMIT errorIdChanged(m_error.m_id);
