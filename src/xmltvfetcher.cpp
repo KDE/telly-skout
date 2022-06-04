@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QString>
+#include <QStringView>
 
 XmltvFetcher::XmltvFetcher()
     : m_doc("xmltv")
@@ -141,7 +142,7 @@ void XmltvFetcher::processProgram(const QDomNode &program)
     data.m_channelId = ChannelId(attributes.namedItem("channel").toAttr().value());
     const QString &startTimeString = attributes.namedItem("start").toAttr().value();
     QDateTime startTime = QDateTime::fromString(startTimeString.left(14), "yyyyMMddHHmmss");
-    const int startTimeOffset = startTimeString.right(5).leftRef(3).toInt();
+    const int startTimeOffset = QStringView{startTimeString}.right(5).left(3).toInt();
     startTime.setOffsetFromUtc(startTimeOffset * 3600);
     startTime = startTime.toUTC();
     data.m_startTime = startTime;
@@ -149,7 +150,7 @@ void XmltvFetcher::processProgram(const QDomNode &program)
     data.m_id = ProgramId(data.m_channelId.value() + "_" + QString::number(startTime.toSecsSinceEpoch()));
     const QString &stopTimeString = attributes.namedItem("stop").toAttr().value();
     QDateTime stopTime = QDateTime::fromString(stopTimeString.left(14), "yyyyMMddHHmmss");
-    const int stopTimeOffset = stopTimeString.right(5).leftRef(3).toInt();
+    const int stopTimeOffset = QStringView{stopTimeString}.right(5).left(3).toInt();
     stopTime.setOffsetFromUtc(stopTimeOffset * 3600);
     stopTime = stopTime.toUTC();
     data.m_stopTime = stopTime;

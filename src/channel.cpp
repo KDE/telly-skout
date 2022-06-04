@@ -7,7 +7,6 @@
 #include "fetcher.h"
 #include "program.h"
 #include "programfactory.h"
-#include "programsmodel.h"
 #include "types.h"
 
 #include <QDebug>

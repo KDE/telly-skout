@@ -6,12 +6,12 @@
 #include <QObject>
 
 #include "channeldata.h"
+#include "programsmodel.h"
 
 #include <QVector>
 
 class Program;
 class ProgramFactory;
-class ProgramsModel;
 
 class Channel : public QObject
 {

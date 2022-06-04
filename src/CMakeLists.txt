@@ -26,12 +26,12 @@ add_executable(telly-skout
 kconfig_add_kcfg_files(telly-skout TellySkoutSettings.kcfgc GENERATE_MOC)
 
 target_include_directories(telly-skout PRIVATE ${CMAKE_BINARY_DIR})
-target_link_libraries(telly-skout PRIVATE Qt5::Core Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Sql KF5::CoreAddons KF5::ConfigGui KF5::Crash KF5::I18n)
+target_link_libraries(telly-skout PRIVATE Qt::Core Qt::Qml Qt::Quick Qt::QuickControls2 Qt::Sql KF5::CoreAddons KF5::ConfigGui KF5::Crash KF5::I18n)
 
 if(ANDROID)
     target_link_libraries(telly-skout PRIVATE KF5::Kirigami2)
 else()
-    target_link_libraries(telly-skout PRIVATE Qt5::Widgets)
+    target_link_libraries(telly-skout PRIVATE Qt::Widgets)
 endif()
 
 install(TARGETS telly-skout ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})

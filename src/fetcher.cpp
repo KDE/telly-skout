@@ -111,7 +111,7 @@ QString Fetcher::image(const QString &url)
 
     download(url);
 
-    return QLatin1String("");
+    return QStringLiteral("");
 }
 
 void Fetcher::download(const QString &url)
