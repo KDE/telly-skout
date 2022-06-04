@@ -29,7 +29,7 @@ void ChannelFactory::setOnlyFavorites(bool onlyFavorites)
 
 size_t ChannelFactory::count() const
 {
-    return m_channels.size();
+    return static_cast<size_t>(m_channels.size());
 }
 
 Channel *ChannelFactory::create(int index) const

@@ -12,6 +12,8 @@
 
 #include <QDebug>
 
+#include <limits>
+
 ProgramsModel::ProgramsModel(Channel *channel, ProgramFactory &programFactory)
     : QAbstractListModel(channel)
     , m_channel(channel)
@@ -56,7 +58,8 @@ QHash<int, QByteArray> ProgramsModel::roleNames() const
 int ProgramsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return m_programFactory.count(ChannelId(m_channel->id()));
+    Q_ASSERT(m_programFactory.count(ChannelId(m_channel->id())) <= std::numeric_limits<int>::max());
+    return static_cast<int>(m_programFactory.count(ChannelId(m_channel->id())));
 }
 
 void ProgramsModel::loadProgram(int index) const

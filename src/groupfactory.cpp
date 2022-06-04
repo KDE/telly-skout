@@ -17,7 +17,7 @@ GroupFactory::GroupFactory()
 
 size_t GroupFactory::count() const
 {
-    return m_groups.size();
+    return static_cast<size_t>(m_groups.size());
 }
 
 Group *GroupFactory::create(int index) const

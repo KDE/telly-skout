@@ -25,7 +25,7 @@ size_t ProgramFactory::count(const ChannelId &channelId) const
     if (!m_programs.contains(channelId)) {
         return 0;
     }
-    return m_programs[channelId].size();
+    return static_cast<size_t>(m_programs[channelId].size());
 }
 
 Program *ProgramFactory::create(const ChannelId &channelId, int index) const

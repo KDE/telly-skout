@@ -46,7 +46,7 @@ endif()
 ################# compiler #################
 
 set(CMAKE_CXX_STANDARD 11)
-add_compile_options(-Wall -Wextra -pedantic -Werror)
+add_compile_options(-Wall -Wextra -Wconversion -Wsign-conversion -pedantic -Werror)
 
 ################# build and install #################
 

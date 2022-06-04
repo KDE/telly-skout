@@ -10,6 +10,7 @@
 #include <QDebug>
 
 #include <algorithm>
+#include <limits>
 
 ChannelsModel::ChannelsModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -93,7 +94,8 @@ QHash<int, QByteArray> ChannelsModel::roleNames() const
 int ChannelsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return m_channelFactory.count();
+    Q_ASSERT(m_channelFactory.count() <= std::numeric_limits<int>::max());
+    return static_cast<int>(m_channelFactory.count());
 }
 
 QVariant ChannelsModel::data(const QModelIndex &index, int role) const

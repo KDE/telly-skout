@@ -10,6 +10,8 @@
 
 #include <QDebug>
 
+#include <limits>
+
 GroupsModel::GroupsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
@@ -30,7 +32,8 @@ QHash<int, QByteArray> GroupsModel::roleNames() const
 int GroupsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return m_groupFactory.count();
+    Q_ASSERT(m_groupFactory.count() <= std::numeric_limits<int>::max());
+    return static_cast<int>(m_groupFactory.count());
 }
 
 QVariant GroupsModel::data(const QModelIndex &index, int role) const

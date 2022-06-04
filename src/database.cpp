@@ -258,7 +258,7 @@ size_t Database::groupCount() const
         qWarning() << "Failed to query group count";
         return 0;
     }
-    return m_groupCountQuery->value(0).toInt();
+    return m_groupCountQuery->value(0).toUInt();
 }
 
 bool Database::groupExists(const GroupId &id) const
@@ -335,7 +335,7 @@ size_t Database::channelCount() const
         qWarning() << "Failed to query channel count";
         return 0;
     }
-    return m_channelCountQuery->value(0).toInt();
+    return m_channelCountQuery->value(0).toUInt();
 }
 
 bool Database::channelExists(const ChannelId &id) const
@@ -449,7 +449,7 @@ size_t Database::favoriteCount() const
         qWarning() << "Failed to query favorite count";
         return 0;
     }
-    return m_favoriteCountQuery->value(0).toInt();
+    return m_favoriteCountQuery->value(0).toUInt();
 }
 
 QVector<ChannelId> Database::favorites() const
@@ -533,7 +533,7 @@ size_t Database::programCount(const ChannelId &channelId) const
         qWarning() << "Failed to query program count";
         return 0;
     }
-    return m_programCountQuery->value(0).toInt();
+    return m_programCountQuery->value(0).toUInt();
 }
 
 QMap<ChannelId, QVector<ProgramData>> Database::programs() const
