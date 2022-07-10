@@ -10,6 +10,7 @@
   <name xml:lang="ca-valencia">Telly Skout</name>
   <name xml:lang="de">Telly Skout</name>
   <name xml:lang="es">Telly Skout</name>
+  <name xml:lang="fi">Telly Skout</name>
   <name xml:lang="fr">Telly Skout</name>
   <name xml:lang="it">Telly Skout</name>
   <name xml:lang="ka">Telly Skout</name>
@@ -25,6 +26,7 @@
   <summary xml:lang="ca">Una guia de TV convergent del Kirigami</summary>
   <summary xml:lang="ca-valencia">Una guia de TV convergent de Kirigami</summary>
   <summary xml:lang="es">Una guía de TV convergente de Kirigami</summary>
+  <summary xml:lang="fi">Mukautuva Kirigami-TV-opas</summary>
   <summary xml:lang="fr">Un guide convergent de télévision sous Kirigami</summary>
   <summary xml:lang="it">Una guida TV Kirigami convergente</summary>
   <summary xml:lang="ka">Kirigami TV-ის გიდი</summary>
@@ -58,6 +60,7 @@
     <p xml:lang="ca">El Telly Skout és una guia de TV convergent del Kirigami. Mostra els programa de TV dels canals preferits a partir de TV Spielfilm o d'un fitxer XMLTV.</p>
     <p xml:lang="ca-valencia">El Telly Skout és una guia de TV convergent de Kirigami. Mostra els programa de TV dels canals preferits a partir de TV Spielfilm o d'un fitxer XMLTV.</p>
     <p xml:lang="es">Telly Skout es una guía de TV convergente creada con Kirigami. Muestra los programas de TV de sus canales favoritos de TV Spielfilm o de un archivo XMLTV.</p>
+    <p xml:lang="fi">Telly Skout on mukautuva Kirigami-TV-opas. Sen näyttää TV-ohjelmat suosikkikanaviltasi TV Spielfilmistä tai XMLTV-tiedostosta.</p>
     <p xml:lang="fr">Telly Skout est un guide TV convergent conçu avec Kirigami. Il affiche le programme TV de vos chaînes préférées à partir de TV « Spielfilm » ou d'un fichier « XMLTV ».</p>
     <p xml:lang="it">Telly Skout è una guida TV Kirigami convergente. Mostra il programma TV per i tuoi canali preferiti da TV Spielfilm o da un file XMLTV.</p>
     <p xml:lang="ka">Telly Skout წარმოადგენს კირიგამის გიდს. მას შეუძლია გაჩვენოთ TV პროგრამები თქვენი რჩეული არხიდან TV Spielfilm ან XMLTV-დან.</p>
