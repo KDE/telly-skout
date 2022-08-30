@@ -47,4 +47,4 @@ MimeType=application/x-telly-skout;
 Icon=applications-development
 Type=Application
 Terminal=false
-Categories=Qt;KDE;
+Categories=AudioVideo;Video;TV;KDE;Qt;
