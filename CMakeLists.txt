@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(telly-skout)
-set(PROJECT_VERSION "1.0")
+set(PROJECT_VERSION "22.09")
 
 set(KF5_MIN_VERSION "5.75.0")
 set(QT_MIN_VERSION "5.15.0")
