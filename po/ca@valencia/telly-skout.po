@@ -1,0 +1,146 @@
+# Translation of telly-skout.po to Catalan (Valencian)
+# Copyright (C) 2022 This_file_is_part_of_KDE
+# This file is distributed under the license LGPL version 2.1 or
+# version 3 or later versions approved by the membership of KDE e.V.
+#
+# Josep M. Ferrer <txemaq@gmail.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: telly-skout\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-06-05 00:49+0000\n"
+"PO-Revision-Date: 2022-05-18 08:41+0200\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
+"Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
+"Language: ca@valencia\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 20.12.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Josep M. Ferrer"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "txemaq@gmail.com"
+
+#: main.cpp:54
+#, kde-format
+msgid "Convergent TV guide based on Kirigami"
+msgstr "Guia de TV convergent basada en Kirigami"
+
+#: main.cpp:57
+#, kde-format
+msgid "Telly Skout"
+msgstr "Telly Skout"
+
+#: main.cpp:61
+#, kde-format
+msgid "© 2020 KDE Community"
+msgstr "© 2020 Comunitat KDE"
+
+#: qml/ChannelListDelegate.qml:19
+#, kde-format
+msgid "Favorite"
+msgstr "Preferit"
+
+#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:24
+#, kde-format
+msgid "Channels"
+msgstr "Canals"
+
+#: qml/ChannelListPage.qml:30
+#, kde-format
+msgid "Loading channels..."
+msgstr "S'estan carregant els canals..."
+
+#: qml/ChannelTablePage.qml:22 qml/TellySkoutGlobalDrawer.qml:15
+#, kde-format
+msgid "Favorites"
+msgstr "Preferits"
+
+#: qml/ChannelTablePage.qml:41
+#, kde-format
+msgid "Please select favorites"
+msgstr "Seleccioneu els preferits"
+
+#: qml/ChannelTablePage.qml:130
+#, kde-format
+msgid "not available"
+msgstr "no disponible"
+
+#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:26
+#, kde-format
+msgid "Select Favorites"
+msgstr "Selecció dels preferits"
+
+#: qml/GroupListPage.qml:24
+#, kde-format
+msgid "Loading groups..."
+msgstr "S'estan carregant els grups..."
+
+#: qml/SettingsPage.qml:11 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/TellySkoutGlobalDrawer.qml:51
+#, kde-format
+msgid "Settings"
+msgstr "Configuració"
+
+#: qml/SettingsPage.qml:16
+#, kde-format
+msgid "Program"
+msgstr "Programa"
+
+#: qml/SettingsPage.qml:20
+#, kde-format
+msgid "Delete old after"
+msgstr "Suprimix els antics després de"
+
+#: qml/SettingsPage.qml:30
+#, kde-format
+msgid "days"
+msgstr "dies"
+
+#: qml/SettingsPage.qml:36
+#, kde-format
+msgid "Fetcher"
+msgstr "Arreplegador"
+
+#: qml/SettingsPage.qml:54
+#, kde-format
+msgid "File"
+msgstr "Fitxer"
+
+#: qml/SettingsPage.qml:67
+#, kde-format
+msgid "XML files (*.xml)"
+msgstr "Fitxers XML (*.xml)"
+
+#: qml/SettingsPage.qml:67
+#, kde-format
+msgid "All files (*)"
+msgstr "Tots els fitxers (*)"
+
+#: qml/TellySkoutGlobalDrawer.qml:35
+#, kde-format
+msgid "Sort Favorites"
+msgstr "Ordena els preferits"
+
+#: qml/TellySkoutGlobalDrawer.qml:54 qml/TellySkoutGlobalDrawer.qml:57
+#, kde-format
+msgid "About"
+msgstr "Quant a"
+
+#: tvspielfilmfetcher.cpp:25
+#, kde-format
+msgid "Germany"
+msgstr "Alemanya"
+
+#: xmltvfetcher.cpp:38
+#, kde-format
+msgid "XMLTV"
+msgstr "XMLTV"

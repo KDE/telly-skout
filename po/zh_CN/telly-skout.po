@@ -1,0 +1,144 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeorg\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-06-05 00:49+0000\n"
+"PO-Revision-Date: 2022-09-20 01:57\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: kdeorg\n"
+"X-Crowdin-Project-ID: 269464\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /kf5-trunk/messages/telly-skout/telly-skout.pot\n"
+"X-Crowdin-File-ID: 26998\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: main.cpp:54
+#, kde-format
+msgid "Convergent TV guide based on Kirigami"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Telly Skout"
+msgstr ""
+
+#: main.cpp:61
+#, kde-format
+msgid "© 2020 KDE Community"
+msgstr ""
+
+#: qml/ChannelListDelegate.qml:19
+#, kde-format
+msgid "Favorite"
+msgstr ""
+
+#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:24
+#, kde-format
+msgid "Channels"
+msgstr ""
+
+#: qml/ChannelListPage.qml:30
+#, kde-format
+msgid "Loading channels..."
+msgstr ""
+
+#: qml/ChannelTablePage.qml:22 qml/TellySkoutGlobalDrawer.qml:15
+#, kde-format
+msgid "Favorites"
+msgstr ""
+
+#: qml/ChannelTablePage.qml:41
+#, kde-format
+msgid "Please select favorites"
+msgstr ""
+
+#: qml/ChannelTablePage.qml:130
+#, kde-format
+msgid "not available"
+msgstr ""
+
+#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:26
+#, kde-format
+msgid "Select Favorites"
+msgstr ""
+
+#: qml/GroupListPage.qml:24
+#, kde-format
+msgid "Loading groups..."
+msgstr ""
+
+#: qml/SettingsPage.qml:11 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/TellySkoutGlobalDrawer.qml:51
+#, kde-format
+msgid "Settings"
+msgstr ""
+
+#: qml/SettingsPage.qml:16
+#, kde-format
+msgid "Program"
+msgstr ""
+
+#: qml/SettingsPage.qml:20
+#, kde-format
+msgid "Delete old after"
+msgstr ""
+
+#: qml/SettingsPage.qml:30
+#, kde-format
+msgid "days"
+msgstr ""
+
+#: qml/SettingsPage.qml:36
+#, kde-format
+msgid "Fetcher"
+msgstr ""
+
+#: qml/SettingsPage.qml:54
+#, kde-format
+msgid "File"
+msgstr ""
+
+#: qml/SettingsPage.qml:67
+#, kde-format
+msgid "XML files (*.xml)"
+msgstr ""
+
+#: qml/SettingsPage.qml:67
+#, kde-format
+msgid "All files (*)"
+msgstr ""
+
+#: qml/TellySkoutGlobalDrawer.qml:35
+#, kde-format
+msgid "Sort Favorites"
+msgstr ""
+
+#: qml/TellySkoutGlobalDrawer.qml:54 qml/TellySkoutGlobalDrawer.qml:57
+#, kde-format
+msgid "About"
+msgstr ""
+
+#: tvspielfilmfetcher.cpp:25
+#, kde-format
+msgid "Germany"
+msgstr ""
+
+#: xmltvfetcher.cpp:38
+#, kde-format
+msgid "XMLTV"
+msgstr ""

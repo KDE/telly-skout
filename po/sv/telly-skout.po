@@ -1,0 +1,144 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the telly-skout package.
+#
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: telly-skout\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-06-05 00:49+0000\n"
+"PO-Revision-Date: 2022-05-21 11:59+0200\n"
+"Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
+"Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 20.08.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Stefan Asserhäll"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "stefan.asserhall@bredband.net"
+
+#: main.cpp:54
+#, kde-format
+msgid "Convergent TV guide based on Kirigami"
+msgstr "Konvergent tv-guide baserad på Kirigami"
+
+#: main.cpp:57
+#, kde-format
+msgid "Telly Skout"
+msgstr "Telly Skout"
+
+#: main.cpp:61
+#, kde-format
+msgid "© 2020 KDE Community"
+msgstr "© 2020 KDE-gemenskapen"
+
+#: qml/ChannelListDelegate.qml:19
+#, kde-format
+msgid "Favorite"
+msgstr "Favorit"
+
+#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:24
+#, kde-format
+msgid "Channels"
+msgstr "Kanaler"
+
+#: qml/ChannelListPage.qml:30
+#, kde-format
+msgid "Loading channels..."
+msgstr "Läser in kanaler..."
+
+#: qml/ChannelTablePage.qml:22 qml/TellySkoutGlobalDrawer.qml:15
+#, kde-format
+msgid "Favorites"
+msgstr "Favoriter"
+
+#: qml/ChannelTablePage.qml:41
+#, kde-format
+msgid "Please select favorites"
+msgstr "Välj favoriter"
+
+#: qml/ChannelTablePage.qml:130
+#, kde-format
+msgid "not available"
+msgstr "inte tillgänglig"
+
+#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:26
+#, kde-format
+msgid "Select Favorites"
+msgstr "Välj favoriter"
+
+#: qml/GroupListPage.qml:24
+#, kde-format
+msgid "Loading groups..."
+msgstr "Läser in grupper..."
+
+#: qml/SettingsPage.qml:11 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/TellySkoutGlobalDrawer.qml:51
+#, kde-format
+msgid "Settings"
+msgstr "Inställningar"
+
+#: qml/SettingsPage.qml:16
+#, kde-format
+msgid "Program"
+msgstr "Program"
+
+#: qml/SettingsPage.qml:20
+#, kde-format
+msgid "Delete old after"
+msgstr "Ta bort gamla efter"
+
+#: qml/SettingsPage.qml:30
+#, kde-format
+msgid "days"
+msgstr "dagar"
+
+#: qml/SettingsPage.qml:36
+#, kde-format
+msgid "Fetcher"
+msgstr "Hämtning"
+
+#: qml/SettingsPage.qml:54
+#, kde-format
+msgid "File"
+msgstr "Arkiv"
+
+#: qml/SettingsPage.qml:67
+#, kde-format
+msgid "XML files (*.xml)"
+msgstr "XML-filer (*.xml)"
+
+#: qml/SettingsPage.qml:67
+#, kde-format
+msgid "All files (*)"
+msgstr "Alla filer (*)"
+
+#: qml/TellySkoutGlobalDrawer.qml:35
+#, kde-format
+msgid "Sort Favorites"
+msgstr "Sortera favoriter"
+
+#: qml/TellySkoutGlobalDrawer.qml:54 qml/TellySkoutGlobalDrawer.qml:57
+#, kde-format
+msgid "About"
+msgstr "Om"
+
+#: tvspielfilmfetcher.cpp:25
+#, kde-format
+msgid "Germany"
+msgstr "Tyskland"
+
+#: xmltvfetcher.cpp:38
+#, kde-format
+msgid "XMLTV"
+msgstr "XMLTV"
