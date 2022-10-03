@@ -8,6 +8,9 @@ sdk: org.kde.Sdk
 command: telly-skout
 rename-icon: telly-skout
 copy-icon: true
+tags:
+  - 'nightly'
+desktop-file-name-suffix: ' (Nightly)'
 finish-args:
   - '--share=network'
   - '--socket=wayland'
@@ -17,5 +20,5 @@ modules:
   - name: telly-skout
     buildsystem: cmake-ninja
     sources:
-      - type: git
-        url: 'https://invent.kde.org/plasma-mobile/telly-skout'
+      - type: dir
+        path: '.'
