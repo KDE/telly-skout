@@ -13,6 +13,7 @@ tags:
 desktop-file-name-suffix: ' (Nightly)'
 finish-args:
   - '--share=network'
+  - '--share=ipc'
   - '--socket=wayland'
   - '--socket=fallback-x11'
   - '--device=dri'
