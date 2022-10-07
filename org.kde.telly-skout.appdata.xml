@@ -87,9 +87,12 @@
     <screenshot type="default">
       <caption>Favorites</caption>
       <caption xml:lang="ca">Preferits</caption>
+      <caption xml:lang="ca-valencia">Preferits</caption>
       <caption xml:lang="es">Favoritos</caption>
+      <caption xml:lang="fr">Favoris</caption>
       <caption xml:lang="nl">Favorieten</caption>
       <caption xml:lang="pt">Favoritos</caption>
+      <caption xml:lang="sl">Priljubljene</caption>
       <caption xml:lang="tr">Sık Kullanılanlar</caption>
       <caption xml:lang="uk">Улюблене</caption>
       <caption xml:lang="x-test">xxFavoritesxx</caption>
@@ -98,9 +101,12 @@
     <screenshot type="default">
       <caption>Select Favorites</caption>
       <caption xml:lang="ca">Selecció dels preferits</caption>
+      <caption xml:lang="ca-valencia">Selecció dels preferits</caption>
       <caption xml:lang="es">Seleccionar favoritos</caption>
+      <caption xml:lang="fr">Sélectionnez les favoris</caption>
       <caption xml:lang="nl">Favorieten selecteren</caption>
       <caption xml:lang="pt">Seleccionar os Favoritos</caption>
+      <caption xml:lang="sl">Izberi priljubljene</caption>
       <caption xml:lang="tr">Sık Kullanılanları Seç</caption>
       <caption xml:lang="uk">Вибір улюблених</caption>
       <caption xml:lang="x-test">xxSelect Favoritesxx</caption>
@@ -109,9 +115,12 @@
     <screenshot type="default">
       <caption>Sort Favorites</caption>
       <caption xml:lang="ca">Ordenació dels preferits</caption>
+      <caption xml:lang="ca-valencia">Ordenació dels preferits</caption>
       <caption xml:lang="es">Ordenar favoritos</caption>
+      <caption xml:lang="fr">Trier les favoris</caption>
       <caption xml:lang="nl">Favorieten sorteren</caption>
       <caption xml:lang="pt">Ordenar os Favoritos</caption>
+      <caption xml:lang="sl">Razvrsti priljubljene</caption>
       <caption xml:lang="tr">Sık Kullanılanları Sırala</caption>
       <caption xml:lang="uk">Упорядкування улюблених</caption>
       <caption xml:lang="x-test">xxSort Favoritesxx</caption>
