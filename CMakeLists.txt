@@ -56,6 +56,8 @@ endif()
 
 add_subdirectory(src)
 
+ki18n_install(po)
+
 install(PROGRAMS org.kde.telly-skout.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.telly-skout.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 install(FILES telly-skout.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
