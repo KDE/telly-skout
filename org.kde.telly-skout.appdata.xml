@@ -48,7 +48,7 @@
   <project_license>GPL-2.0-or-later</project_license>
   <url type="homepage">https://apps.kde.org/telly-skout</url>
   <url type="donation">https://kde.org/community/donations</url>
-  <url type="bugtracker">https://invent.kde.org/plasma-mobile/telly-skout/-/issues</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?product=Telly%20Skout</url>
   <developer_name>plata</developer_name>
   <developer_name xml:lang="ca">plata</developer_name>
   <developer_name xml:lang="ca-valencia">plata</developer_name>
