@@ -35,18 +35,23 @@ ecm_setup_version(${PROJECT_VERSION}
 ################# dependencies #################
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Test Gui QuickControls2 Sql)
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS CoreAddons Config Crash I18n)
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS CoreAddons Config I18n)
 
-if (ANDROID)
+if(ANDROID)
     find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Kirigami2)
 else()
+    find_package(KF5 ${KF5_MIN_VERSION} OPTIONAL_COMPONENTS Crash)
     find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS Widgets)
+endif()
+
+if(TARGET KF5::Crash)
+    set(HAVE_KCRASH TRUE)
 endif()
 
 ################# compiler #################
 
 set(CMAKE_CXX_STANDARD 11)
-if (MSVC)
+if(MSVC)
     add_compile_options(/W3 /WX)
 else()
     add_compile_options(-Wall -Wextra -Wconversion -Wsign-conversion -pedantic -Werror)

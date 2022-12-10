@@ -1,6 +1,8 @@
 # SPDX-FileCopyrightText: none
 # SPDX-License-Identifier: BSD-2-Clause
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-telly-skout.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-telly-skout.h)
+
 add_executable(telly-skout
     main.cpp
     channel.cpp
@@ -26,12 +28,16 @@ add_executable(telly-skout
 kconfig_add_kcfg_files(telly-skout TellySkoutSettings.kcfgc GENERATE_MOC)
 
 target_include_directories(telly-skout PRIVATE ${CMAKE_BINARY_DIR})
-target_link_libraries(telly-skout PRIVATE Qt::Core Qt::Qml Qt::Quick Qt::QuickControls2 Qt::Sql KF5::CoreAddons KF5::ConfigGui KF5::Crash KF5::I18n)
+target_link_libraries(telly-skout PRIVATE Qt::Core Qt::Qml Qt::Quick Qt::QuickControls2 Qt::Sql KF5::CoreAddons KF5::ConfigGui KF5::I18n)
 
 if(ANDROID)
     target_link_libraries(telly-skout PRIVATE KF5::Kirigami2)
 else()
     target_link_libraries(telly-skout PRIVATE Qt::Widgets)
+endif()
+
+if(TARGET KF5::Crash)
+    target_link_libraries(telly-skout PRIVATE KF5::Crash)
 endif()
 
 install(TARGETS telly-skout ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})

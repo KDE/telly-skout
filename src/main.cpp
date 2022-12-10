@@ -1,6 +1,9 @@
 // SPDX-FileCopyrightText: none
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "config-telly-skout.h"
+#include "telly-skout-version.h"
+
 #include "TellySkoutSettings.h"
 #include "channelsmodel.h"
 #include "channelsproxymodel.h"
@@ -9,10 +12,11 @@
 #include "groupsmodel.h"
 #include "programsmodel.h"
 #include "programsproxymodel.h"
-#include "telly-skout-version.h"
 
 #include <KAboutData>
+#if HAVE_KCRASH
 #include <KCrash>
+#endif
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
@@ -44,7 +48,9 @@ int main(int argc, char *argv[])
     }
 #endif
 
+#if HAVE_KCRASH
     KCrash::initialize();
+#endif
 
     // about
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
