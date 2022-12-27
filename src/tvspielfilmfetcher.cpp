@@ -198,7 +198,19 @@ QVector<ProgramData> TvSpielfilmFetcher::processChannel(const QString &infoTable
     QRegularExpressionMatchIterator it = reProgram.globalMatch(infoTable);
     while (it.hasNext()) {
         QRegularExpressionMatch match = it.next();
-        programs.push_back(processProgram(match, url, channelId, !it.hasNext()));
+        const ProgramData programData = processProgram(match, url, channelId, !it.hasNext());
+        if (!programs.empty()) {
+            // sometimes, there can be multiple programs for the same time (e.g. different news per region of a local channel)
+            // show this as alternative in the title
+            ProgramData &previousProgamData = programs.last();
+            if (programData.m_startTime < previousProgamData.m_stopTime) {
+                previousProgamData.m_title += " / " + programData.m_title;
+            } else {
+                programs.push_back(programData);
+            }
+        } else {
+            programs.push_back(programData);
+        }
     }
 
     return programs;
