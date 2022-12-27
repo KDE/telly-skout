@@ -160,7 +160,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
 
             // fetch next page
             static QRegularExpression reNextPage(
-                "<ul class=\\\"pagination__items\\\">.*<a href=\\\"(.*?)\\\"\\s*class=\\\"js-track-link pagination__link pagination__link--next\\\"");
+                "<ul class=\\\"pagination__items\\\">.*</ul>\\s*<a href=\\\"(.*?)\\\".*class=\\\"js-track-link pagination__link pagination__link--next\\\"");
             reNextPage.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
             QRegularExpressionMatch matchNextPage = reNextPage.match(data);
             if (matchNextPage.hasMatch()) {
