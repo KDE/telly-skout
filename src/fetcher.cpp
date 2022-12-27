@@ -18,6 +18,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QStandardPaths>
+#include <QUrl>
 
 Fetcher::Fetcher()
 {
@@ -111,7 +112,7 @@ QString Fetcher::image(const QString &url)
 
     download(url);
 
-    return QStringLiteral("");
+    return "";
 }
 
 void Fetcher::download(const QString &url)
@@ -140,8 +141,7 @@ void Fetcher::removeImage(const QString &url)
 
 QString Fetcher::filePath(const QString &url)
 {
-    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/")
-        + QString::fromStdString(QCryptographicHash::hash(url.toUtf8(), QCryptographicHash::Md5).toHex().toStdString());
+    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/") + QUrl(url).fileName();
 }
 
 QNetworkReply *Fetcher::get(QNetworkRequest &request)

@@ -93,7 +93,7 @@ void TvSpielfilmFetcher::fetchChannel(const ChannelId &channelId, const QString 
 
         Q_EMIT startedFetchingChannel(data.m_id);
 
-        data.m_image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.value().toLower() + ".webp";
+        data.m_image = "https://a2.tvspielfilm.de/images/tv/sender/mini/" + channelId.value().toLower() + ".png";
         Database::instance().addChannel(data, group);
 
         Q_EMIT channelUpdated(channelId);
