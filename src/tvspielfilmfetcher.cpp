@@ -124,7 +124,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId)
     QDate today = QDate::currentDate();
     QDate yesterday = QDate::currentDate().addDays(-1);
     QDate tomorrow = QDate::currentDate().addDays(1);
-    QSet<QDate> days{tomorrow, today, yesterday}; // backwards such that we can stop early (see below)
+    const QVector<QDate> days{tomorrow, today, yesterday}; // backwards such that we can stop early (see below)
     for (auto day : days) {
         // check if program is available already
         const QDateTime utcTime(day, QTime(), Qt::UTC);
