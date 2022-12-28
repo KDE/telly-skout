@@ -1,6 +1,8 @@
 # telly-skout
 A convergent TV guide based on Kirigami.
 
+<a href='https://flathub.org/apps/details/org.kde.telly-skout'><img width='190px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
+
 ## Build
 ### Dependencies
 #### Manjaro
