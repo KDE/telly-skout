@@ -18,6 +18,8 @@ public:
     void fetchGroup(const QString &url, const GroupId &groupId) override;
     void fetchProgram(const ChannelId &channelId) override;
     void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url) override;
+    QString image(const QString &url) override;
+    QString imagePath(const QString &url) override;
 
 private:
     bool open(const QString &fileName);

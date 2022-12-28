@@ -19,6 +19,8 @@ public:
     virtual void fetchGroup(const QString &url, const GroupId &groupId) = 0;
     virtual void fetchProgram(const ChannelId &channelId) = 0;
     virtual void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url) = 0;
+    virtual QString image(const QString &url) = 0;
+    virtual QString imagePath(const QString &url) = 0;
 
 Q_SIGNALS:
     void startedFetchingGroup(const GroupId &id);
@@ -32,4 +34,6 @@ Q_SIGNALS:
     void errorFetchingGroup(const GroupId &id, const Error &error);
     void errorFetchingChannel(const ChannelId &id, const Error &error);
     void errorFetchingProgram(const ProgramId &id, const Error &error);
+
+    void imageDownloadFinished(const QString &url);
 };

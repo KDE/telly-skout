@@ -76,7 +76,7 @@ void TvSpielfilmFetcher::fetchGroup(const QString &url, const GroupId &groupId)
                 }
             }
         }
-        delete reply;
+        reply->deleteLater();
         Q_EMIT groupUpdated(groupId);
     });
 }
@@ -115,7 +115,7 @@ void TvSpielfilmFetcher::fetchProgramDescription(const ChannelId &channelId, con
 
             Q_EMIT channelUpdated(channelId);
         }
-        delete reply;
+        reply->deleteLater();
     });
 }
 
@@ -171,7 +171,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
                 Q_EMIT channelUpdated(channelId);
             }
         }
-        delete reply;
+        reply->deleteLater();
     });
 }
 

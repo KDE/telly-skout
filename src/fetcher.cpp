@@ -13,12 +13,6 @@
 #include <QCryptographicHash>
 #include <QDebug>
 #include <QFile>
-#include <QFileInfo>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QNetworkRequest>
-#include <QStandardPaths>
-#include <QUrl>
 
 Fetcher::Fetcher()
 {
@@ -36,11 +30,6 @@ Fetcher::Fetcher()
         qDebug() << "Invalid Fetcher type!";
         assert(false);
     }
-
-    m_manager = new QNetworkAccessManager(this);
-    m_manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
-    m_manager->setStrictTransportSecurityEnabled(true);
-    m_manager->enableStrictTransportSecurityStore(true);
 
     connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingGroup, this, [this](const GroupId &id) {
         Q_EMIT startedFetchingGroup(id);
@@ -70,6 +59,9 @@ Fetcher::Fetcher()
     });
     connect(m_fetcherImpl.get(), &FetcherImpl::errorFetchingProgram, this, [this](const ProgramId &id, const Error &error) {
         Q_EMIT errorFetchingProgram(id, error);
+    });
+    connect(m_fetcherImpl.get(), &FetcherImpl::imageDownloadFinished, this, [this](const QString &url) {
+        Q_EMIT imageDownloadFinished(url);
     });
 }
 
@@ -105,47 +97,11 @@ void Fetcher::fetchProgramDescription(const QString &channelId, const QString &p
 
 QString Fetcher::image(const QString &url)
 {
-    QString path = filePath(url);
-    if (QFileInfo::exists(path)) {
-        return path;
-    }
-
-    download(url);
-
-    return "";
-}
-
-void Fetcher::download(const QString &url)
-{
-    QNetworkRequest request((QUrl(url)));
-    QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
-        if (reply->error() == QNetworkReply::NoError) {
-            QByteArray data = reply->readAll();
-            QFile file(filePath(url));
-            file.open(QIODevice::WriteOnly);
-            file.write(data);
-            file.close();
-        }
-        Q_EMIT imageDownloadFinished(url);
-
-        delete reply;
-    });
+    return m_fetcherImpl->image(url);
 }
 
 void Fetcher::removeImage(const QString &url)
 {
-    qDebug() << "Remove image: " << filePath(url);
-    QFile(filePath(url)).remove();
-}
-
-QString Fetcher::filePath(const QString &url)
-{
-    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/") + QUrl(url).fileName();
-}
-
-QNetworkReply *Fetcher::get(QNetworkRequest &request)
-{
-    request.setRawHeader("User-Agent", "telly-skout/0.1");
-    return m_manager->get(request);
+    qDebug() << "Remove image: " << m_fetcherImpl->imagePath(url);
+    QFile(m_fetcherImpl->imagePath(url)).remove();
 }

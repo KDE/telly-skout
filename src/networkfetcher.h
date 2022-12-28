@@ -20,9 +20,12 @@ public:
     void fetchGroup(const QString &url, const GroupId &groupId) override = 0;
     void fetchProgram(const ChannelId &channelId) override = 0;
     void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url) override = 0;
+    QString image(const QString &url) override;
+    QString imagePath(const QString &url) override;
 
 protected:
     QNetworkReply *get(QNetworkRequest &request);
+    void downloadImage(const QString &url);
 
 private:
     QNetworkAccessManager *m_manager;

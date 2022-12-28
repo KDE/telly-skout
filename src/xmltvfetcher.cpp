@@ -92,6 +92,18 @@ void XmltvFetcher::fetchProgramDescription(const ChannelId &channelId, const Pro
     // nothing to be done (already fetched as part of the program)
 }
 
+QString XmltvFetcher::image(const QString &url)
+{
+    Q_UNUSED(url);
+    return "";
+}
+
+QString XmltvFetcher::imagePath(const QString &url)
+{
+    Q_UNUSED(url);
+    return "";
+}
+
 bool XmltvFetcher::open(const QString &fileName)
 {
     QFile file(fileName);

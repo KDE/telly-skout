@@ -30,16 +30,12 @@ public:
     void fetchGroup(const QString &url, const GroupId &groupId);
     Q_INVOKABLE void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url);
     Q_INVOKABLE QString image(const QString &url);
-    Q_INVOKABLE void download(const QString &url);
 
 private:
     Fetcher();
 
-    QString filePath(const QString &url);
     void removeImage(const QString &url);
-    QNetworkReply *get(QNetworkRequest &request);
 
-    QNetworkAccessManager *m_manager;
     std::unique_ptr<FetcherImpl> m_fetcherImpl;
 
 Q_SIGNALS:
