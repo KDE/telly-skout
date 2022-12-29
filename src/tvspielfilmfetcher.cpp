@@ -13,7 +13,6 @@
 #include <QNetworkRequest>
 #include <QRegularExpression>
 #include <QString>
-#include <QtXml>
 
 TvSpielfilmFetcher::TvSpielfilmFetcher()
 {
@@ -47,31 +46,23 @@ void TvSpielfilmFetcher::fetchGroup(const QString &url, const GroupId &groupId)
         } else {
             QByteArray data = reply->readAll();
 
-            static QRegularExpression re("<select name=\\\"channel\\\">.*</select>");
-            re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-            QRegularExpressionMatch match = re.match(data);
-            if (match.hasMatch()) {
-                const QString matched = match.captured(0);
+            static QRegularExpression reChannelList("<select name=\\\"channel\\\">.*</select>");
+            reChannelList.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+            QRegularExpressionMatch matchChannelList = reChannelList.match(data);
+            if (matchChannelList.hasMatch()) {
+                const QString channelList = matchChannelList.captured(0);
 
-                QDomDocument channelsXml;
+                static QRegularExpression reChannel("<option.*?value=\\\"(.*?)\\\">&nbsp;&nbsp;(.*?)</option>");
+                reChannel.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+                QRegularExpressionMatchIterator it = reChannel.globalMatch(channelList);
+                while (it.hasNext()) {
+                    QRegularExpressionMatch channelMatch = it.next();
+                    const ChannelId id = ChannelId(channelMatch.captured(1));
 
-                if (!channelsXml.setContent(matched)) {
-                    qWarning() << "Failed to parse XML";
-                }
-
-                QDomNodeList channelNodes = channelsXml.elementsByTagName("option");
-
-                for (int i = 0; i < channelNodes.count(); i++) {
-                    QDomNode channelNode = channelNodes.at(i);
-                    if (channelNode.isElement()) {
-                        const QDomNamedNodeMap &attributes = channelNode.attributes();
-                        const ChannelId id = ChannelId(attributes.namedItem("value").toAttr().value());
-
-                        // exclude groups (e.g. "alle Sender" or "g:1")
-                        if (id.value().length() > 0 && !id.value().contains("g:")) {
-                            const QString &name = channelNode.toElement().text();
-                            fetchChannel(id, name, groupId);
-                        }
+                    // exclude groups (e.g. "alle Sender" or "g:1")
+                    if (id.value().length() > 0 && !id.value().contains("g:")) {
+                        const QString name = channelMatch.captured(2);
+                        fetchChannel(id, name, groupId);
                     }
                 }
             }
