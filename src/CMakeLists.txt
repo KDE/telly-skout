@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: none
+# SPDX-FileCopyrightText: 2022 Plata Hill <plata.hill@kdemail.net>
 # SPDX-License-Identifier: BSD-2-Clause
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-telly-skout.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-telly-skout.h)

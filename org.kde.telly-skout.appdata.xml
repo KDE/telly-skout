@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   - SPDX-License-Identifier: CC0-1.0
-  - SPDX-FileCopyrightText: none
+  - SPDX-FileCopyrightText: 2022 Plata Hill <plata.hill@kdemail.net>
  -->
 <component type="desktop-application">
   <id>org.kde.telly-skout</id>
@@ -74,7 +74,7 @@
     <p xml:lang="en-GB">Telly Skout is a convergent Kirigami TV guide. It shows the TV program for your favourite channels from TV Spielfilm or an XMLTV file.</p>
     <p xml:lang="es">Telly Skout es una guía de TV convergente creada con Kirigami. Muestra los programas de TV de sus canales favoritos de TV Spielfilm o de un archivo XMLTV.</p>
     <p xml:lang="fi">Telly Skout on mukautuva Kirigami-TV-opas. Sen näyttää TV-ohjelmat suosikkikanaviltasi TV Spielfilmistä tai XMLTV-tiedostosta.</p>
-    <p xml:lang="fr">Telly Skout est un guide TV convergent conçu avec Kirigami. Il affiche le programme TV de vos chaînes préférées à partir de TV « Spielfilm » ou d'un fichier « XMLTV ».</p>
+    <p xml:lang="fr">Telly Skout est un guide TV convergent conçu avec Kirigami. Il affiche le programme TV de vos chaînes préférées à partir de TV « Spielfilm » ou d'un fichier « XMLTV ».</p>
     <p xml:lang="id">Telly Skout adalah panduan TV Kirigami yang konvergen. Ini menunjukkan program TV untuk saluran favorit Anda dari TV Spielfilm atau file XMLTV.</p>
     <p xml:lang="it">Telly Skout è una guida TV Kirigami convergente. Mostra il programma TV per i tuoi canali preferiti da TV Spielfilm o da un file XMLTV.</p>
     <p xml:lang="ka">Telly Skout წარმოადგენს კირიგამის გიდს. მას შეუძლია გაჩვენოთ TV პროგრამები თქვენი რჩეული არხიდან TV Spielfilm ან XMLTV-დან.</p>

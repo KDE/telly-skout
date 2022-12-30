@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: none
+# SPDX-FileCopyrightText: 2022 Plata Hill <plata.hill@kdemail.net>
 # SPDX-License-Identifier: BSD-2-Clause
 
 cmake_minimum_required(VERSION 3.16)
