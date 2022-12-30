@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-11 00:49+0000\n"
+"POT-Creation-Date: 2022-12-30 00:55+0000\n"
 "PO-Revision-Date: 2022-05-18 08:41+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -135,7 +135,7 @@ msgstr "Ordena els preferits"
 msgid "About"
 msgstr "Quant a"
 
-#: tvspielfilmfetcher.cpp:25
+#: tvspielfilmfetcher.cpp:24
 #, kde-format
 msgid "Germany"
 msgstr "Alemanya"

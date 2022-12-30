@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-11 00:49+0000\n"
+"POT-Creation-Date: 2022-12-30 00:55+0000\n"
 "PO-Revision-Date: 2022-05-18 10:39+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -133,7 +133,7 @@ msgstr "Favorieten sorteren"
 msgid "About"
 msgstr "Info over"
 
-#: tvspielfilmfetcher.cpp:25
+#: tvspielfilmfetcher.cpp:24
 #, kde-format
 msgid "Germany"
 msgstr "Duitsland"
