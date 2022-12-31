@@ -14,7 +14,8 @@
 #include <QRegularExpression>
 #include <QString>
 
-TvSpielfilmFetcher::TvSpielfilmFetcher()
+TvSpielfilmFetcher::TvSpielfilmFetcher(QNetworkAccessManager *nam)
+    : NetworkFetcher(nam)
 {
 }
 

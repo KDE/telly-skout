@@ -11,12 +11,16 @@
 #include <QStandardPaths>
 #include <QUrl>
 
-NetworkFetcher::NetworkFetcher()
+NetworkFetcher::NetworkFetcher(QNetworkAccessManager *nam)
 {
-    m_manager = new QNetworkAccessManager(this);
-    m_manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
-    m_manager->setStrictTransportSecurityEnabled(true);
-    m_manager->enableStrictTransportSecurityStore(true, QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1String("/hsts/"));
+    if (nam) {
+        m_manager = nam;
+    } else {
+        m_manager = new QNetworkAccessManager(this);
+        m_manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
+        m_manager->setStrictTransportSecurityEnabled(true);
+        m_manager->enableStrictTransportSecurityStore(true, QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1String("/hsts/"));
+    }
 }
 
 QString NetworkFetcher::image(const QString &url)

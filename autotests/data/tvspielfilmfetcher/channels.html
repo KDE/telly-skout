@@ -1,0 +1,455 @@
+<!--
+  - SPDX-License-Identifier: CC0-1.0
+  - SPDX-FileCopyrightText: none
+ -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-DE">
+<body>
+<div class="form-field form-field--select form-field--select--narrow form-field--select--secondary slim">
+    <select name="channel">
+        <option data-group="not set" value="" label="Alle Sender">alle Sender</option>
+        <option data-group="not set" value="g:1">Hauptsender</option>
+        <option data-group="oeffentlich-rechtlich" value="ARD">&nbsp;&nbsp;Das Erste</option>
+        <option data-group="oeffentlich-rechtlich" value="ZDF">&nbsp;&nbsp;ZDF</option>
+        <option data-group="privat" value="RTL">&nbsp;&nbsp;RTL</option>
+        <option data-group="privat" value="SAT1">&nbsp;&nbsp;SAT.1</option>
+        <option data-group="privat" value="PRO7">&nbsp;&nbsp;ProSieben</option>
+        <option data-group="privat" value="K1">&nbsp;&nbsp;kabel eins</option>
+        <option data-group="privat" value="RTL2">&nbsp;&nbsp;RTL II</option>
+        <option data-group="privat" value="VOX">&nbsp;&nbsp;VOX</option>
+        <option data-group="privat" value="TELE5">&nbsp;&nbsp;TELE 5</option>
+        <option data-group="oeffentlich-rechtlich" value="3SAT">&nbsp;&nbsp;3sat</option>
+        <option data-group="oeffentlich-rechtlich" value="ARTE">&nbsp;&nbsp;ARTE</option>
+        <option data-group="oeffentlich-rechtlich" value="2NEO">&nbsp;&nbsp;ZDFneo</option>
+        <option data-group="oeffentlich-rechtlich" value="FES">&nbsp;&nbsp;ONE</option>
+        <option data-group="privat" value="SERVU">&nbsp;&nbsp;ServusTV Deutschland</option>
+        <option data-group="privat" value="RTL-N">&nbsp;&nbsp;NITRO</option>
+        <option data-group="privat" value="DMAX">&nbsp;&nbsp;DMAX</option>
+        <option data-group="privat" value="SIXX">&nbsp;&nbsp;sixx</option>
+        <option data-group="privat" value="SAT1G">&nbsp;&nbsp;SAT.1 Gold</option>
+        <option data-group="privat" value="PRO7M">&nbsp;&nbsp;ProSieben MAXX</option>
+        <option data-group="privat" value="CC">&nbsp;&nbsp;COMEDY CENTRAL</option>
+        <option data-group="privat" value="RTLPL">&nbsp;&nbsp;RTLup</option>
+        <option data-group="not set" value="g:2">Dritte Programme</option>
+        <option data-group="oeffentlich-rechtlich" value="WDR">&nbsp;&nbsp;WDR</option>
+        <option data-group="oeffentlich-rechtlich" value="N3">&nbsp;&nbsp;NDR</option>
+        <option data-group="oeffentlich-rechtlich" value="BR">&nbsp;&nbsp;BR</option>
+        <option data-group="oeffentlich-rechtlich" value="SWR">&nbsp;&nbsp;SWR/SR</option>
+        <option data-group="oeffentlich-rechtlich" value="HR">&nbsp;&nbsp;HR</option>
+        <option data-group="oeffentlich-rechtlich" value="MDR">&nbsp;&nbsp;MDR</option>
+        <option data-group="oeffentlich-rechtlich" value="RBB">&nbsp;&nbsp;RBB</option>
+        <option data-group="not set" value="g:8">Sportsender</option>
+        <option data-group="privat" value="SPORT">&nbsp;&nbsp;SPORT1</option>
+        <option data-group="privat" value="S1PLU">&nbsp;&nbsp;SPORT1+</option>
+        <option data-group="privat" value="EURO">&nbsp;&nbsp;Eurosport 1</option>
+        <option data-group="privat" value="EURO2">&nbsp;&nbsp;Eurosport 2</option>
+        <option data-group="privat" value="DAZN">&nbsp;&nbsp;DAZN</option>
+        <option data-group="privat" value="EX-SP">&nbsp;&nbsp;EXTREME SPORTS</option>
+        <option data-group="privat" value="AMS">&nbsp;&nbsp;Auto Motor und Sport</option>
+        <option data-group="privat" value="ES1">&nbsp;&nbsp;eSports1</option>
+        <option data-group="privat" value="MASPO">&nbsp;&nbsp;Magenta Sport</option>
+        <option data-group="privat" value="MFTV1">&nbsp;&nbsp;Fußball.TV1</option>
+        <option data-group="not set" value="g:4103125">Spartensender ARD &amp; ZDF</option>
+        <option data-group="oeffentlich-rechtlich" value="PHOEN">&nbsp;&nbsp;PHOENIX</option>
+        <option data-group="oeffentlich-rechtlich" value="ALPHA">&nbsp;&nbsp;ARD-alpha</option>
+        <option data-group="oeffentlich-rechtlich" value="TAG24">&nbsp;&nbsp;tagesschau 24</option>
+        <option data-group="oeffentlich-rechtlich" value="ZINFO">&nbsp;&nbsp;ZDFinfo</option>
+        <option data-group="oeffentlich-rechtlich" value="DWTV">&nbsp;&nbsp;DW (Europe)</option>
+        <option data-group="not set" value="g:11">News &amp; Doku</option>
+        <option data-group="privat" value="NTV">&nbsp;&nbsp;n-tv</option>
+        <option data-group="privat" value="WELT">&nbsp;&nbsp;WELT</option>
+        <option data-group="privat" value="EURON">&nbsp;&nbsp;euronews</option>
+        <option data-group="privat" value="N24DOKU">&nbsp;&nbsp;N24 Doku</option>
+        <option data-group="privat" value="K1DOKU">&nbsp;&nbsp;kabel eins Doku</option>
+        <option data-group="privat" value="ALJAZ">&nbsp;&nbsp;Al Jazeera</option>
+        <option data-group="oeffentlich-rechtlich" value="BBC">&nbsp;&nbsp;BBC World News</option>
+        <option data-group="privat" value="BLM">&nbsp;&nbsp;Bloomberg Europe TV</option>
+        <option data-group="privat" value="CNBC">&nbsp;&nbsp;CNBC</option>
+        <option data-group="privat" value="CNN">&nbsp;&nbsp;CNN International</option>
+        <option data-group="privat" value="NHK">&nbsp;&nbsp;NHK WORLD TV</option>
+        <option data-group="privat" value="FR24F">&nbsp;&nbsp;France 24 (franz.)</option>
+        <option data-group="privat" value="FR24E">&nbsp;&nbsp;France 24 (engl.)</option>
+        <option data-group="privat" value="CNN-T">&nbsp;&nbsp;CNN Türk</option>
+        <option data-group="privat" value="BBC-N">&nbsp;&nbsp;BBC News</option>
+        <option data-group="privat" value="BILD">&nbsp;&nbsp;Bild TV</option>
+        <option data-group="not set" value="g:10">Kindersender</option>
+        <option data-group="privat" value="SUPER">&nbsp;&nbsp;SUPER RTL</option>
+        <option data-group="oeffentlich-rechtlich" value="KIKA">&nbsp;&nbsp;KiKA</option>
+        <option data-group="privat" value="DISNE">&nbsp;&nbsp;Disney Channel</option>
+        <option data-group="privat" value="NICK">&nbsp;&nbsp;nick/MTV+</option>
+        <option data-group="privat" value="NICKJ">&nbsp;&nbsp;Nick Jr.</option>
+        <option data-group="privat" value="NICKT">&nbsp;&nbsp;Nicktoons</option>
+        <option data-group="privat" value="RIC">&nbsp;&nbsp;RiC</option>
+        <option data-group="privat" value="TOGGO">&nbsp;&nbsp;TOGGO plus</option>
+        <option data-group="not set" value="g:4">Ausland (deutschspr.)</option>
+        <option data-group="oeffentlich-rechtlich" value="ORF1">&nbsp;&nbsp;ORF eins</option>
+        <option data-group="oeffentlich-rechtlich" value="ORF2">&nbsp;&nbsp;ORF 2</option>
+        <option data-group="oeffentlich-rechtlich" value="ORF3">&nbsp;&nbsp;ORF III</option>
+        <option data-group="oeffentlich-rechtlich" value="ORFSP">&nbsp;&nbsp;ORF SPORT +</option>
+        <option data-group="privat" value="ATV">&nbsp;&nbsp;ATV</option>
+        <option data-group="privat" value="ATV2">&nbsp;&nbsp;ATV II</option>
+        <option data-group="privat" value="OE24TV">&nbsp;&nbsp;oe24.TV</option>
+        <option data-group="privat" value="PULS4">&nbsp;&nbsp;PULS 4</option>
+        <option data-group="oeffentlich-rechtlich" value="SF1">&nbsp;&nbsp;SRF 1</option>
+        <option data-group="oeffentlich-rechtlich" value="SF2">&nbsp;&nbsp;SRF zwei</option>
+        <option data-group="privat" value="STTV">&nbsp;&nbsp;STAR TV</option>
+        <option data-group="privat" value="3PLUS">&nbsp;&nbsp;3+</option>
+        <option data-group="privat" value="PULS8">&nbsp;&nbsp;PULS acht</option>
+        <option data-group="privat" value="SERVUSA">&nbsp;&nbsp;Servus TV Österreich</option>
+        <option data-group="not set" value="g:3">Regionalsender</option>
+        <option data-group="privat" value="TVB">&nbsp;&nbsp;tv.berlin</option>
+        <option data-group="privat" value="HH1">&nbsp;&nbsp;Hamburg 1</option>
+        <option data-group="privat" value="TVM">&nbsp;&nbsp;münchen.tv</option>
+        <option data-group="privat" value="RMTV">&nbsp;&nbsp;rheinmain tv</option>
+        <option data-group="privat" value="RNF">&nbsp;&nbsp;Rhein-Neckar Fernsehen</option>
+        <option data-group="privat" value="LEITV">&nbsp;&nbsp;Leipzig Fernsehen</option>
+        <option data-group="not set" value="g:9">Musiksender</option>
+        <option data-group="privat" value="DMC">&nbsp;&nbsp;DELUXE MUSIC</option>
+        <option data-group="privat" value="DMF">&nbsp;&nbsp;Deutsches Musik Fernsehen</option>
+        <option data-group="privat" value="LAUNE">&nbsp;&nbsp;Gute Laune TV</option>
+        <option data-group="privat" value="JUKE">&nbsp;&nbsp;Jukebox</option>
+        <option data-group="privat" value="MEZZO">&nbsp;&nbsp;Mezzo</option>
+        <option data-group="privat" value="MTV">&nbsp;&nbsp;MTV</option>
+        <option data-group="privat" value="MTV-B">&nbsp;&nbsp;MTV Base</option>
+        <option data-group="privat" value="MTV-D">&nbsp;&nbsp;Club MTV</option>
+        <option data-group="privat" value="MTV-H">&nbsp;&nbsp;MTV Hits</option>
+        <option data-group="privat" value="MTV-L">&nbsp;&nbsp;MTV Live HD</option>
+        <option data-group="privat" value="VH1">&nbsp;&nbsp;VH1 Classic</option>
+        <option data-group="not set" value="g:3534866">Spartensender</option>
+        <option data-group="privat" value="ANIXE">&nbsp;&nbsp;ANIXE</option>
+        <option data-group="privat" value="BIBEL">&nbsp;&nbsp;Bibel TV</option>
+        <option data-group="privat" value="EOTV">&nbsp;&nbsp;More than Sports TV</option>
+        <option data-group="privat" value="HEALTH">&nbsp;&nbsp;Health TV</option>
+        <option data-group="privat" value="KTV">&nbsp;&nbsp;K-TV</option>
+        <option data-group="privat" value="MAPO">&nbsp;&nbsp;Marco Polo TV</option>
+        <option data-group="privat" value="TLC">&nbsp;&nbsp;TLC</option>
+        <option data-group="privat" value="TRAVELXP">&nbsp;&nbsp;travelxp 4K</option>
+        <option data-group="privat" value="UHD1">&nbsp;&nbsp;UHD1</option>
+        <option data-group="privat" value="WDWTV">&nbsp;&nbsp;Welt der Wunder TV</option>
+        <option data-group="privat" value="VOXUP">&nbsp;&nbsp;VOXup</option>
+        <option data-group="privat" value="RBTV">&nbsp;&nbsp;Rocket Beans TV</option>
+        <option data-group="privat" value="HGTV">&nbsp;&nbsp;Home &amp; Garden TV</option>
+        <option data-group="privat" value="BERG">&nbsp;&nbsp;Bergblick</option>
+        <option data-group="not set" value="g:7">Shopping</option>
+        <option data-group="privat" value="123TV">&nbsp;&nbsp;123.tv</option>
+        <option data-group="privat" value="CH21">&nbsp;&nbsp;Channel21</option>
+        <option data-group="privat" value="HSE">&nbsp;&nbsp;HSE24</option>
+        <option data-group="privat" value="QVC">&nbsp;&nbsp;QVC</option>
+        <option data-group="privat" value="QVCP">&nbsp;&nbsp;QVC2</option>
+        <option data-group="privat" value="SKLAR">&nbsp;&nbsp;sonnenklar TV</option>
+        <option data-group="not set" value="g:21">Sky Cinema</option>
+        <option data-group="pay-tv" value="CIN">&nbsp;&nbsp;Sky Cinema Premieren</option>
+        <option data-group="pay-tv" value="CIN24">&nbsp;&nbsp;Sky Cinema Premieren +24</option>
+        <option data-group="pay-tv" value="SKY-A">&nbsp;&nbsp;Sky Action</option>
+        <option data-group="pay-tv" value="SKY-C">&nbsp;&nbsp;Sky Cinema Fun</option>
+        <option data-group="pay-tv" value="SKY-F">&nbsp;&nbsp;Sky Family</option>
+        <option data-group="pay-tv" value="SKY-H">&nbsp;&nbsp;Sky Cinema Best Of</option>
+        <option data-group="pay-tv" value="SKY-N">&nbsp;&nbsp;Sky Cinema Classics</option>
+        <option data-group="pay-tv" value="KINOW">&nbsp;&nbsp;KinoweltTV</option>
+        <option data-group="pay-tv" value="TNT-F">&nbsp;&nbsp;Warner TV Film</option>
+        <option data-group="pay-tv" value="SKYTH">&nbsp;&nbsp;Sky Cinema Thriller HD</option>
+        <option data-group="pay-tv" value="SKYCS">&nbsp;&nbsp;Sky Cinema Special HD</option>
+        <option data-group="pay-tv" value="SKY-D">&nbsp;&nbsp;Sky Documentaries</option>
+        <option data-group="pay-tv" value="SKY-NA">&nbsp;&nbsp;Sky Nature</option>
+        <option data-group="not set" value="g:13">Sky Sport</option>
+        <option data-group="pay-tv" value="BULI">&nbsp;&nbsp;Sky Bundesliga</option>
+        <option data-group="pay-tv" value="SPO-A">&nbsp;&nbsp;Sky Sport Austria</option>
+        <option data-group="pay-tv" value="HDSPO">&nbsp;&nbsp;Sky Sport HD 1</option>
+        <option data-group="pay-tv" value="SHD2">&nbsp;&nbsp;Sky Sport HD 2</option>
+        <option data-group="pay-tv" value="SNHD">&nbsp;&nbsp;Sky Sport News</option>
+        <option data-group="pay-tv" value="SKYF1">&nbsp;&nbsp;SKY Sport F1</option>
+        <option data-group="pay-tv" value="SKYSM">&nbsp;&nbsp;Sky Sport Mix</option>
+        <option data-group="pay-tv" value="SKYST">&nbsp;&nbsp;Sky Sport Tennis</option>
+        <option data-group="pay-tv" value="SKYSTE">&nbsp;&nbsp;Sky Sport Top Event</option>
+        <option data-group="pay-tv" value="SKYSG">&nbsp;&nbsp;Sky Sport Golf</option>
+        <option data-group="pay-tv" value="SKYSPL">&nbsp;&nbsp;Sky Sport Premier League</option>
+        <option data-group="not set" value="g:3738244">Sky Entertainment</option>
+        <option data-group="pay-tv" value="13TH">&nbsp;&nbsp;13th Street</option>
+        <option data-group="pay-tv" value="BUTV">&nbsp;&nbsp;Beate-Uhse.TV</option>
+        <option data-group="pay-tv" value="C-NET">&nbsp;&nbsp;Cartoon Network</option>
+        <option data-group="pay-tv" value="HDDIS">&nbsp;&nbsp;Discovery HD</option>
+        <option data-group="pay-tv" value="E!">&nbsp;&nbsp;E! Entertainment</option>
+        <option data-group="pay-tv" value="CRIN">&nbsp;&nbsp;Crime + Investigation</option>
+        <option data-group="pay-tv" value="GOLD">&nbsp;&nbsp;GoldStar TV</option>
+        <option data-group="pay-tv" value="HEIMA">&nbsp;&nbsp;Heimatkanal</option>
+        <option data-group="pay-tv" value="HISHD">&nbsp;&nbsp;HISTORY HD</option>
+        <option data-group="pay-tv" value="JUNIO">&nbsp;&nbsp;Junior</option>
+        <option data-group="pay-tv" value="MOVTV">&nbsp;&nbsp;Motorvision TV</option>
+        <option data-group="pay-tv" value="N-GHD">&nbsp;&nbsp;National Geographic HD</option>
+        <option data-group="pay-tv" value="N-GW">&nbsp;&nbsp;NAT GEO WILD</option>
+        <option data-group="pay-tv" value="CLASS">&nbsp;&nbsp;Classica</option>
+        <option data-group="pay-tv" value="ROM">&nbsp;&nbsp;Romance TV</option>
+        <option data-group="pay-tv" value="SCIFI">&nbsp;&nbsp;Syfy</option>
+        <option data-group="pay-tv" value="SKY1">&nbsp;&nbsp;Sky 1</option>
+        <option data-group="pay-tv" value="SKYAT">&nbsp;&nbsp;Sky Atlantic HD</option>
+        <option data-group="pay-tv" value="SKY-K">&nbsp;&nbsp;Sky Krimi</option>
+        <option data-group="pay-tv" value="SP-GE">&nbsp;&nbsp;SPIEGEL Geschichte</option>
+        <option data-group="pay-tv" value="TNT-C">&nbsp;&nbsp;Warner TV Comedy</option>
+        <option data-group="pay-tv" value="TNT-S">&nbsp;&nbsp;Warner TV Serie</option>
+        <option data-group="pay-tv" value="UNIVE">&nbsp;&nbsp;Universal Channel HD</option>
+        <option data-group="pay-tv" value="SKY-CR">&nbsp;&nbsp;Sky Crime</option>
+        <option data-group="pay-tv" value="SKY-CO">&nbsp;&nbsp;Sky Comedy</option>
+        <option data-group="pay-tv" value="SKYRP">&nbsp;&nbsp;sky replay</option>
+        <option data-group="pay-tv" value="SKYSH">&nbsp;&nbsp;sky showcase</option>
+        <option data-group="not set" value="g:19">Pay-TV</option>
+        <option data-group="pay-tv" value="ADULT">&nbsp;&nbsp;Adult Channel</option>
+        <option data-group="pay-tv" value="APLAN">&nbsp;&nbsp;Animal Planet</option>
+        <option data-group="oeffentlich-rechtlich" value="BBC-E">&nbsp;&nbsp;BBC Entertainment</option>
+        <option data-group="pay-tv" value="AXN">&nbsp;&nbsp;AXN</option>
+        <option data-group="pay-tv" value="GUSTO">&nbsp;&nbsp;BonGusto</option>
+        <option data-group="pay-tv" value="FATV">&nbsp;&nbsp;Fashion TV</option>
+        <option data-group="pay-tv" value="FFTV">&nbsp;&nbsp;FIX &amp; FOXI</option>
+        <option data-group="pay-tv" value="GEO">&nbsp;&nbsp;GEO Television</option>
+        <option data-group="pay-tv" value="K1CLA">&nbsp;&nbsp;kabel eins CLASSICS</option>
+        <option data-group="pay-tv" value="LUSTP">&nbsp;&nbsp;LUST PUR</option>
+        <option data-group="pay-tv" value="NAUCH">&nbsp;&nbsp;Nautical Channel</option>
+        <option data-group="pay-tv" value="NOWUS">&nbsp;&nbsp;NOW US</option>
+        <option data-group="pay-tv" value="PBOY">&nbsp;&nbsp;Playboy TV</option>
+        <option data-group="pay-tv" value="PRO7F">&nbsp;&nbsp;ProSieben Fun</option>
+        <option data-group="pay-tv" value="SAT1E">&nbsp;&nbsp;SAT.1 emotions</option>
+        <option data-group="pay-tv" value="SILVE">&nbsp;&nbsp;Silverline</option>
+        <option data-group="pay-tv" value="RTL-C">&nbsp;&nbsp;RTL Crime</option>
+        <option data-group="pay-tv" value="SONY">&nbsp;&nbsp;Sony Channel</option>
+        <option data-group="pay-tv" value="RTL-L">&nbsp;&nbsp;RTL Living</option>
+        <option data-group="pay-tv" value="SPTVW">&nbsp;&nbsp;Curiosity Channel</option>
+        <option data-group="pay-tv" value="SPO-D">&nbsp;&nbsp;sportdigital Fussball</option>
+        <option data-group="pay-tv" value="PASS">&nbsp;&nbsp;RTL Passion</option>
+        <option data-group="pay-tv" value="TRACE">&nbsp;&nbsp;Trace TV</option>
+        <option data-group="not set" value="g:12">Auslandssender</option>
+        <option data-group="privat" value="DR1">&nbsp;&nbsp;DR1</option>
+        <option data-group="privat" value="BE1">&nbsp;&nbsp;Belgien 1</option>
+        <option data-group="privat" value="TV2">&nbsp;&nbsp;TV2</option>
+        <option data-group="privat" value="TV5">&nbsp;&nbsp;TV5 Monde</option>
+        <option data-group="privat" value="EURO-S">&nbsp;&nbsp;Euro Star</option>
+        <option data-group="privat" value="FRA2">&nbsp;&nbsp;France 2</option>
+        <option data-group="privat" value="TMAX">&nbsp;&nbsp;Turkmax Gurme</option>
+        <option data-group="privat" value="EURO-D">&nbsp;&nbsp;Euro D</option>
+        <option data-group="privat" value="BBC1">&nbsp;&nbsp;BBC One</option>
+        <option data-group="privat" value="BBC2">&nbsp;&nbsp;BBC Two</option>
+        <option data-group="privat" value="BBC4">&nbsp;&nbsp;BBC Four</option>
+        <option data-group="privat" value="CPLUS">&nbsp;&nbsp;Canal+</option>
+        <option data-group="privat" value="CPLUSC">&nbsp;&nbsp;Canal+ Cinéma</option>
+        <option data-group="privat" value="CPLUSS">&nbsp;&nbsp;Canal+ Sport</option>
+        <option data-group="privat" value="FRA3">&nbsp;&nbsp;France 3</option>
+        <option data-group="privat" value="FRA5">&nbsp;&nbsp;France 5</option>
+        <option data-group="privat" value="FRA4">&nbsp;&nbsp;France 4</option>
+        <option data-group="privat" value="SHOT">&nbsp;&nbsp;Show Turk</option>
+        <option data-group="privat" value="C5">&nbsp;&nbsp;Canale 5</option>
+        <option data-group="privat" value="DR2">&nbsp;&nbsp;DR2</option>
+        <option data-group="not set" value="">alle Sender alphabetisch</option>
+        <option data-group="privat" value="123TV">&nbsp;&nbsp;123.tv</option>
+        <option data-group="pay-tv" value="13TH">&nbsp;&nbsp;13th Street</option>
+        <option data-group="privat" value="3PLUS">&nbsp;&nbsp;3+</option>
+        <option data-group="oeffentlich-rechtlich" value="3SAT">&nbsp;&nbsp;3sat</option>
+        <option data-group="pay-tv" value="ADULT">&nbsp;&nbsp;Adult Channel</option>
+        <option data-group="privat" value="ALJAZ">&nbsp;&nbsp;Al Jazeera</option>
+        <option data-group="pay-tv" value="APLAN">&nbsp;&nbsp;Animal Planet</option>
+        <option data-group="privat" value="ANIXE">&nbsp;&nbsp;ANIXE</option>
+        <option data-group="oeffentlich-rechtlich" value="ALPHA">&nbsp;&nbsp;ARD-alpha</option>
+        <option data-group="oeffentlich-rechtlich" value="ARTE">&nbsp;&nbsp;ARTE</option>
+        <option data-group="privat" value="ATV">&nbsp;&nbsp;ATV</option>
+        <option data-group="privat" value="ATV2">&nbsp;&nbsp;ATV II</option>
+        <option data-group="privat" value="AMS">&nbsp;&nbsp;Auto Motor und Sport</option>
+        <option data-group="pay-tv" value="AXN">&nbsp;&nbsp;AXN</option>
+        <option data-group="oeffentlich-rechtlich" value="BBC-E">&nbsp;&nbsp;BBC Entertainment</option>
+        <option data-group="privat" value="BBC4">&nbsp;&nbsp;BBC Four</option>
+        <option data-group="privat" value="BBC-N">&nbsp;&nbsp;BBC News</option>
+        <option data-group="privat" value="BBC1">&nbsp;&nbsp;BBC One</option>
+        <option data-group="privat" value="BBC2">&nbsp;&nbsp;BBC Two</option>
+        <option data-group="oeffentlich-rechtlich" value="BBC">&nbsp;&nbsp;BBC World News</option>
+        <option data-group="pay-tv" value="BUTV">&nbsp;&nbsp;Beate-Uhse.TV</option>
+        <option data-group="privat" value="BE1">&nbsp;&nbsp;Belgien 1</option>
+        <option data-group="privat" value="BERG">&nbsp;&nbsp;Bergblick</option>
+        <option data-group="privat" value="BIBEL">&nbsp;&nbsp;Bibel TV</option>
+        <option data-group="privat" value="BILD">&nbsp;&nbsp;Bild TV</option>
+        <option data-group="privat" value="BLM">&nbsp;&nbsp;Bloomberg Europe TV</option>
+        <option data-group="pay-tv" value="GUSTO">&nbsp;&nbsp;BonGusto</option>
+        <option data-group="oeffentlich-rechtlich" value="BR">&nbsp;&nbsp;BR</option>
+        <option data-group="privat" value="CPLUS">&nbsp;&nbsp;Canal+</option>
+        <option data-group="privat" value="CPLUSC">&nbsp;&nbsp;Canal+ Cinéma</option>
+        <option data-group="privat" value="CPLUSS">&nbsp;&nbsp;Canal+ Sport</option>
+        <option data-group="privat" value="C5">&nbsp;&nbsp;Canale 5</option>
+        <option data-group="pay-tv" value="C-NET">&nbsp;&nbsp;Cartoon Network</option>
+        <option data-group="privat" value="CH21">&nbsp;&nbsp;Channel21</option>
+        <option data-group="pay-tv" value="CLASS">&nbsp;&nbsp;Classica</option>
+        <option data-group="privat" value="MTV-D">&nbsp;&nbsp;Club MTV</option>
+        <option data-group="privat" value="CNBC">&nbsp;&nbsp;CNBC</option>
+        <option data-group="privat" value="CNN">&nbsp;&nbsp;CNN International</option>
+        <option data-group="privat" value="CNN-T">&nbsp;&nbsp;CNN Türk</option>
+        <option data-group="privat" value="CC">&nbsp;&nbsp;COMEDY CENTRAL</option>
+        <option data-group="pay-tv" value="CRIN">&nbsp;&nbsp;Crime + Investigation</option>
+        <option data-group="pay-tv" value="SPTVW">&nbsp;&nbsp;Curiosity Channel</option>
+        <option data-group="oeffentlich-rechtlich" value="ARD">&nbsp;&nbsp;Das Erste</option>
+        <option data-group="privat" value="DAZN">&nbsp;&nbsp;DAZN</option>
+        <option data-group="privat" value="DMC">&nbsp;&nbsp;DELUXE MUSIC</option>
+        <option data-group="privat" value="DMF">&nbsp;&nbsp;Deutsches Musik Fernsehen</option>
+        <option data-group="pay-tv" value="HDDIS">&nbsp;&nbsp;Discovery HD</option>
+        <option data-group="privat" value="DISNE">&nbsp;&nbsp;Disney Channel</option>
+        <option data-group="privat" value="DMAX">&nbsp;&nbsp;DMAX</option>
+        <option data-group="privat" value="DR1">&nbsp;&nbsp;DR1</option>
+        <option data-group="privat" value="DR2">&nbsp;&nbsp;DR2</option>
+        <option data-group="oeffentlich-rechtlich" value="DWTV">&nbsp;&nbsp;DW (Europe)</option>
+        <option data-group="pay-tv" value="E!">&nbsp;&nbsp;E! Entertainment</option>
+        <option data-group="privat" value="ES1">&nbsp;&nbsp;eSports1</option>
+        <option data-group="privat" value="EURO-D">&nbsp;&nbsp;Euro D</option>
+        <option data-group="privat" value="EURO-S">&nbsp;&nbsp;Euro Star</option>
+        <option data-group="privat" value="EURON">&nbsp;&nbsp;euronews</option>
+        <option data-group="privat" value="EURO">&nbsp;&nbsp;Eurosport 1</option>
+        <option data-group="privat" value="EURO2">&nbsp;&nbsp;Eurosport 2</option>
+        <option data-group="privat" value="EX-SP">&nbsp;&nbsp;EXTREME SPORTS</option>
+        <option data-group="pay-tv" value="FATV">&nbsp;&nbsp;Fashion TV</option>
+        <option data-group="pay-tv" value="FFTV">&nbsp;&nbsp;FIX &amp; FOXI</option>
+        <option data-group="privat" value="FRA2">&nbsp;&nbsp;France 2</option>
+        <option data-group="privat" value="FR24E">&nbsp;&nbsp;France 24 (engl.)</option>
+        <option data-group="privat" value="FR24F">&nbsp;&nbsp;France 24 (franz.)</option>
+        <option data-group="privat" value="FRA3">&nbsp;&nbsp;France 3</option>
+        <option data-group="privat" value="FRA4">&nbsp;&nbsp;France 4</option>
+        <option data-group="privat" value="FRA5">&nbsp;&nbsp;France 5</option>
+        <option data-group="privat" value="MFTV1">&nbsp;&nbsp;Fußball.TV1</option>
+        <option data-group="pay-tv" value="GEO">&nbsp;&nbsp;GEO Television</option>
+        <option data-group="pay-tv" value="GOLD">&nbsp;&nbsp;GoldStar TV</option>
+        <option data-group="privat" value="LAUNE">&nbsp;&nbsp;Gute Laune TV</option>
+        <option data-group="privat" value="HH1">&nbsp;&nbsp;Hamburg 1</option>
+        <option data-group="privat" value="HEALTH">&nbsp;&nbsp;Health TV</option>
+        <option data-group="pay-tv" value="HEIMA">&nbsp;&nbsp;Heimatkanal</option>
+        <option data-group="pay-tv" value="HISHD">&nbsp;&nbsp;HISTORY HD</option>
+        <option data-group="privat" value="HGTV">&nbsp;&nbsp;Home &amp; Garden TV</option>
+        <option data-group="oeffentlich-rechtlich" value="HR">&nbsp;&nbsp;HR</option>
+        <option data-group="privat" value="HSE">&nbsp;&nbsp;HSE24</option>
+        <option data-group="privat" value="JUKE">&nbsp;&nbsp;Jukebox</option>
+        <option data-group="pay-tv" value="JUNIO">&nbsp;&nbsp;Junior</option>
+        <option data-group="privat" value="KTV">&nbsp;&nbsp;K-TV</option>
+        <option data-group="privat" value="K1">&nbsp;&nbsp;kabel eins</option>
+        <option data-group="pay-tv" value="K1CLA">&nbsp;&nbsp;kabel eins CLASSICS</option>
+        <option data-group="privat" value="K1DOKU">&nbsp;&nbsp;kabel eins Doku</option>
+        <option data-group="oeffentlich-rechtlich" value="KIKA">&nbsp;&nbsp;KiKA</option>
+        <option data-group="pay-tv" value="KINOW">&nbsp;&nbsp;KinoweltTV</option>
+        <option data-group="privat" value="LEITV">&nbsp;&nbsp;Leipzig Fernsehen</option>
+        <option data-group="pay-tv" value="LUSTP">&nbsp;&nbsp;LUST PUR</option>
+        <option data-group="privat" value="MASPO">&nbsp;&nbsp;Magenta Sport</option>
+        <option data-group="privat" value="MAPO">&nbsp;&nbsp;Marco Polo TV</option>
+        <option data-group="oeffentlich-rechtlich" value="MDR">&nbsp;&nbsp;MDR</option>
+        <option data-group="privat" value="MEZZO">&nbsp;&nbsp;Mezzo</option>
+        <option data-group="privat" value="EOTV">&nbsp;&nbsp;More than Sports TV</option>
+        <option data-group="pay-tv" value="MOVTV">&nbsp;&nbsp;Motorvision TV</option>
+        <option data-group="privat" value="MTV">&nbsp;&nbsp;MTV</option>
+        <option data-group="privat" value="MTV-B">&nbsp;&nbsp;MTV Base</option>
+        <option data-group="privat" value="MTV-H">&nbsp;&nbsp;MTV Hits</option>
+        <option data-group="privat" value="MTV-L">&nbsp;&nbsp;MTV Live HD</option>
+        <option data-group="privat" value="TVM">&nbsp;&nbsp;münchen.tv</option>
+        <option data-group="privat" value="NTV">&nbsp;&nbsp;n-tv</option>
+        <option data-group="privat" value="N24DOKU">&nbsp;&nbsp;N24 Doku</option>
+        <option data-group="pay-tv" value="N-GW">&nbsp;&nbsp;NAT GEO WILD</option>
+        <option data-group="pay-tv" value="N-GHD">&nbsp;&nbsp;National Geographic HD</option>
+        <option data-group="pay-tv" value="NAUCH">&nbsp;&nbsp;Nautical Channel</option>
+        <option data-group="oeffentlich-rechtlich" value="N3">&nbsp;&nbsp;NDR</option>
+        <option data-group="privat" value="NHK">&nbsp;&nbsp;NHK WORLD TV</option>
+        <option data-group="privat" value="NICKJ">&nbsp;&nbsp;Nick Jr.</option>
+        <option data-group="privat" value="NICK">&nbsp;&nbsp;nick/MTV+</option>
+        <option data-group="privat" value="NICKT">&nbsp;&nbsp;Nicktoons</option>
+        <option data-group="privat" value="RTL-N">&nbsp;&nbsp;NITRO</option>
+        <option data-group="pay-tv" value="NOWUS">&nbsp;&nbsp;NOW US</option>
+        <option data-group="privat" value="OE24TV">&nbsp;&nbsp;oe24.TV</option>
+        <option data-group="oeffentlich-rechtlich" value="FES">&nbsp;&nbsp;ONE</option>
+        <option data-group="oeffentlich-rechtlich" value="ORF2">&nbsp;&nbsp;ORF 2</option>
+        <option data-group="oeffentlich-rechtlich" value="ORF1">&nbsp;&nbsp;ORF eins</option>
+        <option data-group="oeffentlich-rechtlich" value="ORF3">&nbsp;&nbsp;ORF III</option>
+        <option data-group="oeffentlich-rechtlich" value="ORFSP">&nbsp;&nbsp;ORF SPORT +</option>
+        <option data-group="oeffentlich-rechtlich" value="PHOEN">&nbsp;&nbsp;PHOENIX</option>
+        <option data-group="pay-tv" value="PBOY">&nbsp;&nbsp;Playboy TV</option>
+        <option data-group="privat" value="PRO7">&nbsp;&nbsp;ProSieben</option>
+        <option data-group="pay-tv" value="PRO7F">&nbsp;&nbsp;ProSieben Fun</option>
+        <option data-group="privat" value="PRO7M">&nbsp;&nbsp;ProSieben MAXX</option>
+        <option data-group="privat" value="PULS4">&nbsp;&nbsp;PULS 4</option>
+        <option data-group="privat" value="PULS8">&nbsp;&nbsp;PULS acht</option>
+        <option data-group="privat" value="QVC">&nbsp;&nbsp;QVC</option>
+        <option data-group="privat" value="QVCP">&nbsp;&nbsp;QVC2</option>
+        <option data-group="oeffentlich-rechtlich" value="RBB">&nbsp;&nbsp;RBB</option>
+        <option data-group="privat" value="RNF">&nbsp;&nbsp;Rhein-Neckar Fernsehen</option>
+        <option data-group="privat" value="RMTV">&nbsp;&nbsp;rheinmain tv</option>
+        <option data-group="privat" value="RIC">&nbsp;&nbsp;RiC</option>
+        <option data-group="privat" value="RBTV">&nbsp;&nbsp;Rocket Beans TV</option>
+        <option data-group="pay-tv" value="ROM">&nbsp;&nbsp;Romance TV</option>
+        <option data-group="privat" value="RTL">&nbsp;&nbsp;RTL</option>
+        <option data-group="pay-tv" value="RTL-C">&nbsp;&nbsp;RTL Crime</option>
+        <option data-group="privat" value="RTL2">&nbsp;&nbsp;RTL II</option>
+        <option data-group="pay-tv" value="RTL-L">&nbsp;&nbsp;RTL Living</option>
+        <option data-group="pay-tv" value="PASS">&nbsp;&nbsp;RTL Passion</option>
+        <option data-group="privat" value="RTLPL">&nbsp;&nbsp;RTLup</option>
+        <option data-group="privat" value="SAT1">&nbsp;&nbsp;SAT.1</option>
+        <option data-group="pay-tv" value="SAT1E">&nbsp;&nbsp;SAT.1 emotions</option>
+        <option data-group="privat" value="SAT1G">&nbsp;&nbsp;SAT.1 Gold</option>
+        <option data-group="privat" value="SERVUSA">&nbsp;&nbsp;Servus TV Österreich</option>
+        <option data-group="privat" value="SERVU">&nbsp;&nbsp;ServusTV Deutschland</option>
+        <option data-group="privat" value="SHOT">&nbsp;&nbsp;Show Turk</option>
+        <option data-group="pay-tv" value="SILVE">&nbsp;&nbsp;Silverline</option>
+        <option data-group="privat" value="SIXX">&nbsp;&nbsp;sixx</option>
+        <option data-group="pay-tv" value="SKY1">&nbsp;&nbsp;Sky 1</option>
+        <option data-group="pay-tv" value="SKY-A">&nbsp;&nbsp;Sky Action</option>
+        <option data-group="pay-tv" value="SKYAT">&nbsp;&nbsp;Sky Atlantic HD</option>
+        <option data-group="pay-tv" value="BULI">&nbsp;&nbsp;Sky Bundesliga</option>
+        <option data-group="pay-tv" value="SKY-H">&nbsp;&nbsp;Sky Cinema Best Of</option>
+        <option data-group="pay-tv" value="SKY-N">&nbsp;&nbsp;Sky Cinema Classics</option>
+        <option data-group="pay-tv" value="SKY-C">&nbsp;&nbsp;Sky Cinema Fun</option>
+        <option data-group="pay-tv" value="CIN">&nbsp;&nbsp;Sky Cinema Premieren</option>
+        <option data-group="pay-tv" value="CIN24">&nbsp;&nbsp;Sky Cinema Premieren +24</option>
+        <option data-group="pay-tv" value="SKYCS">&nbsp;&nbsp;Sky Cinema Special HD</option>
+        <option data-group="pay-tv" value="SKYTH">&nbsp;&nbsp;Sky Cinema Thriller HD</option>
+        <option data-group="pay-tv" value="SKY-CO">&nbsp;&nbsp;Sky Comedy</option>
+        <option data-group="pay-tv" value="SKY-CR">&nbsp;&nbsp;Sky Crime</option>
+        <option data-group="pay-tv" value="SKY-D">&nbsp;&nbsp;Sky Documentaries</option>
+        <option data-group="pay-tv" value="SKY-F">&nbsp;&nbsp;Sky Family</option>
+        <option data-group="pay-tv" value="SKY-K">&nbsp;&nbsp;Sky Krimi</option>
+        <option data-group="pay-tv" value="SKY-NA">&nbsp;&nbsp;Sky Nature</option>
+        <option data-group="pay-tv" value="SKYRP">&nbsp;&nbsp;sky replay</option>
+        <option data-group="pay-tv" value="SKYSH">&nbsp;&nbsp;sky showcase</option>
+        <option data-group="pay-tv" value="SPO-A">&nbsp;&nbsp;Sky Sport Austria</option>
+        <option data-group="pay-tv" value="SKYF1">&nbsp;&nbsp;SKY Sport F1</option>
+        <option data-group="pay-tv" value="SKYSG">&nbsp;&nbsp;Sky Sport Golf</option>
+        <option data-group="pay-tv" value="HDSPO">&nbsp;&nbsp;Sky Sport HD 1</option>
+        <option data-group="pay-tv" value="SHD2">&nbsp;&nbsp;Sky Sport HD 2</option>
+        <option data-group="pay-tv" value="SKYSM">&nbsp;&nbsp;Sky Sport Mix</option>
+        <option data-group="pay-tv" value="SNHD">&nbsp;&nbsp;Sky Sport News</option>
+        <option data-group="pay-tv" value="SKYSPL">&nbsp;&nbsp;Sky Sport Premier League</option>
+        <option data-group="pay-tv" value="SKYST">&nbsp;&nbsp;Sky Sport Tennis</option>
+        <option data-group="pay-tv" value="SKYSTE">&nbsp;&nbsp;Sky Sport Top Event</option>
+        <option data-group="privat" value="SKLAR">&nbsp;&nbsp;sonnenklar TV</option>
+        <option data-group="pay-tv" value="SONY">&nbsp;&nbsp;Sony Channel</option>
+        <option data-group="pay-tv" value="SP-GE">&nbsp;&nbsp;SPIEGEL Geschichte</option>
+        <option data-group="privat" value="SPORT">&nbsp;&nbsp;SPORT1</option>
+        <option data-group="privat" value="S1PLU">&nbsp;&nbsp;SPORT1+</option>
+        <option data-group="pay-tv" value="SPO-D">&nbsp;&nbsp;sportdigital Fussball</option>
+        <option data-group="oeffentlich-rechtlich" value="SF1">&nbsp;&nbsp;SRF 1</option>
+        <option data-group="oeffentlich-rechtlich" value="SF2">&nbsp;&nbsp;SRF zwei</option>
+        <option data-group="privat" value="STTV">&nbsp;&nbsp;STAR TV</option>
+        <option data-group="privat" value="SUPER">&nbsp;&nbsp;SUPER RTL</option>
+        <option data-group="oeffentlich-rechtlich" value="SWR">&nbsp;&nbsp;SWR/SR</option>
+        <option data-group="pay-tv" value="SCIFI">&nbsp;&nbsp;Syfy</option>
+        <option data-group="oeffentlich-rechtlich" value="TAG24">&nbsp;&nbsp;tagesschau 24</option>
+        <option data-group="privat" value="TELE5">&nbsp;&nbsp;TELE 5</option>
+        <option data-group="privat" value="TLC">&nbsp;&nbsp;TLC</option>
+        <option data-group="privat" value="TOGGO">&nbsp;&nbsp;TOGGO plus</option>
+        <option data-group="pay-tv" value="TRACE">&nbsp;&nbsp;Trace TV</option>
+        <option data-group="privat" value="TRAVELXP">&nbsp;&nbsp;travelxp 4K</option>
+        <option data-group="privat" value="TMAX">&nbsp;&nbsp;Turkmax Gurme</option>
+        <option data-group="privat" value="TVB">&nbsp;&nbsp;tv.berlin</option>
+        <option data-group="privat" value="TV2">&nbsp;&nbsp;TV2</option>
+        <option data-group="privat" value="TV5">&nbsp;&nbsp;TV5 Monde</option>
+        <option data-group="privat" value="UHD1">&nbsp;&nbsp;UHD1</option>
+        <option data-group="pay-tv" value="UNIVE">&nbsp;&nbsp;Universal Channel HD</option>
+        <option data-group="privat" value="VH1">&nbsp;&nbsp;VH1 Classic</option>
+        <option data-group="privat" value="VOX">&nbsp;&nbsp;VOX</option>
+        <option data-group="privat" value="VOXUP">&nbsp;&nbsp;VOXup</option>
+        <option data-group="pay-tv" value="TNT-C">&nbsp;&nbsp;Warner TV Comedy</option>
+        <option data-group="pay-tv" value="TNT-F">&nbsp;&nbsp;Warner TV Film</option>
+        <option data-group="pay-tv" value="TNT-S">&nbsp;&nbsp;Warner TV Serie</option>
+        <option data-group="oeffentlich-rechtlich" value="WDR">&nbsp;&nbsp;WDR</option>
+        <option data-group="privat" value="WELT">&nbsp;&nbsp;WELT</option>
+        <option data-group="privat" value="WDWTV">&nbsp;&nbsp;Welt der Wunder TV</option>
+        <option data-group="oeffentlich-rechtlich" value="ZDF">&nbsp;&nbsp;ZDF</option>
+        <option data-group="oeffentlich-rechtlich" value="ZINFO">&nbsp;&nbsp;ZDFinfo</option>
+        <option data-group="oeffentlich-rechtlich" value="2NEO">&nbsp;&nbsp;ZDFneo</option>
+    </select>
+</div>
+</body>
+</html>

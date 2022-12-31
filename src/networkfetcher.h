@@ -13,7 +13,7 @@ class NetworkFetcher : public FetcherImpl
 {
     Q_OBJECT
 public:
-    NetworkFetcher();
+    NetworkFetcher(QNetworkAccessManager *nam = nullptr);
     virtual ~NetworkFetcher() = default;
 
     void fetchGroups() override = 0;

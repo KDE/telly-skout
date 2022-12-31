@@ -18,6 +18,7 @@ find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
+include(ECMAddTests)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(KDEInstallDirs)
@@ -59,6 +60,7 @@ endif()
 
 ################# build and install #################
 
+add_subdirectory(autotests)
 add_subdirectory(src)
 
 ki18n_install(po)
@@ -71,7 +73,7 @@ feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAG
 
 ################# format sources #################
 
-file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES src/*.cpp src/*.h)
+file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES autotests/*.cpp autotests/*.h src/*.cpp src/*.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 add_custom_target(clang-format-always ALL DEPENDS ${ALL_CLANG_FORMAT_SOURCE_FILES})
 add_dependencies(clang-format-always clang-format)
