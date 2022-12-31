@@ -4,7 +4,6 @@
 #include "programfactory.h"
 
 #include "database.h"
-#include "fetcher.h"
 #include "program.h"
 
 #include <QDebug>

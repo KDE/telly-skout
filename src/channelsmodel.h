@@ -6,7 +6,6 @@
 #include <QAbstractListModel>
 
 #include "channelfactory.h"
-#include "types.h"
 
 #include <QUrl>
 

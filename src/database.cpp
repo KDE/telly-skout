@@ -3,8 +3,6 @@
 
 #include "database.h"
 
-#include "fetcher.h"
-
 #include <QDateTime>
 #include <QDebug>
 #include <QDir>

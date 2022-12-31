@@ -4,7 +4,6 @@
 #include "groupfactory.h"
 
 #include "database.h"
-#include "fetcher.h"
 #include "group.h"
 
 #include <QDebug>

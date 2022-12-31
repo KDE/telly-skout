@@ -5,7 +5,6 @@
 
 #include "channel.h"
 #include "database.h"
-#include "fetcher.h"
 #include "groupdata.h"
 
 #include <QDebug>

@@ -3,9 +3,6 @@
 
 #include "program.h"
 
-#include "channel.h"
-#include "database.h"
-
 #include <QDebug>
 
 Program::Program(const ProgramData &data)

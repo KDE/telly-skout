@@ -4,7 +4,6 @@
 #include "programsmodel.h"
 
 #include "channel.h"
-#include "database.h"
 #include "fetcher.h"
 #include "program.h"
 #include "programfactory.h"

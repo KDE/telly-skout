@@ -4,7 +4,6 @@
 #include "groupsmodel.h"
 
 #include "database.h"
-#include "fetcher.h"
 #include "group.h"
 #include "types.h"
 

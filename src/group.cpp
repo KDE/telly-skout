@@ -4,7 +4,6 @@
 #include "group.h"
 
 #include "channelsmodel.h"
-#include "database.h"
 #include "fetcher.h"
 
 #include <QDebug>
