@@ -120,8 +120,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId)
     const QVector<QDate> days{tomorrow, today, yesterday}; // backwards such that we can stop early (see below)
     for (auto day : days) {
         // check if program is available already
-        const QDateTime utcTime(day, QTime(), Qt::UTC);
-        const qint64 lastTime = utcTime.addDays(1).toSecsSinceEpoch() - 1;
+        QDateTime lastTime(day, QTime(23, 59, 59));
 
         if (Database::instance().programExists(channelId, lastTime)) {
             return; // assume that programs from previous days are available

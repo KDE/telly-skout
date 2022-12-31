@@ -57,7 +57,7 @@ public:
     void addProgram(const ProgramData &data);
     void updateProgramDescription(const ProgramId &id, const QString &description);
     void addPrograms(const QVector<ProgramData> &programs);
-    bool programExists(const ChannelId &channelId, qint64 lastTime) const;
+    bool programExists(const ChannelId &channelId, const QDateTime &lastTime) const;
     size_t programCount(const ChannelId &channelId) const;
     QMap<ChannelId, QVector<ProgramData>> programs() const;
     QVector<ProgramData> programs(const ChannelId &channelId) const;

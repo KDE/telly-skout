@@ -513,10 +513,10 @@ void Database::addPrograms(const QVector<ProgramData> &programs)
     QSqlDatabase::database().commit();
 }
 
-bool Database::programExists(const ChannelId &channelId, qint64 lastTime) const
+bool Database::programExists(const ChannelId &channelId, const QDateTime &lastTime) const
 {
     m_programExistsQuery->bindValue(QStringLiteral(":channel"), channelId.value());
-    m_programExistsQuery->bindValue(QStringLiteral(":lastTime"), lastTime);
+    m_programExistsQuery->bindValue(QStringLiteral(":lastTime"), lastTime.toSecsSinceEpoch());
     execute(*m_programExistsQuery);
     m_programExistsQuery->next();
 
