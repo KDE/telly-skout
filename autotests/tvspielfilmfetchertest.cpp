@@ -79,7 +79,9 @@ class TvSpielfilmFetcherTest : public QObject
 private Q_SLOTS:
     void initTestCase()
     {
-        qputenv("TZ", "UTC");
+        // TV Spielfilm: Europe/Berlin (UTC+1), DB: UTC
+        // check that start/stop times are displayed correctly in Europe/Athens (UTC+2 = EET-2)
+        qputenv("TZ", "EET-2");
         QStandardPaths::setTestModeEnabled(true);
 
         Database::instance().execute(QStringLiteral("DELETE FROM \"Groups\";"));
@@ -159,33 +161,33 @@ private Q_SLOTS:
         QCOMPARE(Database::instance().programCount(channelId), 3);
 
         const auto programs = Database::instance().programs(channelId);
-        QCOMPARE(programs.at(0).m_id, ProgramId("SWR_1672185600"));
+        QCOMPARE(programs.at(0).m_id, ProgramId("SWR_1672182000"));
         QCOMPARE(programs.at(0).m_url, "https://www.tvspielfilm.de/tv-programm/sendung/description1.html");
         QCOMPARE(programs.at(0).m_channelId, channelId);
-        QCOMPARE(programs.at(0).m_startTime.toSecsSinceEpoch(), 1672185600);
-        QCOMPARE(programs.at(0).m_stopTime.toSecsSinceEpoch(), 1672207200);
+        QCOMPARE(programs.at(0).m_startTime, QDateTime::fromString("2022-12-28T01:00:00", Qt::ISODate));
+        QCOMPARE(programs.at(0).m_stopTime, QDateTime::fromString("2022-12-28T07:00:00", Qt::ISODate));
         QCOMPARE(programs.at(0).m_title, "Title 1");
         QCOMPARE(programs.at(0).m_subtitle, "");
         QCOMPARE(programs.at(0).m_description, "");
         QCOMPARE(programs.at(0).m_descriptionFetched, false);
         QCOMPARE(programs.at(0).m_categories.at(0), "Category 1");
 
-        QCOMPARE(programs.at(1).m_id, ProgramId("SWR_1672207200"));
+        QCOMPARE(programs.at(1).m_id, ProgramId("SWR_1672203600"));
         QCOMPARE(programs.at(1).m_url, "https://www.tvspielfilm.de/tv-programm/sendung/description2.html");
         QCOMPARE(programs.at(1).m_channelId, channelId);
-        QCOMPARE(programs.at(1).m_startTime.toSecsSinceEpoch(), 1672207200);
-        QCOMPARE(programs.at(1).m_stopTime.toSecsSinceEpoch(), 1672218000);
+        QCOMPARE(programs.at(1).m_startTime, QDateTime::fromString("2022-12-28T07:00:00", Qt::ISODate));
+        QCOMPARE(programs.at(1).m_stopTime, QDateTime::fromString("2022-12-28T10:00:00", Qt::ISODate));
         QCOMPARE(programs.at(1).m_title, "Title 2");
         QCOMPARE(programs.at(1).m_subtitle, "");
         QCOMPARE(programs.at(1).m_description, "");
         QCOMPARE(programs.at(1).m_descriptionFetched, false);
         QCOMPARE(programs.at(1).m_categories.at(0), "Category 2");
 
-        QCOMPARE(programs.at(2).m_id, ProgramId("SWR_1672218000"));
+        QCOMPARE(programs.at(2).m_id, ProgramId("SWR_1672214400"));
         QCOMPARE(programs.at(2).m_url, "https://www.tvspielfilm.de/tv-programm/sendung/description3.html");
         QCOMPARE(programs.at(2).m_channelId, channelId);
-        QCOMPARE(programs.at(2).m_startTime.toSecsSinceEpoch(), 1672218000);
-        QCOMPARE(programs.at(2).m_stopTime.toSecsSinceEpoch(), 1672228800);
+        QCOMPARE(programs.at(2).m_startTime, QDateTime::fromString("2022-12-28T10:00:00", Qt::ISODate));
+        QCOMPARE(programs.at(2).m_stopTime, QDateTime::fromString("2022-12-28T13:00:00", Qt::ISODate));
         QCOMPARE(programs.at(2).m_title, "Title 3");
         QCOMPARE(programs.at(2).m_subtitle, "");
         QCOMPARE(programs.at(2).m_description, "");

@@ -13,6 +13,7 @@
 #include <QNetworkRequest>
 #include <QRegularExpression>
 #include <QString>
+#include <QTimeZone>
 
 TvSpielfilmFetcher::TvSpielfilmFetcher(QNetworkAccessManager *nam)
     : NetworkFetcher(nam)
@@ -216,12 +217,14 @@ ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &pr
 
     if (programMatch.hasMatch()) {
         const QString date = programMatch.captured(3);
-        const QDateTime startTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + programMatch.captured(1), "yyyydd.MM.HH:mm");
+        QDateTime startTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + programMatch.captured(1), "yyyydd.MM.HH:mm");
+        startTime.setTimeZone(QTimeZone("Europe/Berlin"));
         QDateTime stopTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + programMatch.captured(2), "yyyydd.MM.HH:mm");
         // ends after midnight
         if (stopTime < startTime) {
             stopTime = stopTime.addDays(1);
         }
+        stopTime.setTimeZone(QTimeZone("Europe/Berlin"));
         const QString descriptionUrl = programMatch.captured(4);
         const QString title = programMatch.captured(5);
         const QString category = programMatch.captured(6);
@@ -232,8 +235,8 @@ ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &pr
         programData.m_id = programId;
         programData.m_url = descriptionUrl;
         programData.m_channelId = channelId;
-        programData.m_startTime = startTime;
-        programData.m_stopTime = stopTime;
+        programData.m_startTime = startTime.toLocalTime();
+        programData.m_stopTime = stopTime.toLocalTime();
         programData.m_title = title;
         programData.m_subtitle = "";
         programData.m_description = "";
