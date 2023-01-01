@@ -171,21 +171,17 @@ QVector<ProgramData> TvSpielfilmFetcher::processChannel(const QString &infoTable
 {
     QVector<ProgramData> programs;
 
-    // column with date and time
-    const QString reTime("<strong>(\\d\\d:\\d\\d) - (\\d\\d:\\d\\d)</strong>");
-    const QString reDate("<span>.*? (\\d\\d\\.\\d\\d\\.)</span>");
-    const QString reDateTimeCol("<td class=\\\"col-2\\\">.*?" + reTime + ".*?" + reDate + ".*?</td>");
-
-    // column with title + description URL
+    // column with title + description URL + start/stop time
     const QString reDescriptionUrl("<a href=\\\"(https://www.tvspielfilm.de/tv-programm/sendung/.*?\\.html)\\\"");
     const QString reTitle("<strong>(.*?)</strong>");
-    const QString reTitleCol("<td class=\\\"col-3\\\">.*?" + reDescriptionUrl + ".*?" + reTitle + ".*?</td>");
+    const QString reDateTime("class=\\\"progressbar-info\\\".*?data-rel-start=\\\"(\\d+)\\\".*?data-rel-end=\\\"(\\d+)\\\"");
+    const QString reMainCol("<td class=\\\"col-3\\\">.*?" + reDescriptionUrl + ".*?" + reTitle + ".*?" + reDateTime + ".*?</td>");
 
     // column with category
     const QString reCategory("<span>(.*?)</span>");
     const QString reCategoryCol("<td class=\\\"col-4\\\">.*?" + reCategory + ".*?</td>");
 
-    QRegularExpression reProgram("<tr class=\\\"hover\\\">.*?" + reDateTimeCol + ".*?" + reTitleCol + ".*?" + reCategoryCol + ".*?</tr>");
+    QRegularExpression reProgram("<tr class=\\\"hover\\\">.*?" + reMainCol + ".*?" + reCategoryCol + ".*?</tr>");
     reProgram.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
     QRegularExpressionMatchIterator it = reProgram.globalMatch(infoTable);
     while (it.hasNext()) {
@@ -215,18 +211,13 @@ ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &pr
     ProgramData programData;
 
     if (programMatch.hasMatch()) {
-        const QString date = programMatch.captured(3);
-        QDateTime startTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + programMatch.captured(1), "yyyydd.MM.HH:mm");
-        startTime.setTimeZone(QTimeZone("Europe/Berlin"));
-        QDateTime stopTime = QDateTime::fromString(QString::number(QDate::currentDate().year()) + date + programMatch.captured(2), "yyyydd.MM.HH:mm");
-        // ends after midnight
-        if (stopTime < startTime) {
-            stopTime = stopTime.addDays(1);
-        }
-        stopTime.setTimeZone(QTimeZone("Europe/Berlin"));
-        const QString descriptionUrl = programMatch.captured(4);
-        const QString title = programMatch.captured(5);
-        const QString category = programMatch.captured(6);
+        const QString descriptionUrl = programMatch.captured(1);
+        const QString title = programMatch.captured(2);
+
+        const QDateTime startTime = QDateTime::fromSecsSinceEpoch(programMatch.captured(3).toInt());
+        const QDateTime stopTime = QDateTime::fromSecsSinceEpoch(programMatch.captured(4).toInt());
+
+        const QString category = programMatch.captured(5);
 
         // channel + start time can be used as ID
         const ProgramId programId = ProgramId(channelId.value() + "_" + QString::number(startTime.toSecsSinceEpoch()));
