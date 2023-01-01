@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:55+0000\n"
+"POT-Creation-Date: 2023-01-01 01:01+0000\n"
 "PO-Revision-Date: 2022-05-23 08:32+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -134,7 +134,7 @@ msgstr "რჩეულების დალაგება"
 msgid "About"
 msgstr "შესახებ"
 
-#: tvspielfilmfetcher.cpp:24
+#: tvspielfilmfetcher.cpp:26
 #, kde-format
 msgid "Germany"
 msgstr "გერმანია"
