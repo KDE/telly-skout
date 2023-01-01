@@ -221,18 +221,22 @@ int Database::fetcher() const
 
 void Database::cleanup()
 {
-    const unsigned int days = m_settings.deleteProgramAfter();
+    // delete programs in the past to avoid that the database grows over time
+    const unsigned int daysPast = m_settings.deleteProgramAfter();
+    QDateTime dateTimePast = QDateTime::currentDateTime();
+    dateTimePast = dateTimePast.addDays(-static_cast<qint64>(daysPast));
 
-    QDateTime dateTime = QDateTime::currentDateTime();
-    dateTime = dateTime.addDays(-static_cast<qint64>(days));
-    const qint64 sinceEpoch = dateTime.toSecsSinceEpoch();
+    // delete programs in the far future (probably they have been added by mistake)
+    QDateTime dateTimeFuture = QDateTime::currentDateTime();
+    dateTimeFuture = dateTimeFuture.addDays(30);
 
     QSqlQuery query;
-    if (!query.prepare(QStringLiteral("DELETE FROM Programs WHERE stop < :sinceEpoch;"))) {
+    if (!query.prepare(QStringLiteral("DELETE FROM Programs WHERE stop < :sinceEpochPast OR stop > :sinceEpochFuture;"))) {
         qCritical() << "Failed to prepare cleanup query";
         return;
     }
-    query.bindValue(QStringLiteral(":sinceEpoch"), sinceEpoch);
+    query.bindValue(QStringLiteral(":sinceEpochPast"), dateTimePast.toSecsSinceEpoch());
+    query.bindValue(QStringLiteral(":sinceEpochFuture"), dateTimeFuture.toSecsSinceEpoch());
     execute(query);
 }
 
