@@ -111,6 +111,7 @@
       <caption>Select Favorites</caption>
       <caption xml:lang="ca">Selecció dels preferits</caption>
       <caption xml:lang="ca-valencia">Selecció dels preferits</caption>
+      <caption xml:lang="cs">Vyberte oblíbené</caption>
       <caption xml:lang="en-GB">Select Favourites</caption>
       <caption xml:lang="es">Seleccionar favoritos</caption>
       <caption xml:lang="fr">Sélectionnez les favoris</caption>
@@ -129,6 +130,7 @@
       <caption>Sort Favorites</caption>
       <caption xml:lang="ca">Ordenació dels preferits</caption>
       <caption xml:lang="ca-valencia">Ordenació dels preferits</caption>
+      <caption xml:lang="cs">Seřadit oblíbené</caption>
       <caption xml:lang="en-GB">Sort Favourites</caption>
       <caption xml:lang="es">Ordenar favoritos</caption>
       <caption xml:lang="fr">Trier les favoris</caption>
