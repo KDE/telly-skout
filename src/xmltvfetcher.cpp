@@ -18,16 +18,13 @@
 XmltvFetcher::XmltvFetcher()
     : m_doc("xmltv")
 {
-    const TellySkoutSettings settings;
-
-    if (!open(settings.xmltvFile())) {
-        qCritical() << "Failed to open" << settings.xmltvFile();
+    if (!open(TellySkoutSettings::xmltvFile())) {
+        qCritical() << "Failed to open" << TellySkoutSettings::xmltvFile();
     }
 
-    connect(&settings, &TellySkoutSettings::xmltvFileChanged, this, [this]() {
-        const TellySkoutSettings settings;
-        if (!open(settings.xmltvFile())) {
-            qCritical() << "Failed to open" << settings.xmltvFile();
+    connect(TellySkoutSettings::self(), &TellySkoutSettings::xmltvFileChanged, this, [this]() {
+        if (!open(TellySkoutSettings::xmltvFile())) {
+            qCritical() << "Failed to open" << TellySkoutSettings::xmltvFile();
         }
     });
 }
@@ -39,8 +36,7 @@ void XmltvFetcher::fetchGroups()
 
     Q_EMIT startedFetchingGroup(id);
 
-    TellySkoutSettings settings;
-    Database::instance().addGroup(id, name, settings.xmltvFile());
+    Database::instance().addGroup(id, name, TellySkoutSettings::xmltvFile());
 
     Q_EMIT groupUpdated(id);
 }

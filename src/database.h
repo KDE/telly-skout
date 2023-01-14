@@ -5,7 +5,6 @@
 
 #include <QObject>
 
-#include "TellySkoutSettings.h"
 #include "channeldata.h"
 #include "groupdata.h"
 #include "programdata.h"
@@ -77,8 +76,6 @@ private:
     bool createTables();
     bool dropTables();
     void cleanup();
-
-    const TellySkoutSettings m_settings;
 
     std::unique_ptr<QSqlQuery> m_addGroupQuery;
     std::unique_ptr<QSqlQuery> m_groupCountQuery;

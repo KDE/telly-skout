@@ -1,7 +1,7 @@
 File=TellySkoutSettings.kcfg
 ClassName=TellySkoutSettings
+Singleton=true
 Mutators=true
 DefaultValueGetters=true
 GenerateProperties=true
 GlobalEnums=false
-ParentInConstructor=true

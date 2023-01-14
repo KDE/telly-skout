@@ -3,6 +3,8 @@
 
 #include "database.h"
 
+#include "TellySkoutSettings.h"
+
 #include <QDateTime>
 #include <QDebug>
 #include <QDir>
@@ -26,7 +28,7 @@ Database::Database()
     }
 
     // drop DB if it doesn't use the correct fetcher
-    if (m_settings.fetcher() != fetcher()) {
+    if (TellySkoutSettings::fetcher() != fetcher()) {
         if (!dropTables()) {
             qCritical() << "Failed to drop database";
         }
@@ -105,7 +107,7 @@ Database::Database()
         qCritical() << "Failed to prepare database queries";
     }
 
-    connect(&m_settings, &TellySkoutSettings::fetcherChanged, this, [this]() {
+    connect(TellySkoutSettings::self(), &TellySkoutSettings::fetcherChanged, this, [this]() {
         dropTables();
         createTables();
     });
@@ -116,7 +118,7 @@ bool Database::createTables()
     qDebug() << "Create DB tables";
 
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Fetcher (id INTEGER UNIQUE);")));
-    TRUE_OR_RETURN(execute(QStringLiteral("INSERT OR IGNORE INTO Fetcher VALUES (") + QString::number(m_settings.fetcher()) + ");"));
+    TRUE_OR_RETURN(execute(QStringLiteral("INSERT OR IGNORE INTO Fetcher VALUES (") + QString::number(TellySkoutSettings::fetcher()) + ");"));
 
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS \"Groups\" (id TEXT UNIQUE, name TEXT, url TEXT);")));
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (id TEXT UNIQUE, name TEXT, url TEXT, image TEXT);")));
@@ -222,7 +224,7 @@ int Database::fetcher() const
 void Database::cleanup()
 {
     // delete programs in the past to avoid that the database grows over time
-    const unsigned int daysPast = m_settings.deleteProgramAfter();
+    const unsigned int daysPast = TellySkoutSettings::deleteProgramAfter();
     QDateTime dateTimePast = QDateTime::currentDateTime();
     dateTimePast = dateTimePast.addDays(-static_cast<qint64>(daysPast));
 

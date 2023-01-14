@@ -92,11 +92,9 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty(QStringLiteral("_aboutData"), QVariant::fromValue(about));
 
-    TellySkoutSettings settings;
+    engine.rootContext()->setContextProperty(QStringLiteral("_settings"), TellySkoutSettings::self());
 
-    engine.rootContext()->setContextProperty(QStringLiteral("_settings"), &settings);
-
-    QObject::connect(&app, &QCoreApplication::aboutToQuit, &settings, &TellySkoutSettings::save);
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, TellySkoutSettings::self(), &TellySkoutSettings::save);
 
     Database::instance();
 

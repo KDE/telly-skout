@@ -16,8 +16,7 @@
 
 Fetcher::Fetcher()
 {
-    const TellySkoutSettings settings;
-    const TellySkoutSettings::EnumFetcher::type fetcherType = static_cast<TellySkoutSettings::EnumFetcher::type>(settings.fetcher());
+    const TellySkoutSettings::EnumFetcher::type fetcherType = static_cast<TellySkoutSettings::EnumFetcher::type>(TellySkoutSettings::fetcher());
 
     switch (fetcherType) {
     case TellySkoutSettings::EnumFetcher::TVSpielfilm:
