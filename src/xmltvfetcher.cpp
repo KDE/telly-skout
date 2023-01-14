@@ -110,7 +110,11 @@ bool XmltvFetcher::open(const QString &fileName)
     if (!file.open(QIODevice::ReadOnly)) {
         return false;
     }
-    if (!m_doc.setContent(&file)) {
+    QString errorMsg;
+    int errorLine;
+    int errorColumn;
+    if (!m_doc.setContent(&file, &errorMsg, &errorLine, &errorColumn)) {
+        qCritical() << "Could not open" << fileName << ":" << errorMsg << "(l" << errorLine << ":" << errorColumn << ")";
         file.close();
         return false;
     }
