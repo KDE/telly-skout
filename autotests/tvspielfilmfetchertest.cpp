@@ -2,9 +2,8 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
 #include "../src/tvspielfilmfetcher.h"
-#include "../src/database.h"
 
-#include <QTest>
+#include "../src/database.h"
 
 #include <QFile>
 #include <QHash>
@@ -13,6 +12,7 @@
 #include <QSignalSpy>
 #include <QStandardPaths>
 #include <QString>
+#include <QTest>
 
 class MockQNetworkReply : public QNetworkReply
 {

@@ -1,0 +1,30 @@
+<!--
+  - SPDX-License-Identifier: CC0-1.0
+  - SPDX-FileCopyrightText: 2023 Plata Hill <plata.hill@kdemail.net>
+ -->
+<tv source-info-url="" source-info-name="" generator-info-name="" generator-info-url="http://www.xmltv.org/">
+  <channel id="channel1">
+    <display-name>Channel 1</display-name>
+    <display-name>Channel_1</display-name>
+    <icon src="channel1.png"/>
+  </channel>
+  <channel id="channel2">
+    <display-name>Channel 2</display-name>
+    <display-name>Channel_2</display-name>
+    <icon src="channel2.png" />
+  </channel>
+  <programme id="program1" start="20221228000000 +0100" stop="20221228060000 +0100" channel="channel1">
+    <title lang="en">Title 1</title>
+    <sub-title lang="en">Subtitle 1</sub-title>
+    <desc lang="en">Description 1</desc>
+    <date>20221228</date>
+    <category lang="en">Category 1</category>
+  </programme>
+  <programme id="program2" start="20221228060000 +0100" stop="20221228090000 +0100" channel="channel1">
+    <title lang="en">Title 2</title>
+    <sub-title lang="en">Subtitle 2</sub-title>
+    <desc lang="en">Description 2</desc>
+    <date>20221228</date>
+    <category lang="en">Category 2</category>
+  </programme>
+</tv>
