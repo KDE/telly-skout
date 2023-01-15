@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-14 16:36+0000\n"
+"POT-Creation-Date: 2023-01-15 00:58+0000\n"
 "PO-Revision-Date: 2022-07-13 16:00+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -57,17 +57,17 @@ msgstr "채널"
 msgid "Loading channels..."
 msgstr "채널 불러오는 중..."
 
-#: qml/ChannelTablePage.qml:22 qml/TellySkoutGlobalDrawer.qml:15
+#: qml/ChannelTablePage.qml:23 qml/TellySkoutGlobalDrawer.qml:15
 #, kde-format
 msgid "Favorites"
 msgstr "책갈피"
 
-#: qml/ChannelTablePage.qml:41
+#: qml/ChannelTablePage.qml:42
 #, kde-format
 msgid "Please select favorites"
 msgstr "책갈피를 선택하십시오"
 
-#: qml/ChannelTablePage.qml:130
+#: qml/ChannelTablePage.qml:131
 #, kde-format
 msgid "not available"
 msgstr "사용할 수 없음"
@@ -82,43 +82,74 @@ msgstr "책갈피 선택"
 msgid "Loading groups..."
 msgstr "그룹 불러오는 중..."
 
-#: qml/SettingsPage.qml:11 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:48
 #: qml/TellySkoutGlobalDrawer.qml:51
 #, kde-format
 msgid "Settings"
 msgstr "설정"
 
-#: qml/SettingsPage.qml:16
+#: qml/SettingsPage.qml:17
+#, kde-format
+msgid "UI"
+msgstr ""
+
+#: qml/SettingsPage.qml:21
+#, fuzzy, kde-format
+#| msgid "Program"
+msgid "Program height"
+msgstr "프로그램"
+
+#: qml/SettingsPage.qml:32
+#, kde-format
+msgid "px/min"
+msgstr ""
+
+#: qml/SettingsPage.qml:38
+#, kde-format
+msgid "Column width"
+msgstr ""
+
+#: qml/SettingsPage.qml:49 qml/SettingsPage.qml:66
+#, kde-format
+msgid "px"
+msgstr ""
+
+#: qml/SettingsPage.qml:55
+#, kde-format
+msgid "Font size"
+msgstr ""
+
+#: qml/SettingsPage.qml:73
 #, kde-format
 msgid "Program"
 msgstr "프로그램"
 
-#: qml/SettingsPage.qml:20
+#: qml/SettingsPage.qml:77
 #, kde-format
 msgid "Delete old after"
 msgstr "다음보다 오래된 항목 삭제"
 
-#: qml/SettingsPage.qml:30
+#: qml/SettingsPage.qml:87
 #, kde-format
 msgid "days"
 msgstr "일"
 
-#: qml/SettingsPage.qml:36
+#: qml/SettingsPage.qml:93
 #, kde-format
 msgid "Fetcher"
 msgstr "가져오기 도구"
 
-#: qml/SettingsPage.qml:54
+#: qml/SettingsPage.qml:111
 #, kde-format
 msgid "File"
 msgstr "파일"
 
-#: qml/SettingsPage.qml:67
+#: qml/SettingsPage.qml:124
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "XML 파일 (*.xml)"
 
-#: qml/SettingsPage.qml:67
+#: qml/SettingsPage.qml:124
 #, kde-format
 msgid "All files (*)"
 msgstr "모든 파일 (*)"

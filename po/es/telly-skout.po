@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-14 16:36+0000\n"
+"POT-Creation-Date: 2023-01-15 00:58+0000\n"
 "PO-Revision-Date: 2022-05-18 13:13+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -59,17 +59,17 @@ msgstr "Canales"
 msgid "Loading channels..."
 msgstr "Cargando canales..."
 
-#: qml/ChannelTablePage.qml:22 qml/TellySkoutGlobalDrawer.qml:15
+#: qml/ChannelTablePage.qml:23 qml/TellySkoutGlobalDrawer.qml:15
 #, kde-format
 msgid "Favorites"
 msgstr "Favoritos"
 
-#: qml/ChannelTablePage.qml:41
+#: qml/ChannelTablePage.qml:42
 #, kde-format
 msgid "Please select favorites"
 msgstr "Seleccione favoritos"
 
-#: qml/ChannelTablePage.qml:130
+#: qml/ChannelTablePage.qml:131
 #, kde-format
 msgid "not available"
 msgstr "no disponible"
@@ -84,43 +84,74 @@ msgstr "Seleccione favoritos"
 msgid "Loading groups..."
 msgstr "Cargando grupos..."
 
-#: qml/SettingsPage.qml:11 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:48
 #: qml/TellySkoutGlobalDrawer.qml:51
 #, kde-format
 msgid "Settings"
 msgstr "Preferencias"
 
-#: qml/SettingsPage.qml:16
+#: qml/SettingsPage.qml:17
+#, kde-format
+msgid "UI"
+msgstr ""
+
+#: qml/SettingsPage.qml:21
+#, fuzzy, kde-format
+#| msgid "Program"
+msgid "Program height"
+msgstr "Programa"
+
+#: qml/SettingsPage.qml:32
+#, kde-format
+msgid "px/min"
+msgstr ""
+
+#: qml/SettingsPage.qml:38
+#, kde-format
+msgid "Column width"
+msgstr ""
+
+#: qml/SettingsPage.qml:49 qml/SettingsPage.qml:66
+#, kde-format
+msgid "px"
+msgstr ""
+
+#: qml/SettingsPage.qml:55
+#, kde-format
+msgid "Font size"
+msgstr ""
+
+#: qml/SettingsPage.qml:73
 #, kde-format
 msgid "Program"
 msgstr "Programa"
 
-#: qml/SettingsPage.qml:20
+#: qml/SettingsPage.qml:77
 #, kde-format
 msgid "Delete old after"
 msgstr "Borrar antiguo después"
 
-#: qml/SettingsPage.qml:30
+#: qml/SettingsPage.qml:87
 #, kde-format
 msgid "days"
 msgstr "días"
 
-#: qml/SettingsPage.qml:36
+#: qml/SettingsPage.qml:93
 #, kde-format
 msgid "Fetcher"
 msgstr "Extractor"
 
-#: qml/SettingsPage.qml:54
+#: qml/SettingsPage.qml:111
 #, kde-format
 msgid "File"
 msgstr "Archivo"
 
-#: qml/SettingsPage.qml:67
+#: qml/SettingsPage.qml:124
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "Archivos XML (*.xml)"
 
-#: qml/SettingsPage.qml:67
+#: qml/SettingsPage.qml:124
 #, kde-format
 msgid "All files (*)"
 msgstr "Todos los archivos (*)"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-14 16:36+0000\n"
+"POT-Creation-Date: 2023-01-15 00:58+0000\n"
 "PO-Revision-Date: 2022-06-11 21:57+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -57,17 +57,17 @@ msgstr "Kanavat"
 msgid "Loading channels..."
 msgstr "Ladataan kanavia…"
 
-#: qml/ChannelTablePage.qml:22 qml/TellySkoutGlobalDrawer.qml:15
+#: qml/ChannelTablePage.qml:23 qml/TellySkoutGlobalDrawer.qml:15
 #, kde-format
 msgid "Favorites"
 msgstr "Suosikit"
 
-#: qml/ChannelTablePage.qml:41
+#: qml/ChannelTablePage.qml:42
 #, kde-format
 msgid "Please select favorites"
 msgstr "Valitse suosikit"
 
-#: qml/ChannelTablePage.qml:130
+#: qml/ChannelTablePage.qml:131
 #, kde-format
 msgid "not available"
 msgstr "ei saatavilla"
@@ -82,43 +82,74 @@ msgstr "Valitse suosikit"
 msgid "Loading groups..."
 msgstr "Ladataan ryhmiä…"
 
-#: qml/SettingsPage.qml:11 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:48
 #: qml/TellySkoutGlobalDrawer.qml:51
 #, kde-format
 msgid "Settings"
 msgstr "Asetukset"
 
-#: qml/SettingsPage.qml:16
+#: qml/SettingsPage.qml:17
+#, kde-format
+msgid "UI"
+msgstr ""
+
+#: qml/SettingsPage.qml:21
+#, fuzzy, kde-format
+#| msgid "Program"
+msgid "Program height"
+msgstr "Ohjelma"
+
+#: qml/SettingsPage.qml:32
+#, kde-format
+msgid "px/min"
+msgstr ""
+
+#: qml/SettingsPage.qml:38
+#, kde-format
+msgid "Column width"
+msgstr ""
+
+#: qml/SettingsPage.qml:49 qml/SettingsPage.qml:66
+#, kde-format
+msgid "px"
+msgstr ""
+
+#: qml/SettingsPage.qml:55
+#, kde-format
+msgid "Font size"
+msgstr ""
+
+#: qml/SettingsPage.qml:73
 #, kde-format
 msgid "Program"
 msgstr "Ohjelma"
 
-#: qml/SettingsPage.qml:20
+#: qml/SettingsPage.qml:77
 #, kde-format
 msgid "Delete old after"
 msgstr "Poista vanhat"
 
-#: qml/SettingsPage.qml:30
+#: qml/SettingsPage.qml:87
 #, kde-format
 msgid "days"
 msgstr "päivän kuluttua"
 
-#: qml/SettingsPage.qml:36
+#: qml/SettingsPage.qml:93
 #, kde-format
 msgid "Fetcher"
 msgstr "Noutaja"
 
-#: qml/SettingsPage.qml:54
+#: qml/SettingsPage.qml:111
 #, kde-format
 msgid "File"
 msgstr "Tiedosto"
 
-#: qml/SettingsPage.qml:67
+#: qml/SettingsPage.qml:124
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "XML-tiedostot (*.xml)"
 
-#: qml/SettingsPage.qml:67
+#: qml/SettingsPage.qml:124
 #, kde-format
 msgid "All files (*)"
 msgstr "Kaikki tiedostot (*)"

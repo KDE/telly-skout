@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-14 16:36+0000\n"
+"POT-Creation-Date: 2023-01-15 00:58+0000\n"
 "PO-Revision-Date: 2023-01-12 10:32\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -57,17 +57,17 @@ msgstr ""
 msgid "Loading channels..."
 msgstr ""
 
-#: qml/ChannelTablePage.qml:22 qml/TellySkoutGlobalDrawer.qml:15
+#: qml/ChannelTablePage.qml:23 qml/TellySkoutGlobalDrawer.qml:15
 #, kde-format
 msgid "Favorites"
 msgstr ""
 
-#: qml/ChannelTablePage.qml:41
+#: qml/ChannelTablePage.qml:42
 #, kde-format
 msgid "Please select favorites"
 msgstr ""
 
-#: qml/ChannelTablePage.qml:130
+#: qml/ChannelTablePage.qml:131
 #, kde-format
 msgid "not available"
 msgstr ""
@@ -82,43 +82,73 @@ msgstr ""
 msgid "Loading groups..."
 msgstr ""
 
-#: qml/SettingsPage.qml:11 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:48
 #: qml/TellySkoutGlobalDrawer.qml:51
 #, kde-format
 msgid "Settings"
 msgstr ""
 
-#: qml/SettingsPage.qml:16
+#: qml/SettingsPage.qml:17
+#, kde-format
+msgid "UI"
+msgstr ""
+
+#: qml/SettingsPage.qml:21
+#, kde-format
+msgid "Program height"
+msgstr ""
+
+#: qml/SettingsPage.qml:32
+#, kde-format
+msgid "px/min"
+msgstr ""
+
+#: qml/SettingsPage.qml:38
+#, kde-format
+msgid "Column width"
+msgstr ""
+
+#: qml/SettingsPage.qml:49 qml/SettingsPage.qml:66
+#, kde-format
+msgid "px"
+msgstr ""
+
+#: qml/SettingsPage.qml:55
+#, kde-format
+msgid "Font size"
+msgstr ""
+
+#: qml/SettingsPage.qml:73
 #, kde-format
 msgid "Program"
 msgstr ""
 
-#: qml/SettingsPage.qml:20
+#: qml/SettingsPage.qml:77
 #, kde-format
 msgid "Delete old after"
 msgstr ""
 
-#: qml/SettingsPage.qml:30
+#: qml/SettingsPage.qml:87
 #, kde-format
 msgid "days"
 msgstr ""
 
-#: qml/SettingsPage.qml:36
+#: qml/SettingsPage.qml:93
 #, kde-format
 msgid "Fetcher"
 msgstr ""
 
-#: qml/SettingsPage.qml:54
+#: qml/SettingsPage.qml:111
 #, kde-format
 msgid "File"
 msgstr ""
 
-#: qml/SettingsPage.qml:67
+#: qml/SettingsPage.qml:124
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr ""
 
-#: qml/SettingsPage.qml:67
+#: qml/SettingsPage.qml:124
 #, kde-format
 msgid "All files (*)"
 msgstr ""
