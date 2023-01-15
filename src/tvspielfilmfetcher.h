@@ -11,7 +11,7 @@ class TvSpielfilmFetcher : public NetworkFetcher
 {
     Q_OBJECT
 public:
-    TvSpielfilmFetcher(QNetworkAccessManager *nam = nullptr);
+    explicit TvSpielfilmFetcher(QNetworkAccessManager *nam = nullptr);
     virtual ~TvSpielfilmFetcher() = default;
 
     void fetchGroups() override;

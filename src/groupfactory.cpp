@@ -24,11 +24,15 @@ Group *GroupFactory::create(int index) const
     // try to load if not avaible
     if (m_groups.size() <= index) {
         load();
+
+        // check if requested data exists
+        // load() changes m_groups
+        // cppcheck-suppress identicalInnerCondition
+        if (m_groups.size() <= index) {
+            return nullptr;
+        }
     }
-    // check if requested data exists
-    if (m_groups.size() <= index) {
-        return nullptr;
-    }
+
     return new Group(m_groups.at(index));
 }
 

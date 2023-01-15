@@ -18,7 +18,7 @@ class MockQNetworkReply : public QNetworkReply
 {
     Q_OBJECT
 public:
-    MockQNetworkReply(const QString &dataFileName, QObject *parent = nullptr)
+    explicit MockQNetworkReply(const QString &dataFileName, QObject *parent = nullptr)
         : QNetworkReply(parent)
     {
         setError(NetworkError::NoError, QString());
@@ -45,7 +45,7 @@ class MockQNetworkAccessManager : public QNetworkAccessManager
 {
     Q_OBJECT
 public:
-    MockQNetworkAccessManager(QObject *parent = nullptr)
+    explicit MockQNetworkAccessManager(QObject *parent = nullptr)
         : QNetworkAccessManager(parent)
     {
     }

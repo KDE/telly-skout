@@ -19,11 +19,15 @@ size_t ProgramFactory::count(const ChannelId &channelId) const
     // try to load if not avaible
     if (!m_programs.contains(channelId)) {
         load(channelId);
+
+        // check if requested data exists
+        // load() changes m_programs
+        // cppcheck-suppress identicalInnerCondition
+        if (!m_programs.contains(channelId)) {
+            return 0;
+        }
     }
-    // check if requested data exists
-    if (!m_programs.contains(channelId)) {
-        return 0;
-    }
+
     return static_cast<size_t>(m_programs[channelId].size());
 }
 

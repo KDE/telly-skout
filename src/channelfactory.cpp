@@ -36,11 +36,15 @@ Channel *ChannelFactory::create(int index) const
     // try to load if not avaible
     if (m_channels.size() <= index) {
         load();
+
+        // check if requested data exists
+        // load() changes m_channels
+        // cppcheck-suppress identicalInnerCondition
+        if (m_channels.size() <= index) {
+            return nullptr;
+        }
     }
-    // check if requested data exists
-    if (m_channels.size() <= index) {
-        return nullptr;
-    }
+
     const ChannelData &data = m_channels.at(index);
 
     // check if channel is favorite

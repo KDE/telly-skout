@@ -22,7 +22,7 @@ ProgramsModel::ProgramsModel(Channel *channel, ProgramFactory &programFactory)
         if (m_channel->id() == id.value()) {
             beginResetModel();
             m_programFactory.load(ChannelId(m_channel->id()));
-            for (auto &program : m_programs) {
+            for (auto &&program : m_programs) {
                 delete program;
             }
             m_programs.clear();
@@ -57,8 +57,9 @@ QHash<int, QByteArray> ProgramsModel::roleNames() const
 int ProgramsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    Q_ASSERT(m_programFactory.count(ChannelId(m_channel->id())) <= std::numeric_limits<int>::max());
-    return static_cast<int>(m_programFactory.count(ChannelId(m_channel->id())));
+    const ChannelId channelId(m_channel->id());
+    Q_ASSERT(m_programFactory.count(channelId) <= std::numeric_limits<int>::max());
+    return static_cast<int>(m_programFactory.count(channelId));
 }
 
 void ProgramsModel::loadProgram(int index) const
