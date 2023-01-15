@@ -35,7 +35,6 @@ Rectangle {
         }
     }
 
-    width: 200
     // start always at startTime, even if program starts earlier
     // stop always at stopTime, even if the program runs longer
     height: (Math.min(program.stop, stopTime) - Math.max(program.start, startTime)) / 60000 * pxPerMin
@@ -66,6 +65,7 @@ Rectangle {
     Text {
         anchors.fill: parent
         text: "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title
+        font.pixelSize: _settings.fontSize
         wrapMode: Text.Wrap
         elide: Text.ElideRight // avoid that text overlaps into next program
         // indicate if program is over

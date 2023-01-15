@@ -11,6 +11,7 @@ import org.kde.kirigami 2.19 as Kirigami
 Kirigami.Page {
     id: root
 
+    readonly property int columnWidth: _settings.columnWidth
     property int windowHeight: 0
     property real currentTimestamp: 0
 
@@ -54,7 +55,7 @@ Kirigami.Page {
             model: channelsModel
 
             delegate: Column {
-                width: 200
+                width: columnWidth
 
                 Rectangle {
                     color: Kirigami.Theme.backgroundColor
@@ -79,7 +80,7 @@ Kirigami.Page {
     Controls.ScrollView {
         id: channelTable
 
-        readonly property int pxPerMin: 5
+        readonly property int pxPerMin: _settings.programHeight
         readonly property var date: new Date()
         readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
         readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
@@ -115,7 +116,7 @@ Kirigami.Page {
 
                     property int idx: index
 
-                    width: 200
+                    width: root.columnWidth
 
                     // show info if program is not available
                     Rectangle {
@@ -149,6 +150,7 @@ Kirigami.Page {
                             channelIdx: column.idx
                             overlay: overlaySheet
                             pxPerMin: channelTable.pxPerMin
+                            width: root.columnWidth
                             startTime: channelTable.start
                             stopTime: channelTable.stop
                             currentTimestamp: root.currentTimestamp

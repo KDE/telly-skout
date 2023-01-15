@@ -5,15 +5,72 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14 as Controls
 import QtQuick.Dialogs 1.0
 import QtQuick.Layouts 1.14
+import QtQuick.Window 2.15
 import org.kde.kirigami 2.19 as Kirigami
 
 Kirigami.ScrollablePage {
     title: i18n("Settings")
 
     Kirigami.FormLayout {
-        Kirigami.Heading {
+        Kirigami.Separator {
             Kirigami.FormData.isSection: true
-            text: i18n("Program")
+            Kirigami.FormData.label: i18n("UI")
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Program height")
+
+            Controls.SpinBox {
+                from: 0
+                to: Screen.height
+                editable: true
+                value: _settings.programHeight
+                onValueModified: _settings.programHeight = value
+            }
+
+            Controls.Label {
+                text: i18n("px/min")
+            }
+
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Column width")
+
+            Controls.SpinBox {
+                from: 0
+                to: Screen.width
+                editable: true
+                value: _settings.columnWidth
+                onValueModified: _settings.columnWidth = value
+            }
+
+            Controls.Label {
+                text: i18n("px")
+            }
+
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Font size")
+
+            Controls.SpinBox {
+                from: 1
+                to: 200
+                editable: true
+                value: _settings.fontSize
+                onValueModified: _settings.fontSize = value
+            }
+
+            Controls.Label {
+                text: i18n("px")
+            }
+
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Program")
         }
 
         RowLayout {
