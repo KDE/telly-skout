@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
 #
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-15 00:58+0000\n"
-"PO-Revision-Date: 2022-07-19 15:28+0300\n"
+"PO-Revision-Date: 2023-01-15 17:50+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -91,33 +91,32 @@ msgstr "Ayarlar"
 #: qml/SettingsPage.qml:17
 #, kde-format
 msgid "UI"
-msgstr ""
+msgstr "Arayüz"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgid "Program height"
-msgstr "Program"
+msgstr "Program yüksekliği"
 
 #: qml/SettingsPage.qml:32
 #, kde-format
 msgid "px/min"
-msgstr ""
+msgstr "pks/dak"
 
 #: qml/SettingsPage.qml:38
 #, kde-format
 msgid "Column width"
-msgstr ""
+msgstr "Sütun genişliği"
 
 #: qml/SettingsPage.qml:49 qml/SettingsPage.qml:66
 #, kde-format
 msgid "px"
-msgstr ""
+msgstr "pks"
 
 #: qml/SettingsPage.qml:55
 #, kde-format
 msgid "Font size"
-msgstr ""
+msgstr "Yazıtipi büyüklüğü"
 
 #: qml/SettingsPage.qml:73
 #, kde-format
