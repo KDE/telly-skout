@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
 #
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2022.
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-15 00:58+0000\n"
-"PO-Revision-Date: 2022-05-19 07:31+0200\n"
+"PO-Revision-Date: 2023-01-16 14:23+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -92,33 +92,32 @@ msgstr "Nastavitve"
 #: qml/SettingsPage.qml:17
 #, kde-format
 msgid "UI"
-msgstr ""
+msgstr "UI"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgid "Program height"
-msgstr "Program"
+msgstr "Višina programa"
 
 #: qml/SettingsPage.qml:32
 #, kde-format
 msgid "px/min"
-msgstr ""
+msgstr "px/min"
 
 #: qml/SettingsPage.qml:38
 #, kde-format
 msgid "Column width"
-msgstr ""
+msgstr "Širina stolpca"
 
 #: qml/SettingsPage.qml:49 qml/SettingsPage.qml:66
 #, kde-format
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: qml/SettingsPage.qml:55
 #, kde-format
 msgid "Font size"
-msgstr ""
+msgstr "Velikost pisave"
 
 #: qml/SettingsPage.qml:73
 #, kde-format

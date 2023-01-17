@@ -1,15 +1,15 @@
 # Translation of telly-skout.po to Catalan (Valencian)
-# Copyright (C) 2022 This_file_is_part_of_KDE
+# Copyright (C) 2022-2023 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-15 00:58+0000\n"
-"PO-Revision-Date: 2022-05-18 08:41+0200\n"
+"PO-Revision-Date: 2023-01-15 11:24+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -77,7 +77,7 @@ msgstr "no disponible"
 #: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:26
 #, kde-format
 msgid "Select Favorites"
-msgstr "Selecció dels preferits"
+msgstr "Seleccioneu els preferits"
 
 #: qml/GroupListPage.qml:24
 #, kde-format
@@ -93,33 +93,32 @@ msgstr "Configuració"
 #: qml/SettingsPage.qml:17
 #, kde-format
 msgid "UI"
-msgstr ""
+msgstr "IU"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgid "Program height"
-msgstr "Programa"
+msgstr "Alçària dels programes"
 
 #: qml/SettingsPage.qml:32
 #, kde-format
 msgid "px/min"
-msgstr ""
+msgstr "px/min"
 
 #: qml/SettingsPage.qml:38
 #, kde-format
 msgid "Column width"
-msgstr ""
+msgstr "Amplària de les columnes"
 
 #: qml/SettingsPage.qml:49 qml/SettingsPage.qml:66
 #, kde-format
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: qml/SettingsPage.qml:55
 #, kde-format
 msgid "Font size"
-msgstr ""
+msgstr "Mida del tipus de lletra"
 
 #: qml/SettingsPage.qml:73
 #, kde-format
