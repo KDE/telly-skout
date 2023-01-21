@@ -14,6 +14,8 @@
 #include <QString>
 #include <QTest>
 
+namespace
+{
 class MockQNetworkReply : public QNetworkReply
 {
     Q_OBJECT
@@ -72,6 +74,7 @@ public:
 private:
     QHash<QString, QNetworkReply *> m_replies;
 };
+}
 
 class TvSpielfilmFetcherTest : public QObject
 {
