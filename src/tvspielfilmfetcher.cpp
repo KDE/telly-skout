@@ -9,8 +9,6 @@
 
 #include <QDateTime>
 #include <QDebug>
-#include <QNetworkReply>
-#include <QNetworkRequest>
 #include <QRegularExpression>
 #include <QString>
 #include <QTimeZone>
@@ -38,16 +36,9 @@ void TvSpielfilmFetcher::fetchGroup(const QString &url, const GroupId &groupId)
 {
     qDebug() << "Starting to fetch group (" << groupId.value() << ", " << url << ")";
 
-    QNetworkRequest request((QUrl(url)));
-    QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, url, groupId, reply]() {
-        if (reply->error()) {
-            qWarning() << "Error fetching group";
-            qWarning() << reply->errorString();
-            Q_EMIT errorFetchingGroup(groupId, Error(reply->error(), reply->errorString()));
-        } else {
-            QByteArray data = reply->readAll();
-
+    m_provider.get(
+        QUrl(url),
+        [this, groupId](QByteArray data) {
             static QRegularExpression reChannelList("<select name=\\\"channel\\\">.*</select>");
             reChannelList.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
             QRegularExpressionMatch matchChannelList = reChannelList.match(data);
@@ -67,11 +58,14 @@ void TvSpielfilmFetcher::fetchGroup(const QString &url, const GroupId &groupId)
                         fetchChannel(id, name, groupId);
                     }
                 }
+                Q_EMIT groupUpdated(groupId);
             }
-        }
-        reply->deleteLater();
-        Q_EMIT groupUpdated(groupId);
-    });
+        },
+        [this, groupId](Error error) {
+            qWarning() << "Error fetching group";
+            qWarning() << error.m_message;
+            Q_EMIT errorFetchingGroup(groupId, error);
+        });
 }
 
 void TvSpielfilmFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const GroupId &group)
@@ -96,20 +90,18 @@ void TvSpielfilmFetcher::fetchChannel(const ChannelId &channelId, const QString 
 void TvSpielfilmFetcher::fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url)
 {
     qDebug() << "Starting to fetch description for" << programId.value() << "(" << url << ")";
-    QNetworkRequest request((QUrl(url)));
-    QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, channelId, programId, url, reply]() {
-        if (reply->error()) {
-            qWarning() << "Error fetching program description";
-            qWarning() << reply->errorString();
-        } else {
-            QByteArray data = reply->readAll();
+
+    m_provider.get(
+        QUrl(url),
+        [this, channelId, programId, url](QByteArray data) {
             processDescription(data, url, programId);
 
             Q_EMIT channelUpdated(channelId);
-        }
-        reply->deleteLater();
-    });
+        },
+        [](Error error) {
+            qWarning() << "Error fetching program description";
+            qWarning() << error.m_message;
+        });
 }
 
 void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId)
@@ -138,15 +130,9 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
 {
     qDebug() << "Starting to fetch program for " << channelId.value() << "(" << url << ")";
 
-    QNetworkRequest request((QUrl(url)));
-    QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, channelId, url, programs, reply]() {
-        if (reply->error()) {
-            qWarning() << "Error fetching channel";
-            qWarning() << reply->errorString();
-            Q_EMIT errorFetchingChannel(channelId, Error(reply->error(), reply->errorString()));
-        } else {
-            QByteArray data = reply->readAll();
+    m_provider.get(
+        QUrl(url),
+        [this, channelId, url, programs](QByteArray data) {
             QVector<ProgramData> allPrograms(programs);
             allPrograms.append(processChannel(data, url, channelId));
 
@@ -162,9 +148,12 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
                 Database::instance().addPrograms(allPrograms);
                 Q_EMIT channelUpdated(channelId);
             }
-        }
-        reply->deleteLater();
-    });
+        },
+        [this, channelId](Error error) {
+            qWarning() << "Error fetching channel";
+            qWarning() << error.m_message;
+            Q_EMIT errorFetchingChannel(channelId, error);
+        });
 }
 
 QVector<ProgramData> TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId)

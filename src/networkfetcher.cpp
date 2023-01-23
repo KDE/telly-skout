@@ -3,24 +3,15 @@
 
 #include "networkfetcher.h"
 
+#include <QDebug>
 #include <QFile>
 #include <QFileInfo>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QNetworkRequest>
 #include <QStandardPaths>
 #include <QUrl>
 
 NetworkFetcher::NetworkFetcher(QNetworkAccessManager *nam)
+    : m_provider(nam)
 {
-    if (nam) {
-        m_manager = nam;
-    } else {
-        m_manager = new QNetworkAccessManager(this);
-        m_manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
-        m_manager->setStrictTransportSecurityEnabled(true);
-        m_manager->enableStrictTransportSecurityStore(true, QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1String("/hsts/"));
-    }
 }
 
 QString NetworkFetcher::image(const QString &url)
@@ -40,26 +31,18 @@ QString NetworkFetcher::imagePath(const QString &url)
     return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/") + QUrl(url).fileName();
 }
 
-QNetworkReply *NetworkFetcher::get(QNetworkRequest &request)
-{
-    request.setRawHeader("User-Agent", "telly-skout/0.1");
-    return m_manager->get(request);
-}
-
 void NetworkFetcher::downloadImage(const QString &url)
 {
-    QNetworkRequest request((QUrl(url)));
-    QNetworkReply *reply = get(request);
-    connect(reply, &QNetworkReply::finished, this, [this, url, reply]() {
-        if (reply->error() == QNetworkReply::NoError) {
-            QByteArray data = reply->readAll();
+    m_provider.get(
+        QUrl(url),
+        [this, url](QByteArray data) {
             QFile file(imagePath(url));
             file.open(QIODevice::WriteOnly);
             file.write(data);
             file.close();
-        }
-        Q_EMIT imageDownloadFinished(url);
-
-        reply->deleteLater();
-    });
+            Q_EMIT imageDownloadFinished(url);
+        },
+        [url](Error error) {
+            qWarning() << "Failed to download image" << url << ":" << error.m_message;
+        });
 }

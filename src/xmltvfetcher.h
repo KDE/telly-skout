@@ -5,6 +5,8 @@
 
 #include "fetcherimpl.h"
 
+#include "localdataprovider.h"
+
 #include <QtXml>
 
 class XmltvFetcher : public FetcherImpl
@@ -22,10 +24,11 @@ public:
     QString imagePath(const QString &url) override;
 
 private:
-    bool open(const QString &fileName);
+    void open(QByteArray data);
     void fetchChannel(const ChannelId &channelId, const QString &name, const GroupId &groupId, const QString &icon);
     void processGroup(const QDomElement &group);
     void processProgram(const QDomNode &program);
 
     QDomDocument m_doc;
+    const LocalDataProvider m_provider;
 };

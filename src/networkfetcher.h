@@ -5,9 +5,7 @@
 
 #include "fetcherimpl.h"
 
-class QNetworkAccessManager;
-class QNetworkReply;
-class QNetworkRequest;
+#include "networkdataprovider.h"
 
 class NetworkFetcher : public FetcherImpl
 {
@@ -24,9 +22,6 @@ public:
     QString imagePath(const QString &url) override;
 
 protected:
-    QNetworkReply *get(QNetworkRequest &request);
     void downloadImage(const QString &url);
-
-private:
-    QNetworkAccessManager *m_manager;
+    const NetworkDataProvider m_provider;
 };

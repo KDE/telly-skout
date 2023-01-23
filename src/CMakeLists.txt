@@ -9,12 +9,15 @@ add_library(telly-skout STATIC
     channelfactory.cpp
     channelsmodel.cpp
     channelsproxymodel.cpp
+    dataprovider.h
     database.cpp
     fetcher.cpp
     fetcherimpl.h
     group.cpp
     groupfactory.cpp
     groupsmodel.cpp
+    localdataprovider.cpp
+    networkdataprovider.cpp
     networkfetcher.cpp
     program.cpp
     programfactory.cpp

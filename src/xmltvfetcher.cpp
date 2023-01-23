@@ -11,21 +11,22 @@
 
 #include <QDateTime>
 #include <QDebug>
-#include <QFile>
 #include <QString>
 #include <QStringView>
 
 XmltvFetcher::XmltvFetcher()
     : m_doc("xmltv")
 {
-    if (!open(TellySkoutSettings::xmltvFile())) {
+    m_provider.get(QUrl::fromLocalFile(TellySkoutSettings::xmltvFile()), std::bind(&XmltvFetcher::open, this, std::placeholders::_1), [](Error error) {
+        Q_UNUSED(error)
         qCritical() << "Failed to open" << TellySkoutSettings::xmltvFile();
-    }
+    });
 
     connect(TellySkoutSettings::self(), &TellySkoutSettings::xmltvFileChanged, this, [this]() {
-        if (!open(TellySkoutSettings::xmltvFile())) {
+        m_provider.get(QUrl::fromLocalFile(TellySkoutSettings::xmltvFile()), std::bind(&XmltvFetcher::open, this, std::placeholders::_1), [](Error error) {
+            Q_UNUSED(error)
             qCritical() << "Failed to open" << TellySkoutSettings::xmltvFile();
-        }
+        });
     });
 }
 
@@ -100,22 +101,14 @@ QString XmltvFetcher::imagePath(const QString &url)
     return "";
 }
 
-bool XmltvFetcher::open(const QString &fileName)
+void XmltvFetcher::open(QByteArray data)
 {
-    QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly)) {
-        return false;
-    }
     QString errorMsg;
     int errorLine;
     int errorColumn;
-    if (!m_doc.setContent(&file, &errorMsg, &errorLine, &errorColumn)) {
-        qCritical() << "Could not open" << fileName << ":" << errorMsg << "(l" << errorLine << ":" << errorColumn << ")";
-        file.close();
-        return false;
+    if (!m_doc.setContent(data, &errorMsg, &errorLine, &errorColumn)) {
+        qCritical() << "Could not read XML:" << errorMsg << "(l" << errorLine << ":" << errorColumn << ")";
     }
-    file.close();
-    return true;
 }
 
 void XmltvFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const GroupId &groupId, const QString &icon)

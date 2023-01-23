@@ -60,6 +60,12 @@ public:
     {
     }
 
+    Error(const QString &message)
+        : m_id(0)
+        , m_message(message)
+    {
+    }
+
     Error(int id, const QString &message)
         : m_id(id)
         , m_message(message)
