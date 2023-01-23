@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-15 00:58+0000\n"
+"POT-Creation-Date: 2023-01-23 00:59+0000\n"
 "PO-Revision-Date: 2022-05-19 12:45+0200\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -94,10 +94,9 @@ msgid "UI"
 msgstr ""
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgid "Program height"
-msgstr "Program"
+msgstr ""
 
 #: qml/SettingsPage.qml:32
 #, kde-format
@@ -107,17 +106,17 @@ msgstr ""
 #: qml/SettingsPage.qml:38
 #, kde-format
 msgid "Column width"
-msgstr ""
+msgstr "Šířka sloupce"
 
 #: qml/SettingsPage.qml:49 qml/SettingsPage.qml:66
 #, kde-format
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: qml/SettingsPage.qml:55
 #, kde-format
 msgid "Font size"
-msgstr ""
+msgstr "Velikost písma"
 
 #: qml/SettingsPage.qml:73
 #, kde-format
