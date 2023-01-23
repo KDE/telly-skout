@@ -20,7 +20,7 @@ NetworkDataProvider::NetworkDataProvider(QNetworkAccessManager *nam)
     }
 }
 
-void NetworkDataProvider::get(const QUrl &url, std::function<void(QByteArray)> callback, std::function<void(Error)> errorCallback) const
+void NetworkDataProvider::get(const QUrl &url, std::function<void(const QByteArray &)> callback, std::function<void(Error)> errorCallback) const
 {
     QNetworkRequest request(url);
     request.setRawHeader("User-Agent", "telly-skout/0.1");

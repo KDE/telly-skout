@@ -17,5 +17,5 @@ class DataProvider : public QObject
 public:
     virtual ~DataProvider() = default;
 
-    virtual void get(const QUrl &url, std::function<void(QByteArray)> callback, std::function<void(Error)> errorCallback = nullptr) const = 0;
+    virtual void get(const QUrl &url, std::function<void(const QByteArray &)> callback, std::function<void(Error)> errorCallback = nullptr) const = 0;
 };

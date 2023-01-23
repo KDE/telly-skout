@@ -60,7 +60,7 @@ public:
     {
     }
 
-    Error(const QString &message)
+    explicit Error(const QString &message)
         : m_id(0)
         , m_message(message)
     {

@@ -10,5 +10,5 @@ class LocalDataProvider : DataProvider
 public:
     virtual ~LocalDataProvider() = default;
 
-    void get(const QUrl &url, std::function<void(QByteArray)> callback, std::function<void(Error)> errorCallback = nullptr) const override;
+    void get(const QUrl &url, std::function<void(const QByteArray &)> callback, std::function<void(Error)> errorCallback = nullptr) const override;
 };

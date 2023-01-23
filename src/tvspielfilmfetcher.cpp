@@ -93,7 +93,7 @@ void TvSpielfilmFetcher::fetchProgramDescription(const ChannelId &channelId, con
 
     m_provider.get(
         QUrl(url),
-        [this, channelId, programId, url](QByteArray data) {
+        [this, channelId, programId, url](const QByteArray &data) {
             processDescription(data, url, programId);
 
             Q_EMIT channelUpdated(channelId);
