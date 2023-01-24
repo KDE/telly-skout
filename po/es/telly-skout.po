@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-23 00:59+0000\n"
+"POT-Creation-Date: 2023-01-24 01:01+0000\n"
 "PO-Revision-Date: 2023-01-15 11:59+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -165,12 +165,12 @@ msgstr "Ordenar favoritos"
 msgid "About"
 msgstr "Acerca de"
 
-#: tvspielfilmfetcher.cpp:26
+#: tvspielfilmfetcher.cpp:24
 #, kde-format
 msgid "Germany"
 msgstr "Alemania"
 
-#: xmltvfetcher.cpp:35
+#: xmltvfetcher.cpp:36
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"
