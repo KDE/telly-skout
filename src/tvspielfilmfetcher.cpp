@@ -3,6 +3,7 @@
 
 #include "tvspielfilmfetcher.h"
 
+#include "TellySkoutSettings.h"
 #include "database.h"
 
 #include <KLocalizedString>
@@ -108,14 +109,14 @@ void TvSpielfilmFetcher::fetchProgramDescription(const ChannelId &channelId, con
 void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId)
 {
     // backwards such that we can stop early (see below)
-    const QDate tomorrow = QDate::currentDate().addDays(1);
+    const QDate lastDate = QDate::currentDate().addDays(TellySkoutSettings::tvSpielfilmPrefetch());
 
-    if (programExists(channelId, tomorrow)) {
+    if (programExists(channelId, lastDate)) {
         return; // assume that programs from previous days are available
     }
 
     QVector<ProgramData> programs;
-    fetchProgram(channelId, tomorrow, 1, programs);
+    fetchProgram(channelId, lastDate, 1, programs);
 }
 
 void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QDate &date, unsigned int page, QVector<ProgramData> &programs)

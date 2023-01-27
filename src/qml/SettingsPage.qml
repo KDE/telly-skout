@@ -103,6 +103,21 @@ Kirigami.ScrollablePage {
         }
 
         RowLayout {
+            visible: fetcher.currentIndex == 0 // only for TV Spielfilm
+            Kirigami.FormData.label: i18n("Prefetch")
+
+            Controls.SpinBox {
+                value: _settings.tvSpielfilmPrefetch
+                onValueModified: _settings.tvSpielfilmPrefetch = value
+            }
+
+            Controls.Label {
+                text: i18n("days")
+            }
+
+        }
+
+        RowLayout {
             visible: fetcher.currentIndex == 1 // only for XMLTV
 
             Controls.TextField {

@@ -18,7 +18,7 @@
   </group>
   <group name="UI">
     <entry name="programHeight" type="UInt">
-      <label>Program Height</label>
+      <label>Program height</label>
       <default>5</default>
     </entry>
     <entry name="columnWidth" type="UInt">
@@ -26,8 +26,14 @@
       <default>200</default>
     </entry>
     <entry name="fontSize" type="UInt">
-      <label>Font Size</label>
-      <default type="code">12</default> <!-- should be Kirigami.Theme.defaultFont.pixelSize -->
+      <label>Font size</label>
+      <default>12</default> <!-- should be Kirigami.Theme.defaultFont.pixelSize -->
+    </entry>
+  </group>
+  <group name="TVSpielfilm">
+    <entry name="tvSpielfilmPrefetch" type="UInt">
+      <label>Prefetch days</label>
+      <default>1</default>
     </entry>
   </group>
   <group name="XMLTV">
