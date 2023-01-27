@@ -7,6 +7,8 @@
 
 #include "programdata.h"
 
+class QDate;
+
 class TvSpielfilmFetcher : public NetworkFetcher
 {
     Q_OBJECT
@@ -21,8 +23,9 @@ public:
 
 private:
     void fetchChannel(const ChannelId &channelId, const QString &name, const GroupId &group);
-    void fetchProgram(const ChannelId &channelId, const QString &url, QVector<ProgramData> &programs);
+    void fetchProgram(const ChannelId &channelId, const QDate &date, unsigned int page, QVector<ProgramData> &programs);
     QVector<ProgramData> processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId);
     ProgramData processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const ChannelId &channelId, bool isLast);
     void processDescription(const QString &descriptionPage, const QString &url, const ProgramId &programId);
+    bool programExists(const ChannelId &channelId, const QDate &date);
 };

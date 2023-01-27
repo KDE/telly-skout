@@ -7,6 +7,7 @@
 
 #include <KLocalizedString>
 
+#include <QDate>
 #include <QDateTime>
 #include <QDebug>
 #include <QRegularExpression>
@@ -106,33 +107,28 @@ void TvSpielfilmFetcher::fetchProgramDescription(const ChannelId &channelId, con
 
 void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId)
 {
-    QDate today = QDate::currentDate();
-    QDate yesterday = QDate::currentDate().addDays(-1);
-    QDate tomorrow = QDate::currentDate().addDays(1);
-    const QVector<QDate> days{tomorrow, today, yesterday}; // backwards such that we can stop early (see below)
-    for (auto day : days) {
-        // check if program is available already
-        QDateTime lastTime(day, QTime(23, 59, 59));
+    // backwards such that we can stop early (see below)
+    const QDate tomorrow = QDate::currentDate().addDays(1);
 
-        if (Database::instance().programExists(channelId, lastTime)) {
-            return; // assume that programs from previous days are available
-        }
-
-        // https://www.tvspielfilm.de/tv-programm/sendungen/?date=2021-11-09&time=day&channel=ARD
-        const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=" + channelId.value();
-        const QString urlDay = url + "&date=" + day.toString("yyyy-MM-dd") + "&page=1";
-        QVector<ProgramData> programs;
-        fetchProgram(channelId, urlDay, programs);
+    if (programExists(channelId, tomorrow)) {
+        return; // assume that programs from previous days are available
     }
+
+    QVector<ProgramData> programs;
+    fetchProgram(channelId, tomorrow, 1, programs);
 }
 
-void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString &url, QVector<ProgramData> &programs)
+void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QDate &date, unsigned int page, QVector<ProgramData> &programs)
 {
+    // https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=ARD&date=2021-11-09&page=1
+    const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=" + channelId.value() + "&date=" + date.toString("yyyy-MM-dd")
+        + "&page=" + QString::number(page);
+
     qDebug() << "Starting to fetch program for " << channelId.value() << "(" << url << ")";
 
     m_provider.get(
         QUrl(url),
-        [this, channelId, url, programs](QByteArray data) {
+        [this, channelId, date, page, programs, url](QByteArray data) {
             QVector<ProgramData> allPrograms(programs);
             allPrograms.append(processChannel(data, url, channelId));
 
@@ -142,11 +138,17 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId, const QString 
             reNextPage.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
             QRegularExpressionMatch matchNextPage = reNextPage.match(data);
             if (matchNextPage.hasMatch()) {
-                fetchProgram(channelId, matchNextPage.captured(1), allPrograms);
+                fetchProgram(channelId, date, page + 1, allPrograms);
             } else {
-                // all pages processed, update DB + GUI
-                Database::instance().addPrograms(allPrograms);
-                Q_EMIT channelUpdated(channelId);
+                // all pages for this day processed, continue with previous day (stop yesterday)
+                const QDate previousDay = date.addDays(-1);
+                if (QDate::currentDate().addDays(-1) <= previousDay && !programExists(channelId, previousDay)) {
+                    fetchProgram(channelId, previousDay, 1, allPrograms);
+                } else {
+                    // all pages for all days processed, update DB + GUI
+                    Database::instance().addPrograms(allPrograms);
+                    Q_EMIT channelUpdated(channelId);
+                }
             }
         },
         [this, channelId](Error error) {
@@ -240,4 +242,11 @@ void TvSpielfilmFetcher::processDescription(const QString &descriptionPage, cons
     } else {
         qWarning() << "Failed to parse program description from" << url;
     }
+}
+
+bool TvSpielfilmFetcher::programExists(const ChannelId &channelId, const QDate &date)
+{
+    const QDateTime lastTime(date, QTime(23, 59, 59));
+
+    return Database::instance().programExists(channelId, lastTime);
 }

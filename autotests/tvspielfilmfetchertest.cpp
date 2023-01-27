@@ -148,7 +148,7 @@ private Q_SLOTS:
         const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=" + channelId.value();
         nam.registerReply(url + "&date=" + yesterday + "&page=1", replyYesterday);
         nam.registerReply(url + "&date=" + today + "&page=1", replyTodayPage1);
-        nam.registerReply(url + "&date=2022-12-28&page=2", replyTodayPage2); // link for 2022-12-28 page 2 hard coded in swr-page1.html
+        nam.registerReply(url + "&date=" + today + "&page=2", replyTodayPage2); // link for 2022-12-28 page 2 hard coded in swr-page1.html
         nam.registerReply(url + "&date=" + tomorrow + "&page=1", replyTomorrow);
 
         TvSpielfilmFetcher fetcher(&nam);
@@ -160,7 +160,7 @@ private Q_SLOTS:
         Q_EMIT replyTodayPage1->finished();
         Q_EMIT replyTodayPage2->finished();
         Q_EMIT replyYesterday->finished();
-        QCOMPARE(channelUpdatedSpy.count(), 3);
+        QCOMPARE(channelUpdatedSpy.count(), 1);
         QCOMPARE(Database::instance().programCount(channelId), 3);
 
         const auto programs = Database::instance().programs(channelId);
