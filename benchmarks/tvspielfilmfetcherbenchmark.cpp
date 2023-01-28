@@ -1,7 +1,6 @@
 // SPDX-FileCopyrightText: 2023 Plata Hill <plata.hill@kdemail.net>
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
-#include "../src/database.h"
 #include "../src/tvspielfilmfetcher.h"
 
 #include <QTest>
@@ -87,16 +86,6 @@ private Q_SLOTS:
         // check that start/stop times are displayed correctly in Europe/Athens (UTC+2 = EET-2)
         qputenv("TZ", "EET-2");
         QStandardPaths::setTestModeEnabled(true);
-
-        Database::instance().execute(QStringLiteral("DELETE FROM \"Groups\";"));
-        QCOMPARE(Database::instance().groupCount(), 0);
-        Database::instance().execute(QStringLiteral("DELETE FROM Channels;"));
-        QCOMPARE(Database::instance().channelCount(), 0);
-        Database::instance().execute(QStringLiteral("DELETE FROM GroupChannels;"));
-        Database::instance().execute(QStringLiteral("DELETE FROM Programs;"));
-        Database::instance().execute(QStringLiteral("DELETE FROM ProgramCategories;"));
-        Database::instance().execute(QStringLiteral("DELETE FROM Favorites;"));
-        QCOMPARE(Database::instance().favoriteCount(), 0);
     }
 
     void testFetchGroups()

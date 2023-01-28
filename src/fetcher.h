@@ -29,6 +29,7 @@ public:
     Q_INVOKABLE void fetchGroup(const QString &url, const QString &groupId);
     Q_INVOKABLE void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url);
     Q_INVOKABLE QString image(const QString &url);
+    void setImpl(std::unique_ptr<FetcherImpl> fetcherImpl);
 
 private:
     Fetcher();

@@ -102,6 +102,11 @@ QString Fetcher::image(const QString &url)
         });
 }
 
+void Fetcher::setImpl(std::unique_ptr<FetcherImpl> fetcherImpl)
+{
+    m_fetcherImpl = std::move(fetcherImpl);
+}
+
 void Fetcher::removeImage(const QString &url)
 {
     qDebug() << "Remove image: " << m_fetcherImpl->imagePath(url);
