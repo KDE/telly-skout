@@ -157,6 +157,19 @@
   <releases>
     <release version="23.01" date="2023-01-30">
       <url>https://plasma-mobile.org/2023/01/30/january-blog-post/</url>
+      <description>
+        <p>TV Spielfilm fetcher</p>
+        <ul>
+          <li>Fix missing channel icons.</li>
+          <li>Fix missing programs if there is pagination.</li>
+          <li>Fix missing programs around new year.</li>
+          <li>Fix time zone handling.</li>
+          <li>Show simultaneous programs.</li>
+          <li>Add setting for prefetch period.</li>
+        </ul>
+        <p>Add user interface settings to configure the favorites view.</p>
+        <p>Improve performance (e.g. avoid unnecessary database access).</p>
+      </description>
     </release>
     <release version="22.11" date="2022-11-30">
       <url>https://plasma-mobile.org/2022/11/30/plasma-mobile-gear-22-11/</url>
