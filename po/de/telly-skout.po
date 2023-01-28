@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-24 01:01+0000\n"
+"POT-Creation-Date: 2023-01-28 01:00+0000\n"
 "PO-Revision-Date: 2022-06-08 01:47+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -131,7 +131,7 @@ msgstr "Programm"
 msgid "Delete old after"
 msgstr "Alte löschen nach"
 
-#: qml/SettingsPage.qml:87
+#: qml/SettingsPage.qml:87 qml/SettingsPage.qml:115
 #, kde-format
 msgid "days"
 msgstr "Tagen"
@@ -141,17 +141,22 @@ msgstr "Tagen"
 msgid "Fetcher"
 msgstr ""
 
-#: qml/SettingsPage.qml:111
+#: qml/SettingsPage.qml:107
+#, kde-format
+msgid "Prefetch"
+msgstr ""
+
+#: qml/SettingsPage.qml:126
 #, kde-format
 msgid "File"
 msgstr "Datei"
 
-#: qml/SettingsPage.qml:124
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "XML-Dateien (*.xml)"
 
-#: qml/SettingsPage.qml:124
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgid "All files (*)"
 msgstr "Alle Dateien (*)"
@@ -166,7 +171,7 @@ msgstr "Favoriten sortieren"
 msgid "About"
 msgstr "Über"
 
-#: tvspielfilmfetcher.cpp:24
+#: tvspielfilmfetcher.cpp:26
 #, kde-format
 msgid "Germany"
 msgstr "Deutschland"

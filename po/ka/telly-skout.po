@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-24 01:01+0000\n"
+"POT-Creation-Date: 2023-01-28 01:00+0000\n"
 "PO-Revision-Date: 2023-01-16 05:50+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -129,7 +129,7 @@ msgstr "პროგრამა"
 msgid "Delete old after"
 msgstr "წაშლა მითითებულ დროის შემდეგ"
 
-#: qml/SettingsPage.qml:87
+#: qml/SettingsPage.qml:87 qml/SettingsPage.qml:115
 #, kde-format
 msgid "days"
 msgstr "დღე"
@@ -139,17 +139,22 @@ msgstr "დღე"
 msgid "Fetcher"
 msgstr "გამომთხოვნი"
 
-#: qml/SettingsPage.qml:111
+#: qml/SettingsPage.qml:107
+#, kde-format
+msgid "Prefetch"
+msgstr ""
+
+#: qml/SettingsPage.qml:126
 #, kde-format
 msgid "File"
 msgstr "ფაილი"
 
-#: qml/SettingsPage.qml:124
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "XML ფაილები (*.xml)"
 
-#: qml/SettingsPage.qml:124
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgid "All files (*)"
 msgstr "ყველა ფაილი (*)"
@@ -164,7 +169,7 @@ msgstr "რჩეულების დალაგება"
 msgid "About"
 msgstr "შესახებ"
 
-#: tvspielfilmfetcher.cpp:24
+#: tvspielfilmfetcher.cpp:26
 #, kde-format
 msgid "Germany"
 msgstr "გერმანია"
