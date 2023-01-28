@@ -13,6 +13,8 @@
 #include <QStandardPaths>
 #include <QString>
 
+#include <algorithm>
+
 namespace
 {
 class MockQNetworkReply : public QNetworkReply
@@ -101,10 +103,13 @@ private Q_SLOTS:
     {
         MockQNetworkAccessManager nam;
         TvSpielfilmFetcher fetcher(&nam);
+        QVector<GroupData> data;
         QBENCHMARK {
-            fetcher.fetchGroups();
+            fetcher.fetchGroups([&data](const QVector<GroupData> &groups) {
+                data = groups;
+            });
         }
-        QCOMPARE(Database::instance().groupCount(), 1);
+        QCOMPARE(data.size(), 1);
     }
 
     void testFetchGroup()
@@ -114,11 +119,14 @@ private Q_SLOTS:
         nam.registerReply("https://www.tvspielfilm.de/tv-programm/sendungen", reply);
         TvSpielfilmFetcher fetcher(&nam);
         const GroupData group{GroupId("tvspielfilm.germany"), "Germany", "https://www.tvspielfilm.de/tv-programm/sendungen"};
+        QList<ChannelData> data;
         QBENCHMARK {
-            fetcher.fetchGroup(group.m_url, group.m_id);
+            fetcher.fetchGroup(group.m_url, group.m_id, [&data](const QList<ChannelData> &channels) {
+                data = channels;
+            });
             Q_EMIT reply->finished();
         }
-        QCOMPARE(Database::instance().channelCount(), 212);
+        QCOMPARE(data.size(), 212);
     }
 
     void testFetchProgram()
@@ -140,13 +148,16 @@ private Q_SLOTS:
         nam.registerReply(url + "&date=" + tomorrow + "&page=1", replyTomorrow);
 
         TvSpielfilmFetcher fetcher(&nam);
+        size_t numPrograms = 0;
         QBENCHMARK {
-            fetcher.fetchProgram(channelId);
+            fetcher.fetchProgram(channelId, [&numPrograms](const QVector<ProgramData> &programs) {
+                numPrograms = std::max(numPrograms, static_cast<size_t>(programs.size()));
+            });
             Q_EMIT replyTomorrow->finished();
             Q_EMIT replyToday->finished();
             Q_EMIT replyYesterday->finished();
         }
-        QCOMPARE(Database::instance().programCount(channelId), 60 * 24 - 1);
+        QCOMPARE(numPrograms, 60 * 24 - 1);
     }
 
     void testFetchProgramDescription()
@@ -159,9 +170,7 @@ private Q_SLOTS:
         nam.registerReply("https://www.tvspielfilm.de/tv-programm/sendung/description1.html", reply);
         TvSpielfilmFetcher fetcher(&nam);
         QBENCHMARK {
-            fetcher.fetchProgramDescription(channelId,
-                                            Database::instance().programs(channelId).at(0).m_id,
-                                            "https://www.tvspielfilm.de/tv-programm/sendung/description1.html");
+            fetcher.fetchProgramDescription(channelId, ProgramId("channel1_1672182000"), "https://www.tvspielfilm.de/tv-programm/sendung/description1.html");
             Q_EMIT reply->finished();
         }
     }

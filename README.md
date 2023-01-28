@@ -42,6 +42,6 @@ telly-skout
 ### Fetcher
 A `Fetcher` retrieves the TV guide data from some source and stores it in the database. The used `Fetcher` can be changed in the settings.
 
-All `Fetchers` must derive from `FetcherImpl`, write the retrieved data to the `Database` and emit the signals defined in `FetcherImpl`. `Fetchers`, which retrieve data from the network, may derive from `NetworkFetcher`.
+All `Fetchers` must derive from `FetcherImpl` and trigger the callbacks. `Fetchers`, which retrieve data from the network, may derive from `NetworkFetcher`.
 
 To use the new `Fetcher`, it must be added to `TellySkoutSettings.kcfg`, `SettingsPage.qml` and the `Fetcher` constructor in `fetcher.cpp`.

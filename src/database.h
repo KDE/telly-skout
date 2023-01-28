@@ -10,6 +10,7 @@
 #include "programdata.h"
 #include "types.h"
 
+#include <QList>
 #include <QMap>
 #include <QSqlQuery>
 #include <QString>
@@ -33,13 +34,15 @@ public:
     bool execute(QSqlQuery &query) const;
     bool execute(const QString &query) const;
 
-    void addGroup(const GroupId &id, const QString &name, const QString &url);
+    void addGroup(const GroupData &data);
+    void addGroups(const QVector<GroupData> &groups);
     size_t groupCount() const;
     bool groupExists(const GroupId &id) const;
     QVector<GroupData> groups() const;
     QVector<GroupData> groups(const ChannelId &channelId) const;
 
     void addChannel(const ChannelData &data, const GroupId &group);
+    void addChannels(const QList<ChannelData> &channels, const GroupId &group);
     size_t channelCount() const;
     bool channelExists(const ChannelId &id) const;
     QVector<ChannelData> channels(bool onlyFavorites) const;

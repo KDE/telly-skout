@@ -26,17 +26,6 @@ ChannelsModel::ChannelsModel(QObject *parent)
         endResetModel();
     });
 
-    connect(&Fetcher::instance(), &Fetcher::channelDetailsUpdated, this, [this](const ChannelId &id, const QString &image) {
-        for (int i = 0; i < m_channels.length(); i++) {
-            if (m_channels[i]->id() == id.value()) {
-                m_channels[i]->setImage(image);
-                m_channelFactory.update(id);
-                Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
-                break;
-            }
-        }
-    });
-
     connect(&Database::instance(), &Database::channelDetailsUpdated, this, [this](const ChannelId &id, bool favorite) {
         // with "only favorites", a row must be added/removed -> not sufficient to call only dataChanged()
         if (m_onlyFavorites) {

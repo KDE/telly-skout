@@ -27,12 +27,14 @@ public:
     Q_INVOKABLE void fetchFavorites();
     Q_INVOKABLE void fetchGroups();
     Q_INVOKABLE void fetchGroup(const QString &url, const QString &groupId);
-    void fetchGroup(const QString &url, const GroupId &groupId);
     Q_INVOKABLE void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url);
     Q_INVOKABLE QString image(const QString &url);
 
 private:
     Fetcher();
+
+    void fetchGroup(const QString &url, const GroupId &groupId);
+    void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url);
 
     void removeImage(const QString &url);
 
@@ -44,12 +46,10 @@ Q_SIGNALS:
 
     void startedFetchingChannel(const ChannelId &id);
     void channelUpdated(const ChannelId &id);
-    void channelDetailsUpdated(const ChannelId &id, const QString &image);
 
-    void errorFetching(const Error &error);
     void errorFetchingGroup(const GroupId &id, const Error &error);
     void errorFetchingChannel(const ChannelId &id, const Error &error);
-    void errorFetchingProgram(const ProgramId &id, const Error &error);
 
     void imageDownloadFinished(const QString &url);
+    void errorDownloadingImage(const QString &url, const Error &error);
 };

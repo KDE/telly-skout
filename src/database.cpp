@@ -242,17 +242,28 @@ void Database::cleanup()
     execute(query);
 }
 
-void Database::addGroup(const GroupId &id, const QString &name, const QString &url)
+void Database::addGroup(const GroupData &data)
 {
-    if (!groupExists(id)) {
-        qDebug() << "Add group" << name;
-        m_addGroupQuery->bindValue(QStringLiteral(":id"), id.value());
-        m_addGroupQuery->bindValue(QStringLiteral(":name"), name);
-        m_addGroupQuery->bindValue(QStringLiteral(":url"), url);
+    if (!groupExists(data.m_id)) {
+        qDebug() << "Add group" << data.m_name;
+        m_addGroupQuery->bindValue(QStringLiteral(":id"), data.m_id.value());
+        m_addGroupQuery->bindValue(QStringLiteral(":name"), data.m_name);
+        m_addGroupQuery->bindValue(QStringLiteral(":url"), data.m_url);
         execute(*m_addGroupQuery);
 
-        Q_EMIT groupAdded(id);
+        Q_EMIT groupAdded(data.m_id);
     }
+}
+
+void Database::addGroups(const QVector<GroupData> &groups)
+{
+    QSqlDatabase::database().transaction();
+
+    for (const GroupData &data : groups) {
+        addGroup(data);
+    }
+
+    QSqlDatabase::database().commit();
 }
 
 size_t Database::groupCount() const
@@ -330,6 +341,17 @@ void Database::addChannel(const ChannelData &data, const GroupId &group)
             Q_EMIT channelAdded(data.m_id);
         }
     }
+}
+
+void Database::addChannels(const QList<ChannelData> &channels, const GroupId &group)
+{
+    QSqlDatabase::database().transaction();
+
+    for (const ChannelData &data : channels) {
+        addChannel(data, group);
+    }
+
+    QSqlDatabase::database().commit();
 }
 
 size_t Database::channelCount() const
@@ -511,8 +533,7 @@ void Database::addPrograms(const QVector<ProgramData> &programs)
 {
     QSqlDatabase::database().transaction();
 
-    for (int i = 0; i < programs.length(); i++) {
-        const ProgramData &data = programs.at(i);
+    for (const ProgramData &data : programs) {
         addProgram(data);
     }
 

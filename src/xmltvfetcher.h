@@ -7,6 +7,7 @@
 
 #include "localdataprovider.h"
 
+#include <QMap>
 #include <QtXml>
 
 class XmltvFetcher : public FetcherImpl
@@ -16,18 +17,26 @@ public:
     XmltvFetcher();
     virtual ~XmltvFetcher() = default;
 
-    void fetchGroups() override;
-    void fetchGroup(const QString &url, const GroupId &groupId) override;
-    void fetchProgram(const ChannelId &channelId) override;
-    void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url) override;
-    QString image(const QString &url) override;
+    void fetchGroups(std::function<void(const QVector<GroupData> &)> callback = nullptr, std::function<void(const Error &)> errorCallback = nullptr) override;
+    void fetchGroup(const QString &url,
+                    const GroupId &groupId,
+                    std::function<void(const QList<ChannelData> &)> callback = nullptr,
+                    std::function<void(const Error &)> errorCallback = nullptr) override;
+    void fetchProgram(const ChannelId &channelId,
+                      std::function<void(const QVector<ProgramData> &)> callback = nullptr,
+                      std::function<void(const Error &)> errorCallback = nullptr) override;
+    void fetchProgramDescription(const ChannelId &channelId,
+                                 const ProgramId &programId,
+                                 const QString &url,
+                                 std::function<void(const QString &)> callback = nullptr,
+                                 std::function<void(const Error &)> errorCallback = nullptr) override;
+    QString image(const QString &url, std::function<void()> callback = nullptr, std::function<void(const Error &)> errorCallback = nullptr) override;
     QString imagePath(const QString &url) override;
 
 private:
     void open(QByteArray data);
-    void fetchChannel(const ChannelId &channelId, const QString &name, const GroupId &groupId, const QString &icon);
-    void processGroup(const QDomElement &group);
-    void processProgram(const QDomNode &program);
+    void fetchChannel(const ChannelId &channelId, const QString &name, const QString &icon, QMap<ChannelId, ChannelData> &channels);
+    ProgramData processProgram(const QDomNode &program);
 
     QDomDocument m_doc;
     const LocalDataProvider m_provider;

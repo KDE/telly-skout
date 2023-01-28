@@ -13,7 +13,7 @@ public:
     explicit NetworkDataProvider(QNetworkAccessManager *nam = nullptr);
     virtual ~NetworkDataProvider() = default;
 
-    void get(const QUrl &url, std::function<void(const QByteArray &)> callback, std::function<void(Error)> errorCallback = nullptr) const override;
+    void get(const QUrl &url, std::function<void(const QByteArray &)> callback, std::function<void(const Error &)> errorCallback = nullptr) const override;
 
 private:
     QNetworkAccessManager *m_manager;

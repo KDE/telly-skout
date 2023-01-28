@@ -29,39 +29,6 @@ Fetcher::Fetcher()
         qDebug() << "Invalid Fetcher type!";
         assert(false);
     }
-
-    connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingGroup, this, [this](const GroupId &id) {
-        Q_EMIT startedFetchingGroup(id);
-    });
-    connect(m_fetcherImpl.get(), &FetcherImpl::groupUpdated, this, [this](const GroupId &id) {
-        Q_EMIT groupUpdated(id);
-    });
-
-    connect(m_fetcherImpl.get(), &FetcherImpl::startedFetchingChannel, this, [this](const ChannelId &id) {
-        Q_EMIT startedFetchingChannel(id);
-    });
-    connect(m_fetcherImpl.get(), &FetcherImpl::channelUpdated, this, [this](const ChannelId &id) {
-        Q_EMIT channelUpdated(id);
-    });
-    connect(m_fetcherImpl.get(), &FetcherImpl::channelDetailsUpdated, this, [this](const ChannelId &id, const QString &image) {
-        Q_EMIT channelDetailsUpdated(id, image);
-    });
-
-    connect(m_fetcherImpl.get(), &FetcherImpl::errorFetching, this, [this](const Error &error) {
-        Q_EMIT errorFetching(error);
-    });
-    connect(m_fetcherImpl.get(), &FetcherImpl::errorFetchingGroup, this, [this](const GroupId &id, const Error &error) {
-        Q_EMIT errorFetchingGroup(id, error);
-    });
-    connect(m_fetcherImpl.get(), &FetcherImpl::errorFetchingChannel, this, [this](const ChannelId &id, const Error &error) {
-        Q_EMIT errorFetchingChannel(id, error);
-    });
-    connect(m_fetcherImpl.get(), &FetcherImpl::errorFetchingProgram, this, [this](const ProgramId &id, const Error &error) {
-        Q_EMIT errorFetchingProgram(id, error);
-    });
-    connect(m_fetcherImpl.get(), &FetcherImpl::imageDownloadFinished, this, [this](const QString &url) {
-        Q_EMIT imageDownloadFinished(url);
-    });
 }
 
 void Fetcher::fetchFavorites()
@@ -69,14 +36,25 @@ void Fetcher::fetchFavorites()
     qDebug() << "Starting to fetch favorites";
 
     const QVector<ChannelId> favoriteChannels = Database::instance().favorites();
-    for (int i = 0; i < favoriteChannels.length(); i++) {
-        m_fetcherImpl->fetchProgram(favoriteChannels.at(i));
+    for (const ChannelId &channelId : favoriteChannels) {
+        Q_EMIT startedFetchingChannel(channelId);
+        m_fetcherImpl->fetchProgram(
+            channelId,
+            [this, channelId](const QVector<ProgramData> &programs) {
+                Database::instance().addPrograms(programs);
+                Q_EMIT channelUpdated(channelId);
+            },
+            [this, channelId](const Error &error) {
+                Q_EMIT errorFetchingChannel(channelId, error);
+            });
     }
 }
 
 void Fetcher::fetchGroups()
 {
-    m_fetcherImpl->fetchGroups();
+    m_fetcherImpl->fetchGroups([](const QVector<GroupData> &groups) {
+        Database::instance().addGroups(groups);
+    });
 }
 
 void Fetcher::fetchGroup(const QString &url, const QString &groupId)
@@ -86,17 +64,42 @@ void Fetcher::fetchGroup(const QString &url, const QString &groupId)
 
 void Fetcher::fetchGroup(const QString &url, const GroupId &groupId)
 {
-    m_fetcherImpl->fetchGroup(url, groupId);
+    Q_EMIT startedFetchingGroup(groupId);
+    m_fetcherImpl->fetchGroup(
+        url,
+        groupId,
+        [this, groupId](const QList<ChannelData> &channels) {
+            Database::instance().addChannels(channels, groupId);
+            Q_EMIT groupUpdated(groupId);
+        },
+        [this, groupId](const Error &error) {
+            Q_EMIT errorFetchingGroup(groupId, error);
+        });
 }
 
 void Fetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
 {
-    m_fetcherImpl->fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url);
+    fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url);
+}
+
+void Fetcher::fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url)
+{
+    m_fetcherImpl->fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url, [this, channelId, programId](const QString &description) {
+        Database::instance().updateProgramDescription(programId, description);
+        Q_EMIT channelUpdated(channelId);
+    }); // TODO: separate signal
 }
 
 QString Fetcher::image(const QString &url)
 {
-    return m_fetcherImpl->image(url);
+    return m_fetcherImpl->image(
+        url,
+        [this, url]() {
+            Q_EMIT imageDownloadFinished(url);
+        },
+        [this, url](const Error &error) {
+            Q_EMIT errorDownloadingImage(url, error);
+        });
 }
 
 void Fetcher::removeImage(const QString &url)

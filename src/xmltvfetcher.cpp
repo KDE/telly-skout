@@ -4,7 +4,6 @@
 #include "xmltvfetcher.h"
 
 #include "TellySkoutSettings.h"
-#include "database.h"
 #include "programdata.h"
 
 #include <KLocalizedString>
@@ -17,34 +16,49 @@
 XmltvFetcher::XmltvFetcher()
     : m_doc("xmltv")
 {
-    m_provider.get(QUrl::fromLocalFile(TellySkoutSettings::xmltvFile()), std::bind(&XmltvFetcher::open, this, std::placeholders::_1), [](Error error) {
+    m_provider.get(QUrl::fromLocalFile(TellySkoutSettings::xmltvFile()), std::bind(&XmltvFetcher::open, this, std::placeholders::_1), [](const Error &error) {
         Q_UNUSED(error)
         qCritical() << "Failed to open" << TellySkoutSettings::xmltvFile();
     });
 
     connect(TellySkoutSettings::self(), &TellySkoutSettings::xmltvFileChanged, this, [this]() {
-        m_provider.get(QUrl::fromLocalFile(TellySkoutSettings::xmltvFile()), std::bind(&XmltvFetcher::open, this, std::placeholders::_1), [](Error error) {
-            Q_UNUSED(error)
-            qCritical() << "Failed to open" << TellySkoutSettings::xmltvFile();
-        });
+        m_provider.get(QUrl::fromLocalFile(TellySkoutSettings::xmltvFile()),
+                       std::bind(&XmltvFetcher::open, this, std::placeholders::_1),
+                       [](const Error &error) {
+                           Q_UNUSED(error)
+                           qCritical() << "Failed to open" << TellySkoutSettings::xmltvFile();
+                       });
     });
 }
 
-void XmltvFetcher::fetchGroups()
+void XmltvFetcher::fetchGroups(std::function<void(const QVector<GroupData> &)> callback, std::function<void(const Error &)> errorCallback)
 {
-    const GroupId id = GroupId("xmltv");
-    const QString name = i18n("XMLTV");
+    Q_UNUSED(errorCallback);
 
-    Q_EMIT startedFetchingGroup(id);
+    QVector<GroupData> groups;
 
-    Database::instance().addGroup(id, name, TellySkoutSettings::xmltvFile());
+    GroupData data;
+    data.m_id = GroupId("xmltv");
+    data.m_name = i18n("XMLTV");
+    data.m_url = TellySkoutSettings::xmltvFile();
 
-    Q_EMIT groupUpdated(id);
+    groups.push_back(data);
+
+    if (callback) {
+        callback(groups);
+    }
 }
 
-void XmltvFetcher::fetchGroup(const QString &url, const GroupId &groupId)
+void XmltvFetcher::fetchGroup(const QString &url,
+                              const GroupId &groupId,
+                              std::function<void(const QList<ChannelData> &)> callback,
+                              std::function<void(const Error &)> errorCallback)
 {
+    Q_UNUSED(errorCallback)
+
     qDebug() << "Starting to fetch group (" << groupId.value() << ", " << url << ")";
+
+    QMap<ChannelId, ChannelData> channels;
 
     QDomNodeList nodes = m_doc.elementsByTagName("channel");
 
@@ -57,41 +71,60 @@ void XmltvFetcher::fetchGroup(const QString &url, const GroupId &groupId)
             const QString &name = elm.firstChildElement("display-name").text();
             const QString &icon = elm.firstChildElement("icon").attributes().namedItem("src").toAttr().value();
 
-            fetchChannel(id, name, groupId, icon);
+            fetchChannel(id, name, icon, channels);
         }
     }
 
-    Q_EMIT groupUpdated(groupId);
+    if (callback) {
+        callback(channels.values());
+    }
 }
 
-void XmltvFetcher::fetchProgram(const ChannelId &channelId)
+void XmltvFetcher::fetchProgram(const ChannelId &channelId,
+                                std::function<void(const QVector<ProgramData> &)> callback,
+                                std::function<void(const Error &)> errorCallback)
 {
-    QDomNodeList programs = m_doc.elementsByTagName("programme");
-    for (int i = 0; i < programs.count(); i++) {
-        const QDomNode &program = programs.at(i);
+    Q_UNUSED(errorCallback)
+
+    QVector<ProgramData> programs;
+
+    QDomNodeList programNodes = m_doc.elementsByTagName("programme");
+    for (int i = 0; i < programNodes.count(); i++) {
+        const QDomNode &program = programNodes.at(i);
         const QDomNamedNodeMap &attributes = program.attributes();
 
         if (channelId.value() != attributes.namedItem("channel").toAttr().value()) {
             continue; // TODO: do not loop all programs for each channel
         }
-        processProgram(program);
+        programs.push_back(processProgram(program));
     }
 
-    Q_EMIT channelUpdated(channelId);
+    if (callback) {
+        callback(programs);
+    }
 }
 
-void XmltvFetcher::fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url)
+void XmltvFetcher::fetchProgramDescription(const ChannelId &channelId,
+                                           const ProgramId &programId,
+                                           const QString &url,
+                                           std::function<void(const QString &)> callback,
+                                           std::function<void(const Error &)> errorCallback)
 {
     Q_UNUSED(channelId)
     Q_UNUSED(programId)
     Q_UNUSED(url)
+    Q_UNUSED(callback)
+    Q_UNUSED(errorCallback)
 
     // nothing to be done (already fetched as part of the program)
 }
 
-QString XmltvFetcher::image(const QString &url)
+QString XmltvFetcher::image(const QString &url, std::function<void()> callback, std::function<void(const Error &)> errorCallback)
 {
     Q_UNUSED(url);
+    Q_UNUSED(callback)
+    Q_UNUSED(errorCallback)
+
     return "";
 }
 
@@ -111,35 +144,20 @@ void XmltvFetcher::open(QByteArray data)
     }
 }
 
-void XmltvFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const GroupId &groupId, const QString &icon)
+void XmltvFetcher::fetchChannel(const ChannelId &channelId, const QString &name, const QString &icon, QMap<ChannelId, ChannelData> &channels)
 {
-    if (!Database::instance().channelExists(channelId)) {
-        Q_EMIT startedFetchingChannel(channelId);
-
+    if (!channels.contains(channelId)) {
         ChannelData data;
         data.m_id = channelId;
         data.m_name = name;
         data.m_url = "";
         data.m_image = icon;
-        Database::instance().addChannel(data, groupId);
 
-        Q_EMIT channelUpdated(channelId);
+        channels.insert(channelId, data);
     }
 }
 
-void XmltvFetcher::processGroup(const QDomElement &group)
-{
-    const GroupId id = GroupId(group.attributes().namedItem("id").toAttr().value());
-    const QString &name = group.text();
-
-    Q_EMIT startedFetchingGroup(id);
-
-    Database::instance().addGroup(id, name, "");
-
-    Q_EMIT groupUpdated(id);
-}
-
-void XmltvFetcher::processProgram(const QDomNode &program)
+ProgramData XmltvFetcher::processProgram(const QDomNode &program)
 {
     ProgramData data;
 
@@ -172,5 +190,5 @@ void XmltvFetcher::processProgram(const QDomNode &program)
 
     data.m_descriptionFetched = true;
 
-    Database::instance().addProgram(data);
+    return data;
 }

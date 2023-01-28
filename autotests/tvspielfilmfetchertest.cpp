@@ -102,14 +102,21 @@ private Q_SLOTS:
     {
         MockQNetworkAccessManager nam;
         TvSpielfilmFetcher fetcher(&nam);
-        QSignalSpy groupUpdatedSpy(&fetcher, SIGNAL(groupUpdated(const GroupId &)));
-        QVERIFY(groupUpdatedSpy.isValid());
-        QCOMPARE(groupUpdatedSpy.count(), 0);
-        fetcher.fetchGroups();
-        QCOMPARE(groupUpdatedSpy.count(), 1);
-        QCOMPARE(Database::instance().groupCount(), 1);
-        const QVector<GroupData> groups = Database::instance().groups();
-        const GroupData &group = groups.at(0);
+        QVector<GroupData> data;
+        bool callbackCalled = false;
+        bool errorCallbackCalled = false;
+        fetcher.fetchGroups(
+            [&data, &callbackCalled](const QVector<GroupData> &groups) {
+                data = groups;
+                callbackCalled = true;
+            },
+            [&errorCallbackCalled](Error) {
+                errorCallbackCalled = true;
+            });
+        QCOMPARE(callbackCalled, true);
+        QCOMPARE(errorCallbackCalled, false);
+        QCOMPARE(data.size(), 1);
+        const GroupData &group = data.at(0);
         QCOMPARE(group.m_id.value(), "tvspielfilm.germany");
         QCOMPARE(group.m_name, "Germany");
         QCOMPARE(group.m_url, "https://www.tvspielfilm.de/tv-programm/sendungen");
@@ -121,14 +128,24 @@ private Q_SLOTS:
         MockQNetworkAccessManager nam;
         nam.registerReply("https://www.tvspielfilm.de/tv-programm/sendungen", reply);
         TvSpielfilmFetcher fetcher(&nam);
-        QSignalSpy groupUpdatedSpy(&fetcher, SIGNAL(groupUpdated(const GroupId &)));
-        QVERIFY(groupUpdatedSpy.isValid());
-        QCOMPARE(groupUpdatedSpy.count(), 0);
         const GroupData group{GroupId("tvspielfilm.germany"), "Germany", "https://www.tvspielfilm.de/tv-programm/sendungen"};
-        fetcher.fetchGroup(group.m_url, group.m_id);
+        QList<ChannelData> data;
+        bool callbackCalled = false;
+        bool errorCallbackCalled = false;
+        fetcher.fetchGroup(
+            group.m_url,
+            group.m_id,
+            [&data, &callbackCalled](const QList<ChannelData> &channels) {
+                data = channels;
+                callbackCalled = true;
+            },
+            [&errorCallbackCalled](Error) {
+                errorCallbackCalled = true;
+            });
         Q_EMIT reply->finished();
-        QCOMPARE(groupUpdatedSpy.count(), 1);
-        QCOMPARE(Database::instance().channelCount(), 212);
+        QCOMPARE(callbackCalled, true);
+        QCOMPARE(errorCallbackCalled, false);
+        QCOMPARE(data.size(), 212);
     }
 
     void testFetchProgram()
@@ -152,50 +169,58 @@ private Q_SLOTS:
         nam.registerReply(url + "&date=" + tomorrow + "&page=1", replyTomorrow);
 
         TvSpielfilmFetcher fetcher(&nam);
-        QSignalSpy channelUpdatedSpy(&fetcher, SIGNAL(channelUpdated(const ChannelId &)));
-        QVERIFY(channelUpdatedSpy.isValid());
-        QCOMPARE(channelUpdatedSpy.count(), 0);
-        fetcher.fetchProgram(channelId);
+        QVector<ProgramData> data;
+        bool callbackCalled = false;
+        bool errorCallbackCalled = false;
+        fetcher.fetchProgram(
+            channelId,
+            [&data, &callbackCalled](const QVector<ProgramData> &programs) {
+                data = programs;
+                callbackCalled = true;
+            },
+            [&errorCallbackCalled](Error) {
+                errorCallbackCalled = true;
+            });
         Q_EMIT replyTomorrow->finished();
         Q_EMIT replyTodayPage1->finished();
         Q_EMIT replyTodayPage2->finished();
         Q_EMIT replyYesterday->finished();
-        QCOMPARE(channelUpdatedSpy.count(), 1);
-        QCOMPARE(Database::instance().programCount(channelId), 3);
+        QCOMPARE(callbackCalled, true);
+        QCOMPARE(errorCallbackCalled, false);
+        QCOMPARE(data.size(), 3);
 
-        const auto programs = Database::instance().programs(channelId);
-        QCOMPARE(programs.at(0).m_id, ProgramId("SWR_1672182000"));
-        QCOMPARE(programs.at(0).m_url, "https://www.tvspielfilm.de/tv-programm/sendung/description1.html");
-        QCOMPARE(programs.at(0).m_channelId, channelId);
-        QCOMPARE(programs.at(0).m_startTime, QDateTime::fromString("2022-12-28T01:00:00", Qt::ISODate));
-        QCOMPARE(programs.at(0).m_stopTime, QDateTime::fromString("2022-12-28T07:00:00", Qt::ISODate));
-        QCOMPARE(programs.at(0).m_title, "Title 1");
-        QCOMPARE(programs.at(0).m_subtitle, "");
-        QCOMPARE(programs.at(0).m_description, "");
-        QCOMPARE(programs.at(0).m_descriptionFetched, false);
-        QCOMPARE(programs.at(0).m_categories.at(0), "Category 1");
+        QCOMPARE(data.at(0).m_id, ProgramId("SWR_1672182000"));
+        QCOMPARE(data.at(0).m_url, "https://www.tvspielfilm.de/tv-programm/sendung/description1.html");
+        QCOMPARE(data.at(0).m_channelId, channelId);
+        QCOMPARE(data.at(0).m_startTime, QDateTime::fromString("2022-12-28T01:00:00", Qt::ISODate));
+        QCOMPARE(data.at(0).m_stopTime, QDateTime::fromString("2022-12-28T07:00:00", Qt::ISODate));
+        QCOMPARE(data.at(0).m_title, "Title 1");
+        QCOMPARE(data.at(0).m_subtitle, "");
+        QCOMPARE(data.at(0).m_description, "");
+        QCOMPARE(data.at(0).m_descriptionFetched, false);
+        QCOMPARE(data.at(0).m_categories.at(0), "Category 1");
 
-        QCOMPARE(programs.at(1).m_id, ProgramId("SWR_1672203600"));
-        QCOMPARE(programs.at(1).m_url, "https://www.tvspielfilm.de/tv-programm/sendung/description2.html");
-        QCOMPARE(programs.at(1).m_channelId, channelId);
-        QCOMPARE(programs.at(1).m_startTime, QDateTime::fromString("2022-12-28T07:00:00", Qt::ISODate));
-        QCOMPARE(programs.at(1).m_stopTime, QDateTime::fromString("2022-12-28T10:00:00", Qt::ISODate));
-        QCOMPARE(programs.at(1).m_title, "Title 2");
-        QCOMPARE(programs.at(1).m_subtitle, "");
-        QCOMPARE(programs.at(1).m_description, "");
-        QCOMPARE(programs.at(1).m_descriptionFetched, false);
-        QCOMPARE(programs.at(1).m_categories.at(0), "Category 2");
+        QCOMPARE(data.at(1).m_id, ProgramId("SWR_1672203600"));
+        QCOMPARE(data.at(1).m_url, "https://www.tvspielfilm.de/tv-programm/sendung/description2.html");
+        QCOMPARE(data.at(1).m_channelId, channelId);
+        QCOMPARE(data.at(1).m_startTime, QDateTime::fromString("2022-12-28T07:00:00", Qt::ISODate));
+        QCOMPARE(data.at(1).m_stopTime, QDateTime::fromString("2022-12-28T10:00:00", Qt::ISODate));
+        QCOMPARE(data.at(1).m_title, "Title 2");
+        QCOMPARE(data.at(1).m_subtitle, "");
+        QCOMPARE(data.at(1).m_description, "");
+        QCOMPARE(data.at(1).m_descriptionFetched, false);
+        QCOMPARE(data.at(1).m_categories.at(0), "Category 2");
 
-        QCOMPARE(programs.at(2).m_id, ProgramId("SWR_1672214400"));
-        QCOMPARE(programs.at(2).m_url, "https://www.tvspielfilm.de/tv-programm/sendung/description3.html");
-        QCOMPARE(programs.at(2).m_channelId, channelId);
-        QCOMPARE(programs.at(2).m_startTime, QDateTime::fromString("2022-12-28T10:00:00", Qt::ISODate));
-        QCOMPARE(programs.at(2).m_stopTime, QDateTime::fromString("2022-12-28T13:00:00", Qt::ISODate));
-        QCOMPARE(programs.at(2).m_title, "Title 3");
-        QCOMPARE(programs.at(2).m_subtitle, "");
-        QCOMPARE(programs.at(2).m_description, "");
-        QCOMPARE(programs.at(2).m_descriptionFetched, false);
-        QCOMPARE(programs.at(2).m_categories.at(0), "Category 3");
+        QCOMPARE(data.at(2).m_id, ProgramId("SWR_1672214400"));
+        QCOMPARE(data.at(2).m_url, "https://www.tvspielfilm.de/tv-programm/sendung/description3.html");
+        QCOMPARE(data.at(2).m_channelId, channelId);
+        QCOMPARE(data.at(2).m_startTime, QDateTime::fromString("2022-12-28T10:00:00", Qt::ISODate));
+        QCOMPARE(data.at(2).m_stopTime, QDateTime::fromString("2022-12-28T13:00:00", Qt::ISODate));
+        QCOMPARE(data.at(2).m_title, "Title 3");
+        QCOMPARE(data.at(2).m_subtitle, "");
+        QCOMPARE(data.at(2).m_description, "");
+        QCOMPARE(data.at(2).m_descriptionFetched, false);
+        QCOMPARE(data.at(2).m_categories.at(0), "Category 3");
     }
 
     void testFetchProgramDescription()
@@ -207,16 +232,24 @@ private Q_SLOTS:
         MockQNetworkAccessManager nam;
         nam.registerReply("https://www.tvspielfilm.de/tv-programm/sendung/description1.html", reply);
         TvSpielfilmFetcher fetcher(&nam);
-        QSignalSpy channelUpdatedSpy(&fetcher, SIGNAL(channelUpdated(const ChannelId &)));
-        QVERIFY(channelUpdatedSpy.isValid());
-        QCOMPARE(channelUpdatedSpy.count(), 0);
-        fetcher.fetchProgramDescription(channelId,
-                                        Database::instance().programs(channelId).at(0).m_id,
-                                        "https://www.tvspielfilm.de/tv-programm/sendung/description1.html");
+        QString data;
+        bool callbackCalled = false;
+        bool errorCallbackCalled = false;
+        fetcher.fetchProgramDescription(
+            channelId,
+            ProgramId("channel1_1672182000"),
+            "https://www.tvspielfilm.de/tv-programm/sendung/description1.html",
+            [&data, &callbackCalled](const QString &description) {
+                data = description;
+                callbackCalled = true;
+            },
+            [&errorCallbackCalled](Error) {
+                errorCallbackCalled = true;
+            });
         Q_EMIT reply->finished();
-        QCOMPARE(channelUpdatedSpy.count(), 1);
-        QCOMPARE(Database::instance().programs(channelId).at(0).m_description, "Description");
-        QCOMPARE(Database::instance().programs(channelId).at(0).m_descriptionFetched, true);
+        QCOMPARE(callbackCalled, true);
+        QCOMPARE(errorCallbackCalled, false);
+        QCOMPARE(data, "Description");
     }
 };
 

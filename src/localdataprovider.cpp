@@ -5,7 +5,7 @@
 
 #include <QFile>
 
-void LocalDataProvider::get(const QUrl &url, std::function<void(const QByteArray &)> callback, std::function<void(Error)> errorCallback) const
+void LocalDataProvider::get(const QUrl &url, std::function<void(const QByteArray &)> callback, std::function<void(const Error &)> errorCallback) const
 {
     QFile file(url.toLocalFile());
     if (file.open(QIODevice::ReadOnly)) {

@@ -14,14 +14,14 @@ NetworkFetcher::NetworkFetcher(QNetworkAccessManager *nam)
 {
 }
 
-QString NetworkFetcher::image(const QString &url)
+QString NetworkFetcher::image(const QString &url, std::function<void()> callback, std::function<void(const Error &)> errorCallback)
 {
     QString path = imagePath(url);
     if (QFileInfo::exists(path)) {
         return path;
     }
 
-    downloadImage(url);
+    downloadImage(url, callback, errorCallback);
 
     return "";
 }
@@ -31,18 +31,25 @@ QString NetworkFetcher::imagePath(const QString &url)
     return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/") + QUrl(url).fileName();
 }
 
-void NetworkFetcher::downloadImage(const QString &url)
+void NetworkFetcher::downloadImage(const QString &url, std::function<void()> callback, std::function<void(const Error &)> errorCallback)
 {
     m_provider.get(
         QUrl(url),
-        [this, url](QByteArray data) {
+        [this, url, callback](QByteArray data) {
             QFile file(imagePath(url));
             file.open(QIODevice::WriteOnly);
             file.write(data);
             file.close();
-            Q_EMIT imageDownloadFinished(url);
+
+            if (callback) {
+                callback();
+            }
         },
-        [url](Error error) {
+        [url, errorCallback](const Error &error) {
             qWarning() << "Failed to download image" << url << ":" << error.m_message;
+
+            if (errorCallback) {
+                errorCallback(error);
+            }
         });
 }
