@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-28 01:00+0000\n"
-"PO-Revision-Date: 2023-01-15 15:36+0100\n"
+"POT-Creation-Date: 2023-01-29 01:00+0000\n"
+"PO-Revision-Date: 2023-01-28 13:04+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -141,7 +141,7 @@ msgstr "Ophaler"
 #: qml/SettingsPage.qml:107
 #, kde-format
 msgid "Prefetch"
-msgstr ""
+msgstr "Vooraf ophalen"
 
 #: qml/SettingsPage.qml:126
 #, kde-format
@@ -168,12 +168,12 @@ msgstr "Favorieten sorteren"
 msgid "About"
 msgstr "Info over"
 
-#: tvspielfilmfetcher.cpp:26
+#: tvspielfilmfetcher.cpp:30
 #, kde-format
 msgid "Germany"
 msgstr "Duitsland"
 
-#: xmltvfetcher.cpp:36
+#: xmltvfetcher.cpp:42
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"

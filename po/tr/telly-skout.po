@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-28 01:00+0000\n"
-"PO-Revision-Date: 2023-01-15 17:50+0300\n"
+"POT-Creation-Date: 2023-01-29 01:00+0000\n"
+"PO-Revision-Date: 2023-01-28 18:23+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -40,7 +40,7 @@ msgstr "Televizyon Çocuğu"
 #: main.cpp:67
 #, kde-format
 msgid "© 2020 KDE Community"
-msgstr "© 2020 KDE Community"
+msgstr "© 2020 KDE Topluluğu"
 
 #: qml/ChannelListDelegate.qml:19
 #, kde-format
@@ -141,7 +141,7 @@ msgstr "Getirici"
 #: qml/SettingsPage.qml:107
 #, kde-format
 msgid "Prefetch"
-msgstr ""
+msgstr "Önden Getir"
 
 #: qml/SettingsPage.qml:126
 #, kde-format
@@ -168,12 +168,12 @@ msgstr "Beğenileri Sırala"
 msgid "About"
 msgstr "Hakkında"
 
-#: tvspielfilmfetcher.cpp:26
+#: tvspielfilmfetcher.cpp:30
 #, kde-format
 msgid "Germany"
 msgstr "Almanya"
 
-#: xmltvfetcher.cpp:36
+#: xmltvfetcher.cpp:42
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"
