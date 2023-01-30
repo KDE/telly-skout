@@ -137,7 +137,7 @@ msgstr "Receptor"
 #: qml/SettingsPage.qml:107
 #, kde-format
 msgid "Prefetch"
-msgstr ""
+msgstr "Obter previamente"
 
 #: qml/SettingsPage.qml:126
 #, kde-format
