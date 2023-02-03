@@ -331,10 +331,9 @@ void Database::addChannel(const ChannelData &data, const GroupId &group)
 
         // store channel
         {
-            QUrl urlFromInput = QUrl::fromUserInput(data.m_url);
             m_addChannelQuery->bindValue(QStringLiteral(":id"), data.m_id.value());
             m_addChannelQuery->bindValue(QStringLiteral(":name"), data.m_name);
-            m_addChannelQuery->bindValue(QStringLiteral(":url"), urlFromInput.toString());
+            m_addChannelQuery->bindValue(QStringLiteral(":url"), data.m_url);
             m_addChannelQuery->bindValue(QStringLiteral(":group"), group.value());
             m_addChannelQuery->bindValue(QStringLiteral(":image"), data.m_image);
             execute(*m_addChannelQuery);
