@@ -3,20 +3,20 @@
 ---
 app-id: org.kde.telly-skout
 runtime: org.kde.Platform
-runtime-version: '5.15-22.08'
+runtime-version: 5.15-22.08
 sdk: org.kde.Sdk
 command: telly-skout
 rename-icon: telly-skout
 copy-icon: true
 tags:
-  - 'nightly'
+  - nightly
 desktop-file-name-suffix: ' (Nightly)'
 finish-args:
-  - '--share=network'
-  - '--share=ipc'
-  - '--socket=wayland'
-  - '--socket=fallback-x11'
-  - '--device=dri'
+  - --share=network
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
 modules:
   - name: telly-skout
     buildsystem: cmake-ninja
