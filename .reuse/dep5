@@ -6,6 +6,6 @@ Files: src/qtquickcontrols2.conf README.md src/TellySkoutSettings.kcfgc src/Tell
 Copyright: Plata Hill <plata.hill@kdemail.net>
 License: CC0-1.0
 
-Files: telly-skout.svg logo.png
+Files: org.kde.telly-skout.svg logo.png
 Copyright: Plata Hill <plata.hill@kdemail.net>
 License: CC-BY-SA-4.0

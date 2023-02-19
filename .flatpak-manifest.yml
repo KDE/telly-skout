@@ -6,7 +6,6 @@ runtime: org.kde.Platform
 runtime-version: 5.15-22.08
 sdk: org.kde.Sdk
 command: telly-skout
-rename-icon: telly-skout
 copy-icon: true
 tags:
   - nightly
