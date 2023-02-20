@@ -12,6 +12,7 @@
 
 #include <QList>
 #include <QMap>
+#include <QMultiMap>
 #include <QSqlQuery>
 #include <QString>
 #include <QVector>
@@ -79,6 +80,7 @@ private:
     bool createTables();
     bool dropTables();
     void cleanup();
+    QMultiMap<ProgramId, QString> programCategories() const;
 
     std::unique_ptr<QSqlQuery> m_addGroupQuery;
     std::unique_ptr<QSqlQuery> m_groupCountQuery;

@@ -42,9 +42,7 @@ Database::Database()
 
     // speed up database (especially for slow persistent memory like on the PinePhone)
     execute(QStringLiteral("PRAGMA synchronous = OFF;"));
-    execute(QStringLiteral("PRAGMA journal_mode = WAL;")); // TODO: or MEMORY?
-    execute(QStringLiteral("PRAGMA temp_store = MEMORY;"));
-    execute(QStringLiteral("PRAGMA locking_mode = EXCLUSIVE;"));
+    execute(QStringLiteral("PRAGMA journal_mode = WAL;")); // no measurable effect in Database benchmark, but recommended everywhere
 
     // prepare queries once (faster)
     m_addGroupQuery.reset(new QSqlQuery(db));
@@ -101,7 +99,7 @@ Database::Database()
     m_addProgramCategoryQuery.reset(new QSqlQuery(db));
     success &= m_addProgramCategoryQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO ProgramCategories VALUES (:program, :category);"));
     m_programCategoriesQuery.reset(new QSqlQuery(db));
-    success &= m_programCategoriesQuery->prepare(QStringLiteral("SELECT category FROM ProgramCategories WHERE program=:program;"));
+    success &= m_programCategoriesQuery->prepare(QStringLiteral("SELECT * FROM ProgramCategories;"));
 
     if (!success) {
         qCritical() << "Failed to prepare database queries";
@@ -564,6 +562,9 @@ QMap<ChannelId, QVector<ProgramData>> Database::programs() const
 {
     QMap<ChannelId, QVector<ProgramData>> programs;
 
+    QSqlDatabase::database().transaction();
+    const QMultiMap<ProgramId, QString> categories = programCategories();
+
     execute(*m_programsQuery);
 
     while (m_programsQuery->next()) {
@@ -583,15 +584,13 @@ QMap<ChannelId, QVector<ProgramData>> Database::programs() const
         data.m_description = m_programsQuery->value(QStringLiteral("description")).toString();
         data.m_descriptionFetched = m_programsQuery->value(QStringLiteral("descriptionFetched")).toBool();
 
-        m_programCategoriesQuery->bindValue(QStringLiteral(":program"), data.m_id.value());
-        execute(*m_programCategoriesQuery);
-
-        while (m_programCategoriesQuery->next()) {
-            data.m_categories.push_back(m_programCategoriesQuery->value(QStringLiteral("category")).toString());
+        for (auto &&category : categories.values(data.m_id)) {
+            data.m_categories.push_back(category);
         }
 
         programs[channelId].push_back(data);
     }
+    QSqlDatabase::database().commit();
 
     return programs;
 }
@@ -599,6 +598,9 @@ QMap<ChannelId, QVector<ProgramData>> Database::programs() const
 QVector<ProgramData> Database::programs(const ChannelId &channelId) const
 {
     QVector<ProgramData> programs;
+
+    QSqlDatabase::database().transaction();
+    const QMultiMap<ProgramId, QString> categories = programCategories();
 
     m_programsPerChannelQuery->bindValue(QStringLiteral(":channel"), channelId.value());
     execute(*m_programsPerChannelQuery);
@@ -615,14 +617,24 @@ QVector<ProgramData> Database::programs(const ChannelId &channelId) const
         data.m_description = m_programsPerChannelQuery->value(QStringLiteral("description")).toString();
         data.m_descriptionFetched = m_programsPerChannelQuery->value(QStringLiteral("descriptionFetched")).toBool();
 
-        m_programCategoriesQuery->bindValue(QStringLiteral(":program"), data.m_id.value());
-        execute(*m_programCategoriesQuery);
-
-        while (m_programCategoriesQuery->next()) {
-            data.m_categories.push_back(m_programCategoriesQuery->value(QStringLiteral("category")).toString());
+        for (auto &&category : categories.values(data.m_id)) {
+            data.m_categories.push_back(category);
         }
 
         programs.push_back(data);
     }
+    QSqlDatabase::database().commit();
+
     return programs;
+}
+
+QMultiMap<ProgramId, QString> Database::programCategories() const
+{
+    QMultiMap<ProgramId, QString> categories;
+    execute(*m_programCategoriesQuery);
+    while (m_programCategoriesQuery->next()) {
+        categories.insert(ProgramId(m_programCategoriesQuery->value(QStringLiteral("program")).toString()),
+                          m_programCategoriesQuery->value(QStringLiteral("category")).toString());
+    }
+    return categories;
 }

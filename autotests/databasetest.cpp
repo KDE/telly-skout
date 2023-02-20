@@ -6,6 +6,8 @@
 #include <QStandardPaths>
 #include <QTest>
 
+#include <algorithm>
+
 class DatabaseTest : public QObject
 {
     Q_OBJECT
@@ -324,8 +326,10 @@ private Q_SLOTS:
         QCOMPARE(program3.m_subtitle, "Program3Subtitle");
         QCOMPARE(program3.m_description, "Program3Description");
         QCOMPARE(program3.m_descriptionFetched, true);
-        QCOMPARE(program3.m_categories.at(0), "Category1");
-        QCOMPARE(program3.m_categories.at(1), "Category2");
+        QVector<QString> sortedCategories = program3.m_categories;
+        std::sort(sortedCategories.begin(), sortedCategories.end());
+        QCOMPARE(sortedCategories.at(0), "Category1");
+        QCOMPARE(sortedCategories.at(1), "Category2");
     }
 
     void testProgramExists()
