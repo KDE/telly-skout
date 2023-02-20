@@ -10,6 +10,7 @@
 
 #include <KLocalizedString>
 
+#include <QAtomicInteger>
 #include <QCryptographicHash>
 #include <QDebug>
 #include <QFile>
@@ -33,9 +34,18 @@ Fetcher::Fetcher()
 
 void Fetcher::fetchFavorites()
 {
+    static QAtomicInteger<qsizetype> channelCounter = 0; // reference counter to determine when all channels have been fetched
+
     qDebug() << "Starting to fetch favorites";
 
     const QVector<ChannelId> favoriteChannels = Database::instance().favorites();
+
+    // do nothing if favorites are already being fetched (e.g. triggered from main() and from QML)
+    if (!channelCounter.testAndSetOrdered(0, favoriteChannels.size())) {
+        qDebug() << "Favorites are already being fetched, do nothing";
+        return;
+    }
+
     for (const ChannelId &channelId : favoriteChannels) {
         Q_EMIT startedFetchingChannel(channelId);
         m_fetcherImpl->fetchProgram(
@@ -43,9 +53,13 @@ void Fetcher::fetchFavorites()
             [this, channelId](const QVector<ProgramData> &programs) {
                 Database::instance().addPrograms(programs);
                 Q_EMIT channelUpdated(channelId);
+
+                channelCounter.deref();
             },
             [this, channelId](const Error &error) {
                 Q_EMIT errorFetchingChannel(channelId, error);
+
+                channelCounter.deref();
             });
     }
 }

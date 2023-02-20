@@ -75,6 +75,10 @@ int main(int argc, char *argv[])
     parser.addVersionOption();
     parser.process(app);
 
+    // trigger fetching of favorites before loading QML such that e.g. network requests can already run in the background
+    Database::instance();
+    Fetcher::instance().fetchFavorites();
+
     // register qml types
     qmlRegisterType<GroupsModel>("org.kde.TellySkout", 1, 0, "GroupsModel");
     qmlRegisterType<ChannelsModel>("org.kde.TellySkout", 1, 0, "ChannelsModel");
@@ -95,8 +99,6 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty(QStringLiteral("_settings"), TellySkoutSettings::self());
 
     QObject::connect(&app, &QCoreApplication::aboutToQuit, TellySkoutSettings::self(), &TellySkoutSettings::save);
-
-    Database::instance();
 
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
 

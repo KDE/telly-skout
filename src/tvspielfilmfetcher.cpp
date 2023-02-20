@@ -131,12 +131,15 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId,
     // backwards such that we can stop early (see below)
     const QDate lastDate = QDate::currentDate().addDays(TellySkoutSettings::tvSpielfilmPrefetch());
 
-    if (programExists(channelId, lastDate)) {
-        return; // assume that programs from previous days are available
-    }
-
     QVector<ProgramData> programs;
-    fetchProgram(channelId, lastDate, 1, programs, callback, errorCallback);
+    if (programExists(channelId, lastDate)) {
+        // assume that programs from previous days are available
+        if (callback) {
+            callback(programs);
+        }
+    } else {
+        fetchProgram(channelId, lastDate, 1, programs, callback, errorCallback);
+    }
 }
 
 void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId,
