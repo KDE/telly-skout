@@ -230,14 +230,24 @@ void Database::cleanup()
     QDateTime dateTimeFuture = QDateTime::currentDateTime();
     dateTimeFuture = dateTimeFuture.addDays(30);
 
+    QSqlDatabase::database().transaction();
     QSqlQuery query;
     if (!query.prepare(QStringLiteral("DELETE FROM Programs WHERE stop < :sinceEpochPast OR stop > :sinceEpochFuture;"))) {
-        qCritical() << "Failed to prepare cleanup query";
+        qCritical() << "Failed to prepare cleanup query for Programs";
         return;
     }
     query.bindValue(QStringLiteral(":sinceEpochPast"), dateTimePast.toSecsSinceEpoch());
     query.bindValue(QStringLiteral(":sinceEpochFuture"), dateTimeFuture.toSecsSinceEpoch());
     execute(query);
+
+    // delete categories which are no longer referenced
+    if (!query.prepare(QStringLiteral("DELETE FROM ProgramCategories WHERE program NOT IN (SELECT id FROM Programs WHERE id IS NOT NULL);"))) {
+        qCritical() << "Failed to prepare cleanup query for ProgramCategories";
+        return;
+    }
+    execute(query);
+
+    QSqlDatabase::database().commit();
 }
 
 void Database::addGroup(const GroupData &data)
