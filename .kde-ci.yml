@@ -13,3 +13,6 @@ Dependencies:
 - 'on': ['FreeBSD', 'Linux', 'Windows']
   'require':
     'frameworks/kcrash': '@stable'
+
+Options:
+  require-passing-tests-on: [ '@all' ]
