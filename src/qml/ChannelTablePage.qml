@@ -45,7 +45,7 @@ Kirigami.Page {
     Row {
         id: header
 
-        x: -channelTable.Controls.ScrollBar.horizontal.position * channelTable.contentWidth
+        x: -channelTable.contentX
         visible: contentRepeater.count !== 0
         z: 100 // TODO: remove workaround for mobile (channelTable "anchors.top: header.bottom" not respected)
 
@@ -78,82 +78,88 @@ Kirigami.Page {
     }
 
     Controls.ScrollView {
-        id: channelTable
-
-        readonly property int pxPerMin: _settings.programHeight
-        readonly property var date: new Date()
-        readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
-        readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
-
-        visible: contentRepeater.count !== 0
         width: parent.width
         height: parent.height - header.height
         anchors.top: header.bottom
-        contentHeight: 24 * 60 * pxPerMin
-        Component.onCompleted: {
-            // scroll to current time
-            var today = new Date();
-            today.setHours(0);
-            today.setMinutes(0);
-            today.setSeconds(0);
-            const now = new Date();
-            // offset [s] to 00:00h
-            const offsetS = (now.getTime() - today.getTime()) / 1000;
-            // center in window (vertically)
-            Controls.ScrollBar.vertical.position = offsetS / (24 * 60 * 60) - (windowHeight / 2) / channelTable.contentHeight;
-        }
 
-        Row {
-            id: content
+        Flickable {
+            id: channelTable
 
-            Repeater {
-                id: contentRepeater
+            readonly property int pxPerMin: _settings.programHeight
+            readonly property var date: new Date()
+            readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
+            readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
 
-                model: channelsModel
+            visible: contentRepeater.count !== 0
+            contentHeight: 24 * 60 * pxPerMin
+            contentWidth: content.width
+            boundsBehavior: Flickable.StopAtBounds
+            Component.onCompleted: {
+                // scroll to current time
+                var today = new Date();
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                const now = new Date();
+                // offset [s] to 00:00h
+                const offsetS = (now.getTime() - today.getTime()) / 1000;
+                // center in window (vertically)
+                contentY = (offsetS / (24 * 60 * 60)) * contentHeight - (windowHeight / 2);
+            }
 
-                delegate: Column {
-                    id: column
+            Row {
+                id: content
 
-                    property int idx: index
+                Repeater {
+                    id: contentRepeater
 
-                    width: root.columnWidth
+                    model: channelsModel
 
-                    // show info if program is not available
-                    Rectangle {
-                        width: parent.width
-                        height: channelTable.contentHeight
-                        visible: programRepeater.count === 0
-                        color: Kirigami.Theme.negativeBackgroundColor
-                        border.color: Kirigami.Theme.textColor
+                    delegate: Column {
+                        id: column
 
-                        Text {
-                            anchors.centerIn: parent
-                            text: i18n("not available")
-                            wrapMode: Text.Wrap
-                            color: Kirigami.Theme.textColor
+                        property int idx: index
+
+                        width: root.columnWidth
+
+                        // show info if program is not available
+                        Rectangle {
+                            width: parent.width
+                            height: channelTable.contentHeight
+                            visible: programRepeater.count === 0
+                            color: Kirigami.Theme.negativeBackgroundColor
+                            border.color: Kirigami.Theme.textColor
+
+                            Text {
+                                anchors.centerIn: parent
+                                text: i18n("not available")
+                                wrapMode: Text.Wrap
+                                color: Kirigami.Theme.textColor
+                            }
+
                         }
 
-                    }
+                        Repeater {
+                            id: programRepeater
 
-                    Repeater {
-                        id: programRepeater
+                            model: ProgramsProxyModel {
+                                id: proxyProgramModel
 
-                        model: ProgramsProxyModel {
-                            id: proxyProgramModel
+                                start: channelTable.start
+                                stop: channelTable.stop
+                                sourceModel: modelData.programsModel
+                            }
 
-                            start: channelTable.start
-                            stop: channelTable.stop
-                            sourceModel: modelData.programsModel
-                        }
+                            delegate: ChannelTableDelegate {
+                                channelIdx: column.idx
+                                overlay: overlaySheet
+                                pxPerMin: channelTable.pxPerMin
+                                width: root.columnWidth
+                                startTime: channelTable.start
+                                stopTime: channelTable.stop
+                                currentTimestamp: root.currentTimestamp
+                            }
 
-                        delegate: ChannelTableDelegate {
-                            channelIdx: column.idx
-                            overlay: overlaySheet
-                            pxPerMin: channelTable.pxPerMin
-                            width: root.columnWidth
-                            startTime: channelTable.start
-                            stopTime: channelTable.stop
-                            currentTimestamp: root.currentTimestamp
                         }
 
                     }
