@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-29 01:00+0000\n"
+"POT-Creation-Date: 2023-02-24 01:03+0000\n"
 "PO-Revision-Date: 2022-05-14 20:09+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -65,7 +65,7 @@ msgstr "Obľúbené"
 msgid "Please select favorites"
 msgstr ""
 
-#: qml/ChannelTablePage.qml:131
+#: qml/ChannelTablePage.qml:135
 #, kde-format
 msgid "not available"
 msgstr "nedostupné"
