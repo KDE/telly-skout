@@ -75,7 +75,7 @@ msgstr "nedostupný"
 #: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:26
 #, kde-format
 msgid "Select Favorites"
-msgstr ""
+msgstr "Vyberte oblíbené"
 
 #: qml/GroupListPage.qml:24
 #, kde-format
@@ -161,7 +161,7 @@ msgstr "Všechny soubory (*)"
 #: qml/TellySkoutGlobalDrawer.qml:35
 #, kde-format
 msgid "Sort Favorites"
-msgstr ""
+msgstr "Seřadit oblíbené"
 
 #: qml/TellySkoutGlobalDrawer.qml:54 qml/TellySkoutGlobalDrawer.qml:57
 #, kde-format
