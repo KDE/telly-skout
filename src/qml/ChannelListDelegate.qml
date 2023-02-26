@@ -33,7 +33,7 @@ Kirigami.SwipeListItem {
         }
 
         Kirigami.Icon {
-            source: model.channel.refreshing ? "view-refresh" : model.channel.image === "" ? "rss" : Fetcher.image(model.channel.image)
+            source: model.channel.refreshing ? "view-refresh" : model.channel.image === "" ? "tv" : Fetcher.image(model.channel.image)
         }
 
         Controls.Label {

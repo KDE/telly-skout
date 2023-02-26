@@ -13,7 +13,7 @@ Kirigami.GlobalDrawer {
     actions: [
         Kirigami.Action {
             text: i18n("Favorites")
-            iconName: "rss"
+            iconName: "view-calendar-day"
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();
@@ -24,7 +24,7 @@ Kirigami.GlobalDrawer {
         },
         Kirigami.Action {
             text: i18n("Select Favorites")
-            iconName: "rss"
+            iconName: "favorite"
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();
@@ -33,7 +33,7 @@ Kirigami.GlobalDrawer {
         },
         Kirigami.Action {
             text: i18n("Sort Favorites")
-            iconName: "rss"
+            iconName: "view-sort"
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();

@@ -60,8 +60,10 @@ if(ANDROID)
         favorite
         help-about-symbolic
         list-add
-        rss
         settings-configure
+        tv
+        view-calendar-day
         view-refresh
+        view-sort
     )
 endif()

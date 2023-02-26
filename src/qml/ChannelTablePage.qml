@@ -37,7 +37,7 @@ Kirigami.Page {
     Kirigami.PlaceholderMessage {
         visible: contentRepeater.count === 0
         width: Kirigami.Units.gridUnit * 20
-        icon.name: "rss"
+        icon.name: "favorite"
         anchors.centerIn: parent
         text: i18n("Please select favorites")
     }
