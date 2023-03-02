@@ -99,6 +99,7 @@
       <caption xml:lang="id">Favorit</caption>
       <caption xml:lang="it">Preferiti</caption>
       <caption xml:lang="ka">სანიშნები</caption>
+      <caption xml:lang="ko">책갈피</caption>
       <caption xml:lang="nl">Favorieten</caption>
       <caption xml:lang="pt">Favoritos</caption>
       <caption xml:lang="sl">Priljubljene</caption>
@@ -118,6 +119,7 @@
       <caption xml:lang="id">Pilih Favorit</caption>
       <caption xml:lang="it">Seleziona i preferiti</caption>
       <caption xml:lang="ka">აირჩიეთ რჩეულები</caption>
+      <caption xml:lang="ko">책갈피 선택</caption>
       <caption xml:lang="nl">Favorieten selecteren</caption>
       <caption xml:lang="pt">Seleccionar os Favoritos</caption>
       <caption xml:lang="sl">Izberi priljubljene</caption>
@@ -137,6 +139,7 @@
       <caption xml:lang="id">Urutkan Favorit</caption>
       <caption xml:lang="it">Ordina i preferiti</caption>
       <caption xml:lang="ka">რჩეულების დალაგება</caption>
+      <caption xml:lang="ko">책갈피 정렬</caption>
       <caption xml:lang="nl">Favorieten sorteren</caption>
       <caption xml:lang="pt">Ordenar os Favoritos</caption>
       <caption xml:lang="sl">Razvrsti priljubljene</caption>
