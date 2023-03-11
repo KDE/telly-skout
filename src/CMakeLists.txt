@@ -30,10 +30,10 @@ add_library(telly-skout STATIC
 kconfig_add_kcfg_files(telly-skout TellySkoutSettings.kcfgc GENERATE_MOC)
 
 target_include_directories(telly-skout PRIVATE ${CMAKE_BINARY_DIR})
-target_link_libraries(telly-skout PUBLIC Qt::Core Qt::Qml Qt::Quick Qt::QuickControls2 Qt::Sql KF5::CoreAddons KF5::ConfigGui KF5::I18n)
+target_link_libraries(telly-skout PUBLIC Qt::Core Qt::Qml Qt::Quick Qt::QuickControls2 Qt::Sql Qt::Xml KF${QT_MAJOR_VERSION}::CoreAddons KF${QT_MAJOR_VERSION}::ConfigGui KF${QT_MAJOR_VERSION}::I18n)
 
 if(ANDROID)
-    target_link_libraries(telly-skout PUBLIC KF5::Kirigami2)
+    target_link_libraries(telly-skout PUBLIC KF${QT_MAJOR_VERSION}::Kirigami2)
 else()
     target_link_libraries(telly-skout PUBLIC Qt::Widgets)
 endif()
@@ -49,11 +49,11 @@ target_link_libraries(telly-skout-app PRIVATE telly-skout)
 
 set_target_properties(telly-skout-app PROPERTIES OUTPUT_NAME "telly-skout")
 
-if(TARGET KF5::Crash)
-    target_link_libraries(telly-skout-app PRIVATE KF5::Crash)
+if(TARGET KF${QT_MAJOR_VERSION}::Crash)
+    target_link_libraries(telly-skout-app PRIVATE KF${QT_MAJOR_VERSION}::Crash)
 endif()
 
-install(TARGETS telly-skout-app ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS telly-skout-app ${KF${QT_MAJOR_VERSION}_INSTALL_TARGETS_DEFAULT_ARGS})
 
 if(ANDROID)
     kirigami_package_breeze_icons(ICONS

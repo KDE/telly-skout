@@ -7,8 +7,8 @@
 
 #include "localdataprovider.h"
 
+#include <QDomDocument>
 #include <QMap>
-#include <QtXml>
 
 class XmltvFetcher : public FetcherImpl
 {
