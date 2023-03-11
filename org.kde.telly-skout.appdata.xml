@@ -55,6 +55,7 @@
   <developer_name xml:lang="ca-valencia">plata</developer_name>
   <developer_name xml:lang="en-GB">plata</developer_name>
   <developer_name xml:lang="es">plata</developer_name>
+  <developer_name xml:lang="fi">plata</developer_name>
   <developer_name xml:lang="fr">plata</developer_name>
   <developer_name xml:lang="id">plata</developer_name>
   <developer_name xml:lang="it">plata</developer_name>
@@ -96,6 +97,7 @@
       <caption xml:lang="cs">Oblíbené</caption>
       <caption xml:lang="en-GB">Favourites</caption>
       <caption xml:lang="es">Favoritos</caption>
+      <caption xml:lang="fi">Suosikit</caption>
       <caption xml:lang="fr">Favoris</caption>
       <caption xml:lang="id">Favorit</caption>
       <caption xml:lang="it">Preferiti</caption>
@@ -116,6 +118,7 @@
       <caption xml:lang="cs">Vyberte oblíbené</caption>
       <caption xml:lang="en-GB">Select Favourites</caption>
       <caption xml:lang="es">Seleccionar favoritos</caption>
+      <caption xml:lang="fi">Valitse suosikit</caption>
       <caption xml:lang="fr">Sélectionnez les favoris</caption>
       <caption xml:lang="id">Pilih Favorit</caption>
       <caption xml:lang="it">Seleziona i preferiti</caption>
@@ -136,6 +139,7 @@
       <caption xml:lang="cs">Seřadit oblíbené</caption>
       <caption xml:lang="en-GB">Sort Favourites</caption>
       <caption xml:lang="es">Ordenar favoritos</caption>
+      <caption xml:lang="fi">Lajittele suosikit</caption>
       <caption xml:lang="fr">Trier les favoris</caption>
       <caption xml:lang="id">Urutkan Favorit</caption>
       <caption xml:lang="it">Ordina i preferiti</caption>
