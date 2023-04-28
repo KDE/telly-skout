@@ -21,6 +21,7 @@
   <name xml:lang="nl">Telly Skout</name>
   <name xml:lang="pl">Telly Skout</name>
   <name xml:lang="pt">Telly Skout</name>
+  <name xml:lang="ru">Telly Skout</name>
   <name xml:lang="sk">Telly Skout</name>
   <name xml:lang="sl">Telly Skout</name>
   <name xml:lang="sv">Telly Skout</name>
@@ -41,6 +42,7 @@
   <summary xml:lang="nl">Een convergente Kirigami TV gids</summary>
   <summary xml:lang="pl">Zbieżny przegląd programów TV</summary>
   <summary xml:lang="pt">Um guia de TV convergente em Kirigami</summary>
+  <summary xml:lang="ru">Универсальная программа телепередач на основе Kirigami</summary>
   <summary xml:lang="sk">Konvergentný TV sprievodca Kirigami</summary>
   <summary xml:lang="sl">Konvergentni Kirigami TV vodnik</summary>
   <summary xml:lang="sv">En konvergent Kirigami tv-guide</summary>
@@ -66,6 +68,7 @@
   <developer_name xml:lang="nl">plata</developer_name>
   <developer_name xml:lang="pl">plata</developer_name>
   <developer_name xml:lang="pt">plata</developer_name>
+  <developer_name xml:lang="ru">plata</developer_name>
   <developer_name xml:lang="sk">plata</developer_name>
   <developer_name xml:lang="sl">plata</developer_name>
   <developer_name xml:lang="sv">plata</developer_name>
@@ -87,6 +90,7 @@
     <p xml:lang="nl">Telly Skout is een convergente Kirigami TV gids. Deze toont het TV programma voor uw favoriete kanalen Uit TV Spielfilm of een XMLTV bestand.</p>
     <p xml:lang="pl">Telly Skout to zbieżny przegląd programów TV. Pokazuje program TV dla twoich ulubionych kanałów ze TV Spielfilm lub pliku XMLTV.</p>
     <p xml:lang="pt">O Telly Skout é um guia de TV convergente em Kirigami. Mostra o programa de TV para os seus canais favoritos da TV Spielfilm ou de um ficheiro em XMLTV.</p>
+    <p xml:lang="ru">Telly Skout — универсальная программа телепередач на основе Kirigami. Она позволяет просматривать телепрограмму для любимых каналов, используя данные TV Spielfilm или файл XMLTV.</p>
     <p xml:lang="sl">Telly Skout je konvergentni Kirigami TV vodič. Prikazuje TV program vaših priljubljenih kanalov TV filmov ali datoteke XMLTV.</p>
     <p xml:lang="sv">Telly Skout är en konvergent Kirigami tv-guide. Den visar tv-programmen på dina favoritkanaler från TV Spielfilm eller en XMLTV-fil.</p>
     <p xml:lang="tr">Televizyon Çocuğu, yakınsak bir Kirigami TV kılavuzudur. Beğendiğiniz kanallardan bir Spielfilm veya XMLTV dosyasından TV programlarını gösterir.</p>
@@ -110,6 +114,7 @@
       <caption xml:lang="nl">Favorieten</caption>
       <caption xml:lang="pl">Ulubione</caption>
       <caption xml:lang="pt">Favoritos</caption>
+      <caption xml:lang="ru">Избранное</caption>
       <caption xml:lang="sl">Priljubljene</caption>
       <caption xml:lang="tr">Sık Kullanılanlar</caption>
       <caption xml:lang="uk">Улюблене</caption>
@@ -132,6 +137,7 @@
       <caption xml:lang="nl">Favorieten selecteren</caption>
       <caption xml:lang="pl">Wybierz ulubione</caption>
       <caption xml:lang="pt">Seleccionar os Favoritos</caption>
+      <caption xml:lang="ru">Выбор избранного</caption>
       <caption xml:lang="sl">Izberi priljubljene</caption>
       <caption xml:lang="tr">Sık Kullanılanları Seç</caption>
       <caption xml:lang="uk">Вибір улюблених</caption>
@@ -154,6 +160,7 @@
       <caption xml:lang="nl">Favorieten sorteren</caption>
       <caption xml:lang="pl">Uszereguj ulubione</caption>
       <caption xml:lang="pt">Ordenar os Favoritos</caption>
+      <caption xml:lang="ru">Упорядочивание избранного</caption>
       <caption xml:lang="sl">Razvrsti priljubljene</caption>
       <caption xml:lang="tr">Sık Kullanılanları Sırala</caption>
       <caption xml:lang="uk">Упорядкування улюблених</caption>
