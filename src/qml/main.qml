@@ -5,6 +5,7 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14 as Controls
 import org.kde.TellySkout 1.0 as TellySkout
 import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.ApplicationWindow {
     id: root
@@ -15,7 +16,7 @@ Kirigami.ApplicationWindow {
     Component {
         id: aboutPage
 
-        Kirigami.AboutPage {
+        FormCard.AboutPage {
             aboutData: _aboutData
         }
 

@@ -54,6 +54,12 @@ if(TARGET KF${QT_MAJOR_VERSION}::Crash)
     set(HAVE_KCRASH TRUE)
 endif()
 
+find_package(KF${QT_MAJOR_VERSION}KirigamiAddons REQUIRED)
+set_package_properties(KF${QT_MAJOR_VERSION}KirigamiAddons PROPERTIES
+    TYPE REQUIRED
+    PURPOSE "Provides additional visual components"
+)
+
 ################# compiler #################
 
 set(CMAKE_CXX_STANDARD 11)
