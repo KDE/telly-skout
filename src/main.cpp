@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
                      applicationDescription,
                      KAboutLicense::GPL,
                      i18n("© 2020 KDE Community"));
-    about.addAuthor("Plata", QString(), QStringLiteral("plata@example.com"));
+    about.addAuthor("Plata", QString(), QStringLiteral("plata.hill@kdemail.net"));
     KAboutData::setApplicationData(about);
 
     // command line parser
