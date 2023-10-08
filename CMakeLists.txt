@@ -91,11 +91,6 @@ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES
     src/*.cpp src/*.h
 )
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
-add_custom_target(clang-format-always ALL DEPENDS ${ALL_CLANG_FORMAT_SOURCE_FILES})
-add_dependencies(clang-format-always clang-format)
 
 file(GLOB_RECURSE ALL_QML_FORMAT_SOURCE_FILES src/qml/*.qml)
 qml_format(${ALL_QML_FORMAT_SOURCE_FILES})
-
-add_custom_target(qml-format-always ALL DEPENDS ${ALL_QML_FORMAT_SOURCE_FILES})
-add_dependencies(qml-format-always qml-format)
