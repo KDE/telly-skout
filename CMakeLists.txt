@@ -66,7 +66,7 @@ set(CMAKE_CXX_STANDARD 17)
 if(MSVC)
     add_compile_options(/W3 /WX)
 else()
-    add_compile_options(-Wall -Wextra -Wconversion -Wsign-conversion -pedantic -Werror)
+    add_compile_options(-Wall -Wextra -Wconversion -Wsign-conversion -pedantic)
 endif()
 
 ################# build and install #################
