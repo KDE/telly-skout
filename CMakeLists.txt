@@ -62,7 +62,7 @@ set_package_properties(KF${QT_MAJOR_VERSION}KirigamiAddons PROPERTIES
 
 ################# compiler #################
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 if(MSVC)
     add_compile_options(/W3 /WX)
 else()

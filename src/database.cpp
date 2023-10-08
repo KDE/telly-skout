@@ -441,7 +441,7 @@ void Database::removeFavorite(const ChannelId &channelId)
 
     QSqlDatabase::database().transaction();
     execute(*m_clearFavoritesQuery);
-    for (const auto &id : qAsConst(favoriteChannelIds)) {
+    for (const auto &id : std::as_const(favoriteChannelIds)) {
         m_addFavoriteQuery->bindValue(QStringLiteral(":channel"), id.value());
         execute(*m_addFavoriteQuery);
     }
