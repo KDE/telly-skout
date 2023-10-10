@@ -153,7 +153,7 @@ msgstr "Fitxer"
 #: qml/SettingsPage.qml:139
 #, kde-format
 msgid "XML files (*.xml)"
-msgstr "Fitxers XML (*.xml)"
+msgstr "Fitxers en XML (*.xml)"
 
 #: qml/SettingsPage.qml:139
 #, kde-format
