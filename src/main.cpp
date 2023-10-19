@@ -57,6 +57,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
     QCoreApplication::setApplicationName(QStringLiteral("Telly Skout"));
 
+    KLocalizedString::setApplicationDomain("telly-skout");
+
     const QString applicationDescription = i18n("Convergent TV guide based on Kirigami");
 
     KAboutData about(QStringLiteral("telly-skout"),
@@ -92,7 +94,6 @@ int main(int argc, char *argv[])
     // setup engine
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-    KLocalizedString::setApplicationDomain("telly-skout");
 
     engine.rootContext()->setContextProperty(QStringLiteral("_aboutData"), QVariant::fromValue(about));
 
