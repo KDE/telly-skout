@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
                      i18n("Telly Skout"),
                      QStringLiteral(TELLY_SKOUT_VERSION_STRING),
                      applicationDescription,
-                     KAboutLicense::GPL,
+                     KAboutLicense::LGPL_V2_1,
                      i18n("© 2020 KDE Community"));
     about.addAuthor("Plata", QString(), QStringLiteral("plata.hill@kdemail.net"));
     KAboutData::setApplicationData(about);
