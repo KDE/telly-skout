@@ -21,6 +21,7 @@
 #include <KLocalizedString>
 
 #include <QCommandLineParser>
+#include <QIcon>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQuickStyle>
@@ -65,6 +66,8 @@ int main(int argc, char *argv[])
                      i18n("© 2020 KDE Community"));
     about.addAuthor("Plata", QString(), QStringLiteral("plata.hill@kdemail.net"));
     KAboutData::setApplicationData(about);
+
+    QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("org.kde.telly-skout")));
 
     // command line parser
     QCommandLineParser parser;
