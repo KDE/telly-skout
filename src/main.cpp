@@ -52,13 +52,9 @@ int main(int argc, char *argv[])
     KCrash::initialize();
 #endif
 
-    // about
-    QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
-    QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
-    QCoreApplication::setApplicationName(QStringLiteral("Telly Skout"));
-
     KLocalizedString::setApplicationDomain("telly-skout");
 
+    // about
     const QString applicationDescription = i18n("Convergent TV guide based on Kirigami");
 
     KAboutData about(QStringLiteral("telly-skout"),
