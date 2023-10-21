@@ -71,10 +71,9 @@ int main(int argc, char *argv[])
 
     // command line parser
     QCommandLineParser parser;
-    parser.setApplicationDescription(applicationDescription);
-    parser.addHelpOption();
-    parser.addVersionOption();
+    about.setupCommandLine(&parser);
     parser.process(app);
+    about.processCommandLine(&parser);
 
     // trigger fetching of favorites before loading QML such that e.g. network requests can already run in the background
     Database::instance();
