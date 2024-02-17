@@ -17,7 +17,6 @@
   <name xml:lang="fi">Telly Skout</name>
   <name xml:lang="fr">Telly Skout</name>
   <name xml:lang="gl">Telly Skout</name>
-  <name xml:lang="ia">Telly Skout</name>
   <name xml:lang="id">Telly Skout</name>
   <name xml:lang="it">Telly Skout</name>
   <name xml:lang="ka">Telly Skout</name>
@@ -127,7 +126,6 @@
       <caption xml:lang="fi">Suosikit</caption>
       <caption xml:lang="fr">Favoris</caption>
       <caption xml:lang="gl">Favoritas.</caption>
-      <caption xml:lang="ia">Favoritos</caption>
       <caption xml:lang="id">Favorit</caption>
       <caption xml:lang="it">Preferiti</caption>
       <caption xml:lang="ka">სანიშნები</caption>
@@ -184,7 +182,6 @@
       <caption xml:lang="fi">Lajittele suosikit</caption>
       <caption xml:lang="fr">Trier les favoris</caption>
       <caption xml:lang="gl">Ordenar as favoritas.</caption>
-      <caption xml:lang="ia">Ordina Favoritos</caption>
       <caption xml:lang="id">Urutkan Favorit</caption>
       <caption xml:lang="it">Ordina i preferiti</caption>
       <caption xml:lang="ka">რჩეულების დალაგება</caption>
