@@ -3,7 +3,7 @@
 ---
 app-id: org.kde.telly-skout
 runtime: org.kde.Platform
-runtime-version: 6.6
+runtime-version: 6.6-24.02
 sdk: org.kde.Sdk
 command: telly-skout
 copy-icon: true
