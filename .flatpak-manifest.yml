@@ -32,3 +32,10 @@ modules:
     sources:
       - type: dir
         path: '.'
+    cleanup:
+      - '/include'
+      - '/lib/cmake'
+      - '/lib/libexec'
+      - '/mkspecs'
+      - '/etc/xdg/*categories'
+      - '/share/qlogging-categories5'
