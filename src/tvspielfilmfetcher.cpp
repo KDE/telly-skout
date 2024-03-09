@@ -46,7 +46,7 @@ void TvSpielfilmFetcher::fetchGroup(const QString &url,
 
     m_provider.get(
         QUrl(url),
-        [this, callback](QByteArray data) {
+        [this, callback](const QByteArray &data) {
             static QRegularExpression reChannelList(QStringLiteral("<select name=\\\"channel\\\">.*</select>"));
             reChannelList.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
             QRegularExpressionMatch matchChannelList = reChannelList.match(QString::fromUtf8(data));
@@ -158,7 +158,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId,
 
     m_provider.get(
         QUrl(url),
-        [this, channelId, date, page, programs, callback, errorCallback, url](QByteArray data) {
+        [this, channelId, date, page, programs, callback, errorCallback, url](const QByteArray &data) {
             QVector<ProgramData> allPrograms(programs);
             allPrograms.append(processChannel(QString::fromUtf8(data), url, channelId));
 

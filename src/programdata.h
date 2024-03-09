@@ -18,6 +18,6 @@ struct ProgramData {
     QString m_title;
     QString m_subtitle;
     QString m_description;
-    bool m_descriptionFetched;
+    bool m_descriptionFetched = false;
     QVector<QString> m_categories;
 };
