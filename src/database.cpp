@@ -116,7 +116,7 @@ bool Database::createTables()
     qDebug() << "Create DB tables";
 
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Fetcher (id INTEGER UNIQUE);")));
-    TRUE_OR_RETURN(execute(QStringLiteral("INSERT OR IGNORE INTO Fetcher VALUES (") + QString::number(TellySkoutSettings::fetcher()) + ");"));
+    TRUE_OR_RETURN(execute(QStringLiteral("INSERT OR IGNORE INTO Fetcher VALUES (") + QString::number(TellySkoutSettings::fetcher()) + QStringLiteral(");")));
 
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS \"Groups\" (id TEXT UNIQUE, name TEXT, url TEXT);")));
     TRUE_OR_RETURN(execute(QStringLiteral("CREATE TABLE IF NOT EXISTS Channels (id TEXT UNIQUE, name TEXT, url TEXT, image TEXT);")));
@@ -331,7 +331,7 @@ void Database::addChannel(const ChannelData &data, const GroupId &group)
 
         // store channel per group
         {
-            m_addGroupChannelQuery->bindValue(QStringLiteral(":id"), group.value() + "_" + data.m_id.value());
+            m_addGroupChannelQuery->bindValue(QStringLiteral(":id"), QString(group.value() + QStringLiteral("_") + data.m_id.value()));
             m_addGroupChannelQuery->bindValue(QStringLiteral(":group"), group.value());
             m_addGroupChannelQuery->bindValue(QStringLiteral(":channel"), data.m_id.value());
             execute(*m_addGroupChannelQuery);

@@ -9,7 +9,7 @@
 ChannelsProxyModel::ChannelsProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_onlyFavorites(false)
-    , m_group("")
+    , m_group(QStringLiteral(""))
 {
     connect(&Database::instance(), &Database::channelDetailsUpdated, this, [this]() {
         invalidateFilter();

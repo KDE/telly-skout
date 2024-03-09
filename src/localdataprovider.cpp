@@ -11,7 +11,7 @@ void LocalDataProvider::get(const QUrl &url, std::function<void(const QByteArray
     if (file.open(QIODevice::ReadOnly)) {
         callback(file.readAll());
     } else {
-        errorCallback(Error("Could not open" + url.toDisplayString()));
+        errorCallback(Error(QStringLiteral("Could not open") + url.toDisplayString()));
     }
     file.close();
 }

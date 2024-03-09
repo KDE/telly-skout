@@ -24,7 +24,7 @@ public:
 
         QVector<GroupData> groups;
         GroupData data;
-        data.m_id = GroupId("TestGroup");
+        data.m_id = GroupId(QStringLiteral("TestGroup"));
         groups.push_back(data);
         callback(groups);
     }
@@ -40,7 +40,7 @@ public:
 
         QList<ChannelData> channels;
         ChannelData data;
-        data.m_id = ChannelId("TestChannel");
+        data.m_id = ChannelId(QStringLiteral("TestChannel"));
         channels.push_back(data);
         callback(channels);
     }
@@ -54,8 +54,8 @@ public:
 
         QVector<ProgramData> programs;
         ProgramData data;
-        data.m_id = ProgramId("TestProgram");
-        data.m_channelId = ChannelId("TestChannel");
+        data.m_id = ProgramId(QStringLiteral("TestProgram"));
+        data.m_channelId = ChannelId(QStringLiteral("TestChannel"));
         programs.push_back(data);
         callback(programs);
     }
@@ -71,7 +71,7 @@ public:
         Q_UNUSED(url)
         Q_UNUSED(errorCallback)
 
-        callback("TestDescription");
+        callback(QStringLiteral("TestDescription"));
     }
 
     QString image(const QString &url, std::function<void()> callback = nullptr, std::function<void(const Error &)> errorCallback = nullptr) override
@@ -81,14 +81,14 @@ public:
 
         callback();
 
-        return "TestImage";
+        return QStringLiteral("TestImage");
     }
 
     QString imagePath(const QString &url) override
     {
         Q_UNUSED(url)
 
-        return "TestImagePath";
+        return QStringLiteral("TestImagePath");
     }
 };
 }
@@ -120,7 +120,7 @@ private Q_SLOTS:
         Fetcher::instance().fetchGroups();
         QCOMPARE(Database::instance().groupCount(), 1);
         const QVector<GroupData> groups = Database::instance().groups();
-        QCOMPARE(groups.at(0).m_id.value(), "TestGroup");
+        QCOMPARE(groups.at(0).m_id.value(), QStringLiteral("TestGroup"));
     }
 
     void testFetchGroup()
@@ -132,20 +132,20 @@ private Q_SLOTS:
         QCOMPARE(groupUpdatedSpy.count(), 1);
         QCOMPARE(Database::instance().channelCount(), 1);
         const QVector<ChannelData> channels = Database::instance().channels(false);
-        QCOMPARE(channels.at(0).m_id.value(), "TestChannel");
+        QCOMPARE(channels.at(0).m_id.value(), QStringLiteral("TestChannel"));
     }
 
     void testFetchFavorites()
     {
-        Database::instance().addFavorite(ChannelId("TestChannel"));
+        Database::instance().addFavorite(ChannelId(QStringLiteral("TestChannel")));
         QSignalSpy channelUpdatedSpy(&Fetcher::instance(), SIGNAL(channelUpdated(const ChannelId &)));
         QVERIFY(channelUpdatedSpy.isValid());
         QCOMPARE(channelUpdatedSpy.count(), 0);
         Fetcher::instance().fetchFavorites();
         QCOMPARE(channelUpdatedSpy.count(), 1);
-        QCOMPARE(Database::instance().programCount(ChannelId("TestChannel")), 1);
-        const QVector<ProgramData> programs = Database::instance().programs(ChannelId("TestChannel"));
-        QCOMPARE(programs.at(0).m_id.value(), "TestProgram");
+        QCOMPARE(Database::instance().programCount(ChannelId(QStringLiteral("TestChannel"))), 1);
+        const QVector<ProgramData> programs = Database::instance().programs(ChannelId(QStringLiteral("TestChannel")));
+        QCOMPARE(programs.at(0).m_id.value(), QStringLiteral("TestProgram"));
     }
 
     void testFetchProgramDescription()
@@ -153,10 +153,10 @@ private Q_SLOTS:
         QSignalSpy channelUpdatedSpy(&Fetcher::instance(), SIGNAL(channelUpdated(const ChannelId &)));
         QVERIFY(channelUpdatedSpy.isValid());
         QCOMPARE(channelUpdatedSpy.count(), 0);
-        Fetcher::instance().fetchProgramDescription("TestChannel", "TestProgram", QString());
+        Fetcher::instance().fetchProgramDescription(QStringLiteral("TestChannel"), QStringLiteral("TestProgram"), QString());
         QCOMPARE(channelUpdatedSpy.count(), 1);
-        const QVector<ProgramData> programs = Database::instance().programs(ChannelId("TestChannel"));
-        QCOMPARE(programs.at(0).m_description, "TestDescription");
+        const QVector<ProgramData> programs = Database::instance().programs(ChannelId(QStringLiteral("TestChannel")));
+        QCOMPARE(programs.at(0).m_description, QStringLiteral("TestDescription"));
     }
 
     void testImage()
@@ -164,7 +164,7 @@ private Q_SLOTS:
         QSignalSpy imageDownloadFinishedSpy(&Fetcher::instance(), SIGNAL(imageDownloadFinished(QString)));
         QVERIFY(imageDownloadFinishedSpy.isValid());
         QCOMPARE(imageDownloadFinishedSpy.count(), 0);
-        QCOMPARE(Fetcher::instance().image(QString()), "TestImage");
+        QCOMPARE(Fetcher::instance().image(QString()), QStringLiteral("TestImage"));
         QCOMPARE(imageDownloadFinishedSpy.count(), 1);
     }
 };

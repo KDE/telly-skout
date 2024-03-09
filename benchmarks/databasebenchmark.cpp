@@ -31,9 +31,9 @@ private Q_SLOTS:
 
         for (int i = 0; i < 10000; ++i) {
             GroupData data;
-            data.m_id = GroupId("Group" + QString::number(i));
-            data.m_name = "Group";
-            data.m_url = "GroupUrl";
+            data.m_id = GroupId(QStringLiteral("Group") + QString::number(i));
+            data.m_name = QStringLiteral("Group");
+            data.m_url = QStringLiteral("GroupUrl");
             groups.push_back(data);
         }
 
@@ -58,15 +58,15 @@ private Q_SLOTS:
 
         for (int i = 0; i < 10000; ++i) {
             ChannelData data;
-            data.m_id = ChannelId("Channel" + QString::number(i));
-            data.m_name = "Channel";
-            data.m_url = "ChannelUrl";
-            data.m_image = "ChannelImage";
+            data.m_id = ChannelId(QStringLiteral("Channel") + QString::number(i));
+            data.m_name = QStringLiteral("Channel");
+            data.m_url = QStringLiteral("ChannelUrl");
+            data.m_image = QStringLiteral("ChannelImage");
             channels.push_back(data);
         }
 
         QBENCHMARK {
-            Database::instance().addChannels(channels, GroupId("Group1"));
+            Database::instance().addChannels(channels, GroupId(QStringLiteral("Group1")));
         }
 
         QCOMPARE(Database::instance().channelCount(), 10000);
@@ -75,7 +75,7 @@ private Q_SLOTS:
     void testGroupsForChannel()
     {
         QBENCHMARK {
-            const QVector<GroupData> groups = Database::instance().groups(ChannelId("Channel1"));
+            const QVector<GroupData> groups = Database::instance().groups(ChannelId(QStringLiteral("Channel1")));
             QCOMPARE(groups.size(), 1);
         }
     }
@@ -84,7 +84,7 @@ private Q_SLOTS:
     {
         QBENCHMARK {
             for (int i = 0; i < 100; ++i) {
-                Database::instance().addFavorite(ChannelId("Channel" + QString::number(i)));
+                Database::instance().addFavorite(ChannelId(QStringLiteral("Channel") + QString::number(i)));
             }
         }
     }
@@ -109,7 +109,7 @@ private Q_SLOTS:
     {
         QVector<ChannelId> favorites;
         for (int i = 99; i >= 0; --i) {
-            favorites.push_back(ChannelId("Channel" + QString::number(i)));
+            favorites.push_back(ChannelId(QStringLiteral("Channel") + QString::number(i)));
         }
 
         QBENCHMARK {
@@ -120,7 +120,7 @@ private Q_SLOTS:
     void testRemoveFavorite()
     {
         QBENCHMARK {
-            Database::instance().removeFavorite(ChannelId("Channel50"));
+            Database::instance().removeFavorite(ChannelId(QStringLiteral("Channel50")));
         }
         QCOMPARE(Database::instance().favoriteCount(), 99);
     }
@@ -131,16 +131,16 @@ private Q_SLOTS:
 
         for (int i = 0; i < 10000; ++i) {
             ProgramData data;
-            data.m_id = ProgramId("Program" + QString::number(i));
-            data.m_url = "ProgramUrl";
-            data.m_channelId = ChannelId("Channel1");
-            data.m_startTime = QDateTime::fromString("2022-12-28T01:00:00", Qt::ISODate).addSecs(i);
-            data.m_stopTime = QDateTime::fromString("2022-12-28T02:00:00", Qt::ISODate).addSecs(i);
-            data.m_title = "ProgramTitle";
-            data.m_subtitle = "ProgramSubtitle";
-            data.m_description = "ProgramDescription";
+            data.m_id = ProgramId(QStringLiteral("Program") + QString::number(i));
+            data.m_url = QStringLiteral("ProgramUrl");
+            data.m_channelId = ChannelId(QStringLiteral("Channel1"));
+            data.m_startTime = QDateTime::fromString(QStringLiteral("2022-12-28T01:00:00"), Qt::ISODate).addSecs(i);
+            data.m_stopTime = QDateTime::fromString(QStringLiteral("2022-12-28T02:00:00"), Qt::ISODate).addSecs(i);
+            data.m_title = QStringLiteral("ProgramTitle");
+            data.m_subtitle = QStringLiteral("ProgramSubtitle");
+            data.m_description = QStringLiteral("ProgramDescription");
             data.m_descriptionFetched = true;
-            data.m_categories = {"Category1"};
+            data.m_categories = {QStringLiteral("Category1")};
             programs.push_back(data);
         }
 
@@ -148,7 +148,7 @@ private Q_SLOTS:
             Database::instance().addPrograms(programs);
         }
 
-        QCOMPARE(Database::instance().programCount(ChannelId("Channel1")), 10000);
+        QCOMPARE(Database::instance().programCount(ChannelId(QStringLiteral("Channel1"))), 10000);
     }
 
     void testPrograms()
@@ -156,7 +156,7 @@ private Q_SLOTS:
         QBENCHMARK {
             const QMap<ChannelId, QVector<ProgramData>> programs = Database::instance().programs();
             QCOMPARE(programs.size(), 1);
-            QCOMPARE(programs[ChannelId("Channel1")].size(), 10000);
+            QCOMPARE(programs[ChannelId(QStringLiteral("Channel1"))].size(), 10000);
         }
     }
 };
