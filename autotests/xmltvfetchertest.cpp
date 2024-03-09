@@ -46,15 +46,15 @@ private Q_SLOTS:
         QCOMPARE(errorCallbackCalled, false);
         QCOMPARE(data.size(), 1);
         const GroupData &group = data.at(0);
-        QCOMPARE(group.m_id.value(), "xmltv");
-        QCOMPARE(group.m_name, "XMLTV");
+        QCOMPARE(group.m_id.value(), QStringLiteral("xmltv"));
+        QCOMPARE(group.m_name, QStringLiteral("XMLTV"));
         QCOMPARE(group.m_url, m_dataPath);
     }
 
     void testFetchGroup()
     {
         XmltvFetcher fetcher;
-        const GroupData group{GroupId("xmltv"), "XMLTV", m_dataPath};
+        const GroupData group{GroupId(QStringLiteral("xmltv")), QStringLiteral("XMLTV"), m_dataPath};
         QList<ChannelData> data;
         bool callbackCalled = false;
         bool errorCallbackCalled = false;
@@ -75,7 +75,7 @@ private Q_SLOTS:
 
     void testFetchProgram()
     {
-        const ChannelId channelId("channel1");
+        const ChannelId channelId(QStringLiteral("channel1"));
 
         XmltvFetcher fetcher;
         QVector<ProgramData> data;
@@ -94,32 +94,32 @@ private Q_SLOTS:
         QCOMPARE(errorCallbackCalled, false);
         QCOMPARE(data.size(), 2);
 
-        QCOMPARE(data.at(0).m_id, ProgramId("channel1_1672182000"));
-        QCOMPARE(data.at(0).m_url, "");
+        QCOMPARE(data.at(0).m_id, ProgramId(QStringLiteral("channel1_1672182000")));
+        QCOMPARE(data.at(0).m_url, QStringLiteral(""));
         QCOMPARE(data.at(0).m_channelId, channelId);
-        QCOMPARE(data.at(0).m_startTime, QDateTime::fromString("2022-12-28T01:00:00", Qt::ISODate));
-        QCOMPARE(data.at(0).m_stopTime, QDateTime::fromString("2022-12-28T07:00:00", Qt::ISODate));
-        QCOMPARE(data.at(0).m_title, "Title 1");
-        QCOMPARE(data.at(0).m_subtitle, "Subtitle 1");
-        QCOMPARE(data.at(0).m_description, "Description 1");
+        QCOMPARE(data.at(0).m_startTime, QDateTime::fromString(QStringLiteral("2022-12-28T01:00:00"), Qt::ISODate));
+        QCOMPARE(data.at(0).m_stopTime, QDateTime::fromString(QStringLiteral("2022-12-28T07:00:00"), Qt::ISODate));
+        QCOMPARE(data.at(0).m_title, QStringLiteral("Title 1"));
+        QCOMPARE(data.at(0).m_subtitle, QStringLiteral("Subtitle 1"));
+        QCOMPARE(data.at(0).m_description, QStringLiteral("Description 1"));
         QCOMPARE(data.at(0).m_descriptionFetched, true);
-        QCOMPARE(data.at(0).m_categories.at(0), "Category 1");
+        QCOMPARE(data.at(0).m_categories.at(0), QStringLiteral("Category 1"));
 
-        QCOMPARE(data.at(1).m_id, ProgramId("channel1_1672203600"));
-        QCOMPARE(data.at(1).m_url, "");
+        QCOMPARE(data.at(1).m_id, ProgramId(QStringLiteral("channel1_1672203600")));
+        QCOMPARE(data.at(1).m_url, QStringLiteral(""));
         QCOMPARE(data.at(1).m_channelId, channelId);
-        QCOMPARE(data.at(1).m_startTime, QDateTime::fromString("2022-12-28T07:00:00", Qt::ISODate));
-        QCOMPARE(data.at(1).m_stopTime, QDateTime::fromString("2022-12-28T10:00:00", Qt::ISODate));
-        QCOMPARE(data.at(1).m_title, "Title 2");
-        QCOMPARE(data.at(1).m_subtitle, "Subtitle 2");
-        QCOMPARE(data.at(1).m_description, "Description 2");
+        QCOMPARE(data.at(1).m_startTime, QDateTime::fromString(QStringLiteral("2022-12-28T07:00:00"), Qt::ISODate));
+        QCOMPARE(data.at(1).m_stopTime, QDateTime::fromString(QStringLiteral("2022-12-28T10:00:00"), Qt::ISODate));
+        QCOMPARE(data.at(1).m_title, QStringLiteral("Title 2"));
+        QCOMPARE(data.at(1).m_subtitle, QStringLiteral("Subtitle 2"));
+        QCOMPARE(data.at(1).m_description, QStringLiteral("Description 2"));
         QCOMPARE(data.at(1).m_descriptionFetched, true);
-        QCOMPARE(data.at(1).m_categories.at(0), "Category 2");
+        QCOMPARE(data.at(1).m_categories.at(0), QStringLiteral("Category 2"));
     }
 
     void testFetchProgramDescription()
     {
-        const ChannelId channelId("channel1");
+        const ChannelId channelId(QStringLiteral("channel1"));
         ProgramId programId;
 
         XmltvFetcher fetcher;
@@ -128,8 +128,8 @@ private Q_SLOTS:
         bool errorCallbackCalled = false;
         fetcher.fetchProgramDescription(
             channelId,
-            ProgramId("channel1_1672182000"),
-            "",
+            ProgramId(QStringLiteral("channel1_1672182000")),
+            QStringLiteral(""),
             [&data, &callbackCalled](const QString &description) {
                 data = description;
                 callbackCalled = true;
@@ -140,7 +140,7 @@ private Q_SLOTS:
         // nothing done, description already known after fetchProgram()
         QCOMPARE(callbackCalled, false);
         QCOMPARE(errorCallbackCalled, false);
-        QCOMPARE(data, "");
+        QCOMPARE(data, QStringLiteral(""));
     }
 };
 

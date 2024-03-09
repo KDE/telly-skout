@@ -56,7 +56,7 @@ class Error
 public:
     Error()
         : m_id(0)
-        , m_message("")
+        , m_message(QStringLiteral(""))
     {
     }
 
@@ -75,7 +75,7 @@ public:
     void reset()
     {
         m_id = 0;
-        m_message = "";
+        m_message = QStringLiteral("");
     }
 
     int m_id;

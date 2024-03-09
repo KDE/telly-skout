@@ -103,11 +103,13 @@ private Q_SLOTS:
 
     void testFetchGroup()
     {
-        QNetworkReply *reply = new MockQNetworkReply("data/tvspielfilmfetcher/channels.html");
+        QNetworkReply *reply = new MockQNetworkReply(QStringLiteral("data/tvspielfilmfetcher/channels.html"));
         MockQNetworkAccessManager nam;
-        nam.registerReply("https://www.tvspielfilm.de/tv-programm/sendungen", reply);
+        nam.registerReply(QStringLiteral("https://www.tvspielfilm.de/tv-programm/sendungen"), reply);
         TvSpielfilmFetcher fetcher(&nam);
-        const GroupData group{GroupId("tvspielfilm.germany"), "Germany", "https://www.tvspielfilm.de/tv-programm/sendungen"};
+        const GroupData group{GroupId(QStringLiteral("tvspielfilm.germany")),
+                              QStringLiteral("Germany"),
+                              QStringLiteral("https://www.tvspielfilm.de/tv-programm/sendungen")};
         QList<ChannelData> data;
         QBENCHMARK {
             fetcher.fetchGroup(group.m_url, group.m_id, [&data](const QList<ChannelData> &channels) {
@@ -120,21 +122,21 @@ private Q_SLOTS:
 
     void testFetchProgram()
     {
-        const ChannelId channelId("SWR");
+        const ChannelId channelId(QStringLiteral("SWR"));
 
-        QNetworkReply *replyYesterday = new MockQNetworkReply("data/tvspielfilmfetcher/empty.html");
-        QNetworkReply *replyToday = new MockQNetworkReply("data/tvspielfilmfetcher/swr.html");
-        QNetworkReply *replyTomorrow = new MockQNetworkReply("data/tvspielfilmfetcher/empty.html");
+        QNetworkReply *replyYesterday = new MockQNetworkReply(QStringLiteral("data/tvspielfilmfetcher/empty.html"));
+        QNetworkReply *replyToday = new MockQNetworkReply(QStringLiteral("data/tvspielfilmfetcher/swr.html"));
+        QNetworkReply *replyTomorrow = new MockQNetworkReply(QStringLiteral("data/tvspielfilmfetcher/empty.html"));
         MockQNetworkAccessManager nam;
 
-        const QString yesterday = QDate::currentDate().addDays(-1).toString("yyyy-MM-dd");
-        const QString today = QDate::currentDate().toString("yyyy-MM-dd");
-        const QString tomorrow = QDate::currentDate().addDays(1).toString("yyyy-MM-dd");
+        const QString yesterday = QDate::currentDate().addDays(-1).toString(QStringLiteral("yyyy-MM-dd"));
+        const QString today = QDate::currentDate().toString(QStringLiteral("yyyy-MM-dd"));
+        const QString tomorrow = QDate::currentDate().addDays(1).toString(QStringLiteral("yyyy-MM-dd"));
 
-        const QString url = "https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=" + channelId.value();
-        nam.registerReply(url + "&date=" + yesterday + "&page=1", replyYesterday);
-        nam.registerReply(url + "&date=" + today + "&page=1", replyToday);
-        nam.registerReply(url + "&date=" + tomorrow + "&page=1", replyTomorrow);
+        const QString url = QStringLiteral("https://www.tvspielfilm.de/tv-programm/sendungen/?time=day&channel=") + channelId.value();
+        nam.registerReply(url + QStringLiteral("&date=") + yesterday + QStringLiteral("&page=1"), replyYesterday);
+        nam.registerReply(url + QStringLiteral("&date=") + today + QStringLiteral("&page=1"), replyToday);
+        nam.registerReply(url + QStringLiteral("&date=") + tomorrow + QStringLiteral("&page=1"), replyTomorrow);
 
         TvSpielfilmFetcher fetcher(&nam);
         size_t numPrograms = 0;
@@ -151,15 +153,17 @@ private Q_SLOTS:
 
     void testFetchProgramDescription()
     {
-        const ChannelId channelId("SWR");
+        const ChannelId channelId(QStringLiteral("SWR"));
         ProgramId programId;
 
-        QNetworkReply *reply = new MockQNetworkReply("data/tvspielfilmfetcher/description.html");
+        QNetworkReply *reply = new MockQNetworkReply(QStringLiteral("data/tvspielfilmfetcher/description.html"));
         MockQNetworkAccessManager nam;
-        nam.registerReply("https://www.tvspielfilm.de/tv-programm/sendung/description1.html", reply);
+        nam.registerReply(QStringLiteral("https://www.tvspielfilm.de/tv-programm/sendung/description1.html"), reply);
         TvSpielfilmFetcher fetcher(&nam);
         QBENCHMARK {
-            fetcher.fetchProgramDescription(channelId, ProgramId("channel1_1672182000"), "https://www.tvspielfilm.de/tv-programm/sendung/description1.html");
+            fetcher.fetchProgramDescription(channelId,
+                                            ProgramId(QStringLiteral("channel1_1672182000")),
+                                            QStringLiteral("https://www.tvspielfilm.de/tv-programm/sendung/description1.html"));
             Q_EMIT reply->finished();
         }
     }

@@ -23,7 +23,7 @@ QString NetworkFetcher::image(const QString &url, std::function<void()> callback
 
     downloadImage(url, callback, errorCallback);
 
-    return "";
+    return QStringLiteral("");
 }
 
 QString NetworkFetcher::imagePath(const QString &url)
