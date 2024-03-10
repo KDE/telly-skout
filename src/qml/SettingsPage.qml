@@ -103,7 +103,7 @@ Kirigami.ScrollablePage {
         }
 
         RowLayout {
-            visible: fetcher.currentIndex == 0 // only for TV Spielfilm
+            visible: fetcher.currentIndex === 0 // only for TV Spielfilm
             Kirigami.FormData.label: i18n("Prefetch")
 
             Controls.SpinBox {
@@ -118,7 +118,7 @@ Kirigami.ScrollablePage {
         }
 
         RowLayout {
-            visible: fetcher.currentIndex == 1 // only for XMLTV
+            visible: fetcher.currentIndex === 1 // only for XMLTV
 
             Controls.TextField {
                 id: xmltvFile
