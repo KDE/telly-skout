@@ -94,6 +94,7 @@ Kirigami.Page {
             contentHeight: 24 * 60 * pxPerMin
             contentWidth: content.width
             boundsBehavior: Flickable.StopAtBounds
+            clip: true
             Component.onCompleted: {
                 // scroll to current time
                 var today = new Date();
