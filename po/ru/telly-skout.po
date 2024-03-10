@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:42+0000\n"
+"POT-Creation-Date: 2024-03-10 01:59+0000\n"
 "PO-Revision-Date: 2023-04-26 09:29+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -43,12 +43,12 @@ msgstr "Telly Skout"
 msgid "© 2020 KDE Community"
 msgstr "© Сообщество KDE, 2020"
 
-#: qml/ChannelListDelegate.qml:19
+#: qml/ChannelListDelegate.qml:26
 #, kde-format
 msgid "Favorite"
 msgstr "Добавить в избранное"
 
-#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:24
+#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:22
 #, kde-format
 msgid "Channels"
 msgstr "Каналы"

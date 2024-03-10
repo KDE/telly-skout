@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:42+0000\n"
+"POT-Creation-Date: 2024-03-10 01:59+0000\n"
 "PO-Revision-Date: 2023-03-01 01:33+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -42,12 +42,12 @@ msgstr "Telly Skout"
 msgid "© 2020 KDE Community"
 msgstr "© 2020 KDE Community"
 
-#: qml/ChannelListDelegate.qml:19
+#: qml/ChannelListDelegate.qml:26
 #, kde-format
 msgid "Favorite"
 msgstr "책갈피"
 
-#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:24
+#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:22
 #, kde-format
 msgid "Channels"
 msgstr "채널"
