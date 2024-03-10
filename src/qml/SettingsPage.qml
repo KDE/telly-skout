@@ -3,7 +3,7 @@
 
 import QtQuick 2.14
 import QtQuick.Controls 2.14 as Controls
-import QtQuick.Dialogs 1.0
+import QtQuick.Dialogs
 import QtQuick.Layouts 1.14
 import QtQuick.Window 2.15
 import org.kde.kirigami 2.19 as Kirigami
@@ -137,11 +137,10 @@ Kirigami.ScrollablePage {
                 id: fileDialog
 
                 nameFilters: [i18n("XML files (*.xml)"), i18n("All files (*)")]
-                selectExisting: true
-                selectMultiple: false
+                fileMode: FileDialog.OpenFile
                 onAccepted: {
                     // remove prefixed "file://"
-                    const path = fileUrl.toString().replace(/^(file:\/{2})/, "");
+                    const path = selectedFile.toString().replace(/^(file:\/{2})/, "");
                     xmltvFile.text = path;
                     _settings.xmltvFile = path;
                 }
