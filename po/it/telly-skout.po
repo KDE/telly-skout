@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-10 03:46+0000\n"
+"POT-Creation-Date: 2024-03-11 03:02+0000\n"
 "PO-Revision-Date: 2023-01-28 19:51+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -47,7 +47,7 @@ msgstr "© 2020 Comunità KDE"
 msgid "Favorite"
 msgstr "Preferito"
 
-#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:22
+#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:23
 #, kde-format
 msgid "Channels"
 msgstr "Canali"
@@ -67,7 +67,7 @@ msgstr "Preferiti"
 msgid "Please select favorites"
 msgstr "Seleziona i preferiti"
 
-#: qml/ChannelTablePage.qml:135
+#: qml/ChannelTablePage.qml:136
 #, kde-format
 msgid "not available"
 msgstr "non disponibile"
