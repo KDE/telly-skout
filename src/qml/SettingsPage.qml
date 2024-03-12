@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: 2022 Plata Hill <plata.hill@kdemail.net>
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
-import QtQuick 2.14
-import QtQuick.Controls 2.14 as Controls
+import QtQuick
+import QtQuick.Controls as Controls
 import QtQuick.Dialogs
-import QtQuick.Layouts 1.14
-import QtQuick.Window 2.15
-import org.kde.kirigami 2.19 as Kirigami
+import QtQuick.Layouts
+import QtQuick.Window
+import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
     title: i18n("Settings")

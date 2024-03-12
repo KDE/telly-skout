@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: 2022 Plata Hill <plata.hill@kdemail.net>
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
-import Qt.labs.platform 1.1
-import QtQuick 2.14
-import QtQuick.Controls 2.15 as Controls
-import QtQuick.Layouts 1.14
-import org.kde.TellySkout 1.0
-import org.kde.kirigami 2.19 as Kirigami
+import Qt.labs.platform
+import QtQuick
+import QtQuick.Controls as Controls
+import QtQuick.Layouts
+import org.kde.TellySkout
+import org.kde.kirigami as Kirigami
 
 Kirigami.Page {
     id: root
