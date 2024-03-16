@@ -12,7 +12,7 @@ class ChannelsProxyModel : public QSortFilterProxyModel
     Q_OBJECT
 
     Q_PROPERTY(bool onlyFavorites READ onlyFavorites WRITE setOnlyFavorites NOTIFY onlyFavoritesChanged)
-    Q_PROPERTY(QString group READ group WRITE setGroup NOTIFY groupChanged)
+    Q_PROPERTY(GroupId group READ group WRITE setGroup NOTIFY groupChanged)
 
 public:
     explicit ChannelsProxyModel(QObject *parent = nullptr);
@@ -23,8 +23,8 @@ public:
     bool onlyFavorites() const;
     void setOnlyFavorites(const bool &onlyFavorites);
 
-    const QString &group() const;
-    void setGroup(const QString &group);
+    const GroupId &group() const;
+    void setGroup(const GroupId &group);
 
 Q_SIGNALS:
     void onlyFavoritesChanged();

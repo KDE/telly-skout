@@ -14,7 +14,7 @@ class Group : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString id READ id CONSTANT)
+    Q_PROPERTY(GroupId id READ id CONSTANT)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString url READ url CONSTANT)
     Q_PROPERTY(bool refreshing READ refreshing WRITE setRefreshing NOTIFY refreshingChanged)
@@ -27,7 +27,7 @@ public:
 
     ~Group();
 
-    QString id() const;
+    GroupId id() const;
     QString name() const;
     QString url() const;
     int errorId() const;

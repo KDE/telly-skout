@@ -23,7 +23,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex &parent) const override;
-    Q_INVOKABLE void setFavorite(const QString &channelId, bool favorite);
+    Q_INVOKABLE void setFavorite(const ChannelId &channelId, bool favorite);
     Q_INVOKABLE void move(int from, int to);
     Q_INVOKABLE void save();
 

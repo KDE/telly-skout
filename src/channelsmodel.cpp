@@ -36,7 +36,7 @@ ChannelsModel::ChannelsModel(QObject *parent)
             endResetModel();
         } else {
             for (int i = 0; i < m_channels.length(); i++) {
-                if (m_channels[i]->id() == id.value()) {
+                if (m_channels[i]->id() == id) {
                     m_channels[i]->setFavorite(favorite);
                     m_channelFactory.update(id);
                     Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0));
@@ -103,12 +103,12 @@ void ChannelsModel::loadChannel(int index) const
     m_channels += m_channelFactory.create(index);
 }
 
-void ChannelsModel::setFavorite(const QString &channelId, bool favorite)
+void ChannelsModel::setFavorite(const ChannelId &channelId, bool favorite)
 {
     if (favorite) {
-        Database::instance().addFavorite(ChannelId(channelId));
+        Database::instance().addFavorite(channelId);
     } else {
-        Database::instance().removeFavorite(ChannelId(channelId));
+        Database::instance().removeFavorite(channelId);
     }
 }
 
@@ -125,7 +125,7 @@ void ChannelsModel::save()
 {
     QVector<ChannelId> channelIds(m_channels.size());
     std::transform(m_channels.begin(), m_channels.end(), channelIds.begin(), [](const Channel *channel) {
-        return ChannelId(channel->id());
+        return channel->id();
     });
     Database::instance().sortFavorites(channelIds);
 }

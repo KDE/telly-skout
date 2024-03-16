@@ -182,7 +182,7 @@ Kirigami.Page {
     Kirigami.OverlaySheet {
         id: overlaySheet
 
-        property string programId: "" // persistent ID even if program is deleted
+        property var programId // persistent ID even if program is deleted
         property var program
 
         onProgramChanged: {

@@ -16,8 +16,8 @@ class Program : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString channelId READ channelId CONSTANT)
-    Q_PROPERTY(QString id READ id CONSTANT)
+    Q_PROPERTY(ChannelId channelId READ channelId CONSTANT)
+    Q_PROPERTY(ProgramId id READ id CONSTANT)
     Q_PROPERTY(QString url READ url CONSTANT)
     Q_PROPERTY(QString title READ title CONSTANT)
     Q_PROPERTY(QString description READ description CONSTANT)
@@ -31,8 +31,8 @@ public:
     explicit Program(const ProgramData &data);
     ~Program() = default;
 
-    const QString &channelId() const;
-    const QString &id() const;
+    const ChannelId &channelId() const;
+    const ProgramId &id() const;
     QString url() const;
     QString title() const;
     QString description() const;

@@ -34,15 +34,15 @@ void ChannelsProxyModel::setOnlyFavorites(const bool &onlyFavorites)
     }
 }
 
-const QString &ChannelsProxyModel::group() const
+const GroupId &ChannelsProxyModel::group() const
 {
-    return m_group.value();
+    return m_group;
 }
 
-void ChannelsProxyModel::setGroup(const QString &group)
+void ChannelsProxyModel::setGroup(const GroupId &group)
 {
-    if (m_group.value() != group) {
-        m_group = GroupId(group);
+    if (m_group != group) {
+        m_group = group;
         invalidateFilter();
         Q_EMIT groupChanged();
     }
@@ -65,7 +65,7 @@ bool ChannelsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sou
     auto channel = idx.data(0).value<Channel *>();
 
     const bool onlyFavoritesMatches = !m_onlyFavorites || channel->favorite();
-    const bool groupMatches = m_group.value().isEmpty() || channel->groups().contains(m_group.value());
+    const bool groupMatches = m_group.value().isEmpty() || channel->groups().contains(m_group);
 
     return onlyFavoritesMatches && groupMatches;
 }

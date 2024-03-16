@@ -11,14 +11,14 @@ Program::Program(const ProgramData &data)
 {
 }
 
-const QString &Program::channelId() const
+const ChannelId &Program::channelId() const
 {
-    return m_data.m_channelId.value();
+    return m_data.m_channelId;
 }
 
-const QString &Program::id() const
+const ProgramId &Program::id() const
 {
-    return m_data.m_id.value();
+    return m_data.m_id;
 }
 
 QString Program::url() const

@@ -19,9 +19,9 @@ ProgramsModel::ProgramsModel(Channel *channel, ProgramFactory &programFactory)
     , m_programFactory(programFactory)
 {
     connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const ChannelId &id) {
-        if (m_channel->id() == id.value()) {
+        if (m_channel->id() == id) {
             beginResetModel();
-            m_programFactory.load(ChannelId(m_channel->id()));
+            m_programFactory.load(m_channel->id());
             for (auto &&program : m_programs) {
                 delete program;
             }
@@ -34,8 +34,8 @@ ProgramsModel::ProgramsModel(Channel *channel, ProgramFactory &programFactory)
         beginResetModel();
         for (int i = 0; i < m_programs.size(); ++i) {
             const Program *program = m_programs[i];
-            if (id == ProgramId(program->id())) {
-                m_programFactory.load(ChannelId(program->channelId()), ProgramId(program->id()));
+            if (id == program->id()) {
+                m_programFactory.load(program->channelId(), program->id());
                 delete program;
                 m_programs[i] = nullptr;
                 break;
@@ -71,14 +71,13 @@ QHash<int, QByteArray> ProgramsModel::roleNames() const
 int ProgramsModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    const ChannelId channelId(m_channel->id());
-    Q_ASSERT(m_programFactory.count(channelId) <= std::numeric_limits<int>::max());
-    return static_cast<int>(m_programFactory.count(channelId));
+    Q_ASSERT(m_programFactory.count(m_channel->id()) <= std::numeric_limits<int>::max());
+    return static_cast<int>(m_programFactory.count(m_channel->id()));
 }
 
 void ProgramsModel::loadProgram(int index) const
 {
-    Program *program = m_programFactory.create(ChannelId(m_channel->id()), index);
+    Program *program = m_programFactory.create(m_channel->id(), index);
 
     if (program) {
         // avoid gaps/overlapping in the program (causes not aligned times in table)

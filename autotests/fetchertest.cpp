@@ -128,7 +128,7 @@ private Q_SLOTS:
         QSignalSpy groupUpdatedSpy(&Fetcher::instance(), SIGNAL(groupUpdated(const GroupId &)));
         QVERIFY(groupUpdatedSpy.isValid());
         QCOMPARE(groupUpdatedSpy.count(), 0);
-        Fetcher::instance().fetchGroup(QString(), QString());
+        Fetcher::instance().fetchGroup(QString(), GroupId());
         QCOMPARE(groupUpdatedSpy.count(), 1);
         QCOMPARE(Database::instance().channelCount(), 1);
         const QVector<ChannelData> channels = Database::instance().channels(false);
@@ -153,7 +153,7 @@ private Q_SLOTS:
         QSignalSpy programUpdatedSpy(&Fetcher::instance(), SIGNAL(programUpdated(const ProgramId &)));
         QVERIFY(programUpdatedSpy.isValid());
         QCOMPARE(programUpdatedSpy.count(), 0);
-        Fetcher::instance().fetchProgramDescription(QStringLiteral("TestChannel"), QStringLiteral("TestProgram"), QString());
+        Fetcher::instance().fetchProgramDescription(ChannelId(QStringLiteral("TestChannel")), ProgramId(QStringLiteral("TestProgram")), QString());
         QCOMPARE(programUpdatedSpy.count(), 1);
         const QVector<ProgramData> programs = Database::instance().programs(ChannelId(QStringLiteral("TestChannel")));
         QCOMPARE(programs.at(0).m_description, QStringLiteral("TestDescription"));

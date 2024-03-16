@@ -56,9 +56,9 @@ Channel *ChannelFactory::create(int index) const
     }
 
     const QVector<GroupData> groups = Database::instance().groups(data.m_id);
-    QVector<QString> groupIds(groups.size());
+    QVector<GroupId> groupIds(groups.size());
     std::transform(groups.begin(), groups.end(), groupIds.begin(), [](const GroupData &data) {
-        return data.m_id.value();
+        return data.m_id;
     });
 
     return new Channel(data, favorite, groupIds, m_programFactory);

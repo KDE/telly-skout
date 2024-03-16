@@ -36,9 +36,9 @@ Group::~Group()
 {
 }
 
-QString Group::id() const
+GroupId Group::id() const
 {
-    return m_data.m_id.value();
+    return m_data.m_id;
 }
 
 QString Group::name() const

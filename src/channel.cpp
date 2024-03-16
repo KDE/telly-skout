@@ -9,7 +9,7 @@
 
 #include <QDebug>
 
-Channel::Channel(const ChannelData &data, bool favorite, const QVector<QString> &groupIds, ProgramFactory &programFactory)
+Channel::Channel(const ChannelData &data, bool favorite, const QVector<GroupId> &groupIds, ProgramFactory &programFactory)
     : QObject(nullptr)
     , m_data(data)
     , m_favorite(favorite)
@@ -47,9 +47,9 @@ Channel::~Channel()
 {
 }
 
-QString Channel::id() const
+ChannelId Channel::id() const
 {
-    return m_data.m_id.value();
+    return m_data.m_id;
 }
 
 QString Channel::url() const
@@ -72,7 +72,7 @@ bool Channel::favorite() const
     return m_favorite;
 }
 
-QVector<QString> Channel::groups() const
+QVector<GroupId> Channel::groups() const
 {
     return m_groups;
 }
@@ -113,7 +113,7 @@ void Channel::setFavorite(bool favorite)
     }
 }
 
-void Channel::setGroups(const QVector<QString> &groups)
+void Channel::setGroups(const QVector<GroupId> &groups)
 {
     m_groups = groups;
     Q_EMIT groupsChanged(m_groups);

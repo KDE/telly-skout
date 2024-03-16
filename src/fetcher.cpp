@@ -71,11 +71,6 @@ void Fetcher::fetchGroups()
     });
 }
 
-void Fetcher::fetchGroup(const QString &url, const QString &groupId)
-{
-    fetchGroup(url, GroupId(groupId));
-}
-
 void Fetcher::fetchGroup(const QString &url, const GroupId &groupId)
 {
     Q_EMIT startedFetchingGroup(groupId);
@@ -91,14 +86,9 @@ void Fetcher::fetchGroup(const QString &url, const GroupId &groupId)
         });
 }
 
-void Fetcher::fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url)
-{
-    fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url);
-}
-
 void Fetcher::fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url)
 {
-    m_fetcherImpl->fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url, [this, channelId, programId](const QString &description) {
+    m_fetcherImpl->fetchProgramDescription(channelId, programId, url, [this, channelId, programId](const QString &description) {
         Database::instance().updateProgramDescription(programId, description);
         Q_EMIT programUpdated(programId);
     });

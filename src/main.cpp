@@ -80,6 +80,27 @@ int main(int argc, char *argv[])
     Fetcher::instance().fetchFavorites();
 
     // register qml types
+    qRegisterMetaType<ChannelId>();
+    QMetaType::registerConverter<ChannelId, QString>([](const ChannelId &channelId) {
+        return channelId.value();
+    });
+    QMetaType::registerConverter<QString, ChannelId>([](const QString &str) {
+        return ChannelId(str);
+    });
+    qRegisterMetaType<GroupId>();
+    QMetaType::registerConverter<GroupId, QString>([](const GroupId &groupId) {
+        return groupId.value();
+    });
+    QMetaType::registerConverter<QString, GroupId>([](const QString &str) {
+        return GroupId(str);
+    });
+    qRegisterMetaType<ProgramId>();
+    QMetaType::registerConverter<ProgramId, QString>([](const ProgramId &programId) {
+        return programId.value();
+    });
+    QMetaType::registerConverter<QString, ProgramId>([](const QString &str) {
+        return ProgramId(str);
+    });
     qmlRegisterType<GroupsModel>("org.kde.TellySkout", 1, 0, "GroupsModel");
     qmlRegisterType<ChannelsModel>("org.kde.TellySkout", 1, 0, "ChannelsModel");
     qmlRegisterType<ChannelsProxyModel>("org.kde.TellySkout", 1, 0, "ChannelsProxyModel");

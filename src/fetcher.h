@@ -26,16 +26,13 @@ public:
     }
     Q_INVOKABLE void fetchFavorites();
     Q_INVOKABLE void fetchGroups();
-    Q_INVOKABLE void fetchGroup(const QString &url, const QString &groupId);
-    Q_INVOKABLE void fetchProgramDescription(const QString &channelId, const QString &programId, const QString &url);
+    Q_INVOKABLE void fetchGroup(const QString &url, const GroupId &groupId);
+    Q_INVOKABLE void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url);
     Q_INVOKABLE QString image(const QString &url);
     void setImpl(std::unique_ptr<FetcherImpl> fetcherImpl);
 
 private:
     Fetcher();
-
-    void fetchGroup(const QString &url, const GroupId &groupId);
-    void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url);
 
     void removeImage(const QString &url);
 
