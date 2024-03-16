@@ -51,3 +51,18 @@ void ProgramFactory::load(const ChannelId &channelId) const
     }
     m_programs[channelId] = Database::instance().programs(channelId);
 }
+
+void ProgramFactory::load(const ChannelId &channelId, const ProgramId &programId) const
+{
+    if (!m_programs.contains(channelId)) {
+        load(channelId);
+    }
+    auto it = std::find_if(m_programs[channelId].begin(), m_programs[channelId].end(), [&programId](ProgramData data) {
+        return (programId == data.m_id);
+    });
+    if (it != m_programs[channelId].end()) {
+        *it = Database::instance().program(programId);
+    } else {
+        qWarning() << "Failed to load progam" << programId.value() << "for channel" << channelId.value() << ": program does not exist";
+    }
+}

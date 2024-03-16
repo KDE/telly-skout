@@ -182,12 +182,23 @@ Kirigami.Page {
     Kirigami.OverlaySheet {
         id: overlaySheet
 
-        property string programId: ""
-        property alias text: overlaySheetText.text
+        property string programId: "" // persistent ID even if program is deleted
+        property var program
+
+        onProgramChanged: {
+            if (program)
+                programId = program.id;
+
+        }
 
         Text {
             id: overlaySheetText
 
+            property alias program: overlaySheet.program
+            property string categoryText: (program && program.categories.length) > 0 ? "<br><i>" + program.categories.join(' ') + "</i>" : ""
+            property string descriptionText: (program && program.descriptionFetched && program.description) ? "<br><br>" + program.description : ""
+
+            text: program ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b>" + categoryText + descriptionText : ""
             Layout.fillWidth: true
             color: Kirigami.Theme.textColor
             wrapMode: Text.WordWrap

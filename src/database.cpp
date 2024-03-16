@@ -95,6 +95,8 @@ Database::Database()
     success &= m_programsQuery->prepare(QStringLiteral("SELECT * FROM Programs ORDER BY channel, start;"));
     m_programsPerChannelQuery.reset(new QSqlQuery(db));
     success &= m_programsPerChannelQuery->prepare(QStringLiteral("SELECT * FROM Programs WHERE channel=:channel ORDER BY start;"));
+    m_programQuery.reset(new QSqlQuery(db));
+    success &= m_programQuery->prepare(QStringLiteral("SELECT * FROM Programs WHERE id=:id;"));
 
     m_addProgramCategoryQuery.reset(new QSqlQuery(db));
     success &= m_addProgramCategoryQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO ProgramCategories VALUES (:program, :category);"));
@@ -636,6 +638,39 @@ QVector<ProgramData> Database::programs(const ChannelId &channelId) const
     QSqlDatabase::database().commit();
 
     return programs;
+}
+
+ProgramData Database::program(const ProgramId &programId) const
+{
+    ProgramData data;
+    data.m_id = programId;
+
+    QSqlDatabase::database().transaction();
+    const QMultiMap<ProgramId, QString> categories = programCategories();
+
+    m_programQuery->bindValue(QStringLiteral(":id"), data.m_id.value());
+    execute(*m_programQuery);
+
+    if (!m_programQuery->next()) {
+        qWarning() << "Failed to query program" << programId.value();
+    } else {
+        data.m_id = ProgramId(m_programQuery->value(QStringLiteral("id")).toString());
+        data.m_url = m_programQuery->value(QStringLiteral("url")).toString();
+        data.m_channelId = ChannelId(m_programQuery->value(QStringLiteral("channel")).toString());
+        data.m_startTime.setSecsSinceEpoch(m_programQuery->value(QStringLiteral("start")).toInt());
+        data.m_stopTime.setSecsSinceEpoch(m_programQuery->value(QStringLiteral("stop")).toInt());
+        data.m_title = m_programQuery->value(QStringLiteral("title")).toString();
+        data.m_subtitle = m_programQuery->value(QStringLiteral("subtitle")).toString();
+        data.m_description = m_programQuery->value(QStringLiteral("description")).toString();
+        data.m_descriptionFetched = m_programQuery->value(QStringLiteral("descriptionFetched")).toBool();
+
+        for (auto &&category : categories.values(data.m_id)) {
+            data.m_categories.push_back(category);
+        }
+    }
+    QSqlDatabase::database().commit();
+
+    return data;
 }
 
 QMultiMap<ProgramId, QString> Database::programCategories() const

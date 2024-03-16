@@ -29,6 +29,20 @@ ProgramsModel::ProgramsModel(Channel *channel, ProgramFactory &programFactory)
             endResetModel();
         }
     });
+
+    connect(&Fetcher::instance(), &Fetcher::programUpdated, this, [this](const ProgramId &id) {
+        beginResetModel();
+        for (int i = 0; i < m_programs.size(); ++i) {
+            const Program *program = m_programs[i];
+            if (id == ProgramId(program->id())) {
+                m_programFactory.load(ChannelId(program->channelId()), ProgramId(program->id()));
+                delete program;
+                m_programs[i] = nullptr;
+                break;
+            }
+        }
+        endResetModel();
+    });
 }
 
 ProgramsModel::~ProgramsModel()
@@ -71,7 +85,14 @@ void ProgramsModel::loadProgram(int index) const
         if (m_programs.contains(index - 1) && m_programs[index - 1]->stop() != program->start()) {
             program->setStart(m_programs[index - 1]->stop());
         }
+        if (m_programs.contains(index)) {
+            delete m_programs[index];
+            m_programs[index] = nullptr;
+        }
         m_programs[index] = program;
+    } else {
+        delete program;
+        program = nullptr;
     }
 }
 

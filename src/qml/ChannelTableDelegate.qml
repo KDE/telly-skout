@@ -22,16 +22,7 @@ Rectangle {
             if (!program.descriptionFetched)
                 Fetcher.fetchProgramDescription(program.channelId, program.id, program.url);
 
-            var categoryText = "";
-            if (program.categories.length)
-                categoryText = "<br><i>" + program.categories.join(' ') + "</i>";
-
-            var descriptionText = "";
-            if (program.descriptionFetched && program.description)
-                descriptionText = "<br><br>" + program.description;
-
-            root.overlay.text = program !== undefined ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b>" + categoryText + descriptionText : "";
-            root.overlay.programId = program.id;
+            root.overlay.program = program;
         }
     }
 
@@ -40,6 +31,12 @@ Rectangle {
     height: (Math.min(program.stop, stopTime) - Math.max(program.start, startTime)) / 60000 * pxPerMin
     color: channelIdx % 2 == 0 ? "transparent" : Kirigami.Theme.alternateBackgroundColor
     border.color: "transparent"
+    Component.onCompleted: {
+        // update overlay if it is open (for this program)
+        if (root.overlay.visible && root.overlay.programId === program.id)
+            updateOverlay();
+
+    }
 
     // hightlight running program
     Rectangle {
@@ -47,12 +44,6 @@ Rectangle {
         color: Kirigami.Theme.focusColor
         visible: (program.start <= currentTimestamp) && (program.stop >= currentTimestamp)
         height: (currentTimestamp - program.start) / 60000 * root.pxPerMin
-        Component.onCompleted: {
-            // update overlay if it is open (for this program)
-            if (root.overlay.sheetOpen && root.overlay.programId === program.id)
-                updateOverlay();
-
-        }
     }
 
     // border

@@ -150,11 +150,11 @@ private Q_SLOTS:
 
     void testFetchProgramDescription()
     {
-        QSignalSpy channelUpdatedSpy(&Fetcher::instance(), SIGNAL(channelUpdated(const ChannelId &)));
-        QVERIFY(channelUpdatedSpy.isValid());
-        QCOMPARE(channelUpdatedSpy.count(), 0);
+        QSignalSpy programUpdatedSpy(&Fetcher::instance(), SIGNAL(programUpdated(const ProgramId &)));
+        QVERIFY(programUpdatedSpy.isValid());
+        QCOMPARE(programUpdatedSpy.count(), 0);
         Fetcher::instance().fetchProgramDescription(QStringLiteral("TestChannel"), QStringLiteral("TestProgram"), QString());
-        QCOMPARE(channelUpdatedSpy.count(), 1);
+        QCOMPARE(programUpdatedSpy.count(), 1);
         const QVector<ProgramData> programs = Database::instance().programs(ChannelId(QStringLiteral("TestChannel")));
         QCOMPARE(programs.at(0).m_description, QStringLiteral("TestDescription"));
     }

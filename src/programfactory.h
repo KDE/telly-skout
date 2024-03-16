@@ -24,6 +24,7 @@ public:
     size_t count(const ChannelId &channelId) const;
     Program *create(const ChannelId &channelId, int index) const;
     void load(const ChannelId &channelId) const;
+    void load(const ChannelId &channelId, const ProgramId &programId) const;
 
 private:
     mutable QMap<ChannelId, QVector<ProgramData>> m_programs;

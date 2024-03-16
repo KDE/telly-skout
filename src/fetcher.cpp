@@ -100,8 +100,8 @@ void Fetcher::fetchProgramDescription(const ChannelId &channelId, const ProgramI
 {
     m_fetcherImpl->fetchProgramDescription(ChannelId(channelId), ProgramId(programId), url, [this, channelId, programId](const QString &description) {
         Database::instance().updateProgramDescription(programId, description);
-        Q_EMIT channelUpdated(channelId);
-    }); // TODO: separate signal
+        Q_EMIT programUpdated(programId);
+    });
 }
 
 QString Fetcher::image(const QString &url)

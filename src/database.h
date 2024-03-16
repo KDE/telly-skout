@@ -64,6 +64,7 @@ public:
     size_t programCount(const ChannelId &channelId) const;
     QMap<ChannelId, QVector<ProgramData>> programs() const;
     QVector<ProgramData> programs(const ChannelId &channelId) const;
+    ProgramData program(const ProgramId &programId) const;
 
 Q_SIGNALS:
     void groupAdded(const GroupId &id);
@@ -111,4 +112,5 @@ private:
     std::unique_ptr<QSqlQuery> m_programCountQuery;
     std::unique_ptr<QSqlQuery> m_programsQuery;
     std::unique_ptr<QSqlQuery> m_programsPerChannelQuery;
+    std::unique_ptr<QSqlQuery> m_programQuery;
 };

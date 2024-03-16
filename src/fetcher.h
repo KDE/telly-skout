@@ -48,6 +48,8 @@ Q_SIGNALS:
     void startedFetchingChannel(const ChannelId &id);
     void channelUpdated(const ChannelId &id);
 
+    void programUpdated(const ProgramId &id);
+
     void errorFetchingGroup(const GroupId &id, const Error &error);
     void errorFetchingChannel(const ChannelId &id, const Error &error);
 
