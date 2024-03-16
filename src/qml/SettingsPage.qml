@@ -18,7 +18,7 @@ Kirigami.ScrollablePage {
         }
 
         RowLayout {
-            Kirigami.FormData.label: i18n("Program height")
+            Kirigami.FormData.label: i18nc("height of the program", "Program height")
 
             Controls.SpinBox {
                 from: 0
