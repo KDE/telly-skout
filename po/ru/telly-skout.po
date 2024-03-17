@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 01:36+0000\n"
+"POT-Creation-Date: 2024-03-17 01:59+0000\n"
 "PO-Revision-Date: 2023-04-26 09:29+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -95,7 +95,9 @@ msgid "UI"
 msgstr "Интерфейс пользователя"
 
 #: qml/SettingsPage.qml:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Program height"
+msgctxt "height of the program"
 msgid "Program height"
 msgstr "Высота окна"
 
