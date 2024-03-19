@@ -11,11 +11,11 @@ Kirigami.SwipeListItem {
     leftPadding: 0
     rightPadding: 0
 
-    contentItem: Controls.ItemDelegate {
+    contentItem: Kirigami.BasicListItem {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         text: model.group.name
-        icon.name: model.group.refreshing ? "view-refresh" : ""
+        icon: model.group.refreshing ? "view-refresh" : ""
         onClicked: {
             lastGroup = model.group.id;
             Fetcher.fetchGroup(model.group.url, model.group.id);
