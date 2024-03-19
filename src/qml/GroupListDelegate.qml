@@ -8,6 +8,8 @@ import org.kde.TellySkout 1.0
 import org.kde.kirigami 2.19 as Kirigami
 
 Kirigami.SwipeListItem {
+    leftPadding: 0
+    rightPadding: 0
 
     contentItem: Controls.ItemDelegate {
         anchors.top: parent.top
