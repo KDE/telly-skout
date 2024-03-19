@@ -94,11 +94,10 @@ msgid "UI"
 msgstr "UI"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "height of the program"
 msgid "Program height"
-msgstr "Program"
+msgstr ""
 
 #: qml/SettingsPage.qml:32
 #, kde-format
