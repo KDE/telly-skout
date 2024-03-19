@@ -24,7 +24,6 @@ void NetworkDataProvider::get(const QUrl &url, std::function<void(const QByteArr
 {
     QNetworkRequest request(url);
     request.setRawHeader("User-Agent", "telly-skout/0.1");
-    request.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::ManualRedirectPolicy);
     QNetworkReply *reply = m_manager->get(request);
     connect(reply, &QNetworkReply::finished, this, [reply, callback, errorCallback]() {
         if (reply->error() == QNetworkReply::NoError) {
