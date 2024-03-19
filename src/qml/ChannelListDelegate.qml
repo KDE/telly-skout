@@ -27,10 +27,7 @@ Kirigami.SwipeListItem {
         Kirigami.ListItemDragHandle {
             listItem: listItem
             listView: listItem.listView
-            onMoveRequested: (oldIndex, newIndex) => {
-                if (sortable)
-                    listView.model.move(oldIndex, newIndex);
-
+            onMoveRequested: sortable ? listView.model.move(oldIndex, newIndex) : {
             }
             visible: listItem.sortable
         }
