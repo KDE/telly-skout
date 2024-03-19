@@ -32,6 +32,8 @@ modules:
           url-template: https://download.kde.org/stable/kirigami-addons/kirigami-addons-$version.tar.xz
   - name: telly-skout
     buildsystem: cmake-ninja
+    config-opts:
+      - "-DBUILD_WITH_QT6=ON"
     sources:
       - type: dir
         path: '.'
