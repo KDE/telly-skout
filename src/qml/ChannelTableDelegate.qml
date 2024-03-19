@@ -49,7 +49,7 @@ Rectangle {
         height: (currentTimestamp - program.start) / 60000 * root.pxPerMin
         Component.onCompleted: {
             // update overlay if it is open (for this program)
-            if (root.overlay.visible && root.overlay.programId === program.id)
+            if (root.overlay.sheetOpen && root.overlay.programId === program.id)
                 updateOverlay();
 
         }
