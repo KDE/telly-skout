@@ -13,7 +13,7 @@ Kirigami.GlobalDrawer {
     actions: [
         Kirigami.Action {
             text: i18n("Favorites")
-            icon.name: "view-calendar-day"
+            iconName: "view-calendar-day"
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();
@@ -24,7 +24,7 @@ Kirigami.GlobalDrawer {
         },
         Kirigami.Action {
             text: i18n("Select Favorites")
-            icon.name: "favorite"
+            iconName: "favorite"
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();
@@ -33,7 +33,7 @@ Kirigami.GlobalDrawer {
         },
         Kirigami.Action {
             text: i18n("Sort Favorites")
-            icon.name: "view-sort"
+            iconName: "view-sort"
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();
@@ -46,13 +46,13 @@ Kirigami.GlobalDrawer {
         },
         Kirigami.Action {
             text: i18n("Settings")
-            icon.name: "settings-configure"
+            iconName: "settings-configure"
             onTriggered: pageStack.layers.push("qrc:/SettingsPage.qml")
             enabled: pageStack.layers.currentItem.title !== i18n("Settings")
         },
         Kirigami.Action {
             text: i18n("About")
-            icon.name: "help-about-symbolic"
+            iconName: "help-about-symbolic"
             onTriggered: pageStack.layers.push(aboutPage)
             enabled: pageStack.layers.currentItem.title !== i18n("About")
         }
