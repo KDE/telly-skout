@@ -1,19 +1,19 @@
-# SPDX-FileCopyrightText: 2022, 2023 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Xavier Besnard <xavier.besnard@kde.org>
 # Xavier Besnard <xavier.besnard@kde.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 03:02+0000\n"
+"POT-Creation-Date: 2024-03-20 03:08+0000\n"
 "PO-Revision-Date: 2023-11-01 14:53+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
-"Language-Team: French <kde-francophone@kde.org>\n"
+"Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -40,12 +40,12 @@ msgstr "Telly Skout"
 msgid "© 2020 KDE Community"
 msgstr "© 2020 Communauté KDE"
 
-#: qml/ChannelListDelegate.qml:26
+#: qml/ChannelListDelegate.qml:19
 #, kde-format
 msgid "Favorite"
 msgstr "Favoris"
 
-#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:23
+#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:24
 #, kde-format
 msgid "Channels"
 msgstr "Chaînes"
@@ -65,7 +65,7 @@ msgstr "Favoris"
 msgid "Please select favorites"
 msgstr "Veuillez sélectionner les favoris"
 
-#: qml/ChannelTablePage.qml:136
+#: qml/ChannelTablePage.qml:135
 #, kde-format
 msgid "not available"
 msgstr "indisponible"
