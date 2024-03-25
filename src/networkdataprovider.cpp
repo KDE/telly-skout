@@ -24,6 +24,9 @@ void NetworkDataProvider::get(const QUrl &url, std::function<void(const QByteArr
 {
     QNetworkRequest request(url);
     request.setRawHeader("User-Agent", "telly-skout/0.1");
+    // force HTTP/1.1, otherwise fetchting many programs in parallel fails ("Server refused a stream")
+    // probably caused by https://bugreports.qt.io/browse/QTBUG-73947
+    request.setAttribute(QNetworkRequest::Http2AllowedAttribute, false);
     QNetworkReply *reply = m_manager->get(request);
     connect(reply, &QNetworkReply::finished, this, [reply, callback, errorCallback]() {
         if (reply->error() == QNetworkReply::NoError) {
