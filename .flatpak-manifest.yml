@@ -20,7 +20,7 @@ modules:
   - name: kirigami-addons
     buildsystem: cmake-ninja
     config-opts:
-      - "-DBUILD_TESTING=OFF"
+      - -DBUILD_TESTING=OFF
     sources:
       - type: archive
         url: https://download.kde.org/stable/kirigami-addons/kirigami-addons-1.0.1.tar.xz
@@ -36,9 +36,9 @@ modules:
       - type: dir
         path: '.'
     cleanup:
-      - '/include'
-      - '/lib/cmake'
-      - '/lib/libexec'
-      - '/mkspecs'
-      - '/etc/xdg/*categories'
-      - '/share/qlogging-categories5'
+      - /include
+      - /lib/cmake
+      - /lib/libexec
+      - /mkspecs
+      - /etc/xdg/*categories
+      - /share/qlogging-categories5
