@@ -7,24 +7,34 @@ import QtQuick.Layouts
 import org.kde.TellySkout
 import org.kde.kirigami as Kirigami
 
-Kirigami.SwipeListItem {
-    padding: 0
+Controls.ItemDelegate {
+    width: parent.width
 
-    contentItem: Controls.ItemDelegate {
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        text: model.group.name
-        icon.name: model.group.refreshing ? "view-refresh" : ""
-        onClicked: {
-            lastGroup = model.group.id;
-            Fetcher.fetchGroup(model.group.url, model.group.id);
-            while (pageStack.depth > 1)pageStack.pop()
-            pageStack.push("qrc:/ChannelListPage.qml", {
-                "title": i18n("Channels") + " (" + i18n(model.group.name) + ")",
-                "onlyFavorites": false,
-                "groupFilter": lastGroup
-            });
+    contentItem: RowLayout {
+        Kirigami.Icon {
+            source: model.group.refreshing ? "view-refresh" : "tv"
         }
+
+        Controls.Label {
+            Layout.fillWidth: true
+            text: model.group.name
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    lastGroup = model.group.id;
+                    Fetcher.fetchGroup(model.group.url, model.group.id);
+                    while (pageStack.depth > 1)pageStack.pop()
+                    pageStack.push("qrc:/ChannelListPage.qml", {
+                        "title": i18n("Channels") + " (" + i18n(model.group.name) + ")",
+                        "onlyFavorites": false,
+                        "groupFilter": lastGroup
+                    });
+                }
+            }
+
+        }
+
     }
 
 }

@@ -17,18 +17,12 @@ Templates.ItemDelegate {
     width: parent ? parent.width : implicitWidth
     height: listItem.implicitHeight
 
-    Kirigami.SwipeListItem {
+    Controls.ItemDelegate {
         id: listItem
 
-        actions: [
-            Kirigami.Action {
-                icon.name: checked ? "favorite" : "list-add"
-                text: i18n("Favorite")
-                checkable: true
-                checked: model.channel.favorite
-                onToggled: channelsModel.setFavorite(model.channel.id, checked)
-            }
-        ]
+        down: false
+        hoverEnabled: false
+        width: parent.width
 
         contentItem: RowLayout {
             Kirigami.ListItemDragHandle {
@@ -50,7 +44,17 @@ Templates.ItemDelegate {
                 Layout.fillWidth: true
                 height: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
                 text: model.channel.displayName || model.channel.name
-                color: listItem.checked || (listItem.pressed && !listItem.checked && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
+            }
+
+            Controls.ToolButton {
+                display: Controls.AbstractButton.IconOnly
+                Controls.ToolTip.text: text
+                Controls.ToolTip.visible: hovered
+                icon.name: checked ? "favorite" : "list-add"
+                text: i18nc("@info:tooltip", "Favorite")
+                checkable: true
+                checked: model.channel.favorite
+                onToggled: channelsModel.setFavorite(model.channel.id, checked)
             }
 
         }
