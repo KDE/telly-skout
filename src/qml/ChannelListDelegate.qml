@@ -55,6 +55,7 @@ Templates.ItemDelegate {
                 checkable: true
                 checked: model.channel.favorite
                 onToggled: channelsModel.setFavorite(model.channel.id, checked)
+                visible: !delegate.sortable
             }
 
         }
