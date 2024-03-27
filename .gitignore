@@ -5,5 +5,7 @@
 /.flatpak-builder
 /.kdev4/
 /build/
+/compile_commands.json
 /telly-skout.kdev4
+/.vscode/
 /CMakeLists.txt.user
