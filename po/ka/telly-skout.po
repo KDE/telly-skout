@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-26 00:40+0000\n"
-"PO-Revision-Date: 2024-03-19 22:25+0100\n"
+"PO-Revision-Date: 2024-03-26 06:01+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -44,8 +44,7 @@ msgid "© 2020 KDE Community"
 msgstr "© 2020 KDE-ის საზოგადოება. ყველა უფლება დაცულია"
 
 #: qml/ChannelListDelegate.qml:54
-#, fuzzy, kde-format
-#| msgid "Favorite"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "რჩეული"

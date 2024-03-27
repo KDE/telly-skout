@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-26 00:40+0000\n"
-"PO-Revision-Date: 2024-03-17 21:31+0300\n"
+"PO-Revision-Date: 2024-03-26 14:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -43,11 +43,10 @@ msgid "© 2020 KDE Community"
 msgstr "© 2020 KDE Topluluğu"
 
 #: qml/ChannelListDelegate.qml:54
-#, fuzzy, kde-format
-#| msgid "Favorite"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Favorite"
-msgstr "Beğenilere Ekle"
+msgstr "Sık Kullanılanlara Ekle"
 
 #: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:29
 #, kde-format
@@ -62,12 +61,12 @@ msgstr "Kanallar yükleniyor…"
 #: qml/ChannelTablePage.qml:23 qml/TellySkoutGlobalDrawer.qml:15
 #, kde-format
 msgid "Favorites"
-msgstr "Beğeniler"
+msgstr "Sık Kullanılanlar"
 
 #: qml/ChannelTablePage.qml:42
 #, kde-format
 msgid "Please select favorites"
-msgstr "Lütfen beğenileri seçin"
+msgstr "Lütfen sık kullanılanları seçin"
 
 #: qml/ChannelTablePage.qml:136
 #, kde-format
@@ -77,7 +76,7 @@ msgstr "kullanılamıyor"
 #: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:26
 #, kde-format
 msgid "Select Favorites"
-msgstr "Beğenileri Seç"
+msgstr "Sık Kullanılanları Seç"
 
 #: qml/GroupListPage.qml:24
 #, kde-format
@@ -164,7 +163,7 @@ msgstr "Tüm dosyalar (*)"
 #: qml/TellySkoutGlobalDrawer.qml:35
 #, kde-format
 msgid "Sort Favorites"
-msgstr "Beğenileri Sırala"
+msgstr "Sık Kullanılanları Sırala"
 
 #: qml/TellySkoutGlobalDrawer.qml:54 qml/TellySkoutGlobalDrawer.qml:57
 #, kde-format
