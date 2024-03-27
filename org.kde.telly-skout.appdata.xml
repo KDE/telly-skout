@@ -22,6 +22,7 @@
   <name xml:lang="it">Telly Skout</name>
   <name xml:lang="ka">Telly Skout</name>
   <name xml:lang="ko">Telly Skout</name>
+  <name xml:lang="lv">Telly Skout</name>
   <name xml:lang="nl">Telly Skout</name>
   <name xml:lang="pl">Telly Skout</name>
   <name xml:lang="pt">Telly Skout</name>
@@ -48,6 +49,7 @@
   <summary xml:lang="it">Una guida TV Kirigami convergente</summary>
   <summary xml:lang="ka">Kirigami TV-ის გიდი</summary>
   <summary xml:lang="ko">올인원 Kirigami TV 가이드</summary>
+  <summary xml:lang="lv">Konverģenta „Kirigami“ TV programma</summary>
   <summary xml:lang="nl">Een convergente Kirigami TV gids</summary>
   <summary xml:lang="pl">Zbieżny przegląd programów TV</summary>
   <summary xml:lang="pt">Um guia de TV convergente em Kirigami</summary>
@@ -82,6 +84,7 @@
     <p xml:lang="it">Telly Skout è una guida TV Kirigami convergente. Mostra il programma TV per i tuoi canali preferiti da TV Spielfilm o da un file XMLTV.</p>
     <p xml:lang="ka">Telly Skout წარმოადგენს კირიგამის გიდს. მას შეუძლია გაჩვენოთ TV პროგრამები თქვენი რჩეული არხიდან TV Spielfilm ან XMLTV-დან.</p>
     <p xml:lang="ko">Telly Skout는 Kirigami TV 편성표입니다. TV Spielfilm이나 XMLTV 파일에서 즐겨 보는 채널 정보를 가져올 수 있습니다.</p>
+    <p xml:lang="lv">„Telly Skout“ ir konverģenta „Kirigami“ TV programma. Tā parāda iecienītāko TV kanālu programmu no „TV Spielfilm“ vai XMLTV datnes.</p>
     <p xml:lang="nl">Telly Skout is een convergente Kirigami TV gids. Deze toont het TV programma voor uw favoriete kanalen Uit TV Spielfilm of een XMLTV bestand.</p>
     <p xml:lang="pl">Telly Skout to zbieżny przegląd programów TV. Pokazuje program TV dla twoich ulubionych kanałów ze TV Spielfilm lub pliku XMLTV.</p>
     <p xml:lang="pt">O Telly Skout é um guia de TV convergente em Kirigami. Mostra o programa de TV para os seus canais favoritos da TV Spielfilm ou de um ficheiro em XMLTV.</p>
@@ -111,6 +114,7 @@
       <caption xml:lang="it">Preferiti</caption>
       <caption xml:lang="ka">სანიშნები</caption>
       <caption xml:lang="ko">책갈피</caption>
+      <caption xml:lang="lv">Iecienītākie</caption>
       <caption xml:lang="nl">Favorieten</caption>
       <caption xml:lang="pl">Ulubione</caption>
       <caption xml:lang="pt">Favoritos</caption>
@@ -140,6 +144,7 @@
       <caption xml:lang="it">Seleziona i preferiti</caption>
       <caption xml:lang="ka">აირჩიეთ რჩეულები</caption>
       <caption xml:lang="ko">책갈피 선택</caption>
+      <caption xml:lang="lv">Atlasīt iecienītākos</caption>
       <caption xml:lang="nl">Favorieten selecteren</caption>
       <caption xml:lang="pl">Wybierz ulubione</caption>
       <caption xml:lang="pt">Seleccionar os Favoritos</caption>
@@ -169,6 +174,7 @@
       <caption xml:lang="it">Ordina i preferiti</caption>
       <caption xml:lang="ka">რჩეულების დალაგება</caption>
       <caption xml:lang="ko">책갈피 정렬</caption>
+      <caption xml:lang="lv">Kārtot iecienītākos</caption>
       <caption xml:lang="nl">Favorieten sorteren</caption>
       <caption xml:lang="pl">Uszereguj ulubione</caption>
       <caption xml:lang="pt">Ordenar os Favoritos</caption>
