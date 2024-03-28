@@ -12,9 +12,6 @@ Kirigami.ApplicationWindow {
 
     title: "Telly Skout"
     pageStack.initialPage: channelTable
-    Component.onCompleted: {
-        Fetcher.fetchFavorites();
-    }
 
     Component {
         id: aboutPage
