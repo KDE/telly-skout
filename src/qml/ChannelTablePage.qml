@@ -13,25 +13,16 @@ Kirigami.Page {
 
     readonly property int columnWidth: _settings.columnWidth
     property int windowHeight: 0
-    property real currentTimestamp: 0
-
-    function updateTime() {
-        var now = new Date();
-        currentTimestamp = now.getTime();
-    }
+    property real currentTimestamp: new Date().getTime()
 
     title: i18n("Favorites")
     padding: 0
-    Component.onCompleted: {
-        Fetcher.fetchFavorites();
-        updateTime();
-    }
 
     Timer {
         interval: 60000
         repeat: true
         running: true
-        onTriggered: updateTime()
+        onTriggered: currentTimestamp = new Date().getTime()
     }
 
     Kirigami.PlaceholderMessage {
