@@ -32,7 +32,6 @@ Kirigami.ApplicationWindow {
     }
 
     contextDrawer: Kirigami.ContextDrawer {
-        id: contextDrawer
     }
 
 }

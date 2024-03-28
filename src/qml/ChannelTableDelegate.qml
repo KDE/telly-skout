@@ -30,7 +30,7 @@ Rectangle {
     // stop always at stopTime, even if the program runs longer
     height: (Math.min(program.stop, stopTime) - Math.max(program.start, startTime)) / 60000 * pxPerMin
     color: channelIdx % 2 == 0 ? "transparent" : Kirigami.Theme.alternateBackgroundColor
-    border.color: "transparent"
+    border.color: Kirigami.Theme.textColor
     Component.onCompleted: {
         // update overlay if it is open (for this program)
         if (root.overlay.visible && root.overlay.programId === program.id)
@@ -40,17 +40,18 @@ Rectangle {
 
     // hightlight running program
     Rectangle {
-        width: parent.width
         color: Kirigami.Theme.focusColor
         visible: (program.start <= currentTimestamp) && (program.stop >= currentTimestamp)
         height: (currentTimestamp - program.start) / 60000 * root.pxPerMin
-    }
+        border.width: 0
 
-    // border
-    Rectangle {
-        anchors.fill: parent
-        color: "transparent"
-        border.color: Kirigami.Theme.textColor
+        anchors {
+            left: root.left
+            right: root.right
+            top: root.top
+            margins: root.border.width
+        }
+
     }
 
     Text {
