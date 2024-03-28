@@ -3,11 +3,13 @@
 
 import QtQuick
 import QtQuick.Controls as Controls
-import org.kde.TellySkout as TellySkout
+import org.kde.TellySkout
 import org.kde.kirigami as Kirigami
 
 Kirigami.GlobalDrawer {
     id: root
+
+    property var channelTablePage
 
     isMenu: true
     actions: [
@@ -17,9 +19,8 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();
-                pageStack.push("qrc:/ChannelTablePage.qml", {
-                    "windowHeight": root.parent.height
-                });
+                pageStack.push(channelTablePage);
+                Fetcher.fetchFavorites();
             }
         },
         Kirigami.Action {
