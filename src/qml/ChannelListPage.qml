@@ -15,12 +15,14 @@ Kirigami.ScrollablePage {
     property string groupFilter: ""
     property bool sortable: false
     property bool onlyFavorites: false
+    property bool sortingChanged: false
 
     title: i18n("Channels")
     Component.onDestruction: {
-        if (root.sortable)
+        if (sortable && sortingChanged) {
             channelsModel.save();
-
+            sortingChanged = false;
+        }
     }
 
     Kirigami.PlaceholderMessage {
@@ -55,6 +57,11 @@ Kirigami.ScrollablePage {
             id: channelsModel
 
             onlyFavorites: root.onlyFavorites
+            onRowsMoved: {
+                if (root.sortable)
+                    root.sortingChanged = true;
+
+            }
         }
 
         delegate: ChannelListDelegate {
