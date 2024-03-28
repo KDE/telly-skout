@@ -40,7 +40,7 @@ Kirigami.GlobalDrawer {
                 pageStack.clear();
                 pageStack.push("qrc:/ChannelListPage.qml", {
                     "sortable": true,
-                    "onlyFavorites": true,
+                    "showOnlyFavorites": true,
                     "groupFilter": ""
                 });
             }

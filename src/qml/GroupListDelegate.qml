@@ -27,7 +27,7 @@ Controls.ItemDelegate {
                     while (pageStack.depth > 1)pageStack.pop()
                     pageStack.push("qrc:/ChannelListPage.qml", {
                         "title": i18n("Channels") + " (" + i18n(model.group.name) + ")",
-                        "onlyFavorites": false,
+                        "showOnlyFavorites": false,
                         "groupFilter": lastGroup
                     });
                 }

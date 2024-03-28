@@ -14,7 +14,7 @@ Kirigami.ScrollablePage {
     property string lastChannel: ""
     property string groupFilter: ""
     property bool sortable: false
-    property bool onlyFavorites: false
+    property bool showOnlyFavorites: false
     property bool sortingChanged: false
 
     title: i18n("Channels")
@@ -41,7 +41,7 @@ Kirigami.ScrollablePage {
         id: channelList
 
         anchors.fill: parent
-        model: root.onlyFavorites ? channelsModel : proxyModel
+        model: root.showOnlyFavorites ? channelsModel : proxyModel
         currentIndex: -1 // do not select first list item
         reuseItems: true
 
@@ -56,7 +56,7 @@ Kirigami.ScrollablePage {
         ChannelsModel {
             id: channelsModel
 
-            onlyFavorites: root.onlyFavorites
+            onlyFavorites: root.showOnlyFavorites
             onRowsMoved: {
                 if (root.sortable)
                     root.sortingChanged = true;
