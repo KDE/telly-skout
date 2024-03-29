@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-26 00:40+0000\n"
-"PO-Revision-Date: 2024-03-18 10:00+0100\n"
+"POT-Creation-Date: 2024-03-29 00:40+0000\n"
+"PO-Revision-Date: 2024-03-27 08:59+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -41,38 +41,37 @@ msgid "© 2020 KDE Community"
 msgstr "© 2020 Communauté KDE"
 
 #: qml/ChannelListDelegate.qml:54
-#, fuzzy, kde-format
-#| msgid "Favorite"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "Favoris"
 
-#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:29
+#: qml/ChannelListPage.qml:20 qml/GroupListDelegate.qml:29
 #, kde-format
 msgid "Channels"
 msgstr "Chaînes"
 
-#: qml/ChannelListPage.qml:30
+#: qml/ChannelListPage.qml:32
 #, kde-format
 msgid "Loading channels..."
 msgstr "Chargement des chaînes…"
 
-#: qml/ChannelTablePage.qml:23 qml/TellySkoutGlobalDrawer.qml:15
+#: qml/ChannelTablePage.qml:18 qml/TellySkoutGlobalDrawer.qml:17
 #, kde-format
 msgid "Favorites"
 msgstr "Favoris"
 
-#: qml/ChannelTablePage.qml:42
+#: qml/ChannelTablePage.qml:33
 #, kde-format
 msgid "Please select favorites"
 msgstr "Veuillez sélectionner les favoris"
 
-#: qml/ChannelTablePage.qml:136
+#: qml/ChannelTablePage.qml:127
 #, kde-format
 msgid "not available"
 msgstr "indisponible"
 
-#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:26
+#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:27
 #, kde-format
 msgid "Select Favorites"
 msgstr "Sélectionnez les favoris"
@@ -82,8 +81,8 @@ msgstr "Sélectionnez les favoris"
 msgid "Loading groups..."
 msgstr "Chargement des groupes"
 
-#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:48
-#: qml/TellySkoutGlobalDrawer.qml:51
+#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:49
+#: qml/TellySkoutGlobalDrawer.qml:52
 #, kde-format
 msgid "Settings"
 msgstr "Configuration"
@@ -159,12 +158,12 @@ msgstr "Fichier « XML » (*.xml)"
 msgid "All files (*)"
 msgstr "Tous les fichiers (*)"
 
-#: qml/TellySkoutGlobalDrawer.qml:35
+#: qml/TellySkoutGlobalDrawer.qml:36
 #, kde-format
 msgid "Sort Favorites"
 msgstr "Trier les favoris"
 
-#: qml/TellySkoutGlobalDrawer.qml:54 qml/TellySkoutGlobalDrawer.qml:57
+#: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
 #, kde-format
 msgid "About"
 msgstr "À propos"

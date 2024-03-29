@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-26 00:40+0000\n"
+"POT-Creation-Date: 2024-03-29 00:40+0000\n"
 "PO-Revision-Date: 2024-03-26 06:01+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -49,32 +49,32 @@ msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "რჩეული"
 
-#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:29
+#: qml/ChannelListPage.qml:20 qml/GroupListDelegate.qml:29
 #, kde-format
 msgid "Channels"
 msgstr "არხები"
 
-#: qml/ChannelListPage.qml:30
+#: qml/ChannelListPage.qml:32
 #, kde-format
 msgid "Loading channels..."
 msgstr "არხების ჩატვირთვა..."
 
-#: qml/ChannelTablePage.qml:23 qml/TellySkoutGlobalDrawer.qml:15
+#: qml/ChannelTablePage.qml:18 qml/TellySkoutGlobalDrawer.qml:17
 #, kde-format
 msgid "Favorites"
 msgstr "რჩეულები"
 
-#: qml/ChannelTablePage.qml:42
+#: qml/ChannelTablePage.qml:33
 #, kde-format
 msgid "Please select favorites"
 msgstr "აირჩიეთ რჩეულები"
 
-#: qml/ChannelTablePage.qml:136
+#: qml/ChannelTablePage.qml:127
 #, kde-format
 msgid "not available"
 msgstr "მიუწვდომელია"
 
-#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:26
+#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:27
 #, kde-format
 msgid "Select Favorites"
 msgstr "აირჩიეთ რჩეულები"
@@ -84,8 +84,8 @@ msgstr "აირჩიეთ რჩეულები"
 msgid "Loading groups..."
 msgstr "ჯგუფების ჩატვირთვა..."
 
-#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:48
-#: qml/TellySkoutGlobalDrawer.qml:51
+#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:49
+#: qml/TellySkoutGlobalDrawer.qml:52
 #, kde-format
 msgid "Settings"
 msgstr "პარამეტრები"
@@ -161,12 +161,12 @@ msgstr "XML ფაილები (*.xml)"
 msgid "All files (*)"
 msgstr "ყველა ფაილი (*)"
 
-#: qml/TellySkoutGlobalDrawer.qml:35
+#: qml/TellySkoutGlobalDrawer.qml:36
 #, kde-format
 msgid "Sort Favorites"
 msgstr "რჩეულების დალაგება"
 
-#: qml/TellySkoutGlobalDrawer.qml:54 qml/TellySkoutGlobalDrawer.qml:57
+#: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
 #, kde-format
 msgid "About"
 msgstr "შესახებ"

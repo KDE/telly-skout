@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-26 00:40+0000\n"
+"POT-Creation-Date: 2024-03-29 00:40+0000\n"
 "PO-Revision-Date: 2024-03-17 11:16+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -49,32 +49,32 @@ msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "Favorita"
 
-#: qml/ChannelListPage.qml:19 qml/GroupListDelegate.qml:29
+#: qml/ChannelListPage.qml:20 qml/GroupListDelegate.qml:29
 #, kde-format
 msgid "Channels"
 msgstr "Canles"
 
-#: qml/ChannelListPage.qml:30
+#: qml/ChannelListPage.qml:32
 #, kde-format
 msgid "Loading channels..."
 msgstr "Cargando as canles…"
 
-#: qml/ChannelTablePage.qml:23 qml/TellySkoutGlobalDrawer.qml:15
+#: qml/ChannelTablePage.qml:18 qml/TellySkoutGlobalDrawer.qml:17
 #, kde-format
 msgid "Favorites"
 msgstr "Favoritas"
 
-#: qml/ChannelTablePage.qml:42
+#: qml/ChannelTablePage.qml:33
 #, kde-format
 msgid "Please select favorites"
 msgstr "Seleccione favoritas"
 
-#: qml/ChannelTablePage.qml:136
+#: qml/ChannelTablePage.qml:127
 #, kde-format
 msgid "not available"
 msgstr "non dispoñíbel"
 
-#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:26
+#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:27
 #, kde-format
 msgid "Select Favorites"
 msgstr "Seleccionar as favoritas"
@@ -84,8 +84,8 @@ msgstr "Seleccionar as favoritas"
 msgid "Loading groups..."
 msgstr "Cargando os grupos…"
 
-#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:48
-#: qml/TellySkoutGlobalDrawer.qml:51
+#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:49
+#: qml/TellySkoutGlobalDrawer.qml:52
 #, kde-format
 msgid "Settings"
 msgstr "Configuración"
@@ -161,12 +161,12 @@ msgstr "Ficheiros XML (*.xml)"
 msgid "All files (*)"
 msgstr "Todos os ficheiros (*)"
 
-#: qml/TellySkoutGlobalDrawer.qml:35
+#: qml/TellySkoutGlobalDrawer.qml:36
 #, kde-format
 msgid "Sort Favorites"
 msgstr "Ordenar as favoritas"
 
-#: qml/TellySkoutGlobalDrawer.qml:54 qml/TellySkoutGlobalDrawer.qml:57
+#: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
 #, kde-format
 msgid "About"
 msgstr "Sobre"
