@@ -12,6 +12,5 @@
         <file alias="ChannelListDelegate.qml">qml/ChannelListDelegate.qml</file>
         <file alias="ChannelTableDelegate.qml">qml/ChannelTableDelegate.qml</file>
         <file alias="TellySkoutGlobalDrawer.qml">qml/TellySkoutGlobalDrawer.qml</file>
-        <file>qtquickcontrols2.conf</file>
     </qresource>
 </RCC>

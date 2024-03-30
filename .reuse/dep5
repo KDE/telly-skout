@@ -2,7 +2,7 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Telly Skout
 Upstream-Contact: Plata Hill <plata.hill@kdemail.net>
 
-Files: src/qtquickcontrols2.conf README.md src/TellySkoutSettings.kcfgc src/TellySkoutSettings.kcfg
+Files: README.md src/TellySkoutSettings.kcfgc src/TellySkoutSettings.kcfg
 Copyright: Plata Hill <plata.hill@kdemail.net>
 License: CC0-1.0
 
