@@ -68,90 +68,86 @@ Kirigami.Page {
 
     }
 
-    Controls.ScrollView {
+    Flickable {
+        id: channelTable
+
+        readonly property int pxPerMin: _settings.programHeight
+        readonly property var date: new Date()
+        readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
+        readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
+
         width: parent.width
         height: parent.height - header.height
         anchors.top: header.bottom
+        visible: contentRepeater.count !== 0
+        contentHeight: 24 * 60 * pxPerMin
+        contentWidth: content.width
+        boundsBehavior: Flickable.StopAtBounds
+        clip: true
+        Component.onCompleted: {
+            // scroll to current time
+            var today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
+            const now = new Date();
+            // offset [s] to 00:00h
+            const offsetS = (now.getTime() - today.getTime()) / 1000;
+            // center in window (vertically)
+            contentY = (offsetS / (24 * 60 * 60)) * contentHeight - (windowHeight / 2);
+        }
 
-        Flickable {
-            id: channelTable
+        Row {
+            id: content
 
-            readonly property int pxPerMin: _settings.programHeight
-            readonly property var date: new Date()
-            readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
-            readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
+            Repeater {
+                id: contentRepeater
 
-            visible: contentRepeater.count !== 0
-            contentHeight: 24 * 60 * pxPerMin
-            contentWidth: content.width
-            boundsBehavior: Flickable.StopAtBounds
-            clip: true
-            Component.onCompleted: {
-                // scroll to current time
-                var today = new Date();
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                const now = new Date();
-                // offset [s] to 00:00h
-                const offsetS = (now.getTime() - today.getTime()) / 1000;
-                // center in window (vertically)
-                contentY = (offsetS / (24 * 60 * 60)) * contentHeight - (windowHeight / 2);
-            }
+                model: channelsModel
 
-            Row {
-                id: content
+                delegate: Column {
+                    id: column
 
-                Repeater {
-                    id: contentRepeater
+                    property int idx: index
 
-                    model: channelsModel
+                    width: root.columnWidth
 
-                    delegate: Column {
-                        id: column
+                    // show info if program is not available
+                    Rectangle {
+                        width: parent.width
+                        height: channelTable.contentHeight
+                        visible: programRepeater.count === 0
+                        color: Kirigami.Theme.negativeBackgroundColor
+                        border.color: Kirigami.Theme.textColor
 
-                        property int idx: index
-
-                        width: root.columnWidth
-
-                        // show info if program is not available
-                        Rectangle {
-                            width: parent.width
-                            height: channelTable.contentHeight
-                            visible: programRepeater.count === 0
-                            color: Kirigami.Theme.negativeBackgroundColor
-                            border.color: Kirigami.Theme.textColor
-
-                            Text {
-                                anchors.centerIn: parent
-                                text: i18n("not available")
-                                wrapMode: Text.Wrap
-                                color: Kirigami.Theme.textColor
-                            }
-
+                        Text {
+                            anchors.centerIn: parent
+                            text: i18n("not available")
+                            wrapMode: Text.Wrap
+                            color: Kirigami.Theme.textColor
                         }
 
-                        Repeater {
-                            id: programRepeater
+                    }
 
-                            model: ProgramsProxyModel {
-                                id: proxyProgramModel
+                    Repeater {
+                        id: programRepeater
 
-                                start: channelTable.start
-                                stop: channelTable.stop
-                                sourceModel: modelData.programsModel
-                            }
+                        model: ProgramsProxyModel {
+                            id: proxyProgramModel
 
-                            delegate: ChannelTableDelegate {
-                                channelIdx: column.idx
-                                overlay: overlaySheet
-                                pxPerMin: channelTable.pxPerMin
-                                width: root.columnWidth
-                                startTime: channelTable.start
-                                stopTime: channelTable.stop
-                                currentTimestamp: root.currentTimestamp
-                            }
+                            start: channelTable.start
+                            stop: channelTable.stop
+                            sourceModel: modelData.programsModel
+                        }
 
+                        delegate: ChannelTableDelegate {
+                            channelIdx: column.idx
+                            overlay: overlaySheet
+                            pxPerMin: channelTable.pxPerMin
+                            width: root.columnWidth
+                            startTime: channelTable.start
+                            stopTime: channelTable.stop
+                            currentTimestamp: root.currentTimestamp
                         }
 
                     }
@@ -162,6 +158,11 @@ Kirigami.Page {
 
         }
 
+        Controls.ScrollBar.vertical: Controls.ScrollBar {
+        }
+
+        Controls.ScrollBar.horizontal: Controls.ScrollBar {
+        }
     }
 
     ChannelsModel {
