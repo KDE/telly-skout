@@ -20,6 +20,11 @@ Channel::Channel(const ChannelData &data, bool favorite, const QVector<GroupId> 
             setRefreshing(true);
         }
     });
+    connect(&Fetcher::instance(), &Fetcher::finishedFetchingChannel, this, [this](const ChannelId &id) {
+        if (id == m_data.m_id) {
+            setRefreshing(false);
+        }
+    });
     connect(&Fetcher::instance(), &Fetcher::channelUpdated, this, [this](const ChannelId &id) {
         if (id == m_data.m_id) {
             setRefreshing(false);

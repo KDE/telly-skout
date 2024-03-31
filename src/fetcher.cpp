@@ -51,8 +51,11 @@ void Fetcher::fetchFavorites()
         m_fetcherImpl->fetchProgram(
             channelId,
             [this, channelId](const QVector<ProgramData> &programs) {
-                Database::instance().addPrograms(programs);
-                Q_EMIT channelUpdated(channelId);
+                if (!programs.empty()) {
+                    Database::instance().addPrograms(programs);
+                    Q_EMIT channelUpdated(channelId);
+                }
+                Q_EMIT finishedFetchingChannel(channelId);
 
                 channelCounter.deref();
             },

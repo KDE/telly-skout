@@ -43,6 +43,7 @@ Q_SIGNALS:
     void groupUpdated(const GroupId &id);
 
     void startedFetchingChannel(const ChannelId &id);
+    void finishedFetchingChannel(const ChannelId &id);
     void channelUpdated(const ChannelId &id);
 
     void programUpdated(const ProgramId &id);
