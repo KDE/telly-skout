@@ -267,6 +267,9 @@ void Database::addGroup(const GroupData &data)
 
 void Database::addGroups(const QVector<GroupData> &groups)
 {
+    if (groups.empty())
+        return;
+
     QSqlDatabase::database().transaction();
 
     for (const GroupData &data : groups) {
@@ -354,6 +357,9 @@ void Database::addChannel(const ChannelData &data, const GroupId &group)
 
 void Database::addChannels(const QList<ChannelData> &channels, const GroupId &group)
 {
+    if (channels.empty())
+        return;
+
     QSqlDatabase::database().transaction();
 
     for (const ChannelData &data : channels) {
@@ -540,6 +546,9 @@ void Database::updateProgramDescription(const ProgramId &id, const QString &desc
 
 void Database::addPrograms(const QVector<ProgramData> &programs)
 {
+    if (programs.empty())
+        return;
+
     QSqlDatabase::database().transaction();
 
     for (const ProgramData &data : programs) {

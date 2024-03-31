@@ -163,6 +163,7 @@ Kirigami.Page {
 
         Controls.ScrollBar.horizontal: Controls.ScrollBar {
         }
+
     }
 
     ChannelsModel {
