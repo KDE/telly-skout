@@ -47,18 +47,18 @@ void TvSpielfilmFetcher::fetchGroup(const QString &url,
     m_provider.get(
         QUrl(url),
         [this, callback](const QByteArray &data) {
-            static QRegularExpression reChannelList(QStringLiteral("<select name=\\\"channel\\\">.*</select>"));
-            reChannelList.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-            QRegularExpressionMatch matchChannelList = reChannelList.match(QString::fromUtf8(data));
+            static const QRegularExpression reChannelList(QStringLiteral("<select name=\\\"channel\\\">.*</select>"),
+                                                          QRegularExpression::DotMatchesEverythingOption);
+            const QRegularExpressionMatch matchChannelList = reChannelList.match(QString::fromUtf8(data));
             if (matchChannelList.hasMatch()) {
                 QMap<ChannelId, ChannelData> channels;
                 const QString channelList = matchChannelList.captured(0);
 
-                static QRegularExpression reChannel(QStringLiteral("<option.*?value=\\\"(.*?)\\\">&nbsp;&nbsp;(.*?)</option>"));
-                reChannel.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+                static const QRegularExpression reChannel(QStringLiteral("<option.*?value=\\\"(.*?)\\\">&nbsp;&nbsp;(.*?)</option>"),
+                                                          QRegularExpression::DotMatchesEverythingOption);
                 QRegularExpressionMatchIterator it = reChannel.globalMatch(channelList);
                 while (it.hasNext()) {
-                    QRegularExpressionMatch channelMatch = it.next();
+                    const QRegularExpressionMatch channelMatch = it.next();
                     const ChannelId id = ChannelId(channelMatch.captured(1));
 
                     // exclude groups (e.g. "alle Sender" or "g:1")
@@ -163,10 +163,11 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId,
             processChannel(QString::fromUtf8(data), url, channelId, allPrograms);
 
             // fetch next page
-            static QRegularExpression reNextPage(QStringLiteral(
-                "<ul class=\\\"pagination__items\\\">.*</ul>\\s*<a href=\\\"(.*?)\\\".*class=\\\"js-track-link pagination__link pagination__link--next\\\""));
-            reNextPage.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-            QRegularExpressionMatch matchNextPage = reNextPage.match(QString::fromUtf8(data));
+            static const QRegularExpression reNextPage(
+                QStringLiteral("<ul class=\\\"pagination__items\\\">.*</ul>\\s*<a href=\\\"(.*?)\\\".*class=\\\"js-track-link pagination__link "
+                               "pagination__link--next\\\""),
+                QRegularExpression::DotMatchesEverythingOption);
+            const QRegularExpressionMatch matchNextPage = reNextPage.match(QString::fromUtf8(data));
             if (matchNextPage.hasMatch()) {
                 fetchProgram(channelId, date, page + 1, allPrograms, callback, errorCallback);
             } else {
@@ -205,12 +206,12 @@ void TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString 
     const QString reCategory(QStringLiteral("<span>(.*?)</span>"));
     const QString reCategoryCol(QStringLiteral("<td class=\\\"col-4\\\">.*?") + reCategory + QStringLiteral(".*?</td>"));
 
-    QRegularExpression reProgram(QStringLiteral("<tr class=\\\"hover\\\">.*?") + reMainCol + QStringLiteral(".*?") + reCategoryCol
-                                 + QStringLiteral(".*?</tr>"));
-    reProgram.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+    static const QRegularExpression reProgram(QStringLiteral("<tr class=\\\"hover\\\">.*?") + reMainCol + QStringLiteral(".*?") + reCategoryCol
+                                                  + QStringLiteral(".*?</tr>"),
+                                              QRegularExpression::DotMatchesEverythingOption);
     QRegularExpressionMatchIterator it = reProgram.globalMatch(infoTable);
     while (it.hasNext()) {
-        QRegularExpressionMatch match = it.next();
+        const QRegularExpressionMatch match = it.next();
         const ProgramData programData = processProgram(match, url, channelId, !it.hasNext());
         if (!programs.empty()) {
             ProgramData &previousProgamData = programs.last();
@@ -273,8 +274,8 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
 
     // description
     {
-        static QRegularExpression re(QStringLiteral("<section class=\\\"broadcast-detail__description\\\">.*?<p>(.*?)</p>"));
-        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        static const QRegularExpression re(QStringLiteral("<section class=\\\"broadcast-detail__description\\\">.*?<p>(.*?)</p>"),
+                                           QRegularExpression::DotMatchesEverythingOption);
         const QRegularExpressionMatch match = re.match(descriptionPage);
         if (match.hasMatch()) {
             description += match.captured(1) + QStringLiteral("<br>");
@@ -283,8 +284,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
 
     // original title
     {
-        static QRegularExpression re(QStringLiteral("<dt>Originaltitel:</dt>\\s*<dd>(.*?)</dd>"));
-        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        static const QRegularExpression re(QStringLiteral("<dt>Originaltitel:</dt>\\s*<dd>(.*?)</dd>"), QRegularExpression::DotMatchesEverythingOption);
         const QRegularExpressionMatch match = re.match(descriptionPage);
         if (match.hasMatch()) {
             if (!description.isEmpty()) {
@@ -296,8 +296,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
 
     // country
     {
-        static QRegularExpression re(QStringLiteral("<dt>Land:</dt>\\s*<dd>(.*?)</dd>"));
-        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        static const QRegularExpression re(QStringLiteral("<dt>Land:</dt>\\s*<dd>(.*?)</dd>"), QRegularExpression::DotMatchesEverythingOption);
         const QRegularExpressionMatch match = re.match(descriptionPage);
         if (match.hasMatch()) {
             if (!description.isEmpty()) {
@@ -309,8 +308,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
 
     // year
     {
-        static QRegularExpression re(QStringLiteral("<dt>Jahr:</dt>\\s*<dd>(.*?)</dd>"));
-        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        static const QRegularExpression re(QStringLiteral("<dt>Jahr:</dt>\\s*<dd>(.*?)</dd>"), QRegularExpression::DotMatchesEverythingOption);
         const QRegularExpressionMatch match = re.match(descriptionPage);
         if (match.hasMatch()) {
             if (!description.isEmpty()) {
@@ -322,8 +320,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
 
     // duration
     {
-        static QRegularExpression re(QStringLiteral("<dt>Länge:</dt>\\s*<dd>(.*?)</dd>"));
-        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        static const QRegularExpression re(QStringLiteral("<dt>Länge:</dt>\\s*<dd>(.*?)</dd>"), QRegularExpression::DotMatchesEverythingOption);
         const QRegularExpressionMatch match = re.match(descriptionPage);
         if (match.hasMatch()) {
             if (!description.isEmpty()) {
@@ -335,8 +332,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
 
     // FSK
     {
-        static QRegularExpression re(QStringLiteral("<dt>FSK:</dt>\\s*<dd>(.*?)</dd>"));
-        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        static const QRegularExpression re(QStringLiteral("<dt>FSK:</dt>\\s*<dd>(.*?)</dd>"), QRegularExpression::DotMatchesEverythingOption);
         const QRegularExpressionMatch match = re.match(descriptionPage);
         if (match.hasMatch()) {
             if (!description.isEmpty()) {
@@ -348,17 +344,16 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
 
     // cast + crew
     {
-        static QRegularExpression reActors(QStringLiteral("<dl class=\\\"actors\\\"(.*?)</dl>"));
-        reActors.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        static const QRegularExpression reActors(QStringLiteral("<dl class=\\\"actors\\\"(.*?)</dl>"), QRegularExpression::DotMatchesEverythingOption);
         const QRegularExpressionMatch actorsMatch = reActors.match(descriptionPage);
         if (actorsMatch.hasMatch()) {
             if (!description.isEmpty()) {
                 description += QStringLiteral("<br>");
             }
 
-            static QRegularExpression re(
-                QStringLiteral("<dt.*?>(.*?)</dt>.*?<dd.*?>\\s*(<a\\s*href=\\\".*?\\\"\\s*target=\\\".*?\\\"\\s*title=\\\".*?\\\">)?(.*?)(</a>)?\\s*</dd>"));
-            re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+            static const QRegularExpression re(
+                QStringLiteral("<dt.*?>(.*?)</dt>.*?<dd.*?>\\s*(<a\\s*href=\\\".*?\\\"\\s*target=\\\".*?\\\"\\s*title=\\\".*?\\\">)?(.*?)(</a>)?\\s*</dd>"),
+                QRegularExpression::DotMatchesEverythingOption);
             QRegularExpressionMatchIterator it = re.globalMatch(actorsMatch.captured(1));
             while (it.hasNext()) {
                 const QRegularExpressionMatch match = it.next();
