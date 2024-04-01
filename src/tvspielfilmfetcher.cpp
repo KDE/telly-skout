@@ -269,15 +269,120 @@ ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &pr
 
 QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, const QString &url)
 {
-    static QRegularExpression reDescription(QStringLiteral("<section class=\\\"broadcast-detail__description\\\">.*?<p>(.*?)</p>"));
-    reDescription.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
-    QRegularExpressionMatch match = reDescription.match(descriptionPage);
-    if (match.hasMatch()) {
-        return match.captured(1);
-    } else {
+    QString description;
+
+    // description
+    {
+        static QRegularExpression re(QStringLiteral("<section class=\\\"broadcast-detail__description\\\">.*?<p>(.*?)</p>"));
+        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        const QRegularExpressionMatch match = re.match(descriptionPage);
+        if (match.hasMatch()) {
+            description += match.captured(1) + QStringLiteral("<br>");
+        }
+    }
+
+    // original title
+    {
+        static QRegularExpression re(QStringLiteral("<dt>Originaltitel:</dt>\\s*<dd>(.*?)</dd>"));
+        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        const QRegularExpressionMatch match = re.match(descriptionPage);
+        if (match.hasMatch()) {
+            if (!description.isEmpty()) {
+                description += QStringLiteral("<br>");
+            }
+            description += i18n("Original title: ") + match.captured(1);
+        }
+    }
+
+    // country
+    {
+        static QRegularExpression re(QStringLiteral("<dt>Land:</dt>\\s*<dd>(.*?)</dd>"));
+        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        const QRegularExpressionMatch match = re.match(descriptionPage);
+        if (match.hasMatch()) {
+            if (!description.isEmpty()) {
+                description += QStringLiteral("<br>");
+            }
+            description += i18n("Country: ") + match.captured(1);
+        }
+    }
+
+    // year
+    {
+        static QRegularExpression re(QStringLiteral("<dt>Jahr:</dt>\\s*<dd>(.*?)</dd>"));
+        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        const QRegularExpressionMatch match = re.match(descriptionPage);
+        if (match.hasMatch()) {
+            if (!description.isEmpty()) {
+                description += QStringLiteral("<br>");
+            }
+            description += i18n("Year: ") + match.captured(1);
+        }
+    }
+
+    // duration
+    {
+        static QRegularExpression re(QStringLiteral("<dt>Länge:</dt>\\s*<dd>(.*?)</dd>"));
+        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        const QRegularExpressionMatch match = re.match(descriptionPage);
+        if (match.hasMatch()) {
+            if (!description.isEmpty()) {
+                description += QStringLiteral("<br>");
+            }
+            description += i18n("Duration: ") + match.captured(1);
+        }
+    }
+
+    // FSK
+    {
+        static QRegularExpression re(QStringLiteral("<dt>FSK:</dt>\\s*<dd>(.*?)</dd>"));
+        re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        const QRegularExpressionMatch match = re.match(descriptionPage);
+        if (match.hasMatch()) {
+            if (!description.isEmpty()) {
+                description += QStringLiteral("<br>");
+            }
+            description += i18n("FSK: ") + match.captured(1);
+        }
+    }
+
+    // cast + crew
+    {
+        static QRegularExpression reActors(QStringLiteral("<dl class=\\\"actors\\\"(.*?)</dl>"));
+        reActors.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+        const QRegularExpressionMatch actorsMatch = reActors.match(descriptionPage);
+        if (actorsMatch.hasMatch()) {
+            if (!description.isEmpty()) {
+                description += QStringLiteral("<br>");
+            }
+
+            static QRegularExpression re(
+                QStringLiteral("<dt.*?>(.*?)</dt>.*?<dd.*?>\\s*(<a\\s*href=\\\".*?\\\"\\s*target=\\\".*?\\\"\\s*title=\\\".*?\\\">)?(.*?)(</a>)?\\s*</dd>"));
+            re.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+            QRegularExpressionMatchIterator it = re.globalMatch(actorsMatch.captured(1));
+            while (it.hasNext()) {
+                const QRegularExpressionMatch match = it.next();
+                const QString role = match.captured(1).trimmed();
+                const QString name = match.captured(3).trimmed();
+                if (role == QStringLiteral("&nbsp;") && name == QStringLiteral("&nbsp;")) {
+                    // split cast and crew into 2 sections
+                    description += QStringLiteral("<br>");
+                } else {
+                    if (role.endsWith(QLatin1Char(':'))) {
+                        description += QStringLiteral("<br>") + role + QLatin1Char(' ') + name;
+                    } else {
+                        description += QStringLiteral("<br>") + role + QStringLiteral(" - ") + name;
+                    }
+                }
+            }
+        }
+    }
+
+    if (description.isEmpty()) {
         qWarning() << "Failed to parse program description from" << url;
     }
-    return QStringLiteral("");
+
+    return description;
 }
 
 bool TvSpielfilmFetcher::programExists(const ChannelId &channelId, const QDate &date)

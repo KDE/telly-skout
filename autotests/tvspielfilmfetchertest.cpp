@@ -240,7 +240,10 @@ private Q_SLOTS:
         Q_EMIT reply->finished();
         QCOMPARE(callbackCalled, true);
         QCOMPARE(errorCallbackCalled, false);
-        QCOMPARE(data, QStringLiteral("Description"));
+        QCOMPARE(data,
+                 QStringLiteral("Description<br>"
+                                "<br>Original title: TestTitle<br>Country: TestCountry<br>Year: 2024<br>Duration: 42 Min.<br>FSK: 0 Jahre<br>"
+                                "<br>Cast1 - Name1<br>Cast2 - Name2<br>Crew3: Name3<br>Crew4: Name4"));
     }
 };
 
