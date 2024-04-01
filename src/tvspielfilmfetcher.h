@@ -40,7 +40,7 @@ private:
                       QVector<ProgramData> &programs,
                       std::function<void(const QVector<ProgramData> &)> callback = nullptr,
                       std::function<void(const Error &)> errorCallback = nullptr);
-    QVector<ProgramData> processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId);
+    void processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId, QVector<ProgramData> &programs);
     ProgramData processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const ChannelId &channelId, bool isLast);
     QString processDescription(const QString &descriptionPage, const QString &url);
     bool programExists(const ChannelId &channelId, const QDate &date);

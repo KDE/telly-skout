@@ -160,7 +160,7 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId,
         QUrl(url),
         [this, channelId, date, page, programs, callback, errorCallback, url](const QByteArray &data) {
             QVector<ProgramData> allPrograms(programs);
-            allPrograms.append(processChannel(QString::fromUtf8(data), url, channelId));
+            processChannel(QString::fromUtf8(data), url, channelId, allPrograms);
 
             // fetch next page
             static QRegularExpression reNextPage(QStringLiteral(
@@ -192,10 +192,8 @@ void TvSpielfilmFetcher::fetchProgram(const ChannelId &channelId,
         });
 }
 
-QVector<ProgramData> TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId)
+void TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString &url, const ChannelId &channelId, QVector<ProgramData> &programs)
 {
-    QVector<ProgramData> programs;
-
     // column with title + description URL + start/stop time
     const QString reDescriptionUrl(QStringLiteral("<a href=\\\"(https://www.tvspielfilm.de/tv-programm/sendung/.*?\\.html)\\\""));
     const QString reTitle(QStringLiteral("<strong>(.*?)</strong>"));
@@ -232,8 +230,6 @@ QVector<ProgramData> TvSpielfilmFetcher::processChannel(const QString &infoTable
             programs.push_back(programData);
         }
     }
-
-    return programs;
 }
 
 ProgramData TvSpielfilmFetcher::processProgram(const QRegularExpressionMatch &programMatch, const QString &url, const ChannelId &channelId, bool isLast)
