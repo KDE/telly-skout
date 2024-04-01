@@ -215,11 +215,16 @@ QVector<ProgramData> TvSpielfilmFetcher::processChannel(const QString &infoTable
         QRegularExpressionMatch match = it.next();
         const ProgramData programData = processProgram(match, url, channelId, !it.hasNext());
         if (!programs.empty()) {
+            ProgramData &previousProgamData = programs.last();
             // sometimes, there can be multiple programs for the same time (e.g. different news per region of a local channel)
             // show this as alternative in the title
-            ProgramData &previousProgamData = programs.last();
-            if (programData.m_startTime < previousProgamData.m_stopTime) {
+            if (programData.m_startTime == previousProgamData.m_startTime) {
                 previousProgamData.m_title += QStringLiteral(" / ") + programData.m_title;
+            }
+            // it can happen that the stop time is incorrect (i.e. after the next program has already started)
+            // overwrite stop time with start time of next program
+            else if (programData.m_startTime < previousProgamData.m_stopTime) {
+                previousProgamData.m_stopTime = programData.m_startTime;
             } else {
                 programs.push_back(programData);
             }
