@@ -43,8 +43,7 @@ msgid "© 2020 KDE Community"
 msgstr "© 2020 Komunita KDE"
 
 #: qml/ChannelListDelegate.qml:54
-#, fuzzy, kde-format
-#| msgid "Favorite"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "Oblíbené"
@@ -184,17 +183,17 @@ msgstr ""
 #: tvspielfilmfetcher.cpp:305
 #, kde-format
 msgid "Country: "
-msgstr ""
+msgstr "Země: "
 
 #: tvspielfilmfetcher.cpp:317
 #, kde-format
 msgid "Year: "
-msgstr ""
+msgstr "Rok: "
 
 #: tvspielfilmfetcher.cpp:329
 #, kde-format
 msgid "Duration: "
-msgstr ""
+msgstr "Doba trvání: "
 
 #: tvspielfilmfetcher.cpp:341
 #, kde-format
