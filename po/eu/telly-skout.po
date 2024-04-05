@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-02 00:40+0000\n"
-"PO-Revision-Date: 2024-03-26 12:27+0100\n"
+"PO-Revision-Date: 2024-04-04 21:51+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -181,27 +181,27 @@ msgstr "Alemania"
 #: tvspielfilmfetcher.cpp:293
 #, kde-format
 msgid "Original title: "
-msgstr ""
+msgstr "Jatorrizko titulua: "
 
 #: tvspielfilmfetcher.cpp:305
 #, kde-format
 msgid "Country: "
-msgstr ""
+msgstr "Herrialdea: "
 
 #: tvspielfilmfetcher.cpp:317
 #, kde-format
 msgid "Year: "
-msgstr ""
+msgstr "Urtea: "
 
 #: tvspielfilmfetcher.cpp:329
 #, kde-format
 msgid "Duration: "
-msgstr ""
+msgstr "Iraupena: "
 
 #: tvspielfilmfetcher.cpp:341
 #, kde-format
 msgid "FSK: "
-msgstr ""
+msgstr "FSK: "
 
 #: xmltvfetcher.cpp:42
 #, kde-format
