@@ -16,6 +16,7 @@
 #include <QFile>
 
 Fetcher::Fetcher()
+    : m_favoritesPercentage(0)
 {
     const TellySkoutSettings::EnumFetcher::type fetcherType = static_cast<TellySkoutSettings::EnumFetcher::type>(TellySkoutSettings::fetcher());
 
