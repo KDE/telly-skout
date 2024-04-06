@@ -37,7 +37,7 @@ Kirigami.Page {
         id: header
 
         x: -channelTable.contentX
-        visible: contentRepeater.count !== 0
+        visible: contentRepeater.count !== 0 && !loadingPlaceholder.visible
         z: 100 // TODO: remove workaround for mobile (channelTable "anchors.top: header.bottom" not respected)
 
         Repeater {
@@ -79,7 +79,7 @@ Kirigami.Page {
         width: parent.width
         height: parent.height - header.height
         anchors.top: header.bottom
-        visible: contentRepeater.count !== 0
+        visible: contentRepeater.count !== 0 && !loadingPlaceholder.visible
         contentHeight: 24 * 60 * pxPerMin
         contentWidth: content.width
         boundsBehavior: Flickable.StopAtBounds
@@ -197,6 +197,15 @@ Kirigami.Page {
             wrapMode: Text.WordWrap
         }
 
+    }
+
+    Kirigami.LoadingPlaceholder {
+        id: loadingPlaceholder
+
+        visible: contentRepeater.count !== 0 && Fetcher.favoritesPercentage != 100
+        anchors.centerIn: parent
+        determinate: true
+        progressBar.value: Fetcher.favoritesPercentage
     }
 
 }

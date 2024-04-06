@@ -18,6 +18,9 @@ class QString;
 class Fetcher : public QObject
 {
     Q_OBJECT
+
+    Q_PROPERTY(unsigned int favoritesPercentage READ favoritesPercentage NOTIFY favoritesPercentageChanged)
+
 public:
     static Fetcher &instance()
     {
@@ -34,11 +37,17 @@ public:
 private:
     Fetcher();
 
+    unsigned int favoritesPercentage();
+    void setFavoritesPercentage(unsigned int percentage);
+
     void removeImage(const QString &url);
 
+    unsigned int m_favoritesPercentage;
     std::unique_ptr<FetcherImpl> m_fetcherImpl;
 
 Q_SIGNALS:
+    void favoritesPercentageChanged(unsigned int percentage);
+
     void startedFetchingGroup(const GroupId &id);
     void groupUpdated(const GroupId &id);
 

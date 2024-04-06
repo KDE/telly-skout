@@ -46,11 +46,13 @@ void Fetcher::fetchFavorites()
         return;
     }
 
+    setFavoritesPercentage(0);
+
     for (const ChannelId &channelId : favoriteChannels) {
         Q_EMIT startedFetchingChannel(channelId);
         m_fetcherImpl->fetchProgram(
             channelId,
-            [this, channelId](const QVector<ProgramData> &programs) {
+            [this, channelId, favoriteChannels](const QVector<ProgramData> &programs) {
                 if (!programs.empty()) {
                     Database::instance().addPrograms(programs);
                     Q_EMIT channelUpdated(channelId);
@@ -58,11 +60,13 @@ void Fetcher::fetchFavorites()
                 Q_EMIT finishedFetchingChannel(channelId);
 
                 channelCounter.deref();
+                setFavoritesPercentage((100 - static_cast<unsigned int>((channelCounter * 100) / favoriteChannels.size())));
             },
-            [this, channelId](const Error &error) {
+            [this, channelId, favoriteChannels](const Error &error) {
                 Q_EMIT errorFetchingChannel(channelId, error);
 
                 channelCounter.deref();
+                setFavoritesPercentage((100 - static_cast<unsigned int>((channelCounter * 100) / favoriteChannels.size())));
             });
     }
 }
@@ -112,6 +116,17 @@ QString Fetcher::image(const QString &url)
 void Fetcher::setImpl(std::unique_ptr<FetcherImpl> fetcherImpl)
 {
     m_fetcherImpl = std::move(fetcherImpl);
+}
+
+unsigned int Fetcher::favoritesPercentage()
+{
+    return m_favoritesPercentage;
+}
+
+void Fetcher::setFavoritesPercentage(unsigned int percentage)
+{
+    m_favoritesPercentage = percentage;
+    Q_EMIT favoritesPercentageChanged(m_favoritesPercentage);
 }
 
 void Fetcher::removeImage(const QString &url)
