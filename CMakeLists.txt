@@ -60,6 +60,13 @@ set_package_properties(KF${QT_MAJOR_VERSION}KirigamiAddons PROPERTIES
     PURPOSE "Provides additional visual components"
 )
 
+if (NOT ANDROID)
+    find_package(KF${QT_MAJOR_VERSION}QQC2DesktopStyle ${KF_MIN_VERSION} REQUIRED)
+    set_package_properties(KF${QT_MAJOR_VERSION}QQC2DesktopStyle PROPERTIES
+        TYPE RUNTIME
+    )
+endif()
+
 ################# compiler #################
 
 set(CMAKE_CXX_STANDARD 17)
