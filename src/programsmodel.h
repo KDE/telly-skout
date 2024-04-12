@@ -7,6 +7,7 @@
 
 #include <QHash>
 #include <QObject>
+#include <QQmlEngine>
 
 class Channel;
 class Program;
@@ -15,6 +16,7 @@ class ProgramFactory;
 class ProgramsModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
 
     Q_PROPERTY(Channel *channel READ channel CONSTANT)
 

@@ -26,6 +26,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_D
 include(ECMAddTests)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
+include(ECMQmlModule)
 include(KDEInstallDirs)
 include(KDEClangFormat)
 include(KDECMakeSettings)

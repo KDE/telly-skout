@@ -33,10 +33,6 @@
 #include <QApplication>
 #endif
 
-#ifdef Q_OS_ANDROID
-Q_DECL_EXPORT
-#endif
-
 int main(int argc, char *argv[])
 {
 #ifdef Q_OS_ANDROID
@@ -101,14 +97,6 @@ int main(int argc, char *argv[])
     QMetaType::registerConverter<QString, ProgramId>([](const QString &str) {
         return ProgramId(str);
     });
-    qmlRegisterType<GroupsModel>("org.kde.TellySkout", 1, 0, "GroupsModel");
-    qmlRegisterType<ChannelsModel>("org.kde.TellySkout", 1, 0, "ChannelsModel");
-    qmlRegisterType<ChannelsProxyModel>("org.kde.TellySkout", 1, 0, "ChannelsProxyModel");
-    qmlRegisterType<ProgramsProxyModel>("org.kde.TellySkout", 1, 0, "ProgramsProxyModel");
-
-    qmlRegisterUncreatableType<ProgramsModel>("org.kde.TellySkout", 1, 0, "ProgramsModel", QStringLiteral("Get from Channel"));
-
-    qmlRegisterSingletonInstance("org.kde.TellySkout", 1, 0, "Fetcher", &Fetcher::instance());
 
     // setup engine
     QQmlApplicationEngine engine;
@@ -120,7 +108,7 @@ int main(int argc, char *argv[])
 
     QObject::connect(&app, &QCoreApplication::aboutToQuit, TellySkoutSettings::self(), &TellySkoutSettings::save);
 
-    engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 
     if (engine.rootObjects().isEmpty()) {
         return -1;

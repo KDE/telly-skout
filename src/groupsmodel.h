@@ -7,11 +7,14 @@
 
 #include "groupfactory.h"
 
+#include <QQmlEngine>
+
 class Group;
 
 class GroupsModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
 
 public:
     explicit GroupsModel(QObject *parent = nullptr);

@@ -7,6 +7,7 @@
 #include "types.h"
 
 #include <QObject>
+#include <QQmlEngine>
 
 #include <memory>
 
@@ -18,6 +19,8 @@ class QString;
 class Fetcher : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
     Q_PROPERTY(unsigned int favoritesPercentage READ favoritesPercentage NOTIFY favoritesPercentageChanged)
 
@@ -25,8 +28,15 @@ public:
     static Fetcher &instance()
     {
         static Fetcher _instance;
+        QJSEngine::setObjectOwnership(&_instance, QJSEngine::ObjectOwnership::CppOwnership);
         return _instance;
     }
+
+    static Fetcher *create(QQmlEngine *, QJSEngine *)
+    {
+        return &instance();
+    }
+
     Q_INVOKABLE void fetchFavorites();
     Q_INVOKABLE void fetchGroups();
     Q_INVOKABLE void fetchGroup(const QString &url, const GroupId &groupId);

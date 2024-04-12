@@ -29,7 +29,7 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();
-                pageStack.push("qrc:/GroupListPage.qml");
+                pageStack.push("qrc:/qml/GroupListPage.qml");
             }
         },
         Kirigami.Action {
@@ -38,7 +38,7 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 pageStack.layers.clear();
                 pageStack.clear();
-                pageStack.push("qrc:/ChannelListPage.qml", {
+                pageStack.push("qrc:/qml/ChannelListPage.qml", {
                     "sortable": true,
                     "showOnlyFavorites": true,
                     "groupFilter": ""
@@ -48,7 +48,7 @@ Kirigami.GlobalDrawer {
         Kirigami.Action {
             text: i18n("Settings")
             icon.name: "settings-configure"
-            onTriggered: pageStack.layers.push("qrc:/SettingsPage.qml")
+            onTriggered: pageStack.layers.push("qrc:/qml/SettingsPage.qml")
             enabled: pageStack.layers.currentItem.title !== i18n("Settings")
         },
         Kirigami.Action {

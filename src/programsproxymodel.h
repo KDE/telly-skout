@@ -6,10 +6,12 @@
 #include <QSortFilterProxyModel>
 
 #include <QDateTime>
+#include <QQmlEngine>
 
 class ProgramsProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
+    QML_ELEMENT
 
     Q_PROPERTY(QDateTime start READ start WRITE setStart NOTIFY startChanged)
     Q_PROPERTY(QDateTime stop READ stop WRITE setStop NOTIFY stopChanged)

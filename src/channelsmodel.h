@@ -7,6 +7,7 @@
 
 #include "channelfactory.h"
 
+#include <QQmlEngine>
 #include <QUrl>
 
 class Channel;
@@ -14,6 +15,7 @@ class Channel;
 class ChannelsModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(bool onlyFavorites READ onlyFavorites WRITE setOnlyFavorites)
 
 public:

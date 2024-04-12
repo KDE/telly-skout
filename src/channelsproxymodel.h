@@ -7,9 +7,12 @@
 
 #include "types.h"
 
+#include <QQmlEngine>
+
 class ChannelsProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
+    QML_ELEMENT
 
     Q_PROPERTY(bool onlyFavorites READ onlyFavorites WRITE setOnlyFavorites NOTIFY onlyFavoritesChanged)
     Q_PROPERTY(GroupId group READ group WRITE setGroup NOTIFY groupChanged)
