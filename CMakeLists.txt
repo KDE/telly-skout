@@ -29,6 +29,7 @@ include(ECMGenerateHeaders)
 include(KDEInstallDirs)
 include(KDEClangFormat)
 include(KDECMakeSettings)
+include(KDEGitCommitHooks)
 include(ECMPoQmTools)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(QmlFormat.cmake)
@@ -100,6 +101,8 @@ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 add_custom_target(clang-format-always ALL DEPENDS ${ALL_CLANG_FORMAT_SOURCE_FILES})
 add_dependencies(clang-format-always clang-format)
+
+kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 file(GLOB_RECURSE ALL_QML_FORMAT_SOURCE_FILES src/qml/*.qml)
 qml_format(${ALL_QML_FORMAT_SOURCE_FILES})
