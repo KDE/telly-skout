@@ -203,6 +203,22 @@
   </categories>
   <launchable type="desktop-id">org.kde.telly-skout.desktop</launchable>
   <releases>
+    <release version="24.05.0" date="2024-05-23">
+      <description>
+        <p>TV Spielfilm fetcher</p>
+        <ul>
+          <li>Handle incorrect stop times.</li>
+          <li>Enhance program description.</li>
+        </ul>
+        <p>"Favorites" page</p>
+        <ul>
+          <li>Show loading placeholder.</li>
+          <li>Enable dragging with mouse.</li>
+        </ul>
+        <p>Do not allow to remove favorites on the "Sort Favorites" page.</p>
+        <p>Improve performance.</p>
+      </description>
+    </release>
     <release version="24.02.2" date="2024-04-11"/>
     <release version="24.02.1" date="2024-03-21"/>
     <release version="24.02.0" date="2024-02-28"/>
