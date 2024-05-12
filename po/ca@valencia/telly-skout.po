@@ -58,7 +58,7 @@ msgstr "Canals"
 #: qml/ChannelListPage.qml:32
 #, kde-format
 msgid "Loading channels..."
-msgstr "S'estan carregant els canals..."
+msgstr "S'estan carregant els canals…"
 
 #: qml/ChannelTablePage.qml:18 qml/TellySkoutGlobalDrawer.qml:17
 #, kde-format
@@ -83,7 +83,7 @@ msgstr "Seleccioneu els preferits"
 #: qml/GroupListPage.qml:24
 #, kde-format
 msgid "Loading groups..."
-msgstr "S'estan carregant els grups..."
+msgstr "S'estan carregant els grups…"
 
 #: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:49
 #: qml/TellySkoutGlobalDrawer.qml:52
