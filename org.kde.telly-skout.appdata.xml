@@ -203,7 +203,6 @@
   </categories>
   <launchable type="desktop-id">org.kde.telly-skout.desktop</launchable>
   <releases>
-    <release version="24.05.0" date="2024-05-23"/>
     <release version="24.05.0" date="2024-05-23">
       <description>
         <p>TV Spielfilm fetcher</p>
