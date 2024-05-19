@@ -13,15 +13,6 @@ Kirigami.ApplicationWindow {
     title: "Telly Skout"
     pageStack.initialPage: channelTable
 
-    Component {
-        id: aboutPage
-
-        FormCard.AboutPage {
-            aboutData: _aboutData
-        }
-
-    }
-
     ChannelTablePage {
         id: channelTable
 

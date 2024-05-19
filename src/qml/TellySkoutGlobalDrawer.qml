@@ -54,7 +54,7 @@ Kirigami.GlobalDrawer {
         Kirigami.Action {
             text: i18n("About")
             icon.name: "help-about-symbolic"
-            onTriggered: pageStack.layers.push(aboutPage)
+            onTriggered: pageStack.layers.push(Qt.createComponent('org.kde.kirigamiaddons.formcard', 'AboutPage'))
             enabled: pageStack.layers.currentItem.title !== i18n("About")
         }
     ]
