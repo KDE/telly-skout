@@ -15,7 +15,7 @@ Kirigami.Page {
     property int windowHeight: 0
     property real currentTimestamp: new Date().getTime()
 
-    title: i18n("Favorites")
+    title: i18nc("@title", "Favorites")
     padding: 0
 
     Timer {

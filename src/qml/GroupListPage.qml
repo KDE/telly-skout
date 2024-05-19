@@ -12,7 +12,7 @@ Kirigami.ScrollablePage {
 
     property string lastGroup: ""
 
-    title: i18n("Select Favorites")
+    title: i18nc("@title", "Select Favorites")
     Component.onCompleted: {
         Fetcher.fetchGroups();
     }

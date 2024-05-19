@@ -9,7 +9,7 @@ import QtQuick.Window
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
-    title: i18n("Settings")
+    title: i18nc("@title", "Settings")
 
     Kirigami.FormLayout {
         Kirigami.Separator {
