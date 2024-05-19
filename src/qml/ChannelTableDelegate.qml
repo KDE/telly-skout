@@ -11,18 +11,18 @@ Rectangle {
     id: root
 
     property int channelIdx
-    property var overlay
+    property var dialog
     property int pxPerMin
     property date startTime
     property date stopTime
     property real currentTimestamp
 
-    function updateOverlay() {
+    function updateDialog() {
         if (program !== undefined) {
             if (!program.descriptionFetched)
                 Fetcher.fetchProgramDescription(program.channelId, program.id, program.url);
 
-            root.overlay.program = program;
+            root.dialog.program = program;
         }
     }
 
@@ -32,9 +32,9 @@ Rectangle {
     color: channelIdx % 2 == 0 ? "transparent" : Kirigami.Theme.alternateBackgroundColor
     border.color: Kirigami.Theme.textColor
     Component.onCompleted: {
-        // update overlay if it is open (for this program)
-        if (root.overlay.visible && root.overlay.programId === program.id)
-            updateOverlay();
+        // update dialog if it is open (for this program)
+        if (root.dialog.visible && root.dialog.programId === program.id)
+            updateDialog();
 
     }
 
@@ -73,8 +73,8 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             if (program !== undefined) {
-                updateOverlay();
-                root.overlay.open();
+                updateDialog();
+                root.dialog.open();
             }
         }
     }

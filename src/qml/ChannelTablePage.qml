@@ -142,7 +142,7 @@ Kirigami.Page {
 
                         delegate: ChannelTableDelegate {
                             channelIdx: column.idx
-                            overlay: overlaySheet
+                            dialog: detailsDialog
                             pxPerMin: channelTable.pxPerMin
                             width: root.columnWidth
                             startTime: channelTable.start
@@ -172,31 +172,22 @@ Kirigami.Page {
         onlyFavorites: true
     }
 
-    Kirigami.OverlaySheet {
-        id: overlaySheet
+    Kirigami.PromptDialog {
+        id: detailsDialog
 
         property var programId // persistent ID even if program is deleted
         property var program
+        property string categoryText: (program && program.categories.length) > 0 ? "<br><i>" + program.categories.join(' ') + "</i>" : ""
+        property string descriptionText: (program && program.descriptionFetched && program.description) ? "<br><br>" + program.description : ""
 
         onProgramChanged: {
             if (program)
                 programId = program.id;
 
         }
-
-        Text {
-            id: overlaySheetText
-
-            property alias program: overlaySheet.program
-            property string categoryText: (program && program.categories.length) > 0 ? "<br><i>" + program.categories.join(' ') + "</i>" : ""
-            property string descriptionText: (program && program.descriptionFetched && program.description) ? "<br><br>" + program.description : ""
-
-            text: program ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " " + program.title + "</b>" + categoryText + descriptionText : ""
-            Layout.fillWidth: true
-            color: Kirigami.Theme.textColor
-            wrapMode: Text.WordWrap
-        }
-
+        title: program ? program.title : ""
+        subtitle: program ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b>" + categoryText + descriptionText : ""
+        standardButtons: Controls.Dialog.Close
     }
 
     Kirigami.LoadingPlaceholder {
