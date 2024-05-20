@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-13 00:41+0000\n"
+"POT-Creation-Date: 2024-05-20 00:41+0000\n"
 "PO-Revision-Date: 2024-04-03 11:47+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -48,8 +48,10 @@ msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "Oblíbené"
 
-#: qml/ChannelListPage.qml:20 qml/GroupListDelegate.qml:29
-#, kde-format
+#: qml/ChannelListPage.qml:20
+#, fuzzy, kde-format
+#| msgid "Channels"
+msgctxt "@title"
 msgid "Channels"
 msgstr "Kanály"
 
@@ -58,8 +60,10 @@ msgstr "Kanály"
 msgid "Loading channels..."
 msgstr ""
 
-#: qml/ChannelTablePage.qml:18 qml/TellySkoutGlobalDrawer.qml:17
-#, kde-format
+#: qml/ChannelTablePage.qml:18
+#, fuzzy, kde-format
+#| msgid "Favorites"
+msgctxt "@title"
 msgid "Favorites"
 msgstr "Oblíbené"
 
@@ -73,8 +77,15 @@ msgstr ""
 msgid "not available"
 msgstr "nedostupný"
 
-#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:27
+#: qml/GroupListDelegate.qml:29
 #, kde-format
+msgid "Channels"
+msgstr "Kanály"
+
+#: qml/GroupListPage.qml:15
+#, fuzzy, kde-format
+#| msgid "Select Favorites"
+msgctxt "@title"
 msgid "Select Favorites"
 msgstr "Vyberte oblíbené"
 
@@ -83,87 +94,136 @@ msgstr "Vyberte oblíbené"
 msgid "Loading groups..."
 msgstr "Načítání seznamu skupin..."
 
-#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:49
-#: qml/TellySkoutGlobalDrawer.qml:52
-#, kde-format
+#: qml/SettingsPage.qml:13
+#, fuzzy, kde-format
+#| msgid "Settings"
+msgctxt "@title"
 msgid "Settings"
 msgstr "Nastavení"
 
-#: qml/SettingsPage.qml:17
+#: qml/SettingsPage.qml:16
 #, kde-format
-msgid "UI"
-msgstr "UI"
+msgctxt "@title:group"
+msgid "Appearance"
+msgstr ""
 
 #: qml/SettingsPage.qml:21
-#, kde-format
-msgctxt "height of the program"
-msgid "Program height"
+#, fuzzy, kde-format
+#| msgctxt "height of the program"
+#| msgid "Program height"
+msgctxt "@option:spinbox height of the program"
+msgid "Program height:"
 msgstr "Výška programu"
 
-#: qml/SettingsPage.qml:32
+#: qml/SettingsPage.qml:27
 #, kde-format
-msgid "px/min"
+msgctxt "Number in px/min"
+msgid "%1px/min"
 msgstr ""
 
 #: qml/SettingsPage.qml:38
-#, kde-format
-msgid "Column width"
+#, fuzzy, kde-format
+#| msgid "Column width"
+msgctxt "@option:spinbox"
+msgid "Column width:"
 msgstr "Šířka sloupce"
 
-#: qml/SettingsPage.qml:49 qml/SettingsPage.qml:66
+#: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
 #, kde-format
-msgid "px"
-msgstr "px"
-
-#: qml/SettingsPage.qml:55
-#, kde-format
-msgid "Font size"
-msgstr "Velikost písma"
-
-#: qml/SettingsPage.qml:73
-#, kde-format
-msgid "Program"
-msgstr "Program"
-
-#: qml/SettingsPage.qml:77
-#, kde-format
-msgid "Delete old after"
+msgctxt "Number in px"
+msgid "%1px"
 msgstr ""
 
-#: qml/SettingsPage.qml:87 qml/SettingsPage.qml:115
+#: qml/SettingsPage.qml:55
+#, fuzzy, kde-format
+#| msgid "Font size"
+msgctxt "@option:spinbox"
+msgid "Font size:"
+msgstr "Velikost písma"
+
+#: qml/SettingsPage.qml:71
+#, fuzzy, kde-format
+#| msgid "Program"
+msgctxt "@title:group Programs as TV programs"
+msgid "Programs"
+msgstr "Program"
+
+#: qml/SettingsPage.qml:76
 #, kde-format
-msgid "days"
-msgstr "dnech"
+msgctxt "@option:spinbox"
+msgid "Delete old programs after:"
+msgstr ""
+
+#: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
+#, kde-format
+msgctxt "Number in days"
+msgid "%1 day"
+msgid_plural "%1 days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: qml/SettingsPage.qml:93
-#, kde-format
-msgid "Fetcher"
+#, fuzzy, kde-format
+#| msgid "Fetcher"
+msgid "Fetcher:"
 msgstr "Stahovač"
 
-#: qml/SettingsPage.qml:107
+#: qml/SettingsPage.qml:94
 #, kde-format
-msgid "Prefetch"
+msgctxt "@option:combobox"
+msgid "The fetcher which loads the programs."
+msgstr ""
+
+#: qml/SettingsPage.qml:106
+#, fuzzy, kde-format
+#| msgid "Prefetch"
+msgctxt "@option:spinbox"
+msgid "Prefetch:"
 msgstr "Přednačítat"
 
-#: qml/SettingsPage.qml:126
-#, kde-format
-msgid "File"
+#: qml/SettingsPage.qml:123
+#, fuzzy, kde-format
+#| msgid "File"
+msgctxt "@label:textbox"
+msgid "File:"
 msgstr "Soubor"
 
-#: qml/SettingsPage.qml:139
+#: qml/SettingsPage.qml:147
+#, kde-format
+msgctxt "@action:button"
+msgid "Open file dialog"
+msgstr ""
+
+#: qml/SettingsPage.qml:153
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "Soubory XML (*.xml)"
 
-#: qml/SettingsPage.qml:139
+#: qml/SettingsPage.qml:153
 #, kde-format
 msgid "All files (*)"
 msgstr "Všechny soubory (*)"
+
+#: qml/TellySkoutGlobalDrawer.qml:17
+#, kde-format
+msgid "Favorites"
+msgstr "Oblíbené"
+
+#: qml/TellySkoutGlobalDrawer.qml:27
+#, kde-format
+msgid "Select Favorites"
+msgstr "Vyberte oblíbené"
 
 #: qml/TellySkoutGlobalDrawer.qml:36
 #, kde-format
 msgid "Sort Favorites"
 msgstr "Seřadit oblíbené"
+
+#: qml/TellySkoutGlobalDrawer.qml:49 qml/TellySkoutGlobalDrawer.qml:52
+#, kde-format
+msgid "Settings"
+msgstr "Nastavení"
 
 #: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
 #, kde-format
@@ -204,3 +264,12 @@ msgstr ""
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"
+
+#~ msgid "UI"
+#~ msgstr "UI"
+
+#~ msgid "px"
+#~ msgstr "px"
+
+#~ msgid "days"
+#~ msgstr "dnech"

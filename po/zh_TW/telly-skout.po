@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-13 00:41+0000\n"
+"POT-Creation-Date: 2024-05-20 00:41+0000\n"
 "PO-Revision-Date: 2022-06-05 00:49+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -49,8 +49,9 @@ msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr ""
 
-#: qml/ChannelListPage.qml:20 qml/GroupListDelegate.qml:29
+#: qml/ChannelListPage.qml:20
 #, kde-format
+msgctxt "@title"
 msgid "Channels"
 msgstr ""
 
@@ -59,8 +60,9 @@ msgstr ""
 msgid "Loading channels..."
 msgstr ""
 
-#: qml/ChannelTablePage.qml:18 qml/TellySkoutGlobalDrawer.qml:17
+#: qml/ChannelTablePage.qml:18
 #, kde-format
+msgctxt "@title"
 msgid "Favorites"
 msgstr ""
 
@@ -74,8 +76,14 @@ msgstr ""
 msgid "not available"
 msgstr ""
 
-#: qml/GroupListPage.qml:15 qml/TellySkoutGlobalDrawer.qml:27
+#: qml/GroupListDelegate.qml:29
 #, kde-format
+msgid "Channels"
+msgstr ""
+
+#: qml/GroupListPage.qml:15
+#, kde-format
+msgctxt "@title"
 msgid "Select Favorites"
 msgstr ""
 
@@ -84,86 +92,124 @@ msgstr ""
 msgid "Loading groups..."
 msgstr ""
 
-#: qml/SettingsPage.qml:12 qml/TellySkoutGlobalDrawer.qml:49
-#: qml/TellySkoutGlobalDrawer.qml:52
+#: qml/SettingsPage.qml:13
 #, kde-format
+msgctxt "@title"
 msgid "Settings"
 msgstr ""
 
-#: qml/SettingsPage.qml:17
+#: qml/SettingsPage.qml:16
 #, kde-format
-msgid "UI"
+msgctxt "@title:group"
+msgid "Appearance"
 msgstr ""
 
 #: qml/SettingsPage.qml:21
 #, kde-format
-msgctxt "height of the program"
-msgid "Program height"
+msgctxt "@option:spinbox height of the program"
+msgid "Program height:"
 msgstr ""
 
-#: qml/SettingsPage.qml:32
+#: qml/SettingsPage.qml:27
 #, kde-format
-msgid "px/min"
+msgctxt "Number in px/min"
+msgid "%1px/min"
 msgstr ""
 
 #: qml/SettingsPage.qml:38
 #, kde-format
-msgid "Column width"
+msgctxt "@option:spinbox"
+msgid "Column width:"
 msgstr ""
 
-#: qml/SettingsPage.qml:49 qml/SettingsPage.qml:66
+#: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
 #, kde-format
-msgid "px"
+msgctxt "Number in px"
+msgid "%1px"
 msgstr ""
 
 #: qml/SettingsPage.qml:55
 #, kde-format
-msgid "Font size"
+msgctxt "@option:spinbox"
+msgid "Font size:"
 msgstr ""
 
-#: qml/SettingsPage.qml:73
+#: qml/SettingsPage.qml:71
 #, kde-format
-msgid "Program"
+msgctxt "@title:group Programs as TV programs"
+msgid "Programs"
 msgstr ""
 
-#: qml/SettingsPage.qml:77
+#: qml/SettingsPage.qml:76
 #, kde-format
-msgid "Delete old after"
+msgctxt "@option:spinbox"
+msgid "Delete old programs after:"
 msgstr ""
 
-#: qml/SettingsPage.qml:87 qml/SettingsPage.qml:115
+#: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
 #, kde-format
-msgid "days"
-msgstr ""
+msgctxt "Number in days"
+msgid "%1 day"
+msgid_plural "%1 days"
+msgstr[0] ""
 
 #: qml/SettingsPage.qml:93
 #, kde-format
-msgid "Fetcher"
+msgid "Fetcher:"
 msgstr ""
 
-#: qml/SettingsPage.qml:107
+#: qml/SettingsPage.qml:94
 #, kde-format
-msgid "Prefetch"
+msgctxt "@option:combobox"
+msgid "The fetcher which loads the programs."
 msgstr ""
 
-#: qml/SettingsPage.qml:126
+#: qml/SettingsPage.qml:106
 #, kde-format
-msgid "File"
+msgctxt "@option:spinbox"
+msgid "Prefetch:"
 msgstr ""
 
-#: qml/SettingsPage.qml:139
+#: qml/SettingsPage.qml:123
+#, kde-format
+msgctxt "@label:textbox"
+msgid "File:"
+msgstr ""
+
+#: qml/SettingsPage.qml:147
+#, kde-format
+msgctxt "@action:button"
+msgid "Open file dialog"
+msgstr ""
+
+#: qml/SettingsPage.qml:153
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr ""
 
-#: qml/SettingsPage.qml:139
+#: qml/SettingsPage.qml:153
 #, kde-format
 msgid "All files (*)"
+msgstr ""
+
+#: qml/TellySkoutGlobalDrawer.qml:17
+#, kde-format
+msgid "Favorites"
+msgstr ""
+
+#: qml/TellySkoutGlobalDrawer.qml:27
+#, kde-format
+msgid "Select Favorites"
 msgstr ""
 
 #: qml/TellySkoutGlobalDrawer.qml:36
 #, kde-format
 msgid "Sort Favorites"
+msgstr ""
+
+#: qml/TellySkoutGlobalDrawer.qml:49 qml/TellySkoutGlobalDrawer.qml:52
+#, kde-format
+msgid "Settings"
 msgstr ""
 
 #: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
