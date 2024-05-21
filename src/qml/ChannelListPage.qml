@@ -34,7 +34,6 @@ Kirigami.ScrollablePage {
         Controls.BusyIndicator {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
         }
-
     }
 
     ListView {
@@ -60,7 +59,6 @@ Kirigami.ScrollablePage {
             onRowsMoved: {
                 if (root.sortable)
                     root.sortingChanged = true;
-
             }
         }
 
@@ -68,7 +66,5 @@ Kirigami.ScrollablePage {
             listView: channelList
             sortable: root.sortable
         }
-
     }
-
 }

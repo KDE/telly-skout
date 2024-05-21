@@ -31,7 +31,6 @@ Templates.ItemDelegate {
                 onMoveRequested: (oldIndex, newIndex) => {
                     if (sortable)
                         listView.model.move(oldIndex, newIndex);
-
                 }
                 visible: delegate.sortable
             }
@@ -57,9 +56,6 @@ Templates.ItemDelegate {
                 onToggled: channelsModel.setFavorite(model.channel.id, checked)
                 visible: !delegate.sortable
             }
-
         }
-
     }
-
 }

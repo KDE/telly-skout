@@ -59,13 +59,9 @@ Kirigami.Page {
                         color: Kirigami.Theme.textColor
                         anchors.centerIn: parent
                     }
-
                 }
-
             }
-
         }
-
     }
 
     Flickable {
@@ -126,7 +122,6 @@ Kirigami.Page {
                             wrapMode: Text.Wrap
                             color: Kirigami.Theme.textColor
                         }
-
                     }
 
                     Repeater {
@@ -149,21 +144,14 @@ Kirigami.Page {
                             stopTime: channelTable.stop
                             currentTimestamp: root.currentTimestamp
                         }
-
                     }
-
                 }
-
             }
-
         }
 
-        Controls.ScrollBar.vertical: Controls.ScrollBar {
-        }
+        Controls.ScrollBar.vertical: Controls.ScrollBar {}
 
-        Controls.ScrollBar.horizontal: Controls.ScrollBar {
-        }
-
+        Controls.ScrollBar.horizontal: Controls.ScrollBar {}
     }
 
     ChannelsModel {
@@ -183,7 +171,6 @@ Kirigami.Page {
         onProgramChanged: {
             if (program)
                 programId = program.id;
-
         }
         title: program ? program.title : ""
         subtitle: program ? "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "-" + program.stop.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b>" + categoryText + descriptionText : ""
@@ -198,5 +185,4 @@ Kirigami.Page {
         determinate: true
         progressBar.value: Fetcher.favoritesPercentage
     }
-
 }

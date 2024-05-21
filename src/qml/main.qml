@@ -23,7 +23,5 @@ Kirigami.ApplicationWindow {
         channelTablePage: channelTable
     }
 
-    contextDrawer: Kirigami.ContextDrawer {
-    }
-
+    contextDrawer: Kirigami.ContextDrawer {}
 }

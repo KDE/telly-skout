@@ -26,7 +26,6 @@ Kirigami.ScrollablePage {
         Controls.BusyIndicator {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
         }
-
     }
 
     ListView {
@@ -34,12 +33,8 @@ Kirigami.ScrollablePage {
 
         anchors.fill: parent
 
-        model: GroupsModel {
-        }
+        model: GroupsModel {}
 
-        delegate: GroupListDelegate {
-        }
-
+        delegate: GroupListDelegate {}
     }
-
 }

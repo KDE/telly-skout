@@ -35,7 +35,6 @@ Rectangle {
         // update dialog if it is open (for this program)
         if (root.dialog.visible && root.dialog.programId === program.id)
             updateDialog();
-
     }
 
     // hightlight running program
@@ -51,7 +50,6 @@ Rectangle {
             top: root.top
             margins: root.border.width
         }
-
     }
 
     Text {
@@ -78,5 +76,4 @@ Rectangle {
             }
         }
     }
-
 }
