@@ -49,11 +49,10 @@ msgid "Favorite"
 msgstr "Oblíbené"
 
 #: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title"
 msgid "Channels"
-msgstr "Kanály"
+msgstr ""
 
 #: qml/ChannelListPage.qml:32
 #, kde-format
@@ -61,8 +60,7 @@ msgid "Loading channels..."
 msgstr ""
 
 #: qml/ChannelTablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Oblíbené"
@@ -83,11 +81,10 @@ msgid "Channels"
 msgstr "Kanály"
 
 #: qml/GroupListPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Select Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Select Favorites"
-msgstr "Vyberte oblíbené"
+msgstr ""
 
 #: qml/GroupListPage.qml:24
 #, kde-format
@@ -95,8 +92,7 @@ msgid "Loading groups..."
 msgstr "Načítání seznamu skupin..."
 
 #: qml/SettingsPage.qml:13
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgctxt "@title"
 msgid "Settings"
 msgstr "Nastavení"
@@ -105,15 +101,13 @@ msgstr "Nastavení"
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
-msgstr ""
+msgstr "Vzhled"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgctxt "height of the program"
-#| msgid "Program height"
+#, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "Výška programu"
+msgstr ""
 
 #: qml/SettingsPage.qml:27
 #, kde-format
@@ -122,11 +116,10 @@ msgid "%1px/min"
 msgstr ""
 
 #: qml/SettingsPage.qml:38
-#, fuzzy, kde-format
-#| msgid "Column width"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "Šířka sloupce"
+msgstr ""
 
 #: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
 #, kde-format
@@ -135,18 +128,16 @@ msgid "%1px"
 msgstr ""
 
 #: qml/SettingsPage.qml:55
-#, fuzzy, kde-format
-#| msgid "Font size"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "Velikost písma"
+msgstr ""
 
 #: qml/SettingsPage.qml:71
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
-msgstr "Program"
+msgstr ""
 
 #: qml/SettingsPage.qml:76
 #, kde-format
@@ -164,10 +155,9 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: qml/SettingsPage.qml:93
-#, fuzzy, kde-format
-#| msgid "Fetcher"
+#, kde-format
 msgid "Fetcher:"
-msgstr "Stahovač"
+msgstr ""
 
 #: qml/SettingsPage.qml:94
 #, kde-format
@@ -176,18 +166,16 @@ msgid "The fetcher which loads the programs."
 msgstr ""
 
 #: qml/SettingsPage.qml:106
-#, fuzzy, kde-format
-#| msgid "Prefetch"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "Přednačítat"
+msgstr ""
 
 #: qml/SettingsPage.qml:123
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
-msgstr "Soubor"
+msgstr ""
 
 #: qml/SettingsPage.qml:147
 #, kde-format
@@ -264,12 +252,3 @@ msgstr ""
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"
-
-#~ msgid "UI"
-#~ msgstr "UI"
-
-#~ msgid "px"
-#~ msgstr "px"
-
-#~ msgid "days"
-#~ msgstr "dnech"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-20 00:41+0000\n"
-"PO-Revision-Date: 2024-04-03 08:32+0300\n"
+"PO-Revision-Date: 2024-05-20 04:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -50,8 +50,7 @@ msgid "Favorite"
 msgstr "הוספה למועדפים"
 
 #: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title"
 msgid "Channels"
 msgstr "ערוצים"
@@ -62,8 +61,7 @@ msgid "Loading channels..."
 msgstr "הערוצים נטענים"
 
 #: qml/ChannelTablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "מועדפים"
@@ -84,8 +82,7 @@ msgid "Channels"
 msgstr "ערוצים"
 
 #: qml/GroupListPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Select Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Select Favorites"
 msgstr "בחירת מועדפים"
@@ -96,8 +93,7 @@ msgid "Loading groups..."
 msgstr "הקבוצות נטענות…"
 
 #: qml/SettingsPage.qml:13
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgctxt "@title"
 msgid "Settings"
 msgstr "הגדרות"
@@ -106,98 +102,88 @@ msgstr "הגדרות"
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
-msgstr ""
+msgstr "מראה"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgctxt "height of the program"
-#| msgid "Program height"
+#, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "גובה התוכנית"
+msgstr "גובה התוכנית:"
 
 #: qml/SettingsPage.qml:27
-#, fuzzy, kde-format
-#| msgid "px/min"
+#, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
-msgstr "פיקסלים/דק׳"
+msgstr "%1 פיקסלים/דק׳"
 
 #: qml/SettingsPage.qml:38
-#, fuzzy, kde-format
-#| msgid "Column width"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "רוחב עמודה"
+msgstr "רוחב עמודה:"
 
 #: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
-msgstr ""
+msgstr "%1 פיקסלים"
 
 #: qml/SettingsPage.qml:55
-#, fuzzy, kde-format
-#| msgid "Font size"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "גודל גופן"
+msgstr "גודל גופן:"
 
 #: qml/SettingsPage.qml:71
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
-msgstr "תוכנית"
+msgstr "תוכניות"
 
 #: qml/SettingsPage.qml:76
-#, fuzzy, kde-format
-#| msgid "Delete old after"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
-msgstr "מחיקת ישנים לאחר"
+msgstr "מחיקת תוכניות ישנות לאחר:"
 
 #: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "יום"
+msgstr[1] "יומיים"
+msgstr[2] "%1 ימים"
+msgstr[3] "%1 ימים"
 
 #: qml/SettingsPage.qml:93
-#, fuzzy, kde-format
-#| msgid "Fetcher"
+#, kde-format
 msgid "Fetcher:"
-msgstr "מושך"
+msgstr "מנגנון משיכה:"
 
 #: qml/SettingsPage.qml:94
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr ""
+msgstr "מנגנון המשיכה שטוען את התוכניות."
 
 #: qml/SettingsPage.qml:106
-#, fuzzy, kde-format
-#| msgid "Prefetch"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "משיכה טרומית"
+msgstr "משיכה טרומית:"
 
 #: qml/SettingsPage.qml:123
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
-msgstr "קובץ"
+msgstr "קובץ:"
 
 #: qml/SettingsPage.qml:147
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
-msgstr ""
+msgstr "פתיחת חלונית קובץ"
 
 #: qml/SettingsPage.qml:153
 #, kde-format

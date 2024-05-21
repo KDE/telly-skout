@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-20 00:41+0000\n"
-"PO-Revision-Date: 2024-04-02 12:55+0300\n"
+"PO-Revision-Date: 2024-05-20 14:22+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -49,8 +49,7 @@ msgid "Favorite"
 msgstr "Sık Kullanılanlara Ekle"
 
 #: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title"
 msgid "Channels"
 msgstr "Kanallar"
@@ -61,8 +60,7 @@ msgid "Loading channels..."
 msgstr "Kanallar yükleniyor…"
 
 #: qml/ChannelTablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Sık Kullanılanlar"
@@ -83,8 +81,7 @@ msgid "Channels"
 msgstr "Kanallar"
 
 #: qml/GroupListPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Select Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Select Favorites"
 msgstr "Sık Kullanılanları Seç"
@@ -95,8 +92,7 @@ msgid "Loading groups..."
 msgstr "Gruplar yükleniyor…"
 
 #: qml/SettingsPage.qml:13
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgctxt "@title"
 msgid "Settings"
 msgstr "Ayarlar"
@@ -105,96 +101,86 @@ msgstr "Ayarlar"
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
-msgstr ""
+msgstr "Görünüş"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgctxt "height of the program"
-#| msgid "Program height"
+#, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "Program yüksekliği"
+msgstr "Program yüksekliği:"
 
 #: qml/SettingsPage.qml:27
-#, fuzzy, kde-format
-#| msgid "px/min"
+#, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
-msgstr "pks/dak"
+msgstr "%1 pks/dak"
 
 #: qml/SettingsPage.qml:38
-#, fuzzy, kde-format
-#| msgid "Column width"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "Sütun genişliği"
+msgstr "Sütun genişliği:"
 
 #: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
-msgstr ""
+msgstr "%1 pks"
 
 #: qml/SettingsPage.qml:55
-#, fuzzy, kde-format
-#| msgid "Font size"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "Yazıtipi büyüklüğü"
+msgstr "Yazıtipi büyüklüğü:"
 
 #: qml/SettingsPage.qml:71
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
-msgstr "Program"
+msgstr "Programlar"
 
 #: qml/SettingsPage.qml:76
-#, fuzzy, kde-format
-#| msgid "Delete old after"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
-msgstr "Eskilerini şu kadar zamandan sonra sil:"
+msgstr "Eskileri şu zamandan sonra sil:"
 
 #: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 gün"
+msgstr[1] "%1 gün"
 
 #: qml/SettingsPage.qml:93
-#, fuzzy, kde-format
-#| msgid "Fetcher"
+#, kde-format
 msgid "Fetcher:"
-msgstr "Getirici"
+msgstr "Getirici:"
 
 #: qml/SettingsPage.qml:94
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr ""
+msgstr "Programları yükleyen getirici."
 
 #: qml/SettingsPage.qml:106
-#, fuzzy, kde-format
-#| msgid "Prefetch"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "Önden Getir"
+msgstr "Önden getir:"
 
 #: qml/SettingsPage.qml:123
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
-msgstr "Dosya"
+msgstr "Dosya:"
 
 #: qml/SettingsPage.qml:147
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
-msgstr ""
+msgstr "Dosya İletişim Kutusunu Aç"
 
 #: qml/SettingsPage.qml:153
 #, kde-format

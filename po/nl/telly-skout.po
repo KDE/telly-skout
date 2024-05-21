@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-20 00:41+0000\n"
-"PO-Revision-Date: 2024-04-02 15:01+0200\n"
+"PO-Revision-Date: 2024-05-20 17:43+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -49,8 +49,7 @@ msgid "Favorite"
 msgstr "Favoriet"
 
 #: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title"
 msgid "Channels"
 msgstr "Kanalen"
@@ -61,8 +60,7 @@ msgid "Loading channels..."
 msgstr "Kanalen worden geladen..."
 
 #: qml/ChannelTablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Favorieten"
@@ -83,8 +81,7 @@ msgid "Channels"
 msgstr "Kanalen"
 
 #: qml/GroupListPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Select Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Select Favorites"
 msgstr "Favorieten selecteren"
@@ -95,8 +92,7 @@ msgid "Loading groups..."
 msgstr "Groepen worden geladen..."
 
 #: qml/SettingsPage.qml:13
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgctxt "@title"
 msgid "Settings"
 msgstr "Instellingen"
@@ -105,96 +101,86 @@ msgstr "Instellingen"
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
-msgstr ""
+msgstr "Uiterlijk"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgctxt "height of the program"
-#| msgid "Program height"
+#, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "Programmahoogte"
+msgstr "Programmahoogte:"
 
 #: qml/SettingsPage.qml:27
-#, fuzzy, kde-format
-#| msgid "px/min"
+#, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
-msgstr "px/min"
+msgstr "%1px/min"
 
 #: qml/SettingsPage.qml:38
-#, fuzzy, kde-format
-#| msgid "Column width"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "Kolombreedte"
+msgstr "Kolombreedte:"
 
 #: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
-msgstr ""
+msgstr "%1px"
 
 #: qml/SettingsPage.qml:55
-#, fuzzy, kde-format
-#| msgid "Font size"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "Tekengrootte"
+msgstr "Tekengrootte:"
 
 #: qml/SettingsPage.qml:71
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
-msgstr "Programma"
+msgstr "Programma's"
 
 #: qml/SettingsPage.qml:76
-#, fuzzy, kde-format
-#| msgid "Delete old after"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
-msgstr "Oude verwijderen na"
+msgstr "Oude programma's verwijderen na:"
 
 #: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 dag"
+msgstr[1] "%1 dagen"
 
 #: qml/SettingsPage.qml:93
-#, fuzzy, kde-format
-#| msgid "Fetcher"
+#, kde-format
 msgid "Fetcher:"
-msgstr "Ophaler"
+msgstr "Ophaler:"
 
 #: qml/SettingsPage.qml:94
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr ""
+msgstr "De ophaler die de programma's laadt."
 
 #: qml/SettingsPage.qml:106
-#, fuzzy, kde-format
-#| msgid "Prefetch"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "Vooraf ophalen"
+msgstr "Vooraf ophalen:"
 
 #: qml/SettingsPage.qml:123
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
-msgstr "Bestand"
+msgstr "Bestand:"
 
 #: qml/SettingsPage.qml:147
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
-msgstr ""
+msgstr "Bestandsdialoog openen"
 
 #: qml/SettingsPage.qml:153
 #, kde-format

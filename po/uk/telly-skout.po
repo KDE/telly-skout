@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-20 00:41+0000\n"
-"PO-Revision-Date: 2024-04-02 09:04+0300\n"
+"PO-Revision-Date: 2024-05-20 18:46+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -50,8 +50,7 @@ msgid "Favorite"
 msgstr "Улюблене"
 
 #: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title"
 msgid "Channels"
 msgstr "Канали"
@@ -62,11 +61,10 @@ msgid "Loading channels..."
 msgstr "Завантажуємо канали…"
 
 #: qml/ChannelTablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Favorites"
-msgstr "Улюблені"
+msgstr "Улюблене"
 
 #: qml/ChannelTablePage.qml:33
 #, kde-format
@@ -84,8 +82,7 @@ msgid "Channels"
 msgstr "Канали"
 
 #: qml/GroupListPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Select Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Select Favorites"
 msgstr "Вибір улюблених"
@@ -96,8 +93,7 @@ msgid "Loading groups..."
 msgstr "Завантажуємо групи…"
 
 #: qml/SettingsPage.qml:13
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgctxt "@title"
 msgid "Settings"
 msgstr "Параметри"
@@ -106,98 +102,88 @@ msgstr "Параметри"
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
-msgstr ""
+msgstr "Вигляд"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgctxt "height of the program"
-#| msgid "Program height"
+#, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "Висота вікна"
+msgstr "Висота вікна:"
 
 #: qml/SettingsPage.qml:27
-#, fuzzy, kde-format
-#| msgid "px/min"
+#, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
-msgstr "пк/хв."
+msgstr "%1пк/хв."
 
 #: qml/SettingsPage.qml:38
-#, fuzzy, kde-format
-#| msgid "Column width"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "Ширина стовпчика"
+msgstr "Ширина стовпчика:"
 
 #: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
-msgstr ""
+msgstr "%1пк"
 
 #: qml/SettingsPage.qml:55
-#, fuzzy, kde-format
-#| msgid "Font size"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "Розмір шрифту"
+msgstr "Розмір шрифту:"
 
 #: qml/SettingsPage.qml:71
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
-msgstr "Програма"
+msgstr "Програми"
 
 #: qml/SettingsPage.qml:76
-#, fuzzy, kde-format
-#| msgid "Delete old after"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
-msgstr "Вилучати застарілі за"
+msgstr "Вилучати застарілі програми за:"
 
 #: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%1 день"
+msgstr[1] "%1 дні"
+msgstr[2] "%1 днів"
+msgstr[3] "%1 день"
 
 #: qml/SettingsPage.qml:93
-#, fuzzy, kde-format
-#| msgid "Fetcher"
+#, kde-format
 msgid "Fetcher:"
-msgstr "Засіб отримання"
+msgstr "Засіб отримання:"
 
 #: qml/SettingsPage.qml:94
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr ""
+msgstr "Засіб отримання даних, який завантажує програми."
 
 #: qml/SettingsPage.qml:106
-#, fuzzy, kde-format
-#| msgid "Prefetch"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "Попереднє отримання"
+msgstr "Попереднє отримання:"
 
 #: qml/SettingsPage.qml:123
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
-msgstr "Файл"
+msgstr "Файл:"
 
 #: qml/SettingsPage.qml:147
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
-msgstr ""
+msgstr "Діалогове вікно відкриття файлів"
 
 #: qml/SettingsPage.qml:153
 #, kde-format

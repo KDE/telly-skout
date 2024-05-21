@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-20 00:41+0000\n"
-"PO-Revision-Date: 2024-04-02 06:31+0200\n"
+"PO-Revision-Date: 2024-05-20 05:10+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -50,8 +50,7 @@ msgid "Favorite"
 msgstr "რჩეული"
 
 #: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title"
 msgid "Channels"
 msgstr "არხები"
@@ -62,11 +61,10 @@ msgid "Loading channels..."
 msgstr "არხების ჩატვირთვა..."
 
 #: qml/ChannelTablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Favorites"
-msgstr "რჩეულები"
+msgstr "სანიშნეები"
 
 #: qml/ChannelTablePage.qml:33
 #, kde-format
@@ -84,8 +82,7 @@ msgid "Channels"
 msgstr "არხები"
 
 #: qml/GroupListPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Select Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Select Favorites"
 msgstr "აირჩიეთ რჩეულები"
@@ -96,106 +93,95 @@ msgid "Loading groups..."
 msgstr "ჯგუფების ჩატვირთვა..."
 
 #: qml/SettingsPage.qml:13
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgctxt "@title"
 msgid "Settings"
-msgstr "პარამეტრები"
+msgstr "მორგება"
 
 #: qml/SettingsPage.qml:16
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
-msgstr ""
+msgstr "გარეგნობა"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgctxt "height of the program"
-#| msgid "Program height"
+#, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "პროგრამის სიმაღლე"
+msgstr "პროგრამის სიმაღლე:"
 
 #: qml/SettingsPage.qml:27
-#, fuzzy, kde-format
-#| msgid "px/min"
+#, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
-msgstr "პიქს/წთ"
+msgstr "%1პიქს/წთ"
 
 #: qml/SettingsPage.qml:38
-#, fuzzy, kde-format
-#| msgid "Column width"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "სვეტის სიგანე"
+msgstr "სვეტის სიგანე:"
 
 #: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
-msgstr ""
+msgstr "%1პქს"
 
 #: qml/SettingsPage.qml:55
-#, fuzzy, kde-format
-#| msgid "Font size"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "ფონტის ზომა"
+msgstr "ფონტის ზომა:"
 
 #: qml/SettingsPage.qml:71
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
-msgstr "პროგრამა"
+msgstr "პროგრამები"
 
 #: qml/SettingsPage.qml:76
-#, fuzzy, kde-format
-#| msgid "Delete old after"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
-msgstr "წაშლა მითითებულ დროის შემდეგ"
+msgstr "წაშლა მითითებულ დროის შემდეგ:"
 
 #: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 დღე"
+msgstr[1] "%1 დღე"
 
 #: qml/SettingsPage.qml:93
-#, fuzzy, kde-format
-#| msgid "Fetcher"
+#, kde-format
 msgid "Fetcher:"
-msgstr "გამომთხოვნი"
+msgstr "გამომთხოვი:"
 
 #: qml/SettingsPage.qml:94
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr ""
+msgstr "გამომთხოვი, რომელიც პროგრამებს ტვირთავს."
 
 #: qml/SettingsPage.qml:106
-#, fuzzy, kde-format
-#| msgid "Prefetch"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "წინასწარ გამოთხოვა"
+msgstr "წინასწარ გამოთხოვა:"
 
 #: qml/SettingsPage.qml:123
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
-msgstr "ფაილი"
+msgstr "ფაილი:"
 
 #: qml/SettingsPage.qml:147
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
-msgstr ""
+msgstr "ფაილის გახსნის დიალოგი"
 
 #: qml/SettingsPage.qml:153
 #, kde-format
@@ -210,7 +196,7 @@ msgstr "ყველა ფაილი (*)"
 #: qml/TellySkoutGlobalDrawer.qml:17
 #, kde-format
 msgid "Favorites"
-msgstr "რჩეულები"
+msgstr "სანიშნეები"
 
 #: qml/TellySkoutGlobalDrawer.qml:27
 #, kde-format
