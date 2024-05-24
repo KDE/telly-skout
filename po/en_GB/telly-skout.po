@@ -1,21 +1,21 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
 #
-# Steve Allewell <steve.allewell@gmail.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Steve Allewell <steve.allewell@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-22 00:42+0000\n"
-"PO-Revision-Date: 2023-02-27 19:42+0000\n"
+"PO-Revision-Date: 2024-05-23 19:37+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
-"Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
+"Language-Team: British English\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -43,15 +43,13 @@ msgid "© 2020 KDE Community"
 msgstr "© 2020 KDE Community"
 
 #: qml/ChannelListDelegate.qml:53
-#, fuzzy, kde-format
-#| msgid "Favorite"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "Favourite"
 
 #: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title"
 msgid "Channels"
 msgstr "Channels"
@@ -62,8 +60,7 @@ msgid "Loading channels..."
 msgstr "Loading channels..."
 
 #: qml/ChannelTablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Favourites"
@@ -84,8 +81,7 @@ msgid "Channels"
 msgstr "Channels"
 
 #: qml/GroupListPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Select Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Select Favorites"
 msgstr "Select Favourites"
@@ -96,8 +92,7 @@ msgid "Loading groups..."
 msgstr "Loading groups..."
 
 #: qml/SettingsPage.qml:13
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgctxt "@title"
 msgid "Settings"
 msgstr "Settings"
@@ -106,95 +101,86 @@ msgstr "Settings"
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
-msgstr ""
+msgstr "Appearance"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Program height"
+#, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "Program height"
+msgstr "Program height:"
 
 #: qml/SettingsPage.qml:27
-#, fuzzy, kde-format
-#| msgid "px/min"
+#, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
-msgstr "px/min"
+msgstr "%1px/min"
 
 #: qml/SettingsPage.qml:38
-#, fuzzy, kde-format
-#| msgid "Column width"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "Column width"
+msgstr "Column width:"
 
 #: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
-msgstr ""
+msgstr "%1px"
 
 #: qml/SettingsPage.qml:55
-#, fuzzy, kde-format
-#| msgid "Font size"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "Font size"
+msgstr "Font size:"
 
 #: qml/SettingsPage.qml:71
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
-msgstr "Program"
+msgstr "Programs"
 
 #: qml/SettingsPage.qml:76
-#, fuzzy, kde-format
-#| msgid "Delete old after"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
-msgstr "Delete old after"
+msgstr "Delete old programs after:"
 
 #: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 day"
+msgstr[1] "%1 days"
 
 #: qml/SettingsPage.qml:93
-#, fuzzy, kde-format
-#| msgid "Fetcher"
+#, kde-format
 msgid "Fetcher:"
-msgstr "Fetcher"
+msgstr "Fetcher:"
 
 #: qml/SettingsPage.qml:94
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr ""
+msgstr "The fetcher which loads the programs."
 
 #: qml/SettingsPage.qml:106
-#, fuzzy, kde-format
-#| msgid "Prefetch"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "Prefetch"
+msgstr "Prefetch:"
 
 #: qml/SettingsPage.qml:123
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
-msgstr "File"
+msgstr "File:"
 
 #: qml/SettingsPage.qml:147
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
-msgstr ""
+msgstr "Open file dialog"
 
 #: qml/SettingsPage.qml:153
 #, kde-format
@@ -239,27 +225,27 @@ msgstr "Germany"
 #: tvspielfilmfetcher.cpp:293
 #, kde-format
 msgid "Original title: "
-msgstr ""
+msgstr "Original title: "
 
 #: tvspielfilmfetcher.cpp:305
 #, kde-format
 msgid "Country: "
-msgstr ""
+msgstr "Country: "
 
 #: tvspielfilmfetcher.cpp:317
 #, kde-format
 msgid "Year: "
-msgstr ""
+msgstr "Year: "
 
 #: tvspielfilmfetcher.cpp:329
 #, kde-format
 msgid "Duration: "
-msgstr ""
+msgstr "Duration: "
 
 #: tvspielfilmfetcher.cpp:341
 #, kde-format
 msgid "FSK: "
-msgstr ""
+msgstr "FSK: "
 
 #: xmltvfetcher.cpp:42
 #, kde-format
