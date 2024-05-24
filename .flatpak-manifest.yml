@@ -16,6 +16,13 @@ finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --device=dri
+cleanup:
+  - /include
+  - /lib/cmake
+  - /lib/libexec
+  - /mkspecs
+  - /etc/xdg/*categories
+  - /share/qlogging-categories5
 modules:
   - name: kirigami-addons
     buildsystem: cmake-ninja
@@ -35,10 +42,3 @@ modules:
     sources:
       - type: dir
         path: '.'
-    cleanup:
-      - /include
-      - /lib/cmake
-      - /lib/libexec
-      - /mkspecs
-      - /etc/xdg/*categories
-      - /share/qlogging-categories5
