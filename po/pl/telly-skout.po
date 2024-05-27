@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-22 00:42+0000\n"
-"PO-Revision-Date: 2024-04-27 11:03+0200\n"
+"PO-Revision-Date: 2024-05-26 12:34+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10"
+" || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
@@ -50,7 +50,7 @@ msgid "Favorite"
 msgstr "Ulubione"
 
 #: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Channels"
 msgctxt "@title"
 msgid "Channels"
@@ -62,7 +62,7 @@ msgid "Loading channels..."
 msgstr "Wczytywanie kanałów..."
 
 #: qml/ChannelTablePage.qml:18
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Favorites"
 msgctxt "@title"
 msgid "Favorites"
@@ -84,7 +84,7 @@ msgid "Channels"
 msgstr "Kanały"
 
 #: qml/GroupListPage.qml:15
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Select Favorites"
 msgctxt "@title"
 msgid "Select Favorites"
@@ -96,7 +96,7 @@ msgid "Loading groups..."
 msgstr "Wczytywanie grup..."
 
 #: qml/SettingsPage.qml:13
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Settings"
 msgctxt "@title"
 msgid "Settings"
@@ -106,97 +106,97 @@ msgstr "Ustawienia"
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
-msgstr ""
+msgstr "Wygląd"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
+#, kde-format
 #| msgctxt "height of the program"
 #| msgid "Program height"
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "Wysokość programu"
+msgstr "Wysokość programu:"
 
 #: qml/SettingsPage.qml:27
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "px/min"
 msgctxt "Number in px/min"
 msgid "%1px/min"
-msgstr "piks/min"
+msgstr "%1px/min"
 
 #: qml/SettingsPage.qml:38
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Column width"
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "Szerokość kolumny"
+msgstr "Szerokość kolumny:"
 
 #: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
-msgstr ""
+msgstr "%1px"
 
 #: qml/SettingsPage.qml:55
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Font size"
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "Rozmiar czcionki"
+msgstr "Rozmiar czcionki:"
 
 #: qml/SettingsPage.qml:71
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Program"
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
-msgstr "Program"
+msgstr "Programy"
 
 #: qml/SettingsPage.qml:76
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Delete old after"
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
-msgstr "Usuń stare po"
+msgstr "Usuń stare programy po:"
 
 #: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1 dzień"
+msgstr[1] "%1 dni"
+msgstr[2] "%1 dni"
 
 #: qml/SettingsPage.qml:93
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Fetcher"
 msgid "Fetcher:"
-msgstr "Pobieracz"
+msgstr "Pobieracz:"
 
 #: qml/SettingsPage.qml:94
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr ""
+msgstr "Pobieracz, który wczytuje programy."
 
 #: qml/SettingsPage.qml:106
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Prefetch"
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "Pobierz z wyprzedzeniem"
+msgstr "Wczytaj z wyprzedzeniem:"
 
 #: qml/SettingsPage.qml:123
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "File"
 msgctxt "@label:textbox"
 msgid "File:"
-msgstr "Plik"
+msgstr "Plik:"
 
 #: qml/SettingsPage.qml:147
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
-msgstr ""
+msgstr "Otwórz okno pliku"
 
 #: qml/SettingsPage.qml:153
 #, kde-format
@@ -276,3 +276,4 @@ msgstr "XMLTV"
 
 #~ msgid "days"
 #~ msgstr "dni"
+
