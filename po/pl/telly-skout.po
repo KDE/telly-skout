@@ -14,9 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10"
-" || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -51,7 +50,6 @@ msgstr "Ulubione"
 
 #: qml/ChannelListPage.qml:20
 #, kde-format
-#| msgid "Channels"
 msgctxt "@title"
 msgid "Channels"
 msgstr "Kanały"
@@ -63,7 +61,6 @@ msgstr "Wczytywanie kanałów..."
 
 #: qml/ChannelTablePage.qml:18
 #, kde-format
-#| msgid "Favorites"
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Ulubione"
@@ -85,7 +82,6 @@ msgstr "Kanały"
 
 #: qml/GroupListPage.qml:15
 #, kde-format
-#| msgid "Select Favorites"
 msgctxt "@title"
 msgid "Select Favorites"
 msgstr "Wybierz ulubione"
@@ -97,7 +93,6 @@ msgstr "Wczytywanie grup..."
 
 #: qml/SettingsPage.qml:13
 #, kde-format
-#| msgid "Settings"
 msgctxt "@title"
 msgid "Settings"
 msgstr "Ustawienia"
@@ -110,22 +105,18 @@ msgstr "Wygląd"
 
 #: qml/SettingsPage.qml:21
 #, kde-format
-#| msgctxt "height of the program"
-#| msgid "Program height"
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
 msgstr "Wysokość programu:"
 
 #: qml/SettingsPage.qml:27
 #, kde-format
-#| msgid "px/min"
 msgctxt "Number in px/min"
 msgid "%1px/min"
 msgstr "%1px/min"
 
 #: qml/SettingsPage.qml:38
 #, kde-format
-#| msgid "Column width"
 msgctxt "@option:spinbox"
 msgid "Column width:"
 msgstr "Szerokość kolumny:"
@@ -138,21 +129,18 @@ msgstr "%1px"
 
 #: qml/SettingsPage.qml:55
 #, kde-format
-#| msgid "Font size"
 msgctxt "@option:spinbox"
 msgid "Font size:"
 msgstr "Rozmiar czcionki:"
 
 #: qml/SettingsPage.qml:71
 #, kde-format
-#| msgid "Program"
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
 msgstr "Programy"
 
 #: qml/SettingsPage.qml:76
 #, kde-format
-#| msgid "Delete old after"
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
 msgstr "Usuń stare programy po:"
@@ -168,7 +156,6 @@ msgstr[2] "%1 dni"
 
 #: qml/SettingsPage.qml:93
 #, kde-format
-#| msgid "Fetcher"
 msgid "Fetcher:"
 msgstr "Pobieracz:"
 
@@ -180,14 +167,12 @@ msgstr "Pobieracz, który wczytuje programy."
 
 #: qml/SettingsPage.qml:106
 #, kde-format
-#| msgid "Prefetch"
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
 msgstr "Wczytaj z wyprzedzeniem:"
 
 #: qml/SettingsPage.qml:123
 #, kde-format
-#| msgid "File"
 msgctxt "@label:textbox"
 msgid "File:"
 msgstr "Plik:"
@@ -276,4 +261,3 @@ msgstr "XMLTV"
 
 #~ msgid "days"
 #~ msgstr "dni"
-
