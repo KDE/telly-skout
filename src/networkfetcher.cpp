@@ -53,3 +53,5 @@ void NetworkFetcher::downloadImage(const QString &url, std::function<void()> cal
             }
         });
 }
+
+#include "moc_networkfetcher.cpp"

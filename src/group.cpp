@@ -84,3 +84,5 @@ void Group::setError(const Error &error)
     Q_EMIT errorIdChanged(m_error.m_id);
     Q_EMIT errorStringChanged(m_error.m_message);
 }
+
+#include "moc_group.cpp"

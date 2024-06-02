@@ -192,3 +192,5 @@ ProgramData XmltvFetcher::processProgram(const QDomNode &program)
 
     return data;
 }
+
+#include "moc_xmltvfetcher.cpp"

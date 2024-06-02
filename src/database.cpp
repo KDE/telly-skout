@@ -692,3 +692,5 @@ QMultiMap<ProgramId, QString> Database::programCategories() const
     }
     return categories;
 }
+
+#include "moc_database.cpp"

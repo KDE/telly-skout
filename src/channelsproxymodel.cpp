@@ -69,3 +69,5 @@ bool ChannelsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sou
 
     return onlyFavoritesMatches && groupMatches;
 }
+
+#include "moc_channelsproxymodel.cpp"

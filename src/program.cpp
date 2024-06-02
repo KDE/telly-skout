@@ -65,3 +65,5 @@ QVector<QString> Program::categories() const
 {
     return m_data.m_categories;
 }
+
+#include "moc_program.cpp"

@@ -96,3 +96,5 @@ void ChannelFactory::update(const ChannelId &id)
         }
     }
 }
+
+#include "moc_channelfactory.cpp"

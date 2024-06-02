@@ -41,3 +41,5 @@ void GroupFactory::load() const
     m_groups.clear();
     m_groups = Database::instance().groups();
 }
+
+#include "moc_groupfactory.cpp"

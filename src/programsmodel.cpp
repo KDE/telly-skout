@@ -99,3 +99,5 @@ Channel *ProgramsModel::channel() const
 {
     return m_channel;
 }
+
+#include "moc_programsmodel.cpp"

@@ -60,3 +60,5 @@ bool ProgramsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sou
 
     return startOk && stopOk;
 }
+
+#include "moc_programsproxymodel.cpp"

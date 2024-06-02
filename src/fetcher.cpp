@@ -135,3 +135,5 @@ void Fetcher::removeImage(const QString &url)
     qDebug() << "Remove image: " << m_fetcherImpl->imagePath(url);
     QFile(m_fetcherImpl->imagePath(url)).remove();
 }
+
+#include "moc_fetcher.cpp"

@@ -129,3 +129,5 @@ void ChannelsModel::save()
     });
     Database::instance().sortFavorites(channelIds);
 }
+
+#include "moc_channelsmodel.cpp"

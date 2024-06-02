@@ -50,3 +50,5 @@ void GroupsModel::loadGroup(int index) const
 {
     m_groups += m_groupFactory.create(index);
 }
+
+#include "moc_groupsmodel.cpp"

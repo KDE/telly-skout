@@ -66,3 +66,5 @@ void ProgramFactory::load(const ChannelId &channelId, const ProgramId &programId
         qWarning() << "Failed to load progam" << programId.value() << "for channel" << channelId.value() << ": program does not exist";
     }
 }
+
+#include "moc_programfactory.cpp"

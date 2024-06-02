@@ -386,3 +386,5 @@ bool TvSpielfilmFetcher::programExists(const ChannelId &channelId, const QDate &
 
     return Database::instance().programExists(channelId, lastTime);
 }
+
+#include "moc_tvspielfilmfetcher.cpp"
