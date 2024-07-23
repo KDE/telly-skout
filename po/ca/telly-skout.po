@@ -254,12 +254,3 @@ msgstr "FSK: "
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"
-
-#~ msgid "UI"
-#~ msgstr "IU"
-
-#~ msgid "px"
-#~ msgstr "px"
-
-#~ msgid "days"
-#~ msgstr "dies"
