@@ -7,49 +7,34 @@ import QtQuick.Layouts
 import org.kde.TellySkout
 import org.kde.kirigami as Kirigami
 
-Rectangle {
+Controls.ItemDelegate {
     id: root
 
-    property int channelIdx
-    property var dialog
-    property int pxPerMin
-    property date startTime
-    property date stopTime
-    property real currentTimestamp
+    required property int index
+    required property var program
 
-    function updateDialog() {
+    required property Kirigami.PromptDialog dialog
+    required property int pxPerMin
+    required property date startTime
+    required property date stopTime
+    required property real currentTimestamp
+
+    function updateDialog(): void {
         if (program !== undefined) {
             if (!program.descriptionFetched)
                 Fetcher.fetchProgramDescription(program.channelId, program.id, program.url);
-
             root.dialog.program = program;
         }
     }
 
     // start always at startTime, even if program starts earlier
     // stop always at stopTime, even if the program runs longer
-    height: (Math.min(program.stop, stopTime) - Math.max(program.start, startTime)) / 60000 * pxPerMin
-    color: channelIdx % 2 == 0 ? "transparent" : Kirigami.Theme.alternateBackgroundColor
-    border.color: Kirigami.Theme.textColor
+    Layout.preferredHeight: (Math.min(program.stop, stopTime) - Math.max(program.start, startTime)) / 60000 * pxPerMin
+
     Component.onCompleted: {
         // update dialog if it is open (for this program)
         if (root.dialog.visible && root.dialog.programId === program.id)
             updateDialog();
-    }
-
-    // hightlight running program
-    Rectangle {
-        color: Kirigami.Theme.focusColor
-        visible: (program.start <= currentTimestamp) && (program.stop >= currentTimestamp)
-        height: (currentTimestamp - program.start) / 60000 * root.pxPerMin
-        border.width: 0
-
-        anchors {
-            left: root.left
-            right: root.right
-            top: root.top
-            margins: root.border.width
-        }
     }
 
     Text {
@@ -67,13 +52,34 @@ Rectangle {
         visible: height >= root.pxPerMin * 4 // do not show for short programs to avoid that text overlaps into next program
     }
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            if (program !== undefined) {
-                updateDialog();
-                root.dialog.open();
+    onClicked: {
+        if (program !== undefined) {
+            updateDialog();
+            root.dialog.open();
+        }
+    }
+
+    background: Rectangle {
+        color: root.index % 2 == 0 ? "transparent" : Kirigami.Theme.alternateBackgroundColor
+
+        // hightlight running program
+        Rectangle {
+            color: Kirigami.Theme.focusColor
+            visible: (program.start <= currentTimestamp) && (program.stop >= currentTimestamp)
+            height: (currentTimestamp - program.start) / 60000 * root.pxPerMin
+            border.width: 0
+
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
             }
+        }
+
+        Kirigami.Separator {
+            anchors.bottom: parent.bottom
+            width: parent.width
+            weight: Kirigami.Separator.Weight.Light
         }
     }
 }

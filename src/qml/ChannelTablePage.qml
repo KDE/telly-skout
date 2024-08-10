@@ -33,38 +33,47 @@ Kirigami.Page {
         text: i18n("Please select favorites")
     }
 
-    Row {
-        id: header
-
-        x: -channelTable.contentX
+    header: Controls.ToolBar {
         visible: contentRepeater.count !== 0 && !loadingPlaceholder.visible
-        z: 100 // TODO: remove workaround for mobile (channelTable "anchors.top: header.bottom" not respected)
 
-        Repeater {
-            id: headerRepeater
+        padding: 0
 
-            model: channelsModel
+        contentItem: RowLayout {
+            x: -channelTable.contentX
+            spacing: 0
 
-            delegate: Column {
-                width: columnWidth
+            Repeater {
+                model: channelsModel
 
-                Rectangle {
-                    color: Kirigami.Theme.backgroundColor
-                    width: parent.width
-                    height: 30
-                    border.color: Kirigami.Theme.textColor
+                delegate: RowLayout {
+                    id: channelHeadDelegate
 
-                    Text {
+                    required property var modelData
+
+                    Layout.maximumWidth: root.columnWidth
+                    Layout.minimumWidth: root.columnWidth
+
+                    Controls.Label {
                         text: modelData.name
-                        color: Kirigami.Theme.textColor
-                        anchors.centerIn: parent
+                        padding: Kirigami.Units.mediumSpacing
+
+                        Layout.fillWidth: true
+                    }
+
+                    Kirigami.Separator {
+                        Layout.fillHeight: true
+                        Layout.topMargin: Kirigami.Units.mediumSpacing
+                        Layout.bottomMargin: Kirigami.Units.mediumSpacing
                     }
                 }
             }
         }
     }
 
-    Flickable {
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
+    Kirigami.Theme.inherit: true
+
+    contentItem: Flickable {
         id: channelTable
 
         readonly property int pxPerMin: _settings.programHeight
@@ -72,12 +81,9 @@ Kirigami.Page {
         readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
         readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
 
-        width: parent.width
-        height: parent.height - header.height
-        anchors.top: header.bottom
         visible: contentRepeater.count !== 0 && !loadingPlaceholder.visible
         contentHeight: 24 * 60 * pxPerMin
-        contentWidth: content.width
+        contentWidth: content.implicitWidth
         boundsBehavior: Flickable.StopAtBounds
         clip: true
         Component.onCompleted: {
@@ -93,57 +99,75 @@ Kirigami.Page {
             contentY = (offsetS / (24 * 60 * 60)) * contentHeight - (windowHeight / 2);
         }
 
-        Row {
+        RowLayout {
             id: content
+
+            spacing: 0
 
             Repeater {
                 id: contentRepeater
 
                 model: channelsModel
 
-                delegate: Column {
-                    id: column
+                delegate: RowLayout {
+                    id: channelDelegate
 
-                    property int idx: index
+                    required property int index
+                    required property var modelData
 
-                    width: root.columnWidth
+                    spacing: 0
 
-                    // show info if program is not available
-                    Rectangle {
-                        width: parent.width
-                        height: channelTable.contentHeight
-                        visible: programRepeater.count === 0
-                        color: Kirigami.Theme.negativeBackgroundColor
-                        border.color: Kirigami.Theme.textColor
+                    Layout.maximumWidth: root.columnWidth
+                    Layout.minimumWidth: root.columnWidth
+                    Layout.fillHeight: true
 
-                        Text {
+                    Item {
+                        Layout.fillWidth: true
+
+                        implicitHeight: column.implicitHeight
+
+                        // show info if program is not available
+                        Kirigami.PlaceholderMessage {
+                            text: i18nc("placeholder message", "Information not available")
+                            visible: programRepeater.count === 0
                             anchors.centerIn: parent
-                            text: i18n("not available")
-                            wrapMode: Text.Wrap
-                            color: Kirigami.Theme.textColor
+                            width: parent.width - Kirigami.Units.gridUnits * 4
+                        }
+
+                        ColumnLayout {
+                            id: column
+
+                            anchors.fill: parent
+
+                            spacing: 0
+
+                            Repeater {
+                                id: programRepeater
+
+                                model: ProgramsProxyModel {
+                                    id: proxyProgramModel
+
+                                    start: channelTable.start
+                                    stop: channelTable.stop
+                                    sourceModel: channelDelegate.modelData.programsModel
+                                }
+
+                                delegate: ChannelTableDelegate {
+                                    index: channelDelegate.index
+                                    dialog: detailsDialog
+                                    pxPerMin: channelTable.pxPerMin
+                                    startTime: channelTable.start
+                                    stopTime: channelTable.stop
+                                    currentTimestamp: root.currentTimestamp
+
+                                    Layout.fillWidth: true
+                                }
+                            }
                         }
                     }
 
-                    Repeater {
-                        id: programRepeater
-
-                        model: ProgramsProxyModel {
-                            id: proxyProgramModel
-
-                            start: channelTable.start
-                            stop: channelTable.stop
-                            sourceModel: modelData.programsModel
-                        }
-
-                        delegate: ChannelTableDelegate {
-                            channelIdx: column.idx
-                            dialog: detailsDialog
-                            pxPerMin: channelTable.pxPerMin
-                            width: root.columnWidth
-                            startTime: channelTable.start
-                            stopTime: channelTable.stop
-                            currentTimestamp: root.currentTimestamp
-                        }
+                    Kirigami.Separator {
+                        Layout.fillHeight: true
                     }
                 }
             }

@@ -31,8 +31,7 @@ FormCard.FormCardPage {
             }
         }
 
-        FormCard.FormDelegateSeparator {
-        }
+        FormCard.FormDelegateSeparator {}
 
         FormCard.FormSpinBoxDelegate {
             label: i18nc("@option:spinbox", "Column width:")
@@ -48,8 +47,7 @@ FormCard.FormCardPage {
             }
         }
 
-        FormCard.FormDelegateSeparator {
-        }
+        FormCard.FormDelegateSeparator {}
 
         FormCard.FormSpinBoxDelegate {
             label: i18nc("@option:spinbox", "Font size:")
@@ -64,7 +62,6 @@ FormCard.FormCardPage {
                 return text.substring(0, text.length - 2);
             }
         }
-
     }
 
     FormCard.FormHeader {
@@ -84,8 +81,7 @@ FormCard.FormCardPage {
             }
         }
 
-        FormCard.FormDelegateSeparator {
-        }
+        FormCard.FormDelegateSeparator {}
 
         FormCard.FormComboBoxDelegate {
             id: fetcher
@@ -99,8 +95,7 @@ FormCard.FormCardPage {
             model: ["TV Spielfilm", "XMLTV"]
         }
 
-        FormCard.FormDelegateSeparator {
-        }
+        FormCard.FormDelegateSeparator {}
 
         FormCard.FormSpinBoxDelegate {
             label: i18nc("@option:spinbox", "Prefetch:")
@@ -159,13 +154,8 @@ FormCard.FormCardPage {
                             _settings.xmltvFile = path;
                         }
                     }
-
                 }
-
             }
-
         }
-
     }
-
 }
