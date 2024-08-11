@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:42+0000\n"
+"POT-Creation-Date: 2024-08-11 00:43+0000\n"
 "PO-Revision-Date: 2022-05-14 20:09+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -71,9 +71,11 @@ msgstr "Obľúbené"
 msgid "Please select favorites"
 msgstr ""
 
-#: qml/ChannelTablePage.qml:121
-#, kde-format
-msgid "not available"
+#: qml/ChannelTablePage.qml:131
+#, fuzzy, kde-format
+#| msgid "not available"
+msgctxt "placeholder message"
+msgid "Information not available"
 msgstr "nedostupné"
 
 #: qml/GroupListDelegate.qml:30
@@ -119,38 +121,38 @@ msgctxt "Number in px/min"
 msgid "%1px/min"
 msgstr ""
 
-#: qml/SettingsPage.qml:38
+#: qml/SettingsPage.qml:37
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
 msgstr ""
 
-#: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
+#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:59
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
 msgstr ""
 
-#: qml/SettingsPage.qml:55
+#: qml/SettingsPage.qml:53
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
 msgstr ""
 
-#: qml/SettingsPage.qml:71
+#: qml/SettingsPage.qml:68
 #, fuzzy, kde-format
 #| msgid "Program"
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
 msgstr "Program"
 
-#: qml/SettingsPage.qml:76
+#: qml/SettingsPage.qml:73
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
 msgstr ""
 
-#: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
+#: qml/SettingsPage.qml:77 qml/SettingsPage.qml:106
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
@@ -159,41 +161,41 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: qml/SettingsPage.qml:93
+#: qml/SettingsPage.qml:89
 #, kde-format
 msgid "Fetcher:"
 msgstr ""
 
-#: qml/SettingsPage.qml:94
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
 msgstr ""
 
-#: qml/SettingsPage.qml:106
+#: qml/SettingsPage.qml:101
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
 msgstr ""
 
-#: qml/SettingsPage.qml:123
+#: qml/SettingsPage.qml:118
 #, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
 msgstr ""
 
-#: qml/SettingsPage.qml:147
+#: qml/SettingsPage.qml:142
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
 msgstr ""
 
-#: qml/SettingsPage.qml:153
+#: qml/SettingsPage.qml:148
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr ""
 
-#: qml/SettingsPage.qml:153
+#: qml/SettingsPage.qml:148
 #, kde-format
 msgid "All files (*)"
 msgstr ""

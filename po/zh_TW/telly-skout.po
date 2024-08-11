@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:42+0000\n"
+"POT-Creation-Date: 2024-08-11 00:43+0000\n"
 "PO-Revision-Date: 2024-05-30 02:43+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -73,9 +73,11 @@ msgstr "最愛"
 msgid "Please select favorites"
 msgstr "請選取最愛"
 
-#: qml/ChannelTablePage.qml:121
-#, kde-format
-msgid "not available"
+#: qml/ChannelTablePage.qml:131
+#, fuzzy, kde-format
+#| msgid "not available"
+msgctxt "placeholder message"
+msgid "Information not available"
 msgstr "無法使用"
 
 #: qml/GroupListDelegate.qml:30
@@ -118,78 +120,78 @@ msgctxt "Number in px/min"
 msgid "%1px/min"
 msgstr "%1px/min"
 
-#: qml/SettingsPage.qml:38
+#: qml/SettingsPage.qml:37
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
 msgstr "節目寬度："
 
-#: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
+#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:59
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
 msgstr "%1px"
 
-#: qml/SettingsPage.qml:55
+#: qml/SettingsPage.qml:53
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
 msgstr "字型大小："
 
-#: qml/SettingsPage.qml:71
+#: qml/SettingsPage.qml:68
 #, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
 msgstr "節目"
 
-#: qml/SettingsPage.qml:76
+#: qml/SettingsPage.qml:73
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
 msgstr "多久之後刪除舊節目："
 
-#: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
+#: qml/SettingsPage.qml:77 qml/SettingsPage.qml:106
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
 msgstr[0] "%1 天"
 
-#: qml/SettingsPage.qml:93
+#: qml/SettingsPage.qml:89
 #, kde-format
 msgid "Fetcher:"
 msgstr "抓取器："
 
-#: qml/SettingsPage.qml:94
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
 msgstr "載入節目用的抓取器。"
 
-#: qml/SettingsPage.qml:106
+#: qml/SettingsPage.qml:101
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
 msgstr "預先取得："
 
-#: qml/SettingsPage.qml:123
+#: qml/SettingsPage.qml:118
 #, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
 msgstr "檔案："
 
-#: qml/SettingsPage.qml:147
+#: qml/SettingsPage.qml:142
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
 msgstr "開啟檔案對話框"
 
-#: qml/SettingsPage.qml:153
+#: qml/SettingsPage.qml:148
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "XML 檔 (*.xml)"
 
-#: qml/SettingsPage.qml:153
+#: qml/SettingsPage.qml:148
 #, kde-format
 msgid "All files (*)"
 msgstr "所有檔案 (*)"

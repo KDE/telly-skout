@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:42+0000\n"
+"POT-Creation-Date: 2024-08-11 00:43+0000\n"
 "PO-Revision-Date: 2024-05-20 05:55+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -71,9 +71,11 @@ msgstr "Priljubljeni"
 msgid "Please select favorites"
 msgstr "Izberite priljubljene"
 
-#: qml/ChannelTablePage.qml:121
-#, kde-format
-msgid "not available"
+#: qml/ChannelTablePage.qml:131
+#, fuzzy, kde-format
+#| msgid "not available"
+msgctxt "placeholder message"
+msgid "Information not available"
 msgstr "ni na voljo"
 
 #: qml/GroupListDelegate.qml:30
@@ -116,37 +118,37 @@ msgctxt "Number in px/min"
 msgid "%1px/min"
 msgstr "%1px/min"
 
-#: qml/SettingsPage.qml:38
+#: qml/SettingsPage.qml:37
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
 msgstr "Širina stolpca:"
 
-#: qml/SettingsPage.qml:44 qml/SettingsPage.qml:61
+#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:59
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
 msgstr "%1px"
 
-#: qml/SettingsPage.qml:55
+#: qml/SettingsPage.qml:53
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
 msgstr "Velikost pisave:"
 
-#: qml/SettingsPage.qml:71
+#: qml/SettingsPage.qml:68
 #, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
 msgstr "Programi"
 
-#: qml/SettingsPage.qml:76
+#: qml/SettingsPage.qml:73
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
 msgstr "Zbriši stare programe po:"
 
-#: qml/SettingsPage.qml:80 qml/SettingsPage.qml:111
+#: qml/SettingsPage.qml:77 qml/SettingsPage.qml:106
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
@@ -156,41 +158,41 @@ msgstr[1] "%1 dnevu"
 msgstr[2] "%1 dnevoma"
 msgstr[3] "%1 dnevih"
 
-#: qml/SettingsPage.qml:93
+#: qml/SettingsPage.qml:89
 #, kde-format
 msgid "Fetcher:"
 msgstr "Prinašalec:"
 
-#: qml/SettingsPage.qml:94
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
 msgstr "Prinašalec, ki naloži programe."
 
-#: qml/SettingsPage.qml:106
+#: qml/SettingsPage.qml:101
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
 msgstr "Preddobava:"
 
-#: qml/SettingsPage.qml:123
+#: qml/SettingsPage.qml:118
 #, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
 msgstr "Datoteka:"
 
-#: qml/SettingsPage.qml:147
+#: qml/SettingsPage.qml:142
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
 msgstr "Pogovorno okno odpiranja datoteke"
 
-#: qml/SettingsPage.qml:153
+#: qml/SettingsPage.qml:148
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "Datoteke XML (*.xml)"
 
-#: qml/SettingsPage.qml:153
+#: qml/SettingsPage.qml:148
 #, kde-format
 msgid "All files (*)"
 msgstr "Vse datoteke (*)"
