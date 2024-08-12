@@ -7,9 +7,9 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-11 00:43+0000\n"
-"PO-Revision-Date: 2024-05-20 18:46+0300\n"
+"PO-Revision-Date: 2024-08-11 09:20+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,11 +72,10 @@ msgid "Please select favorites"
 msgstr "Будь ласка, виберіть улюблені"
 
 #: qml/ChannelTablePage.qml:131
-#, fuzzy, kde-format
-#| msgid "not available"
+#, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
-msgstr "не доступне"
+msgstr "Немає доступу до даних"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format

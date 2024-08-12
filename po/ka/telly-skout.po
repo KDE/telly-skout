@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-11 00:43+0000\n"
-"PO-Revision-Date: 2024-05-20 05:10+0200\n"
+"PO-Revision-Date: 2024-08-11 06:27+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -72,11 +72,10 @@ msgid "Please select favorites"
 msgstr "აირჩიეთ რჩეულები"
 
 #: qml/ChannelTablePage.qml:131
-#, fuzzy, kde-format
-#| msgid "not available"
+#, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
-msgstr "მიუწვდომელია"
+msgstr "ინფორმაცია მიუწვდომელია"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
