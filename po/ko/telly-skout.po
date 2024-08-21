@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
-# Shinjo Park <kde@peremen.name>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-11 00:43+0000\n"
-"PO-Revision-Date: 2023-03-01 01:33+0100\n"
+"PO-Revision-Date: 2024-08-21 00:07+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -43,15 +43,13 @@ msgid "© 2020 KDE Community"
 msgstr "© 2020 KDE Community"
 
 #: qml/ChannelListDelegate.qml:53
-#, fuzzy, kde-format
-#| msgid "Favorite"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "책갈피"
 
 #: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title"
 msgid "Channels"
 msgstr "채널"
@@ -62,8 +60,7 @@ msgid "Loading channels..."
 msgstr "채널 불러오는 중..."
 
 #: qml/ChannelTablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "책갈피"
@@ -74,11 +71,10 @@ msgid "Please select favorites"
 msgstr "책갈피를 선택하십시오"
 
 #: qml/ChannelTablePage.qml:131
-#, fuzzy, kde-format
-#| msgid "not available"
+#, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
-msgstr "사용할 수 없음"
+msgstr "정보를 사용할 수 없음"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -86,8 +82,7 @@ msgid "Channels"
 msgstr "채널"
 
 #: qml/GroupListPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Select Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Select Favorites"
 msgstr "책갈피 선택"
@@ -98,8 +93,7 @@ msgid "Loading groups..."
 msgstr "그룹 불러오는 중..."
 
 #: qml/SettingsPage.qml:13
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgctxt "@title"
 msgid "Settings"
 msgstr "설정"
@@ -108,94 +102,85 @@ msgstr "설정"
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
-msgstr ""
+msgstr "모양"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Program height"
+#, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "프로그램 높이"
+msgstr "프로그램 높이:"
 
 #: qml/SettingsPage.qml:27
-#, fuzzy, kde-format
-#| msgid "px/min"
+#, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
-msgstr "px/분"
+msgstr "%1픽셀/분"
 
 #: qml/SettingsPage.qml:37
-#, fuzzy, kde-format
-#| msgid "Column width"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "열 너비"
+msgstr "열 너비:"
 
 #: qml/SettingsPage.qml:43 qml/SettingsPage.qml:59
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
-msgstr ""
+msgstr "%1픽셀"
 
 #: qml/SettingsPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Font size"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "글꼴 크기"
+msgstr "글꼴 크기:"
 
 #: qml/SettingsPage.qml:68
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
 msgstr "프로그램"
 
 #: qml/SettingsPage.qml:73
-#, fuzzy, kde-format
-#| msgid "Delete old after"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
-msgstr "다음보다 오래된 항목 삭제"
+msgstr "다음 이후 오래된 프로그램 삭제:"
 
 #: qml/SettingsPage.qml:77 qml/SettingsPage.qml:106
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
+msgstr[0] "%1일"
 
 #: qml/SettingsPage.qml:89
-#, fuzzy, kde-format
-#| msgid "Fetcher"
+#, kde-format
 msgid "Fetcher:"
-msgstr "가져오기 도구"
+msgstr "가져오기 도구:"
 
 #: qml/SettingsPage.qml:90
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr ""
+msgstr "프로그램을 가져오는 도구입니다."
 
 #: qml/SettingsPage.qml:101
-#, fuzzy, kde-format
-#| msgid "Prefetch"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "미리 가져오기"
+msgstr "미리 가져오기:"
 
 #: qml/SettingsPage.qml:118
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
-msgstr "파일"
+msgstr "파일: "
 
 #: qml/SettingsPage.qml:142
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
-msgstr ""
+msgstr "파일 열기 대화 상자"
 
 #: qml/SettingsPage.qml:148
 #, kde-format
@@ -240,27 +225,27 @@ msgstr "독일"
 #: tvspielfilmfetcher.cpp:293
 #, kde-format
 msgid "Original title: "
-msgstr ""
+msgstr "원 제목: "
 
 #: tvspielfilmfetcher.cpp:305
 #, kde-format
 msgid "Country: "
-msgstr ""
+msgstr "국가: "
 
 #: tvspielfilmfetcher.cpp:317
 #, kde-format
 msgid "Year: "
-msgstr ""
+msgstr "연도: "
 
 #: tvspielfilmfetcher.cpp:329
 #, kde-format
 msgid "Duration: "
-msgstr ""
+msgstr "재생 시간: "
 
 #: tvspielfilmfetcher.cpp:341
 #, kde-format
 msgid "FSK: "
-msgstr ""
+msgstr "FSK: "
 
 #: xmltvfetcher.cpp:42
 #, kde-format
