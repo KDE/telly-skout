@@ -2,7 +2,7 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Telly Skout
 Upstream-Contact: Plata Hill <plata.hill@kdemail.net>
 
-Files: android/res/drawable/telly-skout.png
+Files: android/res/drawable/tellyskout.png
 Copyright: Plata Hill <plata.hill@kdemail.net>
 License: BSD-2-Clause
 
