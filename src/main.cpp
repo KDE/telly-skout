@@ -33,6 +33,10 @@
 #include <QApplication>
 #endif
 
+#ifdef Q_OS_ANDROID
+Q_DECL_EXPORT
+#endif
+
 int main(int argc, char *argv[])
 {
 #ifdef Q_OS_ANDROID
