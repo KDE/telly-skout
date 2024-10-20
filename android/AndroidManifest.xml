@@ -4,7 +4,6 @@
   - SPDX-FileCopyrightText: 2024 Plata Hill <plata.hill@kdemail.net>
  -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.kde.tellyskout"
           android:versionName="0.0.1"
           android:versionCode="1588098483"
           android:installLocation="auto">
