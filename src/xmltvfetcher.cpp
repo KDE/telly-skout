@@ -12,6 +12,7 @@
 #include <QDebug>
 #include <QString>
 #include <QStringView>
+#include <QTimeZone>
 
 XmltvFetcher::XmltvFetcher()
     : m_doc(QStringLiteral("xmltv"))
@@ -136,11 +137,9 @@ QString XmltvFetcher::imagePath(const QString &url)
 
 void XmltvFetcher::open(QByteArray data)
 {
-    QString errorMsg;
-    int errorLine;
-    int errorColumn;
-    if (!m_doc.setContent(data, &errorMsg, &errorLine, &errorColumn)) {
-        qCritical() << "Could not read XML:" << errorMsg << "(l" << errorLine << ":" << errorColumn << ")";
+    const QDomDocument::ParseResult parseResult = m_doc.setContent(data);
+    if (!parseResult) {
+        qCritical() << "Could not read XML:" << parseResult.errorMessage << "(l" << parseResult.errorLine << ":" << parseResult.errorColumn << ")";
     }
 }
 
@@ -166,7 +165,7 @@ ProgramData XmltvFetcher::processProgram(const QDomNode &program)
     const QString &startTimeString = attributes.namedItem(QStringLiteral("start")).toAttr().value();
     QDateTime startTime = QDateTime::fromString(startTimeString.left(14), QStringLiteral("yyyyMMddHHmmss"));
     const int startTimeOffset = QStringView{startTimeString}.right(5).left(3).toInt();
-    startTime.setOffsetFromUtc(startTimeOffset * 3600);
+    startTime.setTimeZone(QTimeZone::fromSecondsAheadOfUtc(startTimeOffset * 3600));
     startTime = startTime.toUTC();
     data.m_startTime = startTime;
     // channel + start time can be used as ID
@@ -174,7 +173,7 @@ ProgramData XmltvFetcher::processProgram(const QDomNode &program)
     const QString &stopTimeString = attributes.namedItem(QStringLiteral("stop")).toAttr().value();
     QDateTime stopTime = QDateTime::fromString(stopTimeString.left(14), QStringLiteral("yyyyMMddHHmmss"));
     const int stopTimeOffset = QStringView{stopTimeString}.right(5).left(3).toInt();
-    stopTime.setOffsetFromUtc(stopTimeOffset * 3600);
+    stopTime.setTimeZone(QTimeZone::fromSecondsAheadOfUtc(stopTimeOffset * 3600));
     stopTime = stopTime.toUTC();
     data.m_stopTime = stopTime;
     data.m_title = program.namedItem(QStringLiteral("title")).toElement().text();
