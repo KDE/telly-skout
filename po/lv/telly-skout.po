@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-11 00:43+0000\n"
+"POT-Creation-Date: 2024-10-26 00:43+0000\n"
 "PO-Revision-Date: 2024-08-22 17:03+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -250,7 +250,7 @@ msgstr "Ilgums: "
 msgid "FSK: "
 msgstr "FSK: "
 
-#: xmltvfetcher.cpp:42
+#: xmltvfetcher.cpp:43
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"
