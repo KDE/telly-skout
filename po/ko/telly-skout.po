@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-26 00:43+0000\n"
+"POT-Creation-Date: 2024-11-09 00:43+0000\n"
 "PO-Revision-Date: 2024-08-21 00:07+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -27,17 +27,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Convergent TV guide based on Kirigami"
 msgstr "Kirigami 기반 올인원 TV 가이드"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Telly Skout"
 msgstr "Telly Skout"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "© 2020 KDE Community"
 msgstr "© 2020 KDE Community"
