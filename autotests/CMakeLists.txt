@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2022 Plata Hill <plata.hill@kdemail.net>
 # SPDX-License-Identifier: BSD-2-Clause
 
-add_test(NAME telly-skout-self-test COMMAND telly-skout --self-test)
+add_test(NAME telly-skout-self-test COMMAND $<TARGET_FILE:telly-skout-app> --self-test)
 if (NOT BUILD_SHARED_LIBS)
     set_tests_properties(telly-skout-self-test PROPERTIES
         ENVIRONMENT "QT_QUICK_CONTROLS_STYLE=org.kde.breeze"
