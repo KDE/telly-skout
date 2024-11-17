@@ -107,8 +107,6 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 
-    engine.rootContext()->setContextProperty(QStringLiteral("_settings"), TellySkoutSettings::self());
-
     QObject::connect(&app, &QCoreApplication::aboutToQuit, TellySkoutSettings::self(), &TellySkoutSettings::save);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));

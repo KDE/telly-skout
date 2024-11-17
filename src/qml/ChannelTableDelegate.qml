@@ -40,7 +40,7 @@ Controls.ItemDelegate {
     Text {
         anchors.fill: parent
         text: "<b>" + program.start.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + "</b> " + program.title
-        font.pixelSize: _settings.fontSize
+        font.pixelSize: TellySkoutSettings.fontSize
         wrapMode: Text.Wrap
         elide: Text.ElideRight // avoid that text overlaps into next program
         // indicate if program is over

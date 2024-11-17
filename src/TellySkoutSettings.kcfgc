@@ -5,3 +5,4 @@ Mutators=true
 DefaultValueGetters=true
 GenerateProperties=true
 GlobalEnums=false
+QmlRegistration=true

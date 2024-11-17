@@ -11,7 +11,7 @@ import org.kde.kirigami as Kirigami
 Kirigami.Page {
     id: root
 
-    readonly property int columnWidth: _settings.columnWidth
+    readonly property int columnWidth: TellySkoutSettings.columnWidth
     property int windowHeight: 0
     property real currentTimestamp: new Date().getTime()
 
@@ -76,7 +76,7 @@ Kirigami.Page {
     contentItem: Flickable {
         id: channelTable
 
-        readonly property int pxPerMin: _settings.programHeight
+        readonly property int pxPerMin: TellySkoutSettings.programHeight
         readonly property var date: new Date()
         readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
         readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
