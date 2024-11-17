@@ -12,6 +12,7 @@ Kirigami.Page {
     id: root
 
     readonly property int columnWidth: TellySkoutSettings.columnWidth
+    readonly property bool isLoading: Fetcher.favoritesPercentage !== 100
     property int windowHeight: 0
     property real currentTimestamp: new Date().getTime()
 
@@ -26,7 +27,7 @@ Kirigami.Page {
     }
 
     Kirigami.PlaceholderMessage {
-        visible: contentRepeater.count === 0
+        visible: channelsModel.count === 0
         width: Kirigami.Units.gridUnit * 20
         icon.name: "favorite"
         anchors.centerIn: parent
@@ -34,7 +35,7 @@ Kirigami.Page {
     }
 
     header: Controls.ToolBar {
-        visible: contentRepeater.count !== 0 && !loadingPlaceholder.visible
+        visible: channelsModel.count !== 0 && !isLoading
 
         padding: 0
 
@@ -81,7 +82,7 @@ Kirigami.Page {
         readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
         readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
 
-        visible: contentRepeater.count !== 0 && !loadingPlaceholder.visible
+        visible: channelsModel.count !== 0 && !isLoading
         contentHeight: 24 * 60 * pxPerMin
         contentWidth: content.implicitWidth
         boundsBehavior: Flickable.StopAtBounds
@@ -204,7 +205,7 @@ Kirigami.Page {
     Kirigami.LoadingPlaceholder {
         id: loadingPlaceholder
 
-        visible: contentRepeater.count !== 0 && Fetcher.favoritesPercentage != 100
+        visible: channelsModel.count !== 0 && isLoading
         anchors.centerIn: parent
         determinate: true
         progressBar.value: Fetcher.favoritesPercentage
