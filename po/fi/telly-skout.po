@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-09 02:33+0000\n"
+"POT-Creation-Date: 2024-11-18 02:41+0000\n"
 "PO-Revision-Date: 2023-03-11 22:42+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -61,19 +61,19 @@ msgstr "Kanavat"
 msgid "Loading channels..."
 msgstr "Ladataan kanavia…"
 
-#: qml/ChannelTablePage.qml:18
+#: qml/ChannelTablePage.qml:19
 #, fuzzy, kde-format
 #| msgid "Favorites"
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Suosikit"
 
-#: qml/ChannelTablePage.qml:33
+#: qml/ChannelTablePage.qml:34
 #, kde-format
 msgid "Please select favorites"
 msgstr "Valitse suosikit"
 
-#: qml/ChannelTablePage.qml:131
+#: qml/ChannelTablePage.qml:132
 #, fuzzy, kde-format
 #| msgid "not available"
 msgctxt "placeholder message"

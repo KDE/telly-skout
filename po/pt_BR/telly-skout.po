@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-09 02:33+0000\n"
+"POT-Creation-Date: 2024-11-18 02:41+0000\n"
 "PO-Revision-Date: 2024-03-23 19:03-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -61,19 +61,19 @@ msgstr "Canais"
 msgid "Loading channels..."
 msgstr "Carregando canais..."
 
-#: qml/ChannelTablePage.qml:18
+#: qml/ChannelTablePage.qml:19
 #, fuzzy, kde-format
 #| msgid "Favorites"
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Favoritos"
 
-#: qml/ChannelTablePage.qml:33
+#: qml/ChannelTablePage.qml:34
 #, kde-format
 msgid "Please select favorites"
 msgstr "Selecione os favoritos"
 
-#: qml/ChannelTablePage.qml:131
+#: qml/ChannelTablePage.qml:132
 #, fuzzy, kde-format
 #| msgid "not available"
 msgctxt "placeholder message"
