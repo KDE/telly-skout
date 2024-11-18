@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-09 00:43+0000\n"
+"POT-Creation-Date: 2024-11-18 00:43+0000\n"
 "PO-Revision-Date: 2024-08-21 00:07+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -59,18 +59,18 @@ msgstr "채널"
 msgid "Loading channels..."
 msgstr "채널 불러오는 중..."
 
-#: qml/ChannelTablePage.qml:18
+#: qml/ChannelTablePage.qml:19
 #, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "책갈피"
 
-#: qml/ChannelTablePage.qml:33
+#: qml/ChannelTablePage.qml:34
 #, kde-format
 msgid "Please select favorites"
 msgstr "책갈피를 선택하십시오"
 
-#: qml/ChannelTablePage.qml:131
+#: qml/ChannelTablePage.qml:132
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
@@ -92,102 +92,102 @@ msgstr "책갈피 선택"
 msgid "Loading groups..."
 msgstr "그룹 불러오는 중..."
 
-#: qml/SettingsPage.qml:13
+#: qml/SettingsPage.qml:14
 #, kde-format
 msgctxt "@title"
 msgid "Settings"
 msgstr "설정"
 
-#: qml/SettingsPage.qml:16
+#: qml/SettingsPage.qml:17
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
 msgstr "모양"
 
-#: qml/SettingsPage.qml:21
+#: qml/SettingsPage.qml:22
 #, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
 msgstr "프로그램 높이:"
 
-#: qml/SettingsPage.qml:27
+#: qml/SettingsPage.qml:28
 #, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
 msgstr "%1픽셀/분"
 
-#: qml/SettingsPage.qml:37
+#: qml/SettingsPage.qml:38
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
 msgstr "열 너비:"
 
-#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:59
+#: qml/SettingsPage.qml:44 qml/SettingsPage.qml:60
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
 msgstr "%1픽셀"
 
-#: qml/SettingsPage.qml:53
+#: qml/SettingsPage.qml:54
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
 msgstr "글꼴 크기:"
 
-#: qml/SettingsPage.qml:68
+#: qml/SettingsPage.qml:69
 #, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
 msgstr "프로그램"
 
-#: qml/SettingsPage.qml:73
+#: qml/SettingsPage.qml:74
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
 msgstr "다음 이후 오래된 프로그램 삭제:"
 
-#: qml/SettingsPage.qml:77 qml/SettingsPage.qml:106
+#: qml/SettingsPage.qml:78 qml/SettingsPage.qml:107
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
 msgstr[0] "%1일"
 
-#: qml/SettingsPage.qml:89
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Fetcher:"
 msgstr "가져오기 도구:"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
 msgstr "프로그램을 가져오는 도구입니다."
 
-#: qml/SettingsPage.qml:101
+#: qml/SettingsPage.qml:102
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
 msgstr "미리 가져오기:"
 
-#: qml/SettingsPage.qml:118
+#: qml/SettingsPage.qml:119
 #, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
 msgstr "파일: "
 
-#: qml/SettingsPage.qml:142
+#: qml/SettingsPage.qml:143
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
 msgstr "파일 열기 대화 상자"
 
-#: qml/SettingsPage.qml:148
+#: qml/SettingsPage.qml:149
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "XML 파일 (*.xml)"
 
-#: qml/SettingsPage.qml:148
+#: qml/SettingsPage.qml:149
 #, kde-format
 msgid "All files (*)"
 msgstr "모든 파일 (*)"

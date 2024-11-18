@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-09 00:43+0000\n"
+"POT-Creation-Date: 2024-11-18 00:43+0000\n"
 "PO-Revision-Date: 2024-09-03 14:29+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -59,18 +59,18 @@ msgstr "Canales"
 msgid "Loading channels..."
 msgstr "Cargante canales..."
 
-#: qml/ChannelTablePage.qml:18
+#: qml/ChannelTablePage.qml:19
 #, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Favoritos"
 
-#: qml/ChannelTablePage.qml:33
+#: qml/ChannelTablePage.qml:34
 #, kde-format
 msgid "Please select favorites"
 msgstr "Pro favor tu selige favoritos"
 
-#: qml/ChannelTablePage.qml:131
+#: qml/ChannelTablePage.qml:132
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
@@ -92,61 +92,61 @@ msgstr "Selige favoritos"
 msgid "Loading groups..."
 msgstr "Cargante gruppos..."
 
-#: qml/SettingsPage.qml:13
+#: qml/SettingsPage.qml:14
 #, kde-format
 msgctxt "@title"
 msgid "Settings"
 msgstr "Preferentias"
 
-#: qml/SettingsPage.qml:16
+#: qml/SettingsPage.qml:17
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
 msgstr "Apparentia"
 
-#: qml/SettingsPage.qml:21
+#: qml/SettingsPage.qml:22
 #, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
 msgstr "Altessa de programma:"
 
-#: qml/SettingsPage.qml:27
+#: qml/SettingsPage.qml:28
 #, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
 msgstr "%1px/min"
 
-#: qml/SettingsPage.qml:37
+#: qml/SettingsPage.qml:38
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
 msgstr "Largessa de columna:"
 
-#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:59
+#: qml/SettingsPage.qml:44 qml/SettingsPage.qml:60
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
 msgstr "%1px"
 
-#: qml/SettingsPage.qml:53
+#: qml/SettingsPage.qml:54
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
 msgstr "Dimension de Font:"
 
-#: qml/SettingsPage.qml:68
+#: qml/SettingsPage.qml:69
 #, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
 msgstr "Programmas"
 
-#: qml/SettingsPage.qml:73
+#: qml/SettingsPage.qml:74
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
 msgstr "Dele vetere programmas post:"
 
-#: qml/SettingsPage.qml:77 qml/SettingsPage.qml:106
+#: qml/SettingsPage.qml:78 qml/SettingsPage.qml:107
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
@@ -154,41 +154,41 @@ msgid_plural "%1 days"
 msgstr[0] "%1 die"
 msgstr[1] "%1 dies"
 
-#: qml/SettingsPage.qml:89
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Fetcher:"
 msgstr "Reportator:"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
 msgstr "Le reportator que carga le programmas."
 
-#: qml/SettingsPage.qml:101
+#: qml/SettingsPage.qml:102
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
 msgstr "Precarga:"
 
-#: qml/SettingsPage.qml:118
+#: qml/SettingsPage.qml:119
 #, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
 msgstr "File:"
 
-#: qml/SettingsPage.qml:142
+#: qml/SettingsPage.qml:143
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
 msgstr "Aperi dialogo de file"
 
-#: qml/SettingsPage.qml:148
+#: qml/SettingsPage.qml:149
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "Files XML  (*.xml)"
 
-#: qml/SettingsPage.qml:148
+#: qml/SettingsPage.qml:149
 #, kde-format
 msgid "All files (*)"
 msgstr "Omne files (*)"
