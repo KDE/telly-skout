@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
-# Tommi Nieminen <translator@legisign.org>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-18 02:41+0000\n"
-"PO-Revision-Date: 2023-03-11 22:42+0200\n"
+"PO-Revision-Date: 2024-10-22 14:49+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -43,15 +43,13 @@ msgid "© 2020 KDE Community"
 msgstr "© 2020 KDE-yhteisö"
 
 #: qml/ChannelListDelegate.qml:53
-#, fuzzy, kde-format
-#| msgid "Favorite"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Favorite"
-msgstr "Merkitse suosikiksi"
+msgstr "Suosikki"
 
 #: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title"
 msgid "Channels"
 msgstr "Kanavat"
@@ -62,8 +60,7 @@ msgid "Loading channels..."
 msgstr "Ladataan kanavia…"
 
 #: qml/ChannelTablePage.qml:19
-#, fuzzy, kde-format
-#| msgid "Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Suosikit"
@@ -74,11 +71,10 @@ msgid "Please select favorites"
 msgstr "Valitse suosikit"
 
 #: qml/ChannelTablePage.qml:132
-#, fuzzy, kde-format
-#| msgid "not available"
+#, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
-msgstr "ei saatavilla"
+msgstr "Tietoa ei saatavilla"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -86,8 +82,7 @@ msgid "Channels"
 msgstr "Kanavat"
 
 #: qml/GroupListPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Select Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Select Favorites"
 msgstr "Valitse suosikit"
@@ -98,8 +93,7 @@ msgid "Loading groups..."
 msgstr "Ladataan ryhmiä…"
 
 #: qml/SettingsPage.qml:13
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgctxt "@title"
 msgid "Settings"
 msgstr "Asetukset"
@@ -108,95 +102,86 @@ msgstr "Asetukset"
 #, kde-format
 msgctxt "@title:group"
 msgid "Appearance"
-msgstr ""
+msgstr "Ulkoasu"
 
 #: qml/SettingsPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Program height"
+#, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "Ohjelman korkeus"
+msgstr "Ohjelman korkeus:"
 
 #: qml/SettingsPage.qml:27
-#, fuzzy, kde-format
-#| msgid "px/min"
+#, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
-msgstr "px/min"
+msgstr "%1 px/min"
 
 #: qml/SettingsPage.qml:37
-#, fuzzy, kde-format
-#| msgid "Column width"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "Sarakeleveys"
+msgstr "Sarakeleveys:"
 
 #: qml/SettingsPage.qml:43 qml/SettingsPage.qml:59
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
-msgstr ""
+msgstr "%1 px"
 
 #: qml/SettingsPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Font size"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "Fonttikoko"
+msgstr "Fonttikoko:"
 
 #: qml/SettingsPage.qml:68
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
-msgstr "Ohjelma"
+msgstr "Ohjelmat"
 
 #: qml/SettingsPage.qml:73
-#, fuzzy, kde-format
-#| msgid "Delete old after"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
-msgstr "Poista vanhat"
+msgstr "Poista vanhat ohjelmat ajassa:"
 
 #: qml/SettingsPage.qml:77 qml/SettingsPage.qml:106
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 päivä"
+msgstr[1] "%1 päivää"
 
 #: qml/SettingsPage.qml:89
-#, fuzzy, kde-format
-#| msgid "Fetcher"
+#, kde-format
 msgid "Fetcher:"
-msgstr "Noutaja"
+msgstr "Noutaja:"
 
 #: qml/SettingsPage.qml:90
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr ""
+msgstr "Ohjelmat lataava sovellus."
 
 #: qml/SettingsPage.qml:101
-#, fuzzy, kde-format
-#| msgid "Prefetch"
+#, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "Esinouda"
+msgstr "Esinouda:"
 
 #: qml/SettingsPage.qml:118
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
-msgstr "Tiedosto"
+msgstr "Tiedosto:"
 
 #: qml/SettingsPage.qml:142
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
-msgstr ""
+msgstr "Avaa tiedostoikkuna"
 
 #: qml/SettingsPage.qml:148
 #, kde-format
@@ -241,22 +226,22 @@ msgstr "Saksa"
 #: tvspielfilmfetcher.cpp:293
 #, kde-format
 msgid "Original title: "
-msgstr ""
+msgstr "Alkuperäinen otsikko: "
 
 #: tvspielfilmfetcher.cpp:305
 #, kde-format
 msgid "Country: "
-msgstr ""
+msgstr "Maa: "
 
 #: tvspielfilmfetcher.cpp:317
 #, kde-format
 msgid "Year: "
-msgstr ""
+msgstr "Vuosi: "
 
 #: tvspielfilmfetcher.cpp:329
 #, kde-format
 msgid "Duration: "
-msgstr ""
+msgstr "Kesto: "
 
 #: tvspielfilmfetcher.cpp:341
 #, kde-format
