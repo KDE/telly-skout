@@ -53,6 +53,7 @@ function(QML_FORMAT)
             string(FIND ${_full_file_path} ${_binary_dir} _index)
             if(NOT _index EQUAL 0)
                 add_custom_command(TARGET qml-format
+                    POST_BUILD
                     COMMAND
                         Qt6::qmlformat
                         -i
