@@ -27,6 +27,16 @@ Controls.ItemDelegate {
         }
     }
 
+    leftPadding: 0
+    topPadding: 0
+    rightPadding: 0
+    bottomPadding: 0
+
+    leftInset: 0
+    topInset: 0
+    rightInset: 0
+    bottomInset: 0
+
     // start always at startTime, even if program starts earlier
     // stop always at stopTime, even if the program runs longer
     Layout.preferredHeight: (Math.min(program.stop, stopTime) - Math.max(program.start, startTime)) / 60000 * pxPerMin
