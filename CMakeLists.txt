@@ -76,6 +76,10 @@ if(MSVC)
     add_compile_options(/W3 /WX)
 else()
     add_compile_options(-Wall -Wextra -Wconversion -Wsign-conversion -pedantic)
+
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        add_compile_options(-Wno-error=hardened)
+    endif()
 endif()
 
 ################# build and install #################
