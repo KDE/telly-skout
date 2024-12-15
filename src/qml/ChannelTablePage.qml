@@ -74,7 +74,7 @@ Kirigami.Page {
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: true
 
-    contentItem: Flickable {
+    Flickable {
         id: channelTable
 
         readonly property int pxPerMin: TellySkoutSettings.programHeight
@@ -83,6 +83,8 @@ Kirigami.Page {
         readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
 
         visible: channelsModel.count !== 0 && !isLoading
+        anchors.fill: parent
+
         contentHeight: 24 * 60 * pxPerMin
         contentWidth: content.implicitWidth
         boundsBehavior: Flickable.StopAtBounds
