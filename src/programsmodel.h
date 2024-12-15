@@ -17,6 +17,7 @@ class ProgramsModel : public QAbstractListModel
 {
     Q_OBJECT
     QML_ELEMENT
+    QML_UNCREATABLE("access via Channel")
 
     Q_PROPERTY(Channel *channel READ channel CONSTANT)
 
