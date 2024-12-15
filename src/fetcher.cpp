@@ -49,6 +49,11 @@ void Fetcher::fetchFavorites()
 
     setFavoritesPercentage(0);
 
+    if (favoriteChannels.empty()) {
+        setFavoritesPercentage(100);
+        return;
+    }
+
     for (const ChannelId &channelId : favoriteChannels) {
         Q_EMIT startedFetchingChannel(channelId);
         m_fetcherImpl->fetchProgram(
