@@ -18,6 +18,7 @@
   <name xml:lang="fr">Telly Skout</name>
   <name xml:lang="gl">Telly Skout</name>
   <name xml:lang="he">Telly Skout</name>
+  <name xml:lang="hi">टेली स्काउट</name>
   <name xml:lang="hu">Telly Skout</name>
   <name xml:lang="ia">Telly Skout</name>
   <name xml:lang="id">Telly Skout</name>
@@ -49,6 +50,7 @@
   <summary xml:lang="fr">Un guide convergent de télévision sous Kirigami</summary>
   <summary xml:lang="gl">Unha guía de televisión converxente feita con Kirigami</summary>
   <summary xml:lang="he">לוח שידורים אחוד בסגנון Kirigami</summary>
+  <summary xml:lang="hi">एक अभिसारी किरिगामी टीवी गाइड</summary>
   <summary xml:lang="hu">Konvergens Kirigami TV-műsor</summary>
   <summary xml:lang="ia">Un guida TV convergente de Kirigami</summary>
   <summary xml:lang="id">Panduan TV Kirigami yang konvergen</summary>
@@ -90,6 +92,7 @@
     <p xml:lang="fr">Telly Skout est un guide TV convergent conçu avec Kirigami. Il affiche le programme TV de vos chaînes préférées à partir de TV « Spielfilm » ou d'un fichier « XMLTV ».</p>
     <p xml:lang="gl">Telly Skout é unha guía de televisión converxente feita con Kirigami. Mostra o programa de televisión das súas canles favoritas de TV Spielfilm ou dun ficheiro XMLTV.</p>
     <p xml:lang="he">Telly Skout הוא לוח שידורים אחוד בסגנון Kirigami. הוא מציג את תוכנית הטלוויזיה לערוצים המועדפים עליך מ־TV Spielfilm או מקובץ XMLTV.</p>
+    <p xml:lang="hi">टेली स्काउट एक अभिसारी किरिगामी टीवी गाइड है। यह टीवी स्पीलफिल्म या XMLTV फ़ाइल से आपके पसंदीदा चैनलों के लिए टीवी कार्यक्रम दिखाता है।</p>
     <p xml:lang="hu">A Telly Skout egy konvergens Kirigami TV-műsor. Megjeleníti a kedvenc csatornái programját a TV Spielfielm vagy XMLTV-fájl alapján.</p>
     <p xml:lang="ia">Tellky Skout es un guida TV convergente de Kirigami. Il monstra le programmam TV per tu canales favoritos ab TVSpiefilm o un file de XMLTV.</p>
     <p xml:lang="id">Telly Skout adalah panduan TV Kirigami yang konvergen. Ini menunjukkan program TV untuk saluran favorit Anda dari TV Spielfilm atau file XMLTV.</p>
@@ -124,6 +127,7 @@
       <caption xml:lang="fr">Favoris</caption>
       <caption xml:lang="gl">Favoritas.</caption>
       <caption xml:lang="he">מועדפים</caption>
+      <caption xml:lang="hi">पसंदीदा</caption>
       <caption xml:lang="hu">Kedvencek</caption>
       <caption xml:lang="ia">Favoritos</caption>
       <caption xml:lang="id">Favorit</caption>
@@ -158,6 +162,7 @@
       <caption xml:lang="fr">Sélectionnez les favoris</caption>
       <caption xml:lang="gl">Seleccionar as favoritas.</caption>
       <caption xml:lang="he">בחירת מועדפים</caption>
+      <caption xml:lang="hi">पसंदीदा चुनें</caption>
       <caption xml:lang="hu">Kedvencek kiválasztása</caption>
       <caption xml:lang="ia">Selige favoritos</caption>
       <caption xml:lang="id">Pilih Favorit</caption>
@@ -192,6 +197,7 @@
       <caption xml:lang="fr">Trier les favoris</caption>
       <caption xml:lang="gl">Ordenar as favoritas.</caption>
       <caption xml:lang="he">מיון מועדפים</caption>
+      <caption xml:lang="hi">पसंदीदा क्रमबद्ध करें</caption>
       <caption xml:lang="hu">Kedvencek rendezése</caption>
       <caption xml:lang="ia">Ordina Favoritos</caption>
       <caption xml:lang="id">Urutkan Favorit</caption>
