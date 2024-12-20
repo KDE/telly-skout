@@ -34,6 +34,15 @@ Kirigami.Page {
         text: i18n("Please select favorites")
     }
 
+    actions: [
+        Kirigami.Action {
+            text: i18n("Refetch")
+            icon.name: "view-refresh"
+            visible: contentRepeater.count !== 0
+            onTriggered: Fetcher.fetchFavorites(true)
+        }
+    ]
+
     header: Controls.ToolBar {
         visible: contentRepeater.count !== 0 && !isLoading
 
