@@ -58,6 +58,7 @@ public:
     bool isFavorite(const ChannelId &channelId) const;
 
     void addProgram(const ProgramData &data);
+    void clearPrograms();
     void updateProgramDescription(const ProgramId &id, const QString &description);
     void addPrograms(const QVector<ProgramData> &programs);
     bool programExists(const ChannelId &channelId, const QDateTime &lastTime) const;
@@ -104,9 +105,11 @@ private:
     std::unique_ptr<QSqlQuery> m_isFavoriteQuery;
 
     std::unique_ptr<QSqlQuery> m_addProgramCategoryQuery;
+    std::unique_ptr<QSqlQuery> m_clearProgramCategoriesQuery;
     std::unique_ptr<QSqlQuery> m_programCategoriesQuery;
 
     std::unique_ptr<QSqlQuery> m_addProgramQuery;
+    std::unique_ptr<QSqlQuery> m_clearProgramsQuery;
     std::unique_ptr<QSqlQuery> m_updateProgramDescriptionQuery;
     std::unique_ptr<QSqlQuery> m_programExistsQuery;
     std::unique_ptr<QSqlQuery> m_programCountQuery;

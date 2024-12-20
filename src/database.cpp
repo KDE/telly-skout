@@ -85,6 +85,8 @@ Database::Database()
     m_addProgramQuery.reset(new QSqlQuery(db));
     success &= m_addProgramQuery->prepare(
         QStringLiteral("INSERT OR IGNORE INTO Programs VALUES (:id, :url, :channel, :start, :stop, :title, :subtitle, :description, :descriptionFetched);"));
+    m_clearProgramsQuery.reset(new QSqlQuery(db));
+    success &= m_clearProgramsQuery->prepare(QStringLiteral("DELETE FROM Programs;"));
     m_updateProgramDescriptionQuery.reset(new QSqlQuery(db));
     success &= m_updateProgramDescriptionQuery->prepare(QStringLiteral("UPDATE Programs SET description=:description, descriptionFetched=TRUE WHERE id=:id;"));
     m_programExistsQuery.reset(new QSqlQuery(db));
@@ -100,6 +102,8 @@ Database::Database()
 
     m_addProgramCategoryQuery.reset(new QSqlQuery(db));
     success &= m_addProgramCategoryQuery->prepare(QStringLiteral("INSERT OR IGNORE INTO ProgramCategories VALUES (:program, :category);"));
+    m_clearProgramCategoriesQuery.reset(new QSqlQuery(db));
+    success &= m_clearProgramCategoriesQuery->prepare(QStringLiteral("DELETE FROM ProgramCategories;"));
     m_programCategoriesQuery.reset(new QSqlQuery(db));
     success &= m_programCategoriesQuery->prepare(QStringLiteral("SELECT * FROM ProgramCategories;"));
 
@@ -534,6 +538,12 @@ void Database::addProgram(const ProgramData &data)
         m_addProgramCategoryQuery->bindValue(QStringLiteral(":category"), categories.at(i));
         execute(*m_addProgramCategoryQuery);
     }
+}
+
+void Database::clearPrograms()
+{
+    execute(*m_clearProgramsQuery);
+    execute(*m_clearProgramCategoriesQuery);
 }
 
 void Database::updateProgramDescription(const ProgramId &id, const QString &description)

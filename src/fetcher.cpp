@@ -33,7 +33,7 @@ Fetcher::Fetcher()
     }
 }
 
-void Fetcher::fetchFavorites()
+void Fetcher::fetchFavorites(bool force)
 {
     static QAtomicInteger<qsizetype> channelCounter = 0; // reference counter to determine when all channels have been fetched
 
@@ -52,6 +52,13 @@ void Fetcher::fetchFavorites()
     if (favoriteChannels.empty()) {
         setFavoritesPercentage(100);
         return;
+    }
+
+    if (force) {
+        Database::instance().clearPrograms();
+        for (const ChannelId &channelId : favoriteChannels) {
+            Q_EMIT channelUpdated(channelId);
+        }
     }
 
     for (const ChannelId &channelId : favoriteChannels) {

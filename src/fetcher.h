@@ -37,7 +37,7 @@ public:
         return &instance();
     }
 
-    Q_INVOKABLE void fetchFavorites();
+    Q_INVOKABLE void fetchFavorites(bool force = false);
     Q_INVOKABLE void fetchGroups();
     Q_INVOKABLE void fetchGroup(const QString &url, const GroupId &groupId);
     Q_INVOKABLE void fetchProgramDescription(const ChannelId &channelId, const ProgramId &programId, const QString &url);
