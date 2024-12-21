@@ -222,7 +222,10 @@ void TvSpielfilmFetcher::processChannel(const QString &infoTable, const QString 
             }
             // it can happen that the stop time is incorrect (i.e. after the next program has already started)
             // overwrite stop time with start time of next program
-            else if (programData.m_startTime < previousProgamData.m_stopTime) {
+            // only if the previous program is really previous:
+            // As days are fetched from future to past to be able to stop early,
+            // the last program of the next day is the "previous" program of the first program of the current day.
+            else if (programData.m_startTime < previousProgamData.m_stopTime && previousProgamData.m_startTime < programData.m_startTime) {
                 previousProgamData.m_stopTime = programData.m_startTime;
             } else {
                 programs.push_back(programData);
