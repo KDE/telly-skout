@@ -65,8 +65,9 @@ Kirigami.Page {
 
                     Controls.Label {
                         text: modelData.name
+                        wrapMode: Text.Wrap
                         padding: Kirigami.Units.mediumSpacing
-
+                        Layout.fillHeight: true
                         Layout.fillWidth: true
                     }
 
