@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 00:43+0000\n"
+"POT-Creation-Date: 2024-12-21 00:44+0000\n"
 "PO-Revision-Date: 2023-01-18 13:32+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -69,7 +69,13 @@ msgstr "Favoritos"
 msgid "Please select favorites"
 msgstr "Seleccione por favor os favoritos"
 
-#: qml/ChannelTablePage.qml:132
+#: qml/ChannelTablePage.qml:39
+#, fuzzy, kde-format
+#| msgid "Prefetch"
+msgid "Refetch"
+msgstr "Obter previamente"
+
+#: qml/ChannelTablePage.qml:143
 #, fuzzy, kde-format
 #| msgid "not available"
 msgctxt "placeholder message"

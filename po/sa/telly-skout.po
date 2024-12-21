@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 00:43+0000\n"
-"PO-Revision-Date: 2024-12-19 21:41+0530\n"
+"POT-Creation-Date: 2024-12-21 00:44+0000\n"
+"PO-Revision-Date: 2024-12-20 21:54+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -72,7 +72,14 @@ msgstr "प्रियाः"
 msgid "Please select favorites"
 msgstr "कृपया प्रियं चयनं कुर्वन्तु"
 
-#: qml/ChannelTablePage.qml:132
+#: qml/ChannelTablePage.qml:39
+#, fuzzy, kde-format
+#| msgctxt "@option:spinbox"
+#| msgid "Prefetch:"
+msgid "Refetch"
+msgstr "पूर्वागमनम् :"
+
+#: qml/ChannelTablePage.qml:143
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
@@ -110,7 +117,7 @@ msgstr "स्वरूपम्‌"
 #, kde-format
 msgctxt "@option:spinbox height of the program"
 msgid "Program height:"
-msgstr "कार्यक्रमस्य ऊर्ध्वता : १."
+msgstr "कार्यक्रमस्य ऊर्ध्वता :"
 
 #: qml/SettingsPage.qml:28
 #, kde-format
@@ -122,7 +129,7 @@ msgstr "%1px/मिनिट"
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Column width:"
-msgstr "स्तम्भविस्तारः : १."
+msgstr "स्तम्भविस्तारः :"
 
 #: qml/SettingsPage.qml:44 qml/SettingsPage.qml:60
 #, kde-format
@@ -134,7 +141,7 @@ msgstr "%1px"
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Font size:"
-msgstr "फ़ॉन्ट् आकारः : १."
+msgstr "फ़ॉन्ट् आकारः :"
 
 #: qml/SettingsPage.qml:69
 #, kde-format
@@ -159,7 +166,7 @@ msgstr[1] "%1 दिवसाः"
 #: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Fetcher:"
-msgstr "आनेता : १."
+msgstr "आनेता :"
 
 #: qml/SettingsPage.qml:91
 #, kde-format
@@ -171,7 +178,7 @@ msgstr "यः फेचरः प्रोग्राम्स् लोड्
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
-msgstr "पूर्वागमनम् : १."
+msgstr "पूर्वागमनम् :"
 
 #: qml/SettingsPage.qml:119
 #, kde-format
@@ -188,7 +195,7 @@ msgstr "सञ्चिकासंवादं उद्घाटयन्त�
 #: qml/SettingsPage.qml:149
 #, kde-format
 msgid "XML files (*.xml)"
-msgstr "XML सञ्चिकाः (*.xml) २."
+msgstr "XML सञ्चिकाः (*.xml)"
 
 #: qml/SettingsPage.qml:149
 #, kde-format

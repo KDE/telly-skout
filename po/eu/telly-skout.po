@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 00:43+0000\n"
+"POT-Creation-Date: 2024-12-21 00:44+0000\n"
 "PO-Revision-Date: 2024-08-13 13:00+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -73,7 +73,14 @@ msgstr "Gogokoak"
 msgid "Please select favorites"
 msgstr "Mesedez, hautatu gogokoak"
 
-#: qml/ChannelTablePage.qml:132
+#: qml/ChannelTablePage.qml:39
+#, fuzzy, kde-format
+#| msgctxt "@option:spinbox"
+#| msgid "Prefetch:"
+msgid "Refetch"
+msgstr "Aurrez eskuratu:"
+
+#: qml/ChannelTablePage.qml:143
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
