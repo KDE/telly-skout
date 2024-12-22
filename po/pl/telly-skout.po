@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-21 00:44+0000\n"
+"POT-Creation-Date: 2024-12-22 00:43+0000\n"
 "PO-Revision-Date: 2024-08-17 09:49+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -78,7 +78,7 @@ msgstr "Wybierz ulubione"
 msgid "Refetch"
 msgstr "Wczytaj z wyprzedzeniem:"
 
-#: qml/ChannelTablePage.qml:143
+#: qml/ChannelTablePage.qml:144
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
@@ -232,27 +232,27 @@ msgstr "O programie"
 msgid "Germany"
 msgstr "Niemcy"
 
-#: tvspielfilmfetcher.cpp:293
+#: tvspielfilmfetcher.cpp:296
 #, kde-format
 msgid "Original title: "
 msgstr "Tytuł pierwotny: "
 
-#: tvspielfilmfetcher.cpp:305
+#: tvspielfilmfetcher.cpp:308
 #, kde-format
 msgid "Country: "
 msgstr "Kraj: "
 
-#: tvspielfilmfetcher.cpp:317
+#: tvspielfilmfetcher.cpp:320
 #, kde-format
 msgid "Year: "
 msgstr "Rok: "
 
-#: tvspielfilmfetcher.cpp:329
+#: tvspielfilmfetcher.cpp:332
 #, kde-format
 msgid "Duration: "
 msgstr "Czas trwania: "
 
-#: tvspielfilmfetcher.cpp:341
+#: tvspielfilmfetcher.cpp:344
 #, kde-format
 msgid "FSK: "
 msgstr "FSK: "

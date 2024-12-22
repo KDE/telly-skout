@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-21 00:44+0000\n"
-"PO-Revision-Date: 2024-08-11 08:38+0300\n"
+"POT-Creation-Date: 2024-12-22 00:43+0000\n"
+"PO-Revision-Date: 2024-12-21 18:58+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -72,13 +72,11 @@ msgid "Please select favorites"
 msgstr "נא לבחור מועדפים"
 
 #: qml/ChannelTablePage.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgid "Refetch"
-msgstr "משיכה טרומית:"
+msgstr "משיכה מחדש"
 
-#: qml/ChannelTablePage.qml:143
+#: qml/ChannelTablePage.qml:144
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
@@ -233,27 +231,27 @@ msgstr "על אודות"
 msgid "Germany"
 msgstr "גרמניה"
 
-#: tvspielfilmfetcher.cpp:293
+#: tvspielfilmfetcher.cpp:296
 #, kde-format
 msgid "Original title: "
 msgstr "כותרת מקורית:"
 
-#: tvspielfilmfetcher.cpp:305
+#: tvspielfilmfetcher.cpp:308
 #, kde-format
 msgid "Country: "
 msgstr "מדינה:"
 
-#: tvspielfilmfetcher.cpp:317
+#: tvspielfilmfetcher.cpp:320
 #, kde-format
 msgid "Year: "
 msgstr "שנה:"
 
-#: tvspielfilmfetcher.cpp:329
+#: tvspielfilmfetcher.cpp:332
 #, kde-format
 msgid "Duration: "
 msgstr "משך:"
 
-#: tvspielfilmfetcher.cpp:341
+#: tvspielfilmfetcher.cpp:344
 #, kde-format
 msgid "FSK: "
 msgstr "FSK (מדד הצנזורה הגרמני):"
