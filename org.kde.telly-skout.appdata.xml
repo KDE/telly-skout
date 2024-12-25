@@ -77,7 +77,7 @@
   <url type="donation">https://kde.org/community/donations</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?product=Telly%20Skout</url>
   <url type="vcs-browser">https://invent.kde.org/utilities/telly-skout</url>
-  <developer id="kde.org">
+  <developer id="org.kde">
     <name translate="no">KDE</name>
   </developer>
   <description>
