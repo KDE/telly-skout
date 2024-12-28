@@ -11,6 +11,7 @@
 
 #include <QDebug>
 
+#include <algorithm>
 #include <limits>
 
 ProgramsModel::ProgramsModel(Channel *channel, ProgramFactory &programFactory)
@@ -30,18 +31,13 @@ ProgramsModel::ProgramsModel(Channel *channel, ProgramFactory &programFactory)
         }
     });
 
-    connect(&Fetcher::instance(), &Fetcher::programUpdated, this, [this](const ProgramId &id) {
-        beginResetModel();
-        for (int i = 0; i < m_programs.size(); ++i) {
-            const Program *program = m_programs[i];
-            if (id == program->id()) {
-                m_programFactory.load(program->channelId(), program->id());
-                delete program;
-                m_programs[i] = nullptr;
-                break;
-            }
+    connect(&Fetcher::instance(), &Fetcher::programDescriptionUpdated, this, [this](const ProgramId &id, const QString &description) {
+        auto it = std::find_if(m_programs.begin(), m_programs.end(), [&id](Program *program) {
+            return (id == program->id());
+        });
+        if (it != m_programs.end()) {
+            (*it)->setDescription(description);
         }
-        endResetModel();
     });
 }
 

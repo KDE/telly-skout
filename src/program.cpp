@@ -66,4 +66,17 @@ QVector<QString> Program::categories() const
     return m_data.m_categories;
 }
 
+void Program::setDescription(const QString &description)
+{
+    m_data.m_description = description;
+    setDescriptionFetched(true);
+    Q_EMIT descriptionChanged(m_data.m_description);
+}
+
+void Program::setDescriptionFetched(bool descriptionFetched)
+{
+    m_data.m_descriptionFetched = descriptionFetched;
+    Q_EMIT descriptionFetchedChanged(m_data.m_descriptionFetched);
+}
+
 #include "moc_program.cpp"
