@@ -65,7 +65,7 @@ Q_SIGNALS:
     void finishedFetchingChannel(const ChannelId &id);
     void channelUpdated(const ChannelId &id);
 
-    void programUpdated(const ProgramId &id);
+    void programDescriptionUpdated(const ProgramId &id, const QString &description);
 
     void errorFetchingGroup(const GroupId &id, const Error &error);
     void errorFetchingChannel(const ChannelId &id, const Error &error);

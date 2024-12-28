@@ -110,7 +110,7 @@ void Fetcher::fetchProgramDescription(const ChannelId &channelId, const ProgramI
 {
     m_fetcherImpl->fetchProgramDescription(channelId, programId, url, [this, channelId, programId](const QString &description) {
         Database::instance().updateProgramDescription(programId, description);
-        Q_EMIT programUpdated(programId);
+        Q_EMIT programDescriptionUpdated(programId, description);
     });
 }
 
