@@ -29,6 +29,10 @@
       <label>Font size</label>
       <default>12</default> <!-- should be Kirigami.Theme.defaultFont.pixelSize -->
     </entry>
+    <entry name="showDateSelection" type="Bool">
+      <label>Show date selection</label>
+      <default>true</default>
+    </entry>
   </group>
   <group name="TVSpielfilm">
     <entry name="tvSpielfilmPrefetch" type="UInt">

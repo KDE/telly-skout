@@ -88,7 +88,7 @@ Kirigami.Page {
         id: channelTable
 
         readonly property int pxPerMin: TellySkoutSettings.programHeight
-        readonly property var date: new Date()
+        property var date: new Date()
         readonly property var start: new Date(date.getFullYear(), date.getMonth(), date.getDate()) // today 00:00h
         readonly property var stop: new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 0) // today 23:59h
 
@@ -189,6 +189,41 @@ Kirigami.Page {
         Controls.ScrollBar.vertical: Controls.ScrollBar {}
 
         Controls.ScrollBar.horizontal: Controls.ScrollBar {}
+    }
+
+    footer: Controls.ToolBar {
+        visible: TellySkoutSettings.showDateSelection
+
+        RowLayout {
+            anchors.centerIn: parent
+
+            Controls.ToolButton {
+                display: Controls.AbstractButton.IconOnly
+                Controls.ToolTip.text: text
+                Controls.ToolTip.visible: hovered
+                icon.name: "go-previous"
+                text: i18nc("@info:tooltip", "previous day")
+                enabled: new Date().getDate() - (channelTable.date.getDate() - 1) <= TellySkoutSettings.deleteProgramAfter
+                onClicked: channelTable.date = new Date(channelTable.date.getTime() - 24 * 60 * 60 * 1000)
+            }
+
+            Controls.Label {
+                text: channelTable.date.toLocaleDateString(Qt.locale())
+                elide: Controls.Label.ElideRight
+                horizontalAlignment: Qt.AlignHCenter
+                verticalAlignment: Qt.AlignVCenter
+            }
+
+            Controls.ToolButton {
+                display: Controls.AbstractButton.IconOnly
+                Controls.ToolTip.text: text
+                Controls.ToolTip.visible: hovered
+                icon.name: "go-next"
+                text: i18nc("@info:tooltip", "next day")
+                enabled: (channelTable.date.getDate() + 1) - new Date().getDate() <= TellySkoutSettings.tvSpielfilmPrefetch
+                onClicked: channelTable.date = new Date(channelTable.date.getTime() + 24 * 60 * 60 * 1000)
+            }
+        }
     }
 
     ChannelsModel {

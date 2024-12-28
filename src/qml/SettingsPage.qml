@@ -63,6 +63,12 @@ FormCard.FormCardPage {
                 return text.substring(0, text.length - 2);
             }
         }
+
+        FormCard.FormSwitchDelegate {
+            text: i18nc("@option:check show date selection", "Show date selection:")
+            checked: TellySkoutSettings.showDateSelection
+            onCheckedChanged: TellySkoutSettings.showDateSelection = checked
+        }
     }
 
     FormCard.FormHeader {
