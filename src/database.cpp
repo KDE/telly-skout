@@ -231,6 +231,7 @@ void Database::cleanup()
     const unsigned int daysPast = TellySkoutSettings::deleteProgramAfter();
     QDateTime dateTimePast = QDateTime::currentDateTime();
     dateTimePast = dateTimePast.addDays(-static_cast<qint64>(daysPast));
+    dateTimePast.setTime(QTime()); // 00:00h, always keep the full day
 
     // delete programs in the far future (probably they have been added by mistake)
     QDateTime dateTimeFuture = QDateTime::currentDateTime();
