@@ -354,22 +354,31 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
                 description += QStringLiteral("<br>");
             }
 
-            static const QRegularExpression re(
-                QStringLiteral("<dt.*?>(.*?)</dt>.*?<dd.*?>\\s*(<a\\s*href=\\\".*?\\\"\\s*target=\\\".*?\\\"\\s*title=\\\".*?\\\">)?(.*?)(</a>)?\\s*</dd>"),
-                QRegularExpression::DotMatchesEverythingOption);
+            static const QRegularExpression re(QStringLiteral("<dt.*?>(.*?)</dt>.*?<dd.*?>(.*?)\\s*</dd>"), QRegularExpression::DotMatchesEverythingOption);
             QRegularExpressionMatchIterator it = re.globalMatch(actorsMatch.captured(1));
             while (it.hasNext()) {
                 const QRegularExpressionMatch match = it.next();
                 const QString role = match.captured(1).trimmed();
-                const QString name = match.captured(3).trimmed();
-                if (role == QStringLiteral("&nbsp;") && name == QStringLiteral("&nbsp;")) {
+                static const QRegularExpression reNames(
+                    QStringLiteral("\\s*(<a\\s*href=\\\".*?\\\"\\s*target=\\\".*?\\\"\\s*title=\\\".*?\\\">)?(.+?)(</a>)?\\s*(,|$)"),
+                    QRegularExpression::DotMatchesEverythingOption);
+                QString names = QStringLiteral("");
+                QRegularExpressionMatchIterator namesIt = reNames.globalMatch(match.captured(2));
+                while (namesIt.hasNext()) {
+                    if (!names.isEmpty()) {
+                        names += QStringLiteral(", ");
+                    }
+                    const QRegularExpressionMatch namesMatch = namesIt.next();
+                    names += namesMatch.captured(2).trimmed();
+                }
+                if (role == QStringLiteral("&nbsp;") && names == QStringLiteral("&nbsp;")) {
                     // split cast and crew into 2 sections
                     description += QStringLiteral("<br>");
                 } else {
                     if (role.endsWith(QLatin1Char(':'))) {
-                        description += QStringLiteral("<br>") + role + QLatin1Char(' ') + name;
+                        description += QStringLiteral("<br>") + role + QLatin1Char(' ') + names;
                     } else {
-                        description += QStringLiteral("<br>") + role + QStringLiteral(" - ") + name;
+                        description += QStringLiteral("<br>") + role + QStringLiteral(" - ") + names;
                     }
                 }
             }
