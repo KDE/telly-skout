@@ -296,7 +296,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
             if (!description.isEmpty()) {
                 description += QStringLiteral("<br>");
             }
-            description += i18n("Original title: ") + match.captured(1);
+            description += i18n("Original title: %1", match.captured(1));
         }
     }
 
@@ -308,7 +308,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
             if (!description.isEmpty()) {
                 description += QStringLiteral("<br>");
             }
-            description += i18n("Country: ") + match.captured(1);
+            description += i18n("Country: %1", match.captured(1));
         }
     }
 
@@ -320,7 +320,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
             if (!description.isEmpty()) {
                 description += QStringLiteral("<br>");
             }
-            description += i18n("Year: ") + match.captured(1);
+            description += i18n("Year: %1", match.captured(1));
         }
     }
 
@@ -332,7 +332,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
             if (!description.isEmpty()) {
                 description += QStringLiteral("<br>");
             }
-            description += i18n("Duration: ") + match.captured(1);
+            description += i18n("Duration: %1", match.captured(1));
         }
     }
 
@@ -344,7 +344,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
             if (!description.isEmpty()) {
                 description += QStringLiteral("<br>");
             }
-            description += i18n("FSK: ") + match.captured(1);
+            description += i18n("FSK: %1", match.captured(1));
         }
     }
 
