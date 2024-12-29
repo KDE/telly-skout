@@ -277,11 +277,14 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
 
     // description
     {
-        static const QRegularExpression re(QStringLiteral("<section class=\\\"broadcast-detail__description\\\">.*?<p>(.*?)</p>"),
+        static const QRegularExpression re(QStringLiteral("<section class=\\\"broadcast-detail__description\\\">.*?(<p>.*?)\\s*</section>"),
                                            QRegularExpression::DotMatchesEverythingOption);
         const QRegularExpressionMatch match = re.match(descriptionPage);
         if (match.hasMatch()) {
-            description += match.captured(1) + QStringLiteral("<br>");
+            QString descriptionHtml = match.captured(1);
+            descriptionHtml.replace(QStringLiteral("<p>"), QStringLiteral(""));
+            descriptionHtml.replace(QStringLiteral("</p>"), QStringLiteral("<br>"));
+            description += descriptionHtml;
         }
     }
 
