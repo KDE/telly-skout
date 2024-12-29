@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-22 00:43+0000\n"
-"PO-Revision-Date: 2024-08-15 05:44+0900\n"
+"POT-Creation-Date: 2024-12-29 00:45+0000\n"
+"PO-Revision-Date: 2024-12-29 01:52+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -74,17 +74,27 @@ msgid "Please select favorites"
 msgstr "請選取最愛"
 
 #: qml/ChannelTablePage.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgid "Refetch"
-msgstr "預先取得："
+msgstr "重新取得"
 
 #: qml/ChannelTablePage.qml:144
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
 msgstr "資訊無法使用"
+
+#: qml/ChannelTablePage.qml:205
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "previous day"
+msgstr ""
+
+#: qml/ChannelTablePage.qml:222
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "next day"
+msgstr ""
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -144,60 +154,66 @@ msgctxt "@option:spinbox"
 msgid "Font size:"
 msgstr "字型大小："
 
-#: qml/SettingsPage.qml:69
+#: qml/SettingsPage.qml:68
+#, kde-format
+msgctxt "@option:check show date selection"
+msgid "Show date selection:"
+msgstr ""
+
+#: qml/SettingsPage.qml:75
 #, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
 msgstr "節目"
 
-#: qml/SettingsPage.qml:74
+#: qml/SettingsPage.qml:80
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
 msgstr "多久之後刪除舊節目："
 
-#: qml/SettingsPage.qml:78 qml/SettingsPage.qml:107
+#: qml/SettingsPage.qml:84 qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
 msgid_plural "%1 days"
 msgstr[0] "%1 天"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:96
 #, kde-format
 msgid "Fetcher:"
 msgstr "抓取器："
 
-#: qml/SettingsPage.qml:91
+#: qml/SettingsPage.qml:97
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
 msgstr "載入節目用的抓取器。"
 
-#: qml/SettingsPage.qml:102
+#: qml/SettingsPage.qml:108
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
 msgstr "預先取得："
 
-#: qml/SettingsPage.qml:119
+#: qml/SettingsPage.qml:125
 #, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
 msgstr "檔案："
 
-#: qml/SettingsPage.qml:143
+#: qml/SettingsPage.qml:149
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
 msgstr "開啟檔案對話框"
 
-#: qml/SettingsPage.qml:149
+#: qml/SettingsPage.qml:155
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "XML 檔 (*.xml)"
 
-#: qml/SettingsPage.qml:149
+#: qml/SettingsPage.qml:155
 #, kde-format
 msgid "All files (*)"
 msgstr "所有檔案 (*)"

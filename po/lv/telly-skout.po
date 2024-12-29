@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-22 00:43+0000\n"
+"POT-Creation-Date: 2024-12-29 00:45+0000\n"
 "PO-Revision-Date: 2024-08-22 17:03+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -84,6 +84,18 @@ msgctxt "placeholder message"
 msgid "Information not available"
 msgstr "Informācija nav pieejama"
 
+#: qml/ChannelTablePage.qml:205
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "previous day"
+msgstr ""
+
+#: qml/ChannelTablePage.qml:222
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "next day"
+msgstr ""
+
 #: qml/GroupListDelegate.qml:30
 #, kde-format
 msgid "Channels"
@@ -142,19 +154,25 @@ msgctxt "@option:spinbox"
 msgid "Font size:"
 msgstr "Fonta izmērs:"
 
-#: qml/SettingsPage.qml:69
+#: qml/SettingsPage.qml:68
+#, kde-format
+msgctxt "@option:check show date selection"
+msgid "Show date selection:"
+msgstr ""
+
+#: qml/SettingsPage.qml:75
 #, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
 msgstr "Programmas"
 
-#: qml/SettingsPage.qml:74
+#: qml/SettingsPage.qml:80
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
 msgstr "Dzēst vecās programmas pēc:"
 
-#: qml/SettingsPage.qml:78 qml/SettingsPage.qml:107
+#: qml/SettingsPage.qml:84 qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
@@ -163,41 +181,41 @@ msgstr[0] "%1 dienas"
 msgstr[1] "%1 dienām"
 msgstr[2] "%1 dienām"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:96
 #, kde-format
 msgid "Fetcher:"
 msgstr "Ienesējs:"
 
-#: qml/SettingsPage.qml:91
+#: qml/SettingsPage.qml:97
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
 msgstr "Ienesējs ielādē programmas."
 
-#: qml/SettingsPage.qml:102
+#: qml/SettingsPage.qml:108
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
 msgstr "Priekšienese:"
 
-#: qml/SettingsPage.qml:119
+#: qml/SettingsPage.qml:125
 #, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
 msgstr "Datne:"
 
-#: qml/SettingsPage.qml:143
+#: qml/SettingsPage.qml:149
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
 msgstr "Atvērt datnes lodziņu"
 
-#: qml/SettingsPage.qml:149
+#: qml/SettingsPage.qml:155
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "XML datnes (*.xml)"
 
-#: qml/SettingsPage.qml:149
+#: qml/SettingsPage.qml:155
 #, kde-format
 msgid "All files (*)"
 msgstr "Visas datnes (*)"

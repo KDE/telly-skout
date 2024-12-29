@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-22 00:43+0000\n"
+"POT-Creation-Date: 2024-12-29 00:45+0000\n"
 "PO-Revision-Date: 2024-12-21 07:50+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -84,6 +84,18 @@ msgctxt "placeholder message"
 msgid "Information not available"
 msgstr "Informazioa ez dago erabilgarri"
 
+#: qml/ChannelTablePage.qml:205
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "previous day"
+msgstr ""
+
+#: qml/ChannelTablePage.qml:222
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "next day"
+msgstr ""
+
 #: qml/GroupListDelegate.qml:30
 #, kde-format
 msgid "Channels"
@@ -142,19 +154,25 @@ msgctxt "@option:spinbox"
 msgid "Font size:"
 msgstr "Letra-tipoaren neurria:"
 
-#: qml/SettingsPage.qml:69
+#: qml/SettingsPage.qml:68
+#, kde-format
+msgctxt "@option:check show date selection"
+msgid "Show date selection:"
+msgstr ""
+
+#: qml/SettingsPage.qml:75
 #, kde-format
 msgctxt "@title:group Programs as TV programs"
 msgid "Programs"
 msgstr "Programak"
 
-#: qml/SettingsPage.qml:74
+#: qml/SettingsPage.qml:80
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Delete old programs after:"
 msgstr "Programa zaharrak ezabatzeko epea:"
 
-#: qml/SettingsPage.qml:78 qml/SettingsPage.qml:107
+#: qml/SettingsPage.qml:84 qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "Number in days"
 msgid "%1 day"
@@ -162,41 +180,41 @@ msgid_plural "%1 days"
 msgstr[0] "egun %1"
 msgstr[1] "%1 egun"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:96
 #, kde-format
 msgid "Fetcher:"
 msgstr "Eskuratzailea:"
 
-#: qml/SettingsPage.qml:91
+#: qml/SettingsPage.qml:97
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
 msgstr "Programa zamatzen duen eskuratzailea."
 
-#: qml/SettingsPage.qml:102
+#: qml/SettingsPage.qml:108
 #, kde-format
 msgctxt "@option:spinbox"
 msgid "Prefetch:"
 msgstr "Aurrez eskuratu:"
 
-#: qml/SettingsPage.qml:119
+#: qml/SettingsPage.qml:125
 #, kde-format
 msgctxt "@label:textbox"
 msgid "File:"
 msgstr "Fitxategia:"
 
-#: qml/SettingsPage.qml:143
+#: qml/SettingsPage.qml:149
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
 msgstr "Ireki fitxategien elkarrizketa-koadroa"
 
-#: qml/SettingsPage.qml:149
+#: qml/SettingsPage.qml:155
 #, kde-format
 msgid "XML files (*.xml)"
 msgstr "XML fitxategiak (*.xml)"
 
-#: qml/SettingsPage.qml:149
+#: qml/SettingsPage.qml:155
 #, kde-format
 msgid "All files (*)"
 msgstr "Fitxategi guztiak (*)"
