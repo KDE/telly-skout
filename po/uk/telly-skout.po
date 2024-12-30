@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-29 00:45+0000\n"
-"PO-Revision-Date: 2024-12-21 10:06+0200\n"
+"POT-Creation-Date: 2024-12-30 00:45+0000\n"
+"PO-Revision-Date: 2024-12-29 12:53+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -86,13 +86,13 @@ msgstr "Немає доступу до даних"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
-msgstr ""
+msgstr "попередній день"
 
 #: qml/ChannelTablePage.qml:222
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
-msgstr ""
+msgstr "наступний день"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -156,7 +156,7 @@ msgstr "Розмір шрифту:"
 #, kde-format
 msgctxt "@option:check show date selection"
 msgid "Show date selection:"
-msgstr ""
+msgstr "Показати вибрані дати:"
 
 #: qml/SettingsPage.qml:75
 #, kde-format
@@ -249,29 +249,34 @@ msgstr "Про програму"
 msgid "Germany"
 msgstr "Німеччина"
 
-#: tvspielfilmfetcher.cpp:296
-#, kde-format
-msgid "Original title: "
+#: tvspielfilmfetcher.cpp:299
+#, fuzzy, kde-format
+#| msgid "Original title: "
+msgid "Original title: %1"
 msgstr "Початкова назва: "
 
-#: tvspielfilmfetcher.cpp:308
-#, kde-format
-msgid "Country: "
+#: tvspielfilmfetcher.cpp:311
+#, fuzzy, kde-format
+#| msgid "Country: "
+msgid "Country: %1"
 msgstr "Країна: "
 
-#: tvspielfilmfetcher.cpp:320
-#, kde-format
-msgid "Year: "
+#: tvspielfilmfetcher.cpp:323
+#, fuzzy, kde-format
+#| msgid "Year: "
+msgid "Year: %1"
 msgstr "Рік: "
 
-#: tvspielfilmfetcher.cpp:332
-#, kde-format
-msgid "Duration: "
+#: tvspielfilmfetcher.cpp:335
+#, fuzzy, kde-format
+#| msgid "Duration: "
+msgid "Duration: %1"
 msgstr "Тривалість: "
 
-#: tvspielfilmfetcher.cpp:344
-#, kde-format
-msgid "FSK: "
+#: tvspielfilmfetcher.cpp:347
+#, fuzzy, kde-format
+#| msgid "FSK: "
+msgid "FSK: %1"
 msgstr "FSK: "
 
 #: xmltvfetcher.cpp:43

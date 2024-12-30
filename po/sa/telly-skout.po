@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-29 00:45+0000\n"
-"PO-Revision-Date: 2024-12-24 20:39+0530\n"
+"POT-Creation-Date: 2024-12-30 00:45+0000\n"
+"PO-Revision-Date: 2024-12-29 23:01+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -87,13 +87,13 @@ msgstr "सूचना उपलब्धा नास्ति"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
-msgstr ""
+msgstr "पूर्वदिने"
 
 #: qml/ChannelTablePage.qml:222
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
-msgstr ""
+msgstr "परदिने"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -157,7 +157,7 @@ msgstr "फ़ॉन्ट् आकारः :"
 #, kde-format
 msgctxt "@option:check show date selection"
 msgid "Show date selection:"
-msgstr ""
+msgstr "तिथिचयनं दर्शयतु :"
 
 #: qml/SettingsPage.qml:75
 #, kde-format
@@ -248,29 +248,34 @@ msgstr "विषये"
 msgid "Germany"
 msgstr "जर्मनीदेशः"
 
-#: tvspielfilmfetcher.cpp:296
-#, kde-format
-msgid "Original title: "
+#: tvspielfilmfetcher.cpp:299
+#, fuzzy, kde-format
+#| msgid "Original title: "
+msgid "Original title: %1"
 msgstr "मूल शीर्षक : "
 
-#: tvspielfilmfetcher.cpp:308
-#, kde-format
-msgid "Country: "
+#: tvspielfilmfetcher.cpp:311
+#, fuzzy, kde-format
+#| msgid "Country: "
+msgid "Country: %1"
 msgstr "देशः: "
 
-#: tvspielfilmfetcher.cpp:320
-#, kde-format
-msgid "Year: "
+#: tvspielfilmfetcher.cpp:323
+#, fuzzy, kde-format
+#| msgid "Year: "
+msgid "Year: %1"
 msgstr "वर्ष: "
 
-#: tvspielfilmfetcher.cpp:332
-#, kde-format
-msgid "Duration: "
+#: tvspielfilmfetcher.cpp:335
+#, fuzzy, kde-format
+#| msgid "Duration: "
+msgid "Duration: %1"
 msgstr "अवधि: "
 
-#: tvspielfilmfetcher.cpp:344
-#, kde-format
-msgid "FSK: "
+#: tvspielfilmfetcher.cpp:347
+#, fuzzy, kde-format
+#| msgid "FSK: "
+msgid "FSK: %1"
 msgstr "एफएसके : "
 
 #: xmltvfetcher.cpp:43
