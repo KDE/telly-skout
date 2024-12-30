@@ -38,7 +38,7 @@ Kirigami.Page {
         Kirigami.Action {
             text: i18n("Refetch")
             icon.name: "view-refresh"
-            visible: contentRepeater.count !== 0
+            visible: contentRepeater.count !== 0 && !isLoading
             onTriggered: Fetcher.fetchFavorites(true)
         }
     ]
