@@ -192,7 +192,7 @@ Kirigami.Page {
     }
 
     footer: Controls.ToolBar {
-        visible: TellySkoutSettings.showDateSelection
+        visible: TellySkoutSettings.showDateSelection && contentRepeater.count !== 0 && !isLoading
 
         RowLayout {
             anchors.centerIn: parent
