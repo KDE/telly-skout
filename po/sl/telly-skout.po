@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-22 02:36+0000\n"
+"POT-Creation-Date: 2024-12-30 02:43+0000\n"
 "PO-Revision-Date: 2024-12-21 07:49+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -231,29 +231,34 @@ msgstr "O programu"
 msgid "Germany"
 msgstr "Nemčija"
 
-#: tvspielfilmfetcher.cpp:296
-#, kde-format
-msgid "Original title: "
+#: tvspielfilmfetcher.cpp:299
+#, fuzzy, kde-format
+#| msgid "Original title: "
+msgid "Original title: %1"
 msgstr "Izvirni naslov: "
 
-#: tvspielfilmfetcher.cpp:308
-#, kde-format
-msgid "Country: "
+#: tvspielfilmfetcher.cpp:311
+#, fuzzy, kde-format
+#| msgid "Country: "
+msgid "Country: %1"
 msgstr "Država: "
 
-#: tvspielfilmfetcher.cpp:320
-#, kde-format
-msgid "Year: "
+#: tvspielfilmfetcher.cpp:323
+#, fuzzy, kde-format
+#| msgid "Year: "
+msgid "Year: %1"
 msgstr "Leto: "
 
-#: tvspielfilmfetcher.cpp:332
-#, kde-format
-msgid "Duration: "
+#: tvspielfilmfetcher.cpp:335
+#, fuzzy, kde-format
+#| msgid "Duration: "
+msgid "Duration: %1"
 msgstr "Trajanje: "
 
-#: tvspielfilmfetcher.cpp:344
-#, kde-format
-msgid "FSK: "
+#: tvspielfilmfetcher.cpp:347
+#, fuzzy, kde-format
+#| msgid "FSK: "
+msgid "FSK: %1"
 msgstr "FSK: "
 
 #: xmltvfetcher.cpp:43

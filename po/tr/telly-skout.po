@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-22 02:36+0000\n"
+"POT-Creation-Date: 2024-12-30 02:43+0000\n"
 "PO-Revision-Date: 2024-12-21 14:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -228,29 +228,34 @@ msgstr "Hakkında"
 msgid "Germany"
 msgstr "Almanya"
 
-#: tvspielfilmfetcher.cpp:296
-#, kde-format
-msgid "Original title: "
+#: tvspielfilmfetcher.cpp:299
+#, fuzzy, kde-format
+#| msgid "Original title: "
+msgid "Original title: %1"
 msgstr "Özgün başlık: "
 
-#: tvspielfilmfetcher.cpp:308
-#, kde-format
-msgid "Country: "
+#: tvspielfilmfetcher.cpp:311
+#, fuzzy, kde-format
+#| msgid "Country: "
+msgid "Country: %1"
 msgstr "Ülke: "
 
-#: tvspielfilmfetcher.cpp:320
-#, kde-format
-msgid "Year: "
+#: tvspielfilmfetcher.cpp:323
+#, fuzzy, kde-format
+#| msgid "Year: "
+msgid "Year: %1"
 msgstr "Yıl: "
 
-#: tvspielfilmfetcher.cpp:332
-#, kde-format
-msgid "Duration: "
+#: tvspielfilmfetcher.cpp:335
+#, fuzzy, kde-format
+#| msgid "Duration: "
+msgid "Duration: %1"
 msgstr "Süre: "
 
-#: tvspielfilmfetcher.cpp:344
-#, kde-format
-msgid "FSK: "
+#: tvspielfilmfetcher.cpp:347
+#, fuzzy, kde-format
+#| msgid "FSK: "
+msgid "FSK: %1"
 msgstr "FKA: "
 
 #: xmltvfetcher.cpp:43
