@@ -25,17 +25,6 @@ Kirigami.ScrollablePage {
         }
     }
 
-    Kirigami.PlaceholderMessage {
-        visible: channelList.count === 0
-        width: Kirigami.Units.gridUnit * 20
-        anchors.centerIn: parent
-        text: i18n("Loading channels...")
-
-        Controls.BusyIndicator {
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-        }
-    }
-
     ListView {
         id: channelList
 
@@ -43,6 +32,12 @@ Kirigami.ScrollablePage {
         model: root.showOnlyFavorites ? channelsModel : proxyModel
         currentIndex: -1 // do not select first list item
         reuseItems: true
+
+        Kirigami.LoadingPlaceholder {
+            visible: channelList.count === 0
+            anchors.centerIn: parent
+            text: i18n("Loading channels...")
+        }
 
         ChannelsProxyModel {
             id: proxyModel
