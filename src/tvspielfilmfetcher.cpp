@@ -54,16 +54,17 @@ void TvSpielfilmFetcher::fetchGroup(const QString &url,
                 QMap<ChannelId, ChannelData> channels;
                 const QString channelList = matchChannelList.captured(0);
 
-                static const QRegularExpression reChannel(QStringLiteral("<option.*?value=\\\"(.*?)\\\">&nbsp;&nbsp;(.*?)</option>"),
-                                                          QRegularExpression::DotMatchesEverythingOption);
+                static const QRegularExpression reChannel(
+                    QStringLiteral("<option\\s+data-group=\\\"(.*?)\\\"\\s+value=\\\"(.*?)\\\">(&nbsp;&nbsp;)?(.*?)</option>"),
+                    QRegularExpression::DotMatchesEverythingOption);
                 QRegularExpressionMatchIterator it = reChannel.globalMatch(channelList);
                 while (it.hasNext()) {
                     const QRegularExpressionMatch channelMatch = it.next();
-                    const ChannelId id = ChannelId(channelMatch.captured(1));
+                    const ChannelId id = ChannelId(channelMatch.captured(2));
 
                     // exclude groups (e.g. "alle Sender" or "g:1")
-                    if (id.value().length() > 0 && !id.value().contains(QStringLiteral("g:"))) {
-                        const QString name = channelMatch.captured(2);
+                    if (id.value().length() > 0 && !id.value().contains(QStringLiteral("g:")) && !id.value().contains(QStringLiteral("label="))) {
+                        const QString name = channelMatch.captured(4);
                         fetchChannel(id, name, channels);
                     }
                 }
