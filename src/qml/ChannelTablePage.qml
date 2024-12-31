@@ -134,10 +134,11 @@ Kirigami.Page {
                     Layout.minimumWidth: root.columnWidth
                     Layout.fillHeight: true
 
-                    Item {
+                    Rectangle {
                         Layout.fillWidth: true
 
                         implicitHeight: column.implicitHeight
+                        color: channelDelegate.index % 2 == 0 ? "transparent" : Kirigami.Theme.alternateBackgroundColor
 
                         // show info if program is not available
                         Kirigami.PlaceholderMessage {
@@ -166,7 +167,6 @@ Kirigami.Page {
                                 }
 
                                 delegate: ChannelTableDelegate {
-                                    index: channelDelegate.index
                                     dialog: detailsDialog
                                     pxPerMin: channelTable.pxPerMin
                                     startTime: channelTable.start
