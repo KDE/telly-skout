@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-30 02:43+0000\n"
+"POT-Creation-Date: 2024-12-31 02:34+0000\n"
 "PO-Revision-Date: 2024-03-27 22:43+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
@@ -54,7 +54,7 @@ msgctxt "@title"
 msgid "Channels"
 msgstr ""
 
-#: qml/ChannelListPage.qml:32
+#: qml/ChannelListPage.qml:39
 #, kde-format
 msgid "Loading channels..."
 msgstr ""

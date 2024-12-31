@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-30 02:43+0000\n"
-"PO-Revision-Date: 2024-08-11 08:38+0300\n"
+"POT-Creation-Date: 2024-12-31 02:34+0000\n"
+"PO-Revision-Date: 2024-12-30 17:36+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -55,7 +55,7 @@ msgctxt "@title"
 msgid "Channels"
 msgstr "ערוצים"
 
-#: qml/ChannelListPage.qml:32
+#: qml/ChannelListPage.qml:39
 #, kde-format
 msgid "Loading channels..."
 msgstr "הערוצים נטענים"
@@ -234,34 +234,29 @@ msgid "Germany"
 msgstr "גרמניה"
 
 #: tvspielfilmfetcher.cpp:299
-#, fuzzy, kde-format
-#| msgid "Original title: "
+#, kde-format
 msgid "Original title: %1"
-msgstr "כותרת מקורית:"
+msgstr "כותרת מקורית: %1"
 
 #: tvspielfilmfetcher.cpp:311
-#, fuzzy, kde-format
-#| msgid "Country: "
+#, kde-format
 msgid "Country: %1"
-msgstr "מדינה:"
+msgstr "מדינה: %1"
 
 #: tvspielfilmfetcher.cpp:323
-#, fuzzy, kde-format
-#| msgid "Year: "
+#, kde-format
 msgid "Year: %1"
-msgstr "שנה:"
+msgstr "שנה: %1"
 
 #: tvspielfilmfetcher.cpp:335
-#, fuzzy, kde-format
-#| msgid "Duration: "
+#, kde-format
 msgid "Duration: %1"
-msgstr "משך:"
+msgstr "משך: %1"
 
 #: tvspielfilmfetcher.cpp:347
-#, fuzzy, kde-format
-#| msgid "FSK: "
+#, kde-format
 msgid "FSK: %1"
-msgstr "FSK (מדד הצנזורה הגרמני):"
+msgstr "FSK (מדד הצנזורה הגרמני): %1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format
