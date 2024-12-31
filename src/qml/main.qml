@@ -12,16 +12,12 @@ Kirigami.ApplicationWindow {
     id: root
 
     title: "Telly Skout"
-    pageStack.initialPage: channelTable
-
-    ChannelTablePage {
-        id: channelTable
-
+    pageStack.initialPage: ChannelTablePage {
         windowHeight: root.height
     }
 
     globalDrawer: TellySkoutGlobalDrawer {
-        channelTablePage: channelTable
+        windowHeight: root.height
     }
 
     contextDrawer: Kirigami.ContextDrawer {}

@@ -17,7 +17,7 @@ Kirigami.ScrollablePage {
     property bool showOnlyFavorites: false
     property bool sortingChanged: false
 
-    title: i18nc("@title", "Channels")
+    title: sortable ? i18nc("@title", "Sort Favorites") : i18nc("@title", "Channels")
     Component.onDestruction: {
         if (sortable && sortingChanged) {
             channelsModel.save();

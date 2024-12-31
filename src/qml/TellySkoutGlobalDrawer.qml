@@ -9,7 +9,7 @@ import org.kde.kirigami as Kirigami
 Kirigami.GlobalDrawer {
     id: root
 
-    property var channelTablePage
+    required property int windowHeight
 
     isMenu: true
     actions: [
@@ -18,32 +18,43 @@ Kirigami.GlobalDrawer {
             icon.name: "view-calendar-day"
             onTriggered: {
                 pageStack.layers.clear();
-                pageStack.clear();
-                pageStack.push(channelTablePage);
-                Fetcher.fetchFavorites();
+                if (pageStack.currentItem.title !== i18n("Favorites")) {
+                    pageStack.clear();
+                    pageStack.push("qrc:/qml/ChannelTablePage.qml", {
+                        "windowHeight": root.windowHeight
+                    });
+                    Fetcher.fetchFavorites();
+                }
             }
+            enabled: pageStack.layers.depth > 1 || pageStack.currentItem.title !== i18n("Favorites")
         },
         Kirigami.Action {
             text: i18n("Select Favorites")
             icon.name: "favorite"
             onTriggered: {
                 pageStack.layers.clear();
-                pageStack.clear();
-                pageStack.push("qrc:/qml/GroupListPage.qml");
+                if (pageStack.currentItem.title !== i18n("Select Favorites")) {
+                    pageStack.clear();
+                    pageStack.push("qrc:/qml/GroupListPage.qml");
+                }
             }
+            enabled: pageStack.layers.depth > 1 || pageStack.currentItem.title !== i18n("Select Favorites")
         },
         Kirigami.Action {
             text: i18n("Sort Favorites")
             icon.name: "view-sort"
             onTriggered: {
                 pageStack.layers.clear();
-                pageStack.clear();
-                pageStack.push("qrc:/qml/ChannelListPage.qml", {
-                    "sortable": true,
-                    "showOnlyFavorites": true,
-                    "groupFilter": ""
-                });
+                if (pageStack.currentItem.title !== i18n("Sort Favorites")) {
+                    pageStack.clear();
+                    pageStack.push("qrc:/qml/ChannelListPage.qml", {
+                        "sortable": true,
+                        "showOnlyFavorites": true,
+                        "groupFilter": ""
+                    });
+                }
             }
+            enabled: pageStack.layers.depth > 1 || pageStack.currentItem.title !== i18n("Sort Favorites")
         },
         Kirigami.Action {
             text: i18n("Settings")
@@ -55,7 +66,7 @@ Kirigami.GlobalDrawer {
             text: i18n("About")
             icon.name: "help-about-symbolic"
             onTriggered: pageStack.layers.push(Qt.createComponent('org.kde.kirigamiaddons.formcard', 'AboutPage'))
-            enabled: pageStack.layers.currentItem.title !== i18n("About")
+            enabled: pageStack.layers.currentItem.title !== i18n("About Telly Skout")
         }
     ]
 }
