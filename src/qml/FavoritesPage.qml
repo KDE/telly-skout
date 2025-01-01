@@ -166,7 +166,7 @@ Kirigami.Page {
                                     sourceModel: channelDelegate.modelData.programsModel
                                 }
 
-                                delegate: ChannelTableDelegate {
+                                delegate: ProgramDelegate {
                                     dialog: detailsDialog
                                     pxPerMin: channelTable.pxPerMin
                                     startTime: channelTable.start
