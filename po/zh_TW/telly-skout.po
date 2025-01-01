@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-31 02:34+0000\n"
+"POT-Creation-Date: 2025-01-01 02:34+0000\n"
 "PO-Revision-Date: 2024-12-29 01:52+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -230,31 +230,31 @@ msgstr "關於"
 msgid "Germany"
 msgstr "德國"
 
-#: tvspielfilmfetcher.cpp:299
+#: tvspielfilmfetcher.cpp:300
 #, fuzzy, kde-format
 #| msgid "Original title: "
 msgid "Original title: %1"
 msgstr "原始標題："
 
-#: tvspielfilmfetcher.cpp:311
+#: tvspielfilmfetcher.cpp:312
 #, fuzzy, kde-format
 #| msgid "Country: "
 msgid "Country: %1"
 msgstr "國家："
 
-#: tvspielfilmfetcher.cpp:323
+#: tvspielfilmfetcher.cpp:324
 #, fuzzy, kde-format
 #| msgid "Year: "
 msgid "Year: %1"
 msgstr "年："
 
-#: tvspielfilmfetcher.cpp:335
+#: tvspielfilmfetcher.cpp:336
 #, fuzzy, kde-format
 #| msgid "Duration: "
 msgid "Duration: %1"
 msgstr "時長："
 
-#: tvspielfilmfetcher.cpp:347
+#: tvspielfilmfetcher.cpp:348
 #, fuzzy, kde-format
 #| msgid "FSK: "
 msgid "FSK: %1"
