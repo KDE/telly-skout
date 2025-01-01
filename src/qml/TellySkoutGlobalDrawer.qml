@@ -26,7 +26,7 @@ Kirigami.GlobalDrawer {
                     Fetcher.fetchFavorites();
                 }
             }
-            enabled: pageStack.layers.depth > 1 || pageStack.currentItem.title !== i18n("Favorites")
+            enabled: pageStack.layers.depth > 1 || (pageStack.currentItem !== null && pageStack.currentItem.title !== i18n("Favorites"))
         },
         Kirigami.Action {
             text: i18n("Select Favorites")
@@ -38,7 +38,7 @@ Kirigami.GlobalDrawer {
                     pageStack.push("qrc:/qml/GroupListPage.qml");
                 }
             }
-            enabled: pageStack.layers.depth > 1 || pageStack.currentItem.title !== i18n("Select Favorites")
+            enabled: pageStack.layers.depth > 1 || (pageStack.currentItem !== null && pageStack.currentItem.title !== i18n("Select Favorites"))
         },
         Kirigami.Action {
             text: i18n("Sort Favorites")
@@ -50,7 +50,7 @@ Kirigami.GlobalDrawer {
                     pageStack.push("qrc:/qml/SortFavoritesPage.qml");
                 }
             }
-            enabled: pageStack.layers.depth > 1 || pageStack.currentItem.title !== i18n("Sort Favorites")
+            enabled: pageStack.layers.depth > 1 || (pageStack.currentItem !== null && pageStack.currentItem.title !== i18n("Sort Favorites"))
         },
         Kirigami.Action {
             text: i18n("Settings")
