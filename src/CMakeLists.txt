@@ -52,12 +52,13 @@ add_executable(telly-skout-app
 ecm_add_qml_module(telly-skout-app URI org.kde.TellySkout.app NO_RESOURCE_TARGET_PATH
     QML_FILES
         qml/ChannelListDelegate.qml
-        qml/ChannelListPage.qml
         qml/FavoritesPage.qml
         qml/GroupListDelegate.qml
         qml/GroupListPage.qml
         qml/ProgramDelegate.qml
         qml/SettingsPage.qml
+        qml/SelectFavoritesPage.qml
+        qml/SortFavoritesPage.qml
         qml/TellySkoutGlobalDrawer.qml
         qml/main.qml
 )

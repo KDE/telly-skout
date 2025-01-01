@@ -26,9 +26,8 @@ Controls.ItemDelegate {
                     Fetcher.fetchGroup(model.group.url, model.group.id);
                     while (pageStack.depth > 1)
                         pageStack.pop();
-                    pageStack.push("qrc:/qml/ChannelListPage.qml", {
+                    pageStack.push("qrc:/qml/SelectFavoritesPage.qml", {
                         "title": i18n("Channels") + " (" + i18n(model.group.name) + ")",
-                        "showOnlyFavorites": false,
                         "groupFilter": lastGroup
                     });
                 }

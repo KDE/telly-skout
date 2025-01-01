@@ -47,11 +47,7 @@ Kirigami.GlobalDrawer {
                 pageStack.layers.clear();
                 if (pageStack.currentItem.title !== i18n("Sort Favorites")) {
                     pageStack.clear();
-                    pageStack.push("qrc:/qml/ChannelListPage.qml", {
-                        "sortable": true,
-                        "showOnlyFavorites": true,
-                        "groupFilter": ""
-                    });
+                    pageStack.push("qrc:/qml/SortFavoritesPage.qml");
                 }
             }
             enabled: pageStack.layers.depth > 1 || pageStack.currentItem.title !== i18n("Sort Favorites")

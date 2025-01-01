@@ -13,23 +13,14 @@ Kirigami.ScrollablePage {
 
     property string lastChannel: ""
     property string groupFilter: ""
-    property bool sortable: false
-    property bool showOnlyFavorites: false
-    property bool sortingChanged: false
 
-    title: sortable ? i18nc("@title", "Sort Favorites") : i18nc("@title", "Channels")
-    Component.onDestruction: {
-        if (sortable && sortingChanged) {
-            channelsModel.save();
-            sortingChanged = false;
-        }
-    }
+    title: i18nc("@title", "Channels")
 
     ListView {
         id: channelList
 
         anchors.fill: parent
-        model: root.showOnlyFavorites ? channelsModel : proxyModel
+        model: proxyModel
         currentIndex: -1 // do not select first list item
         reuseItems: true
 
@@ -50,16 +41,12 @@ Kirigami.ScrollablePage {
         ChannelsModel {
             id: channelsModel
 
-            onlyFavorites: root.showOnlyFavorites
-            onRowsMoved: {
-                if (root.sortable)
-                    root.sortingChanged = true;
-            }
+            onlyFavorites: false
         }
 
         delegate: ChannelListDelegate {
             listView: channelList
-            sortable: root.sortable
+            sortable: false
         }
     }
 }
