@@ -54,7 +54,7 @@ ecm_add_qml_module(telly-skout-app URI org.kde.TellySkout.app NO_RESOURCE_TARGET
         qml/ChannelListDelegate.qml
         qml/ChannelListPage.qml
         qml/ChannelTableDelegate.qml
-        qml/ChannelTablePage.qml
+        qml/FavoritesPage.qml
         qml/GroupListDelegate.qml
         qml/GroupListPage.qml
         qml/SettingsPage.qml

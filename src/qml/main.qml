@@ -12,7 +12,7 @@ Kirigami.ApplicationWindow {
     id: root
 
     title: "Telly Skout"
-    pageStack.initialPage: ChannelTablePage {
+    pageStack.initialPage: FavoritesPage {
         windowHeight: root.height
     }
 

@@ -20,7 +20,7 @@ Kirigami.GlobalDrawer {
                 pageStack.layers.clear();
                 if (pageStack.currentItem.title !== i18n("Favorites")) {
                     pageStack.clear();
-                    pageStack.push("qrc:/qml/ChannelTablePage.qml", {
+                    pageStack.push("qrc:/qml/FavoritesPage.qml", {
                         "windowHeight": root.windowHeight
                     });
                     Fetcher.fetchFavorites();
