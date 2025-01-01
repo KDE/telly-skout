@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-31 00:44+0000\n"
-"PO-Revision-Date: 2024-12-21 10:08+0100\n"
+"POT-Creation-Date: 2025-01-01 00:44+0000\n"
+"PO-Revision-Date: 2024-12-30 08:31+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -51,6 +51,13 @@ msgid "Favorite"
 msgstr "Preferit"
 
 #: qml/ChannelListPage.qml:20
+#, fuzzy, kde-format
+#| msgid "Sort Favorites"
+msgctxt "@title"
+msgid "Sort Favorites"
+msgstr "Ordena els preferits"
+
+#: qml/ChannelListPage.qml:20
 #, kde-format
 msgctxt "@title"
 msgid "Channels"
@@ -77,7 +84,7 @@ msgstr "Seleccioneu els preferits"
 msgid "Refetch"
 msgstr "Torna a obtindre"
 
-#: qml/ChannelTablePage.qml:144
+#: qml/ChannelTablePage.qml:145
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
@@ -87,13 +94,13 @@ msgstr "Informació no disponible"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
-msgstr ""
+msgstr "dia anterior"
 
 #: qml/ChannelTablePage.qml:222
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
-msgstr ""
+msgstr "dia següent"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -157,7 +164,7 @@ msgstr "Mida de la lletra:"
 #, kde-format
 msgctxt "@option:check show date selection"
 msgid "Show date selection:"
-msgstr ""
+msgstr "Mostra la selecció de dates:"
 
 #: qml/SettingsPage.qml:75
 #, kde-format
@@ -218,66 +225,70 @@ msgstr "Fitxers en XML (*.xml)"
 msgid "All files (*)"
 msgstr "Tots els fitxers (*)"
 
-#: qml/TellySkoutGlobalDrawer.qml:17
+#: qml/TellySkoutGlobalDrawer.qml:17 qml/TellySkoutGlobalDrawer.qml:21
+#: qml/TellySkoutGlobalDrawer.qml:29
 #, kde-format
 msgid "Favorites"
 msgstr "Preferits"
 
-#: qml/TellySkoutGlobalDrawer.qml:27
+#: qml/TellySkoutGlobalDrawer.qml:32 qml/TellySkoutGlobalDrawer.qml:36
+#: qml/TellySkoutGlobalDrawer.qml:41
 #, kde-format
 msgid "Select Favorites"
 msgstr "Seleccioneu els preferits"
 
-#: qml/TellySkoutGlobalDrawer.qml:36
+#: qml/TellySkoutGlobalDrawer.qml:44 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/TellySkoutGlobalDrawer.qml:57
 #, kde-format
 msgid "Sort Favorites"
 msgstr "Ordena els preferits"
 
-#: qml/TellySkoutGlobalDrawer.qml:49 qml/TellySkoutGlobalDrawer.qml:52
+#: qml/TellySkoutGlobalDrawer.qml:60 qml/TellySkoutGlobalDrawer.qml:63
 #, kde-format
 msgid "Settings"
 msgstr "Configuració"
 
-#: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
+#: qml/TellySkoutGlobalDrawer.qml:66
 #, kde-format
 msgid "About"
 msgstr "Quant a"
+
+#: qml/TellySkoutGlobalDrawer.qml:69
+#, fuzzy, kde-format
+#| msgid "Telly Skout"
+msgid "About Telly Skout"
+msgstr "Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
 msgid "Germany"
 msgstr "Alemanya"
 
-#: tvspielfilmfetcher.cpp:299
-#, fuzzy, kde-format
-#| msgid "Original title: "
+#: tvspielfilmfetcher.cpp:300
+#, kde-format
 msgid "Original title: %1"
-msgstr "Títol original: "
+msgstr "Títol original: %1"
 
-#: tvspielfilmfetcher.cpp:311
-#, fuzzy, kde-format
-#| msgid "Country: "
+#: tvspielfilmfetcher.cpp:312
+#, kde-format
 msgid "Country: %1"
-msgstr "País: "
+msgstr "País: %1"
 
-#: tvspielfilmfetcher.cpp:323
-#, fuzzy, kde-format
-#| msgid "Year: "
+#: tvspielfilmfetcher.cpp:324
+#, kde-format
 msgid "Year: %1"
-msgstr "Any: "
+msgstr "Any: %1"
 
-#: tvspielfilmfetcher.cpp:335
-#, fuzzy, kde-format
-#| msgid "Duration: "
+#: tvspielfilmfetcher.cpp:336
+#, kde-format
 msgid "Duration: %1"
-msgstr "Duració: "
+msgstr "Duració: %1"
 
 # NdT: FSK és l'organisme que classifica les pel·licules a Alemanya (0, 6, 12, 16, 18 anys)
-#: tvspielfilmfetcher.cpp:347
-#, fuzzy, kde-format
-#| msgid "FSK: "
+#: tvspielfilmfetcher.cpp:348
+#, kde-format
 msgid "FSK: %1"
-msgstr "FSK: "
+msgstr "FSK: %1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format

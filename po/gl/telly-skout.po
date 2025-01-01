@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-31 00:44+0000\n"
-"PO-Revision-Date: 2024-12-21 13:11+0100\n"
+"POT-Creation-Date: 2025-01-01 00:44+0000\n"
+"PO-Revision-Date: 2024-12-31 09:33+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -49,6 +49,13 @@ msgid "Favorite"
 msgstr "Favorita"
 
 #: qml/ChannelListPage.qml:20
+#, fuzzy, kde-format
+#| msgid "Sort Favorites"
+msgctxt "@title"
+msgid "Sort Favorites"
+msgstr "Ordenar as favoritas"
+
+#: qml/ChannelListPage.qml:20
 #, kde-format
 msgctxt "@title"
 msgid "Channels"
@@ -75,7 +82,7 @@ msgstr "Seleccione favoritas"
 msgid "Refetch"
 msgstr "Obter de novo"
 
-#: qml/ChannelTablePage.qml:144
+#: qml/ChannelTablePage.qml:145
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
@@ -85,13 +92,13 @@ msgstr "Non hai información dispoñíbel."
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
-msgstr ""
+msgstr "Día anterior."
 
 #: qml/ChannelTablePage.qml:222
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
-msgstr ""
+msgstr "Día seguinte."
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -155,7 +162,7 @@ msgstr "Tamaño da letra:"
 #, kde-format
 msgctxt "@option:check show date selection"
 msgid "Show date selection:"
-msgstr ""
+msgstr "Amosar a selección de data:"
 
 #: qml/SettingsPage.qml:75
 #, kde-format
@@ -216,65 +223,69 @@ msgstr "Ficheiros XML (*.xml)"
 msgid "All files (*)"
 msgstr "Todos os ficheiros (*)"
 
-#: qml/TellySkoutGlobalDrawer.qml:17
+#: qml/TellySkoutGlobalDrawer.qml:17 qml/TellySkoutGlobalDrawer.qml:21
+#: qml/TellySkoutGlobalDrawer.qml:29
 #, kde-format
 msgid "Favorites"
 msgstr "Favoritas"
 
-#: qml/TellySkoutGlobalDrawer.qml:27
+#: qml/TellySkoutGlobalDrawer.qml:32 qml/TellySkoutGlobalDrawer.qml:36
+#: qml/TellySkoutGlobalDrawer.qml:41
 #, kde-format
 msgid "Select Favorites"
 msgstr "Seleccionar as favoritas"
 
-#: qml/TellySkoutGlobalDrawer.qml:36
+#: qml/TellySkoutGlobalDrawer.qml:44 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/TellySkoutGlobalDrawer.qml:57
 #, kde-format
 msgid "Sort Favorites"
 msgstr "Ordenar as favoritas"
 
-#: qml/TellySkoutGlobalDrawer.qml:49 qml/TellySkoutGlobalDrawer.qml:52
+#: qml/TellySkoutGlobalDrawer.qml:60 qml/TellySkoutGlobalDrawer.qml:63
 #, kde-format
 msgid "Settings"
 msgstr "Configuración"
 
-#: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
+#: qml/TellySkoutGlobalDrawer.qml:66
 #, kde-format
 msgid "About"
 msgstr "Sobre"
+
+#: qml/TellySkoutGlobalDrawer.qml:69
+#, fuzzy, kde-format
+#| msgid "Telly Skout"
+msgid "About Telly Skout"
+msgstr "Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
 msgid "Germany"
 msgstr "Alemaña"
 
-#: tvspielfilmfetcher.cpp:299
-#, fuzzy, kde-format
-#| msgid "Original title: "
+#: tvspielfilmfetcher.cpp:300
+#, kde-format
 msgid "Original title: %1"
-msgstr "Título orixinal: "
+msgstr "Título orixinal: %1"
 
-#: tvspielfilmfetcher.cpp:311
-#, fuzzy, kde-format
-#| msgid "Country: "
+#: tvspielfilmfetcher.cpp:312
+#, kde-format
 msgid "Country: %1"
-msgstr "País: "
+msgstr "País: %1"
 
-#: tvspielfilmfetcher.cpp:323
-#, fuzzy, kde-format
-#| msgid "Year: "
+#: tvspielfilmfetcher.cpp:324
+#, kde-format
 msgid "Year: %1"
-msgstr "Ano: "
+msgstr "Ano: %1"
 
-#: tvspielfilmfetcher.cpp:335
-#, fuzzy, kde-format
-#| msgid "Duration: "
+#: tvspielfilmfetcher.cpp:336
+#, kde-format
 msgid "Duration: %1"
-msgstr "Duración: "
+msgstr "Duración: %1"
 
-#: tvspielfilmfetcher.cpp:347
-#, fuzzy, kde-format
-#| msgid "FSK: "
+#: tvspielfilmfetcher.cpp:348
+#, kde-format
 msgid "FSK: %1"
-msgstr "FSK: "
+msgstr "FSK: %1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format

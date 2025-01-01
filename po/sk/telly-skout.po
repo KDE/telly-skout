@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-31 00:44+0000\n"
+"POT-Creation-Date: 2025-01-01 00:44+0000\n"
 "PO-Revision-Date: 2022-05-14 20:09+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -49,6 +49,13 @@ msgstr "Obľúbené"
 
 #: qml/ChannelListPage.qml:20
 #, fuzzy, kde-format
+#| msgid "Favorites"
+msgctxt "@title"
+msgid "Sort Favorites"
+msgstr "Obľúbené"
+
+#: qml/ChannelListPage.qml:20
+#, fuzzy, kde-format
 #| msgid "Channels"
 msgctxt "@title"
 msgid "Channels"
@@ -76,7 +83,7 @@ msgstr ""
 msgid "Refetch"
 msgstr ""
 
-#: qml/ChannelTablePage.qml:144
+#: qml/ChannelTablePage.qml:145
 #, fuzzy, kde-format
 #| msgid "not available"
 msgctxt "placeholder message"
@@ -223,57 +230,66 @@ msgstr ""
 msgid "All files (*)"
 msgstr ""
 
-#: qml/TellySkoutGlobalDrawer.qml:17
+#: qml/TellySkoutGlobalDrawer.qml:17 qml/TellySkoutGlobalDrawer.qml:21
+#: qml/TellySkoutGlobalDrawer.qml:29
 #, kde-format
 msgid "Favorites"
 msgstr "Obľúbené"
 
-#: qml/TellySkoutGlobalDrawer.qml:27
+#: qml/TellySkoutGlobalDrawer.qml:32 qml/TellySkoutGlobalDrawer.qml:36
+#: qml/TellySkoutGlobalDrawer.qml:41
 #, kde-format
 msgid "Select Favorites"
 msgstr ""
 
-#: qml/TellySkoutGlobalDrawer.qml:36
+#: qml/TellySkoutGlobalDrawer.qml:44 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/TellySkoutGlobalDrawer.qml:57
 #, kde-format
 msgid "Sort Favorites"
 msgstr ""
 
-#: qml/TellySkoutGlobalDrawer.qml:49 qml/TellySkoutGlobalDrawer.qml:52
+#: qml/TellySkoutGlobalDrawer.qml:60 qml/TellySkoutGlobalDrawer.qml:63
 #, kde-format
 msgid "Settings"
 msgstr "Nastavenia"
 
-#: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
+#: qml/TellySkoutGlobalDrawer.qml:66
 #, kde-format
 msgid "About"
 msgstr "O aplikácii"
+
+#: qml/TellySkoutGlobalDrawer.qml:69
+#, fuzzy, kde-format
+#| msgid "Telly Skout"
+msgid "About Telly Skout"
+msgstr "Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
 msgid "Germany"
 msgstr "Nemecko"
 
-#: tvspielfilmfetcher.cpp:299
+#: tvspielfilmfetcher.cpp:300
 #, kde-format
 msgid "Original title: %1"
 msgstr ""
 
-#: tvspielfilmfetcher.cpp:311
+#: tvspielfilmfetcher.cpp:312
 #, kde-format
 msgid "Country: %1"
 msgstr ""
 
-#: tvspielfilmfetcher.cpp:323
+#: tvspielfilmfetcher.cpp:324
 #, kde-format
 msgid "Year: %1"
 msgstr ""
 
-#: tvspielfilmfetcher.cpp:335
+#: tvspielfilmfetcher.cpp:336
 #, kde-format
 msgid "Duration: %1"
 msgstr ""
 
-#: tvspielfilmfetcher.cpp:347
+#: tvspielfilmfetcher.cpp:348
 #, kde-format
 msgid "FSK: %1"
 msgstr ""

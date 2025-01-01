@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-31 00:44+0000\n"
+"POT-Creation-Date: 2025-01-01 00:44+0000\n"
 "PO-Revision-Date: 2024-12-29 08:21+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -50,6 +50,13 @@ msgid "Favorite"
 msgstr "Ulubione"
 
 #: qml/ChannelListPage.qml:20
+#, fuzzy, kde-format
+#| msgid "Sort Favorites"
+msgctxt "@title"
+msgid "Sort Favorites"
+msgstr "Uszereguj ulubione"
+
+#: qml/ChannelListPage.qml:20
 #, kde-format
 msgctxt "@title"
 msgid "Channels"
@@ -76,7 +83,7 @@ msgstr "Wybierz ulubione"
 msgid "Refetch"
 msgstr "Pobierz ponownie"
 
-#: qml/ChannelTablePage.qml:144
+#: qml/ChannelTablePage.qml:145
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
@@ -218,61 +225,70 @@ msgstr "Pliki XML (*.xml)"
 msgid "All files (*)"
 msgstr "Wszystkie pliki (*)"
 
-#: qml/TellySkoutGlobalDrawer.qml:17
+#: qml/TellySkoutGlobalDrawer.qml:17 qml/TellySkoutGlobalDrawer.qml:21
+#: qml/TellySkoutGlobalDrawer.qml:29
 #, kde-format
 msgid "Favorites"
 msgstr "Ulubione"
 
-#: qml/TellySkoutGlobalDrawer.qml:27
+#: qml/TellySkoutGlobalDrawer.qml:32 qml/TellySkoutGlobalDrawer.qml:36
+#: qml/TellySkoutGlobalDrawer.qml:41
 #, kde-format
 msgid "Select Favorites"
 msgstr "Wybierz ulubione"
 
-#: qml/TellySkoutGlobalDrawer.qml:36
+#: qml/TellySkoutGlobalDrawer.qml:44 qml/TellySkoutGlobalDrawer.qml:48
+#: qml/TellySkoutGlobalDrawer.qml:57
 #, kde-format
 msgid "Sort Favorites"
 msgstr "Uszereguj ulubione"
 
-#: qml/TellySkoutGlobalDrawer.qml:49 qml/TellySkoutGlobalDrawer.qml:52
+#: qml/TellySkoutGlobalDrawer.qml:60 qml/TellySkoutGlobalDrawer.qml:63
 #, kde-format
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
+#: qml/TellySkoutGlobalDrawer.qml:66
 #, kde-format
 msgid "About"
 msgstr "O programie"
+
+#: qml/TellySkoutGlobalDrawer.qml:69
+#, fuzzy, kde-format
+#| msgid "Telly Skout"
+msgid "About Telly Skout"
+msgstr "Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
 msgid "Germany"
 msgstr "Niemcy"
 
-#: tvspielfilmfetcher.cpp:299
+#: tvspielfilmfetcher.cpp:300
 #, fuzzy, kde-format
 #| msgid "Original title: "
 msgid "Original title: %1"
 msgstr "Tytuł pierwotny: "
 
-#: tvspielfilmfetcher.cpp:311
+#: tvspielfilmfetcher.cpp:312
 #, fuzzy, kde-format
 #| msgid "Country: "
 msgid "Country: %1"
 msgstr "Kraj: "
 
-#: tvspielfilmfetcher.cpp:323
+#: tvspielfilmfetcher.cpp:324
 #, fuzzy, kde-format
 #| msgid "Year: "
 msgid "Year: %1"
 msgstr "Rok: "
 
-#: tvspielfilmfetcher.cpp:335
+#: tvspielfilmfetcher.cpp:336
 #, fuzzy, kde-format
 #| msgid "Duration: "
 msgid "Duration: %1"
 msgstr "Czas trwania: "
 
-#: tvspielfilmfetcher.cpp:347
+#: tvspielfilmfetcher.cpp:348
 #, fuzzy, kde-format
 #| msgid "FSK: "
 msgid "FSK: %1"
