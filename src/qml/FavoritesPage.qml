@@ -220,7 +220,7 @@ Kirigami.Page {
                 Controls.ToolTip.visible: hovered
                 icon.name: "go-next"
                 text: i18nc("@info:tooltip", "next day")
-                enabled: (channelTable.date.getDate() + 1) - new Date().getDate() <= TellySkoutSettings.tvSpielfilmPrefetch
+                enabled: TellySkoutSettings.fetcher === 0 ? (channelTable.date.getDate() + 1) - new Date().getDate() <= TellySkoutSettings.tvSpielfilmPrefetch : true // limit only for TV Spielfilm
                 onClicked: channelTable.date = new Date(channelTable.date.getTime() + 24 * 60 * 60 * 1000)
             }
         }
