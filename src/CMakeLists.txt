@@ -85,5 +85,5 @@ if(ANDROID)
         view-refresh
         view-sort
     )
-    ecm_add_android_apk(telly-skout-app ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
+    ecm_add_android_apk(telly-skout-app ANDROID_DIR ${CMAKE_SOURCE_DIR}/android PACKAGE_NAME tellyskout)
 endif()
