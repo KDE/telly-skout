@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-01 02:34+0000\n"
-"PO-Revision-Date: 2024-08-23 21:45+0200\n"
+"PO-Revision-Date: 2024-12-20 16:53+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
@@ -72,11 +72,9 @@ msgid "Please select favorites"
 msgstr "Bonvolu elekti ŝatatojn"
 
 #: qml/ChannelTablePage.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgid "Refetch"
-msgstr "Antaŭpreni:"
+msgstr "Repreni"
 
 #: qml/ChannelTablePage.qml:144
 #, kde-format
@@ -232,34 +230,29 @@ msgid "Germany"
 msgstr "Germanio"
 
 #: tvspielfilmfetcher.cpp:300
-#, fuzzy, kde-format
-#| msgid "Original title: "
+#, kde-format
 msgid "Original title: %1"
-msgstr "Origina titolo: "
+msgstr "Origina titolo: %1"
 
 #: tvspielfilmfetcher.cpp:312
-#, fuzzy, kde-format
-#| msgid "Country: "
+#, kde-format
 msgid "Country: %1"
-msgstr "Lando: "
+msgstr "Lando: %1"
 
 #: tvspielfilmfetcher.cpp:324
-#, fuzzy, kde-format
-#| msgid "Year: "
+#, kde-format
 msgid "Year: %1"
-msgstr "Jaro: "
+msgstr "Jaro: %1"
 
 #: tvspielfilmfetcher.cpp:336
-#, fuzzy, kde-format
-#| msgid "Duration: "
+#, kde-format
 msgid "Duration: %1"
-msgstr "Daŭro: "
+msgstr "Daŭro: %1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: "
+#, kde-format
 msgid "FSK: %1"
-msgstr "FSK: "
+msgstr "FSK: %1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format

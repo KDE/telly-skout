@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-01 02:34+0000\n"
-"PO-Revision-Date: 2024-12-23 09:05+0100\n"
+"PO-Revision-Date: 2024-12-31 10:06+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -227,34 +227,29 @@ msgid "Germany"
 msgstr "Allemagne"
 
 #: tvspielfilmfetcher.cpp:300
-#, fuzzy, kde-format
-#| msgid "Original title: "
+#, kde-format
 msgid "Original title: %1"
-msgstr "Titre original :"
+msgstr "Titre original : %1"
 
 #: tvspielfilmfetcher.cpp:312
-#, fuzzy, kde-format
-#| msgid "Country: "
+#, kde-format
 msgid "Country: %1"
-msgstr "Pays :"
+msgstr "Pays : %1"
 
 #: tvspielfilmfetcher.cpp:324
-#, fuzzy, kde-format
-#| msgid "Year: "
+#, kde-format
 msgid "Year: %1"
-msgstr "Année : "
+msgstr "Année : %1"
 
 #: tvspielfilmfetcher.cpp:336
-#, fuzzy, kde-format
-#| msgid "Duration: "
+#, kde-format
 msgid "Duration: %1"
-msgstr "Durée :"
+msgstr "Durée : %1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: "
+#, kde-format
 msgid "FSK: %1"
-msgstr "FSK : "
+msgstr "FSK : %1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format
