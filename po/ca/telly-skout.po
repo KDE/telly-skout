@@ -1,15 +1,15 @@
 # Translation of telly-skout.po to Catalan
-# Copyright (C) 2022-2024 This_file_is_part_of_KDE
+# Copyright (C) 2022-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-01 00:44+0000\n"
-"PO-Revision-Date: 2024-12-30 08:31+0100\n"
+"POT-Creation-Date: 2025-01-02 00:44+0000\n"
+"PO-Revision-Date: 2025-01-01 09:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -50,53 +50,35 @@ msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "Preferit"
 
-#: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Sort Favorites"
-msgctxt "@title"
-msgid "Sort Favorites"
-msgstr "Ordena els preferits"
-
-#: qml/ChannelListPage.qml:20
-#, kde-format
-msgctxt "@title"
-msgid "Channels"
-msgstr "Canals"
-
-#: qml/ChannelListPage.qml:39
-#, kde-format
-msgid "Loading channels..."
-msgstr "S'estan carregant els canals..."
-
-#: qml/ChannelTablePage.qml:19
+#: qml/FavoritesPage.qml:19
 #, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Preferits"
 
-#: qml/ChannelTablePage.qml:34
+#: qml/FavoritesPage.qml:34
 #, kde-format
 msgid "Please select favorites"
 msgstr "Seleccioneu els preferits"
 
-#: qml/ChannelTablePage.qml:39
+#: qml/FavoritesPage.qml:39
 #, kde-format
 msgid "Refetch"
 msgstr "Torna a obtenir"
 
-#: qml/ChannelTablePage.qml:145
+#: qml/FavoritesPage.qml:145
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
 msgstr "Informació no disponible"
 
-#: qml/ChannelTablePage.qml:205
+#: qml/FavoritesPage.qml:205
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
 msgstr "dia anterior"
 
-#: qml/ChannelTablePage.qml:222
+#: qml/FavoritesPage.qml:222
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
@@ -117,6 +99,17 @@ msgstr "Selecció dels preferits"
 #, kde-format
 msgid "Loading groups..."
 msgstr "S'estan carregant els grups..."
+
+#: qml/SelectFavoritesPage.qml:17
+#, kde-format
+msgctxt "@title"
+msgid "Channels"
+msgstr "Canals"
+
+#: qml/SelectFavoritesPage.qml:30 qml/SortFavoritesPage.qml:35
+#, kde-format
+msgid "Loading channels..."
+msgstr "S'estan carregant els canals..."
 
 #: qml/SettingsPage.qml:14
 #, kde-format
@@ -225,6 +218,12 @@ msgstr "Fitxers XML (*.xml)"
 msgid "All files (*)"
 msgstr "Tots els fitxers (*)"
 
+#: qml/SortFavoritesPage.qml:16
+#, kde-format
+msgctxt "@title"
+msgid "Sort Favorites"
+msgstr "Ordenació dels preferits"
+
 #: qml/TellySkoutGlobalDrawer.qml:17 qml/TellySkoutGlobalDrawer.qml:21
 #: qml/TellySkoutGlobalDrawer.qml:29
 #, kde-format
@@ -238,26 +237,25 @@ msgid "Select Favorites"
 msgstr "Selecció dels preferits"
 
 #: qml/TellySkoutGlobalDrawer.qml:44 qml/TellySkoutGlobalDrawer.qml:48
-#: qml/TellySkoutGlobalDrawer.qml:57
+#: qml/TellySkoutGlobalDrawer.qml:53
 #, kde-format
 msgid "Sort Favorites"
 msgstr "Ordena els preferits"
 
-#: qml/TellySkoutGlobalDrawer.qml:60 qml/TellySkoutGlobalDrawer.qml:63
+#: qml/TellySkoutGlobalDrawer.qml:56 qml/TellySkoutGlobalDrawer.qml:59
 #, kde-format
 msgid "Settings"
 msgstr "Configuració"
 
-#: qml/TellySkoutGlobalDrawer.qml:66
+#: qml/TellySkoutGlobalDrawer.qml:62
 #, kde-format
 msgid "About"
 msgstr "Quant al"
 
-#: qml/TellySkoutGlobalDrawer.qml:69
-#, fuzzy, kde-format
-#| msgid "Telly Skout"
+#: qml/TellySkoutGlobalDrawer.qml:65
+#, kde-format
 msgid "About Telly Skout"
-msgstr "Telly Skout"
+msgstr "Quant al Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format

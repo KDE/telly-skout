@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-01 00:44+0000\n"
+"POT-Creation-Date: 2025-01-02 00:44+0000\n"
 "PO-Revision-Date: 2024-12-21 13:10+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -48,53 +48,35 @@ msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "Preferito"
 
-#: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Sort Favorites"
-msgctxt "@title"
-msgid "Sort Favorites"
-msgstr "Ordina i preferiti"
-
-#: qml/ChannelListPage.qml:20
-#, kde-format
-msgctxt "@title"
-msgid "Channels"
-msgstr "Canali"
-
-#: qml/ChannelListPage.qml:39
-#, kde-format
-msgid "Loading channels..."
-msgstr "Caricamento canali..."
-
-#: qml/ChannelTablePage.qml:19
+#: qml/FavoritesPage.qml:19
 #, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Preferiti"
 
-#: qml/ChannelTablePage.qml:34
+#: qml/FavoritesPage.qml:34
 #, kde-format
 msgid "Please select favorites"
 msgstr "Seleziona i preferiti"
 
-#: qml/ChannelTablePage.qml:39
+#: qml/FavoritesPage.qml:39
 #, kde-format
 msgid "Refetch"
 msgstr "Recupera"
 
-#: qml/ChannelTablePage.qml:145
+#: qml/FavoritesPage.qml:145
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
 msgstr "Informazioni non disponibili"
 
-#: qml/ChannelTablePage.qml:205
+#: qml/FavoritesPage.qml:205
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
 msgstr ""
 
-#: qml/ChannelTablePage.qml:222
+#: qml/FavoritesPage.qml:222
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
@@ -115,6 +97,17 @@ msgstr "Seleziona preferiti"
 #, kde-format
 msgid "Loading groups..."
 msgstr "Caricamento gruppi..."
+
+#: qml/SelectFavoritesPage.qml:17
+#, kde-format
+msgctxt "@title"
+msgid "Channels"
+msgstr "Canali"
+
+#: qml/SelectFavoritesPage.qml:30 qml/SortFavoritesPage.qml:35
+#, kde-format
+msgid "Loading channels..."
+msgstr "Caricamento canali..."
 
 #: qml/SettingsPage.qml:14
 #, kde-format
@@ -223,6 +216,13 @@ msgstr "File XML (*.xml)"
 msgid "All files (*)"
 msgstr "Tutti i file (*)"
 
+#: qml/SortFavoritesPage.qml:16
+#, fuzzy, kde-format
+#| msgid "Sort Favorites"
+msgctxt "@title"
+msgid "Sort Favorites"
+msgstr "Ordina i preferiti"
+
 #: qml/TellySkoutGlobalDrawer.qml:17 qml/TellySkoutGlobalDrawer.qml:21
 #: qml/TellySkoutGlobalDrawer.qml:29
 #, kde-format
@@ -236,22 +236,22 @@ msgid "Select Favorites"
 msgstr "Seleziona preferiti"
 
 #: qml/TellySkoutGlobalDrawer.qml:44 qml/TellySkoutGlobalDrawer.qml:48
-#: qml/TellySkoutGlobalDrawer.qml:57
+#: qml/TellySkoutGlobalDrawer.qml:53
 #, kde-format
 msgid "Sort Favorites"
 msgstr "Ordina i preferiti"
 
-#: qml/TellySkoutGlobalDrawer.qml:60 qml/TellySkoutGlobalDrawer.qml:63
+#: qml/TellySkoutGlobalDrawer.qml:56 qml/TellySkoutGlobalDrawer.qml:59
 #, kde-format
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: qml/TellySkoutGlobalDrawer.qml:66
+#: qml/TellySkoutGlobalDrawer.qml:62
 #, kde-format
 msgid "About"
 msgstr "Informazioni"
 
-#: qml/TellySkoutGlobalDrawer.qml:69
+#: qml/TellySkoutGlobalDrawer.qml:65
 #, fuzzy, kde-format
 #| msgid "Telly Skout"
 msgid "About Telly Skout"

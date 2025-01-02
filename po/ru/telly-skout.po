@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-01 00:44+0000\n"
+"POT-Creation-Date: 2025-01-02 00:44+0000\n"
 "PO-Revision-Date: 2024-12-12 11:13+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -49,55 +49,37 @@ msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "Добавить в избранное"
 
-#: qml/ChannelListPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Sort Favorites"
-msgctxt "@title"
-msgid "Sort Favorites"
-msgstr "Упорядочение избранного"
-
-#: qml/ChannelListPage.qml:20
-#, kde-format
-msgctxt "@title"
-msgid "Channels"
-msgstr "Каналы"
-
-#: qml/ChannelListPage.qml:39
-#, kde-format
-msgid "Loading channels..."
-msgstr "Загрузка каналов…"
-
-#: qml/ChannelTablePage.qml:19
+#: qml/FavoritesPage.qml:19
 #, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Избранное"
 
-#: qml/ChannelTablePage.qml:34
+#: qml/FavoritesPage.qml:34
 #, kde-format
 msgid "Please select favorites"
 msgstr "Выберите избранное"
 
-#: qml/ChannelTablePage.qml:39
+#: qml/FavoritesPage.qml:39
 #, fuzzy, kde-format
 #| msgctxt "@option:spinbox"
 #| msgid "Prefetch:"
 msgid "Refetch"
 msgstr "Предварительная загрузка:"
 
-#: qml/ChannelTablePage.qml:145
+#: qml/FavoritesPage.qml:145
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
 msgstr "Информация недоступна"
 
-#: qml/ChannelTablePage.qml:205
+#: qml/FavoritesPage.qml:205
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
 msgstr ""
 
-#: qml/ChannelTablePage.qml:222
+#: qml/FavoritesPage.qml:222
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
@@ -118,6 +100,17 @@ msgstr "Выбор избранного"
 #, kde-format
 msgid "Loading groups..."
 msgstr "Загрузка групп…"
+
+#: qml/SelectFavoritesPage.qml:17
+#, kde-format
+msgctxt "@title"
+msgid "Channels"
+msgstr "Каналы"
+
+#: qml/SelectFavoritesPage.qml:30 qml/SortFavoritesPage.qml:35
+#, kde-format
+msgid "Loading channels..."
+msgstr "Загрузка каналов…"
 
 #: qml/SettingsPage.qml:14
 #, kde-format
@@ -228,6 +221,13 @@ msgstr "Файлы XML (*.xml)"
 msgid "All files (*)"
 msgstr "Все файлы (*)"
 
+#: qml/SortFavoritesPage.qml:16
+#, fuzzy, kde-format
+#| msgid "Sort Favorites"
+msgctxt "@title"
+msgid "Sort Favorites"
+msgstr "Упорядочение избранного"
+
 #: qml/TellySkoutGlobalDrawer.qml:17 qml/TellySkoutGlobalDrawer.qml:21
 #: qml/TellySkoutGlobalDrawer.qml:29
 #, kde-format
@@ -241,22 +241,22 @@ msgid "Select Favorites"
 msgstr "Выбор избранного"
 
 #: qml/TellySkoutGlobalDrawer.qml:44 qml/TellySkoutGlobalDrawer.qml:48
-#: qml/TellySkoutGlobalDrawer.qml:57
+#: qml/TellySkoutGlobalDrawer.qml:53
 #, kde-format
 msgid "Sort Favorites"
 msgstr "Упорядочение избранного"
 
-#: qml/TellySkoutGlobalDrawer.qml:60 qml/TellySkoutGlobalDrawer.qml:63
+#: qml/TellySkoutGlobalDrawer.qml:56 qml/TellySkoutGlobalDrawer.qml:59
 #, kde-format
 msgid "Settings"
 msgstr "Параметры"
 
-#: qml/TellySkoutGlobalDrawer.qml:66
+#: qml/TellySkoutGlobalDrawer.qml:62
 #, kde-format
 msgid "About"
 msgstr "О программе"
 
-#: qml/TellySkoutGlobalDrawer.qml:69
+#: qml/TellySkoutGlobalDrawer.qml:65
 #, fuzzy, kde-format
 #| msgid "Telly Skout"
 msgid "About Telly Skout"
