@@ -229,7 +229,29 @@
   </categories>
   <launchable type="desktop-id">org.kde.telly-skout.desktop</launchable>
   <releases>
-    <release version="24.12.1" date="2025-01-09"/>
+    <release version="24.12.1" date="2025-01-09">
+      <description>
+        <p>TV Spielfilm fetcher</p>
+        <ul>
+          <li>Fix program stop time before start time (missing programs).</li>
+          <li>Fix program description with multiple paragraphs.</li>
+          <li>Fix program description with multiple names for one role.</li>
+          <li>Fix programs could not be fetched for 123.tv.</li>
+        </ul>
+        <p>"Favorites" page</p>
+        <ul>
+          <li>Add refetch button.</li>
+          <li>Speed up program description update.</li>
+          <li>Wrap header text.</li>
+          <li>Fix placeholder message not shown if no favorites selected.</li>
+          <li>Fix background does not fill program field completely.</li>
+        </ul>
+        <p>"Select Favorites" page</p>
+        <ul>
+          <li>Fix loading placeholder when loading channels.</li>
+        </ul>
+      </description>
+    </release>
     <release version="24.12.0" date="2024-12-12"/>
     <release version="24.08.3" date="2024-11-07"/>
     <release version="24.08.2" date="2024-10-10"/>
