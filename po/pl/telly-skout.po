@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
-# SPDX-FileCopyrightText: 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-02 00:44+0000\n"
-"PO-Revision-Date: 2024-12-29 08:21+0100\n"
+"PO-Revision-Date: 2025-01-04 06:57+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -21,7 +21,7 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "BŁukasz Wojniłowicz"
+msgstr "Łukasz Wojniłowicz"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -75,13 +75,13 @@ msgstr "Informacje niedostępne"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
-msgstr ""
+msgstr "poprzedni dzień"
 
 #: qml/FavoritesPage.qml:222
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
-msgstr ""
+msgstr "następny dzień"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -97,7 +97,7 @@ msgstr "Wybierz ulubione"
 #: qml/GroupListPage.qml:24
 #, kde-format
 msgid "Loading groups..."
-msgstr "Wczytywanie grup..."
+msgstr "Wczytywanie grup…"
 
 #: qml/SelectFavoritesPage.qml:17
 #, kde-format
@@ -156,7 +156,7 @@ msgstr "Rozmiar czcionki:"
 #, kde-format
 msgctxt "@option:check show date selection"
 msgid "Show date selection:"
-msgstr ""
+msgstr "Pokaż wybór daty:"
 
 #: qml/SettingsPage.qml:75
 #, kde-format
@@ -219,8 +219,7 @@ msgid "All files (*)"
 msgstr "Wszystkie pliki (*)"
 
 #: qml/SortFavoritesPage.qml:16
-#, fuzzy, kde-format
-#| msgid "Sort Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Sort Favorites"
 msgstr "Uszereguj ulubione"
@@ -254,10 +253,9 @@ msgid "About"
 msgstr "O programie"
 
 #: qml/TellySkoutGlobalDrawer.qml:65
-#, fuzzy, kde-format
-#| msgid "Telly Skout"
+#, kde-format
 msgid "About Telly Skout"
-msgstr "Telly Skout"
+msgstr "O Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
@@ -265,34 +263,29 @@ msgid "Germany"
 msgstr "Niemcy"
 
 #: tvspielfilmfetcher.cpp:300
-#, fuzzy, kde-format
-#| msgid "Original title: "
+#, kde-format
 msgid "Original title: %1"
-msgstr "Tytuł pierwotny: "
+msgstr "Tytuł pierwotny: %1"
 
 #: tvspielfilmfetcher.cpp:312
-#, fuzzy, kde-format
-#| msgid "Country: "
+#, kde-format
 msgid "Country: %1"
-msgstr "Kraj: "
+msgstr "Kraj: %1"
 
 #: tvspielfilmfetcher.cpp:324
-#, fuzzy, kde-format
-#| msgid "Year: "
+#, kde-format
 msgid "Year: %1"
-msgstr "Rok: "
+msgstr "Rok: %1"
 
 #: tvspielfilmfetcher.cpp:336
-#, fuzzy, kde-format
-#| msgid "Duration: "
+#, kde-format
 msgid "Duration: %1"
-msgstr "Czas trwania: "
+msgstr "Czas trwania: %1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: "
+#, kde-format
 msgid "FSK: %1"
-msgstr "FSK: "
+msgstr "FSK: %1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format

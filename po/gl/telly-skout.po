@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
-# SPDX-FileCopyrightText: 2024 Adrián Chaves (Gallaecio)
+# SPDX-FileCopyrightText: 2024, 2025 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-02 00:44+0000\n"
-"PO-Revision-Date: 2024-12-31 09:33+0100\n"
+"PO-Revision-Date: 2025-01-04 15:04+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -217,8 +217,7 @@ msgid "All files (*)"
 msgstr "Todos os ficheiros (*)"
 
 #: qml/SortFavoritesPage.qml:16
-#, fuzzy, kde-format
-#| msgid "Sort Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Sort Favorites"
 msgstr "Ordenar as favoritas"
@@ -252,10 +251,9 @@ msgid "About"
 msgstr "Sobre"
 
 #: qml/TellySkoutGlobalDrawer.qml:65
-#, fuzzy, kde-format
-#| msgid "Telly Skout"
+#, kde-format
 msgid "About Telly Skout"
-msgstr "Telly Skout"
+msgstr "Sobre Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
