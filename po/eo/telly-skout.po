@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-02 00:44+0000\n"
-"PO-Revision-Date: 2024-12-20 16:53+0100\n"
+"PO-Revision-Date: 2025-01-06 18:58+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
@@ -218,11 +218,10 @@ msgid "All files (*)"
 msgstr "Ĉiuj dosieroj (*)"
 
 #: qml/SortFavoritesPage.qml:16
-#, fuzzy, kde-format
-#| msgid "Sort Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Sort Favorites"
-msgstr "Oridigi plej ŝatatajn"
+msgstr "Oridigi plej Ŝatatajn"
 
 #: qml/TellySkoutGlobalDrawer.qml:17 qml/TellySkoutGlobalDrawer.qml:21
 #: qml/TellySkoutGlobalDrawer.qml:29
@@ -253,10 +252,9 @@ msgid "About"
 msgstr "Pri"
 
 #: qml/TellySkoutGlobalDrawer.qml:65
-#, fuzzy, kde-format
-#| msgid "Telly Skout"
+#, kde-format
 msgid "About Telly Skout"
-msgstr "Telly Skout"
+msgstr "Pri Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
