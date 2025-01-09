@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
 #
-# SPDX-FileCopyrightText: 2024 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2024, 2025 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-01 02:34+0000\n"
-"PO-Revision-Date: 2024-09-03 14:29+0200\n"
+"PO-Revision-Date: 2025-01-08 16:08+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -71,11 +71,9 @@ msgid "Please select favorites"
 msgstr "Pro favor tu selige favoritos"
 
 #: qml/ChannelTablePage.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgid "Refetch"
-msgstr "Precarga:"
+msgstr "Rerecupera (refetch)"
 
 #: qml/ChannelTablePage.qml:144
 #, kde-format
@@ -231,34 +229,29 @@ msgid "Germany"
 msgstr "Germania"
 
 #: tvspielfilmfetcher.cpp:300
-#, fuzzy, kde-format
-#| msgid "Original title: "
+#, kde-format
 msgid "Original title: %1"
-msgstr "Titulo original: "
+msgstr "Titulo original: %1"
 
 #: tvspielfilmfetcher.cpp:312
-#, fuzzy, kde-format
-#| msgid "Country: "
+#, kde-format
 msgid "Country: %1"
-msgstr "Pais: "
+msgstr "Pais: %1"
 
 #: tvspielfilmfetcher.cpp:324
-#, fuzzy, kde-format
-#| msgid "Year: "
+#, kde-format
 msgid "Year: %1"
-msgstr "Anno: "
+msgstr "Anno: %1"
 
 #: tvspielfilmfetcher.cpp:336
-#, fuzzy, kde-format
-#| msgid "Duration: "
+#, kde-format
 msgid "Duration: %1"
-msgstr "Duration: "
+msgstr "Duration: %1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: "
+#, kde-format
 msgid "FSK: %1"
-msgstr "FSK: "
+msgstr "FSK: %1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format
