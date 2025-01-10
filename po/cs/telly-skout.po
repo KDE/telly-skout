@@ -272,10 +272,9 @@ msgid "Original title: %1"
 msgstr "Původní název: "
 
 #: tvspielfilmfetcher.cpp:312
-#, fuzzy, kde-format
-#| msgid "Country: "
+#, kde-format
 msgid "Country: %1"
-msgstr "Země: "
+msgstr "Země: %1"
 
 #: tvspielfilmfetcher.cpp:324
 #, fuzzy, kde-format
@@ -284,10 +283,9 @@ msgid "Year: %1"
 msgstr "Rok: "
 
 #: tvspielfilmfetcher.cpp:336
-#, fuzzy, kde-format
-#| msgid "Duration: "
+#, kde-format
 msgid "Duration: %1"
-msgstr "Doba trvání: "
+msgstr "Trvání: %1"
 
 #: tvspielfilmfetcher.cpp:348
 #, kde-format
