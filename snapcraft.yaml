@@ -2,24 +2,24 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 ---
-name: telly-scout
+name: telly-skout
 confinement: strict
 grade: stable
 base: core22
-adopt-info: telly-scout
+adopt-info: telly-skout
 apps:
-  telly-scout:
+  telly-skout:
     extensions:
       - kde-neon-6
-    common-id: org.kde.telly-scout.desktop
-    desktop: usr/share/applications/org.kde.telly-scout.desktop
-    command: usr/bin/telly-scout
+    common-id: org.kde.telly-skout.desktop
+    desktop: usr/share/applications/org.kde.telly-skout.desktop
+    command: usr/bin/telly-skout
     plugs:
       - audio-record
 slots:
   session-dbus-interface:
     interface: dbus
-    name: org.kde.telly-scout
+    name: org.kde.telly-skout
     bus: session
 package-repositories:
   - type: apt
@@ -31,9 +31,9 @@ package-repositories:
     url: http://origin.archive.neon.kde.org/user
     key-server: keyserver.ubuntu.com
 parts:
-  telly-scout:
+  telly-skout:
     parse-info:
-      - usr/share/metainfo/org.kde.telly-scout.appdata.xml
+      - usr/share/metainfo/org.kde.telly-skout.appdata.xml
     plugin: cmake
     source: .
     source-type: local
@@ -65,7 +65,7 @@ parts:
       - -usr/share/lintian
   cleanup:
     after:
-      - telly-scout
+      - telly-skout
     plugin: nil
     build-snaps:
       - core22
