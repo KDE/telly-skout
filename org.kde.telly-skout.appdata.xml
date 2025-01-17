@@ -302,6 +302,9 @@
       <url>https://www.plasma-mobile.org/2022/06/28/plasma-mobile-gear-22-06/</url>
     </release>
   </releases>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
   <supports>
     <control>pointing</control>
     <control>keyboard</control>
