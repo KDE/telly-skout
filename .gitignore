@@ -10,3 +10,6 @@
 /telly-skout.kdev4
 /.vscode/
 /CMakeLists.txt.user
+/org.kde.tellyskout.desktop
+/org.kde.tellyskout.appdata.xml
+/org.kde.tellyskout.svg
