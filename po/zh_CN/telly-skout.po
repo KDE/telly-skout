@@ -62,7 +62,7 @@ msgstr ""
 #: qml/FavoritesPage.qml:39
 #, kde-format
 msgid "Refetch"
-msgstr ""
+msgstr "重新获取"
 
 #: qml/FavoritesPage.qml:145
 #, kde-format
@@ -262,27 +262,27 @@ msgstr ""
 #: tvspielfilmfetcher.cpp:300
 #, kde-format
 msgid "Original title: %1"
-msgstr ""
+msgstr "原标题：%1"
 
 #: tvspielfilmfetcher.cpp:312
 #, kde-format
 msgid "Country: %1"
-msgstr ""
+msgstr "国家：%1"
 
 #: tvspielfilmfetcher.cpp:324
 #, kde-format
 msgid "Year: %1"
-msgstr ""
+msgstr "年份：%1"
 
 #: tvspielfilmfetcher.cpp:336
 #, kde-format
 msgid "Duration: %1"
-msgstr ""
+msgstr "时长：%1"
 
 #: tvspielfilmfetcher.cpp:348
 #, kde-format
 msgid "FSK: %1"
-msgstr ""
+msgstr "FSK：%1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format
