@@ -12,6 +12,7 @@ Kirigami.ApplicationWindow {
     id: root
 
     title: "Telly Skout"
+    pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.ToolBar
     pageStack.initialPage: FavoritesPage {
         windowHeight: root.height
     }
