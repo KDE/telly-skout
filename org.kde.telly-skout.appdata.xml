@@ -217,13 +217,14 @@
   </categories>
   <launchable type="desktop-id">org.kde.telly-skout.desktop</launchable>
   <releases>
-    <release version="24.12.2" date="2025-02-06"/>
-    <description>
-      <p>"Favorites" page</p>
-      <ul>
-        <li>Show refetch button in top toolbar on mobile.</li>
-      </ul>
-    </description>
+    <release version="24.12.2" date="2025-02-06">
+      <description>
+        <p>"Favorites" page</p>
+        <ul>
+          <li>Show refetch button in top toolbar on mobile.</li>
+        </ul>
+      </description>
+    </release>
     <release version="24.12.1" date="2025-01-09">
       <description>
         <p>TV Spielfilm fetcher</p>
