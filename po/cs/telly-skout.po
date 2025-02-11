@@ -60,11 +60,9 @@ msgid "Please select favorites"
 msgstr ""
 
 #: qml/FavoritesPage.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgid "Refetch"
-msgstr "Přednačítat:"
+msgstr ""
 
 #: qml/FavoritesPage.qml:145
 #, kde-format
@@ -220,11 +218,10 @@ msgid "All files (*)"
 msgstr "Všechny soubory (*)"
 
 #: qml/SortFavoritesPage.qml:16
-#, fuzzy, kde-format
-#| msgid "Sort Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Sort Favorites"
-msgstr "Seřadit oblíbené"
+msgstr ""
 
 #: qml/TellySkoutGlobalDrawer.qml:17 qml/TellySkoutGlobalDrawer.qml:21
 #: qml/TellySkoutGlobalDrawer.qml:29
@@ -255,10 +252,9 @@ msgid "About"
 msgstr "O aplikaci"
 
 #: qml/TellySkoutGlobalDrawer.qml:65
-#, fuzzy, kde-format
-#| msgid "Telly Skout"
+#, kde-format
 msgid "About Telly Skout"
-msgstr "Telly Skout"
+msgstr ""
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
@@ -266,10 +262,9 @@ msgid "Germany"
 msgstr "Německo"
 
 #: tvspielfilmfetcher.cpp:300
-#, fuzzy, kde-format
-#| msgid "Original title: "
+#, kde-format
 msgid "Original title: %1"
-msgstr "Původní název: "
+msgstr ""
 
 #: tvspielfilmfetcher.cpp:312
 #, kde-format
@@ -277,10 +272,9 @@ msgid "Country: %1"
 msgstr "Země: %1"
 
 #: tvspielfilmfetcher.cpp:324
-#, fuzzy, kde-format
-#| msgid "Year: "
+#, kde-format
 msgid "Year: %1"
-msgstr "Rok: "
+msgstr ""
 
 #: tvspielfilmfetcher.cpp:336
 #, kde-format
