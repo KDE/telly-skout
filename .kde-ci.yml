@@ -6,6 +6,7 @@ Dependencies:
       - Android/Qt6
       - FreeBSD/Qt6
       - Linux/Qt6
+      - Linux/Qt6Next
       - Windows/Qt6
     require:
       frameworks/extra-cmake-modules: '@latest-kf6'
@@ -17,6 +18,7 @@ Dependencies:
   - 'on':
       - FreeBSD/Qt6
       - Linux/Qt6
+      - Linux/Qt6Next
       - Windows/Qt6
     require:
       frameworks/kcrash: '@latest-kf6'
