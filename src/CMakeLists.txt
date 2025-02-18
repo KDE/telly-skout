@@ -76,6 +76,7 @@ install(TARGETS telly-skout-app ${KF${QT_MAJOR_VERSION}_INSTALL_TARGETS_DEFAULT_
 
 if(ANDROID)
     kirigami_package_breeze_icons(ICONS
+        ${KIRIGAMI_ADDONS_ICONS}
         favorite
         help-about-symbolic
         list-add
@@ -85,4 +86,5 @@ if(ANDROID)
         view-refresh
         view-sort
     )
+    ecm_add_android_apk(telly-skout-app ANDROID_DIR ${CMAKE_SOURCE_DIR}/android PACKAGE_NAME tellyskout)
 endif()

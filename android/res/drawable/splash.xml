@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  - SPDX-License-Identifier: BSD-2-Clause
+  - SPDX-FileCopyrightText: 2024 Plata Hill <plata.hill@kdemail.net>
+ -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="128dp" android:height="128dp" android:gravity="center">
+        <bitmap
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/tellyskout"/>
+    </item>
+</layer-list>

@@ -23,6 +23,7 @@ find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
+include(ECMAddAndroidApk)
 include(ECMAddTests)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
@@ -90,9 +91,18 @@ add_subdirectory(src)
 
 ki18n_install(po)
 
-install(PROGRAMS org.kde.telly-skout.desktop DESTINATION ${KDE_INSTALL_APPDIR})
-install(FILES org.kde.telly-skout.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
-install(FILES org.kde.telly-skout.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
+if(ANDROID)
+    configure_file(org.kde.telly-skout.desktop ${CMAKE_CURRENT_SOURCE_DIR}/org.kde.tellyskout.desktop COPYONLY)
+    configure_file(org.kde.telly-skout.appdata.xml ${CMAKE_CURRENT_SOURCE_DIR}/org.kde.tellyskout.appdata.xml COPYONLY)
+    configure_file(org.kde.telly-skout.svg ${CMAKE_CURRENT_SOURCE_DIR}/org.kde.tellyskout.svg COPYONLY)
+    install(PROGRAMS org.kde.tellyskout.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+    install(FILES org.kde.tellyskout.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+    install(FILES org.kde.tellyskout.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
+else()
+    install(PROGRAMS org.kde.telly-skout.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+    install(FILES org.kde.telly-skout.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+    install(FILES org.kde.telly-skout.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
+endif()
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
