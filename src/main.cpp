@@ -65,6 +65,7 @@ int main(int argc, char *argv[])
                      applicationDescription,
                      KAboutLicense::LGPL_V2_1,
                      i18n("© 2020 KDE Community"));
+    about.setProgramLogo(QVariant(QIcon(QStringLiteral(":/org.kde.telly-skout.svg"))));
     about.addAuthor(QStringLiteral("Plata"), QString(), QStringLiteral("plata.hill@kdemail.net"));
     KAboutData::setApplicationData(about);
 

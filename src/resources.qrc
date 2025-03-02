@@ -1,0 +1,7 @@
+<!-- SPDX-FileCopyrightText: 2025 Plata Hill <plata.hill@kdemail.net> -->
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+<RCC>
+    <qresource prefix="/">
+        <file alias="org.kde.telly-skout.svg">../org.kde.telly-skout.svg</file>
+    </qresource>
+</RCC>

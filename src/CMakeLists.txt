@@ -47,6 +47,7 @@ endif()
 ################# app #################
 add_executable(telly-skout-app
     main.cpp
+    resources.qrc
 )
 
 ecm_add_qml_module(telly-skout-app URI org.kde.TellySkout.app NO_RESOURCE_TARGET_PATH
