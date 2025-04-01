@@ -56,6 +56,11 @@ QDateTime Program::stop() const
     return m_data.m_stopTime;
 }
 
+void Program::setStop(const QDateTime &stop)
+{
+    m_data.m_stopTime = stop;
+}
+
 QString Program::subtitle() const
 {
     return m_data.m_subtitle;
