@@ -77,8 +77,17 @@ void ProgramsModel::loadProgram(int index) const
 
     if (program) {
         // avoid gaps/overlapping in the program (causes not aligned times in table)
+        // logic: better start too early than missing something
         if (m_programs.contains(index - 1) && m_programs[index - 1]->stop() != program->start()) {
-            program->setStart(m_programs[index - 1]->stop());
+            // gap: start program earlier
+            if (m_programs[index - 1]->stop() < program->start()) {
+                program->setStart(m_programs[index - 1]->stop());
+            }
+            // overlap: stop previous program earlier
+            // but not before it starts
+            else {
+                m_programs[index - 1]->setStop(std::max(m_programs[index - 1]->start(), program->start()));
+            }
         }
         if (m_programs.contains(index)) {
             delete m_programs[index];

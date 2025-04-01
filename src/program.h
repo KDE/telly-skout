@@ -40,6 +40,7 @@ public:
     QDateTime start() const;
     void setStart(const QDateTime &start);
     QDateTime stop() const;
+    void setStop(const QDateTime &stop);
     QString subtitle() const;
     QVector<QString> categories() const;
 
