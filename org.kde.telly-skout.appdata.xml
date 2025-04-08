@@ -229,7 +229,20 @@
   </categories>
   <launchable type="desktop-id">org.kde.telly-skout.desktop</launchable>
   <releases>
-    <release version="25.04.0" date="2025-04-17"/>
+    <release version="25.04.0" date="2025-04-17">
+      <description>
+        <p>TV Spielfilm fetcher</p>
+        <ul>
+          <li>Fix "Select Favorites" page does not list channels.</li>
+        </ul>
+        <p>"Favorites" page</p>
+        <ul>
+          <li>Add date selection.</li>
+          <li>Improve handling of gaps/overlaps in the programs.</li>
+        </ul>
+        <p>Add Android support.</p>
+      </description>
+    </release>
     <release version="24.12.3" date="2025-03-06"/>
     <release version="24.12.2" date="2025-02-06">
       <description>
