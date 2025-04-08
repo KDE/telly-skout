@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the telly-skout package.
 # Automatically generated, 2022.
 #
-# SPDX-FileCopyrightText: 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-19 00:45+0000\n"
-"PO-Revision-Date: 2024-12-29 01:52+0900\n"
+"PO-Revision-Date: 2025-04-07 14:47+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -77,13 +77,13 @@ msgstr "資訊無法使用"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
-msgstr ""
+msgstr "上一天"
 
 #: qml/FavoritesPage.qml:222
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
-msgstr ""
+msgstr "下一天"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -158,7 +158,7 @@ msgstr "字型大小："
 #, kde-format
 msgctxt "@option:check show date selection"
 msgid "Show date selection:"
-msgstr ""
+msgstr "顯示日期選擇："
 
 #: qml/SettingsPage.qml:75
 #, kde-format
@@ -219,8 +219,7 @@ msgid "All files (*)"
 msgstr "所有檔案 (*)"
 
 #: qml/SortFavoritesPage.qml:16
-#, fuzzy, kde-format
-#| msgid "Sort Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Sort Favorites"
 msgstr "排序最愛"
@@ -254,10 +253,9 @@ msgid "About"
 msgstr "關於"
 
 #: qml/TellySkoutGlobalDrawer.qml:65
-#, fuzzy, kde-format
-#| msgid "Telly Skout"
+#, kde-format
 msgid "About Telly Skout"
-msgstr "Telly Skout"
+msgstr "關於 Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
@@ -265,34 +263,29 @@ msgid "Germany"
 msgstr "德國"
 
 #: tvspielfilmfetcher.cpp:300
-#, fuzzy, kde-format
-#| msgid "Original title: "
+#, kde-format
 msgid "Original title: %1"
-msgstr "原始標題："
+msgstr "原始標題：%1"
 
 #: tvspielfilmfetcher.cpp:312
-#, fuzzy, kde-format
-#| msgid "Country: "
+#, kde-format
 msgid "Country: %1"
-msgstr "國家："
+msgstr "國家：%1"
 
 #: tvspielfilmfetcher.cpp:324
-#, fuzzy, kde-format
-#| msgid "Year: "
+#, kde-format
 msgid "Year: %1"
-msgstr "年："
+msgstr "年份：%1"
 
 #: tvspielfilmfetcher.cpp:336
-#, fuzzy, kde-format
-#| msgid "Duration: "
+#, kde-format
 msgid "Duration: %1"
-msgstr "時長："
+msgstr "時長：%1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: "
+#, kde-format
 msgid "FSK: %1"
-msgstr "FSK："
+msgstr "FSK：%1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format
