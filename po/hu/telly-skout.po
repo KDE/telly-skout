@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-19 00:45+0000\n"
-"PO-Revision-Date: 2025-01-19 20:58+0100\n"
+"PO-Revision-Date: 2025-04-21 22:11+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -74,13 +74,13 @@ msgstr "Nem érhetők el információk"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
-msgstr ""
+msgstr "előző nap"
 
 #: qml/FavoritesPage.qml:222
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
-msgstr ""
+msgstr "következő nap"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -155,7 +155,7 @@ msgstr "Betűméret:"
 #, kde-format
 msgctxt "@option:check show date selection"
 msgid "Show date selection:"
-msgstr ""
+msgstr "Dátum kiválasztása:"
 
 #: qml/SettingsPage.qml:75
 #, kde-format
@@ -217,8 +217,7 @@ msgid "All files (*)"
 msgstr "Minden fájl (*)"
 
 #: qml/SortFavoritesPage.qml:16
-#, fuzzy, kde-format
-#| msgid "Sort Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Sort Favorites"
 msgstr "Kedvencek rendezése"
@@ -252,10 +251,9 @@ msgid "About"
 msgstr "Névjegy"
 
 #: qml/TellySkoutGlobalDrawer.qml:65
-#, fuzzy, kde-format
-#| msgid "Telly Skout"
+#, kde-format
 msgid "About Telly Skout"
-msgstr "Telly Skout"
+msgstr "A Telly Skout névjegye"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
