@@ -37,7 +37,13 @@ void NetworkFetcher::downloadImage(const QString &url, std::function<void()> cal
         QUrl(url),
         [this, url, callback](QByteArray data) {
             QFile file(imagePath(url));
-            file.open(QIODevice::WriteOnly);
+            const bool success = file.open(QIODevice::WriteOnly);
+
+            if (!success) {
+                qWarning() << "Failed to open image" << url << ".";
+                return;
+            }
+
             file.write(data);
             file.close();
 

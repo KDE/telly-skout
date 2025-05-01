@@ -81,6 +81,8 @@ else()
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 14.0.0)
         add_compile_options(-Wno-error=hardened)
     endif()
+
+    add_compile_options(-Wno-error=deprecated-declarations)
 endif()
 
 ################# build and install #################
