@@ -229,6 +229,7 @@
   </categories>
   <launchable type="desktop-id">org.kde.telly-skout.desktop</launchable>
   <releases>
+    <release version="25.04.1" date="2025-05-08"/>
     <release version="25.04.0" date="2025-04-17">
       <description>
         <p>TV Spielfilm fetcher</p>
