@@ -27,7 +27,8 @@ public:
         setFinished(true);
 
         m_data.setFileName(QFINDTESTDATA(dataFileName));
-        Q_ASSERT(m_data.open(QIODevice::ReadOnly));
+        bool result = m_data.open(QIODevice::ReadOnly);
+        Q_ASSERT(result);
     }
 
     qint64 readData(char *data, qint64 maxlen) override
