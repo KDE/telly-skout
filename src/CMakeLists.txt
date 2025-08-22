@@ -34,6 +34,7 @@ kconfig_add_kcfg_files(telly-skout TellySkoutSettings.kcfgc GENERATE_MOC)
 # WORKAROUND for parallel build (missing dependency)
 # Without this, parallel builds (e.g. in CI) can fail with:
 # cc1plus: error: /builds/utilities/telly-skout/_build/src/telly-skout_autogen/include: No such file or directory [-Werror=missing-include-dirs]
+add_dependencies(telly-skoutplugin_init telly-skoutplugin_autogen)
 add_dependencies(telly-skout_resources_1 telly-skout_autogen)
 
 target_link_libraries(telly-skout PUBLIC Qt::Core Qt::Qml Qt::Quick Qt::QuickControls2 Qt::Sql Qt::Xml KF${QT_MAJOR_VERSION}::CoreAddons KF${QT_MAJOR_VERSION}::ConfigGui KF${QT_MAJOR_VERSION}::I18n)
