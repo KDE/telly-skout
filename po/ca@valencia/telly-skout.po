@@ -59,7 +59,7 @@ msgstr "Preferits"
 #: qml/FavoritesPage.qml:34
 #, kde-format
 msgid "Please select favorites"
-msgstr "Seleccioneu els preferits"
+msgstr "Trieu els preferits"
 
 #: qml/FavoritesPage.qml:39
 #, kde-format
@@ -93,7 +93,7 @@ msgstr "Canals"
 #, kde-format
 msgctxt "@title"
 msgid "Select Favorites"
-msgstr "Seleccioneu els preferits"
+msgstr "Trieu els preferits"
 
 #: qml/GroupListPage.qml:24
 #, kde-format
@@ -234,7 +234,7 @@ msgstr "Preferits"
 #: qml/TellySkoutGlobalDrawer.qml:41
 #, kde-format
 msgid "Select Favorites"
-msgstr "Seleccioneu els preferits"
+msgstr "Trieu els preferits"
 
 #: qml/TellySkoutGlobalDrawer.qml:44 qml/TellySkoutGlobalDrawer.qml:48
 #: qml/TellySkoutGlobalDrawer.qml:53
