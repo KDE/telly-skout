@@ -67,7 +67,7 @@ Controls.ItemDelegate {
         }
     }
 
-    // hightlight running program
+    // highlight running program
     background: Item {
         Rectangle {
             color: Kirigami.Theme.focusColor

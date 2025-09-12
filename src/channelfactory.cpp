@@ -33,7 +33,7 @@ size_t ChannelFactory::count() const
 
 Channel *ChannelFactory::create(int index) const
 {
-    // try to load if not avaible
+    // try to load if not available
     if (m_channels.size() <= index) {
         load();
 

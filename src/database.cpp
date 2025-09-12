@@ -466,7 +466,7 @@ void Database::removeFavorite(const ChannelId &channelId)
 void Database::sortFavorites(const QVector<ChannelId> &newOrder)
 {
     QSqlDatabase::database().transaction();
-    // do not use clearFavorites() and addFavorite() to avoid unneccesary signals (and therefore updates)
+    // do not use clearFavorites() and addFavorite() to avoid unnecesary signals (and therefore updates)
     execute(*m_clearFavoritesQuery);
     for (const auto &channelId : newOrder) {
         m_addFavoriteQuery->bindValue(QStringLiteral(":channel"), channelId.value());

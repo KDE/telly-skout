@@ -21,7 +21,7 @@ size_t GroupFactory::count() const
 
 Group *GroupFactory::create(int index) const
 {
-    // try to load if not avaible
+    // try to load if not available
     if (m_groups.size() <= index) {
         load();
 

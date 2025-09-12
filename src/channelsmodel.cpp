@@ -46,7 +46,7 @@ ChannelsModel::ChannelsModel(QObject *parent)
         }
     });
 
-    // TODO: this should not be neccessary as the favorites page is reloaded anyways
+    // TODO: this should not be necessary as the favorites page is reloaded anyways
     // however, if it is removed, the favorites page must be opened twice before the changes take effect
     connect(&Database::instance(), &Database::favoritesUpdated, this, [this]() {
         beginResetModel();

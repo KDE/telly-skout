@@ -16,7 +16,7 @@ ProgramFactory::ProgramFactory()
 
 size_t ProgramFactory::count(const ChannelId &channelId) const
 {
-    // try to load if not avaible
+    // try to load if not available
     if (!m_programs.contains(channelId)) {
         load(channelId);
 
@@ -33,7 +33,7 @@ size_t ProgramFactory::count(const ChannelId &channelId) const
 
 Program *ProgramFactory::create(const ChannelId &channelId, int index) const
 {
-    // try to load if not avaible
+    // try to load if not available
     if (!m_programs.contains(channelId)) {
         load(channelId);
     }
@@ -63,7 +63,7 @@ void ProgramFactory::load(const ChannelId &channelId, const ProgramId &programId
     if (it != m_programs[channelId].end()) {
         *it = Database::instance().program(programId);
     } else {
-        qWarning() << "Failed to load progam" << programId.value() << "for channel" << channelId.value() << ": program does not exist";
+        qWarning() << "Failed to load program" << programId.value() << "for channel" << channelId.value() << ": program does not exist";
     }
 }
 
