@@ -1,7 +1,6 @@
 // SPDX-FileCopyrightText: 2022 Plata Hill <plata.hill@kdemail.net>
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
-import Qt.labs.platform
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -145,7 +144,7 @@ Kirigami.Page {
                             text: i18nc("placeholder message", "Information not available")
                             visible: programRepeater.count === 0
                             anchors.centerIn: parent
-                            width: parent.width - Kirigami.Units.gridUnits * 4
+                            width: parent.width - Kirigami.Units.gridUnit * 4
                         }
 
                         ColumnLayout {

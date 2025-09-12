@@ -6,7 +6,6 @@ import QtQuick.Controls as Controls
 import org.kde.TellySkout
 import org.kde.config as KConfig
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ApplicationWindow {
     id: root

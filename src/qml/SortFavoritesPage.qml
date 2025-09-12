@@ -3,7 +3,6 @@
 
 import Qt.labs.platform
 import QtQuick
-import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.TellySkout
 import org.kde.kirigami as Kirigami

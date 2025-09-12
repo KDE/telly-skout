@@ -41,19 +41,20 @@ Templates.ItemDelegate {
 
             Controls.Label {
                 Layout.fillWidth: true
-                height: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
+                Layout.preferredHeight: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
                 text: model.channel.displayName || model.channel.name
             }
 
             Controls.ToolButton {
+                id: toolButton
                 display: Controls.AbstractButton.IconOnly
                 Controls.ToolTip.text: text
                 Controls.ToolTip.visible: hovered
-                icon.name: checked ? "favorite" : "list-add"
+                icon.name: toolButton.checked ? "favorite" : "list-add"
                 text: i18nc("@info:tooltip", "Favorite")
                 checkable: true
                 checked: model.channel.favorite
-                onToggled: channelsModel.setFavorite(model.channel.id, checked)
+                onToggled: channelsModel.setFavorite(model.channel.id, toolButton.checked)
                 visible: !delegate.sortable
             }
         }

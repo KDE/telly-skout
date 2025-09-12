@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
 import QtQuick
-import QtQuick.Controls as Controls
 import org.kde.TellySkout
 import org.kde.kirigami as Kirigami
 

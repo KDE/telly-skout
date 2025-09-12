@@ -22,7 +22,7 @@ Controls.ItemDelegate {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    lastGroup = model.group.id;
+                    const lastGroup = model.group.id;
                     Fetcher.fetchGroup(model.group.url, model.group.id);
                     while (pageStack.depth > 1)
                         pageStack.pop();
