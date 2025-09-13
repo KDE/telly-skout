@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:45+0000\n"
+"POT-Creation-Date: 2025-09-13 00:52+0000\n"
 "PO-Revision-Date: 2025-01-31 23:13+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -42,41 +42,41 @@ msgstr "Telly Skout"
 msgid "© 2020 KDE Community"
 msgstr "© 2020 KDE-yhteisö"
 
-#: qml/ChannelListDelegate.qml:53
+#: qml/ChannelListDelegate.qml:54
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Favorite"
 msgstr "Suosikki"
 
-#: qml/FavoritesPage.qml:19
+#: qml/FavoritesPage.qml:18
 #, kde-format
 msgctxt "@title"
 msgid "Favorites"
 msgstr "Suosikit"
 
-#: qml/FavoritesPage.qml:34
+#: qml/FavoritesPage.qml:33
 #, kde-format
 msgid "Please select favorites"
 msgstr "Valitse suosikit"
 
-#: qml/FavoritesPage.qml:39
+#: qml/FavoritesPage.qml:38
 #, kde-format
 msgid "Refetch"
 msgstr "Nouda uudelleen"
 
-#: qml/FavoritesPage.qml:145
+#: qml/FavoritesPage.qml:144
 #, kde-format
 msgctxt "placeholder message"
 msgid "Information not available"
 msgstr "Tietoa ei saatavilla"
 
-#: qml/FavoritesPage.qml:205
+#: qml/FavoritesPage.qml:204
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
 msgstr "edellinen päivä"
 
-#: qml/FavoritesPage.qml:222
+#: qml/FavoritesPage.qml:221
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
@@ -98,13 +98,13 @@ msgstr "Valitse suosikit"
 msgid "Loading groups..."
 msgstr "Ladataan ryhmiä…"
 
-#: qml/SelectFavoritesPage.qml:17
+#: qml/SelectFavoritesPage.qml:16
 #, kde-format
 msgctxt "@title"
 msgid "Channels"
 msgstr "Kanavat"
 
-#: qml/SelectFavoritesPage.qml:30 qml/SortFavoritesPage.qml:35
+#: qml/SelectFavoritesPage.qml:29 qml/SortFavoritesPage.qml:34
 #, kde-format
 msgid "Loading channels..."
 msgstr "Ladataan kanavia…"
@@ -216,41 +216,41 @@ msgstr "XML-tiedostot (*.xml)"
 msgid "All files (*)"
 msgstr "Kaikki tiedostot (*)"
 
-#: qml/SortFavoritesPage.qml:16
+#: qml/SortFavoritesPage.qml:15
 #, kde-format
 msgctxt "@title"
 msgid "Sort Favorites"
 msgstr "Lajittele suosikit"
 
-#: qml/TellySkoutGlobalDrawer.qml:17 qml/TellySkoutGlobalDrawer.qml:21
-#: qml/TellySkoutGlobalDrawer.qml:29
+#: qml/TellySkoutGlobalDrawer.qml:16 qml/TellySkoutGlobalDrawer.qml:20
+#: qml/TellySkoutGlobalDrawer.qml:28
 #, kde-format
 msgid "Favorites"
 msgstr "Suosikit"
 
-#: qml/TellySkoutGlobalDrawer.qml:32 qml/TellySkoutGlobalDrawer.qml:36
-#: qml/TellySkoutGlobalDrawer.qml:41
+#: qml/TellySkoutGlobalDrawer.qml:31 qml/TellySkoutGlobalDrawer.qml:35
+#: qml/TellySkoutGlobalDrawer.qml:40
 #, kde-format
 msgid "Select Favorites"
 msgstr "Valitse suosikit"
 
-#: qml/TellySkoutGlobalDrawer.qml:44 qml/TellySkoutGlobalDrawer.qml:48
-#: qml/TellySkoutGlobalDrawer.qml:53
+#: qml/TellySkoutGlobalDrawer.qml:43 qml/TellySkoutGlobalDrawer.qml:47
+#: qml/TellySkoutGlobalDrawer.qml:52
 #, kde-format
 msgid "Sort Favorites"
 msgstr "Lajittele suosikit"
 
-#: qml/TellySkoutGlobalDrawer.qml:56 qml/TellySkoutGlobalDrawer.qml:59
+#: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
 #, kde-format
 msgid "Settings"
 msgstr "Asetukset"
 
-#: qml/TellySkoutGlobalDrawer.qml:62
+#: qml/TellySkoutGlobalDrawer.qml:61
 #, kde-format
 msgid "About"
 msgstr "Tietoa"
 
-#: qml/TellySkoutGlobalDrawer.qml:65
+#: qml/TellySkoutGlobalDrawer.qml:64
 #, kde-format
 msgid "About Telly Skout"
 msgstr "Tietoa Telly Skoutista"
