@@ -1,0 +1,296 @@
+# Copyright (C) 2025 This file is copyright:
+# This file is distributed under the same license as the telly-skout package.
+# SPDX-FileCopyrightText: 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: telly-skout\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2025-09-13 00:52+0000\n"
+"PO-Revision-Date: 2025-09-27 17:07+0400\n"
+"Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
+"Language-Team: ar\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 23.08.5\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "زايد السعيدي"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "zayed.alsaidi@gmail.com"
+
+#: main.cpp:60
+#, kde-format
+msgid "Convergent TV guide based on Kirigami"
+msgstr "دليل تلفزيون متقارب قائم على تقنية كيريغامي"
+
+#: main.cpp:63
+#, kde-format
+msgid "Telly Skout"
+msgstr "تلي سكوت"
+
+#: main.cpp:67
+#, kde-format
+msgid "© 2020 KDE Community"
+msgstr "© 2020 مجتمع كِيدِي"
+
+#: qml/ChannelListDelegate.qml:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Favorite"
+msgstr "المفضّلة"
+
+#: qml/FavoritesPage.qml:18
+#, kde-format
+msgctxt "@title"
+msgid "Favorites"
+msgstr "المفضّلة"
+
+#: qml/FavoritesPage.qml:33
+#, kde-format
+msgid "Please select favorites"
+msgstr "الرجاء اختيار المفضلة"
+
+#: qml/FavoritesPage.qml:38
+#, kde-format
+msgid "Refetch"
+msgstr "أعد الجلب"
+
+#: qml/FavoritesPage.qml:144
+#, kde-format
+msgctxt "placeholder message"
+msgid "Information not available"
+msgstr "المعلومات غير متوفرة"
+
+#: qml/FavoritesPage.qml:204
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "previous day"
+msgstr "اليوم السابق"
+
+#: qml/FavoritesPage.qml:221
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "next day"
+msgstr "اليوم التالي"
+
+#: qml/GroupListDelegate.qml:30
+#, kde-format
+msgid "Channels"
+msgstr "القنوات"
+
+#: qml/GroupListPage.qml:15
+#, kde-format
+msgctxt "@title"
+msgid "Select Favorites"
+msgstr "حدد المفضلة"
+
+#: qml/GroupListPage.qml:24
+#, kde-format
+msgid "Loading groups..."
+msgstr "يحمّل المجموعات..."
+
+#: qml/SelectFavoritesPage.qml:16
+#, kde-format
+msgctxt "@title"
+msgid "Channels"
+msgstr "القنوات"
+
+#: qml/SelectFavoritesPage.qml:29 qml/SortFavoritesPage.qml:34
+#, kde-format
+msgid "Loading channels..."
+msgstr "يحمل القنوات…"
+
+#: qml/SettingsPage.qml:14
+#, kde-format
+msgctxt "@title"
+msgid "Settings"
+msgstr "إعدادات"
+
+#: qml/SettingsPage.qml:17
+#, kde-format
+msgctxt "@title:group"
+msgid "Appearance"
+msgstr "المظهر"
+
+#: qml/SettingsPage.qml:22
+#, kde-format
+msgctxt "@option:spinbox height of the program"
+msgid "Program height:"
+msgstr "ارتفاع البرنامج:"
+
+#: qml/SettingsPage.qml:28
+#, kde-format
+msgctxt "Number in px/min"
+msgid "%1px/min"
+msgstr "%1بكسل/دق"
+
+#: qml/SettingsPage.qml:38
+#, kde-format
+msgctxt "@option:spinbox"
+msgid "Column width:"
+msgstr "عرض العمود:"
+
+#: qml/SettingsPage.qml:44 qml/SettingsPage.qml:60
+#, kde-format
+msgctxt "Number in px"
+msgid "%1px"
+msgstr "%1بكسل"
+
+#: qml/SettingsPage.qml:54
+#, kde-format
+msgctxt "@option:spinbox"
+msgid "Font size:"
+msgstr "حجم الخطّ:"
+
+#: qml/SettingsPage.qml:68
+#, kde-format
+msgctxt "@option:check show date selection"
+msgid "Show date selection:"
+msgstr "اعرض تحديد التاريخ:"
+
+#: qml/SettingsPage.qml:75
+#, kde-format
+msgctxt "@title:group Programs as TV programs"
+msgid "Programs"
+msgstr "البرامج"
+
+#: qml/SettingsPage.qml:80
+#, kde-format
+msgctxt "@option:spinbox"
+msgid "Delete old programs after:"
+msgstr "احذف البرامج الأقدم من:"
+
+#: qml/SettingsPage.qml:84 qml/SettingsPage.qml:113
+#, kde-format
+msgctxt "Number in days"
+msgid "%1 day"
+msgid_plural "%1 days"
+msgstr[0] "%1 يوم"
+msgstr[1] "يوم واحد"
+msgstr[2] "يومان"
+msgstr[3] "%1 أيام"
+msgstr[4] "%1 يومًا"
+msgstr[5] "%1 يوم"
+
+#: qml/SettingsPage.qml:96
+#, kde-format
+msgid "Fetcher:"
+msgstr "الجالب:"
+
+#: qml/SettingsPage.qml:97
+#, kde-format
+msgctxt "@option:combobox"
+msgid "The fetcher which loads the programs."
+msgstr "البرنامج الذي يقوم بتحميل البرامج."
+
+#: qml/SettingsPage.qml:108
+#, kde-format
+msgctxt "@option:spinbox"
+msgid "Prefetch:"
+msgstr "الجلب المسبق:"
+
+#: qml/SettingsPage.qml:125
+#, kde-format
+msgctxt "@label:textbox"
+msgid "File:"
+msgstr "hgملف:"
+
+#: qml/SettingsPage.qml:149
+#, kde-format
+msgctxt "@action:button"
+msgid "Open file dialog"
+msgstr "افتح حواريّ الملفّات"
+
+#: qml/SettingsPage.qml:155
+#, kde-format
+msgid "XML files (*.xml)"
+msgstr "ملفّات XML (*.xml)"
+
+#: qml/SettingsPage.qml:155
+#, kde-format
+msgid "All files (*)"
+msgstr "كلّ الملفّات (*)"
+
+#: qml/SortFavoritesPage.qml:15
+#, kde-format
+msgctxt "@title"
+msgid "Sort Favorites"
+msgstr "افرز المفضلة"
+
+#: qml/TellySkoutGlobalDrawer.qml:16 qml/TellySkoutGlobalDrawer.qml:20
+#: qml/TellySkoutGlobalDrawer.qml:28
+#, kde-format
+msgid "Favorites"
+msgstr "المفضّلة"
+
+#: qml/TellySkoutGlobalDrawer.qml:31 qml/TellySkoutGlobalDrawer.qml:35
+#: qml/TellySkoutGlobalDrawer.qml:40
+#, kde-format
+msgid "Select Favorites"
+msgstr "حدد المفضلة"
+
+#: qml/TellySkoutGlobalDrawer.qml:43 qml/TellySkoutGlobalDrawer.qml:47
+#: qml/TellySkoutGlobalDrawer.qml:52
+#, kde-format
+msgid "Sort Favorites"
+msgstr "افرض المفضلة"
+
+#: qml/TellySkoutGlobalDrawer.qml:55 qml/TellySkoutGlobalDrawer.qml:58
+#, kde-format
+msgid "Settings"
+msgstr "إعدادات"
+
+#: qml/TellySkoutGlobalDrawer.qml:61
+#, kde-format
+msgid "About"
+msgstr "عن"
+
+#: qml/TellySkoutGlobalDrawer.qml:64
+#, kde-format
+msgid "About Telly Skout"
+msgstr "عن تلي سكوت"
+
+#: tvspielfilmfetcher.cpp:30
+#, kde-format
+msgid "Germany"
+msgstr "ألمانيا"
+
+#: tvspielfilmfetcher.cpp:300
+#, kde-format
+msgid "Original title: %1"
+msgstr "العنوان الأصلي: %1"
+
+#: tvspielfilmfetcher.cpp:312
+#, kde-format
+msgid "Country: %1"
+msgstr "البلد: %1"
+
+#: tvspielfilmfetcher.cpp:324
+#, kde-format
+msgid "Year: %1"
+msgstr "السنة: %1"
+
+#: tvspielfilmfetcher.cpp:336
+#, kde-format
+msgid "Duration: %1"
+msgstr "المدة: %1"
+
+#: tvspielfilmfetcher.cpp:348
+#, kde-format
+msgid "FSK: %1"
+msgstr "FSK: %1"
+
+#: xmltvfetcher.cpp:43
+#, kde-format
+msgid "XMLTV"
+msgstr "XMLTV"
