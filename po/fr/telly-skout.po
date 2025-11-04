@@ -105,7 +105,7 @@ msgstr "Canaux"
 #: qml/SelectFavoritesPage.qml:30 qml/SortFavoritesPage.qml:35
 #, kde-format
 msgid "Loading channels..."
-msgstr "Chargement des chaînes…"
+msgstr "Chargement des chaines…"
 
 #: qml/SettingsPage.qml:14
 #, kde-format
@@ -202,7 +202,7 @@ msgstr "Fichier :"
 #, kde-format
 msgctxt "@action:button"
 msgid "Open file dialog"
-msgstr "Ouvrir la boîte de dialogue de fichiers"
+msgstr "Ouvrir la boite de dialogue de fichiers"
 
 #: qml/SettingsPage.qml:155
 #, kde-format
