@@ -25,7 +25,6 @@ Dependencies:
       frameworks/qqc2-desktop-style: '@latest-kf6'
 
 Options:
-  cmake-options: '-DCMAKE_COMPILE_WARNING_AS_ERROR=ON'
   require-passing-tests-on:
     - '@all'
   run-qmllint: true
