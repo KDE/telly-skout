@@ -26,7 +26,7 @@ Kirigami.ScrollablePage {
         Kirigami.LoadingPlaceholder {
             visible: channelList.count === 0
             anchors.centerIn: parent
-            text: i18n("Loading channels...")
+            text: i18n("Loading channels…")
         }
 
         ChannelsProxyModel {

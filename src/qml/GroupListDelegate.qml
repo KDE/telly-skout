@@ -27,7 +27,7 @@ Controls.ItemDelegate {
                     while (pageStack.depth > 1)
                         pageStack.pop();
                     pageStack.push("qrc:/qml/SelectFavoritesPage.qml", {
-                        "title": i18n("Channels") + " (" + i18n(model.group.name) + ")",
+                        "title": i18nc("@title, as in 'TV channels'", "Channels") + " (" + i18n(model.group.name) + ")",
                         "groupFilter": lastGroup
                     });
                 }

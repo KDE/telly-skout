@@ -345,7 +345,7 @@ QString TvSpielfilmFetcher::processDescription(const QString &descriptionPage, c
             if (!description.isEmpty()) {
                 description += QStringLiteral("<br>");
             }
-            description += i18n("FSK: %1", match.captured(1));
+            description += i18nc("'FSK' is a German age rating for movies and DVDs", "FSK: %1", match.captured(1));
         }
     }
 

@@ -77,11 +77,11 @@ FormCard.FormCardPage {
 
     FormCard.FormCard {
         FormCard.FormSpinBoxDelegate {
-            label: i18nc("@option:spinbox", "Delete old programs after:")
+            label: i18nc("@label:spinbox", "Delete old programs after:")
             value: TellySkoutSettings.deleteProgramAfter
             onValueChanged: TellySkoutSettings.deleteProgramAfter = value
             textFromValue: (value, locale) => {
-                return i18ncp("Number in days", "%1 day", "%1 days", value);
+                return i18ncp("%1 is a number, completes the setting 'Delete old programs after:'", "%1 day", "%1 days", value);
             }
             valueFromText: (text, locale) => {
                 return text.substring(0, text.length - 4);
@@ -105,12 +105,12 @@ FormCard.FormCardPage {
         FormCard.FormDelegateSeparator {}
 
         FormCard.FormSpinBoxDelegate {
-            label: i18nc("@option:spinbox", "Prefetch:")
+            label: i18nc("@label:spinbox", "Prefetch:")
             visible: fetcher.currentIndex === 0 // only for TV Spielfilm
             value: TellySkoutSettings.tvSpielfilmPrefetch
             onValueChanged: TellySkoutSettings.tvSpielfilmPrefetch = value
             textFromValue: (value, locale) => {
-                return i18ncp("Number in days", "%1 day", "%1 days", value);
+                return i18ncp("%1 is a number, completes the setting 'Prefetch:'", "%1 day", "%1 days", value);
             }
             valueFromText: (text, locale) => {
                 return text.substring(0, text.length - 4);

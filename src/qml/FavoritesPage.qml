@@ -30,12 +30,12 @@ Kirigami.Page {
         width: Kirigami.Units.gridUnit * 20
         icon.name: "favorite"
         anchors.centerIn: parent
-        text: i18n("Please select favorites")
+        text: i18n("Select some favorites to get started!")
     }
 
     actions: [
         Kirigami.Action {
-            text: i18n("Refetch")
+            text: i18nc("@action:intoolbar", "Refresh")
             icon.name: "view-refresh"
             visible: contentRepeater.count !== 0 && !isLoading
             onTriggered: Fetcher.fetchFavorites(true)
@@ -201,7 +201,7 @@ Kirigami.Page {
                 Controls.ToolTip.text: text
                 Controls.ToolTip.visible: hovered
                 icon.name: "go-previous"
-                text: i18nc("@info:tooltip", "previous day")
+                text: i18nc("@info:tooltip", "Previous Day")
                 enabled: new Date().getDate() - (channelTable.date.getDate() - 1) <= TellySkoutSettings.deleteProgramAfter
                 onClicked: channelTable.date = new Date(channelTable.date.getTime() - 24 * 60 * 60 * 1000)
             }
@@ -218,7 +218,7 @@ Kirigami.Page {
                 Controls.ToolTip.text: text
                 Controls.ToolTip.visible: hovered
                 icon.name: "go-next"
-                text: i18nc("@info:tooltip", "next day")
+                text: i18nc("@info:tooltip", "Next Day")
                 enabled: TellySkoutSettings.fetcher === 0 ? (channelTable.date.getDate() + 1) - new Date().getDate() <= TellySkoutSettings.tvSpielfilmPrefetch : true // limit only for TV Spielfilm
                 onClicked: channelTable.date = new Date(channelTable.date.getTime() + 24 * 60 * 60 * 1000)
             }
