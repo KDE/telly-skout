@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:55+0000\n"
+"POT-Creation-Date: 2025-12-08 00:47+0000\n"
 "PO-Revision-Date: 2025-01-01 09:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -58,13 +58,14 @@ msgstr "Preferits"
 
 #: qml/FavoritesPage.qml:33
 #, kde-format
-msgid "Please select favorites"
-msgstr "Seleccioneu els preferits"
+msgid "Select some favorites to get started!"
+msgstr ""
 
 #: qml/FavoritesPage.qml:38
 #, kde-format
-msgid "Refetch"
-msgstr "Torna a obtenir"
+msgctxt "@action:intoolbar"
+msgid "Refresh"
+msgstr ""
 
 #: qml/FavoritesPage.qml:144
 #, kde-format
@@ -73,19 +74,25 @@ msgid "Information not available"
 msgstr "Informació no disponible"
 
 #: qml/FavoritesPage.qml:204
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "previous day"
 msgctxt "@info:tooltip"
-msgid "previous day"
+msgid "Previous Day"
 msgstr "dia anterior"
 
 #: qml/FavoritesPage.qml:221
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "next day"
 msgctxt "@info:tooltip"
-msgid "next day"
+msgid "Next Day"
 msgstr "dia següent"
 
 #: qml/GroupListDelegate.qml:30
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Channels"
+msgctxt "@title, as in 'TV channels'"
 msgid "Channels"
 msgstr "Canals"
 
@@ -96,8 +103,9 @@ msgid "Select Favorites"
 msgstr "Selecció dels preferits"
 
 #: qml/GroupListPage.qml:24
-#, kde-format
-msgid "Loading groups..."
+#, fuzzy, kde-format
+#| msgid "Loading groups..."
+msgid "Loading groups…"
 msgstr "S'estan carregant els grups..."
 
 #: qml/SelectFavoritesPage.qml:16
@@ -107,8 +115,9 @@ msgid "Channels"
 msgstr "Canals"
 
 #: qml/SelectFavoritesPage.qml:29 qml/SortFavoritesPage.qml:34
-#, kde-format
-msgid "Loading channels..."
+#, fuzzy, kde-format
+#| msgid "Loading channels..."
+msgid "Loading channels…"
 msgstr "S'estan carregant els canals..."
 
 #: qml/SettingsPage.qml:14
@@ -166,14 +175,19 @@ msgid "Programs"
 msgstr "Programes"
 
 #: qml/SettingsPage.qml:80
-#, kde-format
-msgctxt "@option:spinbox"
+#, fuzzy, kde-format
+#| msgctxt "@option:spinbox"
+#| msgid "Delete old programs after:"
+msgctxt "@label:spinbox"
 msgid "Delete old programs after:"
 msgstr "Suprimeix els programes antics després de:"
 
-#: qml/SettingsPage.qml:84 qml/SettingsPage.qml:113
-#, kde-format
-msgctxt "Number in days"
+#: qml/SettingsPage.qml:84
+#, fuzzy, kde-format
+#| msgctxt "Number in days"
+#| msgid "%1 day"
+#| msgid_plural "%1 days"
+msgctxt "%1 is a number, completes the setting 'Delete old programs after:'"
 msgid "%1 day"
 msgid_plural "%1 days"
 msgstr[0] "%1 dia"
@@ -191,10 +205,23 @@ msgid "The fetcher which loads the programs."
 msgstr "El recollidor que carrega els programes."
 
 #: qml/SettingsPage.qml:108
-#, kde-format
-msgctxt "@option:spinbox"
+#, fuzzy, kde-format
+#| msgctxt "@option:spinbox"
+#| msgid "Prefetch:"
+msgctxt "@label:spinbox"
 msgid "Prefetch:"
 msgstr "Obtén prèviament:"
+
+#: qml/SettingsPage.qml:113
+#, fuzzy, kde-format
+#| msgctxt "Number in days"
+#| msgid "%1 day"
+#| msgid_plural "%1 days"
+msgctxt "%1 is a number, completes the setting 'Prefetch:'"
+msgid "%1 day"
+msgid_plural "%1 days"
+msgstr[0] "%1 dia"
+msgstr[1] "%1 dies"
 
 #: qml/SettingsPage.qml:125
 #, kde-format
@@ -284,7 +311,9 @@ msgstr "Durada: %1"
 
 # NdT: FSK és l'organisme que classifica les pel·licules a Alemanya (0, 6, 12, 16, 18 anys)
 #: tvspielfilmfetcher.cpp:348
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "FSK: %1"
+msgctxt "'FSK' is a German age rating for movies and DVDs"
 msgid "FSK: %1"
 msgstr "FSK: %1"
 
@@ -292,6 +321,12 @@ msgstr "FSK: %1"
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"
+
+#~ msgid "Please select favorites"
+#~ msgstr "Seleccioneu els preferits"
+
+#~ msgid "Refetch"
+#~ msgstr "Torna a obtenir"
 
 #~ msgid "UI"
 #~ msgstr "IU"

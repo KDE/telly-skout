@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:55+0000\n"
+"POT-Creation-Date: 2025-12-08 00:47+0000\n"
 "PO-Revision-Date: 2025-01-06 18:58+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
@@ -57,13 +57,14 @@ msgstr "Plej ŝatataj"
 
 #: qml/FavoritesPage.qml:33
 #, kde-format
-msgid "Please select favorites"
-msgstr "Bonvolu elekti ŝatatojn"
+msgid "Select some favorites to get started!"
+msgstr ""
 
 #: qml/FavoritesPage.qml:38
 #, kde-format
-msgid "Refetch"
-msgstr "Repreni"
+msgctxt "@action:intoolbar"
+msgid "Refresh"
+msgstr ""
 
 #: qml/FavoritesPage.qml:144
 #, kde-format
@@ -72,19 +73,25 @@ msgid "Information not available"
 msgstr "Informo ne disponebla"
 
 #: qml/FavoritesPage.qml:204
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "previous day"
 msgctxt "@info:tooltip"
-msgid "previous day"
+msgid "Previous Day"
 msgstr "antaŭa tago"
 
 #: qml/FavoritesPage.qml:221
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "next day"
 msgctxt "@info:tooltip"
-msgid "next day"
+msgid "Next Day"
 msgstr "sekvanta tago"
 
 #: qml/GroupListDelegate.qml:30
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Channels"
+msgctxt "@title, as in 'TV channels'"
 msgid "Channels"
 msgstr "Kanaloj"
 
@@ -95,8 +102,9 @@ msgid "Select Favorites"
 msgstr "Elekti plej ŝatatajn"
 
 #: qml/GroupListPage.qml:24
-#, kde-format
-msgid "Loading groups..."
+#, fuzzy, kde-format
+#| msgid "Loading groups..."
+msgid "Loading groups…"
 msgstr "Ŝargante grupojn..."
 
 #: qml/SelectFavoritesPage.qml:16
@@ -106,8 +114,9 @@ msgid "Channels"
 msgstr "Kanaloj"
 
 #: qml/SelectFavoritesPage.qml:29 qml/SortFavoritesPage.qml:34
-#, kde-format
-msgid "Loading channels..."
+#, fuzzy, kde-format
+#| msgid "Loading channels..."
+msgid "Loading channels…"
 msgstr "Ŝargante kanalojn..."
 
 #: qml/SettingsPage.qml:14
@@ -165,14 +174,19 @@ msgid "Programs"
 msgstr "Programoj"
 
 #: qml/SettingsPage.qml:80
-#, kde-format
-msgctxt "@option:spinbox"
+#, fuzzy, kde-format
+#| msgctxt "@option:spinbox"
+#| msgid "Delete old programs after:"
+msgctxt "@label:spinbox"
 msgid "Delete old programs after:"
 msgstr "Forigi malnovajn programojn post:"
 
-#: qml/SettingsPage.qml:84 qml/SettingsPage.qml:113
-#, kde-format
-msgctxt "Number in days"
+#: qml/SettingsPage.qml:84
+#, fuzzy, kde-format
+#| msgctxt "Number in days"
+#| msgid "%1 day"
+#| msgid_plural "%1 days"
+msgctxt "%1 is a number, completes the setting 'Delete old programs after:'"
 msgid "%1 day"
 msgid_plural "%1 days"
 msgstr[0] "%1 tago"
@@ -190,10 +204,23 @@ msgid "The fetcher which loads the programs."
 msgstr "La prenilo kiu ŝargas la programojn."
 
 #: qml/SettingsPage.qml:108
-#, kde-format
-msgctxt "@option:spinbox"
+#, fuzzy, kde-format
+#| msgctxt "@option:spinbox"
+#| msgid "Prefetch:"
+msgctxt "@label:spinbox"
 msgid "Prefetch:"
 msgstr "Antaŭpreni:"
+
+#: qml/SettingsPage.qml:113
+#, fuzzy, kde-format
+#| msgctxt "Number in days"
+#| msgid "%1 day"
+#| msgid_plural "%1 days"
+msgctxt "%1 is a number, completes the setting 'Prefetch:'"
+msgid "%1 day"
+msgid_plural "%1 days"
+msgstr[0] "%1 tago"
+msgstr[1] "%1 tagoj"
 
 #: qml/SettingsPage.qml:125
 #, kde-format
@@ -282,7 +309,9 @@ msgid "Duration: %1"
 msgstr "Daŭro: %1"
 
 #: tvspielfilmfetcher.cpp:348
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "FSK: %1"
+msgctxt "'FSK' is a German age rating for movies and DVDs"
 msgid "FSK: %1"
 msgstr "FSK: %1"
 
@@ -290,3 +319,9 @@ msgstr "FSK: %1"
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"
+
+#~ msgid "Please select favorites"
+#~ msgstr "Bonvolu elekti ŝatatojn"
+
+#~ msgid "Refetch"
+#~ msgstr "Repreni"
