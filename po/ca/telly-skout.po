@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:43+0000\n"
-"PO-Revision-Date: 2025-01-01 09:30+0100\n"
+"PO-Revision-Date: 2025-12-08 12:22+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -182,13 +182,13 @@ msgstr[1] "%1 dies"
 #: qml/SettingsPage.qml:96
 #, kde-format
 msgid "Fetcher:"
-msgstr "Recollidor:"
+msgstr "Descarregador:"
 
 #: qml/SettingsPage.qml:97
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr "El recollidor que carrega els programes."
+msgstr "El descarregador que carrega els programes."
 
 #: qml/SettingsPage.qml:108
 #, kde-format
