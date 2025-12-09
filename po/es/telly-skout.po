@@ -1,15 +1,15 @@
 # Spanish translations for telly-skout.po package.
-# Copyright (C) 2022 This file is copyright:
+# Copyright (C) 2022-2025 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
-#
 # Automatically generated, 2022.
+#
 # SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 00:47+0000\n"
-"PO-Revision-Date: 2025-01-01 04:59+0100\n"
+"PO-Revision-Date: 2025-12-08 11:48+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -59,13 +59,13 @@ msgstr "Favoritos"
 #: qml/FavoritesPage.qml:33
 #, kde-format
 msgid "Select some favorites to get started!"
-msgstr ""
+msgstr "Seleccione algún favorito para empezar."
 
 #: qml/FavoritesPage.qml:38
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Refresh"
-msgstr ""
+msgstr "Actualizar"
 
 #: qml/FavoritesPage.qml:144
 #, kde-format
@@ -74,24 +74,19 @@ msgid "Information not available"
 msgstr "Información no disponible"
 
 #: qml/FavoritesPage.qml:204
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "previous day"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Previous Day"
-msgstr "día anterior"
+msgstr "Día anterior"
 
 #: qml/FavoritesPage.qml:221
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "next day"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Next Day"
-msgstr "día siguiente"
+msgstr "Día siguiente"
 
 #: qml/GroupListDelegate.qml:30
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title, as in 'TV channels'"
 msgid "Channels"
 msgstr "Canales"
@@ -103,10 +98,9 @@ msgid "Select Favorites"
 msgstr "Seleccione favoritos"
 
 #: qml/GroupListPage.qml:24
-#, fuzzy, kde-format
-#| msgid "Loading groups..."
+#, kde-format
 msgid "Loading groups…"
-msgstr "Cargando grupos..."
+msgstr "Cargando grupos…"
 
 #: qml/SelectFavoritesPage.qml:16
 #, kde-format
@@ -115,10 +109,9 @@ msgid "Channels"
 msgstr "Canales"
 
 #: qml/SelectFavoritesPage.qml:29 qml/SortFavoritesPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Loading channels..."
+#, kde-format
 msgid "Loading channels…"
-msgstr "Cargando canales..."
+msgstr "Cargando canales…"
 
 #: qml/SettingsPage.qml:14
 #, kde-format
@@ -175,18 +168,13 @@ msgid "Programs"
 msgstr "Programas"
 
 #: qml/SettingsPage.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Delete old programs after:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Delete old programs after:"
 msgstr "Borrar programas antiguos después de:"
 
 #: qml/SettingsPage.qml:84
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Delete old programs after:'"
 msgid "%1 day"
 msgid_plural "%1 days"
@@ -205,18 +193,13 @@ msgid "The fetcher which loads the programs."
 msgstr "El extractor que carga los programas."
 
 #: qml/SettingsPage.qml:108
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Prefetch:"
 msgstr "Preextraer:"
 
 #: qml/SettingsPage.qml:113
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Prefetch:'"
 msgid "%1 day"
 msgid_plural "%1 days"
@@ -310,8 +293,7 @@ msgid "Duration: %1"
 msgstr "Duración: %1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: %1"
+#, kde-format
 msgctxt "'FSK' is a German age rating for movies and DVDs"
 msgid "FSK: %1"
 msgstr "FSK: %1"
@@ -320,18 +302,3 @@ msgstr "FSK: %1"
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"
-
-#~ msgid "Please select favorites"
-#~ msgstr "Seleccione favoritos"
-
-#~ msgid "Refetch"
-#~ msgstr "Volver a extraer"
-
-#~ msgid "UI"
-#~ msgstr "UI"
-
-#~ msgid "px"
-#~ msgstr "px"
-
-#~ msgid "days"
-#~ msgstr "días"
