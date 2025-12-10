@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:43+0000\n"
-"PO-Revision-Date: 2024-08-14 09:05+0200\n"
+"PO-Revision-Date: 2025-12-05 10:27+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -62,7 +62,7 @@ msgstr ""
 #: qml/FavoritesPage.qml:38
 #, kde-format
 msgid "Refetch"
-msgstr ""
+msgstr "Obnovit"
 
 #: qml/FavoritesPage.qml:144
 #, kde-format
@@ -74,13 +74,13 @@ msgstr "Informace jsou nedostupné"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "previous day"
-msgstr ""
+msgstr "předchozí den"
 
 #: qml/FavoritesPage.qml:221
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "next day"
-msgstr ""
+msgstr "následující den"
 
 #: qml/GroupListDelegate.qml:30
 #, kde-format
@@ -155,7 +155,7 @@ msgstr "Velikost písma:"
 #, kde-format
 msgctxt "@option:check show date selection"
 msgid "Show date selection:"
-msgstr ""
+msgstr "Zobrazit výběr data:"
 
 #: qml/SettingsPage.qml:75
 #, kde-format
@@ -221,7 +221,7 @@ msgstr "Všechny soubory (*)"
 #, kde-format
 msgctxt "@title"
 msgid "Sort Favorites"
-msgstr ""
+msgstr "Seřadit oblíbené"
 
 #: qml/TellySkoutGlobalDrawer.qml:16 qml/TellySkoutGlobalDrawer.qml:20
 #: qml/TellySkoutGlobalDrawer.qml:28
@@ -254,7 +254,7 @@ msgstr "O aplikaci"
 #: qml/TellySkoutGlobalDrawer.qml:64
 #, kde-format
 msgid "About Telly Skout"
-msgstr ""
+msgstr "O aplikaci Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
@@ -264,7 +264,7 @@ msgstr "Německo"
 #: tvspielfilmfetcher.cpp:300
 #, kde-format
 msgid "Original title: %1"
-msgstr ""
+msgstr "Původní název: %1"
 
 #: tvspielfilmfetcher.cpp:312
 #, kde-format
@@ -274,7 +274,7 @@ msgstr "Země: %1"
 #: tvspielfilmfetcher.cpp:324
 #, kde-format
 msgid "Year: %1"
-msgstr ""
+msgstr "Rok: %1"
 
 #: tvspielfilmfetcher.cpp:336
 #, kde-format
