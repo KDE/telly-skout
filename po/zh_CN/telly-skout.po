@@ -190,11 +190,10 @@ msgid "The fetcher which loads the programs."
 msgstr ""
 
 #: qml/SettingsPage.qml:108
-#, fuzzy, kde-format
-#| msgid "Refetch"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Prefetch:"
-msgstr "重新获取"
+msgstr ""
 
 #: qml/SettingsPage.qml:113
 #, kde-format
@@ -290,8 +289,7 @@ msgid "Duration: %1"
 msgstr "时长：%1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: %1"
+#, kde-format
 msgctxt "'FSK' is a German age rating for movies and DVDs"
 msgid "FSK: %1"
 msgstr "FSK：%1"

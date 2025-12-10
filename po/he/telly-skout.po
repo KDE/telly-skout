@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
 #
-# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 00:47+0000\n"
-"PO-Revision-Date: 2025-01-01 06:40+0200\n"
+"PO-Revision-Date: 2025-12-08 09:36+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -58,13 +58,13 @@ msgstr "מועדפים"
 #: qml/FavoritesPage.qml:33
 #, kde-format
 msgid "Select some favorites to get started!"
-msgstr ""
+msgstr "יש לבחור מועדפים כדי להתחיל!"
 
 #: qml/FavoritesPage.qml:38
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Refresh"
-msgstr ""
+msgstr "ריענון"
 
 #: qml/FavoritesPage.qml:144
 #, kde-format
@@ -73,24 +73,19 @@ msgid "Information not available"
 msgstr "המידע לא זמין"
 
 #: qml/FavoritesPage.qml:204
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "previous day"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Previous Day"
 msgstr "היום הקודם"
 
 #: qml/FavoritesPage.qml:221
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "next day"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Next Day"
 msgstr "היום הבא"
 
 #: qml/GroupListDelegate.qml:30
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title, as in 'TV channels'"
 msgid "Channels"
 msgstr "ערוצים"
@@ -102,8 +97,7 @@ msgid "Select Favorites"
 msgstr "בחירת מועדפים"
 
 #: qml/GroupListPage.qml:24
-#, fuzzy, kde-format
-#| msgid "Loading groups..."
+#, kde-format
 msgid "Loading groups…"
 msgstr "הקבוצות נטענות…"
 
@@ -114,10 +108,9 @@ msgid "Channels"
 msgstr "ערוצים"
 
 #: qml/SelectFavoritesPage.qml:29 qml/SortFavoritesPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Loading channels..."
+#, kde-format
 msgid "Loading channels…"
-msgstr "הערוצים נטענים"
+msgstr "הערוצים נטענים…"
 
 #: qml/SettingsPage.qml:14
 #, kde-format
@@ -174,18 +167,13 @@ msgid "Programs"
 msgstr "תוכניות"
 
 #: qml/SettingsPage.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Delete old programs after:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Delete old programs after:"
-msgstr "מחיקת תוכניות ישנות לאחר:"
+msgstr "למחוק תוכניות ישנות לאחר:"
 
 #: qml/SettingsPage.qml:84
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Delete old programs after:'"
 msgid "%1 day"
 msgid_plural "%1 days"
@@ -206,18 +194,13 @@ msgid "The fetcher which loads the programs."
 msgstr "מנגנון המשיכה שטוען את התוכניות."
 
 #: qml/SettingsPage.qml:108
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Prefetch:"
 msgstr "משיכה טרומית:"
 
 #: qml/SettingsPage.qml:113
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Prefetch:'"
 msgid "%1 day"
 msgid_plural "%1 days"
@@ -313,8 +296,7 @@ msgid "Duration: %1"
 msgstr "משך: %1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: %1"
+#, kde-format
 msgctxt "'FSK' is a German age rating for movies and DVDs"
 msgid "FSK: %1"
 msgstr "FSK (מדד הצנזורה הגרמני): %1"
