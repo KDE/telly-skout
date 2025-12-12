@@ -85,6 +85,7 @@ msgstr ""
 
 #: qml/GroupListDelegate.qml:30
 #, fuzzy, kde-format
+#| msgctxt "@title"
 #| msgid "Channels"
 msgctxt "@title, as in 'TV channels'"
 msgid "Channels"
@@ -97,10 +98,9 @@ msgid "Select Favorites"
 msgstr "Vyberte oblíbené"
 
 #: qml/GroupListPage.qml:24
-#, fuzzy, kde-format
-#| msgid "Loading groups..."
+#, kde-format
 msgid "Loading groups…"
-msgstr "Načítání seznamu skupin..."
+msgstr ""
 
 #: qml/SelectFavoritesPage.qml:16
 #, kde-format
@@ -168,24 +168,19 @@ msgid "Programs"
 msgstr "Programy"
 
 #: qml/SettingsPage.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Delete old programs after:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Delete old programs after:"
-msgstr "Smazat staré programy po:"
+msgstr ""
 
 #: qml/SettingsPage.qml:84
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Delete old programs after:'"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] "%1 dnu"
-msgstr[1] "%1 dnech"
-msgstr[2] "%1 dnech"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: qml/SettingsPage.qml:96
 #, kde-format
@@ -199,24 +194,19 @@ msgid "The fetcher which loads the programs."
 msgstr ""
 
 #: qml/SettingsPage.qml:108
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Prefetch:"
-msgstr "Přednačítat:"
+msgstr ""
 
 #: qml/SettingsPage.qml:113
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Prefetch:'"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] "%1 dnu"
-msgstr[1] "%1 dnech"
-msgstr[2] "%1 dnech"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: qml/SettingsPage.qml:125
 #, kde-format
