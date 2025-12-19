@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 00:47+0000\n"
-"PO-Revision-Date: 2025-09-04 15:07+0300\n"
+"PO-Revision-Date: 2025-12-18 15:22+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -57,13 +57,13 @@ msgstr "Sık Kullanılanlar"
 #: qml/FavoritesPage.qml:33
 #, kde-format
 msgid "Select some favorites to get started!"
-msgstr ""
+msgstr "Başlamak için favorilerinizi seçin!"
 
 #: qml/FavoritesPage.qml:38
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Refresh"
-msgstr ""
+msgstr "Yenile"
 
 #: qml/FavoritesPage.qml:144
 #, kde-format
@@ -72,24 +72,19 @@ msgid "Information not available"
 msgstr "Bilgi yok"
 
 #: qml/FavoritesPage.qml:204
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "previous day"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Previous Day"
 msgstr "Önceki gün"
 
 #: qml/FavoritesPage.qml:221
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "next day"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Next Day"
 msgstr "Sonraki gün"
 
 #: qml/GroupListDelegate.qml:30
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title, as in 'TV channels'"
 msgid "Channels"
 msgstr "Kanallar"
@@ -101,8 +96,7 @@ msgid "Select Favorites"
 msgstr "Sık Kullanılanları Seç"
 
 #: qml/GroupListPage.qml:24
-#, fuzzy, kde-format
-#| msgid "Loading groups..."
+#, kde-format
 msgid "Loading groups…"
 msgstr "Gruplar yükleniyor…"
 
@@ -113,8 +107,7 @@ msgid "Channels"
 msgstr "Kanallar"
 
 #: qml/SelectFavoritesPage.qml:29 qml/SortFavoritesPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Loading channels..."
+#, kde-format
 msgid "Loading channels…"
 msgstr "Kanallar yükleniyor…"
 
@@ -173,18 +166,13 @@ msgid "Programs"
 msgstr "Programlar"
 
 #: qml/SettingsPage.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Delete old programs after:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Delete old programs after:"
 msgstr "Eskileri şu zamandan sonra sil:"
 
 #: qml/SettingsPage.qml:84
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Delete old programs after:'"
 msgid "%1 day"
 msgid_plural "%1 days"
@@ -203,18 +191,13 @@ msgid "The fetcher which loads the programs."
 msgstr "Programları yükleyen getirici."
 
 #: qml/SettingsPage.qml:108
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Prefetch:"
 msgstr "Önden getir:"
 
 #: qml/SettingsPage.qml:113
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Prefetch:'"
 msgid "%1 day"
 msgid_plural "%1 days"
@@ -308,8 +291,7 @@ msgid "Duration: %1"
 msgstr "Süre: %1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: %1"
+#, kde-format
 msgctxt "'FSK' is a German age rating for movies and DVDs"
 msgid "FSK: %1"
 msgstr "FKA: %1"
