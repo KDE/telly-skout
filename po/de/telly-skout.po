@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the telly-skout package.
 # SPDX-FileCopyrightText: 2022 Frederik Schwarzer <schwarzer@kde.org>
 # SPDX-FileCopyrightText: 2023, 2024 Frank Steinmetzger <dev-kde@felsenfleischer.de>
+# SPDX-FileCopyrightText: 2025 Alois Spitzbart <spitz234@hotmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 00:47+0000\n"
-"PO-Revision-Date: 2024-09-02 02:15+0200\n"
-"Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
+"PO-Revision-Date: 2025-12-14 14:37+0100\n"
+"Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -41,7 +42,7 @@ msgstr "Telly Skout"
 #: main.cpp:67
 #, kde-format
 msgid "© 2020 KDE Community"
-msgstr "Copyright © 2020 KDE-Gemeinschaft"
+msgstr "© 2020 KDE-Gemeinschaft"
 
 #: qml/ChannelListDelegate.qml:54
 #, kde-format
@@ -161,7 +162,7 @@ msgstr "Schriftgröße:"
 #, kde-format
 msgctxt "@option:check show date selection"
 msgid "Show date selection:"
-msgstr ""
+msgstr "Datumsauswahl anzeigen:"
 
 #: qml/SettingsPage.qml:75
 #, kde-format
@@ -241,8 +242,7 @@ msgid "All files (*)"
 msgstr "Alle Dateien (*)"
 
 #: qml/SortFavoritesPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Sort Favorites"
+#, kde-format
 msgctxt "@title"
 msgid "Sort Favorites"
 msgstr "Favoriten sortieren"
@@ -276,10 +276,9 @@ msgid "About"
 msgstr "Über"
 
 #: qml/TellySkoutGlobalDrawer.qml:64
-#, fuzzy, kde-format
-#| msgid "Telly Skout"
+#, kde-format
 msgid "About Telly Skout"
-msgstr "Telly Skout"
+msgstr "Über Telly Skout"
 
 #: tvspielfilmfetcher.cpp:30
 #, kde-format
@@ -287,28 +286,24 @@ msgid "Germany"
 msgstr "Deutschland"
 
 #: tvspielfilmfetcher.cpp:300
-#, fuzzy, kde-format
-#| msgid "Original title: "
+#, kde-format
 msgid "Original title: %1"
-msgstr "Originaltitel:"
+msgstr "Originaltitel: %1"
 
 #: tvspielfilmfetcher.cpp:312
-#, fuzzy, kde-format
-#| msgid "Country: "
+#, kde-format
 msgid "Country: %1"
-msgstr "Land:"
+msgstr "Land: %1"
 
 #: tvspielfilmfetcher.cpp:324
-#, fuzzy, kde-format
-#| msgid "Year: "
+#, kde-format
 msgid "Year: %1"
-msgstr "Jahr:"
+msgstr "Jahr: %1"
 
 #: tvspielfilmfetcher.cpp:336
-#, fuzzy, kde-format
-#| msgid "Duration: "
+#, kde-format
 msgid "Duration: %1"
-msgstr "Dauer:"
+msgstr "Dauer: %1"
 
 #: tvspielfilmfetcher.cpp:348
 #, fuzzy, kde-format
