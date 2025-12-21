@@ -43,6 +43,7 @@
   <summary xml:lang="ar">دليل تلفزيوني متقارب من كيريغامي</summary>
   <summary xml:lang="ca">Una guia de TV convergent del Kirigami</summary>
   <summary xml:lang="ca-valencia">Una guia de TV convergent de Kirigami</summary>
+  <summary xml:lang="de">Ein konvergenter, auf Kirigami basierender Fernsehprogrammführer</summary>
   <summary xml:lang="en-GB">A convergent Kirigami TV guide</summary>
   <summary xml:lang="eo">Konverĝa televid-gvidilo de Kirigami</summary>
   <summary xml:lang="es">Una guía de TV convergente de Kirigami</summary>
@@ -85,6 +86,7 @@
     <p xml:lang="ar">تيلي سكوت هو دليل تلفزيوني متقارب من كيريغامي. يعرض البرامج التلفزيونية لقنواتك المفضلة من TV Spielfilm أو ملف XMLTV.</p>
     <p xml:lang="ca">El Telly Skout és una guia de TV convergent del Kirigami. Mostra els programa de TV dels canals preferits a partir de TV Spielfilm o d'un fitxer XMLTV.</p>
     <p xml:lang="ca-valencia">Telly Skout és una guia de TV convergent de Kirigami. Mostra els programa de TV dels canals preferits a partir de TV Spielfilm o d'un fitxer XMLTV.</p>
+    <p xml:lang="de">Telly Skout ist ein konvergenter Fernsehprogrammführer. Er zeigt das Fernsehprogramm für Ihre bevorzugten Kanäle von „TV Spielfilm“ oder einer XMLTV-Datei an.</p>
     <p xml:lang="en-GB">Telly Skout is a convergent Kirigami TV guide. It shows the TV program for your favourite channels from TV Spielfilm or an XMLTV file.</p>
     <p xml:lang="eo">Telly Skout estas konverĝa televida gvidilo de Kirigami. Ĝi montras la televidprogramon por viaj plej ŝatataj kanaloj de TV Spielfilm aŭ XMLTV-dosiero.</p>
     <p xml:lang="es">Telly Skout es una guía de TV convergente creada con Kirigami. Muestra los programas de TV de sus canales favoritos de TV Spielfilm o de un archivo XMLTV.</p>
@@ -120,6 +122,7 @@
       <caption xml:lang="ca">Preferits</caption>
       <caption xml:lang="ca-valencia">Preferits</caption>
       <caption xml:lang="cs">Oblíbené</caption>
+      <caption xml:lang="de">Favoriten</caption>
       <caption xml:lang="en-GB">Favourites</caption>
       <caption xml:lang="eo">Plej ŝatataj</caption>
       <caption xml:lang="es">Favoritos</caption>
@@ -155,6 +158,7 @@
       <caption xml:lang="ca">Selecció dels preferits</caption>
       <caption xml:lang="ca-valencia">Trieu els preferits</caption>
       <caption xml:lang="cs">Vyberte oblíbené</caption>
+      <caption xml:lang="de">Favoriten wählen</caption>
       <caption xml:lang="en-GB">Select Favourites</caption>
       <caption xml:lang="eo">Elekti plej ŝatatajn</caption>
       <caption xml:lang="es">Seleccionar favoritos</caption>
@@ -190,6 +194,7 @@
       <caption xml:lang="ca">Ordenació dels preferits</caption>
       <caption xml:lang="ca-valencia">Ordenació dels preferits</caption>
       <caption xml:lang="cs">Seřadit oblíbené</caption>
+      <caption xml:lang="de">Favoriten sortieren</caption>
       <caption xml:lang="en-GB">Sort Favourites</caption>
       <caption xml:lang="eo">Oridigi plej ŝatatajn</caption>
       <caption xml:lang="es">Ordenar favoritos</caption>
