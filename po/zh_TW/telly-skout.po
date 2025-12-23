@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 00:47+0000\n"
-"PO-Revision-Date: 2025-04-07 14:47+0900\n"
+"PO-Revision-Date: 2025-12-23 09:35+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -60,13 +60,13 @@ msgstr "最愛"
 #: qml/FavoritesPage.qml:33
 #, kde-format
 msgid "Select some favorites to get started!"
-msgstr ""
+msgstr "先選取一些最愛吧！"
 
 #: qml/FavoritesPage.qml:38
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Refresh"
-msgstr ""
+msgstr "重新整理"
 
 #: qml/FavoritesPage.qml:144
 #, kde-format
@@ -75,24 +75,19 @@ msgid "Information not available"
 msgstr "資訊無法使用"
 
 #: qml/FavoritesPage.qml:204
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "previous day"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Previous Day"
-msgstr "上一天"
+msgstr "前一天"
 
 #: qml/FavoritesPage.qml:221
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "next day"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Next Day"
-msgstr "下一天"
+msgstr "隔天"
 
 #: qml/GroupListDelegate.qml:30
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title, as in 'TV channels'"
 msgid "Channels"
 msgstr "頻道"
@@ -104,8 +99,7 @@ msgid "Select Favorites"
 msgstr "選取最愛"
 
 #: qml/GroupListPage.qml:24
-#, fuzzy, kde-format
-#| msgid "Loading groups..."
+#, kde-format
 msgid "Loading groups…"
 msgstr "群組載入中…"
 
@@ -116,8 +110,7 @@ msgid "Channels"
 msgstr "頻道"
 
 #: qml/SelectFavoritesPage.qml:29 qml/SortFavoritesPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Loading channels..."
+#, kde-format
 msgid "Loading channels…"
 msgstr "頻道載入中…"
 
@@ -176,18 +169,13 @@ msgid "Programs"
 msgstr "節目"
 
 #: qml/SettingsPage.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Delete old programs after:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Delete old programs after:"
 msgstr "多久之後刪除舊節目："
 
 #: qml/SettingsPage.qml:84
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Delete old programs after:'"
 msgid "%1 day"
 msgid_plural "%1 days"
@@ -205,18 +193,13 @@ msgid "The fetcher which loads the programs."
 msgstr "載入節目用的抓取器。"
 
 #: qml/SettingsPage.qml:108
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Prefetch:"
 msgstr "預先取得："
 
 #: qml/SettingsPage.qml:113
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Prefetch:'"
 msgid "%1 day"
 msgid_plural "%1 days"
@@ -309,8 +292,7 @@ msgid "Duration: %1"
 msgstr "時長：%1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: %1"
+#, kde-format
 msgctxt "'FSK' is a German age rating for movies and DVDs"
 msgid "FSK: %1"
 msgstr "FSK：%1"
