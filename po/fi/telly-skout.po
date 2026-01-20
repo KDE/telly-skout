@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 00:47+0000\n"
-"PO-Revision-Date: 2025-01-31 23:13+0200\n"
+"PO-Revision-Date: 2026-01-10 21:06+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -57,13 +57,13 @@ msgstr "Suosikit"
 #: qml/FavoritesPage.qml:33
 #, kde-format
 msgid "Select some favorites to get started!"
-msgstr ""
+msgstr "Aloita valitsemalla suosikkeja!"
 
 #: qml/FavoritesPage.qml:38
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Refresh"
-msgstr ""
+msgstr "Virkistä"
 
 #: qml/FavoritesPage.qml:144
 #, kde-format
@@ -72,24 +72,19 @@ msgid "Information not available"
 msgstr "Tietoa ei saatavilla"
 
 #: qml/FavoritesPage.qml:204
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "previous day"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Previous Day"
-msgstr "edellinen päivä"
+msgstr "Edellinen päivä"
 
 #: qml/FavoritesPage.qml:221
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "next day"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Next Day"
-msgstr "seuraava päivä"
+msgstr "Seuraava päivä"
 
 #: qml/GroupListDelegate.qml:30
-#, fuzzy, kde-format
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title, as in 'TV channels'"
 msgid "Channels"
 msgstr "Kanavat"
@@ -101,8 +96,7 @@ msgid "Select Favorites"
 msgstr "Valitse suosikit"
 
 #: qml/GroupListPage.qml:24
-#, fuzzy, kde-format
-#| msgid "Loading groups..."
+#, kde-format
 msgid "Loading groups…"
 msgstr "Ladataan ryhmiä…"
 
@@ -113,8 +107,7 @@ msgid "Channels"
 msgstr "Kanavat"
 
 #: qml/SelectFavoritesPage.qml:29 qml/SortFavoritesPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Loading channels..."
+#, kde-format
 msgid "Loading channels…"
 msgstr "Ladataan kanavia…"
 
@@ -173,18 +166,13 @@ msgid "Programs"
 msgstr "Ohjelmat"
 
 #: qml/SettingsPage.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Delete old programs after:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Delete old programs after:"
 msgstr "Poista vanhat ohjelmat ajassa:"
 
 #: qml/SettingsPage.qml:84
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Delete old programs after:'"
 msgid "%1 day"
 msgid_plural "%1 days"
@@ -203,18 +191,13 @@ msgid "The fetcher which loads the programs."
 msgstr "Ohjelmat lataava sovellus."
 
 #: qml/SettingsPage.qml:108
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Prefetch:"
 msgstr "Esinouda:"
 
 #: qml/SettingsPage.qml:113
-#, fuzzy, kde-format
-#| msgctxt "Number in days"
-#| msgid "%1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgctxt "%1 is a number, completes the setting 'Prefetch:'"
 msgid "%1 day"
 msgid_plural "%1 days"
@@ -311,7 +294,7 @@ msgstr "Kesto: %1"
 #, kde-format
 msgctxt "'FSK' is a German age rating for movies and DVDs"
 msgid "FSK: %1"
-msgstr ""
+msgstr "FSK: %1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format
