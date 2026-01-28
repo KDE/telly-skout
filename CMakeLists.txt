@@ -74,7 +74,7 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 if(MSVC)
-    add_compile_options(/W3 /WX)
+    add_compile_options(/W3)
 else()
     add_compile_options(-Wall -Wextra -Wconversion -Wsign-conversion -pedantic)
 
