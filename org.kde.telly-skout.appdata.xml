@@ -247,46 +247,124 @@
     <release version="25.04.0" date="2025-04-17">
       <description>
         <p>TV Spielfilm fetcher</p>
+        <p xml:lang="ca">Descarregador de TV Spielfilm</p>
+        <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
+        <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
         <ul>
           <li>Fix "Select Favorites" page does not list channels.</li>
+          <li xml:lang="ca">Corregeix la pàgina «Selecciona els preferits» que no llista els canals.</li>
+          <li xml:lang="ca-valencia">Corregix la pàgina «Tria els preferits» que no llista els canals.</li>
+          <li xml:lang="he">תוקנה בעיה שעמוד „בחירת מועדפים” לא מציג ערוצים.</li>
+          <li xml:lang="pt-BR">Corrigido o problema em que a página "Selecionar favoritos" não lista os canais.</li>
         </ul>
         <p>"Favorites" page</p>
+        <p xml:lang="ca">Pàgina de «Preferits»</p>
+        <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="he">עמוד „מועדפים”</p>
+        <p xml:lang="pt-BR">Página "Favoritos"</p>
         <ul>
           <li>Add date selection.</li>
+          <li xml:lang="ca">Afegeix la selecció de dates.</li>
+          <li xml:lang="ca-valencia">Afig la selecció de dates.</li>
+          <li xml:lang="he">נוספה בחירת תאריכים.</li>
+          <li xml:lang="pt-BR">Adicionada seleção de datas.</li>
           <li>Improve handling of gaps/overlaps in the programs.</li>
+          <li xml:lang="ca">Millora de la gestió de buits/superposicions en els programes.</li>
+          <li xml:lang="ca-valencia">Millora de la gestió de buits/superposicions en els programes.</li>
+          <li xml:lang="he">הטיפול במרווחים/חפיפות בתוכניות השתפר.</li>
+          <li xml:lang="pt-BR">Melhoria no tratamento de lacunas/sobreposições nos programas.</li>
         </ul>
         <p>Add Android support.</p>
+        <p xml:lang="ca">Afegeix el suport de l'Android.</p>
+        <p xml:lang="ca-valencia">Afig el suport d'Android.</p>
+        <p xml:lang="he">נוספה תמיכה ב־Android.</p>
+        <p xml:lang="pt-BR">Adicionado suporte ao Android.</p>
       </description>
     </release>
     <release version="24.12.3" date="2025-03-06"/>
     <release version="24.12.2" date="2025-02-06">
       <description>
         <p>"Favorites" page</p>
+        <p xml:lang="ca">Pàgina de «Preferits»</p>
+        <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="he">עמוד „מועדפים”</p>
+        <p xml:lang="pt-BR">Página "Favoritos"</p>
         <ul>
           <li>Show refetch button in top toolbar on mobile.</li>
+          <li xml:lang="ca">Mostra el botó de recuperació a la barra d'eines superior al mòbil.</li>
+          <li xml:lang="ca-valencia">Mostra el botó de recuperació a la barra d'eines superior al mòbil.</li>
+          <li xml:lang="he">הצגת כפתור משיכה מחדש בסרגל הכלים העליון במהדורה לניידים.</li>
+          <li xml:lang="pt-BR">Exibe o botão de recarregar na barra de ferramentas superior em dispositivos móveis.</li>
         </ul>
       </description>
     </release>
     <release version="24.12.1" date="2025-01-09">
       <description>
         <p>TV Spielfilm fetcher</p>
+        <p xml:lang="ca">Descarregador de TV Spielfilm</p>
+        <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
+        <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
         <ul>
           <li>Fix program stop time before start time (missing programs).</li>
+          <li xml:lang="ca">Corregeix l'hora final dels programes abans de l'hora d'inici (programes que manquen).</li>
+          <li xml:lang="ca-valencia">Corregix l'hora final dels programes abans de l'hora d'inici (programes que falten).</li>
+          <li xml:lang="pt-BR">Correção do horário de término do programa antes do horário de início (programas ausentes).</li>
           <li>Fix program description with multiple paragraphs.</li>
+          <li xml:lang="ca">Corregeix la descripció de programes amb diversos paràgrafs.</li>
+          <li xml:lang="ca-valencia">Corregix la descripció de programes amb diversos paràgrafs.</li>
+          <li xml:lang="pt-BR">Correção da descrição do programa com vários parágrafos.</li>
           <li>Fix program description with multiple names for one role.</li>
+          <li xml:lang="ca">Corregeix la descripció de programes amb diversos noms per a un rol.</li>
+          <li xml:lang="ca-valencia">Corregix la descripció de programes amb diversos noms per a un rol.</li>
+          <li xml:lang="pt-BR">Correção da descrição do programa com múltiplos nomes para uma mesma função.</li>
           <li>Fix programs could not be fetched for 123.tv.</li>
+          <li xml:lang="ca">Corregeix que no es poden recuperar programes per a 123.tv.</li>
+          <li xml:lang="ca-valencia">Corregix que no es poden recuperar programes per a 123.tv.</li>
+          <li xml:lang="he">תוקנה בעיה שמנעה משיכת תוכניות ל־‎123.tv‎.</li>
+          <li xml:lang="pt-BR">Correção de programas que não puderam ser obtidos para 123.tv.</li>
         </ul>
         <p>"Favorites" page</p>
+        <p xml:lang="ca">Pàgina de «Preferits»</p>
+        <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="he">עמוד „מועדפים”</p>
+        <p xml:lang="pt-BR">Página "Favoritos"</p>
         <ul>
           <li>Add refetch button.</li>
+          <li xml:lang="ca">Afegeix el botó de recuperació.</li>
+          <li xml:lang="ca-valencia">Afig el botó de recuperació.</li>
+          <li xml:lang="he">נוסף כפתור משיכה מחדש.</li>
+          <li xml:lang="pt-BR">Adicionado botão para reobter.</li>
           <li>Speed up program description update.</li>
+          <li xml:lang="ca">Accelera l'actualització de la descripció de programes.</li>
+          <li xml:lang="ca-valencia">Accelera l'actualització de la descripció de programes.</li>
+          <li xml:lang="he">האצת עדכון תיאור התוכניות.</li>
+          <li xml:lang="pt-BR">Aceleração da atualização da descrição do programa.</li>
           <li>Wrap header text.</li>
+          <li xml:lang="ca">Ajusta el text de la capçalera.</li>
+          <li xml:lang="ca-valencia">Ajusta el text de la capçalera.</li>
+          <li xml:lang="he">גלישת טקסט כותרת.</li>
+          <li xml:lang="pt-BR">Quebrar texto do cabeçalho.</li>
           <li>Fix placeholder message not shown if no favorites selected.</li>
+          <li xml:lang="ca">Corregeix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
+          <li xml:lang="ca-valencia">Corregix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
+          <li xml:lang="pt-BR">Correção do problema da mensagem de espaço reservado que não era exibida quando nenhum favorito era selecionado.</li>
           <li>Fix background does not fill program field completely.</li>
+          <li xml:lang="ca">Corregeix el fons que no omple completament el camp de programa.</li>
+          <li xml:lang="ca-valencia">Corregix el fons que no òmpliga completament el camp de programa.</li>
+          <li xml:lang="pt-BR">Correção do plano de fundo que não preenche completamente o campo do programa.</li>
         </ul>
         <p>"Select Favorites" page</p>
+        <p xml:lang="ca">Pàgina de «Selecció de preferits»</p>
+        <p xml:lang="ca-valencia">Pàgina de «Selecció de preferits»</p>
+        <p xml:lang="he">עמוד „בחירת מועדפים”</p>
+        <p xml:lang="pt-BR">Página "Selecionar favoritos"</p>
         <ul>
           <li>Fix loading placeholder when loading channels.</li>
+          <li xml:lang="ca">Corregeix el marcador de posició de càrrega en carregar els canals.</li>
+          <li xml:lang="ca-valencia">Corregix el marcador de posició de càrrega en carregar els canals.</li>
+          <li xml:lang="pt-BR">Correção do marcador de carregamento ao carregar canais.</li>
         </ul>
       </description>
     </release>
@@ -300,17 +378,48 @@
     <release version="24.05.0" date="2024-05-23">
       <description>
         <p>TV Spielfilm fetcher</p>
+        <p xml:lang="ca">Descarregador de TV Spielfilm</p>
+        <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
+        <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
         <ul>
           <li>Handle incorrect stop times.</li>
+          <li xml:lang="ca">Gestiona els horaris de final incorrectes.</li>
+          <li xml:lang="ca-valencia">Gestiona els horaris de final incorrectes.</li>
+          <li xml:lang="he">טיפול בזמני עצירה שגויים.</li>
+          <li xml:lang="pt-BR">Lidar com horários de parada incorretos.</li>
           <li>Enhance program description.</li>
+          <li xml:lang="ca">Millora la descripció dels programes.</li>
+          <li xml:lang="ca-valencia">Millora la descripció dels programes.</li>
+          <li xml:lang="he">שיפור תיאור התוכנה.</li>
+          <li xml:lang="pt-BR">Melhoria na descrição do programa.</li>
         </ul>
         <p>"Favorites" page</p>
+        <p xml:lang="ca">Pàgina de «Preferits»</p>
+        <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="he">עמוד „מועדפים”</p>
+        <p xml:lang="pt-BR">Página "Favoritos"</p>
         <ul>
           <li>Show loading placeholder.</li>
+          <li xml:lang="ca">Mostra el marcador de posició de càrrega.</li>
+          <li xml:lang="ca-valencia">Mostra el marcador de posició de càrrega.</li>
+          <li xml:lang="he">הצגת ממלא מקום טעינה.</li>
+          <li xml:lang="pt-BR">Exibir espaço reservado para carregamento.</li>
           <li>Enable dragging with mouse.</li>
+          <li xml:lang="ca">Activa l'arrossegament amb el ratolí.</li>
+          <li xml:lang="ca-valencia">Activa l'arrossegament amb el ratolí.</li>
+          <li xml:lang="he">הפעלת גרירה עם העכבר.</li>
+          <li xml:lang="pt-BR">Ativado o recurso de arrastar e soltar com o mouse.</li>
         </ul>
         <p>Do not allow to remove favorites on the "Sort Favorites" page.</p>
+        <p xml:lang="ca">No permet eliminar els preferits a la pàgina «Ordena els preferits».</p>
+        <p xml:lang="ca-valencia">No permet eliminar els preferits a la pàgina «Ordena els preferits».</p>
+        <p xml:lang="pt-BR">Não permita remover favoritos na página "Ordenar favoritos".</p>
         <p>Improve performance.</p>
+        <p xml:lang="ca">Millora del rendiment.</p>
+        <p xml:lang="ca-valencia">Millora del rendiment.</p>
+        <p xml:lang="he">שיפור ביצועים.</p>
+        <p xml:lang="pt-BR">Melhoria de desempenho.</p>
       </description>
     </release>
     <release version="24.02.2" date="2024-04-11"/>
@@ -330,16 +439,49 @@
       <url>https://plasma-mobile.org/2023/01/30/january-blog-post/</url>
       <description>
         <p>TV Spielfilm fetcher</p>
+        <p xml:lang="ca">Descarregador de TV Spielfilm</p>
+        <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
+        <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
         <ul>
           <li>Fix missing channel icons.</li>
+          <li xml:lang="ca">Corregeix les icones de canal que manquen.</li>
+          <li xml:lang="ca-valencia">Corregix les icones de canal que falten.</li>
+          <li xml:lang="he">תוקנו סמלי ערוצים חסרים.</li>
+          <li xml:lang="pt-BR">Correção de ícones de canal ausentes.</li>
           <li>Fix missing programs if there is pagination.</li>
+          <li xml:lang="ca">Corregeix els programes que manquen si hi ha paginació.</li>
+          <li xml:lang="ca-valencia">Corregix els programes que falten si hi ha paginació.</li>
+          <li xml:lang="pt-BR">Correção dos programas ausentes caso haja paginação.</li>
           <li>Fix missing programs around new year.</li>
+          <li xml:lang="ca">Corregeix els programes que falten al voltant de l'any nou.</li>
+          <li xml:lang="ca-valencia">Corregix els programes que falten al voltant de l'any nou.</li>
+          <li xml:lang="he">תוקנו תוכניות שהיו חסרות סביב תחילת שנה.</li>
+          <li xml:lang="pt-BR">Correção de programas faltantes próximos ao Ano Novo.</li>
           <li>Fix time zone handling.</li>
+          <li xml:lang="ca">Corregeix la gestió del fus horari.</li>
+          <li xml:lang="ca-valencia">Corregix la gestió del fus horari.</li>
+          <li xml:lang="he">תוקן הטיפול באזורי זמן.</li>
+          <li xml:lang="pt-BR">Correção do tratamento de fusos horários.</li>
           <li>Show simultaneous programs.</li>
+          <li xml:lang="ca">Mostra programes simultanis.</li>
+          <li xml:lang="ca-valencia">Mostra programes simultanis.</li>
+          <li xml:lang="he">הצגת תוכניות במקביל.</li>
+          <li xml:lang="pt-BR">Exibir programas simultâneos.</li>
           <li>Add setting for prefetch period.</li>
+          <li xml:lang="ca">Afegeix la configuració per al període de recuperació prèvia.</li>
+          <li xml:lang="ca-valencia">Afig la configuració per al període de recuperació prèvia.</li>
+          <li xml:lang="pt-BR">Adicionada configuração para o período de pré-busca.</li>
         </ul>
         <p>Add user interface settings to configure the favorites view.</p>
+        <p xml:lang="ca">Afegeix opcions de la interfície d'usuari per a configurar la vista de preferits.</p>
+        <p xml:lang="ca-valencia">Afig opcions de la interfície d'usuari per a configurar la vista de preferits.</p>
+        <p xml:lang="pt-BR">Adicionada configurações de interface do usuário para configurar a visualização de favoritos.</p>
         <p>Improve performance (e.g. avoid unnecessary database access).</p>
+        <p xml:lang="ca">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
+        <p xml:lang="ca-valencia">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
+        <p xml:lang="he">שיפורי ביצועים (כלומר: הימנעות מגישה מיותרת למסד הנתונים)</p>
+        <p xml:lang="pt-BR">Melhoria do desempenho (por exemplo, evita acessos desnecessários ao banco de dados).</p>
       </description>
     </release>
     <release version="22.11" date="2022-11-30">
