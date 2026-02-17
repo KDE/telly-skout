@@ -247,128 +247,216 @@
     <release version="25.04.0" date="2025-04-17">
       <description>
         <p>TV Spielfilm fetcher</p>
+        <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
+        <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="ka">TV Spielfilm-ის გამომთხოვი</p>
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
+        <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
+        <p xml:lang="sl">Nabiralec TV filmov</p>
         <ul>
           <li>Fix "Select Favorites" page does not list channels.</li>
+          <li xml:lang="ar">إصلاح عدم سرد القنوات في صفحة "تحديد المفضلة".</li>
           <li xml:lang="ca">Corregeix la pàgina «Selecciona els preferits» que no llista els canals.</li>
+          <li xml:lang="ca-valencia">Corregix la pàgina «Tria els preferits» que no llista els canals.</li>
           <li xml:lang="he">תוקנה בעיה שעמוד „בחירת מועדפים” לא מציג ערוצים.</li>
           <li xml:lang="ka">გასწორდა "რჩეულების მონიშვნის" გვერდი არხების სიას არ შეიცავდა.</li>
           <li xml:lang="pt-BR">Corrigido o problema em que a página "Selecionar favoritos" não lista os canais.</li>
+          <li xml:lang="ru">Исправлено: на странице «Избранное» не отображались каналы;</li>
+          <li xml:lang="sl">Popravi, da stran "Izberi priljubljene" ne prikazuje seznama kanalov.</li>
         </ul>
         <p>"Favorites" page</p>
+        <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
+        <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
         <p xml:lang="ka">"რჩეულების" გვერდი</p>
+        <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
+        <p xml:lang="ru">Страница «Избранное»</p>
+        <p xml:lang="sl">Stran "Priljubljeni"</p>
         <p xml:lang="uk">Сторінка «Улюблене»</p>
         <ul>
           <li>Add date selection.</li>
+          <li xml:lang="ar">إضافة اختيار التاريخ.</li>
           <li xml:lang="ca">Afegeix la selecció de dates.</li>
+          <li xml:lang="ca-valencia">Afig la selecció de dates.</li>
           <li xml:lang="he">נוספה בחירת תאריכים.</li>
           <li xml:lang="ka">დაემატა თარიღის არჩევანი.</li>
           <li xml:lang="pt-BR">Adicionada seleção de datas.</li>
+          <li xml:lang="ru">Добавление выбора даты;</li>
+          <li xml:lang="sl">Doda izbiro datuma.</li>
           <li>Improve handling of gaps/overlaps in the programs.</li>
+          <li xml:lang="ar">تحسين معالجة الفجوات/التداخلات في البرامج.</li>
           <li xml:lang="ca">Millora de la gestió de buits/superposicions en els programes.</li>
+          <li xml:lang="ca-valencia">Millora de la gestió de buits/superposicions en els programes.</li>
           <li xml:lang="he">הטיפול במרווחים/חפיפות בתוכניות השתפר.</li>
           <li xml:lang="ka">გაუმჯობესდა პროგრამებში არსებული ცარიელი ადგილებისა და გადაფარვების დამუშავება.</li>
           <li xml:lang="pt-BR">Melhoria no tratamento de lacunas/sobreposições nos programas.</li>
+          <li xml:lang="ru">Улучшена обработка пропусков и перекрытий в программах;</li>
+          <li xml:lang="sl">Izboljša obravnavo vrzeli/prekrivanj v programih.</li>
         </ul>
         <p>Add Android support.</p>
+        <p xml:lang="ar">إضافة دعم أندرويد.</p>
         <p xml:lang="ca">Afegeix el suport de l'Android.</p>
+        <p xml:lang="ca-valencia">Afig el suport d'Android.</p>
         <p xml:lang="he">נוספה תמיכה ב־Android.</p>
         <p xml:lang="ka">დაემატა Android-ის მხარდაჭერა.</p>
         <p xml:lang="pt-BR">Adicionado suporte ao Android.</p>
+        <p xml:lang="ru">Добавлена поддержка Android.</p>
+        <p xml:lang="sl">Doda podporo za Android.</p>
       </description>
     </release>
     <release version="24.12.3" date="2025-03-06"/>
     <release version="24.12.2" date="2025-02-06">
       <description>
         <p>"Favorites" page</p>
+        <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
+        <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
         <p xml:lang="ka">"რჩეულების" გვერდი</p>
+        <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
+        <p xml:lang="ru">Страница «Избранное»</p>
+        <p xml:lang="sl">Stran "Priljubljeni"</p>
         <p xml:lang="uk">Сторінка «Улюблене»</p>
         <ul>
           <li>Show refetch button in top toolbar on mobile.</li>
+          <li xml:lang="ar">إظهار زر إعادة الجلب في شريط الأدوات العلوي على المحمول.</li>
           <li xml:lang="ca">Mostra el botó de recuperació a la barra d'eines superior al mòbil.</li>
+          <li xml:lang="ca-valencia">Mostra el botó de recuperació a la barra d'eines superior al mòbil.</li>
           <li xml:lang="he">הצגת כפתור משיכה מחדש בסרגל הכלים העליון במהדורה לניידים.</li>
           <li xml:lang="ka">მობილურზე ზედა პანელზე თავიდან გამოთხოვის ღილაკის ჩვენება.</li>
           <li xml:lang="pt-BR">Exibe o botão de recarregar na barra de ferramentas superior em dispositivos móveis.</li>
+          <li xml:lang="ru">Вывод кнопки повторной загрузки на мобильных устройствах в верхней панели инструментов;</li>
+          <li xml:lang="sl">Prikaže gumb za ponovno nalaganje v zgornji orodni vrstici na mobilni napravi.</li>
         </ul>
       </description>
     </release>
     <release version="24.12.1" date="2025-01-09">
       <description>
         <p>TV Spielfilm fetcher</p>
+        <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
+        <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="ka">TV Spielfilm-ის გამომთხოვი</p>
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
+        <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
+        <p xml:lang="sl">Nabiralec TV filmov</p>
         <ul>
           <li>Fix program stop time before start time (missing programs).</li>
+          <li xml:lang="ar">إصلاح وقت إيقاف البرنامج قبل وقت البدء (برامج مفقودة).</li>
           <li xml:lang="ca">Corregeix l'hora final dels programes abans de l'hora d'inici (programes que manquen).</li>
+          <li xml:lang="ca-valencia">Corregix l'hora final dels programes abans de l'hora d'inici (programes que falten).</li>
           <li xml:lang="ka">გასწორდა პროგრამების გაჩერების დრო დაწყების დრომდეა (ნაკლული პროგრამები).</li>
           <li xml:lang="pt-BR">Correção do horário de término do programa antes do horário de início (programas ausentes).</li>
+          <li xml:lang="ru">Исправлено время завершения программы, которое было раньше времени её начала (отсутствующие программы);</li>
+          <li xml:lang="sl">Popravi čas zaustavitve programa pred časom začetka (manjkajoči programi).</li>
           <li>Fix program description with multiple paragraphs.</li>
+          <li xml:lang="ar">إصلاح وصف البرنامج الذي يحتوي على فقرات متعددة.</li>
           <li xml:lang="ca">Corregeix la descripció de programes amb diversos paràgrafs.</li>
+          <li xml:lang="ca-valencia">Corregix la descripció de programes amb diversos paràgrafs.</li>
           <li xml:lang="ka">გასწორდა პროგრამის აღწერა ერთზე მეტი აბზაცით.</li>
           <li xml:lang="pt-BR">Correção da descrição do programa com vários parágrafos.</li>
+          <li xml:lang="ru">Исправлено описание программы с несколькими абзацами;</li>
+          <li xml:lang="sl">Popravi opis programa z več odstavki.</li>
           <li>Fix program description with multiple names for one role.</li>
+          <li xml:lang="ar">إصلاح وصف البرنامج الذي يحتوي على أسماء متعددة لدور واحد.</li>
           <li xml:lang="ca">Corregeix la descripció de programes amb diversos noms per a un rol.</li>
+          <li xml:lang="ca-valencia">Corregix la descripció de programes amb diversos noms per a un rol.</li>
           <li xml:lang="ka">გასწორდა პროგრამის აღწერა ერთზე მეტი სახელით ერთი როლისტვის.</li>
           <li xml:lang="pt-BR">Correção da descrição do programa com múltiplos nomes para uma mesma função.</li>
+          <li xml:lang="ru">Исправлено описание программы с несколькими именами для одной роли;</li>
+          <li xml:lang="sl">Popravi opis programa z več imeni za eno vlogo.</li>
           <li>Fix programs could not be fetched for 123.tv.</li>
+          <li xml:lang="ar">إصلاح تعذر جلب البرامج لـ 123.tv.</li>
           <li xml:lang="ca">Corregeix que no es poden recuperar programes per a 123.tv.</li>
+          <li xml:lang="ca-valencia">Corregix que no es poden recuperar programes per a 123.tv.</li>
           <li xml:lang="he">תוקנה בעיה שמנעה משיכת תוכניות ל־‎123.tv‎.</li>
           <li xml:lang="ka">გასწორდა პროგრამები, როც მათი გამოთხოვა შეუძლებელია 123.tv-ისთვის.</li>
           <li xml:lang="pt-BR">Correção de programas que não puderam ser obtidos para 123.tv.</li>
+          <li xml:lang="ru">Исправлена ошибка получения программ для 123.tv;</li>
+          <li xml:lang="sl">Popravi, da programov za 123.tv ni bilo mogoče pridobiti.</li>
         </ul>
         <p>"Favorites" page</p>
+        <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
+        <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
         <p xml:lang="ka">"რჩეულების" გვერდი</p>
+        <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
+        <p xml:lang="ru">Страница «Избранное»</p>
+        <p xml:lang="sl">Stran "Priljubljeni"</p>
         <p xml:lang="uk">Сторінка «Улюблене»</p>
         <ul>
           <li>Add refetch button.</li>
+          <li xml:lang="ar">إضافة زر إعادة الجلب.</li>
           <li xml:lang="ca">Afegeix el botó de recuperació.</li>
+          <li xml:lang="ca-valencia">Afig el botó de recuperació.</li>
           <li xml:lang="he">נוסף כפתור משיכה מחדש.</li>
           <li xml:lang="ka">დაემატა თავიდან გამოთხოვის ღილაკი.</li>
           <li xml:lang="pt-BR">Adicionado botão para reobter.</li>
+          <li xml:lang="ru">Добавлена кнопка повторной загрузки;</li>
+          <li xml:lang="sl">Doda gumb za ponovno nalaganje.</li>
           <li>Speed up program description update.</li>
+          <li xml:lang="ar">تسريع تحديث وصف البرنامج.</li>
           <li xml:lang="ca">Accelera l'actualització de la descripció de programes.</li>
+          <li xml:lang="ca-valencia">Accelera l'actualització de la descripció de programes.</li>
           <li xml:lang="he">האצת עדכון תיאור התוכניות.</li>
           <li xml:lang="ka">გაჩქარდა პროგრამის აღწერის განახლება.</li>
           <li xml:lang="pt-BR">Aceleração da atualização da descrição do programa.</li>
+          <li xml:lang="ru">Ускорение обновления описания программы;</li>
+          <li xml:lang="sl">Pospeši posodabljanje opisa programa.</li>
           <li>Wrap header text.</li>
+          <li xml:lang="ar">لف نص الترويسة.</li>
           <li xml:lang="ca">Ajusta el text de la capçalera.</li>
+          <li xml:lang="ca-valencia">Ajusta el text de la capçalera.</li>
           <li xml:lang="he">גלישת טקסט כותרת.</li>
           <li xml:lang="ka">სათაურის ტექსტის გადატანა.</li>
           <li xml:lang="pt-BR">Quebrar texto do cabeçalho.</li>
+          <li xml:lang="ru">Перенос текста заголовка</li>
+          <li xml:lang="sl">Prelamlja besedilo glave.</li>
           <li>Fix placeholder message not shown if no favorites selected.</li>
+          <li xml:lang="ar">إصلاح عدم إظهار رسالة العنصر النائب في حال عدم تحديد أي مفضلة.</li>
           <li xml:lang="ca">Corregeix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
+          <li xml:lang="ca-valencia">Corregix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
           <li xml:lang="ka">გასწორდა ადგილმჭერი შეტყობინების არჩვენება, თუ რჩეული არჩეული არაა.</li>
           <li xml:lang="pt-BR">Correção do problema da mensagem de espaço reservado que não era exibida quando nenhum favorito era selecionado.</li>
+          <li xml:lang="ru">Исправлено: сообщение-заполнитель не отображается, если не выбраны избранные элементы;</li>
+          <li xml:lang="sl">Popravi sporočilo o nadomestnem besedilu, ki se ni prikazalo, če ni izbranih priljubljenih.</li>
           <li>Fix background does not fill program field completely.</li>
+          <li xml:lang="ar">إصلاح عدم ملء الخلفية لحقل البرنامج بالكامل.</li>
           <li xml:lang="ca">Corregeix el fons que no omple completament el camp de programa.</li>
+          <li xml:lang="ca-valencia">Corregix el fons que no òmpliga completament el camp de programa.</li>
           <li xml:lang="ka">გასწორდა ფონით პროგრამის ველის ბოლომდე არშევსება.</li>
           <li xml:lang="pt-BR">Correção do plano de fundo que não preenche completamente o campo do programa.</li>
+          <li xml:lang="ru">Исправлено неполное заполнение поля программы фоном;</li>
+          <li xml:lang="sl">Popravi, da ozadje ne zapolni v celoti polja programa.</li>
         </ul>
         <p>"Select Favorites" page</p>
+        <p xml:lang="ar">صفحة "حدّد المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Selecció de preferits»</p>
+        <p xml:lang="ca-valencia">Pàgina de «Selecció de preferits»</p>
         <p xml:lang="he">עמוד „בחירת מועדפים”</p>
         <p xml:lang="ka">"რჩეულების არჩევის" გვერდი</p>
+        <p xml:lang="nl">Pagina "Favorieten selecteren"</p>
         <p xml:lang="pt-BR">Página "Selecionar favoritos"</p>
+        <p xml:lang="ru">Страница «Избранное»</p>
+        <p xml:lang="sl">Stran "Izberi priljubljene"</p>
         <p xml:lang="uk">Сторінка «Вибір улюблених»</p>
         <ul>
           <li>Fix loading placeholder when loading channels.</li>
+          <li xml:lang="ar">إصلاح عنصر تحميل النائب عند تحميل القنوات.</li>
           <li xml:lang="ca">Corregeix el marcador de posició de càrrega en carregar els canals.</li>
+          <li xml:lang="ca-valencia">Corregix el marcador de posició de càrrega en carregar els canals.</li>
           <li xml:lang="ka">გასწორდა ადგილმჭერის ჩატვირთვა არხების ჩატვირთვისას.</li>
           <li xml:lang="pt-BR">Correção do marcador de carregamento ao carregar canais.</li>
+          <li xml:lang="ru">Исправлена загрузка заполнителя при загрузке каналов;</li>
+          <li xml:lang="sl">Popravi nalaganje nadomestnega besedila pri nalaganju kanalov.</li>
         </ul>
       </description>
     </release>
@@ -382,49 +470,82 @@
     <release version="24.05.0" date="2024-05-23">
       <description>
         <p>TV Spielfilm fetcher</p>
+        <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
+        <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="ka">TV Spielfilm-ის გამომთხოვი</p>
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
+        <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
+        <p xml:lang="sl">Nabiralec TV filmov</p>
         <ul>
           <li>Handle incorrect stop times.</li>
+          <li xml:lang="ar">معالجة أوقات الإيقاف غير الصحيحة.</li>
           <li xml:lang="ca">Gestiona els horaris de final incorrectes.</li>
+          <li xml:lang="ca-valencia">Gestiona els horaris de final incorrectes.</li>
           <li xml:lang="he">טיפול בזמני עצירה שגויים.</li>
           <li xml:lang="ka">გასწორდა არასწორი გაჩერების დროები.</li>
           <li xml:lang="pt-BR">Lidar com horários de parada incorretos.</li>
+          <li xml:lang="ru">Обработка некорректного времени остановки;</li>
+          <li xml:lang="sl">Obravnava napačne čase zaustavitve.</li>
           <li>Enhance program description.</li>
+          <li xml:lang="ar">تحسين وصف البرنامج.</li>
           <li xml:lang="ca">Millora la descripció dels programes.</li>
+          <li xml:lang="ca-valencia">Millora la descripció dels programes.</li>
           <li xml:lang="he">שיפור תיאור התוכנה.</li>
           <li xml:lang="ka">გაფართოვდა პროგრამის აღწერა.</li>
           <li xml:lang="pt-BR">Melhoria na descrição do programa.</li>
+          <li xml:lang="ru">Улучшение описания программы;</li>
+          <li xml:lang="sl">Izboljša opis programa.</li>
         </ul>
         <p>"Favorites" page</p>
+        <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
+        <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
         <p xml:lang="ka">"რჩეულების" გვერდი</p>
+        <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
+        <p xml:lang="ru">Страница «Избранное»</p>
+        <p xml:lang="sl">Stran "Priljubljeni"</p>
         <p xml:lang="uk">Сторінка «Улюблене»</p>
         <ul>
           <li>Show loading placeholder.</li>
+          <li xml:lang="ar">إظهار عنصر تحميل النائب.</li>
           <li xml:lang="ca">Mostra el marcador de posició de càrrega.</li>
+          <li xml:lang="ca-valencia">Mostra el marcador de posició de càrrega.</li>
           <li xml:lang="he">הצגת ממלא מקום טעינה.</li>
           <li xml:lang="ka">ჩატვირთვის ადგილმჭერის ჩვენება.</li>
           <li xml:lang="pt-BR">Exibir espaço reservado para carregamento.</li>
+          <li xml:lang="ru">Вывод заполнителя хода загрузки;</li>
+          <li xml:lang="sl">Prikaže nalaganje nadomestnega besedila.</li>
           <li>Enable dragging with mouse.</li>
+          <li xml:lang="ar">تفعيل السحب بالفأرة.</li>
           <li xml:lang="ca">Activa l'arrossegament amb el ratolí.</li>
+          <li xml:lang="ca-valencia">Activa l'arrossegament amb el ratolí.</li>
           <li xml:lang="he">הפעלת גרירה עם העכבר.</li>
           <li xml:lang="ka">თაგუნათი გადათრევის დაშვება.</li>
           <li xml:lang="pt-BR">Ativado o recurso de arrastar e soltar com o mouse.</li>
+          <li xml:lang="ru">Включено перетаскивание мышью;</li>
+          <li xml:lang="sl">Omogoča vlečenje z miško.</li>
         </ul>
         <p>Do not allow to remove favorites on the "Sort Favorites" page.</p>
+        <p xml:lang="ar">عدم السماح بإزالة المفضلة في صفحة "فرز المفضلة".</p>
         <p xml:lang="ca">No permet eliminar els preferits a la pàgina «Ordena els preferits».</p>
+        <p xml:lang="ca-valencia">No permet eliminar els preferits a la pàgina «Ordena els preferits».</p>
         <p xml:lang="ka">რჩეულების წაშლის აკრძალვა "რჩეულების დალაგების" გვერდზე.</p>
         <p xml:lang="pt-BR">Não permita remover favoritos na página "Ordenar favoritos".</p>
+        <p xml:lang="ru">Запрещено удаление избранного на странице «Сортировка избранного».</p>
+        <p xml:lang="sl">Ne dovoli odstranjevanja priljubljenih na strani "Razvrsti priljubljene".</p>
         <p>Improve performance.</p>
+        <p xml:lang="ar">تحسين الأداء.</p>
         <p xml:lang="ca">Millora del rendiment.</p>
+        <p xml:lang="ca-valencia">Millora del rendiment.</p>
         <p xml:lang="he">שיפור ביצועים.</p>
         <p xml:lang="ka">გაუმჯობესდა წარმადობა.</p>
         <p xml:lang="pt-BR">Melhoria de desempenho.</p>
+        <p xml:lang="ru">Повышение производительности.</p>
+        <p xml:lang="sl">Izboljša učinkovitost delovanja.</p>
       </description>
     </release>
     <release version="24.02.2" date="2024-04-11"/>
@@ -444,49 +565,85 @@
       <url>https://plasma-mobile.org/2023/01/30/january-blog-post/</url>
       <description>
         <p>TV Spielfilm fetcher</p>
+        <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
+        <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="ka">TV Spielfilm-ის გამომთხოვი</p>
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
+        <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
+        <p xml:lang="sl">Nabiralec TV filmov</p>
         <ul>
           <li>Fix missing channel icons.</li>
+          <li xml:lang="ar">إصلاح أيقونات القنوات المفقودة.</li>
           <li xml:lang="ca">Corregeix les icones de canal que manquen.</li>
+          <li xml:lang="ca-valencia">Corregix les icones de canal que falten.</li>
           <li xml:lang="he">תוקנו סמלי ערוצים חסרים.</li>
           <li xml:lang="ka">დაემატა ნაკლული არხის ხატულები.</li>
           <li xml:lang="pt-BR">Correção de ícones de canal ausentes.</li>
+          <li xml:lang="ru">Исправлены отсутствующие значки каналов;</li>
+          <li xml:lang="sl">Popravi manjkajoče ikone kanalov.</li>
           <li>Fix missing programs if there is pagination.</li>
+          <li xml:lang="ar">إصلاح البرامج المفقودة في حال وجود ترقيم صفحات.</li>
           <li xml:lang="ca">Corregeix els programes que manquen si hi ha paginació.</li>
+          <li xml:lang="ca-valencia">Corregix els programes que falten si hi ha paginació.</li>
           <li xml:lang="ka">გასწორდა ნაკლული პროგრამები, თუ ხდებოდა გვერდებად დაყოფა.</li>
           <li xml:lang="pt-BR">Correção dos programas ausentes caso haja paginação.</li>
+          <li xml:lang="ru">Исправлено отсутствие программ в постраничной разбивки;</li>
+          <li xml:lang="sl">Popravi manjkajoče programe, če obstaja oštevilčenje strani.</li>
           <li>Fix missing programs around new year.</li>
+          <li xml:lang="ar">إصلاح البرامج المفقودة حول رأس السنة.</li>
           <li xml:lang="ca">Corregeix els programes que falten al voltant de l'any nou.</li>
+          <li xml:lang="ca-valencia">Corregix els programes que falten al voltant de l'any nou.</li>
           <li xml:lang="he">תוקנו תוכניות שהיו חסרות סביב תחילת שנה.</li>
           <li xml:lang="ka">გასწორდა ნაკლული პროგრამები ახალი წლის შესახებ.</li>
           <li xml:lang="pt-BR">Correção de programas faltantes próximos ao Ano Novo.</li>
+          <li xml:lang="ru">Исправлено отсутствие программ в новогодние праздники;</li>
+          <li xml:lang="sl">Popravi manjkajoče programe okoli novega leta.</li>
           <li>Fix time zone handling.</li>
+          <li xml:lang="ar">إصلاح معالجة المنطقة الزمنية.</li>
           <li xml:lang="ca">Corregeix la gestió del fus horari.</li>
+          <li xml:lang="ca-valencia">Corregix la gestió del fus horari.</li>
           <li xml:lang="he">תוקן הטיפול באזורי זמן.</li>
           <li xml:lang="ka">გასწორდა დროის სარტყლების დამუშავება.</li>
           <li xml:lang="pt-BR">Correção do tratamento de fusos horários.</li>
+          <li xml:lang="ru">Исправлена обработка часового пояса;</li>
+          <li xml:lang="sl">Popravi ravnanje z časovnimi pasovi.</li>
           <li>Show simultaneous programs.</li>
+          <li xml:lang="ar">إظهار البرامج المتزامنة.</li>
           <li xml:lang="ca">Mostra programes simultanis.</li>
+          <li xml:lang="ca-valencia">Mostra programes simultanis.</li>
           <li xml:lang="he">הצגת תוכניות במקביל.</li>
           <li xml:lang="ka">პროგრამების ერთდროულ ჩვენება.</li>
           <li xml:lang="pt-BR">Exibir programas simultâneos.</li>
+          <li xml:lang="ru">Возможно просматривать одновременно несколько программ;</li>
+          <li xml:lang="sl">Prikazuje sočasne programe.</li>
           <li>Add setting for prefetch period.</li>
+          <li xml:lang="ar">إضافة ضبط لفترة الجلب المسبق.</li>
           <li xml:lang="ca">Afegeix la configuració per al període de recuperació prèvia.</li>
+          <li xml:lang="ca-valencia">Afig la configuració per al període de recuperació prèvia.</li>
           <li xml:lang="ka">დაემატა პარამეტრი წინასწარ გამოთხოვის პერიოდისთვის.</li>
           <li xml:lang="pt-BR">Adicionada configuração para o período de pré-busca.</li>
+          <li xml:lang="ru">Настройка периода предварительной выборки;</li>
+          <li xml:lang="sl">Doda nastavitev za obdobje predhodnega pridobivanja.</li>
         </ul>
         <p>Add user interface settings to configure the favorites view.</p>
+        <p xml:lang="ar">إضافة إعدادات واجهة المستخدم لضبط عرض المفضلة.</p>
         <p xml:lang="ca">Afegeix opcions de la interfície d'usuari per a configurar la vista de preferits.</p>
+        <p xml:lang="ca-valencia">Afig opcions de la interfície d'usuari per a configurar la vista de preferits.</p>
         <p xml:lang="ka">დაემატა მომხმარებლის ინტერფეისის პარამეტრები რჩეული ხედის მოსარგებად.</p>
         <p xml:lang="pt-BR">Adicionada configurações de interface do usuário para configurar a visualização de favoritos.</p>
+        <p xml:lang="ru">Добавлены настройки пользовательского интерфейса для настройки представления избранного;</p>
+        <p xml:lang="sl">Doda nastavitve uporabniškega vmesnika za konfiguracijo pogleda priljubljenih.</p>
         <p>Improve performance (e.g. avoid unnecessary database access).</p>
+        <p xml:lang="ar">تحسين الأداء (مثلاً: تجنب الوصول غير الضروري لقاعدة البيانات).</p>
         <p xml:lang="ca">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
+        <p xml:lang="ca-valencia">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
         <p xml:lang="he">שיפורי ביצועים (כלומר: הימנעות מגישה מיותרת למסד הנתונים)</p>
         <p xml:lang="ka">წარმადობის გაუმჯობესება (ანუ მონაცემთა ბაზასთან არასაჭირო წვდომის თავიდან არიდება).</p>
         <p xml:lang="pt-BR">Melhoria do desempenho (por exemplo, evita acessos desnecessários ao banco de dados).</p>
+        <p xml:lang="ru">Повышение производительности (например, предотвращение избыточного обращения к базе данных);</p>
+        <p xml:lang="sl">Izboljša delovanje (npr. preprečuje nepotreben dostop do baze podatkov).</p>
       </description>
     </release>
     <release version="22.11" date="2022-11-30">
