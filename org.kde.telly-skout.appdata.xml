@@ -255,6 +255,7 @@
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
         <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
         <p xml:lang="sl">Nabiralec TV filmov</p>
+        <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
         <ul>
           <li>Fix "Select Favorites" page does not list channels.</li>
           <li xml:lang="ar">إصلاح عدم سرد القنوات في صفحة "تحديد المفضلة".</li>
@@ -265,6 +266,7 @@
           <li xml:lang="pt-BR">Corrigido o problema em que a página "Selecionar favoritos" não lista os canais.</li>
           <li xml:lang="ru">Исправлено: на странице «Избранное» не отображались каналы;</li>
           <li xml:lang="sl">Popravi, da stran "Izberi priljubljene" ne prikazuje seznama kanalov.</li>
+          <li xml:lang="uk">Виправлено помилку, пов'язану із тим, що на сторінці «Вибрати улюблені» не було показано список каналів.</li>
         </ul>
         <p>"Favorites" page</p>
         <p xml:lang="ar">صفحة "المفضلة"</p>
@@ -287,6 +289,7 @@
           <li xml:lang="pt-BR">Adicionada seleção de datas.</li>
           <li xml:lang="ru">Добавление выбора даты;</li>
           <li xml:lang="sl">Doda izbiro datuma.</li>
+          <li xml:lang="uk">Додано можливість вибору дати.</li>
           <li>Improve handling of gaps/overlaps in the programs.</li>
           <li xml:lang="ar">تحسين معالجة الفجوات/التداخلات في البرامج.</li>
           <li xml:lang="ca">Millora de la gestió de buits/superposicions en els programes.</li>
@@ -296,6 +299,7 @@
           <li xml:lang="pt-BR">Melhoria no tratamento de lacunas/sobreposições nos programas.</li>
           <li xml:lang="ru">Улучшена обработка пропусков и перекрытий в программах;</li>
           <li xml:lang="sl">Izboljša obravnavo vrzeli/prekrivanj v programih.</li>
+          <li xml:lang="uk">Удосконалено обробку прогалин або перекриттів у програмах.</li>
         </ul>
         <p>Add Android support.</p>
         <p xml:lang="ar">إضافة دعم أندرويد.</p>
@@ -306,6 +310,7 @@
         <p xml:lang="pt-BR">Adicionado suporte ao Android.</p>
         <p xml:lang="ru">Добавлена поддержка Android.</p>
         <p xml:lang="sl">Doda podporo za Android.</p>
+        <p xml:lang="uk">Додано підтримку Android.</p>
       </description>
     </release>
     <release version="24.12.3" date="2025-03-06"/>
@@ -332,6 +337,7 @@
           <li xml:lang="pt-BR">Exibe o botão de recarregar na barra de ferramentas superior em dispositivos móveis.</li>
           <li xml:lang="ru">Вывод кнопки повторной загрузки на мобильных устройствах в верхней панели инструментов;</li>
           <li xml:lang="sl">Prikaže gumb za ponovno nalaganje v zgornji orodni vrstici na mobilni napravi.</li>
+          <li xml:lang="uk">Реалізовано показ кнопки повторного отримання на верхній панелі інструментів мобільної версії.</li>
         </ul>
       </description>
     </release>
@@ -346,6 +352,7 @@
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
         <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
         <p xml:lang="sl">Nabiralec TV filmov</p>
+        <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
         <ul>
           <li>Fix program stop time before start time (missing programs).</li>
           <li xml:lang="ar">إصلاح وقت إيقاف البرنامج قبل وقت البدء (برامج مفقودة).</li>
@@ -478,6 +485,7 @@
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
         <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
         <p xml:lang="sl">Nabiralec TV filmov</p>
+        <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
         <ul>
           <li>Handle incorrect stop times.</li>
           <li xml:lang="ar">معالجة أوقات الإيقاف غير الصحيحة.</li>
@@ -573,6 +581,7 @@
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
         <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
         <p xml:lang="sl">Nabiralec TV filmov</p>
+        <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
         <ul>
           <li>Fix missing channel icons.</li>
           <li xml:lang="ar">إصلاح أيقونات القنوات المفقودة.</li>
