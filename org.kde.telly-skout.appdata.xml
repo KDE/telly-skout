@@ -271,6 +271,7 @@
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
+        <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
         <p xml:lang="ru">Страница «Избранное»</p>
@@ -315,6 +316,7 @@
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
+        <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
         <p xml:lang="ru">Страница «Избранное»</p>
@@ -349,23 +351,29 @@
           <li xml:lang="ar">إصلاح وقت إيقاف البرنامج قبل وقت البدء (برامج مفقودة).</li>
           <li xml:lang="ca">Corregeix l'hora final dels programes abans de l'hora d'inici (programes que manquen).</li>
           <li xml:lang="ca-valencia">Corregix l'hora final dels programes abans de l'hora d'inici (programes que falten).</li>
+          <li xml:lang="he">תוקנה בעיה שזמן העצירה היה לפני זמן ההתחלה (תוכניות חסרות).</li>
           <li xml:lang="pt-BR">Correção do horário de término do programa antes do horário de início (programas ausentes).</li>
           <li xml:lang="ru">Исправлено время завершения программы, которое было раньше времени её начала (отсутствующие программы);</li>
           <li xml:lang="sl">Popravi čas zaustavitve programa pred časom začetka (manjkajoči programi).</li>
+          <li xml:lang="uk">Виправлено можливість того, що кінцевий час програми передує часу початку (пропущену програму).</li>
           <li>Fix program description with multiple paragraphs.</li>
           <li xml:lang="ar">إصلاح وصف البرنامج الذي يحتوي على فقرات متعددة.</li>
           <li xml:lang="ca">Corregeix la descripció de programes amb diversos paràgrafs.</li>
           <li xml:lang="ca-valencia">Corregix la descripció de programes amb diversos paràgrafs.</li>
+          <li xml:lang="he">תוקנו תיאורי תוכניות עם מספר פסקאות.</li>
           <li xml:lang="pt-BR">Correção da descrição do programa com vários parágrafos.</li>
           <li xml:lang="ru">Исправлено описание программы с несколькими абзацами;</li>
           <li xml:lang="sl">Popravi opis programa z več odstavki.</li>
+          <li xml:lang="uk">Виправлено опис програми з декількох абзаців.</li>
           <li>Fix program description with multiple names for one role.</li>
           <li xml:lang="ar">إصلاح وصف البرنامج الذي يحتوي على أسماء متعددة لدور واحد.</li>
           <li xml:lang="ca">Corregeix la descripció de programes amb diversos noms per a un rol.</li>
           <li xml:lang="ca-valencia">Corregix la descripció de programes amb diversos noms per a un rol.</li>
+          <li xml:lang="he">תוקן תיאור תוכנית עם מגוון שמות לתפקיד אחד.</li>
           <li xml:lang="pt-BR">Correção da descrição do programa com múltiplos nomes para uma mesma função.</li>
           <li xml:lang="ru">Исправлено описание программы с несколькими именами для одной роли;</li>
           <li xml:lang="sl">Popravi opis programa z več imeni za eno vlogo.</li>
+          <li xml:lang="uk">Виправлено опис програми з декількома назвами для однієї ролі.</li>
           <li>Fix programs could not be fetched for 123.tv.</li>
           <li xml:lang="ar">إصلاح تعذر جلب البرامج لـ 123.tv.</li>
           <li xml:lang="ca">Corregeix que no es poden recuperar programes per a 123.tv.</li>
@@ -374,12 +382,14 @@
           <li xml:lang="pt-BR">Correção de programas que não puderam ser obtidos para 123.tv.</li>
           <li xml:lang="ru">Исправлена ошибка получения программ для 123.tv;</li>
           <li xml:lang="sl">Popravi, da programov za 123.tv ni bilo mogoče pridobiti.</li>
+          <li xml:lang="uk">Виправлено неможливість отримання програм для 123.tv.</li>
         </ul>
         <p>"Favorites" page</p>
         <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
+        <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
         <p xml:lang="ru">Страница «Избранное»</p>
@@ -394,6 +404,7 @@
           <li xml:lang="pt-BR">Adicionado botão para reobter.</li>
           <li xml:lang="ru">Добавлена кнопка повторной загрузки;</li>
           <li xml:lang="sl">Doda gumb za ponovno nalaganje.</li>
+          <li xml:lang="uk">Додано кнопку повторного отримання даних.</li>
           <li>Speed up program description update.</li>
           <li xml:lang="ar">تسريع تحديث وصف البرنامج.</li>
           <li xml:lang="ca">Accelera l'actualització de la descripció de programes.</li>
@@ -402,6 +413,7 @@
           <li xml:lang="pt-BR">Aceleração da atualização da descrição do programa.</li>
           <li xml:lang="ru">Ускорение обновления описания программы;</li>
           <li xml:lang="sl">Pospeši posodabljanje opisa programa.</li>
+          <li xml:lang="uk">Пришвидшено оновлення опису програм.</li>
           <li>Wrap header text.</li>
           <li xml:lang="ar">لف نص الترويسة.</li>
           <li xml:lang="ca">Ajusta el text de la capçalera.</li>
@@ -410,26 +422,32 @@
           <li xml:lang="pt-BR">Quebrar texto do cabeçalho.</li>
           <li xml:lang="ru">Перенос текста заголовка</li>
           <li xml:lang="sl">Prelamlja besedilo glave.</li>
+          <li xml:lang="uk">Реалізовано перенесення рядків тексту у заголовку.</li>
           <li>Fix placeholder message not shown if no favorites selected.</li>
           <li xml:lang="ar">إصلاح عدم إظهار رسالة العنصر النائب في حال عدم تحديد أي مفضلة.</li>
           <li xml:lang="ca">Corregeix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
           <li xml:lang="ca-valencia">Corregix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
+          <li xml:lang="he">תוקנה תופעה שממלא מקום להודעה לא מופיע אם לא נבחרו מועדפים.</li>
           <li xml:lang="pt-BR">Correção do problema da mensagem de espaço reservado que não era exibida quando nenhum favorito era selecionado.</li>
           <li xml:lang="ru">Исправлено: сообщение-заполнитель не отображается, если не выбраны избранные элементы;</li>
           <li xml:lang="sl">Popravi sporočilo o nadomestnem besedilu, ki se ni prikazalo, če ni izbranih priljubljenih.</li>
+          <li xml:lang="uk">Виправлено неможливість показу повідомлення-замінника, якщо не позначено улюблених записів.</li>
           <li>Fix background does not fill program field completely.</li>
           <li xml:lang="ar">إصلاح عدم ملء الخلفية لحقل البرنامج بالكامل.</li>
           <li xml:lang="ca">Corregeix el fons que no omple completament el camp de programa.</li>
           <li xml:lang="ca-valencia">Corregix el fons que no òmpliga completament el camp de programa.</li>
+          <li xml:lang="he">תוקנה בעיה שהרקע לא ממלא את שדה התוכנית במלואו.</li>
           <li xml:lang="pt-BR">Correção do plano de fundo que não preenche completamente o campo do programa.</li>
           <li xml:lang="ru">Исправлено неполное заполнение поля программы фоном;</li>
           <li xml:lang="sl">Popravi, da ozadje ne zapolni v celoti polja programa.</li>
+          <li xml:lang="uk">Виправлено неповне заповнення тлом поля програми.</li>
         </ul>
         <p>"Select Favorites" page</p>
         <p xml:lang="ar">صفحة "حدّد المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Selecció de preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Selecció de preferits»</p>
         <p xml:lang="he">עמוד „בחירת מועדפים”</p>
+        <p xml:lang="ia">Pagina de "Selige favoritos"</p>
         <p xml:lang="nl">Pagina "Favorieten selecteren"</p>
         <p xml:lang="pt-BR">Página "Selecionar favoritos"</p>
         <p xml:lang="ru">Страница «Избранное»</p>
@@ -440,9 +458,11 @@
           <li xml:lang="ar">إصلاح عنصر تحميل النائب عند تحميل القنوات.</li>
           <li xml:lang="ca">Corregeix el marcador de posició de càrrega en carregar els canals.</li>
           <li xml:lang="ca-valencia">Corregix el marcador de posició de càrrega en carregar els canals.</li>
+          <li xml:lang="he">תוקן ממלא מקום טעינה בעת טעינת ערוצים.</li>
           <li xml:lang="pt-BR">Correção do marcador de carregamento ao carregar canais.</li>
           <li xml:lang="ru">Исправлена загрузка заполнителя при загрузке каналов;</li>
           <li xml:lang="sl">Popravi nalaganje nadomestnega besedila pri nalaganju kanalov.</li>
+          <li xml:lang="uk">Виправлено завантаження замінника при завантаженні каналів.</li>
         </ul>
       </description>
     </release>
@@ -473,6 +493,7 @@
           <li xml:lang="pt-BR">Lidar com horários de parada incorretos.</li>
           <li xml:lang="ru">Обработка некорректного времени остановки;</li>
           <li xml:lang="sl">Obravnava napačne čase zaustavitve.</li>
+          <li xml:lang="uk">Реалізовано обробку некоректних часів завершення.</li>
           <li>Enhance program description.</li>
           <li xml:lang="ar">تحسين وصف البرنامج.</li>
           <li xml:lang="ca">Millora la descripció dels programes.</li>
@@ -481,12 +502,14 @@
           <li xml:lang="pt-BR">Melhoria na descrição do programa.</li>
           <li xml:lang="ru">Улучшение описания программы;</li>
           <li xml:lang="sl">Izboljša opis programa.</li>
+          <li xml:lang="uk">Удосконалено опис програми.</li>
         </ul>
         <p>"Favorites" page</p>
         <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
+        <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
         <p xml:lang="ru">Страница «Избранное»</p>
@@ -501,6 +524,7 @@
           <li xml:lang="pt-BR">Exibir espaço reservado para carregamento.</li>
           <li xml:lang="ru">Вывод заполнителя хода загрузки;</li>
           <li xml:lang="sl">Prikaže nalaganje nadomestnega besedila.</li>
+          <li xml:lang="uk">Реалізовано показ замінника завантаження.</li>
           <li>Enable dragging with mouse.</li>
           <li xml:lang="ar">تفعيل السحب بالفأرة.</li>
           <li xml:lang="ca">Activa l'arrossegament amb el ratolí.</li>
@@ -509,14 +533,17 @@
           <li xml:lang="pt-BR">Ativado o recurso de arrastar e soltar com o mouse.</li>
           <li xml:lang="ru">Включено перетаскивание мышью;</li>
           <li xml:lang="sl">Omogoča vlečenje z miško.</li>
+          <li xml:lang="uk">Уможливлено перетягування за допомогою миші.</li>
         </ul>
         <p>Do not allow to remove favorites on the "Sort Favorites" page.</p>
         <p xml:lang="ar">عدم السماح بإزالة المفضلة في صفحة "فرز المفضلة".</p>
         <p xml:lang="ca">No permet eliminar els preferits a la pàgina «Ordena els preferits».</p>
         <p xml:lang="ca-valencia">No permet eliminar els preferits a la pàgina «Ordena els preferits».</p>
+        <p xml:lang="he">לא לאפשר להסיר מועדפים מעמוד „מיון המועדפים”</p>
         <p xml:lang="pt-BR">Não permita remover favoritos na página "Ordenar favoritos".</p>
         <p xml:lang="ru">Запрещено удаление избранного на странице «Сортировка избранного».</p>
         <p xml:lang="sl">Ne dovoli odstranjevanja priljubljenih na strani "Razvrsti priljubljene".</p>
+        <p xml:lang="uk">Заборонено вилучення улюблених записів на сторінці «Упорядкувати улюблені».</p>
         <p>Improve performance.</p>
         <p xml:lang="ar">تحسين الأداء.</p>
         <p xml:lang="ca">Millora del rendiment.</p>
@@ -525,6 +552,7 @@
         <p xml:lang="pt-BR">Melhoria de desempenho.</p>
         <p xml:lang="ru">Повышение производительности.</p>
         <p xml:lang="sl">Izboljša učinkovitost delovanja.</p>
+        <p xml:lang="uk">Удосконалено швидкодію.</p>
       </description>
     </release>
     <release version="24.02.2" date="2024-04-11"/>
@@ -561,13 +589,16 @@
           <li xml:lang="pt-BR">Correção de ícones de canal ausentes.</li>
           <li xml:lang="ru">Исправлены отсутствующие значки каналов;</li>
           <li xml:lang="sl">Popravi manjkajoče ikone kanalov.</li>
+          <li xml:lang="uk">Виправлено нестачу піктограм каналів.</li>
           <li>Fix missing programs if there is pagination.</li>
           <li xml:lang="ar">إصلاح البرامج المفقودة في حال وجود ترقيم صفحات.</li>
           <li xml:lang="ca">Corregeix els programes que manquen si hi ha paginació.</li>
           <li xml:lang="ca-valencia">Corregix els programes que falten si hi ha paginació.</li>
+          <li xml:lang="he">תוקנו תוכניות חסרות אם יש דפדוף.</li>
           <li xml:lang="pt-BR">Correção dos programas ausentes caso haja paginação.</li>
           <li xml:lang="ru">Исправлено отсутствие программ в постраничной разбивки;</li>
           <li xml:lang="sl">Popravi manjkajoče programe, če obstaja oštevilčenje strani.</li>
+          <li xml:lang="uk">Виправлено пропуск програм, якщо немає поділу на сторінки.</li>
           <li>Fix missing programs around new year.</li>
           <li xml:lang="ar">إصلاح البرامج المفقودة حول رأس السنة.</li>
           <li xml:lang="ca">Corregeix els programes que falten al voltant de l'any nou.</li>
@@ -576,6 +607,7 @@
           <li xml:lang="pt-BR">Correção de programas faltantes próximos ao Ano Novo.</li>
           <li xml:lang="ru">Исправлено отсутствие программ в новогодние праздники;</li>
           <li xml:lang="sl">Popravi manjkajoče programe okoli novega leta.</li>
+          <li xml:lang="uk">Виправлено пропуск програм у новорічний період.</li>
           <li>Fix time zone handling.</li>
           <li xml:lang="ar">إصلاح معالجة المنطقة الزمنية.</li>
           <li xml:lang="ca">Corregeix la gestió del fus horari.</li>
@@ -584,6 +616,7 @@
           <li xml:lang="pt-BR">Correção do tratamento de fusos horários.</li>
           <li xml:lang="ru">Исправлена обработка часового пояса;</li>
           <li xml:lang="sl">Popravi ravnanje z časovnimi pasovi.</li>
+          <li xml:lang="uk">Виправлено обробку часових поясів.</li>
           <li>Show simultaneous programs.</li>
           <li xml:lang="ar">إظهار البرامج المتزامنة.</li>
           <li xml:lang="ca">Mostra programes simultanis.</li>
@@ -592,21 +625,26 @@
           <li xml:lang="pt-BR">Exibir programas simultâneos.</li>
           <li xml:lang="ru">Возможно просматривать одновременно несколько программ;</li>
           <li xml:lang="sl">Prikazuje sočasne programe.</li>
+          <li xml:lang="uk">Реалізовано показ одночасних програм.</li>
           <li>Add setting for prefetch period.</li>
           <li xml:lang="ar">إضافة ضبط لفترة الجلب المسبق.</li>
           <li xml:lang="ca">Afegeix la configuració per al període de recuperació prèvia.</li>
           <li xml:lang="ca-valencia">Afig la configuració per al període de recuperació prèvia.</li>
+          <li xml:lang="he">נוספה הגדרה למשך זמן למשיכה מראש.</li>
           <li xml:lang="pt-BR">Adicionada configuração para o período de pré-busca.</li>
           <li xml:lang="ru">Настройка периода предварительной выборки;</li>
           <li xml:lang="sl">Doda nastavitev za obdobje predhodnega pridobivanja.</li>
+          <li xml:lang="uk">Додано параметр для параметра попереднього отримання.</li>
         </ul>
         <p>Add user interface settings to configure the favorites view.</p>
         <p xml:lang="ar">إضافة إعدادات واجهة المستخدم لضبط عرض المفضلة.</p>
         <p xml:lang="ca">Afegeix opcions de la interfície d'usuari per a configurar la vista de preferits.</p>
         <p xml:lang="ca-valencia">Afig opcions de la interfície d'usuari per a configurar la vista de preferits.</p>
+        <p xml:lang="he">נוספו הגדרות בממשק המשתמש להגדרת תצוגת המועדפים.</p>
         <p xml:lang="pt-BR">Adicionada configurações de interface do usuário para configurar a visualização de favoritos.</p>
         <p xml:lang="ru">Добавлены настройки пользовательского интерфейса для настройки представления избранного;</p>
         <p xml:lang="sl">Doda nastavitve uporabniškega vmesnika za konfiguracijo pogleda priljubljenih.</p>
+        <p xml:lang="uk">Додано параметри інтерфейсу користувача для налаштовування панелі перегляду улюблених записів.</p>
         <p>Improve performance (e.g. avoid unnecessary database access).</p>
         <p xml:lang="ar">تحسين الأداء (مثلاً: تجنب الوصول غير الضروري لقاعدة البيانات).</p>
         <p xml:lang="ca">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
@@ -615,6 +653,7 @@
         <p xml:lang="pt-BR">Melhoria do desempenho (por exemplo, evita acessos desnecessários ao banco de dados).</p>
         <p xml:lang="ru">Повышение производительности (например, предотвращение избыточного обращения к базе данных);</p>
         <p xml:lang="sl">Izboljša delovanje (npr. preprečuje nepotreben dostop do baze podatkov).</p>
+        <p xml:lang="uk">Удосконалено швидкодію (наприклад, усунено зайві спроби доступу до бази даних).</p>
       </description>
     </release>
     <release version="22.11" date="2022-11-30">
