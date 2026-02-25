@@ -92,7 +92,7 @@
     <p xml:lang="es">Telly Skout es una guía de TV convergente creada con Kirigami. Muestra los programas de TV de sus canales favoritos de TV Spielfilm o de un archivo XMLTV.</p>
     <p xml:lang="eu">«Telly Skout» TBko Kirigami gida konbergente bat. «TV spielfilm»etik edo XMLTV fitxategi baten bidez, zure gogoko kanaletako TB programak erakusten ditu</p>
     <p xml:lang="fi">Telly Skout on mukautuva Kirigami-TV-opas. Sen näyttää TV-ohjelmat suosikkikanaviltasi TV Spielfilmistä tai XMLTV-tiedostosta.</p>
-    <p xml:lang="fr">Telly Skout est un guide TV convergent conçu avec Kirigami. Il affiche le programme TV de vos chaines préférées à partir de TV « Spielfilm » ou d'un fichier « XMLTV ».</p>
+    <p xml:lang="fr">Telly Skout est un guide TV convergent conçu avec Kirigami. Il affiche le programme TV de vos chaînes préférées à partir de TV « Spielfilm » ou d'un fichier « XMLTV ».</p>
     <p xml:lang="gl">Telly Skout é unha guía de televisión converxente feita con Kirigami. Mostra o programa de televisión das súas canles favoritas de TV Spielfilm ou dun ficheiro XMLTV.</p>
     <p xml:lang="he">Telly Skout הוא לוח שידורים אחוד בסגנון Kirigami. הוא מציג את תוכנית הטלוויזיה לערוצים המועדפים עליך מ־TV Spielfilm או מקובץ XMLTV.</p>
     <p xml:lang="hi">टेली स्काउट एक अभिसारी किरिगामी टीवी गाइड है। यह टीवी स्पीलफिल्म या XMLTV फ़ाइल से आपके पसंदीदा चैनलों के लिए टीवी कार्यक्रम दिखाता है।</p>
@@ -250,6 +250,7 @@
         <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
         <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="fr">Extracteur de télévision Spielfilm</p>
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="it">Recupero informazioni da TV Spielfilm</p>
         <p xml:lang="nl">TV-speelfilmophaler</p>
@@ -262,6 +263,7 @@
           <li xml:lang="ar">إصلاح عدم سرد القنوات في صفحة "تحديد المفضلة".</li>
           <li xml:lang="ca">Corregeix la pàgina «Selecciona els preferits» que no llista els canals.</li>
           <li xml:lang="ca-valencia">Corregix la pàgina «Tria els preferits» que no llista els canals.</li>
+          <li xml:lang="fr">Correction de la page « Sélectionner les signets » n’affichant aucune chaîne.</li>
           <li xml:lang="he">תוקנה בעיה שעמוד „בחירת מועדפים” לא מציג ערוצים.</li>
           <li xml:lang="it">Corregge la pagina «Seleziona preferiti» che non elenca i canali.</li>
           <li xml:lang="nl">Pagina "Favorieten selecteren" geeft geen lijst met kanalen gerepareerd.</li>
@@ -274,6 +276,7 @@
         <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="fr">Page « Signets »</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
         <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="it">Pagina «Preferiti»</p>
@@ -287,6 +290,7 @@
           <li xml:lang="ar">إضافة اختيار التاريخ.</li>
           <li xml:lang="ca">Afegeix la selecció de dates.</li>
           <li xml:lang="ca-valencia">Afig la selecció de dates.</li>
+          <li xml:lang="fr">Ajouter la sélection de date.</li>
           <li xml:lang="he">נוספה בחירת תאריכים.</li>
           <li xml:lang="it">Aggiunge la selezione della data.</li>
           <li xml:lang="nl">Datumselectie toegevoegd.</li>
@@ -298,6 +302,7 @@
           <li xml:lang="ar">تحسين معالجة الفجوات/التداخلات في البرامج.</li>
           <li xml:lang="ca">Millora de la gestió de buits/superposicions en els programes.</li>
           <li xml:lang="ca-valencia">Millora de la gestió de buits/superposicions en els programes.</li>
+          <li xml:lang="fr">Améliorer la gestion des écarts / chevauchements dans les programmes.</li>
           <li xml:lang="he">הטיפול במרווחים/חפיפות בתוכניות השתפר.</li>
           <li xml:lang="it">Migliora la gestione delle mancanze/sovrapposizioni nei programmi.</li>
           <li xml:lang="nl">verbeterde behandeling van gaten/overlaps in de programma's.</li>
@@ -310,6 +315,7 @@
         <p xml:lang="ar">إضافة دعم أندرويد.</p>
         <p xml:lang="ca">Afegeix el suport de l'Android.</p>
         <p xml:lang="ca-valencia">Afig el suport d'Android.</p>
+        <p xml:lang="fr">Ajouter la prise en charge de Android.</p>
         <p xml:lang="he">נוספה תמיכה ב־Android.</p>
         <p xml:lang="it">Aggiunge il supporto Android.</p>
         <p xml:lang="nl">Ondersteuning voor Android toegevoegd.</p>
@@ -326,6 +332,7 @@
         <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="fr">Page « Signets »</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
         <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="it">Pagina «Preferiti»</p>
@@ -339,6 +346,7 @@
           <li xml:lang="ar">إظهار زر إعادة الجلب في شريط الأدوات العلوي على المحمول.</li>
           <li xml:lang="ca">Mostra el botó de recuperació a la barra d'eines superior al mòbil.</li>
           <li xml:lang="ca-valencia">Mostra el botó de recuperació a la barra d'eines superior al mòbil.</li>
+          <li xml:lang="fr">Afficher le bouton de pré-chargement dans la barre d'outils supérieure sur périphérique mobile.</li>
           <li xml:lang="he">הצגת כפתור משיכה מחדש בסרגל הכלים העליון במהדורה לניידים.</li>
           <li xml:lang="it">Mostra il pulsante di recupero nella barra degli strumenti in alto sui dispositivi mobili.</li>
           <li xml:lang="nl">Knop voor opnieuw ophalen in de bovenste werkbalk op mobiel.</li>
@@ -355,6 +363,7 @@
         <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
         <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="fr">Extracteur de télévision Spielfilm</p>
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="it">Recupero informazioni da TV Spielfilm</p>
         <p xml:lang="nl">TV-speelfilmophaler</p>
@@ -367,6 +376,7 @@
           <li xml:lang="ar">إصلاح وقت إيقاف البرنامج قبل وقت البدء (برامج مفقودة).</li>
           <li xml:lang="ca">Corregeix l'hora final dels programes abans de l'hora d'inici (programes que manquen).</li>
           <li xml:lang="ca-valencia">Corregix l'hora final dels programes abans de l'hora d'inici (programes que falten).</li>
+          <li xml:lang="fr">Correction de l'heure d'arrêt du programme avant l'heure de début (Programmes manquants).</li>
           <li xml:lang="he">תוקנה בעיה שזמן העצירה היה לפני זמן ההתחלה (תוכניות חסרות).</li>
           <li xml:lang="it">Correggere l'ora di arresto del programma prima dell'ora di inizio (programmi mancanti).</li>
           <li xml:lang="nl">Stoptijd van programma voor starttijd gerepareerd (ontbrekende programma's).</li>
@@ -378,6 +388,7 @@
           <li xml:lang="ar">إصلاح وصف البرنامج الذي يحتوي على فقرات متعددة.</li>
           <li xml:lang="ca">Corregeix la descripció de programes amb diversos paràgrafs.</li>
           <li xml:lang="ca-valencia">Corregix la descripció de programes amb diversos paràgrafs.</li>
+          <li xml:lang="fr">Correction de la description du programme avec plusieurs paragraphes.</li>
           <li xml:lang="he">תוקנו תיאורי תוכניות עם מספר פסקאות.</li>
           <li xml:lang="it">Corregge la descrizione del programma con più paragrafi.</li>
           <li xml:lang="nl">Programmabeschrijving met meerdere alinea's gerepareerd.</li>
@@ -389,6 +400,7 @@
           <li xml:lang="ar">إصلاح وصف البرنامج الذي يحتوي على أسماء متعددة لدور واحد.</li>
           <li xml:lang="ca">Corregeix la descripció de programes amb diversos noms per a un rol.</li>
           <li xml:lang="ca-valencia">Corregix la descripció de programes amb diversos noms per a un rol.</li>
+          <li xml:lang="fr">Correction de la description du programme avec plusieurs noms pour un même rôle.</li>
           <li xml:lang="he">תוקן תיאור תוכנית עם מגוון שמות לתפקיד אחד.</li>
           <li xml:lang="it">Corregge la descrizione del programma con più nomi per un ruolo.</li>
           <li xml:lang="nl">Programmabeschrijving met meerdere namen voor één rol gerepareerd.</li>
@@ -400,6 +412,7 @@
           <li xml:lang="ar">إصلاح تعذر جلب البرامج لـ 123.tv.</li>
           <li xml:lang="ca">Corregeix que no es poden recuperar programes per a 123.tv.</li>
           <li xml:lang="ca-valencia">Corregix que no es poden recuperar programes per a 123.tv.</li>
+          <li xml:lang="fr">Correction des programmes ne pouvant charger 123.tv.</li>
           <li xml:lang="he">תוקנה בעיה שמנעה משיכת תוכניות ל־‎123.tv‎.</li>
           <li xml:lang="it">Corregge il mancato recupero dei programmi per 123.tv.</li>
           <li xml:lang="nl">Programma's konden niet opgehaald worden voor 123.tv.</li>
@@ -412,6 +425,7 @@
         <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="fr">Page « Signets »</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
         <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="it">Pagina «Preferiti»</p>
@@ -425,6 +439,7 @@
           <li xml:lang="ar">إضافة زر إعادة الجلب.</li>
           <li xml:lang="ca">Afegeix el botó de recuperació.</li>
           <li xml:lang="ca-valencia">Afig el botó de recuperació.</li>
+          <li xml:lang="fr">Ajouter un bouton de rafraîchissement.</li>
           <li xml:lang="he">נוסף כפתור משיכה מחדש.</li>
           <li xml:lang="it">Aggiunge il pulsante di recupero.</li>
           <li xml:lang="nl">Knop voor opnieuw ophalen toegevoegd.</li>
@@ -436,6 +451,7 @@
           <li xml:lang="ar">تسريع تحديث وصف البرنامج.</li>
           <li xml:lang="ca">Accelera l'actualització de la descripció de programes.</li>
           <li xml:lang="ca-valencia">Accelera l'actualització de la descripció de programes.</li>
+          <li xml:lang="fr">Accélérer la mise à jour de la description du programme.</li>
           <li xml:lang="he">האצת עדכון תיאור התוכניות.</li>
           <li xml:lang="it">Accelera l'aggiornamento della descrizione del programma.</li>
           <li xml:lang="nl">Bijwerken van programmabeschrijving  versneld.</li>
@@ -447,6 +463,7 @@
           <li xml:lang="ar">لف نص الترويسة.</li>
           <li xml:lang="ca">Ajusta el text de la capçalera.</li>
           <li xml:lang="ca-valencia">Ajusta el text de la capçalera.</li>
+          <li xml:lang="fr">Renvoyer le texte de l'en-tête à la ligne.</li>
           <li xml:lang="he">גלישת טקסט כותרת.</li>
           <li xml:lang="it">Testo dell'intestazione a capo.</li>
           <li xml:lang="nl">Koptekst op volgende regel laten doorlopen.</li>
@@ -458,6 +475,7 @@
           <li xml:lang="ar">إصلاح عدم إظهار رسالة العنصر النائب في حال عدم تحديد أي مفضلة.</li>
           <li xml:lang="ca">Corregeix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
           <li xml:lang="ca-valencia">Corregix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
+          <li xml:lang="fr">Correction du message de remplacement n'apparaissant pas si aucun signet n'est sélectionné.</li>
           <li xml:lang="he">תוקנה תופעה שממלא מקום להודעה לא מופיע אם לא נבחרו מועדפים.</li>
           <li xml:lang="it">Corregge il messaggio segnaposto che non viene visualizzato se non sono selezionati preferiti.</li>
           <li xml:lang="nl">Plaatshouderbericht dat niet wordt getoond als er geen favorieten zijn geselecteerd gerepareerd.</li>
@@ -469,6 +487,7 @@
           <li xml:lang="ar">إصلاح عدم ملء الخلفية لحقل البرنامج بالكامل.</li>
           <li xml:lang="ca">Corregeix el fons que no omple completament el camp de programa.</li>
           <li xml:lang="ca-valencia">Corregix el fons que no òmpliga completament el camp de programa.</li>
+          <li xml:lang="fr">Correction de l'arrière-plan ne remplissant pas complètement le champ du programme.</li>
           <li xml:lang="he">תוקנה בעיה שהרקע לא ממלא את שדה התוכנית במלואו.</li>
           <li xml:lang="it">Corregge il problema per cui lo sfondo non riempie completamente il campo del programma.</li>
           <li xml:lang="nl">Achtergrond die het programmaveld niet geheel vult gerepareerd.</li>
@@ -481,6 +500,7 @@
         <p xml:lang="ar">صفحة "حدّد المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Selecció de preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Selecció de preferits»</p>
+        <p xml:lang="fr">Page « Sélectionner les signets »</p>
         <p xml:lang="he">עמוד „בחירת מועדפים”</p>
         <p xml:lang="ia">Pagina de "Selige favoritos"</p>
         <p xml:lang="it">Pagina «Seleziona i preferiti»</p>
@@ -494,6 +514,7 @@
           <li xml:lang="ar">إصلاح عنصر تحميل النائب عند تحميل القنوات.</li>
           <li xml:lang="ca">Corregeix el marcador de posició de càrrega en carregar els canals.</li>
           <li xml:lang="ca-valencia">Corregix el marcador de posició de càrrega en carregar els canals.</li>
+          <li xml:lang="fr">Corriger le paramètre de remplacement pour le chargement lors du chargement des chaînes.</li>
           <li xml:lang="he">תוקן ממלא מקום טעינה בעת טעינת ערוצים.</li>
           <li xml:lang="it">Corregge il caricamento del segnaposto durante il caricamento dei canali.</li>
           <li xml:lang="nl">Laden van plaatshouder bij laden van kanalen gerepareerd.</li>
@@ -517,6 +538,7 @@
         <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
         <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="fr">Extracteur de télévision Spielfilm</p>
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="it">Recupero informazioni da TV Spielfilm</p>
         <p xml:lang="nl">TV-speelfilmophaler</p>
@@ -529,6 +551,7 @@
           <li xml:lang="ar">معالجة أوقات الإيقاف غير الصحيحة.</li>
           <li xml:lang="ca">Gestiona els horaris de final incorrectes.</li>
           <li xml:lang="ca-valencia">Gestiona els horaris de final incorrectes.</li>
+          <li xml:lang="fr">Gérer les heures d'arrêt incorrectes.</li>
           <li xml:lang="he">טיפול בזמני עצירה שגויים.</li>
           <li xml:lang="it">Gestisce gli orari di arresto errati.</li>
           <li xml:lang="nl">Niet correcte stoptijden behandelen.</li>
@@ -540,6 +563,7 @@
           <li xml:lang="ar">تحسين وصف البرنامج.</li>
           <li xml:lang="ca">Millora la descripció dels programes.</li>
           <li xml:lang="ca-valencia">Millora la descripció dels programes.</li>
+          <li xml:lang="fr">Améliorer la description du programme.</li>
           <li xml:lang="he">שיפור תיאור התוכנה.</li>
           <li xml:lang="it">Migliora la descrizione dei programmi.</li>
           <li xml:lang="nl">Programmabeschrijving verbeteren.</li>
@@ -552,6 +576,7 @@
         <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="fr">Page « Signets »</p>
         <p xml:lang="he">עמוד „מועדפים”</p>
         <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="it">Pagina «Preferiti»</p>
@@ -565,6 +590,7 @@
           <li xml:lang="ar">إظهار عنصر تحميل النائب.</li>
           <li xml:lang="ca">Mostra el marcador de posició de càrrega.</li>
           <li xml:lang="ca-valencia">Mostra el marcador de posició de càrrega.</li>
+          <li xml:lang="fr">Afficher le message de remplacement pour le chargement.</li>
           <li xml:lang="he">הצגת ממלא מקום טעינה.</li>
           <li xml:lang="it">Mostra un segnaposto di caricamento.</li>
           <li xml:lang="nl">Laden van plaatshouder tonen.</li>
@@ -576,6 +602,7 @@
           <li xml:lang="ar">تفعيل السحب بالفأرة.</li>
           <li xml:lang="ca">Activa l'arrossegament amb el ratolí.</li>
           <li xml:lang="ca-valencia">Activa l'arrossegament amb el ratolí.</li>
+          <li xml:lang="fr">Activer le glisser avec la souris.</li>
           <li xml:lang="he">הפעלת גרירה עם העכבר.</li>
           <li xml:lang="it">Abilita il trascinamento con il mouse.</li>
           <li xml:lang="nl">Slepen met muis inschakelen.</li>
@@ -588,6 +615,7 @@
         <p xml:lang="ar">عدم السماح بإزالة المفضلة في صفحة "فرز المفضلة".</p>
         <p xml:lang="ca">No permet eliminar els preferits a la pàgina «Ordena els preferits».</p>
         <p xml:lang="ca-valencia">No permet eliminar els preferits a la pàgina «Ordena els preferits».</p>
+        <p xml:lang="fr">Ne pas autoriser la suppression des signets sur la page « Trier les signets ».</p>
         <p xml:lang="he">לא לאפשר להסיר מועדפים מעמוד „מיון המועדפים”</p>
         <p xml:lang="it">Non consente la rimozione dei preferiti nella pagina «Ordina preferiti».</p>
         <p xml:lang="nl">Sta niet toe dat favorieten worden verwijderd op de pagina "Favorieten sorteren".</p>
@@ -599,6 +627,7 @@
         <p xml:lang="ar">تحسين الأداء.</p>
         <p xml:lang="ca">Millora del rendiment.</p>
         <p xml:lang="ca-valencia">Millora del rendiment.</p>
+        <p xml:lang="fr">Améliorer les performances.</p>
         <p xml:lang="he">שיפור ביצועים.</p>
         <p xml:lang="it">Migliorare le prestazioni.</p>
         <p xml:lang="nl">Prestaties verbeteren.</p>
@@ -628,6 +657,7 @@
         <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
         <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="fr">Extracteur de télévision Spielfilm</p>
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="it">Recupero informazioni da TV Spielfilm</p>
         <p xml:lang="nl">TV-speelfilmophaler</p>
@@ -640,6 +670,7 @@
           <li xml:lang="ar">إصلاح أيقونات القنوات المفقودة.</li>
           <li xml:lang="ca">Corregeix les icones de canal que manquen.</li>
           <li xml:lang="ca-valencia">Corregix les icones de canal que falten.</li>
+          <li xml:lang="fr">Correction des icônes de chaîne manquantes.</li>
           <li xml:lang="he">תוקנו סמלי ערוצים חסרים.</li>
           <li xml:lang="it">Corregge le icone dei canali mancanti.</li>
           <li xml:lang="nl">Ontbrekende kanaalpictogrammen gerepareerd.</li>
@@ -651,6 +682,7 @@
           <li xml:lang="ar">إصلاح البرامج المفقودة في حال وجود ترقيم صفحات.</li>
           <li xml:lang="ca">Corregeix els programes que manquen si hi ha paginació.</li>
           <li xml:lang="ca-valencia">Corregix els programes que falten si hi ha paginació.</li>
+          <li xml:lang="fr">Correction des programmes manquants s'il y a de la pagination.</li>
           <li xml:lang="he">תוקנו תוכניות חסרות אם יש דפדוף.</li>
           <li xml:lang="it">Corregge i programmi mancanti se c'è impaginazione.</li>
           <li xml:lang="nl">Ontbrekende programma's als er paginering is gerepareerd.</li>
@@ -662,6 +694,7 @@
           <li xml:lang="ar">إصلاح البرامج المفقودة حول رأس السنة.</li>
           <li xml:lang="ca">Corregeix els programes que falten al voltant de l'any nou.</li>
           <li xml:lang="ca-valencia">Corregix els programes que falten al voltant de l'any nou.</li>
+          <li xml:lang="fr">Correction des programmes manquants autour du Nouvel An.</li>
           <li xml:lang="he">תוקנו תוכניות שהיו חסרות סביב תחילת שנה.</li>
           <li xml:lang="it">Corregge i programmi mancanti in vista del nuovo anno.</li>
           <li xml:lang="nl">Ontbrekende programma's rond het nieuwe jaar gerepareerd.</li>
@@ -673,6 +706,7 @@
           <li xml:lang="ar">إصلاح معالجة المنطقة الزمنية.</li>
           <li xml:lang="ca">Corregeix la gestió del fus horari.</li>
           <li xml:lang="ca-valencia">Corregix la gestió del fus horari.</li>
+          <li xml:lang="fr">Correction de la gestion du fuseau horaire.</li>
           <li xml:lang="he">תוקן הטיפול באזורי זמן.</li>
           <li xml:lang="it">Corregge la gestione del fuso orario.</li>
           <li xml:lang="nl">Behandeling van tijdzone gerepareerd.</li>
@@ -684,6 +718,7 @@
           <li xml:lang="ar">إظهار البرامج المتزامنة.</li>
           <li xml:lang="ca">Mostra programes simultanis.</li>
           <li xml:lang="ca-valencia">Mostra programes simultanis.</li>
+          <li xml:lang="fr">Afficher les programmes simultanés.</li>
           <li xml:lang="he">הצגת תוכניות במקביל.</li>
           <li xml:lang="it">Mostra programmi simultanei.</li>
           <li xml:lang="nl">Gelijktijdige programma's tonen.</li>
@@ -695,6 +730,7 @@
           <li xml:lang="ar">إضافة ضبط لفترة الجلب المسبق.</li>
           <li xml:lang="ca">Afegeix la configuració per al període de recuperació prèvia.</li>
           <li xml:lang="ca-valencia">Afig la configuració per al període de recuperació prèvia.</li>
+          <li xml:lang="fr">Ajouter un paramètre pour la période de pré-chargement.</li>
           <li xml:lang="he">נוספה הגדרה למשך זמן למשיכה מראש.</li>
           <li xml:lang="it">Aggiunge l'impostazione per il periodo di prefetch.</li>
           <li xml:lang="nl">Instelling voor periode van vooraf ophalen toegevoegd.</li>
@@ -707,6 +743,7 @@
         <p xml:lang="ar">إضافة إعدادات واجهة المستخدم لضبط عرض المفضلة.</p>
         <p xml:lang="ca">Afegeix opcions de la interfície d'usuari per a configurar la vista de preferits.</p>
         <p xml:lang="ca-valencia">Afig opcions de la interfície d'usuari per a configurar la vista de preferits.</p>
+        <p xml:lang="fr">Ajoutez des paramètres de l'interface utilisateur pour configurer la vue des signets.</p>
         <p xml:lang="he">נוספו הגדרות בממשק המשתמש להגדרת תצוגת המועדפים.</p>
         <p xml:lang="it">Aggiunge le impostazioni dell'interfaccia utente per configurare la visualizzazione dei preferiti.</p>
         <p xml:lang="nl">Instellingen voor de gebruikersinterface toegevoegd om de favorietenweergave te configureren.</p>
@@ -718,6 +755,7 @@
         <p xml:lang="ar">تحسين الأداء (مثلاً: تجنب الوصول غير الضروري لقاعدة البيانات).</p>
         <p xml:lang="ca">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
         <p xml:lang="ca-valencia">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
+        <p xml:lang="fr">Améliorer les performances (Par exemple, en évitant les accès inutiles à la base de données).</p>
         <p xml:lang="he">שיפורי ביצועים (כלומר: הימנעות מגישה מיותרת למסד הנתונים)</p>
         <p xml:lang="it">Migliora le prestazioni (ad esempio, evita accessi non necessari al database).</p>
         <p xml:lang="nl">Prestaties verbeteren (bijv. onnodige toegang tot de database vermijden).</p>
