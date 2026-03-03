@@ -292,6 +292,7 @@
         <p xml:lang="sl">Stran "Priljubljeni"</p>
         <p xml:lang="tr">"Favorites" page</p>
         <p xml:lang="uk">Сторінка «Улюблене»</p>
+        <p xml:lang="zh-TW">「最愛」頁面</p>
         <ul>
           <li>Add date selection.</li>
           <li xml:lang="ar">إضافة اختيار التاريخ.</li>
@@ -356,6 +357,7 @@
         <p xml:lang="sl">Stran "Priljubljeni"</p>
         <p xml:lang="tr">"Favorites" page</p>
         <p xml:lang="uk">Сторінка «Улюблене»</p>
+        <p xml:lang="zh-TW">「最愛」頁面</p>
         <ul>
           <li>Show refetch button in top toolbar on mobile.</li>
           <li xml:lang="ar">إظهار زر إعادة الجلب في شريط الأدوات العلوي على المحمول.</li>
@@ -463,6 +465,7 @@
         <p xml:lang="sl">Stran "Priljubljeni"</p>
         <p xml:lang="tr">"Favorites" page</p>
         <p xml:lang="uk">Сторінка «Улюблене»</p>
+        <p xml:lang="zh-TW">「最愛」頁面</p>
         <ul>
           <li>Add refetch button.</li>
           <li xml:lang="ar">إضافة زر إعادة الجلب.</li>
@@ -550,6 +553,7 @@
         <p xml:lang="sl">Stran "Izberi priljubljene"</p>
         <p xml:lang="tr">"Select Favorites" page</p>
         <p xml:lang="uk">Сторінка «Вибір улюблених»</p>
+        <p xml:lang="zh-TW">「選取最愛」頁面</p>
         <ul>
           <li>Fix loading placeholder when loading channels.</li>
           <li xml:lang="ar">إصلاح عنصر تحميل النائب عند تحميل القنوات.</li>
@@ -636,6 +640,7 @@
         <p xml:lang="sl">Stran "Priljubljeni"</p>
         <p xml:lang="tr">"Favorites" page</p>
         <p xml:lang="uk">Сторінка «Улюблене»</p>
+        <p xml:lang="zh-TW">「最愛」頁面</p>
         <ul>
           <li>Show loading placeholder.</li>
           <li xml:lang="ar">إظهار عنصر تحميل النائب.</li>
