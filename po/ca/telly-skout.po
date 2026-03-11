@@ -303,18 +303,3 @@ msgstr "FSK: %1"
 #, kde-format
 msgid "XMLTV"
 msgstr "XMLTV"
-
-#~ msgid "Please select favorites"
-#~ msgstr "Seleccioneu els preferits"
-
-#~ msgid "Refetch"
-#~ msgstr "Torna a obtenir"
-
-#~ msgid "UI"
-#~ msgstr "IU"
-
-#~ msgid "px"
-#~ msgstr "px"
-
-#~ msgid "days"
-#~ msgstr "dies"
