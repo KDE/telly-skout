@@ -5,7 +5,7 @@
 name: telly-skout
 confinement: strict
 grade: stable
-base: core22
+base: core24
 adopt-info: telly-skout
 apps:
   telly-skout:
@@ -15,7 +15,7 @@ apps:
     desktop: usr/share/applications/org.kde.telly-skout.desktop
     command: usr/bin/telly-skout
     plugs:
-      - audio-record
+      - audio-playback
 slots:
   session-dbus-interface:
     interface: dbus
@@ -63,16 +63,24 @@ parts:
       - -usr/lib/gcc/$CRAFT_ARCH_TRIPLET_BUILD_FOR/6.0.0
       - -usr/lib/aspell/*
       - -usr/share/lintian
+  gpu-2404:
+    after: [telly-skout]
+    source: https://github.com/canonical/gpu-snap.git
+    plugin: dump
+    override-prime: |
+      craftctl default
+      ${CRAFT_PART_SRC}/bin/gpu-2404-cleanup mesa-2404
+    prime:
+      - bin/gpu-2404-wrapper
   cleanup:
     after:
       - telly-skout
     plugin: nil
     build-snaps:
-      - core22
-      - kf6-core22
+      - core24
+      - kf6-core24
     override-prime: |
       set -eux
-      for snap in "core22" "kf6-core22"; do
+      for snap in "core24" "kf6-core24"; do
           cd "/snap/$snap/current" && find . -type f,l -exec rm -rf "${CRAFT_PRIME}/{}" \;
       done
-
