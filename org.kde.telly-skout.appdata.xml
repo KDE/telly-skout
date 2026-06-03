@@ -150,6 +150,7 @@
       <caption xml:lang="sl">Priljubljene</caption>
       <caption xml:lang="sv">Favoriter</caption>
       <caption xml:lang="tr">Sık Kullanılanlar</caption>
+      <caption xml:lang="ug">يىغقۇچ</caption>
       <caption xml:lang="uk">Улюблене</caption>
       <caption xml:lang="zh-TW">最愛</caption>
       <image>https://cdn.kde.org/screenshots/telly-skout/favorites.png</image>
@@ -814,6 +815,7 @@
           <li xml:lang="sk">Oprava chýbajúcich ikon kanálov.</li>
           <li xml:lang="sl">Popravi manjkajoče ikone kanalov.</li>
           <li xml:lang="tr">Eksik kanal simgeleri düzeltildi.</li>
+          <li xml:lang="ug">يوقالغان قانال سىنبەلگىسىنى ئوڭشايدۇ.</li>
           <li xml:lang="uk">Виправлено нестачу піктограм каналів.</li>
           <li>Fix missing programs if there is pagination.</li>
           <li xml:lang="ar">إصلاح البرامج المفقودة في حال وجود ترقيم صفحات.</li>
