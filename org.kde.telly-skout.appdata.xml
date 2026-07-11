@@ -277,6 +277,7 @@
         <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
         <p xml:lang="sk">Nástroj na získavanie dát z TV Spielfilm</p>
         <p xml:lang="sl">Nabiralec TV filmov</p>
+        <p xml:lang="sv">Hämtningsverktyg för långfilmer på tv</p>
         <p xml:lang="tr">TV Spielfilm getiricisi</p>
         <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
         <ul>
@@ -295,6 +296,7 @@
           <li xml:lang="ru">Исправлено: на странице «Избранное» не отображались каналы;</li>
           <li xml:lang="sk">Fix "Vyberte Favorites" page does not list channels.</li>
           <li xml:lang="sl">Popravi, da stran "Izberi priljubljene" ne prikazuje seznama kanalov.</li>
+          <li xml:lang="sv">Rätta att sidan "Välj favoriter" inte listar kanaler.</li>
           <li xml:lang="tr">“Sık Kullanılanları Seç” sayfasının kanalları listelememesi düzeltildi.</li>
           <li xml:lang="uk">Виправлено помилку, пов'язану із тим, що на сторінці «Вибрати улюблені» не було показано список каналів.</li>
         </ul>
@@ -334,6 +336,7 @@
           <li xml:lang="ru">Добавление выбора даты;</li>
           <li xml:lang="sk">Pridaný výber dátumu.</li>
           <li xml:lang="sl">Doda izbiro datuma.</li>
+          <li xml:lang="sv">Lägg till datumurval.</li>
           <li xml:lang="tr">Tarih seçimi eklendi.</li>
           <li xml:lang="uk">Додано можливість вибору дати.</li>
           <li>Improve handling of gaps/overlaps in the programs.</li>
@@ -351,6 +354,7 @@
           <li xml:lang="ru">Улучшена обработка пропусков и перекрытий в программах;</li>
           <li xml:lang="sk">Vylepšené spracovanie medzier/prekryvov v programoch.</li>
           <li xml:lang="sl">Izboljša obravnavo vrzeli/prekrivanj v programih.</li>
+          <li xml:lang="sv">Förbättra hantering av mellanrum eller överlappningar i programmen.</li>
           <li xml:lang="tr">Programlardaki boşlukların/çakışmaların işlenmesi iyileştirildi.</li>
           <li xml:lang="uk">Удосконалено обробку прогалин або перекриттів у програмах.</li>
         </ul>
@@ -369,6 +373,7 @@
         <p xml:lang="ru">Добавлена поддержка Android.</p>
         <p xml:lang="sk">Pridaná podpora pre Android.</p>
         <p xml:lang="sl">Doda podporo za Android.</p>
+        <p xml:lang="sv">Lägg till stöd för Android.</p>
         <p xml:lang="tr">Android desteği eklendi.</p>
         <p xml:lang="uk">Додано підтримку Android.</p>
       </description>
@@ -412,6 +417,7 @@
           <li xml:lang="ru">Вывод кнопки повторной загрузки на мобильных устройствах в верхней панели инструментов;</li>
           <li xml:lang="sk">Zobrazenie tlačidla na opätovné načítanie v hornom paneli nástrojov na mobile.</li>
           <li xml:lang="sl">Prikaže gumb za ponovno nalaganje v zgornji orodni vrstici na mobilni napravi.</li>
+          <li xml:lang="sv">Visa knapp för att hämta igen i övre verktygsraden på mobiler.</li>
           <li xml:lang="tr">Taşınabilirde üst araç çubuğunda yeniden getir düğmesi gösteriliyor.</li>
           <li xml:lang="uk">Реалізовано показ кнопки повторного отримання на верхній панелі інструментів мобільної версії.</li>
         </ul>
@@ -434,6 +440,7 @@
         <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
         <p xml:lang="sk">Nástroj na získavanie dát z TV Spielfilm</p>
         <p xml:lang="sl">Nabiralec TV filmov</p>
+        <p xml:lang="sv">Hämtningsverktyg för långfilmer på tv</p>
         <p xml:lang="tr">TV Spielfilm getiricisi</p>
         <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
         <ul>
@@ -452,6 +459,7 @@
           <li xml:lang="ru">Исправлено время завершения программы, которое было раньше времени её начала (отсутствующие программы);</li>
           <li xml:lang="sk">Oprava času ukončenia programu pred časom začiatku (chýbajúce programy).</li>
           <li xml:lang="sl">Popravi čas zaustavitve programa pred časom začetka (manjkajoči programi).</li>
+          <li xml:lang="sv">Rätta programmets sluttid före starttid (saknade program).</li>
           <li xml:lang="tr">Başlangıç zamanından önceki program bitiş zamanı (eksik programlar) düzeltildi.</li>
           <li xml:lang="uk">Виправлено можливість того, що кінцевий час програми передує часу початку (пропущену програму).</li>
           <li>Fix program description with multiple paragraphs.</li>
@@ -469,6 +477,7 @@
           <li xml:lang="ru">Исправлено описание программы с несколькими абзацами;</li>
           <li xml:lang="sk">Oprava popisu programu s viacerými odsekmi.</li>
           <li xml:lang="sl">Popravi opis programa z več odstavki.</li>
+          <li xml:lang="sv">Rätta programbeskrivning med flera stycken.</li>
           <li xml:lang="tr">Birden çok paragraflı program açıklaması düzeltildi.</li>
           <li xml:lang="uk">Виправлено опис програми з декількох абзаців.</li>
           <li>Fix program description with multiple names for one role.</li>
@@ -486,6 +495,7 @@
           <li xml:lang="ru">Исправлено описание программы с несколькими именами для одной роли;</li>
           <li xml:lang="sk">Oprava popisu programu s viacerými menami pre jednu rolu.</li>
           <li xml:lang="sl">Popravi opis programa z več imeni za eno vlogo.</li>
+          <li xml:lang="sv">Rätta programbeskrivning med flera namn på en roll.</li>
           <li xml:lang="tr">Bir rol için birden fazla isim içeren program açıklaması düzeltildi.</li>
           <li xml:lang="uk">Виправлено опис програми з декількома назвами для однієї ролі.</li>
           <li>Fix programs could not be fetched for 123.tv.</li>
@@ -503,6 +513,7 @@
           <li xml:lang="ru">Исправлена ошибка получения программ для 123.tv;</li>
           <li xml:lang="sk">Oprava nemožnosti získať programy pre 123.tv.</li>
           <li xml:lang="sl">Popravi, da programov za 123.tv ni bilo mogoče pridobiti.</li>
+          <li xml:lang="sv">Rätta att program inte kunde hämtas för 123.tv.</li>
           <li xml:lang="tr">123.tv için programların getirilememesi düzeltildi.</li>
           <li xml:lang="uk">Виправлено неможливість отримання програм для 123.tv.</li>
         </ul>
@@ -542,6 +553,7 @@
           <li xml:lang="ru">Добавлена кнопка повторной загрузки;</li>
           <li xml:lang="sk">Pridané tlačidlo na opätovné načítanie.</li>
           <li xml:lang="sl">Doda gumb za ponovno nalaganje.</li>
+          <li xml:lang="sv">Lägg till knapp för att hämta igen.</li>
           <li xml:lang="tr">“Yeniden Getir” düğmesi eklendi.</li>
           <li xml:lang="uk">Додано кнопку повторного отримання даних.</li>
           <li>Speed up program description update.</li>
@@ -559,6 +571,7 @@
           <li xml:lang="ru">Ускорение обновления описания программы;</li>
           <li xml:lang="sk">Zrýchlená aktualizácia popisu programu.</li>
           <li xml:lang="sl">Pospeši posodabljanje opisa programa.</li>
+          <li xml:lang="sv">Snabba upp uppdatering av programbeskrivning.</li>
           <li xml:lang="tr">Program açıklaması güncellemesi hızlandırıldı.</li>
           <li xml:lang="uk">Пришвидшено оновлення опису програм.</li>
           <li>Wrap header text.</li>
@@ -576,6 +589,7 @@
           <li xml:lang="ru">Перенос текста заголовка</li>
           <li xml:lang="sk">Zalamovanie textu hlavičky.</li>
           <li xml:lang="sl">Prelamlja besedilo glave.</li>
+          <li xml:lang="sv">Radbryt rubriktext.</li>
           <li xml:lang="tr">Başlık metni artık bir sonraki satıra kaydırılıyor.</li>
           <li xml:lang="uk">Реалізовано перенесення рядків тексту у заголовку.</li>
           <li>Fix placeholder message not shown if no favorites selected.</li>
@@ -593,6 +607,7 @@
           <li xml:lang="ru">Исправлено: сообщение-заполнитель не отображается, если не выбраны избранные элементы;</li>
           <li xml:lang="sk">Oprava nezobrazenia zástupnej správy, ak neboli vybrané žiadne obľúbené.</li>
           <li xml:lang="sl">Popravi sporočilo o nadomestnem besedilu, ki se ni prikazalo, če ni izbranih priljubljenih.</li>
+          <li xml:lang="sv">Rätta att platsmarkeringsmeddelande inte visas om inga favoriter är valda.</li>
           <li xml:lang="tr">Sık kullanılan seçilmemişse yer tutucu iletinin gösterilmemesi düzeltildi.</li>
           <li xml:lang="uk">Виправлено неможливість показу повідомлення-замінника, якщо не позначено улюблених записів.</li>
           <li>Fix background does not fill program field completely.</li>
@@ -610,6 +625,7 @@
           <li xml:lang="ru">Исправлено неполное заполнение поля программы фоном;</li>
           <li xml:lang="sk">Oprava pozadia, ktoré úplne nevypĺňalo pole programu.</li>
           <li xml:lang="sl">Popravi, da ozadje ne zapolni v celoti polja programa.</li>
+          <li xml:lang="sv">Rätta att bakgrunden inte fyller programfältet fullständigt.</li>
           <li xml:lang="tr">Arka planın program alanını tamamen doldurmaması düzeltildi.</li>
           <li xml:lang="uk">Виправлено неповне заповнення тлом поля програми.</li>
         </ul>
@@ -649,6 +665,7 @@
           <li xml:lang="ru">Исправлена загрузка заполнителя при загрузке каналов;</li>
           <li xml:lang="sk">Oprava zástupného indikátora pri načítavaní kanálov.</li>
           <li xml:lang="sl">Popravi nalaganje nadomestnega besedila pri nalaganju kanalov.</li>
+          <li xml:lang="sv">Rätta inläsning av platsmarkör när kanaler läses in.</li>
           <li xml:lang="tr">Kanallar yüklenirken yükleniyor yer tutucusu düzeltildi.</li>
           <li xml:lang="uk">Виправлено завантаження замінника при завантаженні каналів.</li>
         </ul>
@@ -678,6 +695,7 @@
         <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
         <p xml:lang="sk">Nástroj na získavanie dát z TV Spielfilm</p>
         <p xml:lang="sl">Nabiralec TV filmov</p>
+        <p xml:lang="sv">Hämtningsverktyg för långfilmer på tv</p>
         <p xml:lang="tr">TV Spielfilm getiricisi</p>
         <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
         <ul>
@@ -696,6 +714,7 @@
           <li xml:lang="ru">Обработка некорректного времени остановки;</li>
           <li xml:lang="sk">Spracovanie nesprávnych časov ukončenia.</li>
           <li xml:lang="sl">Obravnava napačne čase zaustavitve.</li>
+          <li xml:lang="sv">Hantera felaktiga sluttider.</li>
           <li xml:lang="tr">Hatalı bitiş zamanları artık düzgünce işleniyor.</li>
           <li xml:lang="uk">Реалізовано обробку некоректних часів завершення.</li>
           <li>Enhance program description.</li>
@@ -713,6 +732,7 @@
           <li xml:lang="ru">Улучшение описания программы;</li>
           <li xml:lang="sk">Vylepšenie popisu programu.</li>
           <li xml:lang="sl">Izboljša opis programa.</li>
+          <li xml:lang="sv">Förbättra programbeskrivning.</li>
           <li xml:lang="tr">Program açıklaması geliştirildi.</li>
           <li xml:lang="uk">Удосконалено опис програми.</li>
         </ul>
@@ -752,6 +772,7 @@
           <li xml:lang="ru">Вывод заполнителя хода загрузки;</li>
           <li xml:lang="sk">Zobrazenie zástupného indikátora načítavania.</li>
           <li xml:lang="sl">Prikaže nalaganje nadomestnega besedila.</li>
+          <li xml:lang="sv">Visa platsmarkör för inläsning.</li>
           <li xml:lang="tr">Yükleniyor yer tutucusu gösteriliyor.</li>
           <li xml:lang="uk">Реалізовано показ замінника завантаження.</li>
           <li>Enable dragging with mouse.</li>
@@ -769,6 +790,7 @@
           <li xml:lang="ru">Включено перетаскивание мышью;</li>
           <li xml:lang="sk">Povolenie ťahania myšou.</li>
           <li xml:lang="sl">Omogoča vlečenje z miško.</li>
+          <li xml:lang="sv">Aktivera dra med musen.</li>
           <li xml:lang="tr">Fare ile sürükleme etkinleştirildi.</li>
           <li xml:lang="uk">Уможливлено перетягування за допомогою миші.</li>
         </ul>
@@ -787,6 +809,7 @@
         <p xml:lang="ru">Запрещено удаление избранного на странице «Сортировка избранного».</p>
         <p xml:lang="sk">Do not allow to remove favorites on the "Sort Favorites" page.</p>
         <p xml:lang="sl">Ne dovoli odstranjevanja priljubljenih na strani "Razvrsti priljubljene".</p>
+        <p xml:lang="sv">Tillåt inte att favoriter tas bort på sidan "Sortera favoriter".</p>
         <p xml:lang="tr">“Sık Kullanılanları Sırala ”sayfasında sık kullanılanların kaldırılmasına izin verilmiyor.</p>
         <p xml:lang="uk">Заборонено вилучення улюблених записів на сторінці «Упорядкувати улюблені».</p>
         <p>Improve performance.</p>
@@ -804,6 +827,7 @@
         <p xml:lang="ru">Повышение производительности.</p>
         <p xml:lang="sk">Zlepšenie výkonu.</p>
         <p xml:lang="sl">Izboljša učinkovitost delovanja.</p>
+        <p xml:lang="sv">Förbättra prestanda.</p>
         <p xml:lang="tr">Başarım artırıldı.</p>
         <p xml:lang="uk">Удосконалено швидкодію.</p>
       </description>
@@ -839,6 +863,7 @@
         <p xml:lang="ru">Модуль для получения данных с TV Spielfilm</p>
         <p xml:lang="sk">Nástroj na získavanie dát z TV Spielfilm</p>
         <p xml:lang="sl">Nabiralec TV filmov</p>
+        <p xml:lang="sv">Hämtningsverktyg för långfilmer på tv</p>
         <p xml:lang="tr">TV Spielfilm getiricisi</p>
         <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
         <ul>
@@ -857,6 +882,7 @@
           <li xml:lang="ru">Исправлены отсутствующие значки каналов;</li>
           <li xml:lang="sk">Oprava chýbajúcich ikon kanálov.</li>
           <li xml:lang="sl">Popravi manjkajoče ikone kanalov.</li>
+          <li xml:lang="sv">Rätta saknade kanalikoner.</li>
           <li xml:lang="tr">Eksik kanal simgeleri düzeltildi.</li>
           <li xml:lang="ug">يوقالغان قانال سىنبەلگىسىنى ئوڭشايدۇ.</li>
           <li xml:lang="uk">Виправлено нестачу піктограм каналів.</li>
@@ -875,6 +901,7 @@
           <li xml:lang="ru">Исправлено отсутствие программ в постраничной разбивки;</li>
           <li xml:lang="sk">Oprava chýbajúcich programov pri stránkovaní.</li>
           <li xml:lang="sl">Popravi manjkajoče programe, če obstaja oštevilčenje strani.</li>
+          <li xml:lang="sv">Rätta saknade program om sidbrytning finns.</li>
           <li xml:lang="tr">Sayfalandırma varsa eksik programlar düzeltildi.</li>
           <li xml:lang="uk">Виправлено пропуск програм, якщо немає поділу на сторінки.</li>
           <li>Fix missing programs around new year.</li>
@@ -892,6 +919,7 @@
           <li xml:lang="ru">Исправлено отсутствие программ в новогодние праздники;</li>
           <li xml:lang="sk">Oprava chýbajúcich programov okolo Nového roka.</li>
           <li xml:lang="sl">Popravi manjkajoče programe okoli novega leta.</li>
+          <li xml:lang="sv">Rätta saknade program runt nyår.</li>
           <li xml:lang="tr">Yeni yıl civarındaki eksik programlar düzeltildi.</li>
           <li xml:lang="uk">Виправлено пропуск програм у новорічний період.</li>
           <li>Fix time zone handling.</li>
@@ -909,6 +937,7 @@
           <li xml:lang="ru">Исправлена обработка часового пояса;</li>
           <li xml:lang="sk">Oprava spracovania časových pásiem.</li>
           <li xml:lang="sl">Popravi ravnanje z časovnimi pasovi.</li>
+          <li xml:lang="sv">Rätta hantering av tidszon.</li>
           <li xml:lang="tr">Saat dilimi işlenmesi düzeltildi.</li>
           <li xml:lang="uk">Виправлено обробку часових поясів.</li>
           <li>Show simultaneous programs.</li>
@@ -926,6 +955,7 @@
           <li xml:lang="ru">Возможно просматривать одновременно несколько программ;</li>
           <li xml:lang="sk">Zobrazenie súbežných programov.</li>
           <li xml:lang="sl">Prikazuje sočasne programe.</li>
+          <li xml:lang="sv">Visa samtidiga program.</li>
           <li xml:lang="tr">Eşzamanlı programlar artık gösteriliyor.</li>
           <li xml:lang="uk">Реалізовано показ одночасних програм.</li>
           <li>Add setting for prefetch period.</li>
@@ -943,6 +973,7 @@
           <li xml:lang="ru">Настройка периода предварительной выборки;</li>
           <li xml:lang="sk">Pridanie nastavenia pre obdobie predbežného načítania.</li>
           <li xml:lang="sl">Doda nastavitev za obdobje predhodnega pridobivanja.</li>
+          <li xml:lang="sv">Lägg till inställning av förhämtningsperiod.</li>
           <li xml:lang="tr">Önceden getirme süresi için ayar eklendi.</li>
           <li xml:lang="uk">Додано параметр для параметра попереднього отримання.</li>
         </ul>
@@ -961,6 +992,7 @@
         <p xml:lang="ru">Добавлены настройки пользовательского интерфейса для настройки представления избранного;</p>
         <p xml:lang="sk">Pridanie nastavení používateľského rozhrania na konfiguráciu zobrazenia obľúbených.</p>
         <p xml:lang="sl">Doda nastavitve uporabniškega vmesnika za konfiguracijo pogleda priljubljenih.</p>
+        <p xml:lang="sv">Lägg till inställningar i användargränssnittet för att anpassa favoritvyn.</p>
         <p xml:lang="tr">Sık kullanılanlar görünümünü yapılandırmak için kullanıcı arayüzü ayarları eklendi.</p>
         <p xml:lang="uk">Додано параметри інтерфейсу користувача для налаштовування панелі перегляду улюблених записів.</p>
         <p>Improve performance (e.g. avoid unnecessary database access).</p>
@@ -978,6 +1010,7 @@
         <p xml:lang="ru">Повышение производительности (например, предотвращение избыточного обращения к базе данных);</p>
         <p xml:lang="sk">Zlepšenie výkonu (napr. vyhnutie sa zbytočnému prístupu k databáze).</p>
         <p xml:lang="sl">Izboljša delovanje (npr. preprečuje nepotreben dostop do baze podatkov).</p>
+        <p xml:lang="sv">Förbättra prestanda (undvik exempelvis onödig databasåtkomst).</p>
         <p xml:lang="tr">Başarım artırıldı (örn. gereksiz veritabanı erişiminden kaçın).</p>
         <p xml:lang="uk">Удосконалено швидкодію (наприклад, усунено зайві спроби доступу до бази даних).</p>
       </description>
