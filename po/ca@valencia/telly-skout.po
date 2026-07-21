@@ -42,7 +42,7 @@ msgstr "Telly Skout"
 #: main.cpp:67
 #, kde-format
 msgid "© 2020 KDE Community"
-msgstr "© 2020 Comunitat KDE"
+msgstr "© 2020 La comunitat KDE"
 
 #: qml/ChannelListDelegate.qml:54
 #, kde-format
