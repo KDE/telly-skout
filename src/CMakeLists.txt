@@ -66,7 +66,7 @@ ecm_add_qml_module(telly-skout-app URI org.kde.TellySkout.app NO_RESOURCE_TARGET
 )
 
 target_include_directories(telly-skout-app PRIVATE ${CMAKE_BINARY_DIR})
-target_link_libraries(telly-skout-app PRIVATE telly-skoutplugin)
+target_link_libraries(telly-skout-app PRIVATE telly-skoutplugin KirigamiApp)
 
 set_target_properties(telly-skout-app PROPERTIES RUNTIME_OUTPUT_NAME "telly-skout")
 
