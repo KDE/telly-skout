@@ -2,14 +2,14 @@
 # Copyright (C) 2022 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
 # SPDX-FileCopyrightText: 2022 Frederik Schwarzer <schwarzer@kde.org>
-# SPDX-FileCopyrightText: 2023, 2024 Frank Steinmetzger <dev-kde@felsenfleischer.de>
+# SPDX-FileCopyrightText: 2023-2024 Frank Steinmetzger <dev-kde@felsenfleischer.de>
 # SPDX-FileCopyrightText: 2025 Alois Spitzbart <spitz234@hotmail.com>
 # SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-08 00:47+0000\n"
+"POT-Creation-Date: 2026-07-27 00:49+0000\n"
 "PO-Revision-Date: 2025-12-21 11:51+0100\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -30,17 +30,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-i18n-de@kde.org"
 
-#: main.cpp:60
+#: main.cpp:57
 #, kde-format
 msgid "Convergent TV guide based on Kirigami"
 msgstr "Auf Kirigami basierendes TV-Programm"
 
-#: main.cpp:63
+#: main.cpp:60
 #, kde-format
 msgid "Telly Skout"
 msgstr "Telly Skout"
 
-#: main.cpp:67
+#: main.cpp:64
 #, kde-format
 msgid "© 2020 KDE Community"
 msgstr "© 2020 KDE-Gemeinschaft"
