@@ -376,6 +376,7 @@
         <p xml:lang="sv">Lägg till stöd för Android.</p>
         <p xml:lang="tr">Android desteği eklendi.</p>
         <p xml:lang="uk">Додано підтримку Android.</p>
+        <p xml:lang="zh-TW">新增 Android 支援。</p>
       </description>
     </release>
     <release version="24.12.3" date="2025-03-06"/>
@@ -556,6 +557,7 @@
           <li xml:lang="sv">Lägg till knapp för att hämta igen.</li>
           <li xml:lang="tr">“Yeniden Getir” düğmesi eklendi.</li>
           <li xml:lang="uk">Додано кнопку повторного отримання даних.</li>
+          <li xml:lang="zh-TW">新增重新取得的按鈕。</li>
           <li>Speed up program description update.</li>
           <li xml:lang="ar">تسريع تحديث وصف البرنامج.</li>
           <li xml:lang="ca">Accelera l'actualització de la descripció de programes.</li>
@@ -830,6 +832,7 @@
         <p xml:lang="sv">Förbättra prestanda.</p>
         <p xml:lang="tr">Başarım artırıldı.</p>
         <p xml:lang="uk">Удосконалено швидкодію.</p>
+        <p xml:lang="zh-TW">改善效能。</p>
       </description>
     </release>
     <release version="24.02.2" date="2024-04-11"/>
