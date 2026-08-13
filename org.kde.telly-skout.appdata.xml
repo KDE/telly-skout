@@ -1000,7 +1000,7 @@
         <p xml:lang="tr">Sık kullanılanlar görünümünü yapılandırmak için kullanıcı arayüzü ayarları eklendi.</p>
         <p xml:lang="uk">Додано параметри інтерфейсу користувача для налаштовування панелі перегляду улюблених записів.</p>
         <p>Improve performance (e.g. avoid unnecessary database access).</p>
-        <p xml:lang="ar">تحسين الأداء (مثلاً: تجنب الوصول غير الضروري لقاعدة البيانات).</p>
+        <p xml:lang="ar">تحسين الأداء (مثلًا: تجنب الوصول غير الضروري لقاعدة البيانات).</p>
         <p xml:lang="ca">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
         <p xml:lang="ca-valencia">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
         <p xml:lang="es">Se ha mejorado el rendimiento (por ejemplo, para evitar accesos innecesarios a la base de datos).</p>
