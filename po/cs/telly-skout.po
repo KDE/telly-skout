@@ -1,36 +1,37 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the telly-skout package.
 # SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2026 Libor Filipek <libor.filipek@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-27 00:49+0000\n"
-"PO-Revision-Date: 2025-12-05 10:27+0100\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2026-09-05 00:04+0200\n"
+"Last-Translator: Libor Filipek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Vít Pelčák"
+msgstr "Vít Pelčák,Libor Filípek"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "vit@pelcak.org"
+msgstr "vit@pelcak.org,libor.filipek@gmail.com"
 
 #: main.cpp:57
 #, kde-format
 msgid "Convergent TV guide based on Kirigami"
-msgstr ""
+msgstr "Konvergentní televizní program založený na Kirigami"
 
 #: main.cpp:60
 #, kde-format
@@ -57,13 +58,13 @@ msgstr "Oblíbené"
 #: qml/FavoritesPage.qml:33
 #, kde-format
 msgid "Select some favorites to get started!"
-msgstr ""
+msgstr "Vyberte si pár oblíbených položek a můžete začít!"
 
 #: qml/FavoritesPage.qml:38
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Refresh"
-msgstr ""
+msgstr "Obnovit"
 
 #: qml/FavoritesPage.qml:144
 #, kde-format
@@ -75,18 +76,16 @@ msgstr "Informace jsou nedostupné"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Previous Day"
-msgstr ""
+msgstr "Předchozí den"
 
 #: qml/FavoritesPage.qml:221
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Next Day"
-msgstr ""
+msgstr "Následující den"
 
 #: qml/GroupListDelegate.qml:30
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Channels"
+#, kde-format
 msgctxt "@title, as in 'TV channels'"
 msgid "Channels"
 msgstr "Kanály"
@@ -100,7 +99,7 @@ msgstr "Vyberte oblíbené"
 #: qml/GroupListPage.qml:24
 #, kde-format
 msgid "Loading groups…"
-msgstr ""
+msgstr "Načítání skupin..."
 
 #: qml/SelectFavoritesPage.qml:16
 #, kde-format
@@ -111,7 +110,7 @@ msgstr "Kanály"
 #: qml/SelectFavoritesPage.qml:29 qml/SortFavoritesPage.qml:34
 #, kde-format
 msgid "Loading channels…"
-msgstr ""
+msgstr "Načítání kanálů…"
 
 #: qml/SettingsPage.qml:14
 #, kde-format
@@ -135,7 +134,7 @@ msgstr "Výška programu:"
 #, kde-format
 msgctxt "Number in px/min"
 msgid "%1px/min"
-msgstr ""
+msgstr "%1px/min"
 
 #: qml/SettingsPage.qml:38
 #, kde-format
@@ -147,7 +146,7 @@ msgstr "Šířka sloupce:"
 #, kde-format
 msgctxt "Number in px"
 msgid "%1px"
-msgstr ""
+msgstr "%1px"
 
 #: qml/SettingsPage.qml:54
 #, kde-format
@@ -171,16 +170,16 @@ msgstr "Programy"
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Delete old programs after:"
-msgstr ""
+msgstr "Smazat staré programy po:"
 
 #: qml/SettingsPage.qml:84
 #, kde-format
 msgctxt "%1 is a number, completes the setting 'Delete old programs after:'"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1 den"
+msgstr[1] "%1 dny"
+msgstr[2] "%1 dnů"
 
 #: qml/SettingsPage.qml:96
 #, kde-format
@@ -191,22 +190,22 @@ msgstr "Stahovač:"
 #, kde-format
 msgctxt "@option:combobox"
 msgid "The fetcher which loads the programs."
-msgstr ""
+msgstr "Stahovač, který načítá programy."
 
 #: qml/SettingsPage.qml:108
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Prefetch:"
-msgstr ""
+msgstr "Přednačítat:"
 
 #: qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "%1 is a number, completes the setting 'Prefetch:'"
 msgid "%1 day"
 msgid_plural "%1 days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1 den"
+msgstr[1] "%1 dny"
+msgstr[2] "%1 dnů"
 
 #: qml/SettingsPage.qml:125
 #, kde-format
@@ -298,7 +297,7 @@ msgstr "Trvání: %1"
 #, kde-format
 msgctxt "'FSK' is a German age rating for movies and DVDs"
 msgid "FSK: %1"
-msgstr ""
+msgstr "FSK: %1"
 
 #: xmltvfetcher.cpp:43
 #, kde-format
