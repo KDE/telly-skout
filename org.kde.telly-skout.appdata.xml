@@ -44,6 +44,7 @@
   <summary xml:lang="ar">دليل تلفزيوني متقارب من كيريغامي</summary>
   <summary xml:lang="ca">Una guia de TV convergent del Kirigami</summary>
   <summary xml:lang="ca-valencia">Una guia de TV convergent de Kirigami</summary>
+  <summary xml:lang="cs">Konvergentní Kirigami televizní program</summary>
   <summary xml:lang="de">Ein konvergenter, auf Kirigami basierender Fernsehprogrammführer</summary>
   <summary xml:lang="en-GB">A convergent Kirigami TV guide</summary>
   <summary xml:lang="eo">Konverĝa televid-gvidilo de Kirigami</summary>
@@ -88,6 +89,7 @@
     <p xml:lang="ar">تيلي سكوت هو دليل تلفزيوني متقارب من كيريغامي. يعرض البرامج التلفزيونية لقنواتك المفضلة من TV Spielfilm أو ملف XMLTV.</p>
     <p xml:lang="ca">El Telly Skout és una guia de TV convergent del Kirigami. Mostra els programa de TV dels canals preferits a partir de TV Spielfilm o d'un fitxer XMLTV.</p>
     <p xml:lang="ca-valencia">Telly Skout és una guia de TV convergent de Kirigami. Mostra els programa de TV dels canals preferits a partir de TV Spielfilm o d'un fitxer XMLTV.</p>
+    <p xml:lang="cs">Telly Skout je konvergentní Kirigami televizní program. Zobrazuje televizní program vašich oblíbených kanálů z TV Spielfilm nebo ze souboru XMLTV.</p>
     <p xml:lang="de">Telly Skout ist ein konvergenter Fernsehprogrammführer. Er zeigt das Fernsehprogramm für Ihre bevorzugten Kanäle von „TV Spielfilm“ oder einer XMLTV-Datei an.</p>
     <p xml:lang="en-GB">Telly Skout is a convergent Kirigami TV guide. It shows the TV program for your favourite channels from TV Spielfilm or an XMLTV file.</p>
     <p xml:lang="eo">Telly Skout estas konverĝa televida gvidilo de Kirigami. Ĝi montras la televidprogramon por viaj plej ŝatataj kanaloj de TV Spielfilm aŭ XMLTV-dosiero.</p>
@@ -164,7 +166,7 @@
       <caption xml:lang="ar">حدد المفضلة</caption>
       <caption xml:lang="ca">Selecció dels preferits</caption>
       <caption xml:lang="ca-valencia">Trieu els preferits</caption>
-      <caption xml:lang="cs">Vyberte oblíbené</caption>
+      <caption xml:lang="cs">Vybrat oblíbené</caption>
       <caption xml:lang="de">Favoriten wählen</caption>
       <caption xml:lang="en-GB">Select Favourites</caption>
       <caption xml:lang="eo">Elekti plej ŝatatajn</caption>
@@ -268,6 +270,7 @@
         <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
         <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="cs">Stahovač TV Spielfilm</p>
         <p xml:lang="es">Extractor de TV Spielfilm.</p>
         <p xml:lang="fi">TV Spielfilm -nouto</p>
         <p xml:lang="fr">Extracteur de télévision Spielfilm</p>
@@ -288,6 +291,7 @@
           <li xml:lang="ar">إصلاح عدم سرد القنوات في صفحة "تحديد المفضلة".</li>
           <li xml:lang="ca">Corregeix la pàgina «Selecciona els preferits» que no llista els canals.</li>
           <li xml:lang="ca-valencia">Corregix la pàgina «Tria els preferits» que no llista els canals.</li>
+          <li xml:lang="cs">Opravena chyba, kvůli které se na stránce "Vybrat oblíbené" nezobrazovaly kanály.</li>
           <li xml:lang="es">Se ha corregido que la página «Seleccionar favoritos» no listara los canales.</li>
           <li xml:lang="fi">korjattu se, ettei ”Valitse suosikit” -sivu luetellut kanavia</li>
           <li xml:lang="fr">Correction de la page « Sélectionner les signets » n’affichant aucune chaîne.</li>
@@ -308,6 +312,7 @@
         <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="cs">Stránka "Oblíbené"</p>
         <p xml:lang="es">Página de «Favoritos».</p>
         <p xml:lang="fi">”Suosikit”-sivu</p>
         <p xml:lang="fr">Page « Signets »</p>
@@ -330,6 +335,7 @@
           <li xml:lang="ar">إضافة اختيار التاريخ.</li>
           <li xml:lang="ca">Afegeix la selecció de dates.</li>
           <li xml:lang="ca-valencia">Afig la selecció de dates.</li>
+          <li xml:lang="cs">Přidán výběr data.</li>
           <li xml:lang="es">Añadir selección de fechas.</li>
           <li xml:lang="fi">lisätty päivän valinta</li>
           <li xml:lang="fr">Ajouter la sélection de date.</li>
@@ -349,6 +355,7 @@
           <li xml:lang="ar">تحسين معالجة الفجوات/التداخلات في البرامج.</li>
           <li xml:lang="ca">Millora de la gestió de buits/superposicions en els programes.</li>
           <li xml:lang="ca-valencia">Millora de la gestió de buits/superposicions en els programes.</li>
+          <li xml:lang="cs">Vylepšené zpracování mezer a překryvů v programech.</li>
           <li xml:lang="es">Se ha mejorado el manejo de huecos/solapamientos de los programas.</li>
           <li xml:lang="fi">parannettu ohjelmien aukkojen/lomittumisten käsittelyä</li>
           <li xml:lang="fr">Améliorer la gestion des écarts / chevauchements dans les programmes.</li>
@@ -369,6 +376,7 @@
         <p xml:lang="ar">إضافة دعم أندرويد.</p>
         <p xml:lang="ca">Afegeix el suport de l'Android.</p>
         <p xml:lang="ca-valencia">Afig el suport d'Android.</p>
+        <p xml:lang="cs">Přidána podpora pro Android.</p>
         <p xml:lang="es">Se ha añadido compatibilidad con Android.</p>
         <p xml:lang="fi">lisätty Android-tuki</p>
         <p xml:lang="fr">Ajouter la prise en charge de Android.</p>
@@ -394,6 +402,7 @@
         <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="cs">Stránka "Oblíbené"</p>
         <p xml:lang="es">Página de «Favoritos».</p>
         <p xml:lang="fi">”Suosikit”-sivu</p>
         <p xml:lang="fr">Page « Signets »</p>
@@ -416,6 +425,7 @@
           <li xml:lang="ar">إظهار زر إعادة الجلب في شريط الأدوات العلوي على المحمول.</li>
           <li xml:lang="ca">Mostra el botó de recuperació a la barra d'eines superior al mòbil.</li>
           <li xml:lang="ca-valencia">Mostra el botó de recuperació a la barra d'eines superior al mòbil.</li>
+          <li xml:lang="cs">V mobilní verzi se v horní liště nástrojů zobrazí tlačítko pro opakované načtení.</li>
           <li xml:lang="es">Mostrar el botón de volver a extraer en la barra de herramientas superior de los móviles.</li>
           <li xml:lang="fi">näytetään mobiilin ylätyökalurivillä uudelleennoutopainike</li>
           <li xml:lang="fr">Afficher le bouton de pré-chargement dans la barre d'outils supérieure sur périphérique mobile.</li>
@@ -440,6 +450,7 @@
         <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
         <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="cs">Stahovač TV Spielfilm</p>
         <p xml:lang="es">Extractor de TV Spielfilm.</p>
         <p xml:lang="fi">TV Spielfilm -nouto</p>
         <p xml:lang="fr">Extracteur de télévision Spielfilm</p>
@@ -460,6 +471,7 @@
           <li xml:lang="ar">إصلاح وقت إيقاف البرنامج قبل وقت البدء (برامج مفقودة).</li>
           <li xml:lang="ca">Corregeix l'hora final dels programes abans de l'hora d'inici (programes que manquen).</li>
           <li xml:lang="ca-valencia">Corregix l'hora final dels programes abans de l'hora d'inici (programes que falten).</li>
+          <li xml:lang="cs">Opraven problém, kdy se čas ukončení programu uváděl před časem zahájení (chybějící programy).</li>
           <li xml:lang="es">Se ha corregido la hora de finalización del programa anterior a la hora de inicio del programa (programas ausentes).</li>
           <li xml:lang="fi">korjattu ohjelman loppuaikaa edeltävä alkuaika (puuttuvat ohjelmat)</li>
           <li xml:lang="fr">Correction de l'heure d'arrêt du programme avant l'heure de début (Programmes manquants).</li>
@@ -479,6 +491,7 @@
           <li xml:lang="ar">إصلاح وصف البرنامج الذي يحتوي على فقرات متعددة.</li>
           <li xml:lang="ca">Corregeix la descripció de programes amb diversos paràgrafs.</li>
           <li xml:lang="ca-valencia">Corregix la descripció de programes amb diversos paràgrafs.</li>
+          <li xml:lang="cs">Opraven popis programu obsahující více odstavců.</li>
           <li xml:lang="es">Se ha corregido la descripción del programa con múltiples párrafos.</li>
           <li xml:lang="fi">korjattu ohjelman monikappaleinen kuvaus</li>
           <li xml:lang="fr">Correction de la description du programme avec plusieurs paragraphes.</li>
@@ -498,6 +511,7 @@
           <li xml:lang="ar">إصلاح وصف البرنامج الذي يحتوي على أسماء متعددة لدور واحد.</li>
           <li xml:lang="ca">Corregeix la descripció de programes amb diversos noms per a un rol.</li>
           <li xml:lang="ca-valencia">Corregix la descripció de programes amb diversos noms per a un rol.</li>
+          <li xml:lang="cs">Opraven popis programu, v němž se pro jednu roli vyskytovalo více názvů.</li>
           <li xml:lang="es">Se ha corregido la descripción del programa con múltiples nombres para un papel.</li>
           <li xml:lang="fi">korjattu ohjelman kuvaus, jossa on useita nimiä yhdelle roolille</li>
           <li xml:lang="fr">Correction de la description du programme avec plusieurs noms pour un même rôle.</li>
@@ -517,6 +531,7 @@
           <li xml:lang="ar">إصلاح تعذر جلب البرامج لـ 123.tv.</li>
           <li xml:lang="ca">Corregeix que no es poden recuperar programes per a 123.tv.</li>
           <li xml:lang="ca-valencia">Corregix que no es poden recuperar programes per a 123.tv.</li>
+          <li xml:lang="cs">Pro 123.tv opraveno načítání pevně nastavených programů.</li>
           <li xml:lang="es">Se ha corregido que no se pudieran extraer programas de 123.tv.</li>
           <li xml:lang="fi">korjattu, ettei ohjelmia voinut noutaa 123.tv:lle</li>
           <li xml:lang="fr">Correction des programmes ne pouvant charger 123.tv.</li>
@@ -537,6 +552,7 @@
         <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="cs">Stránka "Oblíbené"</p>
         <p xml:lang="es">Página de «Favoritos».</p>
         <p xml:lang="fi">”Suosikit”-sivu</p>
         <p xml:lang="fr">Page « Signets »</p>
@@ -559,6 +575,7 @@
           <li xml:lang="ar">إضافة زر إعادة الجلب.</li>
           <li xml:lang="ca">Afegeix el botó de recuperació.</li>
           <li xml:lang="ca-valencia">Afig el botó de recuperació.</li>
+          <li xml:lang="cs">Přidáno tlačítko pro opětovné načtení.</li>
           <li xml:lang="es">Se ha añadido un botón para volver a extraer.</li>
           <li xml:lang="fi">lisätty uudelleennoutopainike</li>
           <li xml:lang="fr">Ajouter un bouton de rafraîchissement.</li>
@@ -579,6 +596,7 @@
           <li xml:lang="ar">تسريع تحديث وصف البرنامج.</li>
           <li xml:lang="ca">Accelera l'actualització de la descripció de programes.</li>
           <li xml:lang="ca-valencia">Accelera l'actualització de la descripció de programes.</li>
+          <li xml:lang="cs">Zrychlena aktualizace popisu programu.</li>
           <li xml:lang="es">Se ha acelerado la actualización de la descripción de los programas.</li>
           <li xml:lang="fi">nopeutettu ohjelmakuvausten päivitystä</li>
           <li xml:lang="fr">Accélérer la mise à jour de la description du programme.</li>
@@ -598,6 +616,7 @@
           <li xml:lang="ar">لف نص الترويسة.</li>
           <li xml:lang="ca">Ajusta el text de la capçalera.</li>
           <li xml:lang="ca-valencia">Ajusta el text de la capçalera.</li>
+          <li xml:lang="cs">Zalamovaný text v záhlaví.</li>
           <li xml:lang="es">Ajustar dinámicamente el texto de la cabecera.</li>
           <li xml:lang="fi">rivitetään otsaketeksti</li>
           <li xml:lang="fr">Renvoyer le texte de l'en-tête à la ligne.</li>
@@ -617,6 +636,7 @@
           <li xml:lang="ar">إصلاح عدم إظهار رسالة العنصر النائب في حال عدم تحديد أي مفضلة.</li>
           <li xml:lang="ca">Corregeix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
           <li xml:lang="ca-valencia">Corregix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
+          <li xml:lang="cs">Opravena chyba, kvůli které se nezobrazovala zástupná zpráva, pokud nebyly vybrány žádné oblíbené položky.</li>
           <li xml:lang="es">Se ha corregido el mensaje de relleno que no se mostraba si no había favoritos seleccionados.</li>
           <li xml:lang="fi">korjattu se, ettei paikkamerkkiviesti näkynyt, ellei suosikkeja ollut valittu</li>
           <li xml:lang="fr">Correction du message de remplacement n'apparaissant pas si aucun signet n'est sélectionné.</li>
@@ -636,6 +656,7 @@
           <li xml:lang="ar">إصلاح عدم ملء الخلفية لحقل البرنامج بالكامل.</li>
           <li xml:lang="ca">Corregeix el fons que no omple completament el camp de programa.</li>
           <li xml:lang="ca-valencia">Corregix el fons que no òmpliga completament el camp de programa.</li>
+          <li xml:lang="cs">Opraveno pozadí, které nevyplňovalo pole programu úplně.</li>
           <li xml:lang="es">Se ha corregido que el fondo no rellenase completamente el campo del programa.</li>
           <li xml:lang="fi">korjattu se, ettei taustaväri täyttänyt ohjelmakenttää kokonaan</li>
           <li xml:lang="fr">Correction de l'arrière-plan ne remplissant pas complètement le champ du programme.</li>
@@ -656,6 +677,7 @@
         <p xml:lang="ar">صفحة "حدّد المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Selecció de preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Selecció de preferits»</p>
+        <p xml:lang="cs">Stránka "Vybrat oblíbené"</p>
         <p xml:lang="es">Página «Seleccionar favoritos».</p>
         <p xml:lang="fi">”Valitse suosikit” -sivu</p>
         <p xml:lang="fr">Page « Sélectionner les signets »</p>
@@ -678,6 +700,7 @@
           <li xml:lang="ar">إصلاح عنصر تحميل النائب عند تحميل القنوات.</li>
           <li xml:lang="ca">Corregeix el marcador de posició de càrrega en carregar els canals.</li>
           <li xml:lang="ca-valencia">Corregix el marcador de posició de càrrega en carregar els canals.</li>
+          <li xml:lang="cs">Opravena chyba se zástupným obsahem při načítání kanálů.</li>
           <li xml:lang="es">Se ha corregido la carga del texto de relleno cuando se cargan canales.</li>
           <li xml:lang="fi">korjattu latauspaikkamerkki kanavia ladattaessa</li>
           <li xml:lang="fr">Corriger le paramètre de remplacement pour le chargement lors du chargement des chaînes.</li>
@@ -709,6 +732,7 @@
         <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
         <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="cs">Stahovač TV Spielfilm</p>
         <p xml:lang="es">Extractor de TV Spielfilm.</p>
         <p xml:lang="fi">TV Spielfilm -nouto</p>
         <p xml:lang="fr">Extracteur de télévision Spielfilm</p>
@@ -729,6 +753,7 @@
           <li xml:lang="ar">معالجة أوقات الإيقاف غير الصحيحة.</li>
           <li xml:lang="ca">Gestiona els horaris de final incorrectes.</li>
           <li xml:lang="ca-valencia">Gestiona els horaris de final incorrectes.</li>
+          <li xml:lang="cs">Opraveny nesprávné časy zastavení.</li>
           <li xml:lang="es">Contemplar los tiempos de parada incorrectos.</li>
           <li xml:lang="fi">käsitellään väärät loppuajat</li>
           <li xml:lang="fr">Gérer les heures d'arrêt incorrectes.</li>
@@ -748,6 +773,7 @@
           <li xml:lang="ar">تحسين وصف البرنامج.</li>
           <li xml:lang="ca">Millora la descripció dels programes.</li>
           <li xml:lang="ca-valencia">Millora la descripció dels programes.</li>
+          <li xml:lang="cs">Rozšířený popis programu.</li>
           <li xml:lang="es">Se ha mejorado la descripción del programa.</li>
           <li xml:lang="fi">ehostettu ohjelmakuvausta</li>
           <li xml:lang="fr">Améliorer la description du programme.</li>
@@ -768,6 +794,7 @@
         <p xml:lang="ar">صفحة "المفضلة"</p>
         <p xml:lang="ca">Pàgina de «Preferits»</p>
         <p xml:lang="ca-valencia">Pàgina de «Preferits»</p>
+        <p xml:lang="cs">Stránka "Oblíbené"</p>
         <p xml:lang="es">Página de «Favoritos».</p>
         <p xml:lang="fi">”Suosikit”-sivu</p>
         <p xml:lang="fr">Page « Signets »</p>
@@ -790,6 +817,7 @@
           <li xml:lang="ar">إظهار عنصر تحميل النائب.</li>
           <li xml:lang="ca">Mostra el marcador de posició de càrrega.</li>
           <li xml:lang="ca-valencia">Mostra el marcador de posició de càrrega.</li>
+          <li xml:lang="cs">Zobrazení zástupného obsahu při načítání.</li>
           <li xml:lang="es">Mostrar un texto de relleno de carga.</li>
           <li xml:lang="fi">näytetään latauksesta paikkamerkki</li>
           <li xml:lang="fr">Afficher le message de remplacement pour le chargement.</li>
@@ -809,6 +837,7 @@
           <li xml:lang="ar">تفعيل السحب بالفأرة.</li>
           <li xml:lang="ca">Activa l'arrossegament amb el ratolí.</li>
           <li xml:lang="ca-valencia">Activa l'arrossegament amb el ratolí.</li>
+          <li xml:lang="cs">Povoleno přetahování myší.</li>
           <li xml:lang="es">Permitir que se pueda arrastrar con el ratón.</li>
           <li xml:lang="fi">mahdollistetaan hiirellä vetäminen</li>
           <li xml:lang="fr">Activer le glisser avec la souris.</li>
@@ -829,6 +858,7 @@
         <p xml:lang="ar">عدم السماح بإزالة المفضلة في صفحة "فرز المفضلة".</p>
         <p xml:lang="ca">No permet eliminar els preferits a la pàgina «Ordena els preferits».</p>
         <p xml:lang="ca-valencia">No permet eliminar els preferits a la pàgina «Ordena els preferits».</p>
+        <p xml:lang="cs">Na stránce "Seřadit oblíbené" nebylo možné odstranit oblíbené položky.</p>
         <p xml:lang="es">No permitir la eliminación de favoritos en la página «Ordenar favoritos».</p>
         <p xml:lang="fi">Ei sallita suosikkien poistamista ”Lajittele suosikit” -sivulla.</p>
         <p xml:lang="fr">Ne pas autoriser la suppression des signets sur la page « Trier les signets ».</p>
@@ -848,6 +878,7 @@
         <p xml:lang="ar">تحسين الأداء.</p>
         <p xml:lang="ca">Millora del rendiment.</p>
         <p xml:lang="ca-valencia">Millora del rendiment.</p>
+        <p xml:lang="cs">Zlepšený výkon.</p>
         <p xml:lang="es">Se ha mejorado el rendimiento.</p>
         <p xml:lang="fi">Parannettu suorituskykyä.</p>
         <p xml:lang="fr">Améliorer les performances.</p>
@@ -886,6 +917,7 @@
         <p xml:lang="ar">جالب TV Spielfilm</p>
         <p xml:lang="ca">Descarregador de TV Spielfilm</p>
         <p xml:lang="ca-valencia">Descarregador de TV Spielfilm</p>
+        <p xml:lang="cs">Stahovač TV Spielfilm</p>
         <p xml:lang="es">Extractor de TV Spielfilm.</p>
         <p xml:lang="fi">TV Spielfilm -nouto</p>
         <p xml:lang="fr">Extracteur de télévision Spielfilm</p>
@@ -906,6 +938,7 @@
           <li xml:lang="ar">إصلاح أيقونات القنوات المفقودة.</li>
           <li xml:lang="ca">Corregeix les icones de canal que manquen.</li>
           <li xml:lang="ca-valencia">Corregix les icones de canal que falten.</li>
+          <li xml:lang="cs">Opraveny chybějící ikony kanálů.</li>
           <li xml:lang="es">Se han corregido los iconos de canal ausentes.</li>
           <li xml:lang="fi">korjattu kanavakuvakkeiden puuttuminen</li>
           <li xml:lang="fr">Correction des icônes de chaîne manquantes.</li>
@@ -926,6 +959,7 @@
           <li xml:lang="ar">إصلاح البرامج المفقودة في حال وجود ترقيم صفحات.</li>
           <li xml:lang="ca">Corregeix els programes que manquen si hi ha paginació.</li>
           <li xml:lang="ca-valencia">Corregix els programes que falten si hi ha paginació.</li>
+          <li xml:lang="cs">Opraveno chybějící zobrazení programů v případě stránkování.</li>
           <li xml:lang="es">Se ha corregido los programas ausentes cuando existe paginación.</li>
           <li xml:lang="fi">korjattu ohjelmien puuttuminen sivutettaessa</li>
           <li xml:lang="fr">Correction des programmes manquants s'il y a de la pagination.</li>
@@ -945,6 +979,7 @@
           <li xml:lang="ar">إصلاح البرامج المفقودة حول رأس السنة.</li>
           <li xml:lang="ca">Corregeix els programes que falten al voltant de l'any nou.</li>
           <li xml:lang="ca-valencia">Corregix els programes que falten al voltant de l'any nou.</li>
+          <li xml:lang="cs">Opraveny chybějící programy z období kolem Nového roku.</li>
           <li xml:lang="es">Se ha corregido la ausencia de programas alrededor del año nuevo.</li>
           <li xml:lang="fi">korjattu ohjelmien puuttuminen uudenvuoden tienoolta</li>
           <li xml:lang="fr">Correction des programmes manquants autour du Nouvel An.</li>
@@ -964,6 +999,7 @@
           <li xml:lang="ar">إصلاح معالجة المنطقة الزمنية.</li>
           <li xml:lang="ca">Corregeix la gestió del fus horari.</li>
           <li xml:lang="ca-valencia">Corregix la gestió del fus horari.</li>
+          <li xml:lang="cs">Opraveno zpracování časových pásem.</li>
           <li xml:lang="es">Se ha corregido el manejo de la zona horaria.</li>
           <li xml:lang="fi">korjattu aikavyöhykkeen käsittely</li>
           <li xml:lang="fr">Correction de la gestion du fuseau horaire.</li>
@@ -983,6 +1019,7 @@
           <li xml:lang="ar">إظهار البرامج المتزامنة.</li>
           <li xml:lang="ca">Mostra programes simultanis.</li>
           <li xml:lang="ca-valencia">Mostra programes simultanis.</li>
+          <li xml:lang="cs">Opraveno zobrazení souběžných programů.</li>
           <li xml:lang="es">Mostrar programas simultáneos.</li>
           <li xml:lang="fi">näytetään samanaikaiset ohjelmat</li>
           <li xml:lang="fr">Afficher les programmes simultanés.</li>
@@ -1002,6 +1039,7 @@
           <li xml:lang="ar">إضافة ضبط لفترة الجلب المسبق.</li>
           <li xml:lang="ca">Afegeix la configuració per al període de recuperació prèvia.</li>
           <li xml:lang="ca-valencia">Afig la configuració per al període de recuperació prèvia.</li>
+          <li xml:lang="cs">Přidáno nastavení doby předběžného načítání.</li>
           <li xml:lang="es">Se ha añadido un ajuste para el período de preextracción.</li>
           <li xml:lang="fi">lisätty asetus esinoutojakson asettamiseksi</li>
           <li xml:lang="fr">Ajouter un paramètre pour la période de pré-chargement.</li>
@@ -1022,6 +1060,7 @@
         <p xml:lang="ar">إضافة إعدادات واجهة المستخدم لضبط عرض المفضلة.</p>
         <p xml:lang="ca">Afegeix opcions de la interfície d'usuari per a configurar la vista de preferits.</p>
         <p xml:lang="ca-valencia">Afig opcions de la interfície d'usuari per a configurar la vista de preferits.</p>
+        <p xml:lang="cs">Přidána nastavení uživatelského rozhraní pro nastavení zobrazení oblíbených položek.</p>
         <p xml:lang="es">Se han añadido ajustes de la interfaz de usuario para configurar la vista de favoritos.</p>
         <p xml:lang="fi">Lisätty käyttöliittymään asetukset suosikkinäkymää varten.</p>
         <p xml:lang="fr">Ajoutez des paramètres de l'interface utilisateur pour configurer la vue des signets.</p>
@@ -1041,6 +1080,7 @@
         <p xml:lang="ar">تحسين الأداء (مثلًا: تجنب الوصول غير الضروري لقاعدة البيانات).</p>
         <p xml:lang="ca">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
         <p xml:lang="ca-valencia">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
+        <p xml:lang="cs">Zvýšení výkonu (např. omezení zbytečných přístupů k databázi).</p>
         <p xml:lang="es">Se ha mejorado el rendimiento (por ejemplo, para evitar accesos innecesarios a la base de datos).</p>
         <p xml:lang="fi">Parannettu suorituskykyä (esim. välttämällä tarpeeton tietokantakäyttö).</p>
         <p xml:lang="fr">Améliorer les performances (Par exemple, en évitant les accès inutiles à la base de données).</p>
