@@ -61,7 +61,7 @@ msgstr "Sélectionnez quelques favoris pour commencer !"
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Refresh"
-msgstr "Rafraîchir"
+msgstr "Rafraichir"
 
 #: qml/FavoritesPage.qml:144
 #, kde-format
