@@ -294,7 +294,7 @@
           <li xml:lang="cs">Opravena chyba, kvůli které se na stránce "Vybrat oblíbené" nezobrazovaly kanály.</li>
           <li xml:lang="es">Se ha corregido que la página «Seleccionar favoritos» no listara los canales.</li>
           <li xml:lang="fi">korjattu se, ettei ”Valitse suosikit” -sivu luetellut kanavia</li>
-          <li xml:lang="fr">Correction de la page « Sélectionner les signets » n’affichant aucune chaîne.</li>
+          <li xml:lang="fr">Correction de la page « Sélectionner les signets » n'affichant aucune chaîne.</li>
           <li xml:lang="he">תוקנה בעיה שעמוד „בחירת מועדפים” לא מציג ערוצים.</li>
           <li xml:lang="it">Corregge la pagina «Seleziona preferiti» che non elenca i canali.</li>
           <li xml:lang="ka">გასწორდა "რჩეულების მონიშვნის" გვერდი არხების სიას არ შეიცავდა.</li>
@@ -578,7 +578,7 @@
           <li xml:lang="cs">Přidáno tlačítko pro opětovné načtení.</li>
           <li xml:lang="es">Se ha añadido un botón para volver a extraer.</li>
           <li xml:lang="fi">lisätty uudelleennoutopainike</li>
-          <li xml:lang="fr">Ajouter un bouton de rafraîchissement.</li>
+          <li xml:lang="fr">Ajouter un bouton de rafraichissement.</li>
           <li xml:lang="he">נוסף כפתור משיכה מחדש.</li>
           <li xml:lang="it">Aggiunge il pulsante di recupero.</li>
           <li xml:lang="ka">დაემატა თავიდან გამოთხოვის ღილაკი.</li>
