@@ -96,7 +96,7 @@
     <p xml:lang="es">Telly Skout es una guía de TV convergente creada con Kirigami. Muestra los programas de TV de sus canales favoritos de TV Spielfilm o de un archivo XMLTV.</p>
     <p xml:lang="eu">«Telly Skout» TBko Kirigami gida konbergente bat. «TV spielfilm»etik edo XMLTV fitxategi baten bidez, zure gogoko kanaletako TB programak erakusten ditu</p>
     <p xml:lang="fi">Telly Skout on mukautuva Kirigami-TV-opas. Sen näyttää TV-ohjelmat suosikkikanaviltasi TV Spielfilmistä tai XMLTV-tiedostosta.</p>
-    <p xml:lang="fr">Telly Skout est un guide TV convergent conçu avec Kirigami. Il affiche le programme TV de vos chaînes préférées à partir de TV « Spielfilm » ou d'un fichier « XMLTV ».</p>
+    <p xml:lang="fr">Telly Skout est un guide TV convergent conçu avec Kirigami. Il affiche le programme TV de vos chaines préférées à partir de TV « Spielfilm » ou d'un fichier « XMLTV ».</p>
     <p xml:lang="gl">Telly Skout é unha guía de televisión converxente feita con Kirigami. Mostra o programa de televisión das súas canles favoritas de TV Spielfilm ou dun ficheiro XMLTV.</p>
     <p xml:lang="he">Telly Skout הוא לוח שידורים אחוד בסגנון Kirigami. הוא מציג את תוכנית הטלוויזיה לערוצים המועדפים עליך מ־TV Spielfilm או מקובץ XMLTV.</p>
     <p xml:lang="hi">टेली स्काउट एक अभिसारी किरिगामी टीवी गाइड है। यह टीवी स्पीलफिल्म या XMLTV फ़ाइल से आपके पसंदीदा चैनलों के लिए टीवी कार्यक्रम दिखाता है।</p>
@@ -294,7 +294,7 @@
           <li xml:lang="cs">Opravena chyba, kvůli které se na stránce "Vybrat oblíbené" nezobrazovaly kanály.</li>
           <li xml:lang="es">Se ha corregido que la página «Seleccionar favoritos» no listara los canales.</li>
           <li xml:lang="fi">korjattu se, ettei ”Valitse suosikit” -sivu luetellut kanavia</li>
-          <li xml:lang="fr">Correction de la page « Sélectionner les signets » n'affichant aucune chaîne.</li>
+          <li xml:lang="fr">Correction de la page « Sélectionner les signets » n'affichant aucune chaine.</li>
           <li xml:lang="he">תוקנה בעיה שעמוד „בחירת מועדפים” לא מציג ערוצים.</li>
           <li xml:lang="it">Corregge la pagina «Seleziona preferiti» che non elenca i canali.</li>
           <li xml:lang="ka">გასწორდა "რჩეულების მონიშვნის" გვერდი არხების სიას არ შეიცავდა.</li>
@@ -703,7 +703,7 @@
           <li xml:lang="cs">Opravena chyba se zástupným obsahem při načítání kanálů.</li>
           <li xml:lang="es">Se ha corregido la carga del texto de relleno cuando se cargan canales.</li>
           <li xml:lang="fi">korjattu latauspaikkamerkki kanavia ladattaessa</li>
-          <li xml:lang="fr">Corriger le paramètre de remplacement pour le chargement lors du chargement des chaînes.</li>
+          <li xml:lang="fr">Corriger le paramètre de remplacement pour le chargement lors du chargement des chaines.</li>
           <li xml:lang="he">תוקן ממלא מקום טעינה בעת טעינת ערוצים.</li>
           <li xml:lang="it">Corregge il caricamento del segnaposto durante il caricamento dei canali.</li>
           <li xml:lang="ka">გასწორდა ადგილმჭერის ჩატვირთვა არხების ჩატვირთვისას.</li>
@@ -941,7 +941,7 @@
           <li xml:lang="cs">Opraveny chybějící ikony kanálů.</li>
           <li xml:lang="es">Se han corregido los iconos de canal ausentes.</li>
           <li xml:lang="fi">korjattu kanavakuvakkeiden puuttuminen</li>
-          <li xml:lang="fr">Correction des icônes de chaîne manquantes.</li>
+          <li xml:lang="fr">Correction des icônes de chaine manquantes.</li>
           <li xml:lang="he">תוקנו סמלי ערוצים חסרים.</li>
           <li xml:lang="it">Corregge le icone dei canali mancanti.</li>
           <li xml:lang="ka">დაემატა ნაკლული არხის ხატულები.</li>
