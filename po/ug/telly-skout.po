@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: telly-skout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-27 00:49+0000\n"
-"PO-Revision-Date: 2026-06-01 18:53-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -287,7 +287,7 @@ msgstr ""
 #: tvspielfilmfetcher.cpp:336
 #, kde-format
 msgid "Duration: %1"
-msgstr ""
+msgstr "داۋاملىشىش ۋاقتى: %1"
 
 #: tvspielfilmfetcher.cpp:348
 #, kde-format
