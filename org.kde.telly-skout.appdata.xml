@@ -286,6 +286,7 @@
         <p xml:lang="sv">Hämtningsverktyg för långfilmer på tv</p>
         <p xml:lang="tr">TV Spielfilm getiricisi</p>
         <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
+        <p xml:lang="zh-TW">TV Spielfilm 抓取器</p>
         <ul>
           <li>Fix "Select Favorites" page does not list channels.</li>
           <li xml:lang="ar">إصلاح عدم سرد القنوات في صفحة "تحديد المفضلة".</li>
@@ -307,6 +308,7 @@
           <li xml:lang="sv">Rätta att sidan "Välj favoriter" inte listar kanaler.</li>
           <li xml:lang="tr">“Sık Kullanılanları Seç” sayfasının kanalları listelememesi düzeltildi.</li>
           <li xml:lang="uk">Виправлено помилку, пов'язану із тим, що на сторінці «Вибрати улюблені» не було показано список каналів.</li>
+          <li xml:lang="zh-TW">修正「選取最愛」頁面沒列出頻道的問題。</li>
         </ul>
         <p>"Favorites" page</p>
         <p xml:lang="ar">صفحة "المفضلة"</p>
@@ -351,6 +353,7 @@
           <li xml:lang="sv">Lägg till datumurval.</li>
           <li xml:lang="tr">Tarih seçimi eklendi.</li>
           <li xml:lang="uk">Додано можливість вибору дати.</li>
+          <li xml:lang="zh-TW">新增日期選取。</li>
           <li>Improve handling of gaps/overlaps in the programs.</li>
           <li xml:lang="ar">تحسين معالجة الفجوات/التداخلات في البرامج.</li>
           <li xml:lang="ca">Millora de la gestió de buits/superposicions en els programes.</li>
@@ -371,6 +374,7 @@
           <li xml:lang="sv">Förbättra hantering av mellanrum eller överlappningar i programmen.</li>
           <li xml:lang="tr">Programlardaki boşlukların/çakışmaların işlenmesi iyileştirildi.</li>
           <li xml:lang="uk">Удосконалено обробку прогалин або перекриттів у програмах.</li>
+          <li xml:lang="zh-TW">改善節目間隔/重疊的處理。</li>
         </ul>
         <p>Add Android support.</p>
         <p xml:lang="ar">إضافة دعم أندرويد.</p>
@@ -441,6 +445,7 @@
           <li xml:lang="sv">Visa knapp för att hämta igen i övre verktygsraden på mobiler.</li>
           <li xml:lang="tr">Taşınabilirde üst araç çubuğunda yeniden getir düğmesi gösteriliyor.</li>
           <li xml:lang="uk">Реалізовано показ кнопки повторного отримання на верхній панелі інструментів мобільної версії.</li>
+          <li xml:lang="zh-TW">在行動版在上方工具列顯示重新取得的按鈕。</li>
         </ul>
       </description>
     </release>
@@ -466,6 +471,7 @@
         <p xml:lang="sv">Hämtningsverktyg för långfilmer på tv</p>
         <p xml:lang="tr">TV Spielfilm getiricisi</p>
         <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
+        <p xml:lang="zh-TW">TV Spielfilm 抓取器</p>
         <ul>
           <li>Fix program stop time before start time (missing programs).</li>
           <li xml:lang="ar">إصلاح وقت إيقاف البرنامج قبل وقت البدء (برامج مفقودة).</li>
@@ -487,6 +493,7 @@
           <li xml:lang="sv">Rätta programmets sluttid före starttid (saknade program).</li>
           <li xml:lang="tr">Başlangıç zamanından önceki program bitiş zamanı (eksik programlar) düzeltildi.</li>
           <li xml:lang="uk">Виправлено можливість того, що кінцевий час програми передує часу початку (пропущену програму).</li>
+          <li xml:lang="zh-TW">修正節目結束時間比開始時間還早的問題（缺乏節目）。</li>
           <li>Fix program description with multiple paragraphs.</li>
           <li xml:lang="ar">إصلاح وصف البرنامج الذي يحتوي على فقرات متعددة.</li>
           <li xml:lang="ca">Corregeix la descripció de programes amb diversos paràgrafs.</li>
@@ -507,6 +514,7 @@
           <li xml:lang="sv">Rätta programbeskrivning med flera stycken.</li>
           <li xml:lang="tr">Birden çok paragraflı program açıklaması düzeltildi.</li>
           <li xml:lang="uk">Виправлено опис програми з декількох абзаців.</li>
+          <li xml:lang="zh-TW">修正有多段的節目描述。</li>
           <li>Fix program description with multiple names for one role.</li>
           <li xml:lang="ar">إصلاح وصف البرنامج الذي يحتوي على أسماء متعددة لدور واحد.</li>
           <li xml:lang="ca">Corregeix la descripció de programes amb diversos noms per a un rol.</li>
@@ -527,6 +535,7 @@
           <li xml:lang="sv">Rätta programbeskrivning med flera namn på en roll.</li>
           <li xml:lang="tr">Bir rol için birden fazla isim içeren program açıklaması düzeltildi.</li>
           <li xml:lang="uk">Виправлено опис програми з декількома назвами для однієї ролі.</li>
+          <li xml:lang="zh-TW">修正一個角色有多個名稱的時候的節目描述。</li>
           <li>Fix programs could not be fetched for 123.tv.</li>
           <li xml:lang="ar">إصلاح تعذر جلب البرامج لـ 123.tv.</li>
           <li xml:lang="ca">Corregeix que no es poden recuperar programes per a 123.tv.</li>
@@ -547,6 +556,7 @@
           <li xml:lang="sv">Rätta att program inte kunde hämtas för 123.tv.</li>
           <li xml:lang="tr">123.tv için programların getirilememesi düzeltildi.</li>
           <li xml:lang="uk">Виправлено неможливість отримання програм для 123.tv.</li>
+          <li xml:lang="zh-TW">修正無法為 123.tv 抓取節目的問題。</li>
         </ul>
         <p>"Favorites" page</p>
         <p xml:lang="ar">صفحة "المفضلة"</p>
@@ -612,6 +622,7 @@
           <li xml:lang="sv">Snabba upp uppdatering av programbeskrivning.</li>
           <li xml:lang="tr">Program açıklaması güncellemesi hızlandırıldı.</li>
           <li xml:lang="uk">Пришвидшено оновлення опису програм.</li>
+          <li xml:lang="zh-TW">加快節目描述更新。</li>
           <li>Wrap header text.</li>
           <li xml:lang="ar">لف نص الترويسة.</li>
           <li xml:lang="ca">Ajusta el text de la capçalera.</li>
@@ -632,6 +643,7 @@
           <li xml:lang="sv">Radbryt rubriktext.</li>
           <li xml:lang="tr">Başlık metni artık bir sonraki satıra kaydırılıyor.</li>
           <li xml:lang="uk">Реалізовано перенесення рядків тексту у заголовку.</li>
+          <li xml:lang="zh-TW">讓標頭文字自動換行。</li>
           <li>Fix placeholder message not shown if no favorites selected.</li>
           <li xml:lang="ar">إصلاح عدم إظهار رسالة العنصر النائب في حال عدم تحديد أي مفضلة.</li>
           <li xml:lang="ca">Corregeix un missatge de marcador de posició que no es mostra si no s'ha seleccionat cap preferit.</li>
@@ -652,6 +664,7 @@
           <li xml:lang="sv">Rätta att platsmarkeringsmeddelande inte visas om inga favoriter är valda.</li>
           <li xml:lang="tr">Sık kullanılan seçilmemişse yer tutucu iletinin gösterilmemesi düzeltildi.</li>
           <li xml:lang="uk">Виправлено неможливість показу повідомлення-замінника, якщо не позначено улюблених записів.</li>
+          <li xml:lang="zh-TW">修正未選取最愛時沒有顯示佔位訊息的問題。</li>
           <li>Fix background does not fill program field completely.</li>
           <li xml:lang="ar">إصلاح عدم ملء الخلفية لحقل البرنامج بالكامل.</li>
           <li xml:lang="ca">Corregeix el fons que no omple completament el camp de programa.</li>
@@ -672,6 +685,7 @@
           <li xml:lang="sv">Rätta att bakgrunden inte fyller programfältet fullständigt.</li>
           <li xml:lang="tr">Arka planın program alanını tamamen doldurmaması düzeltildi.</li>
           <li xml:lang="uk">Виправлено неповне заповнення тлом поля програми.</li>
+          <li xml:lang="zh-TW">修正背景沒有填滿節目欄位的問題。</li>
         </ul>
         <p>"Select Favorites" page</p>
         <p xml:lang="ar">صفحة "حدّد المفضلة"</p>
@@ -716,6 +730,7 @@
           <li xml:lang="sv">Rätta inläsning av platsmarkör när kanaler läses in.</li>
           <li xml:lang="tr">Kanallar yüklenirken yükleniyor yer tutucusu düzeltildi.</li>
           <li xml:lang="uk">Виправлено завантаження замінника при завантаженні каналів.</li>
+          <li xml:lang="zh-TW">修正載入頻道時的載入佔位效果。</li>
         </ul>
       </description>
     </release>
@@ -748,6 +763,7 @@
         <p xml:lang="sv">Hämtningsverktyg för långfilmer på tv</p>
         <p xml:lang="tr">TV Spielfilm getiricisi</p>
         <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
+        <p xml:lang="zh-TW">TV Spielfilm 抓取器</p>
         <ul>
           <li>Handle incorrect stop times.</li>
           <li xml:lang="ar">معالجة أوقات الإيقاف غير الصحيحة.</li>
@@ -769,6 +785,7 @@
           <li xml:lang="sv">Hantera felaktiga sluttider.</li>
           <li xml:lang="tr">Hatalı bitiş zamanları artık düzgünce işleniyor.</li>
           <li xml:lang="uk">Реалізовано обробку некоректних часів завершення.</li>
+          <li xml:lang="zh-TW">處理不正確的結束時間。</li>
           <li>Enhance program description.</li>
           <li xml:lang="ar">تحسين وصف البرنامج.</li>
           <li xml:lang="ca">Millora la descripció dels programes.</li>
@@ -789,6 +806,7 @@
           <li xml:lang="sv">Förbättra programbeskrivning.</li>
           <li xml:lang="tr">Program açıklaması geliştirildi.</li>
           <li xml:lang="uk">Удосконалено опис програми.</li>
+          <li xml:lang="zh-TW">改善節目描述。</li>
         </ul>
         <p>"Favorites" page</p>
         <p xml:lang="ar">صفحة "المفضلة"</p>
@@ -833,6 +851,7 @@
           <li xml:lang="sv">Visa platsmarkör för inläsning.</li>
           <li xml:lang="tr">Yükleniyor yer tutucusu gösteriliyor.</li>
           <li xml:lang="uk">Реалізовано показ замінника завантаження.</li>
+          <li xml:lang="zh-TW">顯示載入中的佔位效果。</li>
           <li>Enable dragging with mouse.</li>
           <li xml:lang="ar">تفعيل السحب بالفأرة.</li>
           <li xml:lang="ca">Activa l'arrossegament amb el ratolí.</li>
@@ -853,6 +872,7 @@
           <li xml:lang="sv">Aktivera dra med musen.</li>
           <li xml:lang="tr">Fare ile sürükleme etkinleştirildi.</li>
           <li xml:lang="uk">Уможливлено перетягування за допомогою миші.</li>
+          <li xml:lang="zh-TW">允許使用滑鼠拖曳。</li>
         </ul>
         <p>Do not allow to remove favorites on the "Sort Favorites" page.</p>
         <p xml:lang="ar">عدم السماح بإزالة المفضلة في صفحة "فرز المفضلة".</p>
@@ -874,6 +894,7 @@
         <p xml:lang="sv">Tillåt inte att favoriter tas bort på sidan "Sortera favoriter".</p>
         <p xml:lang="tr">“Sık Kullanılanları Sırala ”sayfasında sık kullanılanların kaldırılmasına izin verilmiyor.</p>
         <p xml:lang="uk">Заборонено вилучення улюблених записів на сторінці «Упорядкувати улюблені».</p>
+        <p xml:lang="zh-TW">不要允許在「排序最愛」頁面移除最愛。</p>
         <p>Improve performance.</p>
         <p xml:lang="ar">تحسين الأداء.</p>
         <p xml:lang="ca">Millora del rendiment.</p>
@@ -933,6 +954,7 @@
         <p xml:lang="sv">Hämtningsverktyg för långfilmer på tv</p>
         <p xml:lang="tr">TV Spielfilm getiricisi</p>
         <p xml:lang="uk">Засіб отримання даних з TV Spielfilm</p>
+        <p xml:lang="zh-TW">TV Spielfilm 抓取器</p>
         <ul>
           <li>Fix missing channel icons.</li>
           <li xml:lang="ar">إصلاح أيقونات القنوات المفقودة.</li>
@@ -955,6 +977,7 @@
           <li xml:lang="tr">Eksik kanal simgeleri düzeltildi.</li>
           <li xml:lang="ug">يوقالغان قانال سىنبەلگىسىنى ئوڭشايدۇ.</li>
           <li xml:lang="uk">Виправлено нестачу піктограм каналів.</li>
+          <li xml:lang="zh-TW">修正缺乏頻道圖示的問題。</li>
           <li>Fix missing programs if there is pagination.</li>
           <li xml:lang="ar">إصلاح البرامج المفقودة في حال وجود ترقيم صفحات.</li>
           <li xml:lang="ca">Corregeix els programes que manquen si hi ha paginació.</li>
@@ -975,6 +998,7 @@
           <li xml:lang="sv">Rätta saknade program om sidbrytning finns.</li>
           <li xml:lang="tr">Sayfalandırma varsa eksik programlar düzeltildi.</li>
           <li xml:lang="uk">Виправлено пропуск програм, якщо немає поділу на сторінки.</li>
+          <li xml:lang="zh-TW">修正有分頁時會缺乏節目的問題。</li>
           <li>Fix missing programs around new year.</li>
           <li xml:lang="ar">إصلاح البرامج المفقودة حول رأس السنة.</li>
           <li xml:lang="ca">Corregeix els programes que falten al voltant de l'any nou.</li>
@@ -995,6 +1019,7 @@
           <li xml:lang="sv">Rätta saknade program runt nyår.</li>
           <li xml:lang="tr">Yeni yıl civarındaki eksik programlar düzeltildi.</li>
           <li xml:lang="uk">Виправлено пропуск програм у новорічний період.</li>
+          <li xml:lang="zh-TW">修正新年前後缺乏節目的問題。</li>
           <li>Fix time zone handling.</li>
           <li xml:lang="ar">إصلاح معالجة المنطقة الزمنية.</li>
           <li xml:lang="ca">Corregeix la gestió del fus horari.</li>
@@ -1015,6 +1040,7 @@
           <li xml:lang="sv">Rätta hantering av tidszon.</li>
           <li xml:lang="tr">Saat dilimi işlenmesi düzeltildi.</li>
           <li xml:lang="uk">Виправлено обробку часових поясів.</li>
+          <li xml:lang="zh-TW">修正時區處理。</li>
           <li>Show simultaneous programs.</li>
           <li xml:lang="ar">إظهار البرامج المتزامنة.</li>
           <li xml:lang="ca">Mostra programes simultanis.</li>
@@ -1035,6 +1061,7 @@
           <li xml:lang="sv">Visa samtidiga program.</li>
           <li xml:lang="tr">Eşzamanlı programlar artık gösteriliyor.</li>
           <li xml:lang="uk">Реалізовано показ одночасних програм.</li>
+          <li xml:lang="zh-TW">顯示同時進行的節目。</li>
           <li>Add setting for prefetch period.</li>
           <li xml:lang="ar">إضافة ضبط لفترة الجلب المسبق.</li>
           <li xml:lang="ca">Afegeix la configuració per al període de recuperació prèvia.</li>
@@ -1055,6 +1082,7 @@
           <li xml:lang="sv">Lägg till inställning av förhämtningsperiod.</li>
           <li xml:lang="tr">Önceden getirme süresi için ayar eklendi.</li>
           <li xml:lang="uk">Додано параметр для параметра попереднього отримання.</li>
+          <li xml:lang="zh-TW">新增預先取得時間的設定值。</li>
         </ul>
         <p>Add user interface settings to configure the favorites view.</p>
         <p xml:lang="ar">إضافة إعدادات واجهة المستخدم لضبط عرض المفضلة.</p>
@@ -1076,6 +1104,7 @@
         <p xml:lang="sv">Lägg till inställningar i användargränssnittet för att anpassa favoritvyn.</p>
         <p xml:lang="tr">Sık kullanılanlar görünümünü yapılandırmak için kullanıcı arayüzü ayarları eklendi.</p>
         <p xml:lang="uk">Додано параметри інтерфейсу користувача для налаштовування панелі перегляду улюблених записів.</p>
+        <p xml:lang="zh-TW">新增用來設定最愛檢視的介面設定。</p>
         <p>Improve performance (e.g. avoid unnecessary database access).</p>
         <p xml:lang="ar">تحسين الأداء (مثلًا: تجنب الوصول غير الضروري لقاعدة البيانات).</p>
         <p xml:lang="ca">Millora el rendiment (p. ex., evita l'accés innecessari a la base de dades).</p>
@@ -1096,6 +1125,7 @@
         <p xml:lang="sv">Förbättra prestanda (undvik exempelvis onödig databasåtkomst).</p>
         <p xml:lang="tr">Başarım artırıldı (örn. gereksiz veritabanı erişiminden kaçın).</p>
         <p xml:lang="uk">Удосконалено швидкодію (наприклад, усунено зайві спроби доступу до бази даних).</p>
+        <p xml:lang="zh-TW">改善效能（如避免進行多餘的資料庫存取）</p>
       </description>
     </release>
     <release version="22.11" date="2022-11-30">
