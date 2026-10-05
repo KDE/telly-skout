@@ -277,6 +277,7 @@
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="it">Recupero informazioni da TV Spielfilm</p>
         <p xml:lang="ka">TV Spielfilm-ის გამომთხოვი</p>
+        <p xml:lang="ko">TV Spielfilm 가져오기 도구</p>
         <p xml:lang="lt">„TV Spielfilm“ gavimo įrankis</p>
         <p xml:lang="nl">TV-speelfilmophaler</p>
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
@@ -299,6 +300,7 @@
           <li xml:lang="he">תוקנה בעיה שעמוד „בחירת מועדפים” לא מציג ערוצים.</li>
           <li xml:lang="it">Corregge la pagina «Seleziona preferiti» che non elenca i canali.</li>
           <li xml:lang="ka">გასწორდა "რჩეულების მონიშვნის" გვერდი არხების სიას არ შეიცავდა.</li>
+          <li xml:lang="ko">"책갈피 선택" 페이지에 채널이 표시되지 않는 문제를 수정했습니다.</li>
           <li xml:lang="lt">Ištaisyta klaida, kai „Pasirinkti mėgstamus“ puslapyje nebuvo rodomi kanalai.</li>
           <li xml:lang="nl">Pagina "Favorieten selecteren" geeft geen lijst met kanalen gerepareerd.</li>
           <li xml:lang="pt-BR">Corrigido o problema em que a página "Selecionar favoritos" não lista os canais.</li>
@@ -322,6 +324,7 @@
         <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="it">Pagina «Preferiti»</p>
         <p xml:lang="ka">"რჩეულების" გვერდი</p>
+        <p xml:lang="ko">"책갈피" 페이지</p>
         <p xml:lang="lt">„Mėgstamų“ puslapis</p>
         <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
@@ -344,6 +347,7 @@
           <li xml:lang="he">נוספה בחירת תאריכים.</li>
           <li xml:lang="it">Aggiunge la selezione della data.</li>
           <li xml:lang="ka">დაემატა თარიღის არჩევანი.</li>
+          <li xml:lang="ko">날짜 선택을 추가했습니다.</li>
           <li xml:lang="lt">Pridėtas datos pasirinkimas.</li>
           <li xml:lang="nl">Datumselectie toegevoegd.</li>
           <li xml:lang="pt-BR">Adicionada seleção de datas.</li>
@@ -365,6 +369,7 @@
           <li xml:lang="he">הטיפול במרווחים/חפיפות בתוכניות השתפר.</li>
           <li xml:lang="it">Migliora la gestione delle mancanze/sovrapposizioni nei programmi.</li>
           <li xml:lang="ka">გაუმჯობესდა პროგრამებში არსებული ცარიელი ადგილებისა და გადაფარვების დამუშავება.</li>
+          <li xml:lang="ko">프로그램 사이의 간격과 겹침 처리를 개선했습니다.</li>
           <li xml:lang="lt">Pagerintas tarpų/persidengimų apdorojimas laidose.</li>
           <li xml:lang="nl">verbeterde behandeling van gaten/overlaps in de programma's.</li>
           <li xml:lang="pt-BR">Melhoria no tratamento de lacunas/sobreposições nos programas.</li>
@@ -387,6 +392,7 @@
         <p xml:lang="he">נוספה תמיכה ב־Android.</p>
         <p xml:lang="it">Aggiunge il supporto Android.</p>
         <p xml:lang="ka">დაემატა Android-ის მხარდაჭერა.</p>
+        <p xml:lang="ko">안드로이드 지원을 추가했습니다.</p>
         <p xml:lang="lt">Pridėtas „Android“ palaikymas.</p>
         <p xml:lang="nl">Ondersteuning voor Android toegevoegd.</p>
         <p xml:lang="pt-BR">Adicionado suporte ao Android.</p>
@@ -414,6 +420,7 @@
         <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="it">Pagina «Preferiti»</p>
         <p xml:lang="ka">"რჩეულების" გვერდი</p>
+        <p xml:lang="ko">"책갈피" 페이지</p>
         <p xml:lang="lt">„Mėgstamų“ puslapis</p>
         <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
@@ -436,6 +443,7 @@
           <li xml:lang="he">הצגת כפתור משיכה מחדש בסרגל הכלים העליון במהדורה לניידים.</li>
           <li xml:lang="it">Mostra il pulsante di recupero nella barra degli strumenti in alto sui dispositivi mobili.</li>
           <li xml:lang="ka">მობილურზე ზედა პანელზე თავიდან გამოთხოვის ღილაკის ჩვენება.</li>
+          <li xml:lang="ko">모바일 환경에서 위쪽 도구 모음에 다시 가져오기를 표시합니다.</li>
           <li xml:lang="lt">Mobiliuosiuose įrenginiuose viršutinėje įrankių juostoje rodomas gavimo iš naujo mygtukas.</li>
           <li xml:lang="nl">Knop voor opnieuw ophalen in de bovenste werkbalk op mobiel.</li>
           <li xml:lang="pt-BR">Exibe o botão de recarregar na barra de ferramentas superior em dispositivos móveis.</li>
@@ -462,6 +470,7 @@
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="it">Recupero informazioni da TV Spielfilm</p>
         <p xml:lang="ka">TV Spielfilm-ის გამომთხოვი</p>
+        <p xml:lang="ko">TV Spielfilm 가져오기 도구</p>
         <p xml:lang="lt">„TV Spielfilm“ gavimo įrankis</p>
         <p xml:lang="nl">TV-speelfilmophaler</p>
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
@@ -484,6 +493,7 @@
           <li xml:lang="he">תוקנה בעיה שזמן העצירה היה לפני זמן ההתחלה (תוכניות חסרות).</li>
           <li xml:lang="it">Correggere l'ora di arresto del programma prima dell'ora di inizio (programmi mancanti).</li>
           <li xml:lang="ka">გასწორდა პროგრამების გაჩერების დრო დაწყების დრომდეა (ნაკლული პროგრამები).</li>
+          <li xml:lang="ko">프로그램 종료 시간이 시작 시간 이전일 때의 문제를 수정했습니다(프로그램 미표시).</li>
           <li xml:lang="lt">Ištaisyta klaida, kai laidos pabaigos laikas buvo anksčiau pradžios laiko (nebuvo laidų).</li>
           <li xml:lang="nl">Stoptijd van programma voor starttijd gerepareerd (ontbrekende programma's).</li>
           <li xml:lang="pt-BR">Correção do horário de término do programa antes do horário de início (programas ausentes).</li>
@@ -505,6 +515,7 @@
           <li xml:lang="he">תוקנו תיאורי תוכניות עם מספר פסקאות.</li>
           <li xml:lang="it">Corregge la descrizione del programma con più paragrafi.</li>
           <li xml:lang="ka">გასწორდა პროგრამის აღწერა ერთზე მეტი აბზაცით.</li>
+          <li xml:lang="ko">여러 문단으로 된 프로그램 설명 표시를 개선했습니다.</li>
           <li xml:lang="lt">Ištaisyta klaida, kai laidos aprašymas užimdavo kelias pastraipas.</li>
           <li xml:lang="nl">Programmabeschrijving met meerdere alinea's gerepareerd.</li>
           <li xml:lang="pt-BR">Correção da descrição do programa com vários parágrafos.</li>
@@ -526,6 +537,7 @@
           <li xml:lang="he">תוקן תיאור תוכנית עם מגוון שמות לתפקיד אחד.</li>
           <li xml:lang="it">Corregge la descrizione del programma con più nomi per un ruolo.</li>
           <li xml:lang="ka">გასწორდა პროგრამის აღწერა ერთზე მეტი სახელით ერთი როლისტვის.</li>
+          <li xml:lang="ko">한 역할에 여러 명이 할당된 프로그램 설명 표시를 개선했습니다.</li>
           <li xml:lang="lt">Ištaisyta klaida, kai laidos apraše būdavo keli pavadinimai.</li>
           <li xml:lang="nl">Programmabeschrijving met meerdere namen voor één rol gerepareerd.</li>
           <li xml:lang="pt-BR">Correção da descrição do programa com múltiplos nomes para uma mesma função.</li>
@@ -547,6 +559,7 @@
           <li xml:lang="he">תוקנה בעיה שמנעה משיכת תוכניות ל־‎123.tv‎.</li>
           <li xml:lang="it">Corregge il mancato recupero dei programmi per 123.tv.</li>
           <li xml:lang="ka">გასწორდა პროგრამები, როც მათი გამოთხოვა შეუძლებელია 123.tv-ისთვის.</li>
+          <li xml:lang="ko">123.tv에서 프로그램을 가져올 수 없는 문제를 수정했습니다.</li>
           <li xml:lang="lt">Ištaisyta klaida, kai nepavykdavo gauti „123.tv“ kanalo laidų.</li>
           <li xml:lang="nl">Programma's konden niet opgehaald worden voor 123.tv.</li>
           <li xml:lang="pt-BR">Correção de programas que não puderam ser obtidos para 123.tv.</li>
@@ -570,6 +583,7 @@
         <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="it">Pagina «Preferiti»</p>
         <p xml:lang="ka">"რჩეულების" გვერდი</p>
+        <p xml:lang="ko">"책갈피" 페이지</p>
         <p xml:lang="lt">„Mėgstamų“ puslapis</p>
         <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
@@ -592,6 +606,7 @@
           <li xml:lang="he">נוסף כפתור משיכה מחדש.</li>
           <li xml:lang="it">Aggiunge il pulsante di recupero.</li>
           <li xml:lang="ka">დაემატა თავიდან გამოთხოვის ღილაკი.</li>
+          <li xml:lang="ko">다시 가져오기 단추를 추가했습니다.</li>
           <li xml:lang="lt">Pridėtas gavimo iš naujo mygtukas.</li>
           <li xml:lang="nl">Knop voor opnieuw ophalen toegevoegd.</li>
           <li xml:lang="pt-BR">Adicionado botão para reobter.</li>
@@ -613,6 +628,7 @@
           <li xml:lang="he">האצת עדכון תיאור התוכניות.</li>
           <li xml:lang="it">Accelera l'aggiornamento della descrizione del programma.</li>
           <li xml:lang="ka">გაჩქარდა პროგრამის აღწერის განახლება.</li>
+          <li xml:lang="ko">프로그램 설명 업데이트 속도를 갱신했습니다.</li>
           <li xml:lang="lt">Pagreitintas laidų aprašo atnaujinimas.</li>
           <li xml:lang="nl">Bijwerken van programmabeschrijving  versneld.</li>
           <li xml:lang="pt-BR">Aceleração da atualização da descrição do programa.</li>
@@ -634,6 +650,7 @@
           <li xml:lang="he">גלישת טקסט כותרת.</li>
           <li xml:lang="it">Testo dell'intestazione a capo.</li>
           <li xml:lang="ka">სათაურის ტექსტის გადატანა.</li>
+          <li xml:lang="ko">머리글 텍스트에 워드랩을 적용합니다.</li>
           <li xml:lang="lt">Antraštės tekstas yra skaidomas į eilutes.</li>
           <li xml:lang="nl">Koptekst op volgende regel laten doorlopen.</li>
           <li xml:lang="pt-BR">Quebrar texto do cabeçalho.</li>
@@ -655,6 +672,7 @@
           <li xml:lang="he">תוקנה תופעה שממלא מקום להודעה לא מופיע אם לא נבחרו מועדפים.</li>
           <li xml:lang="it">Corregge il messaggio segnaposto che non viene visualizzato se non sono selezionati preferiti.</li>
           <li xml:lang="ka">გასწორდა ადგილმჭერი შეტყობინების არჩვენება, თუ რჩეული არჩეული არაა.</li>
+          <li xml:lang="ko">책갈피 항목을 선택하지 않았을 때 자리 비움자 메시지가 표시되지 않는 문제를 수정했습니다.</li>
           <li xml:lang="lt">Ištaisyta klaida, kai vietaženklio pranešimas nebuvo rodomas, jei nebuvo pasirinkti mėgstami kanalai.</li>
           <li xml:lang="nl">Plaatshouderbericht dat niet wordt getoond als er geen favorieten zijn geselecteerd gerepareerd.</li>
           <li xml:lang="pt-BR">Correção do problema da mensagem de espaço reservado que não era exibida quando nenhum favorito era selecionado.</li>
@@ -676,6 +694,7 @@
           <li xml:lang="he">תוקנה בעיה שהרקע לא ממלא את שדה התוכנית במלואו.</li>
           <li xml:lang="it">Corregge il problema per cui lo sfondo non riempie completamente il campo del programma.</li>
           <li xml:lang="ka">გასწორდა ფონით პროგრამის ველის ბოლომდე არშევსება.</li>
+          <li xml:lang="ko">배경이 프로그램 필드를 완전히 차지하지 않는 문제를 수정했습니다.</li>
           <li xml:lang="lt">Ištaisyta klaida, kai fonas nevisiškai užpildydavo laidos lauką.</li>
           <li xml:lang="nl">Achtergrond die het programmaveld niet geheel vult gerepareerd.</li>
           <li xml:lang="pt-BR">Correção do plano de fundo que não preenche completamente o campo do programa.</li>
@@ -699,6 +718,7 @@
         <p xml:lang="ia">Pagina de "Selige favoritos"</p>
         <p xml:lang="it">Pagina «Seleziona i preferiti»</p>
         <p xml:lang="ka">"რჩეულების არჩევის" გვერდი</p>
+        <p xml:lang="ko">"책갈피 선택" 페이지</p>
         <p xml:lang="lt">„Pasirinkti mėgstamus“ puslapis</p>
         <p xml:lang="nl">Pagina "Favorieten selecteren"</p>
         <p xml:lang="pt-BR">Página "Selecionar favoritos"</p>
@@ -721,6 +741,7 @@
           <li xml:lang="he">תוקן ממלא מקום טעינה בעת טעינת ערוצים.</li>
           <li xml:lang="it">Corregge il caricamento del segnaposto durante il caricamento dei canali.</li>
           <li xml:lang="ka">გასწორდა ადგილმჭერის ჩატვირთვა არხების ჩატვირთვისას.</li>
+          <li xml:lang="ko">채널을 불러올 때 자리 비움자 불러오기 문제를 수정했습니다.</li>
           <li xml:lang="lt">Ištaisytas vietaženklio įkėlimas, kai įkeliami kanalai.</li>
           <li xml:lang="nl">Laden van plaatshouder bij laden van kanalen gerepareerd.</li>
           <li xml:lang="pt-BR">Correção do marcador de carregamento ao carregar canais.</li>
@@ -754,6 +775,7 @@
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="it">Recupero informazioni da TV Spielfilm</p>
         <p xml:lang="ka">TV Spielfilm-ის გამომთხოვი</p>
+        <p xml:lang="ko">TV Spielfilm 가져오기 도구</p>
         <p xml:lang="lt">„TV Spielfilm“ gavimo įrankis</p>
         <p xml:lang="nl">TV-speelfilmophaler</p>
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
@@ -776,6 +798,7 @@
           <li xml:lang="he">טיפול בזמני עצירה שגויים.</li>
           <li xml:lang="it">Gestisce gli orari di arresto errati.</li>
           <li xml:lang="ka">გასწორდა არასწორი გაჩერების დროები.</li>
+          <li xml:lang="ko">잘못된 정지 시간을 올바르게 처리합니다.</li>
           <li xml:lang="lt">Apdorojami neteisingi pabaigos laikai.</li>
           <li xml:lang="nl">Niet correcte stoptijden behandelen.</li>
           <li xml:lang="pt-BR">Lidar com horários de parada incorretos.</li>
@@ -797,6 +820,7 @@
           <li xml:lang="he">שיפור תיאור התוכנה.</li>
           <li xml:lang="it">Migliora la descrizione dei programmi.</li>
           <li xml:lang="ka">გაფართოვდა პროგრამის აღწერა.</li>
+          <li xml:lang="ko">프로그램 설명을 향상했습니다.</li>
           <li xml:lang="lt">Pagerintas laidų aprašas.</li>
           <li xml:lang="nl">Programmabeschrijving verbeteren.</li>
           <li xml:lang="pt-BR">Melhoria na descrição do programa.</li>
@@ -820,6 +844,7 @@
         <p xml:lang="ia">Pagina de "Favoritos"</p>
         <p xml:lang="it">Pagina «Preferiti»</p>
         <p xml:lang="ka">"რჩეულების" გვერდი</p>
+        <p xml:lang="ko">"책갈피" 페이지</p>
         <p xml:lang="lt">„Mėgstamų“ puslapis</p>
         <p xml:lang="nl">Pagina "Favorieten"</p>
         <p xml:lang="pt-BR">Página "Favoritos"</p>
@@ -842,6 +867,7 @@
           <li xml:lang="he">הצגת ממלא מקום טעינה.</li>
           <li xml:lang="it">Mostra un segnaposto di caricamento.</li>
           <li xml:lang="ka">ჩატვირთვის ადგილმჭერის ჩვენება.</li>
+          <li xml:lang="ko">불러오기 자리 비움자를 표시합니다.</li>
           <li xml:lang="lt">Rodomas įkėlimo vietaženklis.</li>
           <li xml:lang="nl">Laden van plaatshouder tonen.</li>
           <li xml:lang="pt-BR">Exibir espaço reservado para carregamento.</li>
@@ -863,6 +889,7 @@
           <li xml:lang="he">הפעלת גרירה עם העכבר.</li>
           <li xml:lang="it">Abilita il trascinamento con il mouse.</li>
           <li xml:lang="ka">თაგუნათი გადათრევის დაშვება.</li>
+          <li xml:lang="ko">마우스 드래그를 활성화했습니다.</li>
           <li xml:lang="lt">Leidžiama tempti pele.</li>
           <li xml:lang="nl">Slepen met muis inschakelen.</li>
           <li xml:lang="pt-BR">Ativado o recurso de arrastar e soltar com o mouse.</li>
@@ -885,6 +912,7 @@
         <p xml:lang="he">לא לאפשר להסיר מועדפים מעמוד „מיון המועדפים”</p>
         <p xml:lang="it">Non consente la rimozione dei preferiti nella pagina «Ordina preferiti».</p>
         <p xml:lang="ka">რჩეულების წაშლის აკრძალვა "რჩეულების დალაგების" გვერდზე.</p>
+        <p xml:lang="ko">"책갈피 정렬" 페이지에서 책갈피를 삭제할 수 없도록 변경했습니다.</p>
         <p xml:lang="lt">Neleidžiama šalinti mėgstamus kanalus „Rikiuoti mėgstamus“ puslapyje.</p>
         <p xml:lang="nl">Sta niet toe dat favorieten worden verwijderd op de pagina "Favorieten sorteren".</p>
         <p xml:lang="pt-BR">Não permita remover favoritos na página "Ordenar favoritos".</p>
@@ -906,6 +934,7 @@
         <p xml:lang="he">שיפור ביצועים.</p>
         <p xml:lang="it">Migliorare le prestazioni.</p>
         <p xml:lang="ka">გაუმჯობესდა წარმადობა.</p>
+        <p xml:lang="ko">성능을 향상시켰습니다.</p>
         <p xml:lang="lt">Pagerintas našumas.</p>
         <p xml:lang="nl">Prestaties verbeteren.</p>
         <p xml:lang="pt-BR">Melhoria de desempenho.</p>
@@ -945,6 +974,7 @@
         <p xml:lang="he">מנגנון משיכה מ־TV Spielfilm</p>
         <p xml:lang="it">Recupero informazioni da TV Spielfilm</p>
         <p xml:lang="ka">TV Spielfilm-ის გამომთხოვი</p>
+        <p xml:lang="ko">TV Spielfilm 가져오기 도구</p>
         <p xml:lang="lt">„TV Spielfilm“ gavimo įrankis</p>
         <p xml:lang="nl">TV-speelfilmophaler</p>
         <p xml:lang="pt-BR">Coletor do TV Spielfilm</p>
@@ -967,6 +997,7 @@
           <li xml:lang="he">תוקנו סמלי ערוצים חסרים.</li>
           <li xml:lang="it">Corregge le icone dei canali mancanti.</li>
           <li xml:lang="ka">დაემატა ნაკლული არხის ხატულები.</li>
+          <li xml:lang="ko">빠진 채널 아이콘을 수정했습니다.</li>
           <li xml:lang="lt">Ištaisyta klaida, kai nebuvo rodomos kanalų piktogramos.</li>
           <li xml:lang="nl">Ontbrekende kanaalpictogrammen gerepareerd.</li>
           <li xml:lang="pt-BR">Correção de ícones de canal ausentes.</li>
@@ -989,6 +1020,7 @@
           <li xml:lang="he">תוקנו תוכניות חסרות אם יש דפדוף.</li>
           <li xml:lang="it">Corregge i programmi mancanti se c'è impaginazione.</li>
           <li xml:lang="ka">გასწორდა ნაკლული პროგრამები, თუ ხდებოდა გვერდებად დაყოფა.</li>
+          <li xml:lang="ko">페이지 단위로 나뉘었을 때 프로그램이 누락되는 문제를 수정했습니다.</li>
           <li xml:lang="lt">Ištaisyta klaida, kai nebuvo rodomos laidos, jei būdavo skaidymas į puslapius.</li>
           <li xml:lang="nl">Ontbrekende programma's als er paginering is gerepareerd.</li>
           <li xml:lang="pt-BR">Correção dos programas ausentes caso haja paginação.</li>
@@ -1010,6 +1042,7 @@
           <li xml:lang="he">תוקנו תוכניות שהיו חסרות סביב תחילת שנה.</li>
           <li xml:lang="it">Corregge i programmi mancanti in vista del nuovo anno.</li>
           <li xml:lang="ka">გასწორდა ნაკლული პროგრამები ახალი წლის შესახებ.</li>
+          <li xml:lang="ko">새해 주변의 프로그램이 누락되는 문제를 수정했습니다.</li>
           <li xml:lang="lt">Ištaisyta klaida, susijusi su laidomis Naujųjų metų išvakarėse.</li>
           <li xml:lang="nl">Ontbrekende programma's rond het nieuwe jaar gerepareerd.</li>
           <li xml:lang="pt-BR">Correção de programas faltantes próximos ao Ano Novo.</li>
@@ -1031,6 +1064,7 @@
           <li xml:lang="he">תוקן הטיפול באזורי זמן.</li>
           <li xml:lang="it">Corregge la gestione del fuso orario.</li>
           <li xml:lang="ka">გასწორდა დროის სარტყლების დამუშავება.</li>
+          <li xml:lang="ko">시간대 처리 문제를 수정했습니다.</li>
           <li xml:lang="lt">Ištaisytas laiko juostos apdorojimas.</li>
           <li xml:lang="nl">Behandeling van tijdzone gerepareerd.</li>
           <li xml:lang="pt-BR">Correção do tratamento de fusos horários.</li>
@@ -1052,6 +1086,7 @@
           <li xml:lang="he">הצגת תוכניות במקביל.</li>
           <li xml:lang="it">Mostra programmi simultanei.</li>
           <li xml:lang="ka">პროგრამების ერთდროულ ჩვენება.</li>
+          <li xml:lang="ko">동시에 방송되는 프로그램을 표시합니다.</li>
           <li xml:lang="lt">Atvaizduojamos vienu metu rodomos laidos.</li>
           <li xml:lang="nl">Gelijktijdige programma's tonen.</li>
           <li xml:lang="pt-BR">Exibir programas simultâneos.</li>
@@ -1073,6 +1108,7 @@
           <li xml:lang="he">נוספה הגדרה למשך זמן למשיכה מראש.</li>
           <li xml:lang="it">Aggiunge l'impostazione per il periodo di prefetch.</li>
           <li xml:lang="ka">დაემატა პარამეტრი წინასწარ გამოთხოვის პერიოდისთვის.</li>
+          <li xml:lang="ko">미리 가져오기 기간 설정을 추가했습니다.</li>
           <li xml:lang="lt">Pridėta nuostata, skirta nustatyti išankstinio gavimo laikotarpį.</li>
           <li xml:lang="nl">Instelling voor periode van vooraf ophalen toegevoegd.</li>
           <li xml:lang="pt-BR">Adicionada configuração para o período de pré-busca.</li>
@@ -1095,6 +1131,7 @@
         <p xml:lang="he">נוספו הגדרות בממשק המשתמש להגדרת תצוגת המועדפים.</p>
         <p xml:lang="it">Aggiunge le impostazioni dell'interfaccia utente per configurare la visualizzazione dei preferiti.</p>
         <p xml:lang="ka">დაემატა მომხმარებლის ინტერფეისის პარამეტრები რჩეული ხედის მოსარგებად.</p>
+        <p xml:lang="ko">사용자 인터페이스 설정에 책갈피 보기 설정을 추가했습니다.</p>
         <p xml:lang="lt">Pridėtos naudotojo sąsajos nuostatos, skirtos konfigūruoti mėgstamų kanalų rodinį.</p>
         <p xml:lang="nl">Instellingen voor de gebruikersinterface toegevoegd om de favorietenweergave te configureren.</p>
         <p xml:lang="pt-BR">Adicionada configurações de interface do usuário para configurar a visualização de favoritos.</p>
@@ -1116,6 +1153,7 @@
         <p xml:lang="he">שיפורי ביצועים (כלומר: הימנעות מגישה מיותרת למסד הנתונים)</p>
         <p xml:lang="it">Migliora le prestazioni (ad esempio, evita accessi non necessari al database).</p>
         <p xml:lang="ka">წარმადობის გაუმჯობესება (ანუ მონაცემთა ბაზასთან არასაჭირო წვდომის თავიდან არიდება).</p>
+        <p xml:lang="ko">성능을 향상시켰습니다(예: 필요하지 않은 데이터베이스 접근 방지).</p>
         <p xml:lang="lt">Pagerintas našumas (pvz., vengiama nebūtina prieiga prie duomenų bazės).</p>
         <p xml:lang="nl">Prestaties verbeteren (bijv. onnodige toegang tot de database vermijden).</p>
         <p xml:lang="pt-BR">Melhoria do desempenho (por exemplo, evita acessos desnecessários ao banco de dados).</p>
