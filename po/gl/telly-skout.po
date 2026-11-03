@@ -173,9 +173,7 @@ msgid "Programs"
 msgstr "Programas"
 
 #: qml/SettingsPage.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Delete old programs after:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Delete old programs after:"
 msgstr "Eliminar o vello despois de:"
@@ -203,9 +201,7 @@ msgid "The fetcher which loads the programs."
 msgstr "O cargador que carga os programas."
 
 #: qml/SettingsPage.qml:108
-#, fuzzy, kde-format
-#| msgctxt "@option:spinbox"
-#| msgid "Prefetch:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Prefetch:"
 msgstr "Precargar:"
@@ -308,8 +304,7 @@ msgid "Duration: %1"
 msgstr "Duración: %1"
 
 #: tvspielfilmfetcher.cpp:348
-#, fuzzy, kde-format
-#| msgid "FSK: %1"
+#, kde-format
 msgctxt "'FSK' is a German age rating for movies and DVDs"
 msgid "FSK: %1"
 msgstr "FSK: %1"
