@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the telly-skout package.
 #
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2023, 2024.
-# SPDX-FileCopyrightText: 2025 Marcus Gama <marcus.gama@gmail.com>
+# SPDX-FileCopyrightText: 2025 Marcus Gama <marcus.gama@kde.org>
 # SPDX-FileCopyrightText: 2026 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
