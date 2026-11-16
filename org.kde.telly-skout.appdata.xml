@@ -29,6 +29,7 @@
   <name xml:lang="lt">Telly Skout</name>
   <name xml:lang="lv">Telly Skout</name>
   <name xml:lang="nl">Telly Skout</name>
+  <name xml:lang="nn">Telly Skout</name>
   <name xml:lang="pl">Telly Skout</name>
   <name xml:lang="pt">Telly Skout</name>
   <name xml:lang="pt-BR">Telly Skout</name>
@@ -64,6 +65,7 @@
   <summary xml:lang="lt">Konverguojanti Kirigami TV programa</summary>
   <summary xml:lang="lv">Konverģenta „Kirigami“ TV programma</summary>
   <summary xml:lang="nl">Een convergente Kirigami TV gids</summary>
+  <summary xml:lang="nn">Ein konvergent Kirigami-basert TV-gaid</summary>
   <summary xml:lang="pl">Zbieżny przegląd programów TV</summary>
   <summary xml:lang="pt">Um guia de TV convergente em Kirigami</summary>
   <summary xml:lang="pt-BR">Um guia de TV Kirigami convergente</summary>
@@ -147,6 +149,7 @@
       <caption xml:lang="lt">Mėgstami</caption>
       <caption xml:lang="lv">Iecienītākie</caption>
       <caption xml:lang="nl">Favorieten</caption>
+      <caption xml:lang="nn">Favorittar</caption>
       <caption xml:lang="pl">Ulubione</caption>
       <caption xml:lang="pt">Favoritos</caption>
       <caption xml:lang="pt-BR">Favoritos</caption>
@@ -186,6 +189,7 @@
       <caption xml:lang="lt">Pasirinkti mėgstamus</caption>
       <caption xml:lang="lv">Atlasīt iecienītākos</caption>
       <caption xml:lang="nl">Favorieten selecteren</caption>
+      <caption xml:lang="nn">Vel favorittar</caption>
       <caption xml:lang="pl">Wybierz ulubione</caption>
       <caption xml:lang="pt">Seleccionar os Favoritos</caption>
       <caption xml:lang="pt-BR">Selecionar favoritos</caption>
@@ -224,6 +228,7 @@
       <caption xml:lang="lt">Rikiuoti mėgstamus</caption>
       <caption xml:lang="lv">Kārtot iecienītākos</caption>
       <caption xml:lang="nl">Favorieten sorteren</caption>
+      <caption xml:lang="nn">Sorter favorittar</caption>
       <caption xml:lang="pl">Uszereguj ulubione</caption>
       <caption xml:lang="pt">Ordenar os Favoritos</caption>
       <caption xml:lang="pt-BR">Ordenar favoritos</caption>
@@ -397,6 +402,7 @@
         <p xml:lang="ko">안드로이드 지원을 추가했습니다.</p>
         <p xml:lang="lt">Pridėtas „Android“ palaikymas.</p>
         <p xml:lang="nl">Ondersteuning voor Android toegevoegd.</p>
+        <p xml:lang="nn">Lagt til Android-støtte.</p>
         <p xml:lang="pt-BR">Adicionado suporte ao Android.</p>
         <p xml:lang="ru">Добавлена поддержка Android.</p>
         <p xml:lang="sk">Pridaná podpora pre Android.</p>
